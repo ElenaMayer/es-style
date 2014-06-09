@@ -23,3 +23,268 @@ REQUEST_URI=/es-style/frontend/index.php
 in C:\Apache24\htdocs\es-style\frontend\protected\views\layouts\main.php (51)
 in C:\Apache24\htdocs\es-style\frontend\protected\views\layouts\column1.php (6)
 in C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php (32)
+2014/06/09 14:30:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 14:36:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 14:36:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 14:40:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 14:41:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 14:48:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 15:19:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 15:38:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 15:38:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 15:39:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 19:53:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 19:53:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\Apache24\htdocs\es-style\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\Apache24\htdocs\es-style\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\Apache24\htdocs\es-style\framework\base\CModule.php(103): CModule->getComponent('db')
+#4 C:\Apache24\htdocs\es-style\framework\gii\generators\model\ModelCode.php(60): CModule->__get('db')
+#5 C:\Apache24\htdocs\es-style\framework\web\CFormModel.php(39): ModelCode->init()
+#6 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(153): CFormModel->__construct()
+#7 C:\Apache24\htdocs\es-style\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('index')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/gii/model/index
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
+---
+2014/06/09 13:30:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'es_style.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
