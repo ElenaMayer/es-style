@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="es-style">
+    <serverData>
+      <paths name="es-style">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="es-style/frontend" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+
