@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'user':
  * @property integer $id
- * @property string $login
+ * @property string $username
  * @property string $password
  */
 class User extends CActiveRecord
@@ -26,10 +26,10 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('login, password', 'length', 'max'=>255),
+			array('username, password', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, login, password', 'safe', 'on'=>'search'),
+			array('id, username, password', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +51,7 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'login' => 'Login',
+			'username' => 'username',
 			'password' => 'Password',
 		);
 	}
@@ -75,7 +75,7 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('login',$this->login,true);
+		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 
 		return new CActiveDataProvider($this, array(

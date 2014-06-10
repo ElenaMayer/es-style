@@ -288,3 +288,124 @@ REQUEST_URI=/es-style/frontend/index.php/gii/model/index
 HTTP_REFERER=http://localhost/es-style/frontend/index.php/gii/default/index
 ---
 2014/06/09 13:30:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'es_style.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/06/10 08:40:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "pjhoto".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('pjhoto')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/pjhoto
+---
+2014/06/10 08:50:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 09:40:37 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.login" is not defined.' in C:\Apache24\htdocs\es-style\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\components\UserIdentity.php(13): CComponent->__get('login')
+#1 C:\Apache24\htdocs\es-style\frontend\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 C:\Apache24\htdocs\es-style\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#3 C:\Apache24\htdocs\es-style\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\Apache24\htdocs\es-style\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#5 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(87): CModel->validate()
+#6 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#11 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#12 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#14 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/10 09:51:24 [error] [exception.CException] exception 'CException' with message 'Property "User.username" is not defined.' in C:\Apache24\htdocs\es-style\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\ar\CActiveRecord.php(145): CComponent->__get('username')
+#1 C:\Apache24\htdocs\es-style\frontend\protected\components\UserIdentity.php(21): CActiveRecord->__get('username')
+#2 C:\Apache24\htdocs\es-style\frontend\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 C:\Apache24\htdocs\es-style\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 C:\Apache24\htdocs\es-style\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 C:\Apache24\htdocs\es-style\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(87): CModel->validate()
+#7 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#15 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/10 12:03:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 12:03:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 12:03:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 12:17:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 12:17:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/photo".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+---
+2014/06/10 12:22:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/
+---
+2014/06/10 12:22:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/
+---
+2014/06/10 12:30:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/
+---
