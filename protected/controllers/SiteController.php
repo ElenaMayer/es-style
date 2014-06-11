@@ -34,4 +34,9 @@ class SiteController extends Controller
 		}
 	}
 
-}
+    public function actionLogin()
+    {
+        Yii::app()->request->redirect(Yii::app()->createUrl('/admin/login'));
+    }
+
+    }

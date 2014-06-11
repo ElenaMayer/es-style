@@ -2,16 +2,6 @@
 /* @var $this PhotoController */
 /* @var $model Photo */
 
-$this->breadcrumbs=array(
-	'Photos'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Photo', 'url'=>array('index')),
-	array('label'=>'Create Photo', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -26,7 +16,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Photos</h1>
+<h1>Галерея <a href='<?php echo $this->createUrl('admin/photo/create'); ?>' class="admin_title_link">Добавить</a></h1>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'photo-grid',
@@ -39,11 +29,8 @@ $('.search-form form').submit(function(){
 		'article',
 		'price',
 		'title',
-		/*
-		'description',
 		'is_show',
 		'date_create',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

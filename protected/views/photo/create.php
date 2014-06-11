@@ -1,18 +1,4 @@
-<?php
-/* @var $this PhotoController */
-/* @var $model Photo */
 
-$this->breadcrumbs=array(
-	'Photos'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Photo', 'url'=>array('index')),
-	array('label'=>'Manage Photo', 'url'=>array('admin')),
-);
-?>
-
-<h1>Create Photo</h1>
+<h1>Добавить фото <a href='<?php echo $this->createUrl('admin/photo/index'); ?>' class="admin_title_link">Галерея</a></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

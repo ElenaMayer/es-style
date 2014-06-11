@@ -35,9 +35,9 @@ class Photo extends CActiveRecord
 			array('category_id, article, is_show', 'numerical', 'integerOnly'=>true),
 			array('img, price, title', 'length', 'max'=>255),
 			array('description, date_create', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
 			array('id, img, category_id, article, price, title, description, is_show, date_create', 'safe', 'on'=>'search'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('is_show','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert')
 		);
 	}
 
@@ -59,14 +59,14 @@ class Photo extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'img' => 'Img',
-			'category_id' => 'Category',
-			'article' => 'Article',
-			'price' => 'Price',
-			'title' => 'Title',
-			'description' => 'Description',
-			'is_show' => 'Is Show',
-			'date_create' => 'Date Create',
+			'img' => 'Фото',
+			'category_id' => 'Категория',
+			'article' => 'Артикул',
+			'price' => 'Цена',
+			'title' => 'Название',
+			'description' => 'Описание',
+			'is_show' => 'Отображать',
+			'date_create' => 'Дата добавления',
 		);
 	}
 

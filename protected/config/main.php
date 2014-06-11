@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Одежда Восточный Стиль',
+    'language' => 'ru',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -79,5 +80,15 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
+        'categories' => array(
+            1 => 'Платья',
+            2 => 'Блузки',
+            3 => 'Кимоно',
+            4 => 'Костюмы',
+            5 => 'Халаты',
+            6 => 'Мужское',
+            7 => 'Детское',
+            8 => 'Разное',
+        )
 	),
 );

@@ -1,21 +1,3 @@
-<?php
-/* @var $this PhotoController */
-/* @var $model Photo */
-
-$this->breadcrumbs=array(
-	'Photos'=>array('index'),
-	$model->title=>array('view','id'=>$model->id),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Photo', 'url'=>array('index')),
-	array('label'=>'Create Photo', 'url'=>array('create')),
-	array('label'=>'View Photo', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Photo', 'url'=>array('admin')),
-);
-?>
-
-<h1>Update Photo <?php echo $model->id; ?></h1>
+<h1>Редактировать фото арт. <?php echo $model->article; ?> <a href='<?php echo $this->createUrl('admin/photo/index'); ?>' class="admin_title_link">Галерея</a></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

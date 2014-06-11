@@ -409,3 +409,340 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/es-style/frontend/index.php/
 ---
+2014/06/10 19:59:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: '' for column 'date_create' at row 1. The SQL statement executed was: INSERT INTO `photo` (`img`, `category_id`, `article`, `price`, `title`, `description`, `is_show`, `date_create`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (54)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/10 19:59:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: '' for column 'date_create' at row 1. The SQL statement executed was: INSERT INTO `photo` (`img`, `category_id`, `article`, `price`, `title`, `description`, `is_show`, `date_create`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in C:\Apache24\htdocs\es-style\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\ar\CActiveRecord.php(1077): CDbCommand->execute()
+#1 C:\Apache24\htdocs\es-style\framework\db\ar\CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(54): CActiveRecord->save()
+#3 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/create')
+#14 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#16 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/create
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/photo/create
+---
+2014/06/10 20:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('view')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('view')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/view')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/1
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/photo/create
+---
+2014/06/10 20:20:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('photo')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/10 20:21:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('photo')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/photo')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/photo
+---
+2014/06/11 11:13:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('logout')
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logout')
+#9 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#11 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/logout
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/11 11:14:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('logout')
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logout')
+#9 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#11 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/logout
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/11 11:16:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('logout')
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logout')
+#9 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#11 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/logout
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/11 11:17:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "login".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/11 11:17:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "login".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/11 11:17:29 [error] [exception.CException] exception 'CException' with message 'Контроллер AdminController не может найти представление "order".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:878
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): CController->renderPartial('order', NULL, true)
+#1 C:\Apache24\htdocs\es-style\frontend\protected\controllers\AdminController.php(57): CController->render('order')
+#2 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): AdminController->actionOrder()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('order')
+#7 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/order')
+#8 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#10 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/order
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/11 11:17:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "login".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/11 11:17:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "login".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/11 11:17:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "login".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/login
+---
+2014/06/11 11:25:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "admin".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('admin')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('admin')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin/logi...')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/admin/login
+---
+2014/06/11 11:25:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "admin".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('admin')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('admin')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin/logi...')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/admin/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/index
+---
+2014/06/11 11:26:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "admin".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('admin')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('admin')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin/logi...')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/admin/login
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/site/admin/login
+---
+2014/06/11 11:29:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "admin".' in C:\Apache24\htdocs\es-style\framework\web\CController.php:483
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(270): CController->missingAction('admin')
+#1 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('admin')
+#2 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin/logi...')
+#3 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/es-style/frontend/index.php/site/admin/login
+---
+2014/06/11 11:29:14 [error] [php] trim() expects parameter 1 to be string, array given (C:\Apache24\htdocs\es-style\framework\web\CUrlManager.php:297)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(39): CWebApplication->createUrl()
+#1 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/site/login
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php (39)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/11 11:29:49 [error] [php] trim() expects parameter 1 to be string, array given (C:\Apache24\htdocs\es-style\framework\web\CUrlManager.php:297)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(39): CWebApplication->createUrl()
+#1 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/site/login
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php (39)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/11 11:47:03 [error] [php] trim() expects parameter 1 to be string, array given (C:\Apache24\htdocs\es-style\framework\web\CUrlManager.php:297)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(39): CWebApplication->createUrl()
+#1 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/site/login
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php (39)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/11 11:47:18 [error] [php] trim() expects parameter 1 to be string, array given (C:\Apache24\htdocs\es-style\framework\web\CUrlManager.php:297)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php(39): CWebApplication->createUrl()
+#1 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(286): SiteController->runAction()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): SiteController->run()
+#6 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/site/login
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\SiteController.php (39)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/11 12:50:29 [error] [exception.CException] exception 'CException' with message 'В классе CActiveForm и его поведениях не найден метод или замыкание с именем "datepicker".' in C:\Apache24\htdocs\es-style\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(66): CComponent->__call('datepicker', Array)
+#1 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(66): CActiveForm->datepicker(Object(Photo), 'date_create')
+#2 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#3 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#5 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php(4): CController->renderPartial('_form', Array)
+#6 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#7 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#10 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(61): CController->render('create', Array)
+#11 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#12 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('create')
+#21 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/create')
+#22 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#23 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#24 {main}
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/photo/index
+---
+2014/06/11 12:55:30 [error] [php] Cannot use a scalar value as an array (C:\Apache24\htdocs\es-style\framework\web\helpers\CHtml.php:2458)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(54): CActiveForm->checkBox()
+#1 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#2 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#4 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php(4): PhotoController->renderPartial()
+#5 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#6 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): PhotoController->renderPartial()
+#9 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(61): PhotoController->render()
+#10 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#11 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): PhotoController->runAction()
+#13 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#15 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): PhotoController->filterAccessControl()
+#16 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): PhotoController->runActionWithFilters()
+#19 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): PhotoController->run()
+#20 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php (54)
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php (4)
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (61)

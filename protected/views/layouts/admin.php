@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/admin.css" />
 
 	<title>Админка <?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -29,16 +30,17 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Главная', 'url'=>array('/admin/index')),
-				array('label'=>'Галерея', 'url'=>array('/admin/photo/index')),
-				array('label'=>'Новости', 'url'=>array('/admin/news/index')),
-                array('label'=>'Заказы', 'url'=>array('/admin/order')),
-                array('label'=>'Прайсы', 'url'=>array('/admin/price')),
-				array('label'=>'Вход', 'url'=>array('/admin/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Главная', 'url'=>array('/admin/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'admin/index')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Галерея', 'url'=>array('/admin/photo/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'photo')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Новости', 'url'=>array('/admin/news/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'news')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Заказы', 'url'=>array('/admin/order'), 'active'=>strpos(Yii::app()->request->pathInfo, 'order')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Прайсы', 'url'=>array('/admin/price'), 'active'=>strpos(Yii::app()->request->pathInfo, 'price')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Вход', 'url'=>array('/admin/login'), 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
 				array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/admin/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->
+
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
@@ -50,9 +52,8 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by es-style.ru.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->
