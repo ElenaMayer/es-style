@@ -8,6 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'photo-form',
+    'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -20,16 +21,13 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'img'); ?>
-		<?php echo $form->fileField($model,'img'); ?>
-		<?php echo $form->error($model,'img'); ?>
+        <?php if($model->img): ?>
+            <!--p><img src="<?php echo $model->getImageUrl().$model->img ?>"/></p-->
+        <?php endif; ?>
+		<?php echo $form->labelEx($model,'image'); ?>
+		<?php echo $form->fileField($model,'image'); ?>
+		<?php echo $form->error($model,'image'); ?>
 	</div>
-
-    <div class="row">
-        <?php echo $form->labelEx($model,'title'); ?>
-        <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'title'); ?>
-    </div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'category_id'); ?>
@@ -55,6 +53,12 @@
         <?php echo $form->error($model,'is_show'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'title'); ?>
+        <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->error($model,'title'); ?>
+    </div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
@@ -62,7 +66,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

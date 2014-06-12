@@ -746,3 +746,400 @@ REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
 in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php (54)
 in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php (4)
 in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (61)
+2014/06/11 21:12:14 [error] [exception.CException] exception 'CException' with message 'В классе CActiveForm и его поведениях не найден метод или замыкание с именем "activeFileField".' in C:\Apache24\htdocs\es-style\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(24): CComponent->__call('activeFileField', Array)
+#1 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(24): CActiveForm->activeFileField(Object(Photo), 'img')
+#2 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#3 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#5 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\update.php(3): CController->renderPartial('_form', Array)
+#6 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#7 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): CController->renderPartial('update', Array, true)
+#10 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(87): CController->render('update', Array)
+#11 [internal function]: PhotoController->actionUpdate('1')
+#12 C:\Apache24\htdocs\es-style\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(PhotoController), Array)
+#13 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(PhotoController), Object(ReflectionMethod), Array)
+#14 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#23 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update')
+#24 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#26 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1
+---
+2014/06/12 09:40:22 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:40:22 [error] [php] Object of class CDbExpression could not be converted to int (C:\Apache24\htdocs\es-style\framework\web\helpers\CHtml.php:1743)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#1 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#3 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php(4): PhotoController->renderPartial()
+#4 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#5 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): PhotoController->renderPartial()
+#8 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(60): PhotoController->render()
+#9 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): PhotoController->runAction()
+#12 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): PhotoController->filterAccessControl()
+#15 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): PhotoController->runActionWithFilters()
+#18 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): PhotoController->run()
+#19 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php (48)
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php (4)
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (60)
+2014/06/12 09:42:09 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:42:41 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:42:56 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:42:56 [error] [php] Object of class CDbExpression could not be converted to int (C:\Apache24\htdocs\es-style\framework\web\helpers\CHtml.php:1743)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#1 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#2 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#3 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php(4): PhotoController->renderPartial()
+#4 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require()
+#5 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): PhotoController->renderInternal()
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): PhotoController->renderFile()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): PhotoController->renderPartial()
+#8 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(61): PhotoController->render()
+#9 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#10 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): PhotoController->runAction()
+#12 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): PhotoController->filterAccessControl()
+#15 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): PhotoController->runActionWithFilters()
+#18 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): PhotoController->run()
+#19 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php (48)
+in C:\Apache24\htdocs\es-style\frontend\protected\views\photo\create.php (4)
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (61)
+2014/06/12 09:45:15 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:45:30 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:47:23 [warning] [application] Не удалось присвоить небезопасный атрибут "img" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:47:23 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 09:47:51 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (49)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:22:06 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:22:06 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:24:01 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:24:01 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:32:51 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:32:51 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:32:51 [error] [php] move_uploaded_file(): The second argument to copy() function cannot be a directory (C:\Apache24\htdocs\es-style\framework\web\CUploadedFile.php:198)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#1 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): PhotoController->runAction()
+#3 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): PhotoController->filterAccessControl()
+#6 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): PhotoController->runActionWithFilters()
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): PhotoController->run()
+#10 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (51)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:33:39 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:33:39 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:35:43 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:35:43 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:35:56 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:35:56 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:36:03 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:36:03 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:36:03 [error] [php] move_uploaded_file(): The second argument to copy() function cannot be a directory (C:\Apache24\htdocs\es-style\framework\web\CUploadedFile.php:198)
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(49): PhotoController->actionCreate()
+#1 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): PhotoController->runAction()
+#3 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): PhotoController->filterAccessControl()
+#6 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): PhotoController->runActionWithFilters()
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): PhotoController->run()
+#10 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\Apache24\htdocs\es-style\frontend\index.php(15): CWebApplication->run()
+REQUEST_URI=/es-style/frontend/index.php/admin/photo/create
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (52)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:41:10 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:41:10 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:11 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:11 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:45 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:45 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:53 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:42:53 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:43:16 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:43:16 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:44:22 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:44:22 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:52:28 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:52:28 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (48)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:57:30 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:57:30 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:58:02 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 11:58:02 [warning] [application] Не удалось присвоить небезопасный атрибут "is_show" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:08:43 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:09:44 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:10:09 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:10:30 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:12:20 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 12:13:05 [warning] [application] Не удалось присвоить небезопасный атрибут "image" класса "Photo".
+in C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php (69)
+in C:\Apache24\htdocs\es-style\frontend\index.php (15)
+2014/06/12 18:09:36 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in C:\Apache24\htdocs\es-style\framework\web\CController.php:336
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update/10...')
+#10 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#12 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1051.jpg
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/photo/update/8
+---
+2014/06/12 18:10:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in C:\Apache24\htdocs\es-style\framework\web\CController.php:336
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update/10...')
+#10 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#12 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1051.jpg
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/photo/update/8
+---
+2014/06/12 18:14:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "data/photo/1034.jpg".' in C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('data/photo/1034...')
+#1 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/es-style/frontend/index.php/data/photo/1034.jpg
+---
+2014/06/12 19:52:15 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in C:\Apache24\htdocs\es-style\framework\web\CController.php:336
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update/10...')
+#10 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#12 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1051.jpg
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/login
+---
+2014/06/12 19:52:17 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in C:\Apache24\htdocs\es-style\framework\web\CController.php:336
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update/10...')
+#10 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#12 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1051.jpg
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/login
+---
+2014/06/12 19:58:16 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in C:\Apache24\htdocs\es-style\framework\web\CController.php:336
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update/10...')
+#10 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#12 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/1051.jpg
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/login
+---
+2014/06/12 20:12:56 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "Photo.getImageUrl".' in C:\Apache24\htdocs\es-style\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Apache24\htdocs\es-style\framework\db\ar\CActiveRecord.php(145): CComponent->__get('getImageUrl')
+#1 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\_form.php(25): CActiveRecord->__get('getImageUrl')
+#2 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#3 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#4 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#5 C:\Apache24\htdocs\es-style\frontend\protected\views\photo\update.php(3): CController->renderPartial('_form', Array)
+#6 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(126): require('C:\Apache24\htd...')
+#7 C:\Apache24\htdocs\es-style\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Apache24\htd...', Array, true)
+#8 C:\Apache24\htdocs\es-style\framework\web\CController.php(869): CBaseController->renderFile('C:\Apache24\htd...', Array, true)
+#9 C:\Apache24\htdocs\es-style\framework\web\CController.php(782): CController->renderPartial('update', Array, true)
+#10 C:\Apache24\htdocs\es-style\frontend\protected\controllers\PhotoController.php(77): CController->render('update', Array)
+#11 [internal function]: PhotoController->actionUpdate('8')
+#12 C:\Apache24\htdocs\es-style\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(PhotoController), Array)
+#13 C:\Apache24\htdocs\es-style\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(PhotoController), Object(ReflectionMethod), Array)
+#14 C:\Apache24\htdocs\es-style\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\Apache24\htdocs\es-style\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\Apache24\htdocs\es-style\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\Apache24\htdocs\es-style\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\Apache24\htdocs\es-style\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\Apache24\htdocs\es-style\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\Apache24\htdocs\es-style\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(282): CController->run('update')
+#23 C:\Apache24\htdocs\es-style\framework\web\CWebApplication.php(141): CWebApplication->runController('photo/update')
+#24 C:\Apache24\htdocs\es-style\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\Apache24\htdocs\es-style\frontend\index.php(15): CApplication->run()
+#26 {main}
+REQUEST_URI=/es-style/frontend/index.php/photo/update/8
+HTTP_REFERER=http://localhost/es-style/frontend/index.php/admin/photo/index
+---

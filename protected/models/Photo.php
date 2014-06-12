@@ -16,6 +16,7 @@
  */
 class Photo extends CActiveRecord
 {
+    public $image;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,7 +38,7 @@ class Photo extends CActiveRecord
 			array('description, date_create', 'safe'),
 			array('id, img, category_id, article, price, title, description, is_show, date_create', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-            array('is_show','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert')
+            array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
 		);
 	}
 
@@ -60,6 +61,7 @@ class Photo extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'img' => 'Фото',
+            'image' => 'Фото',
 			'category_id' => 'Категория',
 			'article' => 'Артикул',
 			'price' => 'Цена',
@@ -113,4 +115,33 @@ class Photo extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    protected function beforeSave(){
+        if(!parent::beforeSave())
+            return false;
+        if(($this->scenario=='insert' || $this->scenario=='update') && ($image=CUploadedFile::getInstance($this,'image'))){
+            $this->deleteImage();
+            $this->img=$image->name;
+            $image->saveAs(Yii::getPathOfAlias('photo').DIRECTORY_SEPARATOR.$image->name);
+        }
+        return true;
+    }
+
+    protected function beforeDelete(){
+        if(!parent::beforeDelete())
+            return false;
+        $this->deleteImage();
+        return true;
+    }
+
+    public function deleteImage(){
+        $imagePath=Yii::getPathOfAlias('photo').DIRECTORY_SEPARATOR.$this->img;
+        if(is_file($imagePath))
+            unlink($imagePath);
+    }
+
+    public function getImageUrl()
+    {
+        return Yii::app()->getBaseUrl(true).'/data/photo/';
+    }
 }
