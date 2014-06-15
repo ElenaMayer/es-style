@@ -3,7 +3,8 @@
 $backendConfigDir = dirname(__FILE__);
 $root = $backendConfigDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..';
 
-Yii::setPathOfAlias('photo', $root.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'photo');
+Yii::setPathOfAlias('root', $root);
+Yii::setPathOfAlias('data', $root.DIRECTORY_SEPARATOR.'data');
 
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
@@ -72,6 +73,9 @@ return array(
 				*/
 			),
 		),
+        'image'=>array(
+            'class'=>'CImageHandler',
+        ),
 	),
 
 	// application-level parameters that can be accessed

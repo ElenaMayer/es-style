@@ -12,11 +12,18 @@
  * @property string $title
  * @property string $description
  * @property integer $is_show
+ * @property integer $is_new
  * @property string $date_create
  */
 class Photo extends CActiveRecord
 {
     public $image;
+    public $imageHeight = 600;
+    public $imageWidth = 450;
+    public $previewHeight = 227;
+    public $previewWidth = 170;
+    public $is_image_change = false;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -33,12 +40,13 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('category_id, article, is_show', 'numerical', 'integerOnly'=>true),
+			array('category_id, article, is_show, is_new', 'numerical', 'integerOnly'=>true),
 			array('img, price, title', 'length', 'max'=>255),
 			array('description, date_create', 'safe'),
-			array('id, img, category_id, article, price, title, description, is_show, date_create', 'safe', 'on'=>'search'),
+			array('id, category_id, article, price, title, description, is_show, is_new, date_create', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
+            array('category_id, article, price', 'required'),
 		);
 	}
 
@@ -67,7 +75,8 @@ class Photo extends CActiveRecord
 			'price' => 'Цена',
 			'title' => 'Название',
 			'description' => 'Описание',
-			'is_show' => 'Отображать',
+            'is_show' => 'Отображать',
+            'is_new' => 'Новинка',
 			'date_create' => 'Дата добавления',
 		);
 	}
@@ -97,7 +106,8 @@ class Photo extends CActiveRecord
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('is_show',$this->is_show);
+        $criteria->compare('is_show',$this->is_show);
+        $criteria->compare('is_new',$this->is_new);
 		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
@@ -122,7 +132,11 @@ class Photo extends CActiveRecord
         if(($this->scenario=='insert' || $this->scenario=='update') && ($image=CUploadedFile::getInstance($this,'image'))){
             $this->deleteImage();
             $this->img=$image->name;
-            $image->saveAs(Yii::getPathOfAlias('photo').DIRECTORY_SEPARATOR.$image->name);
+            $image->saveAs(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$image->name);
+            $this->prepareImage();
+        } elseif($this->is_image_change){
+            $this->deletePreview();
+            $this->createPreview();
         }
         return true;
     }
@@ -135,13 +149,56 @@ class Photo extends CActiveRecord
     }
 
     public function deleteImage(){
-        $imagePath=Yii::getPathOfAlias('photo').DIRECTORY_SEPARATOR.$this->img;
+        $imageOrigPath=Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img;
+        if(is_file($imageOrigPath))
+            unlink($imageOrigPath);
+        $imagePath=Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img;
         if(is_file($imagePath))
             unlink($imagePath);
+        $this->deletePreview();
+    }
+
+    private function deletePreview(){
+        $imagePreviewPath=Yii::getPathOfAlias('data.photo.preview').DIRECTORY_SEPARATOR.'p_'.$this->img;
+        if(is_file($imagePreviewPath))
+            unlink($imagePreviewPath);
+    }
+
+    public function prepareImage(){
+        $this->createPreview();
+        Yii::app()->image
+            ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
+            ->resize($this->imageWidth, $this->imageHeight)
+            ->watermark($this->getWatermarkPath(), 0, 0)
+            ->save(Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img);
+    }
+
+    private function createPreview(){
+        Yii::app()->image
+            ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
+            ->resize($this->previewWidth, $this->previewHeight);
+        if ($this->is_new)
+            Yii::app()->image->watermark($this->getWatermarkNewPath(), 0, 0);
+        Yii::app()->image->save(Yii::getPathOfAlias('data.photo.preview').DIRECTORY_SEPARATOR.'p_'.$this->img);
     }
 
     public function getImageUrl()
     {
-        return Yii::app()->getBaseUrl(true).'/data/photo/';
+        return Yii::app()->getBaseUrl().'/data/photo/';
+    }
+
+    public function getPreviewUrl()
+    {
+        return Yii::app()->getBaseUrl().'/data/photo/preview/';
+    }
+
+    public function getWatermarkPath()
+    {
+        return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
+    }
+
+    public function getWatermarkNewPath()
+    {
+        return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark_new.png';
     }
 }

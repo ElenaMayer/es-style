@@ -66,6 +66,8 @@ class PhotoController extends Controller
 
 		if(isset($_POST['Photo']))
 		{
+            if($model->is_new != $_POST['Photo']['is_new'])
+                $model->is_image_change = true;
 			$model->attributes=$_POST['Photo'];
 			if($model->save()){
 				$this->redirect(array('index'));

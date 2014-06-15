@@ -6,3 +6,25 @@
 	line-height: 15px;
 	text-decoration: none;
 }
+
+div.label
+{
+    float: left;
+    width: 100px;
+}
+
+div.buttons.indent
+{
+    margin-left: 100px;
+}
+
+img.photo
+{
+    width: 80px;
+}
+
+p.photo
+{
+    text-align:center;
+    margin: 0px;
+}
