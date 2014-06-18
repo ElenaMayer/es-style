@@ -28,7 +28,7 @@ class PhotoController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','index','delete'),
+				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsNew'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -130,4 +130,27 @@ class PhotoController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    //ajax method
+    public function actionSetIsShow($id){
+        $photo = Photo::model()->findByPk($id);
+        if(empty($photo->is_show))
+            $photo->is_show = 1;
+        else
+            $photo->is_show = 0;
+        $photo->save();
+        Yii::app()->end();
+    }
+
+    //ajax method
+    public function actionSetIsNew($id){
+        $photo = Photo::model()->findByPk($id);
+        if(empty($photo->is_new))
+            $photo->is_new = 1;
+        else
+            $photo->is_new = 0;
+        $photo->is_image_change = true;
+        $photo->save();
+        Yii::app()->end();
+    }
 }

@@ -18,6 +18,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.extensions.*',
 	),
 
 	'modules'=>array(
@@ -45,6 +46,7 @@ return array(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 'admin/<controller:\w+>/<action:\w+>/' => '<controller>/<action>/',
+                'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
 			),
 		),
 		'db'=>array(

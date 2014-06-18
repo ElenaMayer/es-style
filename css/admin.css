@@ -10,12 +10,12 @@
 div.label
 {
     float: left;
-    width: 100px;
+    width: 120px;
 }
 
 div.buttons.indent
 {
-    margin-left: 100px;
+    margin-left: 120px;
 }
 
 img.photo
@@ -23,8 +23,43 @@ img.photo
     width: 80px;
 }
 
-p.photo
+p.photo, p.icon
 {
     text-align:center;
     margin: 0px;
+}
+
+.grid-view .is_show_small {
+    margin: 9px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../data/i/is_show_small.png) 0 0;
+    cursor: pointer;
+}
+
+.grid-view .is_show_small.false{
+    background-position: 0 18px;
+}
+
+.grid-view .is_show {
+    margin: 9px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../data/i/is_show.png) 0 0;
+    cursor: pointer;
+}
+
+.grid-view .is_new {
+    margin: 9px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../data/i/is_new.png) 0 0;
+    cursor: pointer;
+}
+
+.grid-view .is_show.false, .is_new.false {
+    background-position: 0 50px;
 }

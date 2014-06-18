@@ -15,42 +15,48 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
+    <p class="note">Поля с <span class="required">*</span> обязательны для заполнения.</p>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'url'); ?>
-		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'url'); ?>
+        <div class="label"><?php echo $form->labelEx($model,'url'); ?></div>
+        <div><?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>255)); ?></div>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'title'); ?>
+        <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
+        <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
+        <div class="label"><?php echo $form->labelEx($model,'content'); ?></div>
+        <div>
+            <?php $this->widget('application.extensions.tiny_mce.TinyMCE', [
+                'model'=>$model,
+                'attribute'=>'content',
+                'editorOptions'=>[
+                    'language'=>'ru',
+                    'width'=>'100%',
+                    'height'=>'300px'
+                ],
+                'htmlOptions'=>['class'=>'editor',
+                    'width'=>'100%',
+                    'height'=>'300px']
+            ]); ?>
+        </div>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'is_show'); ?>
-		<?php echo $form->textField($model,'is_show'); ?>
-		<?php echo $form->error($model,'is_show'); ?>
+        <div class="label"><?php echo $form->labelEx($model,'date_publish'); ?></div>
+        <div><?php echo $form->dateField($model,'date_publish'); ?></div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'date_create'); ?>
-		<?php echo $form->textField($model,'date_create'); ?>
-		<?php echo $form->error($model,'date_create'); ?>
-	</div>
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
+        <div><?php echo $form->checkBox($model,'is_show'); ?></div>
+    </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="row buttons indent">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

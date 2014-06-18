@@ -95,8 +95,6 @@ class Photo extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
@@ -105,13 +103,15 @@ class Photo extends CActiveRecord
 		$criteria->compare('article',$this->article);
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('description',$this->description,true);
         $criteria->compare('is_show',$this->is_show);
         $criteria->compare('is_new',$this->is_new);
 		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>'10',
+            ),
 		));
 	}
 

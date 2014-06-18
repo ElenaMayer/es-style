@@ -5,12 +5,11 @@ class m140615_013201_photo extends CDbMigration
 	public function up()
 	{
         $this->addColumn('photo', 'is_new', 'boolean');
+        $this->addColumn('news', 'date_publish', 'date');
 	}
 
 	public function down()
 	{
-		echo "m140615_013201_photo does not support migration down.\n";
-		return false;
 	}
 
 	/*

@@ -10,6 +10,7 @@
  * @property string $content
  * @property integer $is_show
  * @property string $date_create
+ * @property string $date_publish
  */
 class News extends CActiveRecord
 {
@@ -31,10 +32,10 @@ class News extends CActiveRecord
 		return array(
 			array('is_show', 'numerical', 'integerOnly'=>true),
 			array('url, title', 'length', 'max'=>255),
-			array('content, date_create', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, url, title, content, is_show, date_create', 'safe', 'on'=>'search'),
+			array('content, date_create, date_publish', 'safe'),
+			array('id, url, title, content, is_show, date_create, date_publish', 'safe', 'on'=>'search'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('url, title, content, date_publish', 'required'),
 		);
 	}
 
@@ -56,11 +57,12 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'url' => 'Url',
-			'title' => 'Title',
-			'content' => 'Content',
-			'is_show' => 'Is Show',
-			'date_create' => 'Date Create',
+			'url' => 'URL',
+			'title' => 'Название',
+			'content' => 'Контент',
+			'is_show' => 'Отображать',
+			'date_create' => 'Дата создания',
+            'date_publish' => 'Дата публикации',
 		);
 	}
 
@@ -78,19 +80,20 @@ class News extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('content',$this->content,true);
 		$criteria->compare('is_show',$this->is_show);
 		$criteria->compare('date_create',$this->date_create,true);
+        $criteria->compare('date_publish',$this->date_publish,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>'10',
+            ),
 		));
 	}
 

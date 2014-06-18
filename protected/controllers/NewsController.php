@@ -6,7 +6,7 @@ class NewsController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+    public $layout='//layouts/admin_column';
 
 	/**
 	 * @return array action filters
@@ -28,7 +28,7 @@ class NewsController extends Controller
 	{
         return array(
             array('allow',
-                'actions'=>array('create','update','index','delete'),
+                'actions'=>array('create','update','index','delete', 'setIsShow'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -39,21 +39,16 @@ class NewsController extends Controller
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new News;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['News']))
 		{
 			$model->attributes=$_POST['News'];
-            $model->date_create = date('Y-m-d');
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -63,21 +58,17 @@ class NewsController extends Controller
 
 	/**
 	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['News']))
 		{
 			$model->attributes=$_POST['News'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -96,7 +87,7 @@ class NewsController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -141,4 +132,15 @@ class NewsController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    //ajax method
+    public function actionSetIsShow($id){
+        $news = News::model()->findByPk($id);
+        if(empty($news->is_show))
+            $news->is_show = 1;
+        else
+            $news->is_show = 0;
+        $news->save();
+        Yii::app()->end();
+    }
 }
