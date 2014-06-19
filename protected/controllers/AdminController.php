@@ -60,7 +60,24 @@ class AdminController extends Controller
 
     public function actionPrice()
     {
-        $this->render('price');
+        $model=new Price('search');
+        $model->unsetAttributes();
+        $model_new=new Price;
+        if(isset($_POST['Price']))
+        {
+            if($model_new->save()){
+                $this->redirect(array('price'));
+            }
+        }
+        $this->render('price',array(
+            'model'=>$model,
+            'model_new'=>$model_new,
+        ));
+    }
+
+    public function actionDeletePrice($id)
+    {
+        Price::model()->findByPk($id)->delete();
     }
 
 	/**

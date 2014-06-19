@@ -1,9 +1,3 @@
-<?php
-/* @var $this PhotoController */
-/* @var $model Photo */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

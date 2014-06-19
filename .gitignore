@@ -6,4 +6,6 @@
 /protected/runtime
 
 /protected/config/main.php
-/protected/data/photo
+
+/data/photo
+/data/price
