@@ -11,10 +11,8 @@ return array(
 	'name'=>'Одежда Восточный Стиль',
     'language' => 'ru',
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'booster'),
 
-	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
@@ -35,9 +33,8 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-        'bootstrap' => [
-            'class' => 'common.extensions.bootstrap.components.Bootstrap',
-            'responsiveCss' => true,
+        'booster' => [
+            'class' => 'ext.booster.components.Booster',
         ],
 		'urlManager'=>array(
 			'urlFormat'=>'path',
