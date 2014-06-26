@@ -6,7 +6,6 @@
 	'filter'=>$model,
     'selectableRows'=>false,
 	'columns'=>array(
-		'url',
 		'title',
         'date_publish',
         array(

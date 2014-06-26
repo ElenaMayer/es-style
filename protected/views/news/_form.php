@@ -18,11 +18,6 @@
     <p class="note">Поля с <span class="required">*</span> обязательны для заполнения.</p>
 
 	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'url'); ?></div>
-        <div><?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>255)); ?></div>
-	</div>
-
-	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
         <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
 	</div>

@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'news':
  * @property integer $id
- * @property string $url
  * @property string $title
  * @property string $content
  * @property integer $is_show
@@ -31,11 +30,11 @@ class News extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('is_show', 'numerical', 'integerOnly'=>true),
-			array('url, title', 'length', 'max'=>255),
+			array('title', 'length', 'max'=>255),
 			array('content, date_create, date_publish', 'safe'),
-			array('id, url, title, content, is_show, date_create, date_publish', 'safe', 'on'=>'search'),
+			array('id, title, content, is_show, date_create, date_publish', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-            array('url, title, content, date_publish', 'required'),
+            array('title, content, date_publish', 'required'),
 		);
 	}
 
@@ -57,7 +56,6 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'url' => 'URL',
 			'title' => 'Название',
 			'content' => 'Контент',
 			'is_show' => 'Отображать',
@@ -83,7 +81,6 @@ class News extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('url',$this->url,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('is_show',$this->is_show);
 		$criteria->compare('date_create',$this->date_create,true);
@@ -107,4 +104,11 @@ class News extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getNewsByNumber($number){
+        return $this->findByAttributes(
+            array('is_show' => 1),
+            array('order'=>'date_publish DESC',  'offset' => $number-1)
+        );
+    }
 }

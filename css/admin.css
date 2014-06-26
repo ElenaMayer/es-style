@@ -10,12 +10,15 @@
 div.label
 {
     float: left;
-    width: 120px;
+    width: 140px;
+    font-size: 100%;
+    color: #000000;
+    text-align: left;
 }
 
 div.buttons.indent
 {
-    margin-left: 120px;
+    margin-left: 140px;
 }
 
 img.photo

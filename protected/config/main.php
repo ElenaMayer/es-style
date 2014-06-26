@@ -80,6 +80,7 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
+        'mainPhone' => '+7-952-929-8710',
         'categories' => array(
             1 => 'Платья',
             2 => 'Блузки',
