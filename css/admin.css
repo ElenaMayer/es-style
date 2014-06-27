@@ -66,3 +66,7 @@ p.photo, p.icon
 .grid-view .is_show.false, .is_new.false {
     background-position: 0 50px;
 }
+
+input[type=file] {
+    display: inline !important;
+}

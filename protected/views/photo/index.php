@@ -9,7 +9,7 @@
         array(
             'name'=>'img',
             'type'=>'raw',
-            'value'=>'"<p class=\"photo\"><img src=\"'.$model->getPreviewUrl().'p_$data->img\" class=\"photo\"></p>"',
+            'value'=>'"<p class=\"photo\"><img src=\"'.$model->getPreviewUrl().'$data->img\" class=\"photo\"></p>"',
         ),
         array(
             'name'=>'category_id',

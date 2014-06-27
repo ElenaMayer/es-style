@@ -24,7 +24,7 @@
     <div class="page">
         <div class="header">
             <div class="header__content">
-                <a href="/" class="header__logo"></a>
+                <a href="./" class="header__logo"></a>
                 <div class="header__inner">
                     <div class="header__phone">
                         <i class="header__phone-icon"></i>
@@ -52,8 +52,8 @@
                                 'type' => 'navbar',
                                 'htmlOptions'=>array('class'=>'menu__list'),
                                 'items' => array(
-                                    array('label' => 'Платья', 'url' => 'dress', 'active'=>strpos(Yii::app()->request->pathInfo, 'dress')===false? true:true),
-                                    array('label' => 'Блузки', 'url' => 'blouse', 'active'=>strpos(Yii::app()->request->pathInfo, 'blouse')===false? false:true),
+                                    array('label' => 'Платья', 'url' => './dress', 'active'=>strpos(Yii::app()->request->pathInfo, 'dress')===false? false:true),
+                                    array('label' => 'Блузки', 'url' => './blouse', 'active'=>strpos(Yii::app()->request->pathInfo, 'blouse')===false? false:true),
                                     array('label' => 'Кимоно', 'url' => 'kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => 'other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
                                     array('label' => 'Контакты', 'url' => 'contact', 'active'=>strpos(Yii::app()->request->pathInfo, 'contact')===false? false:true),

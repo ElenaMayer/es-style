@@ -20,8 +20,8 @@ class Photo extends CActiveRecord
     public $image;
     public $imageHeight = 600;
     public $imageWidth = 450;
-    public $previewHeight = 227;
-    public $previewWidth = 170;
+    public $previewHeight = 300;
+    public $previewWidth = 225;
     public $is_image_change = false;
 
 	/**
@@ -184,20 +184,20 @@ class Photo extends CActiveRecord
 
     public function getImageUrl()
     {
-        return Yii::app()->getBaseUrl().'/data/photo/';
+        return Yii::app()->getBaseUrl().'/data/photo/'.$this->img;
     }
 
     public function getPreviewUrl()
     {
-        return Yii::app()->getBaseUrl().'/data/photo/preview/';
+        return Yii::app()->getBaseUrl().'/data/photo/preview/p_'.$this->img;
     }
 
-    public function getWatermarkPath()
+    public static function getWatermarkPath()
     {
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
     }
 
-    public function getWatermarkNewPath()
+    public static function getWatermarkNewPath()
     {
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark_new.png';
     }

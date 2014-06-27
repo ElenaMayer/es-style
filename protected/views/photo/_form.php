@@ -11,7 +11,7 @@
 )); ?>
 
     <?php if($model->img): ?>
-        <p><img src="<?php echo $model->getPreviewUrl().'p_'.$model->img ?>"/></p>
+        <p><img src="<?php echo $model->getPreviewUrl()?>"/></p>
     <?php endif; ?>
 
     <p class="note">Поля с <span class="required">*</span> обязательны для заполнения.</p>
