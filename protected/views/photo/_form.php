@@ -25,8 +25,8 @@
 	</div>
 
 	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'category_id'); ?></div>
-        <div><?php echo $form->dropDownList($model,'category_id', Yii::app()->params['categories']); ?></div>
+        <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
+        <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories']); ?></div>
 	</div>
 
 	<div class="row">

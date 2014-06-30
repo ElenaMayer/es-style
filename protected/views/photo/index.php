@@ -12,8 +12,8 @@
             'value'=>'"<p class=\"photo\"><img src=\"'.$model->getPreviewUrl().'$data->img\" class=\"photo\"></p>"',
         ),
         array(
-            'name'=>'category_id',
-            'value'=>'Yii::app()->params["categories"][$data->category_id]',
+            'name'=>'category',
+            'value'=>'Yii::app()->params["categories"][$data->category]',
         ),
         'article',
         'price',

@@ -2,9 +2,7 @@
 
 class SiteController extends Controller
 {
-	/**
-	 * Declares class-based actions.
-	 */
+
 	public function actions()
 	{
 	}
@@ -17,13 +15,17 @@ class SiteController extends Controller
     public function actionDress()
     {
         $this->layout='//layouts/catalog';
-        $model = Photo::model()->findAllByAttributes(
-            array('is_show' => 1, 'category_id' => 1),
-            array('order'=>'article DESC')
-        );
-        $this->render('dress',array(
-            'model'=>$model,
-        ));
+        if(isset($_GET['order']))
+            $this->setOrder($_GET['order']);
+        $model = Photo::model()->getPhotos(1, $this->getOrder());
+        if(isset($_GET['order']))
+            $this->renderPartial('_catalog',array('model'=>$model));
+        else
+            $this->render('dress',array('model'=>$model));
+    }
+
+    private function catalog($type_id){
+
     }
 
 	public function actionError()
@@ -42,4 +44,17 @@ class SiteController extends Controller
         Yii::app()->request->redirect(Yii::app()->createUrl('/admin/login'));
     }
 
+    public function getOrder(){
+        if(isset(Yii::app()->session['catalog_order']))
+            $order = Yii::app()->session['catalog_order'];
+        else {
+            $order = Yii::app()->session['catalog_order'] = 'по артиклю';
+        }
+        return $order;
     }
+
+    public function setOrder($order){
+        Yii::app()->session['catalog_order'] = $order;
+    }
+
+}

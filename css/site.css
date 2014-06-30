@@ -354,7 +354,7 @@ body.main {
 
 .catalog__sort {
     float: right;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .catalog__cont {
@@ -363,4 +363,24 @@ body.main {
     margin: 5px 0;
     color: #27292c;
     line-height: 30px;
+}
+
+.catalog__sort .dropdown-toggle {
+    height: 25px;
+    background: linear-gradient(to bottom,#fff,#efefef);
+    border: 1px solid #d5d5d5;
+    border-top-color: #ddd;
+    border-radius: 3px;
+    margin-left: 9px;
+    padding: 0 8px;
+}
+
+.order_menu .dropdown-menu>li>a:hover{
+    background-color: #8d5b62 !important;
+    color: #ffffff !important;
+}
+
+.order_menu .dropdown-menu>li.active>a{
+    background-color: #ddd;
+    color: #000;
 }

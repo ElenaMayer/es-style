@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'photo':
  * @property integer $id
  * @property string $img
- * @property integer $category_id
+ * @property string $category
  * @property integer $article
  * @property string $price
  * @property string $title
@@ -40,13 +40,13 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('category_id, article, is_show, is_new', 'numerical', 'integerOnly'=>true),
-			array('img, price, title', 'length', 'max'=>255),
+			array('price, article, is_show, is_new', 'numerical', 'integerOnly'=>true),
+			array('img, category, title', 'length', 'max'=>255),
 			array('description, date_create', 'safe'),
-			array('id, category_id, article, price, title, description, is_show, is_new, date_create', 'safe', 'on'=>'search'),
+			array('id, category, article, price, title, description, is_show, is_new, date_create', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
-            array('category_id, article, price', 'required'),
+            array('category, article, price', 'required'),
 		);
 	}
 
@@ -70,7 +70,7 @@ class Photo extends CActiveRecord
 			'id' => 'ID',
 			'img' => 'Фото',
             'image' => 'Фото',
-			'category_id' => 'Категория',
+			'category' => 'Категория',
 			'article' => 'Артикул',
 			'price' => 'Цена',
 			'title' => 'Название',
@@ -99,7 +99,7 @@ class Photo extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('img',$this->img,true);
-		$criteria->compare('category_id',$this->category_id);
+		$criteria->compare('category',$this->category);
 		$criteria->compare('article',$this->article);
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('title',$this->title,true);
@@ -200,5 +200,30 @@ class Photo extends CActiveRecord
     public static function getWatermarkNewPath()
     {
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark_new.png';
+    }
+
+    public function getPhotos($category, $order_str){
+        switch($order_str){
+            case 'по новинкам':
+                $order = 'is_new  DESC, date_create  DESC';
+                break;
+            case 'по артиклю':
+                $order = 'article';
+                break;
+            case 'по возрастанию цены':
+                $order = 'price';
+                break;
+            case 'по убыванию цены':
+                $order = 'price DESC';
+                break;
+            case 'по скидке':
+//                @todo
+                $order = 'date_create';
+                break;
+        }
+        return $this->findAllByAttributes(
+            array('is_show' => 1, 'category' => $category),
+            array('order'=>$order)
+        );
     }
 }
