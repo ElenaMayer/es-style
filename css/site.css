@@ -298,6 +298,11 @@ body.main {
     letter-spacing: .09em;
 }
 
+.catalog__item__label_new {
+    padding: 0 5px;
+    background: #3AA73A;
+}
+
 .catalog__item__img {
     display: block;
     width: 225px;

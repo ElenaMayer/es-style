@@ -39,13 +39,13 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 'admin/<controller:\w+>/<action:\w+>/' => '<controller>/<action>/',
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
-                'dress' => 'site/dress',
-                'dress/<id:\d+>' => 'site/dress',
+                '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
+                '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
 			),
 		),
 		'db'=>array(

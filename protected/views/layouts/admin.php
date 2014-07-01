@@ -30,13 +30,13 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Главная', 'url'=>array('/admin/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'admin/index')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Галерея', 'url'=>array('/admin/photo/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'photo')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Новости', 'url'=>array('/admin/news/index'), 'active'=>strpos(Yii::app()->request->pathInfo, 'news')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Заказы', 'url'=>array('/admin/order'), 'active'=>strpos(Yii::app()->request->pathInfo, 'order')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Прайсы', 'url'=>array('/admin/price'), 'active'=>strpos(Yii::app()->request->pathInfo, 'price')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Вход', 'url'=>array('/admin/login'), 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
-				array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/admin/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Главная', 'url'=>'/admin', 'active'=>Yii::app()->request->pathInfo != 'admin'? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Галерея', 'url'=>'/admin/photo/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'photo')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Новости', 'url'=>'/admin/news/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'news')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Заказы', 'url'=>'/admin/order', 'active'=>strpos(Yii::app()->request->pathInfo, 'order')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Прайсы', 'url'=>'/admin/price', 'active'=>strpos(Yii::app()->request->pathInfo, 'price')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Вход', 'url'=>'/admin/login', 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
+				array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>'/admin/logout', 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

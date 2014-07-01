@@ -3,9 +3,6 @@
     </div>
 </div>
 
-<?php
-$this->pageTitle='Платья - '.Yii::app()->name;
-?>
 <div id="data">
-    <?php $this->renderPartial('_catalog', array('model'=>$model)); ?>
+    <?php $this->renderPartial('_content', array('model'=>$model)); ?>
 </div>
