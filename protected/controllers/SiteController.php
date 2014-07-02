@@ -11,27 +11,20 @@ class SiteController extends Controller
 	}
 
     public function actionCatalog($type){
-        $this->layout='//layouts/catalog';
         $this->pageTitle=Yii::app()->params["categories"][$type].' - '.Yii::app()->name;
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
         $model = Photo::model()->getPhotos($type, $this->getOrder());
         if(isset($_GET['order']))
-            $this->renderPartial('_catalog',array('model'=>$model));
+            $this->renderPartial('_content',array('model'=>$model, 'type'=>$type));
         else
-            $this->render('catalog',array('model'=>$model));
+            $this->render('catalog',array('model'=>$model, 'type'=>$type));
     }
 
     public function actionModel($type, $id){
-        $this->layout='//layouts/catalog';
-        $this->pageTitle=Yii::app()->params["categories"][$type].' - '.Yii::app()->name;
-        if(isset($_GET['order']))
-            $this->setOrder($_GET['order']);
-        $model = Photo::model()->getPhotos($type, $this->getOrder());
-        if(isset($_GET['order']))
-            $this->renderPartial('_catalog',array('model'=>$model));
-        else
-            $this->render('catalog',array('model'=>$model));
+        $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
+        $this->pageTitle=$model->title.' - '.Yii::app()->name;
+        $this->render('model',array('model'=>$model));
     }
 
 	public function actionError() {

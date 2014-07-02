@@ -6,23 +6,36 @@
  * The followings are the available columns in table 'photo':
  * @property integer $id
  * @property string $img
- * @property string $category
  * @property integer $article
- * @property string $price
  * @property string $title
  * @property string $description
  * @property integer $is_show
- * @property integer $is_new
  * @property string $date_create
+ * @property integer $is_new
+ * @property integer $price
+ * @property string $category
+ * @property integer $is_sale
+ * @property string $sale
+ * @property integer $old_price
+ * @property integer $new_price
+ * @property integer $size
+ * @property integer $size_42
+ * @property integer $size_44
+ * @property integer $size_46
+ * @property integer $size_48
+ * @property integer $size_50
+ * @property integer $size_52
+ * @property integer $size_54
  */
 class Photo extends CActiveRecord
 {
     public $image;
-    public $imageHeight = 600;
-    public $imageWidth = 450;
+    public $imageHeight = 480;
+    public $imageWidth = 360;
     public $previewHeight = 300;
     public $previewWidth = 225;
-    public $is_image_change = false;
+    public $is_show = true;
+    public $size = true;
 
 	/**
 	 * @return string the associated database table name
@@ -40,13 +53,12 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('price, article, is_show, is_new', 'numerical', 'integerOnly'=>true),
-			array('img, category, title', 'length', 'max'=>255),
-			array('description, date_create', 'safe'),
-			array('id, category, article, price, title, description, is_show, is_new, date_create', 'safe', 'on'=>'search'),
+            array('article, is_show, is_new, price, is_sale, old_price, new_price, size, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
+            array('img, title, category, sale', 'length', 'max'=>255),
+            array('description, date_create', 'safe'),
+            array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
-            array('category, article, price', 'required'),
 		);
 	}
 
@@ -78,6 +90,18 @@ class Photo extends CActiveRecord
             'is_show' => 'Отображать',
             'is_new' => 'Новинка',
 			'date_create' => 'Дата добавления',
+            'is_sale' => 'Скидка',
+            'sale' => 'Процент',
+            'old_price' => 'Старая цена',
+            'new_price' => 'Новая цена',
+            'size' => 'Размер',
+            'size_42' => '42',
+            'size_44' => '44',
+            'size_46' => '46',
+            'size_48' => '48',
+            'size_50' => '50',
+            'size_52' => '52',
+            'size_54' => '54',
 		);
 	}
 
@@ -106,6 +130,11 @@ class Photo extends CActiveRecord
         $criteria->compare('is_show',$this->is_show);
         $criteria->compare('is_new',$this->is_new);
 		$criteria->compare('date_create',$this->date_create,true);
+        $criteria->compare('is_sale',$this->is_sale);
+        $criteria->compare('sale',$this->sale,true);
+        $criteria->compare('old_price',$this->old_price);
+        $criteria->compare('new_price',$this->new_price);
+        $criteria->compare('size',$this->size);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -134,9 +163,6 @@ class Photo extends CActiveRecord
             $this->img=$image->name;
             $image->saveAs(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$image->name);
             $this->prepareImage();
-        } elseif($this->is_image_change){
-            $this->deletePreview();
-            $this->createPreview();
         }
         return true;
     }
@@ -177,8 +203,6 @@ class Photo extends CActiveRecord
         Yii::app()->image
             ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->previewWidth, $this->previewHeight);
-        if ($this->is_new)
-            Yii::app()->image->watermark($this->getWatermarkNewPath(), 0, 0);
         Yii::app()->image->save(Yii::getPathOfAlias('data.photo.preview').DIRECTORY_SEPARATOR.'p_'.$this->img);
     }
 
@@ -195,11 +219,6 @@ class Photo extends CActiveRecord
     public static function getWatermarkPath()
     {
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
-    }
-
-    public static function getWatermarkNewPath()
-    {
-        return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark_new.png';
     }
 
     public function getPhotos($category, $order_str){

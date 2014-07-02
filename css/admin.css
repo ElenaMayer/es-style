@@ -70,3 +70,8 @@ p.photo, p.icon
 input[type=file] {
     display: inline !important;
 }
+
+.size .row {
+    margin: 0px 0 !important;
+    float: left;
+}
