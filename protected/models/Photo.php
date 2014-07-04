@@ -158,6 +158,8 @@ class Photo extends CActiveRecord
     protected function beforeSave(){
         if(!parent::beforeSave())
             return false;
+        if($this->is_sale)
+            $this->sale = $this->getSale();
         if(($this->scenario=='insert' || $this->scenario=='update') && ($image=CUploadedFile::getInstance($this,'image'))){
             $this->deleteImage();
             $this->img=$image->name;
@@ -235,9 +237,8 @@ class Photo extends CActiveRecord
             case 'по убыванию цены':
                 $order = 'price DESC';
                 break;
-            case 'по скидке':
-//                @todo
-                $order = 'date_create';
+            case 'по скидкам':
+                $order = 'sale DESC';
                 break;
         }
         return $this->findAllByAttributes(
@@ -245,4 +246,9 @@ class Photo extends CActiveRecord
             array('order'=>$order)
         );
     }
+
+    public function getSale(){
+        return 100-$this->new_price*100/$this->old_price;
+    }
+
 }

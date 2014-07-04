@@ -4,14 +4,19 @@
             <?php if($photo->is_new) :?>
                 <span class="item__label item__label_new">Новинка</span>
             <?php endif; ?>
-            <!--span class="item__label">−27%</span-->
+            <?php if($photo->is_sale) :?>
+                <span class="item__label">−<?= $photo->sale ?>%</span>
+            <?php endif; ?>
             <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>">
             <div class="catalog__item__article">Арт.&nbsp;<?= $photo->article ?></div>
             <span class="price">
-                <?= $photo->price ?>&nbsp;руб.
-                <!--span class="price__old">1 790&nbsp;руб.</span>
-                <wbr>
-                <span class="price__new">1 290&nbsp;руб.</span-->
+                <?php if(!$photo->is_sale) :?>
+                    <?= $photo->price ?>&nbsp;руб.
+                <?php else :?>
+                    <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
+                    <wbr>
+                    <span class="price__new"><?= $photo->new_price ?>&nbsp;руб.</span>
+                <?php endif; ?>
             </span>
         </a>
     </div>

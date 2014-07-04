@@ -1,0 +1,26 @@
+<?php
+
+class m140703_043845_photo_sale extends CDbMigration
+{
+	public function up()
+	{
+        $this->dropColumn('photo', 'sale');
+	}
+
+	public function down()
+	{
+		echo "m140703_043845_photo_sale does not support migration down.\n";
+		return false;
+	}
+
+	/*
+	// Use safeUp/safeDown to do migration with transaction
+	public function safeUp()
+	{
+	}
+
+	public function safeDown()
+	{
+	}
+	*/
+}

@@ -23,8 +23,8 @@ class SiteController extends Controller
 
     public function actionModel($type, $id){
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
-        $this->pageTitle=$model->title.' - '.Yii::app()->name;
-        $this->render('model',array('model'=>$model));
+        $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
+        $this->render('model',array('model'=>$model, 'type'=>$type));
     }
 
 	public function actionError() {
@@ -38,7 +38,7 @@ class SiteController extends Controller
 	}
 
     public function actionLogin() {
-        Yii::app()->request->redirect(Yii::app()->createUrl('/admin/login'));
+        Yii::app()->request->redirect('/admin/login');
     }
 
     public function getOrder(){
@@ -54,4 +54,7 @@ class SiteController extends Controller
         Yii::app()->session['catalog_order'] = $order;
     }
 
+    public function actionContact() {
+        $this->render('contact');
+    }
 }

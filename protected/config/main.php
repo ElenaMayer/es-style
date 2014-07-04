@@ -46,6 +46,7 @@ return array(
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
                 '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
+				'<action:\w+>'=>'site/<action>',
 			),
 		),
 		'db'=>array(

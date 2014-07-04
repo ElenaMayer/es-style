@@ -21,7 +21,7 @@
 
 <body>
 
-<div class="container" id="page">
+<div class="container">
 
 	<div id="header">
 		<div id="logo"><b>Админка</b> <?php echo CHtml::encode(Yii::app()->name); ?></div>
@@ -30,7 +30,7 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Главная', 'url'=>'/admin', 'active'=>Yii::app()->request->pathInfo != 'admin'? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Главная', 'url'=>'/admin/index', 'active'=>Yii::app()->request->pathInfo != 'admin'? false:true, 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Галерея', 'url'=>'/admin/photo/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'photo')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Новости', 'url'=>'/admin/news/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'news')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Заказы', 'url'=>'/admin/order', 'active'=>strpos(Yii::app()->request->pathInfo, 'order')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),

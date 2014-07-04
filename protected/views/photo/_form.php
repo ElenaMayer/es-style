@@ -33,24 +33,20 @@
         <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>
         <div><?php echo $form->textField($model,'article'); ?></div>
 	</div>
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
-        <div><?php echo $form->textField($model,'price'); ?></div>
-	</div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'is_new'); ?></div>
         <div><?php echo $form->checkBox($model,'is_new'); ?></div>
     </div>
+	<div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
+        <div><?php echo $form->textField($model,'price'); ?></div>
+	</div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'is_sale'); ?></div>
         <div><?php echo $form->checkBox($model,'is_sale'); ?></div>
     </div>
 
     <div class="sale">
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
-            <div><?php echo $form->textField($model,'sale'); ?></div>
-        </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'old_price'); ?></div>
             <div><?php echo $form->textField($model,'old_price'); ?></div>
@@ -67,35 +63,35 @@
     </div>
     <div class="size">
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_42'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_42'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_42'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_42'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_44'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_44'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_44'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_44'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_46'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_46'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_46'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_46'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_48'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_48'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_48'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_48'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_50'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_50'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_50'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_50'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_52'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_52'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_52'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_52'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_54'); ?></div>
-            <div><?php echo $form->checkBox($model,'size_54'); ?></div>
+            <div class="sizes"><?php echo $form->labelEx($model,'size_54'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_54'); ?></div>
         </div>
     </div>
-
+    <div class="clear"></div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
         <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
@@ -141,5 +137,9 @@
     $("#Photo_size").click(function() {
         if($(this).prop('checked')) $('.size').show();
         else $('.size').hide();
+    });
+    $('#Photo_image').live('change', function(){
+        article = $(this).val().replace(/C:\\fakepath\\/i, '').replace(/\.jpg/i, '');
+        $('#Photo_article').val(article);
     });
 </script>

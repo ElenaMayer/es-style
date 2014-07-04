@@ -71,7 +71,22 @@ input[type=file] {
     display: inline !important;
 }
 
+.size{
+    padding: 0px 140px;
+}
+
 .size .row {
-    margin: 0px 0 !important;
+    padding: 0px 5px !important;
     float: left;
+    background-color: #d5d5d5;
+}
+
+.sale .row {
+    background-color: #d5d5d5;
+    width: 310px;
+    margin: 0 !important;
+}
+
+.sale {
+    padding: 0px 140px;
 }

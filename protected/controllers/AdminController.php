@@ -50,7 +50,10 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
     {
-		$this->render('index');
+        if (Yii::app()->user->isGuest)
+            Yii::app()->request->redirect('/admin/login');
+        else
+		    $this->render('index');
 	}
 
     public function actionOrder()
@@ -81,20 +84,6 @@ class AdminController extends Controller
     }
 
 	/**
-	 * This is the action to handle external exceptions.
-	 */
-	public function actionError()
-	{
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
-	}
-
-	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
@@ -107,7 +96,7 @@ class AdminController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect('/admin');
+				$this->redirect('/admin/index');
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));

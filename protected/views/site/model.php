@@ -1,3 +1,7 @@
+<div class="breadcrumbs">
+    <a href="/" class="breadcrumbs__item">Главная</a>
+    <a class="breadcrumbs__item" href="/<?=$type?>"><?=Yii::app()->params["categories"][$type]?></a>
+    <span class="breadcrumbs__item"><?=$model->title?> арт. <?=$model->article?></span></div>
 <div class="model">
     <div class="table__column table__column_left">
         <div class="table__table">
@@ -6,7 +10,9 @@
                     <?php if($model->is_new) :?>
                         <span class="item__label item__label_new">Новинка</span>
                     <?php endif; ?>
-                    <!--span class="item__label">−27%</span-->
+                    <?php if($model->is_sale) :?>
+                        <span class="item__label">−<?= $model->sale ?>%</span>
+                    <?php endif; ?>
                     <img class="model__img" src="<?= $model->getImageUrl(); ?>">
                 </div>
             </div>
@@ -28,53 +34,24 @@
                     <div class="model_detail" >
                         <div class="model__price" >
                             <span class="price price_model">
-                                <span itemprop="price"><?= $model->price; ?></span>&nbsp;руб.
-                                <!--span class="price__old">1 699&nbsp;руб.</span>
-                                <wbr>
-                                <span class="price__new">
-                                    <span itemprop="price">1 390</span>&nbsp;руб.
-                                </span-->
+                                <?php if(!$model->is_sale) :?>
+                                    <?= $model->price ?>&nbsp;руб.
+                                <?php else :?>
+                                    <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
+                                    <wbr>
+                                    <span class="price__new"><?= $model->new_price ?>&nbsp;руб.</span>
+                                <?php endif; ?>
                             </span>
                         </div>
-                        <div class="size-chooser">
-                            <div class="size-chooser__help">
-                                <div class="select" data-form-control="sizesystem">
-                                    <input type="hidden" class="js-size-system" name="sizesystem" value="INT">
-                                    <span class="button">
-                                        <span class="button__title">Размер производителя (INT)</span>
-                                    </span>
-                                    <!--ul class="dropdown">
-                                        <li class="select__item" data-option-value="RUS">
-                                            <span class="select__item-label">Российский размер (RUS)</span>
-                                            <i class="select__tick"></i>
-                                        </li>
-                                        <li class="select__item select__item_current" data-option-value="INT">
-                                            <span class="select__item-label">Размер производителя (INT)</span>
-                                            <i class="select__tick"></i>
-                                        </li>
-                                    </ul-->
-                                </div>
-                                <a class="size-chooser__table-link js-defined-table" target="_blank" href="/landing/size-tab/zhenskaya-verhnyaya-odezhda/">Таблица размеров</a>
-                            </div>
-                            <div class="size-chooser__list">
-                                <span class="button">
-                                    <span class="button__title size-chooser__size-base" data-size-system="RUS">42</span>
-                                    <span class="button__title size-chooser__size-brand" data-size-system="INT">XS</span>
-                                </span>
-                                <span class="button button_pressed">
-                                    <span class="button__title size-chooser__size-base" data-size-system="RUS">42/44</span>
-                                    <span class="button__title size-chooser__size-brand" data-size-system="INT">S</span>
-                                </span>
-                                <span class="button">
-                                    <span class="button__title size-chooser__size-base" data-size-system="RUS">44/46</span>
-                                    <span class="button__title size-chooser__size-brand" data-size-system="INT">M</span>
-                                </span>
-                                <span class="button">
-                                    <span class="button__title size-chooser__size-base" data-size-system="RUS">48</span>
-                                    <span class="button__title size-chooser__size-brand" data-size-system="INT">L</span>
-                                </span>
-                            </div>
+                        <div class="size">
+                            <?php if(!$model->size) :?>
+                                <span class="size__title" data-toggle="tooltip" title="На размер от 42 до 52">Универсальный размер </span>
+                            <?php else :?>
+                                <span class="size__title">Размеры в наличии:</span>
+                                <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
+                            <?php endif; ?>
                         </div>
+                        <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                     </div>
                 </div>
                 <div class="table__row">
@@ -88,3 +65,4 @@
         </div>
     </div>
 </div>
+<?php $this->renderPartial('_size_tab'); ?>
