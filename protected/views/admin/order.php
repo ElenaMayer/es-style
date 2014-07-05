@@ -1,7 +1,45 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: EZcool
- * Date: 04.07.14
- * Time: 9:54
- */ 
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$('#order-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
+?>
+
+<h1>Заказы</h1>
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'order-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array(
+		'id',
+		'type',
+		'name',
+		'email',
+		'phone',
+		'company',
+		'city',
+		'date_create',
+		array(
+			'class'=>'CButtonColumn',
+            'template'=>'{view} {delete}',
+            'buttons'=>array(
+                'view'=>array(
+                    'url'=>'"/admin/orderView/".$data->id',
+                ),
+                'delete'=>array(
+                    'url'=>'"/admin/orderDelete/".$data->id',
+                ),
+            )
+		),
+	),
+)); ?>

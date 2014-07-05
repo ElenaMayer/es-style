@@ -47,7 +47,7 @@ class PhotoController extends Controller
 		{
 			$model->attributes=$_POST['Photo'];
 			if($model->save()){
-				$this->redirect(array('index'));
+				$this->redirect('/');
             }
 		}
 

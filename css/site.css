@@ -92,7 +92,7 @@ body.main {
 .menu .container-fluid .menu__list a
 {
     height: 30px;
-    padding: 6px 46px 7px;
+    padding: 6px 38px 7px;
     color: #fff;
 }
 
@@ -402,13 +402,12 @@ body.main {
     line-height: 30px;
 }
 
-.catalog__sort .dropdown-toggle {
+.catalog__sort .dropdown-toggle, .form button.btn-default {
     height: 25px;
     background: linear-gradient(to bottom,#fff,#efefef);
     border: 1px solid #d5d5d5;
     border-top-color: #ddd;
     border-radius: 3px;
-    margin-left: 9px;
     padding: 0 8px;
 }
 
@@ -683,7 +682,7 @@ a.breadcrumbs__item:hover {
     background-color: #f5f5f5;
     font-weight: 700;
 }
-.contact {
+.contact, .order {
     padding: 40px;
 }
 
@@ -715,10 +714,144 @@ a.breadcrumbs__item:hover {
     margin-bottom: 21px;
   }
 
-.contact h1 {
+.contact h1, .order h1 {
     color: #27292c;
     font-size: 37px;
-    margin: 0 0 26px;
+    margin: -26px 0 26px;
     border-bottom: 5px solid #8d5b62;
     line-height: 100px;
+}
+
+.order h3 {
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.price-button {
+    float: right;
+    width: 300px;
+    cursor: pointer;
+    margin-top: 43px;
+    margin-right: 15px;
+}
+
+.list__item:before {
+    content: '\2014\a0';
+}
+
+.list {
+    margin: 0 0 17px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list__item {
+    padding-left: 18px;
+    text-indent: -17px;
+    margin-bottom: 7px;
+}
+
+.order {
+    font-size: 13px;
+    line-height: 1.35;
+    font-family: Arial,sans-serif;
+}
+
+.hint {
+    float: right;
+    margin-top: 43px;
+    margin-right: 15px;
+}
+
+.hint-link {
+    cursor: pointer;
+}
+
+.hint__icon-shipping {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    background: url('../data/i/shipping.png') no-repeat 100% 0;
+}
+
+.hint__icon-price {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    background: url('../data/i/price.png') no-repeat 100% 0;
+}
+
+.hint__title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #999;
+    font-size: 14px;
+}
+
+.hint-link:hover>div.hint__icon-price {
+    background-position: 0 -60px;
+}
+
+.hint-link:hover>.hint__title {
+    color: #ff3d00;
+    text-decoration: none;
+}
+
+a.link {
+    color: #8d5b62;
+}
+
+a.link:hover {
+    color: #ff3d00;
+    text-decoration: none;
+}
+
+.row {
+    position: relative;
+    margin: 0 0 -10px 120px !important;
+}
+
+.row label {
+    position: absolute;
+    top: 10px;
+    left: -120px;
+    font-weight: 700;
+}
+
+.row input {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+}
+
+.row textarea {
+    width: 500px;
+}
+
+.form-control:focus {
+    border-color: #ff905b !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 130, 87, 0.60) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 159, 125, 0.60) !important;
+}
+
+div.form span.required {
+    color: #ff3d00 !important;
+    padding: 0 2px;
+}
+
+div.form input, div.form textarea, div.form select {
+    margin: 0.2em 0 0.5em 0;
+}
+
+.has-error div.help-block {
+    display: none;
+}
+
+.has-error label.error {
+    padding: 0;
 }

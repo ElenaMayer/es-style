@@ -5,6 +5,9 @@ class m140703_043845_photo_sale extends CDbMigration
 	public function up()
 	{
         $this->dropColumn('photo', 'sale');
+        $this->dropColumn('order', 'first_name');
+        $this->dropColumn('order', 'second_name');
+        $this->dropColumn('order', 'middle_name');
 	}
 
 	public function down()

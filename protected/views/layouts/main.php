@@ -56,15 +56,9 @@
                                     array('label' => 'Блузки', 'url' => '/blouse', 'active'=>strpos(Yii::app()->request->pathInfo, 'blouse')===false? false:true),
                                     array('label' => 'Кимоно', 'url' => '/kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
-                                    array('label' => 'Контакты', 'url' => '/contact', 'active'=>strpos(Yii::app()->request->pathInfo, 'contact')===false? false:true),
-                                    array(
-                                        'label' => 'Заказать',
-                                        'htmlOptions'=>array('class'=>'menu__dropdown'),
-                                        'items' => array(
-                                            array('label' => 'Оптом', 'url' => '/wholesale'),
-                                            array('label' => 'В рознцу', 'url' => '/shiping')
-                                        )
-                                    ),
+                                    array('label' => 'Адреса', 'url' => '/contact', 'active'=>strpos(Yii::app()->request->pathInfo, 'contact')===false? false:true),
+                                    array('label' => 'В розницу', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
+                                    array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
                                 )
                             )
                         )

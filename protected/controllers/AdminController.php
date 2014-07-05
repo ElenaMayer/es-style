@@ -58,7 +58,26 @@ class AdminController extends Controller
 
     public function actionOrder()
     {
-        $this->render('order');
+        $model=new Order('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Order']))
+            $model->attributes=$_GET['Order'];
+
+        $this->render('order',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionOrderView($id)
+    {
+        $this->render('order_view',array(
+            'model'=>Order::model()->findByPk($id),
+        ));
+    }
+
+    public function actionOrderDelete($id)
+    {
+        Order::model()->findByPk($id)->delete();
     }
 
     public function actionPrice()
@@ -78,7 +97,7 @@ class AdminController extends Controller
         ));
     }
 
-    public function actionDeletePrice($id)
+    public function actionPriceDelete($id)
     {
         Price::model()->findByPk($id)->delete();
     }

@@ -7,10 +7,6 @@
  * @property integer $id
  * @property string $type
  * @property string $name
- * @property string $first_name
- * @property string $second_name
- * @property string $middle_name
- * @property string $region
  * @property integer $postcode
  * @property string $address
  * @property string $email
@@ -40,11 +36,14 @@ class Order extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('postcode', 'numerical', 'integerOnly'=>true),
-			array('type, name, first_name, second_name, middle_name, region, address, email, phone, size, company, city', 'length', 'max'=>255),
+			array('type, name, address, email, phone, size, company, city', 'length', 'max'=>255),
 			array('order, date_create', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, type, name, first_name, second_name, middle_name, region, postcode, address, email, phone, size, company, city, order, date_create', 'safe', 'on'=>'search'),
+			array('id, type, email, phone, date_create', 'safe', 'on'=>'search'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()')),
+            array('name, email, phone, order', 'required'),
+            array('postcode, address', 'required', 'on'=>'shipping'),
+            array('city', 'required', 'on'=>'wholesale'),
+            array('email', 'email'),
 		);
 	}
 
@@ -66,21 +65,17 @@ class Order extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'type' => 'Type',
-			'name' => 'Name',
-			'first_name' => 'First Name',
-			'second_name' => 'Second Name',
-			'middle_name' => 'Middle Name',
-			'region' => 'Region',
-			'postcode' => 'Postcode',
-			'address' => 'Address',
-			'email' => 'Email',
-			'phone' => 'Phone',
-			'size' => 'Size',
-			'company' => 'Company',
-			'city' => 'City',
-			'order' => 'Order',
-			'date_create' => 'Date Create',
+			'type' => 'Тип',
+			'name' => 'ФИО',
+			'postcode' => 'Почтовый индекс',
+			'address' => 'Почтовый адрес',
+			'email' => 'E-mail',
+			'phone' => 'Телефон',
+			'size' => 'Мерки',
+			'company' => 'Ваша компания',
+			'city' => 'Город',
+			'order' => 'Заказ',
+			'date_create' => 'Дата создания',
 		);
 	}
 
@@ -105,10 +100,6 @@ class Order extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('first_name',$this->first_name,true);
-		$criteria->compare('second_name',$this->second_name,true);
-		$criteria->compare('middle_name',$this->middle_name,true);
-		$criteria->compare('region',$this->region,true);
 		$criteria->compare('postcode',$this->postcode);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('email',$this->email,true);

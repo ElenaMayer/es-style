@@ -57,4 +57,35 @@ class SiteController extends Controller
     public function actionContact() {
         $this->render('contact');
     }
+
+    public function actionShipping() {
+        $model=new Order('shipping');
+        if(isset($_POST['Order']))
+        {
+            $model->attributes=$_POST['Order'];
+            $model->type='shipping';
+            if($model->save()){
+//                $this->redirect(array('index'));
+            }
+        }
+        $this->render('shipping',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionWholesale() {
+        Price::model()->getPrice();
+        $model=new Order('wholesale');
+        if(isset($_POST['Order']))
+        {
+            $model->attributes=$_POST['Order'];
+            $model->type='wholesale';
+            if($model->save()){
+//                $this->redirect(array('index'));
+            }
+        }
+        $this->render('wholesale',array(
+            'model'=>$model,
+        ));
+    }
 }

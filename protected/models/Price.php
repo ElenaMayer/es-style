@@ -117,8 +117,12 @@ class Price extends CActiveRecord
             unlink($file);
     }
 
-    public function getFileUrl()
-    {
+    public function getFileUrl(){
         return Yii::app()->getBaseUrl().'/data/price/';
+    }
+
+    public function getPrice(){
+        $price = $this->find(array('order'=>'date_create DESC'));
+        return $this->getFileUrl().$price->file;
     }
 }

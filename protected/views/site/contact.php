@@ -58,7 +58,13 @@
             "zoom": 16
         });
         DG.marker([55.027069, 82.921052]).addTo(map_perehod);
+        DG.marker([55.042049, 82.924407]).addTo(map_perehod);
+        DG.marker([54.982592, 82.891341]).addTo(map_perehod);
+        DG.marker([55.027069, 82.921052]).addTo(map_rinok);
         DG.marker([55.042049, 82.924407]).addTo(map_rinok);
+        DG.marker([54.982592, 82.891341]).addTo(map_rinok);
+        DG.marker([55.027069, 82.921052]).addTo(map_granit);
+        DG.marker([55.042049, 82.924407]).addTo(map_granit);
         DG.marker([54.982592, 82.891341]).addTo(map_granit);
     });
 

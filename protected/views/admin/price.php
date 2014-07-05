@@ -42,7 +42,7 @@
             'template'=>'{delete}',
             'buttons'=>array(
                 'delete'=>array(
-                    'url'=>'$this->grid->controller->createUrl("/admin/deletePrice", array("id"=>$data->id))',
+                    'url'=>'"/admin/priceDelete/".$data->id',
                 ),
             ),
         ),
