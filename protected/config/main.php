@@ -49,8 +49,9 @@ return array(
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
                 '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
-                '<action:\w+>'=>'site/<action>',
-
+                '<type:(wholesale|shipping)>'=>'site/order',
+                'contact'=>'site/contact',
+//                '<action:\w+>'=>'site/<action>',
             ),
 		),
 		'db'=>array(
@@ -88,6 +89,10 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
         'mainPhone' => '+7-952-929-8710',
+        'email' => array(
+            'wholesale'=>'linner86@mail.ru',
+            'shipping' => 'es-style@mail.ru',
+        ),
         'categories' => array(
             'dress' => 'Платья',
             'blouse' => 'Блузки',

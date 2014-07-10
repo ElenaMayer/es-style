@@ -1,5 +1,6 @@
 <div class="order">
 
+    <?php $this->renderPartial('_alert'); ?>
     <h1>Одежда в розницу</h1>
 
     <div class="hint">

@@ -849,7 +849,8 @@ div.form input, div.form textarea, div.form select {
 }
 
 .has-error div.help-block {
-    display: none;
+    padding: 0;
+    font-size: 13px;
 }
 
 .has-error label.error {

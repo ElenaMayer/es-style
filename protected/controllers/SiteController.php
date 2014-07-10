@@ -58,34 +58,37 @@ class SiteController extends Controller
         $this->render('contact');
     }
 
-    public function actionShipping() {
-        $model=new Order('shipping');
-        if(isset($_POST['Order']))
-        {
+    public function actionOrder($type) {
+        $model=new Order($type);
+        if(isset($_POST['Order'])) {
             $model->attributes=$_POST['Order'];
-            $model->type='shipping';
+            $model->type=$type;
             if($model->save()){
-//                $this->redirect(array('index'));
+                $user = Yii::app()->getComponent('user');
+                $user->setFlash(
+                    'warning',
+                    "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!."
+                );
+                //$this->sendMail($type);
             }
+            $this->renderPartial('_order_form',array(
+                'model'=>$model, 'type'=>$type
+            ));
+        } else {
+            $this->render('order',array(
+                'model'=>$model, 'type'=>$type
+            ));
         }
-        $this->render('shipping',array(
-            'model'=>$model,
-        ));
     }
 
-    public function actionWholesale() {
-        Price::model()->getPrice();
-        $model=new Order('wholesale');
-        if(isset($_POST['Order']))
-        {
-            $model->attributes=$_POST['Order'];
-            $model->type='wholesale';
-            if($model->save()){
-//                $this->redirect(array('index'));
-            }
-        }
-        $this->render('wholesale',array(
-            'model'=>$model,
-        ));
+    public function sendMail($type){
+
+        $to = Yii::app()->params['email'][$type];
+        $subject = 'Заказ';
+        $message = 'jljkj';
+        $headers = 'From: help@es-style.ru' . "\r\n" .
+            'Reply-To: help@es-style.ru' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject ,$message, $headers);
     }
 }
