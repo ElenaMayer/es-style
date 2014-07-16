@@ -3,11 +3,6 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'photo-form',
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
 )); ?>
 
     <?php if($model->img): ?>
@@ -94,12 +89,35 @@
     <div class="clear"></div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
-        <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
+        <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255, 'value'=>'Платье')); ?></div>
     </div>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'description'); ?></div>
         <div>
+            <?php $htmlOptions = [
+                'class'=>'editor',
+                'width'=>'100%',
+                'height'=>'300px'
+            ];
+            if(Yii::app()->controller->action->id == 'create')
+                $htmlOptions['value'] =
+                    '<div class="model_desc">
+                        <p>Описание. Детали: детали.</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>Состав</th>
+                                <td>состав</td>
+                                </tr>
+                            <tr>
+                                <th>Цвет</th>
+                                <td>цвет</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>';
+            ?>
             <?php $this->widget('application.extensions.tiny_mce.TinyMCE', [
                 'model'=>$model,
                 'attribute'=>'description',
@@ -108,9 +126,7 @@
                     'width'=>'100%',
                     'height'=>'300px'
                 ],
-                'htmlOptions'=>['class'=>'editor',
-                    'width'=>'100%',
-                    'height'=>'300px']
+                'htmlOptions'=>$htmlOptions
             ]); ?>
         </div>
 	</div>

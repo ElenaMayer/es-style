@@ -528,6 +528,7 @@ body.main {
 
 .size__title {
     font-size: 20px;
+    vertical-align: top;
 }
 
 .size .button {
@@ -855,4 +856,17 @@ div.form input, div.form textarea, div.form select {
 
 .has-error label.error {
     padding: 0;
+}
+
+.model_desc {
+    font-size: 13px;
+}
+
+.model_desc p {
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.model_desc table th {
+    padding: 10px 0;
 }

@@ -58,6 +58,7 @@ class Photo extends CActiveRecord
             array('description, date_create', 'safe'),
             array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('description','default', 'value'=>'<div class="model_desc"><p>Описание. Детали: детали.</p><table><tbody><tr><th>Состав</th><td>состав</td></tr><tr><th>Цвет</th><td>цвет</td></tr></tbody></table></div>', 'setOnEmpty'=>true),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
 		);
 	}
@@ -197,7 +198,7 @@ class Photo extends CActiveRecord
         Yii::app()->image
             ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageWidth, $this->imageHeight)
-            ->watermark($this->getWatermarkPath(), 0, 0)
+            //->watermark($this->getWatermarkPath(), 0, 0)
             ->save(Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img);
     }
 

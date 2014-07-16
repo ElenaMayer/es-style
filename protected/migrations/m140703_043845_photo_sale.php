@@ -8,6 +8,7 @@ class m140703_043845_photo_sale extends CDbMigration
         $this->dropColumn('order', 'first_name');
         $this->dropColumn('order', 'second_name');
         $this->dropColumn('order', 'middle_name');
+        $this->dropColumn('order', 'region');
 	}
 
 	public function down()

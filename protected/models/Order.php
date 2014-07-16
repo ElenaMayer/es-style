@@ -112,6 +112,9 @@ class Order extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'Pagination' => array (
+                'PageSize' => 20
+              ),
 		));
 	}
 
@@ -125,4 +128,20 @@ class Order extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function sendMail(){
+
+        $to = Yii::app()->params['email'][$this->type];
+        $subject = 'Заказ '.$this->type == 'shipping'?'розница':'опт';
+        $attributes = $this->getAttributes();
+        $message = '';
+        foreach($attributes as $i=>$attribute) {
+            if(!empty($attribute))
+                $message .= $this->attributeLabels()[$i] . ': ' . $attribute . ' </br> ';
+        }
+        $headers = 'From: help@es-style.ru' . "\r\n" .
+            'Reply-To: help@es-style.ru' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        //mail($to, $subject ,$message, $headers);
+    }
 }

@@ -23,6 +23,8 @@ class SiteController extends Controller
 
     public function actionModel($type, $id){
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
+        if(!$model->is_show)
+            throw new CHttpException(404,'К сожалению, модель не найдена.');
         $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
         $this->render('model',array('model'=>$model, 'type'=>$type));
     }
@@ -69,7 +71,7 @@ class SiteController extends Controller
                     'warning',
                     "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!."
                 );
-                //$this->sendMail($type);
+                $model->sendMail();
             }
             $this->renderPartial('_order_form',array(
                 'model'=>$model, 'type'=>$type
@@ -79,16 +81,5 @@ class SiteController extends Controller
                 'model'=>$model, 'type'=>$type
             ));
         }
-    }
-
-    public function sendMail($type){
-
-        $to = Yii::app()->params['email'][$type];
-        $subject = 'Заказ';
-        $message = 'jljkj';
-        $headers = 'From: help@es-style.ru' . "\r\n" .
-            'Reply-To: help@es-style.ru' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($to, $subject ,$message, $headers);
     }
 }

@@ -22,12 +22,13 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'type',
+        array(
+            'name' => 'type',
+            'value'=> '$data->type == "shipping"?"Розница":"Опт"'
+        ),
 		'name',
 		'email',
 		'phone',
-		'company',
-		'city',
 		'date_create',
 		array(
 			'class'=>'CButtonColumn',

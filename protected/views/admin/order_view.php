@@ -1,20 +1,27 @@
 <h1>Заказ №<?php echo $model->id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php
+$attr = array(
+    'id',
+    array(
+        'name' => 'type',
+        'value'=> $model->type == "shipping"?"Розница":"Опт"
+    ),
+    'date_create',
+    'name',
+    'email',
+    'phone',
+);
+if($model->type == "shipping"){
+    array_push($attr, 'postcode');
+    array_push($attr, 'address');
+    array_push($attr, 'size');
+} else {
+    array_push($attr, 'company');
+    array_push($attr, 'city');
+}
+array_push($attr, 'order');
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'type',
-		'name',
-		'region',
-		'postcode',
-		'address',
-		'email',
-		'phone',
-		'size',
-		'company',
-		'city',
-		'order',
-		'date_create',
-	),
+	'attributes'=> $attr,
 )); ?>

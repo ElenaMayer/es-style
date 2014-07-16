@@ -90,3 +90,12 @@ input[type=file] {
 .sale {
     padding: 0px 140px;
 }
+
+ul.yiiPager a:link {
+    padding: 5px 14px !important;
+}
+
+h1 {
+    margin-bottom: 10px !important;
+    margin-top: 0 !important;
+}
