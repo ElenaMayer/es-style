@@ -58,6 +58,10 @@
     </div>
     <div class="size">
         <div class="row">
+            <div class="sizes"><?php echo $form->labelEx($model,'size_40'); ?></div>
+            <div class="sizes"><?php echo $form->checkBox($model,'size_40'); ?></div>
+        </div>
+        <div class="row">
             <div class="sizes"><?php echo $form->labelEx($model,'size_42'); ?></div>
             <div class="sizes"><?php echo $form->checkBox($model,'size_42'); ?></div>
         </div>
@@ -86,10 +90,16 @@
             <div class="sizes"><?php echo $form->checkBox($model,'size_54'); ?></div>
         </div>
     </div>
+    <div class="uni_size">
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'uni_size'); ?></div>
+            <div><?php echo $form->textField($model,'uni_size'); ?></div>
+        </div>
+    </div>
     <div class="clear"></div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
-        <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255, 'value'=>'Платье')); ?></div>
+        <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
     </div>
 
 	<div class="row">
@@ -109,11 +119,15 @@
                             <tr>
                                 <th>Состав</th>
                                 <td>состав</td>
-                                </tr>
+                            </tr>
                             <tr>
                                 <th>Цвет</th>
                                 <td>цвет</td>
-                                </tr>
+                            </tr>
+                            <tr>
+                                <th>Подходит на размеры</th>
+                                <td>40-50</td>
+                            </tr>
                             </tbody>
                             </table>
                         </div>';
@@ -143,16 +157,26 @@
     $( document ).ready(function() {
         if($('#Photo_is_sale').prop('checked')) $('.sale').show();
         else $('.sale').hide();
-        if($('#Photo_size').prop('checked')) $('.size').show();
-        else $('.size').hide();
+        if($('#Photo_size').prop('checked')){
+            $('.size').show();
+            $('.uni_size').hide();
+        } else {
+            $('.size').hide();
+            $('.uni_size').show();
+        }
     });
     $("#Photo_is_sale").click(function() {
         if($(this).prop('checked')) $('.sale').show();
         else $('.sale').hide();
     });
     $("#Photo_size").click(function() {
-        if($(this).prop('checked')) $('.size').show();
-        else $('.size').hide();
+        if($(this).prop('checked')){
+            $('.size').show();
+            $('.uni_size').hide();
+        } else {
+            $('.size').hide();
+            $('.uni_size').show();
+        }
     });
     $('#Photo_image').live('change', function(){
         article = $(this).val().replace(/C:\\fakepath\\/i, '').replace(/\.jpg/i, '');

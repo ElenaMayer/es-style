@@ -94,9 +94,9 @@ return array(
             'shipping' => 'es-style@mail.ru',
         ),
         'categories' => array(
-            'dress' => 'Платья',
-            'blouse' => 'Блузки',
             'kimono' => 'Кимоно',
+            'blouse' => 'Блузки',
+            'dress' => 'Платья',
             'suit' => 'Костюмы',
             'housecoat' => 'Халаты',
             'man' => 'Мужское',

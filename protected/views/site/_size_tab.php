@@ -24,7 +24,6 @@
                 <td>102-106</td>
                 <td>106-110</td>
                 <td>110-114</td>
-                <td>114-118</td>
             </tr>
             <tr>
                 <th>Обхват талии (см)</th>
@@ -37,7 +36,6 @@
                 <td>82-86</td>
                 <td>86-90</td>
                 <td>90-94</td>
-                <td>94-98</td>
             </tr>
             <tr>
                 <th>Обхват бедер (см)</th>
@@ -50,7 +48,6 @@
                 <td>108-112</td>
                 <td>112-116</td>
                 <td>116-120</td>
-                <td>120-124</td>
             </tr>
             <tr class="size-tab__select">
                 <th>Российский размер</th>
@@ -63,24 +60,17 @@
                 <td>52</td>
                 <td>54</td>
                 <td>56</td>
-                <td>58</td>
-            </tr>
-            <tr>
-                <th colspan="2">&nbsp;</th>
-                <td class="one_size" colspan="6">Универсальный размер</td>
-                <td colspan="3">&nbsp;</td>
             </tr>
             <tr>
                 <th>Международный</th>
-                <td>XXS</td>
-                <td>XS</td>
                 <td>S</td>
-                <td>M</td>
-                <td>L</td>
-                <td>XL</td>
-                <td>XXL</td>
+                <td>S/M</td>
+                <td>M/L</td>
+                <td>L/XL</td>
+                <td>XL/XXL</td>
+                <td>XXL/XXXL</td>
                 <td>XXXL</td>
-                <td>&nbsp;</td>
+                <td>XXXXL</td>
                 <td>&nbsp;</td>
             </tr>
             </tbody>

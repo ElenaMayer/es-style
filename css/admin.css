@@ -81,13 +81,17 @@ input[type=file] {
     background-color: #d5d5d5;
 }
 
-.sale .row {
+.sale .row .label,  .uni_size .row .label{
+    padding-top: 8px;
+}
+
+.sale .row,  .uni_size .row{
     background-color: #d5d5d5;
     width: 310px;
     margin: 0 !important;
 }
 
-.sale {
+.sale, .uni_size {
     padding: 0px 140px;
 }
 

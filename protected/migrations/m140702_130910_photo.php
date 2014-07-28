@@ -9,6 +9,8 @@ class m140702_130910_photo extends CDbMigration
         $this->addColumn('photo', 'old_price', 'int');
         $this->addColumn('photo', 'new_price', 'int');
         $this->addColumn('photo', 'size', 'boolean');
+        $this->addColumn('photo', 'uni_size', 'string');
+        $this->addColumn('photo', 'size_40', 'boolean');
         $this->addColumn('photo', 'size_42', 'boolean');
         $this->addColumn('photo', 'size_44', 'boolean');
         $this->addColumn('photo', 'size_46', 'boolean');

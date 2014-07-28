@@ -45,7 +45,7 @@
                         </div>
                         <div class="size">
                             <?php if(!$model->size) :?>
-                                <span class="size__title" data-toggle="tooltip" title="На размер от 42 до 52">Универсальный размер </span>
+                                <span class="size__title">Универсальный размер <?php if(!empty($model->uni_size)):?>(подходит на размеры <?= $model->uni_size ?>)<?php endif;?></span>
                             <?php else :?>
                                 <span class="size__title">Размеры в наличии:</span>
                                 <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>

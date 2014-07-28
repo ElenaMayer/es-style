@@ -19,6 +19,7 @@
  * @property integer $old_price
  * @property integer $new_price
  * @property integer $size
+ * @property string $uni_size
  * @property integer $size_42
  * @property integer $size_44
  * @property integer $size_46
@@ -53,10 +54,10 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, is_show, is_new, price, is_sale, old_price, new_price, size, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
-            array('img, title, category, sale', 'length', 'max'=>255),
+            array('article, is_show, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
+            array('img, title, category, sale, uni_size', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
+            array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, uni_size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('description','default', 'value'=>'<div class="model_desc"><p>Описание. Детали: детали.</p><table><tbody><tr><th>Состав</th><td>состав</td></tr><tr><th>Цвет</th><td>цвет</td></tr></tbody></table></div>', 'setOnEmpty'=>true),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
@@ -96,6 +97,8 @@ class Photo extends CActiveRecord
             'old_price' => 'Старая цена',
             'new_price' => 'Новая цена',
             'size' => 'Размер',
+            'uni_size' => 'Размеры с/по',
+            'size_40' => '40',
             'size_42' => '42',
             'size_44' => '44',
             'size_46' => '46',

@@ -1,3 +1,6 @@
+<?php if($model->size_40) :?>
+    <span class="button">40</span>
+<?php endif; ?>
 <?php if($model->size_42) :?>
     <span class="button">42</span>
 <?php endif; ?>
