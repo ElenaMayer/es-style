@@ -102,13 +102,7 @@ body.main {
     color: #fff;
 }
 
-.menu .container-fluid .menu__list a:hover
-{
-    color: #fff;
-    background-color: #9e3c5d;
-}
-
-.menu .container-fluid .menu__list .open a.dropdown-toggle
+.menu .container-fluid .menu__list .open a.dropdown-toggle, .menu .container-fluid .menu__list a:hover
 {
     color: #fff;
     background-color: #9e3c5d;
@@ -132,20 +126,16 @@ body.main {
     left: 0;
     text-align: center;
     font: 22px Arial;
-    color: #000;
+    color: #333;
 }
 
 .banner__description {
     top: 34px;
     font: 15px Arial;
-    color: #000;
+    color: #333;
 }
 
-.banner__link:hover .banner__title {
-    color: #ff3d00;
-}
-
-.banner__link:hover .banner__description {
+.banner__link:hover .banner__title, .banner__link:hover .banner__description {
     color: #ff3d00;
 }
 
@@ -158,13 +148,8 @@ body.main {
     top: 6px;
     left: 0;
     text-align: center;
-    font: 22px Arial;
+    font: 18px Arial;
     color: #000;
-}
-
-.panel-title>a:hover {
-    color: #ff3d00;
-    text-decoration: none;
 }
 
 .panel {
@@ -545,11 +530,6 @@ body.main {
     font-size: 17px;
 }
 
-.size__table-link:hover {
-    text-decoration: none;
-    color: #ff3d00;
-}
-
 .button {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -627,11 +607,6 @@ body.main {
     padding: 7px 25px 7px 18px;
     vertical-align: top;
     color: #bbb;
-}
-
-a.breadcrumbs__item:hover {
-    text-decoration: none;
-    color: #ff3d00;
 }
 
 .modal-content table {
@@ -799,20 +774,6 @@ a.breadcrumbs__item:hover {
     background-position: 0 -60px;
 }
 
-.hint-link:hover>.hint__title {
-    color: #ff3d00;
-    text-decoration: none;
-}
-
-a.link {
-    color: #9e3c5d;
-}
-
-a.link:hover {
-    color: #ff3d00;
-    text-decoration: none;
-}
-
 .row {
     position: relative;
     margin: 0 0 -10px 120px !important;
@@ -873,6 +834,27 @@ div.form input, div.form textarea, div.form select {
 }
 
 .carousel-caption{
-    color: #020202 !important;
-    text-shadow: 0 1px 2px rgba(214, 214, 214, 1) !important;
+    color: #333 !important;
+    text-shadow: -1px 0 1px rgba(180, 180, 180, 1), 0 1px 1px rgba(180, 180, 180, 1) !important;
+
+}
+
+.panel-body a, a.link {
+    color: #9e3c5d;
+}
+
+.panel-title>a:hover, .panel-body a:hover, a.link:hover, a.breadcrumbs__item:hover, .hint-link:hover>.hint__title, .size__table-link:hover {
+    color: #ff3d00;
+    text-decoration: none;
+}
+
+.panel-title p {
+    float: right;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+h3.news {
+    margin-left: 15px;
+    margin-top: 0px;
 }

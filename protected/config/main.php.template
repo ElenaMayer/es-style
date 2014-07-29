@@ -11,13 +11,12 @@ return array(
 	'name'=>'Одежда Восточный Стиль',
     'language' => 'ru',
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'booster'),
 
-	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.extensions.*',
 	),
 
 	'modules'=>array(
@@ -34,18 +33,22 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-        'bootstrap' => [
-            'class' => 'common.extensions.bootstrap.components.Bootstrap',
-            'responsiveCss' => true,
+        'booster' => [
+            'class' => 'ext.booster.components.Booster',
         ],
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'admin/orderView/<id:\d+>'=>'admin/orderView',
+                'admin/orderDelete/<id:\d+>'=>'admin/orderDelete',
+                'admin/priceDelete/<id:\d+>'=>'admin/priceDelete',
                 'admin/<controller:\w+>/<action:\w+>/' => '<controller>/<action>/',
-			),
+                'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
+                '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
+                '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
+                '<type:(wholesale|shipping)>'=>'site/order',
+                'contact'=>'site/contact',
+            ),
 		),
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=es_style',
@@ -55,7 +58,6 @@ return array(
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
-			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
 		'log'=>array(
@@ -65,31 +67,24 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
 			),
 		),
         'image'=>array(
             'class'=>'CImageHandler',
         ),
 	),
-
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
 	'params'=>array(
+        'phone' => '+7-952-925-0348',
+        'email' => 'es-style@mail.ru',
         'categories' => array(
-            1 => 'Платья',
-            2 => 'Блузки',
-            3 => 'Кимоно',
-            4 => 'Костюмы',
-            5 => 'Халаты',
-            6 => 'Мужское',
-            7 => 'Детское',
-            8 => 'Разное',
+            'kimono' => 'Кимоно',
+            'blouse' => 'Блузки',
+            'dress' => 'Платья',
+            'suit' => 'Костюмы',
+            'housecoat' => 'Халаты',
+            'man' => 'Мужское',
+            'child' => 'Детское',
+            'other' => 'Разное',
         ),
     ),
 );

@@ -29,7 +29,7 @@
                 <div class="header__inner">
                     <div class="header__phone">
                         <i class="header__phone-icon"></i>
-                        <?= Yii::app()->params['mainPhone'] ?>
+                        <?= Yii::app()->params['phone'] ?>
                     </div>
                     <div class="header__socials">
                         Мы в соцсетях:

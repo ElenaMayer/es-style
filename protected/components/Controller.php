@@ -28,4 +28,25 @@ class Controller extends CController
             $baseUrl=Yii::app()->request->baseUrl;
         return $url===null ? $baseUrl : $baseUrl.'/'.ltrim($url,'/');
     }
+
+    public function dateFormat($date){
+        $res = date("d ", strtotime($date));
+        $month = date("n", strtotime($date));
+        switch ($month){
+            case 1: $res.='января';break;
+            case 2: $res.='февраля';break;
+            case 3: $res.='марта';break;
+            case 4: $res.='апреля';break;
+            case 5: $res.='мая';break;
+            case 6: $res.='июня';break;
+            case 7: $res.='июля';break;
+            case 8: $res.='августа';break;
+            case 9: $res.='сентября';break;
+            case 10: $res.='октября';break;
+            case 11: $res.='ноября';break;
+            case 12: $res.='декабря';break;
+        }
+        $res .= date(" Y", strtotime($date));
+        return $res;
+    }
 }

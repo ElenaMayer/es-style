@@ -88,11 +88,9 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-        'mainPhone' => '+7-952-929-8710',
-        'email' => array(
-            'wholesale'=>'linner86@mail.ru',
-            'shipping' => 'es-style@mail.ru',
-        ),
+        'phone' => '+7-952-925-0348',
+        'email' => 'es-style@mail.ru',
+        'newsCount' => 3,
         'categories' => array(
             'kimono' => 'Кимоно',
             'blouse' => 'Блузки',
