@@ -142,6 +142,6 @@ class Order extends CActiveRecord
         $headers = 'From: help@es-style.ru' . "\r\n" .
             'Reply-To: help@es-style.ru' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
-        //mail($to, $subject ,$message, $headers);
+        mail($to, $subject ,$message, $headers);
     }
 }

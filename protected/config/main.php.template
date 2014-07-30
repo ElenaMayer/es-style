@@ -20,13 +20,6 @@ return array(
 	),
 
 	'modules'=>array(
-
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'123',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
 	),
 	'components'=>array(
 		'user'=>array(
@@ -51,10 +44,10 @@ return array(
             ),
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=es_style',
+			'connectionString' => 'mysql:host=localhost;dbname=dbname',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '1q2w3e',
+			'username' => '',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -74,8 +67,9 @@ return array(
         ),
 	),
 	'params'=>array(
-        'phone' => '+7-952-925-0348',
-        'email' => 'es-style@mail.ru',
+        'phone' => 'phone',
+        'email' => 'email',
+        'ipAddress' => 'my_ip',
         'categories' => array(
             'kimono' => 'Кимоно',
             'blouse' => 'Блузки',

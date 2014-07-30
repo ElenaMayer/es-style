@@ -107,6 +107,8 @@ class AdminController extends Controller
 	 */
 	public function actionLogin()
 	{
+        if($_SERVER["REMOTE_ADDR"] != Yii::app()->params['ipAddress'])
+            throw new CHttpException(404,'Страница не найдена.');
 		$model=new LoginForm;
 
 		// collect user input data

@@ -55,6 +55,7 @@ $this->pageTitle=Yii::app()->name;
 
 <div class="banners">
     <h3 class="news">Новости компании</h3>
+    <?= Yii::app()->params['newsCount'];?>
     <?php $collapse = $this->beginWidget('booster.widgets.TbCollapse'); ?>
     <div class="panel-group" id="accordion">
         <?php for($i=1;$i<=Yii::app()->params['newsCount'];$i++):?>
