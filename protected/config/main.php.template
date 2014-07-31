@@ -70,6 +70,8 @@ return array(
         'phone' => 'phone',
         'email' => 'email',
         'ipAddress' => 'my_ip',
+        'vkontakteLink' => 'link',
+        'odnoklassnikiLink' => 'link',
         'categories' => array(
             'kimono' => 'Кимоно',
             'blouse' => 'Блузки',

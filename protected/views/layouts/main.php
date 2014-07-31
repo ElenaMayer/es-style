@@ -33,8 +33,8 @@
                     </div>
                     <div class="header__socials">
                         Мы в соцсетях:
-                        <a target="_blank" class="header__social-item header__social-item_vk" href="http://vk.com/club54656176"></a>
-                        <a target="_blank" class="header__social-item header__social-item_ok" href="http://odnoklassniki.ru/profile/549921469407"></a>
+                        <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
+                        <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
                     </div>
                 </div>
             </div>
