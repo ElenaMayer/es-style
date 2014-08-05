@@ -113,7 +113,7 @@
             if(Yii::app()->controller->action->id == 'create')
                 $htmlOptions['value'] =
                     '<div class="model_desc">
-                        <p>Описание. Детали: детали.</p>
+                        <p>Описание</p>
                         <table>
                             <tbody>
                             <tr>
@@ -125,8 +125,8 @@
                                 <td>цвет</td>
                             </tr>
                             <tr>
-                                <th>Подходит на размеры</th>
-                                <td>40-50</td>
+                                <th>Детали</th>
+                                <td>детали</td>
                             </tr>
                             </tbody>
                             </table>

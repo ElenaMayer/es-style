@@ -73,9 +73,9 @@ return array(
         'vkontakteLink' => 'link',
         'odnoklassnikiLink' => 'link',
         'categories' => array(
-            'kimono' => 'Кимоно',
-            'blouse' => 'Блузки',
             'dress' => 'Платья',
+            'blouse' => 'Блузки',
+            'kimono' => 'Кимоно',
             'suit' => 'Костюмы',
             'housecoat' => 'Халаты',
             'man' => 'Мужское',

@@ -36,6 +36,7 @@ class Photo extends CActiveRecord
     public $previewHeight = 300;
     public $previewWidth = 225;
     public $is_show = true;
+    public $is_new = true;
     public $size = true;
 
 	/**
@@ -59,7 +60,6 @@ class Photo extends CActiveRecord
             array('description, date_create', 'safe'),
             array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, uni_size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-            array('description','default', 'value'=>'<div class="model_desc"><p>Описание. Детали: детали.</p><table><tbody><tr><th>Состав</th><td>состав</td></tr><tr><th>Цвет</th><td>цвет</td></tr></tbody></table></div>', 'setOnEmpty'=>true),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
 		);
 	}
@@ -139,6 +139,7 @@ class Photo extends CActiveRecord
         $criteria->compare('old_price',$this->old_price);
         $criteria->compare('new_price',$this->new_price);
         $criteria->compare('size',$this->size);
+        $criteria->order = 'date_create DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -253,6 +254,25 @@ class Photo extends CActiveRecord
 
     public function getSale(){
         return 100-$this->new_price*100/$this->old_price;
+    }
+
+    public function getOrderList($type){
+        $res = array(
+            array('label'=>'по артиклю'),
+            array('label'=>'по возрастанию цены'),
+            array('label'=>'по убыванию цены'),
+        );
+        $new = $this->findAllByAttributes(
+            array('is_show' => 1, 'category' => $type, 'is_new' => 1)
+        );
+        if(!empty($new))
+            array_push($res, array('label'=>'по новинкам'));
+        $sale = $this->findAllByAttributes(
+            array('is_show' => 1, 'category' => $type, 'is_sale' => 1)
+        );
+        if(!empty($sale))
+            array_push($res, array('label'=>'по скидкам'));
+        return $res;
     }
 
 }

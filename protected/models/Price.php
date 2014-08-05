@@ -76,6 +76,7 @@ class Price extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('date_create',$this->date_create,true);
+        $criteria->order = 'date_create DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

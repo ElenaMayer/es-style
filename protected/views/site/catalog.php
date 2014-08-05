@@ -4,13 +4,7 @@
             <strong>Сортировать:</strong>
             <?php $this->widget('booster.widgets.TbButtonGroup', array(
                 'buttons'=>array(
-                    array('label'=>Yii::app()->session['catalog_order'], 'items'=>array(
-                        array('label'=>'по новинкам'),
-                        array('label'=>'по артиклю'),
-                        array('label'=>'по возрастанию цены'),
-                        array('label'=>'по убыванию цены'),
-                        array('label'=>'по скидкам'),
-                    )),
+                    array('label'=>Yii::app()->session['catalog_order'], 'items'=>Photo::model()->getOrderList($type)),
                 ),
                 'htmlOptions'=>array('class'=>'order_menu')
             )); ?>
