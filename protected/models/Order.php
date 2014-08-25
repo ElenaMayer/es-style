@@ -131,18 +131,31 @@ class Order extends CActiveRecord
 	}
 
     public function sendMail(){
-
         $to = Yii::app()->params['email'];
-        $subject = 'Заказ '.$this->type == 'shipping'?'розница':'опт';
+        $subject = $this->type == 'shipping'?'Заказ розница':'Заказ опт';
         $attributes = $this->getAttributes();
-        $message = '';
-        foreach($attributes as $i=>$attribute) {
-            if(!empty($attribute))
-                $message .= $this->attributeLabels()[$i] . ': ' . $attribute . ' </br> ';
-        }
-        $headers = 'From: help@es-style.ru' . "\r\n" .
+        $message = 'ID: '.$this->id. ' <br> ';
+        $message .= 'ФИО: '.$this->name. ' <br> ';
+        $message .= 'E-mail: '.$this->email. ' <br> ';
+        $message .= 'Телефон: '.$this->phone. ' <br> ';
+		if(!empty($this->postcode))
+            $message .= 'Почтовый индекс: '.$this->postcode. ' <br> ';
+		if(!empty($this->address))
+            $message .= 'Почтовый адрес: '.$this->address. ' <br> ';
+		if(!empty($this->size))
+            $message .= 'Мерки: '.$this->size. ' <br> ';
+		if(!empty($this->company))
+            $message .= 'Ваша компания: '.$this->company. ' <br> ';
+		if(!empty($this->city))
+            $message .= 'Город: '.$this->city. ' <br> ';
+		if(!empty($this->order))
+            $message .= 'Заказ: '.$this->order. ' <br> ';
+
+        $headers = 'From: es-style.ru<help@es-style.ru>' . "\r\n" .
             'Reply-To: help@es-style.ru' . "\r\n" .
+            'Content-type: text/html' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
         mail($to, $subject ,$message, $headers);
     }
+
 }
