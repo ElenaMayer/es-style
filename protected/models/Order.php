@@ -133,7 +133,6 @@ class Order extends CActiveRecord
     public function sendMail(){
         $to = Yii::app()->params['email'];
         $subject = $this->type == 'shipping'?'Заказ розница':'Заказ опт';
-        $attributes = $this->getAttributes();
         $message = 'ID: '.$this->id. ' <br> ';
         $message .= 'ФИО: '.$this->name. ' <br> ';
         $message .= 'E-mail: '.$this->email. ' <br> ';

@@ -7,7 +7,7 @@
 <ul class="list list_shopping">
     <li class="list__item">Мы работаем с физическими и юридическими лицами, с организаторами совместных покупок.</li>
     <li class="list__item">Минимальная оптовая партия - <b>5000 руб.</b></li>
-    <li class="list__item">Заказ можно сделать через приведенную ниже форму или позвонив по телефону <b><?=Yii::app()->params['phone']?></b>.</li>
+    <li class="list__item">Заказ можно сделать через приведенную ниже форму, по телефону <b><?=Yii::app()->params['phone']?></b> или </br>по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
 </ul>
 
 <h3>Доставка</h3>
@@ -29,3 +29,15 @@
     <li class="list__item">При заказе от 50 000 рублей - 5%.</li>
     <li class="list__item">При заказе от 75 000 рублей - 7%.</li>
 </ul>
+
+<script>
+    $( "#email" ).on( "click", function() {
+        $.ajax({
+            url: '/ajax/getEmail',
+            success: function(email){
+                $("#email").parent().append('<a href="mailto:'+email+'" class="link">'+email+'</a>');
+                $("#email").hide();
+            }
+        });
+    });
+</script>

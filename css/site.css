@@ -178,16 +178,15 @@ body.main {
     display: block;
     position: absolute;
     top: 20px;
-    left: 20px;
-    width: 171px;
+    width: 323px;
     height: 56px;
     background: url('../data/i/logo.png') 0 0 no-repeat;
 }
 
 .header__inner {
     display: table;
-    min-width: 670px;
-    margin: 0 20px 0 248px;
+    min-width: 545px;
+    margin: 0 20px 0 400px;
     padding-top: 32px;
 }
 
@@ -200,7 +199,7 @@ body.main {
     text-align: center;
     font-size: 15px;
     line-height: 17px;
-    padding-left: 90px;
+    padding-left: 25px;
 }
 
 .header__phone-icon {
@@ -834,13 +833,24 @@ div.form input, div.form textarea, div.form select {
 }
 
 .carousel-caption{
-    color: #333 !important;
-    text-shadow: -1px 0 1px rgba(180, 180, 180, 1), 0 1px 1px rgba(180, 180, 180, 1) !important;
+    background-color: white;
+    opacity: 0.7;
+    color: #000000 !important;
+    text-shadow: none !important;
 
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 30px;
+    border-radius: 50px;
+}
+
+.carousel-caption h3{
+    margin-top: 10px;
 }
 
 .panel-body a, a.link {
     color: #9e3c5d;
+    cursor: pointer;
 }
 
 .panel-title>a:hover, .panel-body a:hover, a.link:hover, a.breadcrumbs__item:hover, .hint-link:hover>.hint__title, .size__table-link:hover {

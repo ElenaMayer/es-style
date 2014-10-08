@@ -13,7 +13,8 @@
                     <?php if($model->is_sale) :?>
                         <span class="item__label">−<?= $model->sale ?>%</span>
                     <?php endif; ?>
-                    <img class="model__img" src="<?= $model->getImageUrl(); ?>">
+                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:480px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>"/></a>
+                    <!--img class="model__img" src="<!--?= $model->getImageUrl(); ?>"-->
                 </div>
             </div>
         </div>

@@ -33,6 +33,8 @@ class Photo extends CActiveRecord
     public $image;
     public $imageHeight = 480;
     public $imageWidth = 360;
+    public $originalHeight = 1600;
+    public $originalWidth = 1200;
     public $previewHeight = 300;
     public $previewWidth = 225;
     public $is_show = true;
@@ -168,7 +170,7 @@ class Photo extends CActiveRecord
         if(($this->scenario=='insert' || $this->scenario=='update') && ($image=CUploadedFile::getInstance($this,'image'))){
             $this->deleteImage();
             $this->img=$image->name;
-            $image->saveAs(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$image->name);
+            $image->saveAs(Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$image->name);
             $this->prepareImage();
         }
         return true;
@@ -182,7 +184,7 @@ class Photo extends CActiveRecord
     }
 
     public function deleteImage(){
-        $imageOrigPath=Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img;
+        $imageOrigPath=Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$this->img;
         if(is_file($imageOrigPath))
             unlink($imageOrigPath);
         $imagePath=Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img;
@@ -200,7 +202,9 @@ class Photo extends CActiveRecord
     public function prepareImage(){
         $this->createPreview();
         Yii::app()->image
-            ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
+            ->load(Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$this->img)
+            ->resize($this->originalWidth, $this->originalHeight)
+            ->save(Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageWidth, $this->imageHeight)
             //->watermark($this->getWatermarkPath(), 0, 0)
             ->save(Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img);
@@ -208,7 +212,7 @@ class Photo extends CActiveRecord
 
     private function createPreview(){
         Yii::app()->image
-            ->load(Yii::getPathOfAlias('root.protected.data.photo').DIRECTORY_SEPARATOR.$this->img)
+            ->load(Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->previewWidth, $this->previewHeight);
         Yii::app()->image->save(Yii::getPathOfAlias('data.photo.preview').DIRECTORY_SEPARATOR.'p_'.$this->img);
     }
@@ -221,6 +225,11 @@ class Photo extends CActiveRecord
     public function getPreviewUrl()
     {
         return Yii::app()->getBaseUrl().'/data/photo/preview/p_'.$this->img;
+    }
+
+    public function getOriginalUrl()
+    {
+        return Yii::app()->getBaseUrl().'/data/photo/original/'.$this->img;
     }
 
     public static function getWatermarkPath()
