@@ -5,7 +5,7 @@ $attr = array(
     'id',
     array(
         'name' => 'type',
-        'value'=> $model->type == "shipping"?"Розница":"Опт"
+        'value'=> $model->type == "shipping"?"Розница":"Опт",
     ),
     'date_create',
     'name',

@@ -109,7 +109,6 @@ class Order extends CActiveRecord
 		$criteria->compare('city',$this->city,true);
 		$criteria->compare('order',$this->order,true);
 		$criteria->compare('date_create',$this->date_create,true);
-        $criteria->order = 'date_create DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

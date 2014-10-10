@@ -60,7 +60,7 @@ class Photo extends CActiveRecord
             array('article, is_show, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
             array('img, title, category, sale, uni_size', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('id, img, article, title, description, is_show, date_create, is_new, price, category, is_sale, sale, old_price, new_price, size, uni_size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'safe', 'on'=>'search'),
+            array('article, is_show, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
 		);
@@ -126,22 +126,12 @@ class Photo extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('img',$this->img,true);
 		$criteria->compare('category',$this->category);
 		$criteria->compare('article',$this->article);
 		$criteria->compare('price',$this->price,true);
-		$criteria->compare('title',$this->title,true);
         $criteria->compare('is_show',$this->is_show);
         $criteria->compare('is_new',$this->is_new);
-		$criteria->compare('date_create',$this->date_create,true);
         $criteria->compare('is_sale',$this->is_sale);
-        $criteria->compare('sale',$this->sale,true);
-        $criteria->compare('old_price',$this->old_price);
-        $criteria->compare('new_price',$this->new_price);
-        $criteria->compare('size',$this->size);
-        $criteria->order = 'date_create DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

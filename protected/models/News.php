@@ -85,7 +85,6 @@ class News extends CActiveRecord
 		$criteria->compare('is_show',$this->is_show);
 		$criteria->compare('date_create',$this->date_create,true);
         $criteria->compare('date_publish',$this->date_publish,true);
-        $criteria->order = 'date_create DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

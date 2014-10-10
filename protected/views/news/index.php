@@ -11,6 +11,7 @@
         array(
             'name' => 'is_show',
             'type'=>'raw',
+            'filter'=>[1=>'Да',0=>'Нет'],
             'value'=> '"<p class=\"icon\">".CHtml::openTag("span", ["id" => $data->id, "class" => $data->is_show == 1?"is_show_small":"is_show_small false", "onclick"=>"set_is_show(this)"])."</span></p>"',
         ),
 		'date_create',

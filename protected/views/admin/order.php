@@ -24,7 +24,8 @@ $('.search-form form').submit(function(){
 		'id',
         array(
             'name' => 'type',
-            'value'=> '$data->type == "shipping"?"Розница":"Опт"'
+            'value'=> '$data->type == "shipping"?"Розница":"Опт"',
+            'filter'=>['wholesale'=>'Опт','shipping'=>'Розница'],
         ),
 		'name',
 		'email',
