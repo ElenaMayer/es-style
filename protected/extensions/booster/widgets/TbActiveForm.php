@@ -378,12 +378,12 @@ class TbActiveForm extends CActiveForm {
 	 * @see customFieldGroup
 	 */
 	public function textFieldGroup($model, $attribute, $options = array()) {
-		
+
 		$this->initOptions($options);
 		$widgetOptions = $options['widgetOptions'];
 		
 		$this->addCssClass($widgetOptions['htmlOptions'], 'form-control');
-		
+
 		$fieldData = array(array($this, 'textField'), array($model, $attribute, $widgetOptions['htmlOptions']));
 	
 		return $this->customFieldGroupInternal($fieldData, $model, $attribute, $options);
@@ -1139,8 +1139,8 @@ class TbActiveForm extends CActiveForm {
 	 * @throws CException Raised on invalid form type.
 	 */
 	protected function customFieldGroupInternal(&$fieldData, &$model, &$attribute, &$options) {
-		
-		$this->setDefaultPlaceholder($fieldData);
+
+		$this->setDefaultPlaceholder($fieldData, $options);
 
 		ob_start();
 		switch ($this->type) {
@@ -1168,8 +1168,8 @@ class TbActiveForm extends CActiveForm {
 	 *  
 	  * @param array|string $fieldData Pre-rendered field as string or array of arguments for call_user_func_array() function.
 	 */
-	protected function setDefaultPlaceholder(&$fieldData) {
-		
+	protected function setDefaultPlaceholder(&$fieldData, $options) {
+
 		if(!is_array($fieldData) 
 			|| empty($fieldData[0][1]) /* 'textField' */
 			|| !is_array($fieldData[1]) /* ($model, $attribute, $htmlOptions) */
@@ -1179,19 +1179,22 @@ class TbActiveForm extends CActiveForm {
 		$model = $fieldData[1][0];
 		if(!$model instanceof CModel)
 			return;
-		
+
 		$attribute = $fieldData[1][1];
 		if(!empty($fieldData[1][3]) && is_array($fieldData[1][3])) {
 			/* ($model, $attribute, $data, $htmlOptions) */
 			$htmlOptions = &$fieldData[1][3];
-		} else {
+		} elseif(isset($options['placeholder'])) {
+            /* ($model, $attribute, $htmlOptions) */
+            $htmlOptions['placeholder'] = $options['placeholder'];
+            $fieldData[1][2]['placeholder'] = $options['placeholder'];
+        } else {
 			/* ($model, $attribute, $htmlOptions) */
 			$htmlOptions = &$fieldData[1][2];
 		}
 		if (!isset($htmlOptions['placeholder'])) {
 			$htmlOptions['placeholder'] = $model->getAttributeLabel($attribute);
 		}
-		
 	}
 
 	/**
@@ -1437,7 +1440,7 @@ class TbActiveForm extends CActiveForm {
 	 * @param string $class
 	 */
 	protected static function addCssClass(&$htmlOptions, $class) {
-		
+
 		if (empty($class)) {
 			return;
 		}

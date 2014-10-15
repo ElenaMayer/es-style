@@ -11,11 +11,11 @@
  * @property string $address
  * @property string $email
  * @property string $phone
- * @property string $size
  * @property string $company
  * @property string $city
  * @property string $order
  * @property string $date_create
+ * @property string $delivery
  */
 class Order extends CActiveRecord
 {
@@ -36,7 +36,7 @@ class Order extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('postcode', 'numerical', 'integerOnly'=>true),
-			array('type, name, address, email, phone, size, company, city', 'length', 'max'=>255),
+			array('type, name, address, email, phone, company, delivery, city', 'length', 'max'=>255),
 			array('order, date_create', 'safe'),
 			array('id, type, email, phone, date_create', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()')),
@@ -71,8 +71,8 @@ class Order extends CActiveRecord
 			'address' => 'Почтовый адрес',
 			'email' => 'E-mail',
 			'phone' => 'Телефон',
-			'size' => 'Мерки',
-			'company' => 'Ваша компания',
+			'company' => 'Компания',
+            'delivery' => 'Способ доставки',
 			'city' => 'Город',
 			'order' => 'Заказ',
 			'date_create' => 'Дата создания',
@@ -104,11 +104,8 @@ class Order extends CActiveRecord
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('phone',$this->phone,true);
-		$criteria->compare('size',$this->size,true);
 		$criteria->compare('company',$this->company,true);
 		$criteria->compare('city',$this->city,true);
-		$criteria->compare('order',$this->order,true);
-		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -140,10 +137,10 @@ class Order extends CActiveRecord
             $message .= 'Почтовый индекс: '.$this->postcode. ' <br> ';
 		if(!empty($this->address))
             $message .= 'Почтовый адрес: '.$this->address. ' <br> ';
-		if(!empty($this->size))
-            $message .= 'Мерки: '.$this->size. ' <br> ';
 		if(!empty($this->company))
-            $message .= 'Ваша компания: '.$this->company. ' <br> ';
+            $message .= 'Компания: '.$this->company. ' <br> ';
+        if(!empty($this->delivery))
+            $message .= 'Способ доставки: '.$this->delivery. ' <br> ';
 		if(!empty($this->city))
             $message .= 'Город: '.$this->city. ' <br> ';
 		if(!empty($this->order))

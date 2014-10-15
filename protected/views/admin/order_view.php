@@ -15,10 +15,10 @@ $attr = array(
 if($model->type == "shipping"){
     array_push($attr, 'postcode');
     array_push($attr, 'address');
-    array_push($attr, 'size');
 } else {
     array_push($attr, 'company');
     array_push($attr, 'city');
+    array_push($attr, 'delivery');
 }
 array_push($attr, 'order');
 $this->widget('zii.widgets.CDetailView', array(
