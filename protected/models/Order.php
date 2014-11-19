@@ -112,6 +112,9 @@ class Order extends CActiveRecord
             'Pagination' => array (
                 'PageSize' => 20
               ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 

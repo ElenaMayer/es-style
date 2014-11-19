@@ -15,7 +15,7 @@ class AdminController extends Controller
     /**
      * @return array action filters
      */
-    /*public function filters()
+    public function filters()
     {
         return array(
             'accessControl', // perform access control for CRUD operations
@@ -50,10 +50,7 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
     {
-        if (Yii::app()->user->isGuest)
-            Yii::app()->request->redirect('/admin/login');
-        else
-		    $this->render('index');
+        $this->render('index');
 	}
 
     public function actionOrder()

@@ -139,6 +139,9 @@ class Photo extends CActiveRecord
             'pagination'=>array(
                 'pageSize'=>'10',
             ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 
@@ -231,7 +234,7 @@ class Photo extends CActiveRecord
     public function getPhotos($category, $order_str){
         switch($order_str){
             case 'по новинкам':
-                $order = 'is_new  DESC, date_create  DESC';
+                $order = 'is_new  DESC';
                 break;
             case 'по артиклю':
                 $order = 'article';

@@ -91,6 +91,9 @@ class News extends CActiveRecord
             'pagination'=>array(
                 'pageSize'=>'10',
             ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 
