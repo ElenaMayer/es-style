@@ -63,6 +63,7 @@ class Photo extends CActiveRecord
             array('article, is_show, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
+            array('category, title, article, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
 		);
 	}
 

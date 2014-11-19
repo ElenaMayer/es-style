@@ -11,10 +11,7 @@
 
 	<div class="row">
 		<div class="label"><?php echo $form->labelEx($model,'image'); ?></div>
-        <div>
-            <?php echo $form->fileField($model,'image'); ?>
-		    <?php echo $form->error($model,'image'); ?>
-        </div>
+        <div><?php echo $form->fileField($model,'image'); ?></div>
 	</div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
@@ -22,7 +19,7 @@
     </div>
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
-        <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories']); ?></div>
+        <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories'], array('prompt'=>'')); ?></div>
 	</div>
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>

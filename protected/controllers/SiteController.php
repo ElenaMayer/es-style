@@ -11,7 +11,7 @@ class SiteController extends Controller
 	}
 
     public function actionCatalog($type){
-        $this->pageTitle=Yii::app()->params["categories"][$type].' - '.Yii::app()->name;
+        $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
         $model = Photo::model()->getPhotos($type, $this->getOrder());
@@ -23,7 +23,7 @@ class SiteController extends Controller
 
     public function actionModel($type, $id){
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
-        if(!$model->is_show)
+        if(!isset($model->is_show) || !$model->is_show)
             throw new CHttpException(404,'К сожалению, модель не найдена.');
         $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
         $this->render('model',array('model'=>$model, 'type'=>$type));
@@ -57,10 +57,13 @@ class SiteController extends Controller
     }
 
     public function actionContact() {
+        $this->pageTitle=Yii::app()->name .' - Адреса';
         $this->render('contact');
     }
 
     public function actionOrder($type) {
+        $type_str = $type=='shipping'?'В розницу':'Оптом';
+        $this->pageTitle=Yii::app()->name.' - '.$type_str;
         $model=new Order($type);
         if(isset($_POST['Order'])) {
             $model->attributes=$_POST['Order'];

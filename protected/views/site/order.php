@@ -1,6 +1,6 @@
 <div class="order">
     <?php $this->renderPartial('_'.$type); ?>
-    <h3>Заказ</h3>
+    <h2>Заказ</h2>
     <div id="data">
         <?php $this->renderPartial('_order_form',array('model'=>$model, 'type'=>$type)); ?>
     </div>

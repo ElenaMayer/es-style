@@ -1,7 +1,8 @@
 <div class="breadcrumbs">
     <a href="/" class="breadcrumbs__item">Главная</a>
     <a class="breadcrumbs__item" href="/<?=$type?>"><?=Yii::app()->params["categories"][$type]?></a>
-    <span class="breadcrumbs__item"><?=$model->title?> арт. <?=$model->article?></span></div>
+    <span class="breadcrumbs__item"><?=$model->title?> арт. <?=$model->article?></span>
+</div>
 <div class="model">
     <div class="table__column table__column_left">
         <div class="table__table">
@@ -11,10 +12,9 @@
                         <span class="item__label item__label_new">Новинка</span>
                     <?php endif; ?>
                     <?php if($model->is_sale) :?>
-                        <span class="item__label">−<?= $model->sale ?>%</span>
+                        <span class="item__label">− <?= $model->sale ?>%</span>
                     <?php endif; ?>
-                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:480px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>"/></a>
-                    <!--img class="model__img" src="<!--?= $model->getImageUrl(); ?>"-->
+                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:480px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
                 </div>
             </div>
         </div>
@@ -24,11 +24,9 @@
             <div class="table__table">
                 <div class="table__row">
                     <div class="model_header">
-                        <h1 class="model_header__title">
-                            <span class="model_header__title-name"><?= $model->title; ?></span>
-                            <br>
-                            <div class="model_header__title-article">Арт.&nbsp;<?= $model->article; ?></div>
-                        </h1>
+                        <h1 class="model_header__title"><?= $model->title; ?></h1>
+                        <div class="model_header__title-article">Арт.&nbsp;<?= $model->article; ?></div>
+
                     </div>
                 </div>
                 <div class="table__row">
@@ -59,6 +57,16 @@
                     <div class="table__cell">
                         <div class="model_desc">
                             <?= $model->description; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell social">
+                        <div class="social-likes"  data-title="Женская одежда в восточном стиле">
+                            <div class="twitter" title="Поделиться ссылкой в Твиттере">Twitter</div>
+                            <div class="mailru" title="Поделиться ссылкой в Моём мире">Мой мир</div>
+                            <div class="vkontakte" title="Поделиться ссылкой во Вконтакте">Вконтакте</div>
+                            <div class="odnoklassniki" title="Поделиться ссылкой в Одноклассниках">Одноклассники</div>
                         </div>
                     </div>
                 </div>
