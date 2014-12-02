@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','order','price','logout'),
+                'actions'=>array('index','order','price','logout','priceDelete'),
                 'users'=>array('admin'),
             ),
             array('allow',

@@ -12,7 +12,8 @@ body.main {
 }
 
 .page {
-    background: #eee;
+    /*background: #eee;*/
+    background: url('../data/i/backgr.png') 0 0 repeat;
     min-width: 1060px;
     min-height: 100%;
     margin:0 auto -60px;
@@ -61,7 +62,7 @@ body.main {
     padding: 20px;
     font-size: 0.8em;
     text-align: center;
-    background: #eee;
+    /*background: #eee;*/
 }
 
 .page .header .menu
@@ -180,7 +181,8 @@ body.main {
     top: 20px;
     width: 323px;
     height: 56px;
-    background: url('../data/i/logo.png') 0 0 no-repeat;
+    background: url('../data/i/logo_ny.png') 0 0 no-repeat;
+    /*background: url('../data/i/logo.png') 0 0 no-repeat;*/
 }
 
 .header__inner {
