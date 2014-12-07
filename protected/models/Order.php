@@ -148,8 +148,8 @@ class Order extends CActiveRecord
 		if(!empty($this->order))
             $message .= 'Заказ: '.$this->order. ' <br> ';
 
-        $headers = 'From: es-style.ru<help@es-style.ru>' . "\r\n" .
-            'Reply-To: help@es-style.ru' . "\r\n" .
+        $headers = 'From: ' . $this->email . "\r\n" .
+            'Reply-To: ' . $this->email . "\r\n" .
             'Content-type: text/html' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
         mail($to, $subject ,$message, $headers);
