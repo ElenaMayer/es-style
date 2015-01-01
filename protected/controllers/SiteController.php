@@ -85,4 +85,15 @@ class SiteController extends Controller
             ));
         }
     }
+
+    public function actionPrice(){
+        $price = Price::model()->find(array('order'=>'date_create DESC'));
+        $name = Yii::getPathOfAlias('data').'/price/'.$price->file;
+        $file=file_get_contents($name);
+        header("Content-Type: text/plain");
+        header("Content-disposition: attachment; filename=$price->file");
+        header("Pragma: no-cache");
+        echo $file;
+        exit;
+    }
 }
