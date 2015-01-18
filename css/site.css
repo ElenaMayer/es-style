@@ -836,6 +836,10 @@ div.form input, div.form textarea, div.form select {
     line-height: 1.35;
 }
 
+.model_desc table {
+    margin-bottom: 0;
+}
+
 .model_desc table th {
     padding: 10px 0;
 }

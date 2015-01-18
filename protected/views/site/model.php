@@ -14,7 +14,7 @@
                     <?php if($model->is_sale) :?>
                         <span class="item__label">− <?= $model->sale ?>%</span>
                     <?php endif; ?>
-                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:480px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
+                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
                 </div>
             </div>
         </div>
@@ -55,9 +55,7 @@
                 </div>
                 <div class="table__row">
                     <div class="table__cell">
-                        <div class="model_desc">
-                            <?= $model->description; ?>
-                        </div>
+                        <?= $model->description; ?>
                     </div>
                 </div>
                 <div class="table__row">

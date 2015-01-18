@@ -3,18 +3,6 @@
     <h1>Точки розничной продажи в г. Новосибирске</h1>
 
     <div class="contacts contacts-address">
-        <span class="contacts__title">Красный проспект - Переход "Под часовней"</span>
-        <br>
-        Место №70 (Вход от Первомайского сквер)
-    </div>
-    <div class="contacts contacts-time">
-        <span class="contacts__title">Время работы</span>
-        <br>
-        10:00 - 19:00 Без выходных
-    </div>
-    <div id="map_perehod" class="gis_map"></div>
-
-    <div class="contacts contacts-address">
         <span class="contacts__title">Мичурина 12 - Центральный рынок</span>
         <br>
         Место №184 (1й вещевой павильон)
@@ -41,14 +29,9 @@
 
 <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
 <script type="text/javascript">
-    var map_perehod;
     var map_rinok;
     var map_granit;
     DG.then(function () {
-        map_perehod = DG.map('map_perehod', {
-            "center": [55.027069, 82.921052],
-            "zoom": 16
-        });
         map_rinok = DG.map('map_rinok', {
             "center": [55.042049, 82.924407],
             "zoom": 16
@@ -57,9 +40,6 @@
             "center": [54.982592, 82.891341],
             "zoom": 16
         });
-        DG.marker([55.027069, 82.921052]).addTo(map_perehod);
-        DG.marker([55.042049, 82.924407]).addTo(map_perehod);
-        DG.marker([54.982592, 82.891341]).addTo(map_perehod);
         DG.marker([55.027069, 82.921052]).addTo(map_rinok);
         DG.marker([55.042049, 82.924407]).addTo(map_rinok);
         DG.marker([54.982592, 82.891341]).addTo(map_rinok);
