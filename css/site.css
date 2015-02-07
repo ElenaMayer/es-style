@@ -1,3 +1,335 @@
+.header__logo
+{
+    display: block;
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+}
+
+.header__inner {
+    display: table;
+    padding-top: 32px;
+    width: 100%;
+    float: right;
+    margin: 0 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.navbar-collapse .navbar-nav {
+    margin: 5px 0;
+}
+
+.navbar-collapse>.nav>li>a {
+    padding: 2px 10px;
+}
+
+.menu .container-fluid .menu__list a
+{
+    height: 24px;
+}
+
+.header__content
+{
+    width: 100%;
+}
+
+.menu .container-fluid
+{
+    text-align: center;
+}
+
+.carousel-caption{
+    margin-bottom: 20px;
+    border-radius: 30px;
+    bottom: 10px !important;
+}
+
+.carousel-caption h3 {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.carousel-caption p {
+    margin: 0 0 6px;
+    font-size: 12px;
+}
+
+.carousel-indicators {
+    bottom: 0 !important;
+}
+
+.page .header .menu
+{
+    margin-bottom: 10px;
+}
+
+.banners__item {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.banner__title {
+    font-size: 22px;
+    top: 6px;
+}
+
+.banner__description {
+    font-size: 15px;
+    top: 34px;
+}
+
+.catalog__item {
+    width: 50%;
+    padding: 6px;
+}
+
+.catalog__cont {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.social-likes__widget {
+    display: block !important;
+}
+
+.social-likes {
+    width: 100%;
+}
+
+@media only screen and (min-width: 480px) {
+
+    /*Здесь стили более разумных, но все еще мобильных устройств. Android, iPhone  и так далее.*/
+
+    .banners__item {
+        width: 50%;
+        padding: 0 2px;
+        float: left;
+    }
+
+    .banner__title {
+        font-size: 18px;
+        top: 0;
+    }
+
+    .banner__description {
+        font-size: 14px;
+        top: 18px;
+    }
+
+    .catalog__item {
+        width: 33.3%;
+    }
+
+    .catalog__cont {
+        font-size: 20px;
+    }
+
+    .table__column_left {
+        width: 40%;
+        padding-right: 10px;
+    }
+
+    .table__column_right {
+        width: 60%;
+    }
+
+    .table__column {
+        display: table-cell;
+    }
+
+    .size .button {
+        margin-right: 0;
+        cursor: default;
+        padding: 0 7px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    /*Планшеты в режиме portrait.*/
+
+    .header__logo
+    {
+        position: absolute;
+        top: 20px;
+    }
+
+    .header__inner {
+        width: 100%;
+        float: right;
+        padding-left: 350px;
+        padding-top: 32px;
+        margin-right: 20px;
+    }
+
+    .header__phone {
+        padding-left: 25px;
+        text-align: right;
+    }
+
+    .header__socials {
+        width: 52%;
+    }
+
+    .menu .container-fluid .menu__list {
+        text-align: center;
+        float: none;
+    }
+
+    .menu .container-fluid .menu__list li {
+        display: inline-block;
+        float: none;
+        width: 14.5%;
+    }
+
+    .menu .container-fluid .menu__list a
+    {
+        padding-top: 6px;
+        height: 30px;
+    }
+
+    .page .header .menu
+    {
+        height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .navbar-collapse .navbar-nav {
+        margin: 0;
+    }
+
+
+    .menu .container-fluid .menu__list a
+    {
+        height: 30px;
+    }
+
+    .carousel-caption{
+        margin-bottom: 30px;
+        border-radius: 50px;
+        bottom: 20px !important;
+    }
+
+    .carousel-caption h3 {
+        font-size: 24px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .carousel-caption p {
+        margin: 0 0 10px;
+        font-size: 14px;
+    }
+
+    .carousel-indicators {
+        bottom: 10px !important;
+    }
+
+    .banners__item {
+        width: 33.3%;
+    }
+
+    .banner__title {
+        font-size: 20px;
+        top: 6px;
+    }
+
+    .banner__description {
+        font-size: 13px;
+        top: 34px;
+    }
+
+    .catalog__item {
+        width: 25%;
+    }
+
+    .catalog__cont {
+        font-size: 22px;
+    }
+
+    .table__column_left {
+        width: 40%;
+        padding-right: 10px;
+    }
+
+    .table__column_right {
+        width: 60%;
+    }
+
+    .social-likes__widget {
+        margin: .1em !important;
+        display: inherit !important;
+    }
+
+    .size .button {
+        margin-right: 5px;
+        padding: 0 8px;
+    }
+
+    .social-likes {
+        width: auto;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+    /*Планшеты в режиме landscape, нетбуки, ноутбуки, десктоп.*/
+    .header__content
+    {
+        width: auto;
+    }
+
+    .header__inner {
+        width: auto;
+        min-width: 545px;
+        margin: 0 20px 0 400px;
+        padding-left: inherit;
+    }
+
+    .header__phone {
+        min-width: 230px;
+        padding-left: 25px;
+        text-align: center;
+    }
+
+    .header__socials {
+        min-width: 230px;
+        width: auto;
+    }
+
+    .menu .container-fluid
+    {
+        width: 960px;
+        text-align: left;
+        height: inherit;
+    }
+
+    .banner__title {
+        font-size: 22px;
+    }
+
+    .banner__description {
+        font-size: 15px;
+    }
+
+    .banners {
+        margin-bottom: 5px;
+    }
+
+    .social-likes__widget {
+        margin: .5em !important;
+    }
+}
+
+@media only screen and (min-width: 1382px) {
+
+    /*Десктоп с большими разрешениями, телевизоры.*/
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -12,9 +344,9 @@ body.main {
 }
 
 .page {
-    /*background: #eee;*/
-    background: url('../data/i/backgr.png') 0 0 repeat;
-    min-width: 1060px;
+    background: #eee;
+    /*background: url('../data/i/backgr.png') 0 0 repeat;*/
+    /*min-width: 1060px;*/
     min-height: 100%;
     margin:0 auto -60px;
 }
@@ -52,7 +384,7 @@ body.main {
 .header
 {
     display: inline-block;
-    min-width: 100%;
+    width: 100%;
     background: #eee;
     text-align: center;
     margin-bottom: 0px;
@@ -70,8 +402,6 @@ body.main {
     z-index: 11;
     display: block;
     width: 100%;
-    min-width: 960px;
-    height: 30px;
     position: relative;
     background: #ca0600;
     white-space: nowrap;
@@ -82,18 +412,13 @@ body.main {
 
 .menu .container-fluid
 {
-    width: 960px;
     margin: 0 auto;
     padding: 0 20px;
     background: #ca0600;
-    text-align: left;
-    height: inherit;
 }
 
 .menu .container-fluid .menu__list a
 {
-    height: 30px;
-    padding: 6px 38px 7px;
     color: #fff;
 }
 
@@ -123,16 +448,12 @@ body.main {
 .banner__title, .banner__description {
     width: 100%;
     position: absolute;
-    top: 6px;
     left: 0;
     text-align: center;
-    font: 22px Arial;
     color: #333;
 }
 
 .banner__description {
-    top: 34px;
-    font: 15px Arial;
     color: #333;
 }
 
@@ -168,40 +489,24 @@ body.main {
 
 .header__content
 {
-    z-index: 12;
     display: inline-block;
     min-height: 91px;
-    position: relative;
 }
 
 .header__logo
 {
-    display: block;
-    position: absolute;
-    top: 20px;
     width: 323px;
     height: 56px;
-    background: url('../data/i/logo_ny.png') 0 0 no-repeat;
-    /*background: url('../data/i/logo.png') 0 0 no-repeat;*/
-}
-
-.header__inner {
-    display: table;
-    min-width: 545px;
-    margin: 0 20px 0 400px;
-    padding-top: 32px;
+    background: url('../data/i/logo.png') 0 0 no-repeat;
 }
 
 .header__phone {
     display: table-cell;
-    min-width: 230px;
     height: 24px;
     padding-top: 6px;
     vertical-align: top;
-    text-align: center;
     font-size: 15px;
     line-height: 17px;
-    padding-left: 25px;
 }
 
 .header__phone-icon {
@@ -215,7 +520,6 @@ body.main {
 
 .header__socials {
     display: table-cell;
-    min-width: 230px;
     height: 24px;
     padding-top: 6px;
     vertical-align: top;
@@ -249,38 +553,22 @@ body.main {
     width: 960px;
     margin: 0 auto;
     background-color: #fff;
+    max-width: 100%;
 }
 
 .banners {
     background: #fff;
     padding: 10px;
-    margin-bottom: 5px;
     overflow: hidden;
 }
 
-.banners__item {
-    width: 306px;
-    height: 379px;
-    float: left;
-    margin-right: 0;
-    position: relative;
-}
-
-.item__first {
-    margin-right: 11px;
-}
-
-.item__last {
-    float: right;
-}
-.catalog {
-    padding-left: 12px;
+.banners__item .banner__link .banner__img{
+    width: 100%;
+    padding: 0 3px;
 }
 
 .catalog__item {
-    display: inline-block;
-    width: 225px;
-    margin: 0 9px 10px 0;
+    float: left;
     position: relative;
     vertical-align: top;
     background: #fff;
@@ -330,8 +618,7 @@ body.main {
 
 .catalog__item__img {
     display: block;
-    width: 225px;
-    height: 300px;
+    width: 100%;
     position: relative;
     z-index: 1;
 }
@@ -376,20 +663,20 @@ body.main {
 .catalog__head {
     padding-right: 20px;
     padding-left: 20px;
-    margin-left: -20px;
+    margin-left: -8px;
     border-bottom: 5px solid #eee;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     padding-top: 5px;
 }
 
 .catalog__sort {
     float: right;
-    margin-top: 5px;
+    margin-top: 9px;
+    font-weight: bold;
 }
 
 .catalog__cont {
-    font-size: 22px;
-    font-weight: 400;
+    font-weight: bold;
     margin: 5px 0;
     color: #27292c;
     line-height: 30px;
@@ -415,26 +702,13 @@ body.main {
 }
 
 .table__column {
-    display: table-cell;
     vertical-align: top;
     height: 100%;
-}
-
-.table__column_left {
-    width: 360px;
-}
-
-.table__column_right {
-    width: 600px;
 }
 
 .model {
     table-layout: fixed;
     display: table;
-    height: 100%;
-    width: 970px;
-    border-spacing: 5px 0;
-    margin: -5px 0 -5px -5px;
     background: #eee;
 }
 
@@ -456,10 +730,9 @@ body.main {
 .table__table {
     table-layout: fixed;
     display: table;
-    height: 100%;
-    width: 100%;
     border-spacing: 0 5px;
     background: #eee;
+    width: 100%;
 }
 
 .table__row {
@@ -470,13 +743,13 @@ body.main {
 .table__cell {
     display: table-cell;
     padding: 20px 16px 20px 20px;
-    width: 360px;
+    width: 100%;
     background-color: #fff;
-    width: 590px;
 }
 
 .table__cell .social {
     padding: 0px 0px 5px;
+    text-align: center;
 }
 
 .table__cell_flat {
@@ -489,7 +762,10 @@ body.main {
 
 .model_photo {
     position: relative;
-    width: 360px;
+}
+
+.model_photo a {
+    width: 100% !important;
 }
 
 .model_header {
@@ -521,17 +797,15 @@ body.main {
 }
 
 .size {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .size__title {
     font-size: 20px;
     vertical-align: top;
-}
-
-.size .button {
-    margin-left: 5px;
-    cursor: default;
+    padding-bottom: 10px;
+    float: left;
+    padding-right: 5px;
 }
 
 .size__table-link {
@@ -596,7 +870,6 @@ body.main {
 }
 
 .breadcrumbs {
-    margin-bottom: 5px;
     background: #fff;
     font-size: 13px;
     line-height: 16px;
@@ -852,12 +1125,6 @@ div.form input, div.form textarea, div.form select {
 
     padding-top: 0px !important;
     padding-bottom: 0px !important;
-    margin-bottom: 30px;
-    border-radius: 50px;
-}
-
-.carousel-caption h3{
-    margin-top: 10px;
 }
 
 .panel-body a, a.link {
@@ -884,4 +1151,36 @@ h3.news {
 .social-likes {
     padding: 5px 5px 0px !important;
     margin: 0px 0px !important;
+}
+
+.navbar-header .navbar-toggle {
+    padding: 5px 20px;
+    margin: 0;
+    background-color: #A80500;
+    border: 0;
+    border-radius: 0px;
+    color: #ffffff;
+    float: none;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #ff3d00 !important;
+    color: #ffffff !important;
+}
+
+.catalog__data {
+    padding: 6px;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.sizes{
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.MagicZoomBigImageCont{
+    width: 154% !important;
+    height: 499px !important;
+    left: 103% !important;
 }

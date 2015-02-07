@@ -30,7 +30,7 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div class="banners">
-    <div class="banners__item item__first">
+    <div class="banners__item">
         <a class="banner__link" href="dress">
             <img class="banner__img" src="<?= $this->bu('data/i/main_dress.jpg') ?>" alt="banner">
             <div class="banner__title">Платья</div>
@@ -44,7 +44,7 @@ $this->pageTitle=Yii::app()->name;
             <span class="banner__description">Качественные материалы и фурнитура</span>
         </a>
     </div>
-    <div class="banners__item item__last">
+    <div class="banners__item">
         <a class="banner__link" href="kimono">
             <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg') ?>" alt="banner">
             <div class="banner__title">Кимоно</div>

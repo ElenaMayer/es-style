@@ -1,19 +1,19 @@
 <div class="catalog">
     <div class="catalog__head">
-        <span class="catalog__sort">
-            <strong>Сортировать:</strong>
+        <div class="catalog__sort">
+            <span>Сортировать:</span>
             <?php $this->widget('booster.widgets.TbButtonGroup', array(
                 'buttons'=>array(
                     array('label'=>Yii::app()->session['catalog_order'], 'items'=>Photo::model()->getOrderList($type)),
                 ),
                 'htmlOptions'=>array('class'=>'order_menu')
             )); ?>
-        </span>
+        </div>
         <div class="catalog__cont">
             <span>Всего <?= count($model) ?> товаров</span>
         </div>
     </div>
-    <div id="data">
+    <div id="data" class="catalog__data">
         <?php $this->renderPartial('_content', array('model'=>$model, 'type'=>$type)); ?>
     </div>
 </div>

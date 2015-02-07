@@ -46,7 +46,7 @@
                             <?php if(!$model->size) :?>
                                 <span class="size__title">Универсальный размер <?php if(!empty($model->uni_size)):?>(подходит на размеры <?= $model->uni_size ?>)<?php endif;?></span>
                             <?php else :?>
-                                <span class="size__title">Размеры в наличии:</span>
+                                <div class="size__title">Размеры в наличии:</div>
                                 <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
                             <?php endif; ?>
                         </div>

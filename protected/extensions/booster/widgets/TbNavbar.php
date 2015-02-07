@@ -138,7 +138,8 @@ class TbNavbar extends CWidget {
 		echo '<div class="navbar-header">';
 		if($this->collapse) {
 			$this->controller->widget('booster.widgets.TbButton', array(
-				'label' => '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>',
+				//'label' => '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>',
+                'label' => 'Меню',
 				'encodeLabel' => false,
 				'htmlOptions' => array(
 					'class' => 'navbar-toggle',
