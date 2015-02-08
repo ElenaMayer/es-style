@@ -1,15 +1,15 @@
 <h1>Одежда оптом</h1>
 
-<a class="hint hint-link" href="site/price">
-    <div class="hint__icon-price"></div><span class="hint__title">Скачать прайс</span>
-</a>
 <h2>Условия сотрудничестваа</h2>
 <ul class="list list_shopping">
     <li class="list__item">Мы работаем с физическими лицами и организаторами совместных покупок.</li>
     <li class="list__item">Минимальная оптовая партия - <b>7 000 руб.</b></li>
-    <li class="list__item">Заказ можно сделать через приведенную ниже форму, по телефону <b><?=Yii::app()->params['phone']?></b> или </br>по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
+    <li class="list__item">Заказ можно сделать через приведенную ниже форму, </br>по телефону <b><?=Yii::app()->params['phone']?></b> или по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
 </ul>
 
+<a class="hint hint-link" href="site/price">
+    <div class="hint__icon-price"></div><span class="hint__title">Скачать прайс</span>
+</a>
 <h2>Доставка</h2>
 <ul class="list list_shopping">
     <li class="list__item">Доставка по Новосибирску - бесплатно.</li>

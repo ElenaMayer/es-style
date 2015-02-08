@@ -1,6 +1,6 @@
 <div class="contact">
 
-    <h1>Точки розничной продажи в г. Новосибирске</h1>
+    <h1>Точки розничной продажи в Новосибирске</h1>
 
     <div class="contacts contacts-address">
         <span class="contacts__title">Мичурина 12 - Центральный рынок</span>
