@@ -26,33 +26,37 @@
                     <div class="model_header">
                         <h1 class="model_header__title"><?= $model->title; ?></h1>
                         <div class="model_header__title-article">Арт.&nbsp;<?= $model->article; ?></div>
-
+                        <?php if(!$model->is_available) :?>
+                            <div class="not_available">Нет в наличии</div>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <div class="table__row">
-                    <div class="model_detail" >
-                        <div class="model__price" >
-                            <span class="price price_model">
-                                <?php if(!$model->is_sale) :?>
-                                    <?= $model->price ?>&nbsp;руб.
+                <?php if($model->is_available) :?>
+                    <div class="table__row">
+                        <div class="model_detail" >
+                            <div class="model__price" >
+                                <span class="price price_model">
+                                    <?php if(!$model->is_sale) :?>
+                                        <?= $model->price ?>&nbsp;руб.
+                                    <?php else :?>
+                                        <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
+                                        <wbr>
+                                        <span class="price__new"><?= $model->new_price ?>&nbsp;руб.</span>
+                                    <?php endif; ?>
+                                </span>
+                            </div>
+                            <div class="size">
+                                <?php if(!$model->size) :?>
+                                    <span class="size__title">Универсальный размер <?php if(!empty($model->uni_size)):?>(подходит на размеры <?= $model->uni_size ?>)<?php endif;?></span>
                                 <?php else :?>
-                                    <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
-                                    <wbr>
-                                    <span class="price__new"><?= $model->new_price ?>&nbsp;руб.</span>
+                                    <div class="size__title">Размеры в наличии:</div>
+                                    <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
                                 <?php endif; ?>
-                            </span>
+                            </div>
+                            <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                         </div>
-                        <div class="size">
-                            <?php if(!$model->size) :?>
-                                <span class="size__title">Универсальный размер <?php if(!empty($model->uni_size)):?>(подходит на размеры <?= $model->uni_size ?>)<?php endif;?></span>
-                            <?php else :?>
-                                <div class="size__title">Размеры в наличии:</div>
-                                <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
-                            <?php endif; ?>
-                        </div>
-                        <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                     </div>
-                </div>
+                <?php endif; ?>
                 <div class="table__row">
                     <div class="table__cell">
                         <?= $model->description; ?>

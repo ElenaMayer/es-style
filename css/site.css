@@ -819,6 +819,7 @@ body.main {
 
 .table__cell_flat {
     padding: 0;
+    position: relative;
 }
 
 .social-likes__widget {
@@ -843,8 +844,9 @@ body.main {
 }
 
 .model_header__title-article {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 17px;
+    padding: 10px 0;
 }
 
 .model_detail {
@@ -1199,4 +1201,14 @@ h3.news {
 .sizes{
     display: inline-block;
     padding-bottom: 10px;
+}
+
+.not_available {
+    font-size: 18px;
+    color: gray;
+    padding-top: 10px;
+}
+
+.not_available_small {
+    color: gray;
 }

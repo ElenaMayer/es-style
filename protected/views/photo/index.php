@@ -26,6 +26,12 @@
             'filter'=>[1=>'Да',0=>'Нет'],
         ),
         array(
+            'name' => 'is_available',
+            'type'=>'raw',
+            'value'=> '"<p class=\"icon\">".CHtml::openTag("span", ["id" => $data->id, "class" => $data->is_available == 1?"is_available":"is_available false", "onclick"=>"set_is_available(this)"])."</span></p>"',
+            'filter'=>[1=>'Да',0=>'Нет'],
+        ),
+        array(
             'name' => 'is_new',
             'type'=>'raw',
             'value'=> '"<p class=\"icon\">".CHtml::openTag("span", ["id" => $data->id, "class" => $data->is_new == 1?"is_new":"is_new false", "onclick"=>"set_is_new(this)"])."</span></p>"',
@@ -51,6 +57,15 @@
 <script>
     function set_is_show(e){
         $.post( "setIsShow/" + $(e).attr('id'), function() {
+            if ($(e).hasClass('false'))
+                $(e).removeClass('false');
+            else
+                $(e).addClass('false');
+        }, "json");
+    }
+
+    function set_is_available(e){
+        $.post( "setIsAvailable/" + $(e).attr('id'), function() {
             if ($(e).hasClass('false'))
                 $(e).removeClass('false');
             else

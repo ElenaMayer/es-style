@@ -17,6 +17,10 @@
         <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
         <div><?php echo $form->checkBox($model,'is_show'); ?></div>
     </div>
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'is_available'); ?></div>
+        <div><?php echo $form->checkBox($model,'is_available'); ?></div>
+    </div>
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
         <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories'], array('prompt'=>'')); ?></div>

@@ -10,6 +10,7 @@
  * @property string $title
  * @property string $description
  * @property integer $is_show
+ * @property integer $is_available
  * @property string $date_create
  * @property integer $is_new
  * @property integer $price
@@ -38,6 +39,7 @@ class Photo extends CActiveRecord
     public $previewHeight = 300;
     public $previewWidth = 225;
     public $is_show = true;
+    public $is_available = true;
     public $is_new = true;
     public $size = true;
 
@@ -57,10 +59,10 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, is_show, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
+            array('article, is_show, is_available, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
             array('img, title, category, sale, uni_size', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('article, is_show, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
+            array('article, is_show, is_available, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
             array('category, title, article, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
@@ -93,6 +95,7 @@ class Photo extends CActiveRecord
 			'title' => 'Название',
 			'description' => 'Описание',
             'is_show' => 'Отображать',
+            'is_available' => 'В наличии',
             'is_new' => 'Новинка',
 			'date_create' => 'Дата добавления',
             'is_sale' => 'Скидка',
@@ -131,6 +134,7 @@ class Photo extends CActiveRecord
 		$criteria->compare('article',$this->article);
 		$criteria->compare('price',$this->price,true);
         $criteria->compare('is_show',$this->is_show);
+        $criteria->compare('is_available',$this->is_available);
         $criteria->compare('is_new',$this->is_new);
         $criteria->compare('is_sale',$this->is_sale);
 
@@ -240,10 +244,10 @@ class Photo extends CActiveRecord
                 $order = 'article';
                 break;
             case 'по возрастанию цены':
-                $order = 'price';
+                $order = 'is_available DESC, price';
                 break;
             case 'по убыванию цены':
-                $order = 'price DESC';
+                $order = 'is_available DESC, price DESC';
                 break;
             case 'по скидкам':
                 $order = 'sale DESC';

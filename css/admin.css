@@ -54,6 +54,15 @@ p.photo, p.icon
     cursor: pointer;
 }
 
+.grid-view .is_available {
+    margin: 9px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../data/i/is_available.png) 0 0;
+    cursor: pointer;
+}
+
 .grid-view .is_new {
     margin: 9px;
     display: inline-block;
@@ -71,7 +80,7 @@ p.photo, p.icon
     background: url(../data/i/is_sale.png) 0 0;
 }
 
-.grid-view .is_show.false, .is_new.false, .is_sale.false {
+.grid-view .is_show.false, .is_new.false, .is_sale.false ,.is_available.false{
     background-position: 0 50px;
 }
 

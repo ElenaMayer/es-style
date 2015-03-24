@@ -28,7 +28,7 @@ class PhotoController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsNew'),
+				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -136,6 +136,17 @@ class PhotoController extends Controller
             $photo->is_show = 1;
         else
             $photo->is_show = 0;
+        $photo->save();
+        Yii::app()->end();
+    }
+
+    //ajax method
+    public function actionSetIsAvailable($id){
+        $photo = Photo::model()->findByPk($id);
+        if(empty($photo->is_available))
+            $photo->is_available = 1;
+        else
+            $photo->is_available = 0;
         $photo->save();
         Yii::app()->end();
     }
