@@ -238,7 +238,7 @@ class Photo extends CActiveRecord
     public function getPhotos($category, $order_str){
         switch($order_str){
             case 'по новинкам':
-                $order = 'is_new  DESC';
+                $order = 'is_available DESC, is_new  DESC';
                 break;
             case 'по артиклю':
                 $order = 'article';
@@ -250,7 +250,7 @@ class Photo extends CActiveRecord
                 $order = 'is_available DESC, price DESC';
                 break;
             case 'по скидкам':
-                $order = 'sale DESC';
+                $order = 'is_available DESC, sale DESC';
                 break;
         }
         return $this->findAllByAttributes(

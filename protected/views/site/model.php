@@ -8,11 +8,13 @@
         <div class="table__table">
             <div class="table__cell_flat">
                 <div class="model_photo">
-                    <?php if($model->is_new) :?>
-                        <span class="item__label item__label_new">Новинка</span>
-                    <?php endif; ?>
-                    <?php if($model->is_sale) :?>
-                        <span class="item__label">− <?= $model->sale ?>%</span>
+                    <?php if($model->is_available) :?>
+                        <?php if($model->is_new) :?>
+                            <span class="item__label item__label_new">Новинка</span>
+                        <?php endif; ?>
+                        <?php if($model->is_sale) :?>
+                            <span class="item__label">− <?= $model->sale ?>%</span>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
                 </div>
