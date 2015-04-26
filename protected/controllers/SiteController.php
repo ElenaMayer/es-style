@@ -6,9 +6,89 @@ class SiteController extends Controller
 	public function actions() {
 	}
 
+    /**
+     * @return array action filters
+     */
+//    public function filters()
+//    {
+//        return array(
+//            'accessControl', // perform access control for CRUD operations
+//        );
+//    }
+
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'users'=>array('*'),
+            ),
+            array('deny',
+                'actions'=>array('login', 'register'),
+                'users'=>array('@'),
+            ),
+            array('deny',
+                'actions'=>array('account', 'sales', 'subscriptions'),
+                'users'=>array('?'),
+            ),
+        );
+    }
+
+    public function actionRegistration(){
+        $user = new User;
+        $user->attributes = Yii::app()->request->getPost('User');
+        if ($user->validate()) {
+            if($user->save()) {
+                echo true;
+                Yii::app()->end();
+            }
+        } else {
+            $this->renderPartial('_register',array('modelAuth'=>$user));
+        }
+    }
+
+    /**
+     * Displays the login page
+     */
+    public function actionLogin(){
+        $user=new User;
+        $user->attributes = Yii::app()->request->getPost('User');
+        // validate user input and redirect to the previous page if valid
+        if ($user->validate() && $user->login()) {
+            echo true;
+            Yii::app()->end();
+        } else {
+            $this->renderPartial('_login', array('modelAuth' => $user));
+        }
+    }
+
+    /**
+     * Logs out the current user and redirect to homepage.
+     */
+    public function actionLogout()
+    {
+        Yii::app()->user->logout();
+    }
+
 	public function actionIndex() {
+//        $this->sendOneMail();
 		$this->render('index');
 	}
+
+//    protected function sendOneMail(){
+//        $to = 'linner86@mail.ru';
+//        $subject = 'Восточный стиль - новинки!';
+//        include_once Yii::getPathOfAlias('root.protected.views.site').'\mail.php';
+//        $headers = 'From: esstyle54@gmail.com' . "\r\n" .
+//            'Reply-To: esstyle54@gmail.com' . "\r\n" .
+//            'Content-type: text/html' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//        mail($to, $subject ,$message, $headers);
+//    }
 
     public function actionCatalog($type){
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
@@ -38,10 +118,6 @@ class SiteController extends Controller
 				$this->render('error', $error);
 		}
 	}
-
-    public function actionLogin() {
-        Yii::app()->request->redirect('/admin/login');
-    }
 
     public function getOrder(){
         if(isset(Yii::app()->session['catalog_order']))

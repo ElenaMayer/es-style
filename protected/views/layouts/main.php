@@ -17,9 +17,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
-    <script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/magiczoom.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/magiczoom.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/social-likes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -34,7 +35,6 @@
         ga('send', 'pageview');
     </script>
     <!-- /GoogleAnalytics -->
-
 </head>
 
 <body class="main">
@@ -43,18 +43,43 @@
             <div class="header__content">
                 <a href="/" class="header__logo"></a>
                 <div class="header__inner">
-                    <div class="header__phone">
-                        <i class="header__phone-icon"></i>
-                        <?= Yii::app()->params['phone'] ?>
+                    <div class="header__contact">
+                        <div class="header__contact_item">
+                            <i class="header__phone-icon"></i>
+                            <?= Yii::app()->params['phone'] ?>
+                        </div>
+                        <div class="header__contact_item_right">
+                            Мы в соцсетях:
+                            <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
+                            <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
+                        </div>
                     </div>
-                    <div class="header__socials">
-                        Мы в соцсетях:
-                        <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
-                        <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
+                    <div class="user-nav user-nav_signed">
+                        <a class="basket-button button button_blue button_big"  href="/checkout/cart/">
+                            <span class="button__title">
+                                <i class="button__icon"></i>
+                                <span class="basket-button-title">Моя корзина</span>
+                            </span>
+                        </a>
+                        <div class="user-nav__sign-in">
+                            <a class="user-nav__user button button_big button_left" href="/wishlist/">
+                                <i class="button__icon"></i>
+                            </a>
+                            <div id='auth_buttons' class="user-nav__prefs button-dropdown">
+                                <?php if (Yii::app()->user->isGuest):?>
+                                    <a class="button button_big button_icon button_right" href="#" data-toggle="modal" data-target="#auth_form">
+                                        <span class="button__title">Вход</span>
+                                    </a>
+                                <?php else: ?>
+                                    <a class="button button_big button_icon button_right">
+                                        <span class="button__title logout">Выход</span>
+                                    </a>
+                                <?php endif;?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <?php
                 $this->widget(
                     'booster.widgets.TbNavbar',
@@ -88,7 +113,7 @@
             <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                 'links'=>$this->breadcrumbs,
             )); ?><!-- breadcrumbs -->
-        <?php endif?>
+        <?php endif;?>
         <div class="content">
             <?php echo $content; ?>
         </div>
@@ -98,5 +123,15 @@
         Copyright &copy; <?php echo date('Y'); ?> by es-style.ru.<br/>
         All Rights Reserved.<br/>
     </div><!-- footer -->
+    <?php $this->renderPartial('_auth', array('modelAuth'=>new User)); ?>
 </body>
+<script>
+    $( "#auth_buttons" ).on( "click", ".logout", function() {
+        $.ajax({
+            url: "/site/logout",
+            success: function( data ) {
+                window.location.reload();
+            }});
+    });
+</script>
 </html>

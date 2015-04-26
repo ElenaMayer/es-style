@@ -8,4 +8,5 @@ class AjaxController extends Controller
         echo Yii::app()->params['email'];
         Yii::app()->end();
     }
+
 }

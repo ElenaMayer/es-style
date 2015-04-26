@@ -49,7 +49,7 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate())
+			if(!$this->_identity->authenticateAdmin())
 				$this->addError('password','Некорректный логин или пароль.');
 		}
 	}
@@ -63,7 +63,7 @@ class LoginForm extends CFormModel
 		if($this->_identity===null)
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			$this->_identity->authenticate();
+			$this->_identity->authenticateAdmin();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{

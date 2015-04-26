@@ -1,0 +1,226 @@
+.auth_form .modal-dialog {
+    margin-top: 20%;
+    font-size: 13px;
+}
+
+.popup__inner {
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #d6d6d6;
+    box-shadow: 0 1px 16px rgba(0,0,0,.25);
+    background: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    white-space: normal;
+}
+
+.auth-popup__subtitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    color: #CA0600;
+    line-height: 30px;
+    margin-top: -5px;
+}
+
+.popup__content {
+    padding: 0;
+    display: block;
+}
+
+.popup__error {
+    border: 1px solid #f16048;
+    background-color: #faebe7;
+    color: #df280a;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 15px;
+    padding: 8px 8px 6px 32px;
+    margin: 0 0 10px;
+    position: relative;
+}
+
+.form__widget {
+    margin: 0 0 20px;
+    padding-left: 120px;
+}
+
+.form__widget-label {
+    font-weight: 700;
+    float: left;
+    margin-left: -120px;
+    line-height: 24px;
+}
+
+.form__widget-content {
+    margin: 0;
+}
+
+.login-form .text-field {
+    width: 166px;
+}
+
+.text-field {
+    padding: 0 8px;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.1);
+    outline: 0;
+    font-size: 13px;
+    font-family: Arial;
+}
+
+.form__error, .form__info {
+    padding-top: 6px;
+    font-size: 13px;
+    color: #e54c35;
+    display: none;
+}
+
+.form__hint {
+    padding-top: 6px;
+    font-size: 13px;
+    color: #999;
+    display: none;
+}
+
+.form__controls {
+    padding-left: 120px;
+}
+
+.login-form__register {
+    margin-left: 14px;
+}
+
+.link, a {
+    color: #9e3c5d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover, .not-touch a:hover {
+    color: #ff3d00;
+}
+
+.login-form__lost {
+    margin-top: -40px;
+    float: right;
+}
+
+.select {
+    display: inline-block;
+    position: relative;
+}
+
+.register-form__birthday .dropdown {
+    max-height: 260px;
+    overflow: auto;
+}
+
+.select__item {
+    position: relative;
+    padding: 2px 20px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.select__item_current .select__tick {
+    display: inline-block;
+}
+
+.select__tick {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    margin-top: -6px;
+    background-color: #9e3c5d;
+}
+
+.select .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 3px 0;
+    white-space: nowrap;
+    font: 13px Arial;
+    line-height: 16px;
+}
+
+.select_active .dropdown {
+    z-index: 10;
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    margin: 0;
+    padding: 13px 10px 7px;
+    border: 1px solid #cbcbcb;
+    background: #fff;
+    text-align: left;
+    list-style-type: none;
+    font-size: 13px;
+    box-shadow: 0 1px 8px rgba(0,0,0,.25);
+}
+
+.checkbox label {
+    font-weight: 700;
+    cursor: default;
+}
+
+.subscribed input{
+    margin: 10px 0 10px -150px !important;
+}
+
+.date_of_birth .form-control, .sex .form-control {
+    width: inherit;
+    font-size: 13px;
+}
+
+.date_of_birth .date, .month {
+    float: left;
+    margin-right: 5px;
+}
+
+.subscribed label {
+    font-size: 11px;
+    color: #888;
+    left: 35px !important;
+    font-weight: 300;
+}
+
+.register-form .row {
+    margin: 0 0 -5px 130px !important;
+}
+
+.register-form .row label {
+    left: -130px;
+}
+
+
+.register-form .form__controls {
+    padding-left: 130px;
+}
+
+.auth_form .has-error .control-label{
+    color: #CA0600;
+    font-size: 13px;
+}
+
+.auth_form .has-error .help-block {
+    color: #CA0600;
+}
+
+.auth_form .has-error .form-control {
+    border-color: #CA0600;
+}
