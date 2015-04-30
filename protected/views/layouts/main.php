@@ -62,9 +62,11 @@
                             </span>
                         </a>
                         <div class="user-nav__sign-in">
-                            <a class="user-nav__user button button_big button_left" href="/wishlist/">
-                                <i class="button__icon"></i>
-                            </a>
+                            <?php if (!Yii::app()->user->isGuest):?>
+                                <a class="user-nav__user button button_big button_left" href="/customer/">
+                                    <i class="button__icon"></i>
+                                </a>
+                            <?php endif;?>
                             <div id='auth_buttons' class="user-nav__prefs button-dropdown">
                                 <?php if (Yii::app()->user->isGuest):?>
                                     <a class="button button_big button_icon button_right" href="#" data-toggle="modal" data-target="#auth_form">
@@ -108,7 +110,6 @@
                 );
             ?>
         </div><!-- header -->
-
         <?php if(isset($this->breadcrumbs)):?>
             <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                 'links'=>$this->breadcrumbs,

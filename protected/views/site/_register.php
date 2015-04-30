@@ -12,7 +12,7 @@
     <?php echo $form->textFieldGroup($modelAuth, 'phone', array('placeholder'=>'+7')); ?>
 </div>
 <div class="row">
-    <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'')); ?>
+    <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
     <div class="form-group subscribed">
@@ -21,10 +21,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group date_of_birth">
+    <div class="form-group few_field">
         <?php echo $form->labelEx($modelAuth,'date_of_birth'); ?>
-        <?php echo $form->dropDownList($modelAuth,'date', $modelAuth->getDatesArray(), array('class' => 'form-control date')); ?>
-        <?php echo $form->dropDownList($modelAuth,'month', $modelAuth->getMonthsArray(), array('class' => 'form-control month')); ?>
+        <?php echo $form->dropDownList($modelAuth,'date', $modelAuth->getDatesArray(), array('class' => 'form-control left_field')); ?>
+        <?php echo $form->dropDownList($modelAuth,'month', $modelAuth->getMonthsArray(), array('class' => 'form-control middle_field')); ?>
         <?php echo $form->dropDownList($modelAuth,'year', $modelAuth->getYearsArray(), array('class' => 'form-control')); ?>
     </div>
 </div>
@@ -36,7 +36,7 @@
         ))); ?>
 </div>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'')); ?>
+    <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
     <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'')); ?>

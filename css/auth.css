@@ -178,16 +178,21 @@
     cursor: default;
 }
 
-.subscribed input{
-    margin: 10px 0 10px -150px !important;
+.register-form .subscribed input{
+    margin: 10px 0 10px -163px !important;
 }
 
-.date_of_birth .form-control, .sex .form-control {
+.user-form .subscribed input{
+    margin: 10px 0 10px -228px !important;
+}
+
+.few_field .form-control, .sex .form-control {
     width: inherit;
     font-size: 13px;
+    margin-bottom: 5px;
 }
 
-.date_of_birth .date, .month {
+.few_field .left_field, .middle_field {
     float: left;
     margin-right: 5px;
 }
@@ -195,32 +200,81 @@
 .subscribed label {
     font-size: 11px;
     color: #888;
-    left: 35px !important;
+    left: 20px !important;
     font-weight: 300;
 }
 
-.register-form .row {
+.register-form .row, .user-form .row {
     margin: 0 0 -5px 130px !important;
 }
 
-.register-form .row label {
+.register-form .row label, .user-form .row label{
     left: -130px;
 }
 
 
-.register-form .form__controls {
+.register-form .form__controls, .user-form .form__controls {
     padding-left: 130px;
 }
 
-.auth_form .has-error .control-label{
+.auth_form .has-error .control-label, .customer .has-error .control-label{
     color: #CA0600;
     font-size: 13px;
 }
 
-.auth_form .has-error .help-block {
+.auth_form .has-error .help-block, .customer .has-error .help-block {
     color: #CA0600;
 }
 
-.auth_form .has-error .form-control {
+.auth_form .has-error .form-control, .customer .has-error .form-control {
     border-color: #CA0600;
+}
+
+.customer {
+    padding: 20px 0 0 40px;
+}
+
+.customer .table__column_left {
+    width: 13%;
+    padding-top: 20px;
+}
+
+.leftside-menu__item {
+    margin-bottom: 15px;
+    list-style-type: none;
+}
+
+.customer a {
+    color: #9e3c5d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.customer a:hover {
+    color: #ff3d00;
+    text-decoration: none;
+}
+
+.customer h1 {
+    margin: -6px 180px 24px -2px;
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.customer .row label {
+    font-weight: inherit;
+    font-size: 13px;
+}
+
+.customer .row button {
+    font-size: 13px;
+}
+
+.customer .form-group input[type='text'], .customer .form-group input[type='password'] {
+    width: 190px;
+    font-size: 13px;
+}
+
+.customer .address input[type='text'] {
+    width: 98%;
 }

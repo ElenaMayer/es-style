@@ -9,12 +9,12 @@ class SiteController extends Controller
     /**
      * @return array action filters
      */
-//    public function filters()
-//    {
-//        return array(
-//            'accessControl', // perform access control for CRUD operations
-//        );
-//    }
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+        );
+    }
 
     /**
      * Specifies the access control rules.
@@ -24,16 +24,16 @@ class SiteController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow',
-                'users'=>array('*'),
-            ),
             array('deny',
                 'actions'=>array('login', 'register'),
                 'users'=>array('@'),
             ),
             array('deny',
-                'actions'=>array('account', 'sales', 'subscriptions'),
+                'actions'=>array('customer', 'orders', 'orderNew'),
                 'users'=>array('?'),
+            ),
+            array('allow',
+                'users'=>array('*'),
             ),
         );
     }
@@ -171,5 +171,26 @@ class SiteController extends Controller
         header("Pragma: no-cache");
         echo $file;
         exit;
+    }
+
+    public function actionCustomer(){
+        $model = User::model()->getUser();
+        $model->scenario = 'customer';
+        $modelPass = new User('changePassword');
+        if(isset($_POST['User'])) {
+            $model->attributes=$_POST['User'];
+            if($model->validate() && $model->save())
+                $this->refresh();
+            else
+                $modelPass = $model;
+        }
+        $this->render('user/customer',array(
+            'model'=>$model,
+            'modelPass' => $modelPass,
+        ));
+    }
+
+    public function actionOrders(){
+
     }
 }

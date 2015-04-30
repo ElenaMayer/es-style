@@ -331,7 +331,7 @@
         width: 50%;
     }
 
-    .row input {
+    .customer .row input {
         display: inline-block;
         position: relative;
         width: 80%;
@@ -418,7 +418,7 @@ body.main {
 
 .error {
     padding: 30px 0px 90px 64px;
-    width: 700px;
+    width: 100%;
     font-size: 16px;
 }
 
@@ -1013,6 +1013,11 @@ body.main {
 
 .list__item:before {
     content: '\2014\a0';
+}
+
+.list_shopping .red {
+    color: #ca0600;
+    font-weight: 700;
 }
 
 .list {

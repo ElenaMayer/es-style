@@ -6,7 +6,7 @@
         <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'htmlOptions'=>['class'=>'login_form'])); ?>
     </div>
     <div class="row">
-        <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'')); ?>
+        <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
         <span class="login-form__lost link">Забыли?</span>
     </div>
     <div class="form__controls">

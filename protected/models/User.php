@@ -8,10 +8,14 @@
  * @property string $username
  * @property string $password
  * @property string $name
+ * @property string $surname
+ * @property string $middlename
  * @property string $phone
  * @property string $email
+ * @property string $address
  * @property string $date_of_birth
  * @property string $sex
+ * @property integer $postcode
  * @property integer $is_subscribed
  */
 class User extends CActiveRecord
@@ -20,6 +24,8 @@ class User extends CActiveRecord
     public $month;
     public $year;
     public $password2;
+    public $password_old;
+    public $password_new;
     public $is_subscribed = true;
     private $_identity;
 
@@ -37,21 +43,32 @@ class User extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('username, password, name, phone, email, sex', 'length', 'max'=>255),
+			array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
             array('password, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
             array('email', 'email'),
-			array('date_of_birth, date, month, year', 'safe'),
-            array('email, password', 'required', 'message'=>'Это поле необходимо заполнить.'),
-            array('name, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
-			array('id, username, name, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
-            array('password2', 'passwordMatch', 'on' => 'registration'),
+            array('postcode', 'numerical', 'integerOnly'=>true),
+			array('date_of_birth, date, month, year, is_subscribed', 'safe'),
+            array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
+            array('email, name, password, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
+            array('name', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
+            array('password2, password_old, password_new', 'required', 'on' => 'changePassword', 'message'=>'Это поле необходимо заполнить.'),
+			array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
+            array('password', 'passwordMatch', 'on' => 'registration'),
+            array('password_new', 'passwordMatch', 'on' => 'changePassword'),
+            array('password_old', 'passwordCheck', 'on' => 'changePassword'),
             array('email', 'emailCheck'),
+            array('email','unsafe','on'=>'customer'),
 		);
 	}
 
     public function passwordMatch ( $attribute ) {
-        if ( $this->password !== $this->password2 )
-            $this->addError ( $attribute, "Пожалуйста, убедитесь, что Ваши пароли совпадают" );
+        if ( $this->$attribute !== $this->password2 )
+            $this->addError ( 'password2', "Пожалуйста, убедитесь, что Ваши пароли совпадают" );
+    }
+
+    public function passwordCheck ( $attribute ) {
+        if(!CPasswordHelper::verifyPassword($this->$attribute, $this->password))
+            $this->addError ( $attribute, "Текущий пароль указан неверно" );
     }
 
     public function emailCheck ( $attribute ) {
@@ -83,10 +100,16 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'Username',
 			'password' => 'Пароль',
+            'password_old' => 'Текущий пароль',
+            'password_new' => 'Новый пароль',
             'password2' => 'Повторите пароль',
 			'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'middlename' => 'Отчество',
 			'phone' => 'Моб. телефон',
-			'email' => 'Эл. почта',
+            'email' => 'Эл. почта',
+            'address' => 'Адрес',
+            'postcode' => 'Почтовый индекс',
 			'date_of_birth' => 'Дата рождения',
 			'sex' => 'Пол',
 			'is_subscribed' => 'Подписаться на новости и скидки',
@@ -115,9 +138,9 @@ class User extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('name',$this->name,true);
+        $criteria->compare('surname',$this->surname,true);
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('date_of_birth',$this->date_of_birth,true);
 		$criteria->compare('sex',$this->sex,true);
 		$criteria->compare('is_subscribed',$this->is_subscribed);
 
@@ -178,32 +201,48 @@ class User extends CActiveRecord
     {
         if(parent::beforeSave())
         {
-            if($this->isNewRecord)
-            {
-                $salt = CPasswordHelper::generateSalt(7);
-                $this->password = crypt($this->password, $salt);
-                if (!empty($this->date) && !empty($this->month) && !empty($this->year))
-                    $this->date_of_birth = $this->date . '.' .$this->month . '.' . $this->year;
+            if($this->isNewRecord) {
+                $this->password = passwordCrypt($this->password);
+            } else {
+                if (!empty($this->password_new))
+                    $this->password = $this->passwordCrypt($this->password_new);
             }
+            if (!empty($this->date) && !empty($this->month) && !empty($this->year))
+                $this->date_of_birth = $this->year . '.' .$this->month . '.' . $this->date;
             return true;
         }
         else
             return false;
     }
 
+    protected function passwordCrypt($password){
+        $salt = CPasswordHelper::generateSalt(7);
+        return crypt($password, $salt);
+    }
+
     public function login()
     {
-        if($this->_identity===null)
-        {
+        if($this->_identity===null) {
             $this->_identity=new UserIdentity($this->email, $this->password);
             $this->_identity->authenticate();
         }
-        if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
-        {
+        if($this->_identity->errorCode===UserIdentity::ERROR_NONE) {
             Yii::app()->user->login($this->_identity);
             return true;
-        }
-        else
+        } else {
+            $this->addError('password', "Неверный логин или пароль.");
             return false;
+        }
+    }
+
+    public function getUser(){
+        $user = $this->findByAttributes(array('email'=>Yii::app()->user->email));
+        if (isset($user->date_of_birth)) {
+            $date_of_birth = strtotime($user->date_of_birth);
+            $user->date = (int)date('d', $date_of_birth);
+            $user->month = date('n', $date_of_birth);
+            $user->year = date('Y', $date_of_birth);
+        }
+        return $user;
     }
 }
