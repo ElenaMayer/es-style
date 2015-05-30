@@ -28,6 +28,8 @@
  * @property integer $size_50
  * @property integer $size_52
  * @property integer $size_54
+ * @property integer $size_at
+ * @property integer $size_to
  */
 class Photo extends CActiveRecord
 {
@@ -59,7 +61,7 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, is_show, is_available, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54', 'numerical', 'integerOnly'=>true),
+            array('article, is_show, is_available, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
             array('img, title, category, sale, uni_size', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
             array('article, is_show, is_available, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
@@ -112,6 +114,8 @@ class Photo extends CActiveRecord
             'size_50' => '50',
             'size_52' => '52',
             'size_54' => '54',
+            'size_at' => 'Размер от',
+            'size_to' => 'Размер до',
 		);
 	}
 
@@ -235,8 +239,8 @@ class Photo extends CActiveRecord
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
     }
 
-    public function getPhotos($category, $order_str){
-        switch($order_str){
+    public function getPhotos($category, $order_str, $size){
+        switch($order_str) {
             case 'по новинкам':
                 $order = 'is_available DESC, is_new  DESC';
                 break;
@@ -253,10 +257,31 @@ class Photo extends CActiveRecord
                 $order = 'is_available DESC, sale DESC';
                 break;
         }
-        return $this->findAllByAttributes(
-            array('is_show' => 1, 'category' => $category),
-            array('order'=>$order)
-        );
+        if ($size == 'все') {
+            return $this->findAllByAttributes(
+                array('is_show' => 1, 'category' => $category),
+                array('order' => $order)
+            );
+        } else {
+            if($size <= 54) {
+                $sql = 'SELECT * FROM photo
+                        WHERE
+                          is_show = 1 AND
+                          category = :category AND
+                          ((size = 0 AND size_at <= :size AND size_to >= :size)
+                          OR (size = 1 AND size_' . $size . ' = 1))
+                          ORDER BY '.$order;
+            } else {
+                $sql = 'SELECT * FROM photo
+                        WHERE
+                          is_show = 1 AND
+                          category = :category AND
+                          size = 0 AND size_at <= :size AND size_to >= :size
+                          ORDER BY '.$order;
+            }
+            $params = [':category'=>$category, ':size'=>$size];
+            return $this->findAllBySql($sql, $params);
+        }
     }
 
     public function getSale(){
@@ -280,6 +305,15 @@ class Photo extends CActiveRecord
         if(!empty($sale))
             array_push($res, array('label'=>'по скидкам'));
         return $res;
+    }
+
+    public function getSizes(){
+        $sizes= [];
+        $sizes['all']['label']= 'все';
+        for ($i=40; $i<= 60; $i+=2) {
+            $sizes[$i]['label'] = $i;
+        }
+        return $sizes;
     }
 
 }

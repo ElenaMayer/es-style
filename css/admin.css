@@ -105,11 +105,16 @@ input[type=file] {
 .sale .row,  .uni_size .row{
     background-color: #d5d5d5;
     width: 310px;
-    margin: 0 !important;
+    padding: 3px 0;
 }
 
 .sale, .uni_size {
     padding: 0px 140px;
+}
+
+.sale, .uni_size .input {
+    position: absolute;
+    left: 335px;
 }
 
 ul.yiiPager a:link {

@@ -94,9 +94,11 @@ class SiteController extends Controller
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
-        $model = Photo::model()->getPhotos($type, $this->getOrder());
-        if(isset($_GET['order']))
-            $this->renderPartial('_content',array('model'=>$model, 'type'=>$type));
+        if(isset($_GET['size']))
+            $this->setSize($_GET['size']);
+        $model = Photo::model()->getPhotos($type, $this->getOrder(), $this->getSize());
+        if(isset($_GET['order']) || isset($_GET['size']))
+            $this->renderPartial('catalog',array('model'=>$model, 'type'=>$type));
         else
             $this->render('catalog',array('model'=>$model, 'type'=>$type));
     }
@@ -130,6 +132,19 @@ class SiteController extends Controller
 
     public function setOrder($order){
         Yii::app()->session['catalog_order'] = $order;
+    }
+
+    public function getSize(){
+        if(isset(Yii::app()->session['catalog_size']))
+            $order = Yii::app()->session['catalog_size'];
+        else {
+            $order = Yii::app()->session['catalog_size'] = 'все';
+        }
+        return $order;
+    }
+
+    public function setSize($size){
+        Yii::app()->session['catalog_size'] = $size;
     }
 
     public function actionContact() {

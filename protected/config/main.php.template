@@ -74,6 +74,7 @@ return array(
         'ipAddress' => 'my_ip',
         'vkontakteLink' => 'link',
         'odnoklassnikiLink' => 'link',
+        'instagramLink' => 'link',
         'categories' => array(
             'dress' => 'Платья',
             'blouse' => 'Блузки',

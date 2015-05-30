@@ -1,6 +1,6 @@
-<div class="catalog">
+<div id="data" class="catalog">
     <div class="catalog__head">
-        <div class="catalog__sort">
+        <div class="catalog__dd">
             <span>Сортировать:</span>
             <?php $this->widget('booster.widgets.TbButtonGroup', array(
                 'buttons'=>array(
@@ -9,12 +9,25 @@
                 'htmlOptions'=>array('class'=>'order_menu')
             )); ?>
         </div>
+        <div class="catalog__dd">
+            <span>Выбрать размер:</span>
+            <?php $this->widget('booster.widgets.TbButtonGroup', array(
+                'buttons'=>array(
+                    array('label'=>Yii::app()->session['catalog_size'], 'items'=>Photo::model()->getSizes()),
+                ),
+                'htmlOptions'=>array('class'=>'size_menu')
+            )); ?>
+        </div>
         <div class="catalog__cont">
             <span>Всего <?= count($model) ?> товаров</span>
         </div>
     </div>
-    <div id="data" class="catalog__data">
-        <?php $this->renderPartial('_content', array('model'=>$model, 'type'=>$type)); ?>
+    <div class="catalog__data">
+        <?php if(empty($model)): ?>
+            <div class="empty">К большому сожалению в этом разделе сейчас нет моделей <?= Yii::app()->session['catalog_size'] ?> размера :(</div>
+        <?php else: ?>
+            <?php $this->renderPartial('_content', array('model'=>$model, 'type'=>$type)); ?>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -26,7 +39,14 @@
             }
         });
     });
-    $( "ul.dropdown-menu>li>a" ).click(function() {
+    $( document ).ready(function() {
+        $(".size_menu>ul.dropdown-menu>li").each(function( index ) {
+            if ($(this).text().replace(/^\s+/, "") == '<?=Yii::app()->session['catalog_size']?>'.replace(/^\s+/, "")){
+                $(this).addClass('active');
+            }
+        });
+    });
+    $( ".order_menu>ul.dropdown-menu>li>a" ).click(function() {
         order = $(this).text();
         a = $(this);
         $.ajax({
@@ -38,9 +58,20 @@
             dataType : "html",
             success: function( data ) {
                 $('#data').html(data);
-                $('.order_menu>button').html(order + ' <span class="caret"></span>');
-                $('.order_menu>ul.dropdown-menu>li.active').removeClass('active');
-                a.parent().addClass('active');
+            }});
+    });
+    $( ".size_menu>ul.dropdown-menu>li>a" ).click(function() {
+        size = $(this).text();
+        a = $(this);
+        $.ajax({
+            url: '/<?= $type?>',
+            data: {
+                size: size
+            },
+            type: "GET",
+            dataType : "html",
+            success: function( data ) {
+                $('#data').html(data);
             }});
     });
 </script>

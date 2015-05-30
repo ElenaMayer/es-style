@@ -93,8 +93,12 @@
     </div>
     <div class="uni_size">
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'uni_size'); ?></div>
-            <div><?php echo $form->textField($model,'uni_size'); ?></div>
+            <div class="label"><?php echo $form->labelEx($model,'size_at'); ?></div>
+            <div class="input"><?php echo $form->textField($model,'size_at'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'size_to'); ?></div>
+            <div class="input"><?php echo $form->textField($model,'size_to'); ?></div>
         </div>
     </div>
     <div class="clear"></div>
