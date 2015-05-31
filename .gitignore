@@ -8,6 +8,6 @@
 /protected/config/main.php
 
 /protected/data/photo
-/protected/data/news
+/data/news
 /data/photo
 /data/price
