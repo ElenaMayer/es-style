@@ -9,17 +9,17 @@ $this->pageTitle=Yii::app()->name;
         array(
             'items' => array(
                 array(
-                    'image' => $this->bu('data/i/carousel_first.jpg'),
+                    'image' => $this->bu('data/i/carousel_first.jpg?1'),
                     'label' => 'Восточный стиль',
                     'caption' => '<p>Одежда в восточном стиле - это прежде всего яркие цвета, натуральные материалы и необычные рисунки.</p>'
                 ),
                 array(
-                    'image' => $this->bu('data/i/carousel_second.jpg'),
+                    'image' => $this->bu('data/i/carousel_second.jpg?1'),
                     'label' => 'Новинки',
                     'caption' => '<p>Постоянно пополняющийся ассортимент дизайнерских моделей. </p><p>Оригинальные формы и узоры предоставляют небывалые возможности для самовыражения.</p>'
                 ),
                 array(
-                    'image' => $this->bu('data/i/carousel_third.jpg'),
+                    'image' => $this->bu('data/i/carousel_third.jpg?1'),
                     'label' => 'Скидки',
                     'caption' => '<p>Всегда новые акции и уникальные спецпредложения. </p><p>Фиксированная система скидок позволяет получить наибольшую выгоду при покупке.</p> '
                 ),
@@ -46,7 +46,7 @@ $this->pageTitle=Yii::app()->name;
     </div>
     <div class="banners__item">
         <a class="banner__link" href="kimono">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg') ?>" alt="banner">
+            <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg?1') ?>" alt="banner">
             <div class="banner__title">Кимоно</div>
             <span class="banner__description">Сочетание красоты и комфорта</span>
         </a>

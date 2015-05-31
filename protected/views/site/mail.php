@@ -22,7 +22,7 @@
         <table cellpadding="0" cellspacing="0" border="0" width="600" align="center" style="border:none;border-collapse:collapse;" bgcolor="#ffffff"><tbody><tr><td>
             <table style="border:none;border-collapse:collapse;padding:0px;margin:0px;" width="600" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td style="border:none;padding:10px 0px;margin:0px;">
                 <a target="_blank" href="http://es-style.ru">
-                    <img hspace="0" vspace="0" src="http://es-style.ru/frontend/data/i/logo.png" border="0" style="color: #6A81AA;text-align:center;font-size: 16px;line-height:16px;font-family:Arial,Tahoma,sans-serif;border:none;text-decoration:none;line-height:0;vertical-align:top;padding:0px;margin:0px;" alt="Восточный стиль">
+                    <img hspace="0" vspace="0" src="http://es-style.ru/frontend/data/i/logo.png?1" border="0" style="color: #6A81AA;text-align:center;font-size: 16px;line-height:16px;font-family:Arial,Tahoma,sans-serif;border:none;text-decoration:none;line-height:0;vertical-align:top;padding:0px;margin:0px;" alt="Восточный стиль">
                 </a>
             </td></tr></tbody></table>
             <table width="600" height="22" cellpadding="0" cellspacing="0" border="0" style="width:600px;height:23px;importantimportantborder-collapse:collapse;background:#27292c;color:#ffffff;" bgcolor="#27292c">

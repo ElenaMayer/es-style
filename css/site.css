@@ -269,7 +269,7 @@ body.main {
 {
     width: 323px;
     height: 56px;
-    background: url('../data/i/logo.png') 0 0 no-repeat;
+    background: url('../data/i/logo.png?1') 0 0 no-repeat;
     position: absolute;
     top: 20px;
     display: block;
@@ -293,7 +293,7 @@ body.main {
     height: 30px;
     margin: -6px 4px 0 0;
     vertical-align: top;
-    background: url('../data/i/phone.png') 0 0 no-repeat;
+    background: url('../data/i/phone.png?1') 0 0 no-repeat;
 }
 
 .header__social-item {
