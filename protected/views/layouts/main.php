@@ -39,8 +39,16 @@
 <body class="main">
     <div class="page">
         <div class="header">
+            <!--div style="
+                    background-color: white;
+                    padding: 13px;
+                    color: rgb(207, 30, 25);
+                    font-size: 18px;">
+                Дорогие покупатели! Временно не будет </br>осуществляться прием и отправка оптовых заказов с <strong>1 по 8 июля</strong>. Спасибо за понимание!
+            </div-->
             <div class="header__content">
                 <a href="/" class="header__logo"></a>
+                <!--a href="/" class="header__logo" style="top: 85px;"></a-->
                 <div class="header__inner">
                     <div class="header__contact">
                         <div class="header__contact_item">

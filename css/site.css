@@ -1080,8 +1080,8 @@ h3.news {
     width: 50%;
 }
 .contacts {
-    display: inline-block;
     margin-bottom: 27px;
+    line-height: 1.5;
 }
 .hint {
     float: right;

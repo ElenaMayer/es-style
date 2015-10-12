@@ -8,7 +8,7 @@
 <?php $this->renderPartial('_size_tab'); ?>
 
 <script>
-$( "#submit" ).live( "click", function() {
+$( "#submit" ).on( "click", function() {
         $.ajax({
             url: '/<?= $type?>',
             type: 'POST',

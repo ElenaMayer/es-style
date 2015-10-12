@@ -21,24 +21,24 @@
         $( this ).hide();
     });
 
-    $( ".login-form__register" ).live( "click", function() {
+    $( ".login-form__register" ).on( "click", function() {
         $( "#login_form" ).hide();
         $( "#register_form" ).show();
     });
-    $( ".register-form__login" ).live( "click", function() {
+    $( ".register-form__login" ).on( "click", function() {
         $( "#register_form" ).hide();
         $( "#login_form" ).show();
     });
-    $( ".login-form__lost" ).live( "click", function() {
+    $( ".login-form__lost" ).on( "click", function() {
         $( "#login_form" ).hide();
         $( "#lost_form" ).show();
     });
-    $( ".lost-form__login" ).live( "click", function() {
+    $( ".lost-form__login" ).on( "click", function() {
         $( "#lost_form" ).hide();
         $( "#login_form" ).show();
     });
 
-    $( "#register-form_submit" ).live( "click", function() {
+    $( "#register-form_submit" ).on( "click", function() {
         $.ajax({
             url: "/site/registration",
             data: $( "#register-form" ).serialize(),
@@ -52,7 +52,7 @@
             }});
     });
 
-    $( "#login-form_submit" ).live( "click", function() {
+    $( "#login-form_submit" ).on( "click", function() {
         $.ajax({
             url: "/site/login",
             data: $( "#login-form" ).serialize(),
