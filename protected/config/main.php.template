@@ -85,5 +85,10 @@ return array(
             'child' => 'Детское',
             'other' => 'Разное',
         ),
+        'carouselUrl' => [
+            'first' => '',
+            'second' => '',
+            'third' => ''
+        ]
     ),
 );

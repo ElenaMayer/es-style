@@ -10,18 +10,14 @@ $this->pageTitle=Yii::app()->name;
             'items' => array(
                 array(
                     'image' => $this->bu('data/i/carousel_first.jpg?1'),
-                    'label' => 'Восточный стиль',
-                    /*'caption' => '<p>Одежда в восточном стиле - это прежде всего яркие цвета, натуральные материалы и необычные рисунки.</p>'*/
                 ),
                 array(
-                    'image' => $this->bu('data/i/carousel_second.jpg?1'),
-                    'label' => 'Новинки',
-                    'caption' => '<p>Постоянно пополняющийся ассортимент дизайнерских моделей. </p><p>Оригинальные формы и узоры предоставляют небывалые возможности для самовыражения.</p>'
+                    'image' => $this->bu('data/i/carousel_second.jpg?2'),
                 ),
                 array(
                     'image' => $this->bu('data/i/carousel_third.jpg?1'),
-                    'label' => 'Скидки',
-                    'caption' => '<p>Всегда новые акции и уникальные спецпредложения. </p><p>Фиксированная система скидок позволяет получить наибольшую выгоду при покупке.</p> '
+                    'label' => 'Восточный стиль',
+                    'caption' => '<p>Одежда в восточном стиле - это прежде всего яркие цвета, натуральные материалы и необычные рисунки.</p>'
                 ),
             ),
         )
@@ -77,3 +73,14 @@ $this->pageTitle=Yii::app()->name;
     </div>
     <?php $this->endWidget(); ?>
 </div>
+
+<script>
+    $(".carousel-inner div:first-child img").css('cursor', 'pointer');
+    $(".carousel-inner div:first-child img").click(function(){
+        window.location = "<?=Yii::app()->params['carouselUrl']['first']?>";
+    });
+    $(".carousel-inner div:nth-child(2) img").css('cursor', 'pointer');
+    $(".carousel-inner div:nth-child(2) img").click(function(){
+        window.location = "<?=Yii::app()->params['carouselUrl']['second']?>";
+    });
+</script>

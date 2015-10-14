@@ -86,5 +86,5 @@
 
 <script>
     if (<?php echo isset($_GET['size_tab']);?> == true)
-        $('#size_tab').modal('show');
+        jQuery('#size_tab').modal('show');
 </script>

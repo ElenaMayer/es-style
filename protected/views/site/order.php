@@ -5,10 +5,9 @@
         <?php $this->renderPartial('_order_form',array('model'=>$model, 'type'=>$type)); ?>
     </div>
 </div>
-<?php $this->renderPartial('_size_tab'); ?>
 
 <script>
-$( "#submit" ).on( "click", function() {
+$( 'body' ).on( 'click', '#submit', function() {
         $.ajax({
             url: '/<?= $type?>',
             type: 'POST',
