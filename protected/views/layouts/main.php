@@ -64,8 +64,8 @@
                             <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
                         </div>
                     </div>
-                    <div class="user-nav user-nav_signed" style="display: none">
-                        <a class="basket-button button button_blue button_big"  href="/checkout/cart/">
+                    <div class="user-nav user-nav_signed">
+                        <a class="basket-button button button_blue button_big"  href="/cart/">
                             <span class="button__title">
                                 <i class="button__icon"></i>
                                 <span class="basket-button-title">Моя корзина</span>

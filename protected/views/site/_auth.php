@@ -21,24 +21,25 @@
         $( this ).hide();
     });
 
-    $( ".login-form__register" ).on( "click", function() {
+    $( 'body' ).on( 'click', '.login-form__register', function() {
         $( "#login_form" ).hide();
         $( "#register_form" ).show();
     });
-    $( ".register-form__login" ).on( "click", function() {
+
+    $( 'body' ).on( 'click', '.register-form__login', function() {
         $( "#register_form" ).hide();
         $( "#login_form" ).show();
     });
-    $( ".login-form__lost" ).on( "click", function() {
+    $( 'body' ).on( 'click', '.login-form__lost', function() {
         $( "#login_form" ).hide();
         $( "#lost_form" ).show();
     });
-    $( ".lost-form__login" ).on( "click", function() {
+    $( 'body' ).on( 'click', '.lost-form__login', function() {
         $( "#lost_form" ).hide();
         $( "#login_form" ).show();
     });
 
-    $( "#register-form_submit" ).on( "click", function() {
+    $( 'body' ).on( 'click', '#register-form_submit', function() {
         $.ajax({
             url: "/site/registration",
             data: $( "#register-form" ).serialize(),
@@ -52,14 +53,13 @@
             }});
     });
 
-    $( "#login-form_submit" ).on( "click", function() {
+    $( 'body' ).on( 'click', '#login-form_submit', function() {
         $.ajax({
             url: "/site/login",
             data: $( "#login-form" ).serialize(),
             type: "POST",
             dataType : "html",
             success: function( data ) {
-                console.log(data);
                 if (data == 1)
                     window.location.reload();
                 else

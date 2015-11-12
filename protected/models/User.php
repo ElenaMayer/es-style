@@ -202,7 +202,7 @@ class User extends CActiveRecord
         if(parent::beforeSave())
         {
             if($this->isNewRecord) {
-                $this->password = passwordCrypt($this->password);
+                $this->password = $this->passwordCrypt($this->password);
             } else {
                 if (!empty($this->password_new))
                     $this->password = $this->passwordCrypt($this->password_new);

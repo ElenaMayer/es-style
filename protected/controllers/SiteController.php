@@ -29,7 +29,7 @@ class SiteController extends Controller
                 'users'=>array('@'),
             ),
             array('deny',
-                'actions'=>array('customer', 'orders', 'orderNew'),
+                'actions'=>array('customer', 'history'),
                 'users'=>array('?'),
             ),
             array('allow',
@@ -122,12 +122,10 @@ class SiteController extends Controller
 	}
 
     public function getOrder(){
-        if(isset(Yii::app()->session['catalog_order']))
-            $order = Yii::app()->session['catalog_order'];
-        else {
-            $order = Yii::app()->session['catalog_order'] = 'по артиклю';
+        if(!isset(Yii::app()->session['catalog_order'])) {
+            Yii::app()->session['catalog_order'] = 'по артиклю';
         }
-        return $order;
+        return Yii::app()->session['catalog_order'];
     }
 
     public function setOrder($order){
@@ -205,7 +203,18 @@ class SiteController extends Controller
         ));
     }
 
-    public function actionOrders(){
+    public function actionHistory(){
 
+        $model = User::model()->getUser();
+        $this->render('user/history',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionCart(){
+        $model = User::model()->getUser();
+        $this->render('cart',array(
+            'model'=>$model,
+        ));
     }
 }

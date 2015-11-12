@@ -5,7 +5,7 @@
                 <a href="/customer/">Мои данные</a>
             </li>
             <li class="leftside-menu__item">
-                <a href="/orders/">Мои заказы</a>
+                <a href="/history/">Мои заказы</a>
             </li>
             <li class="leftside-menu__item">
                 <a href="/cart/">Моя корзина</a>

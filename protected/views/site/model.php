@@ -50,12 +50,24 @@
                             <div class="size">
                                 <?php if(!$model->size) :?>
                                     <span class="size__title">Универсальный размер (подходит на размеры <?= $model->size_at ?>-<?= $model->size_to ?>)</span>
+                                    <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                                 <?php else :?>
-                                    <div class="size__title">Размеры в наличии:</div>
+                                    <div class="size__title">
+                                        Российский размер
+                                        <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
+                                    </div>
                                     <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
                                 <?php endif; ?>
                             </div>
-                            <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
+                            <div class="buy-widget__buy">
+                                <span class="button button_big button_blue buy-button">
+                                    <span class="button__progress" style="background-position: 5px 0px;"></span>
+                                    <span class="button__title">
+                                        <span class="buy-widget__buy-icon"></span>
+                                        <span class="button__label">Добавить в корзину</span>
+                                    </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -79,3 +91,27 @@
     </div>
 </div>
 <?php $this->renderPartial('_size_tab'); ?>
+
+<script>
+    $( 'body' ).on( 'click', '.buy-button', function() {
+
+        if ($(".button_pressed").length==0){
+            alert('Выберите, пожалуйста, размер');
+        } else {
+            console.log($(".button_pressed").text());
+            $.ajax({
+                url: "/ajax/addToCart",
+                data: {
+                    id: <?= $model->id; ?>,
+                    size: $(".button_pressed").text()
+                },
+                type: "POST",
+                dataType : "html",
+                success: function( data ) {
+                    if (data == 1)
+                        $('#login-form').html(data);
+                }
+            });
+        }
+    });
+</script>

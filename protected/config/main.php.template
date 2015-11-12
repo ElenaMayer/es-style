@@ -41,8 +41,10 @@ return array(
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
                 '<type:(wholesale|shipping)>'=>'site/order',
                 'customer'=>'site/customer',
-                'orders'=>'site/orders',
+                'history'=>'site/history',
                 'contact'=>'site/contact',
+                'cart'=>'site/cart',
+                'ajax/<action:\w+>'=>'ajax/<action>',
             ),
 		),
 		'db'=>array(
