@@ -43,6 +43,7 @@ class Cart extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'photo'=>array(self::BELONGS_TO, 'Photo', 'item_id'),
 		);
 	}
 
@@ -99,4 +100,12 @@ class Cart extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getSum(){
+        if ($this->photo->new_price)
+            $sum = $this->photo->new_price*$this->count;
+        else
+            $sum = $this->photo->price*$this->count;
+        return $sum;
+    }
 }

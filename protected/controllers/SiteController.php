@@ -212,7 +212,17 @@ class SiteController extends Controller
     }
 
     public function actionCart(){
-        $model = User::model()->getUser();
+        if(Yii::app()->user->isGuest) {
+            $model = [];
+            if (!empty(Yii::app()->session['cart']))
+                foreach(Yii::app()->session['cart'] as $cartId){
+                    $cartItem = Cart::model()->findByPk($cartId);
+                    array_push($model, $cartItem);
+                }
+            $model = Yii::app()->session['cart'];
+        } else {
+            $model = Cart::model()->findAllByAttributes(array('user_id' => Yii::app()->user->id));
+        }
         $this->render('cart',array(
             'model'=>$model,
         ));

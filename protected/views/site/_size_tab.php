@@ -85,6 +85,6 @@
 <?php $this->endWidget(); ?>
 
 <script>
-    if (<?php echo isset($_GET['size_tab']);?> == true)
+    if (<?= isset($_GET['size_tab']) ? 1 : 0;?> == 1)
         jQuery('#size_tab').modal('show');
 </script>

@@ -19,11 +19,18 @@ class AjaxController extends Controller
                 Yii::app()->end();
             }
         } else {
-            $cart = Cart::model()->findByAttributes(array(
-                'item_id'=>$_POST['id'],
-                'size'=>$_POST['size'],
-                'user_id'=>Yii::app()->user->id
-            ));
+            if(isset($_POST['size']))
+                $cart = Cart::model()->findByAttributes(array(
+                    'item_id'=>$_POST['id'],
+                    'size'=>$_POST['size'],
+                    'user_id'=>Yii::app()->user->id
+                ));
+            else
+                $cart = Cart::model()->findByAttributes(array(
+                    'item_id'=>$_POST['id'],
+                    'size'=>$_POST['size'],
+                    'user_id'=>Yii::app()->user->id
+                ));
         }
         if($cart) {
             $cart->count++;
@@ -42,7 +49,8 @@ class AjaxController extends Controller
     private function addItemToCart($attributes){
         $cart = new Cart();
         $cart->item_id = $attributes['id'];
-        $cart->size = $attributes['size'];
+        if(isset($attributes['size']))
+            $cart->size = $attributes['size'];
         if(!Yii::app()->user->isGuest) {
             $cart->user_id = Yii::app()->user->id;
         }

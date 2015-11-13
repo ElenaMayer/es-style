@@ -44,10 +44,6 @@
 
     <div class="sale">
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'old_price'); ?></div>
-            <div><?php echo $form->textField($model,'old_price'); ?></div>
-        </div>
-        <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'new_price'); ?></div>
             <div><?php echo $form->textField($model,'new_price'); ?></div>
         </div>

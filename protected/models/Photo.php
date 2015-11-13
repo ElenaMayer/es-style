@@ -17,7 +17,6 @@
  * @property string $category
  * @property integer $is_sale
  * @property string $sale
- * @property integer $old_price
  * @property integer $new_price
  * @property integer $size
  * @property string $uni_size
@@ -61,7 +60,7 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, is_show, is_available, is_new, price, is_sale, old_price, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
+            array('article, is_show, is_available, is_new, price, is_sale, new_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
             array('img, title, category, sale, uni_size', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
             array('article, is_show, is_available, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
@@ -102,7 +101,6 @@ class Photo extends CActiveRecord
 			'date_create' => 'Дата добавления',
             'is_sale' => 'Скидка',
             'sale' => 'Процент',
-            'old_price' => 'Старая цена',
             'new_price' => 'Новая цена',
             'size' => 'Размер',
             'uni_size' => 'Размеры с/по',
@@ -285,7 +283,7 @@ class Photo extends CActiveRecord
     }
 
     public function getSale(){
-        return 100-$this->new_price*100/$this->old_price;
+        return 100-$this->new_price*100/$this->price;
     }
 
     public function getOrderList($type){
@@ -315,5 +313,4 @@ class Photo extends CActiveRecord
         }
         return $sizes;
     }
-
 }

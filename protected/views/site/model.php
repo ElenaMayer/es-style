@@ -41,7 +41,7 @@
                                     <?php if(!$model->is_sale) :?>
                                         <?= $model->price ?>&nbsp;руб.
                                     <?php else :?>
-                                        <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
+                                        <span class="price__old"><?= $model->price ?>&nbsp;руб.</span>
                                         <wbr>
                                         <span class="price__new"><?= $model->new_price ?>&nbsp;руб.</span>
                                     <?php endif; ?>
@@ -94,11 +94,10 @@
 
 <script>
     $( 'body' ).on( 'click', '.buy-button', function() {
-
-        if ($(".button_pressed").length==0){
+        is_uni_size = <?= empty($model->uni_size) ? 0 : 1 ?>;
+        if ($(".button_pressed").length==0 && !is_uni_size){
             alert('Выберите, пожалуйста, размер');
         } else {
-            console.log($(".button_pressed").text());
             $.ajax({
                 url: "/ajax/addToCart",
                 data: {

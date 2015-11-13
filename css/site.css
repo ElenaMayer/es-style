@@ -1362,6 +1362,9 @@ h3.news {
 .cart-item__name, .cart-item__size {
     padding-bottom: 12px;
 }
+.cart-item__name {
+    font-weight: bold;
+}
 .cart-item__old-price {
     color: #999;
     text-decoration: line-through;
@@ -1415,9 +1418,92 @@ h3.news {
     padding: 0;
     background: #fff;
     border-top: 1px solid #eee;
+    clear: both;
 }
 .cart-navigation {
     margin-top: 5px;
     padding: 20px;
     background: #fff;
+    height: 70px;
+}
+.cart_empty {
+    text-align: center;
+    padding: 63px 0;
+    background-color: #fff;
+    height: 200px;
+}
+.cart_empty .h2 {
+    color: #999;
+    margin-bottom: 21px;
+}
+.cart-total {
+    width: 160px;
+    float: right;
+    text-align: right;
+    margin: 20px 20px 20px 0;
+}
+.cart-total__price {
+    position: relative;
+    margin-top: 7px;
+    padding: 0 0 4px 60px;
+}
+.cart-total__price-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.i_help {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    background: url(../data/i/cart_sprite.png) -72px -3px;
+    width: 16px;
+    height: 16px;
+}
+.hint {
+    z-index: 10;
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    padding: 0;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,.25);
+    -webkit-transition: opacity .2s linear;
+    -moz-transition: opacity .2s linear;
+    -o-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+.hint_hidden {
+    display: none;
+}
+.cart-total__price-hint .hint {
+    width: 190px;
+    left: 50%;
+    margin-left: -20px;
+    padding: 8px 12px;
+    text-align: left;
+}
+.hint-wrap .hint {
+    top: 100%;
+    left: 0;
+    margin-top: 14px;
+}
+.cart-navigation__order {
+    float: right;
+}
+.hint:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    margin: 0 0 0 -9px;
+    border-width: 0 9px 9px;
+    border-style: solid;
+    border-color: rgba(0,0,0,.8) transparent;
+    background: 0 0;
 }

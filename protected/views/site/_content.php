@@ -18,8 +18,7 @@
                     <?php if(!$photo->is_sale) :?>
                         <?= $photo->price ?>&nbsp;руб.
                     <?php else :?>
-                        <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
-                        <wbr>
+                        <span class="price__old"><?= $photo->price ?>&nbsp;руб.</span>
                         <span class="price__new"><?= $photo->new_price ?>&nbsp;руб.</span>
                     <?php endif; ?>
                 <?php endif; ?>
