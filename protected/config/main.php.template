@@ -91,6 +91,9 @@ return array(
             'first' => '',
             'second' => '',
             'third' => ''
-        ]
+        ],
+        'shippingFreeCount' => 3,
+        'shippingFreeCountString' => 'трех',
+        'shippingCost' => 200,
     ),
 );

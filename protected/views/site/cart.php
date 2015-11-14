@@ -1,4 +1,4 @@
-<?php if(!empty($model)) :?>
+<?php if(!empty($model->cartItems)) :?>
     <div class="cart-list">
         <div class="cart-list__head">
             <div class="cart-item__cell cart-item__cell_description">Товар</div>
@@ -7,9 +7,9 @@
             <div class="cart-item__cell cart-item__cell_total">Итого</div>
         </div>
         <ul class="cart-list__content">
-            <?php foreach($model as $cartItem) :?>
+            <?php foreach($model->cartItems as $cartItem) :?>
                 <li class="cart-item">
-                    <a href="/<?= $cartItem->photo->category ?>/<?= $cartItem->item_id ?>" class="cart-item__cell cart-item__cell_photo">
+                    <a href="/<?= $cartItem->photo->category ?>/<?= $cartItem->photo->article ?>" class="cart-item__cell cart-item__cell_photo">
                         <img src="<?= $cartItem->photo->getPreviewUrl(); ?>" class="cart-item__photo">
                     </a>
                     <div class="cart-item__cell cart-item__cell_description">
@@ -35,7 +35,7 @@
                             <span class="button__progress"></span>
                             <i class="button__icon"></i>
                         </button>
-                        <span class="cart-item__quantity">1</span>
+                        <span class="cart-item__quantity"><?= $cartItem->count ?></span>
                         <button class="button change-quantity change-quantity_increase">
                             <span class="button__progress"></span>
                             <i class="button__icon"></i>
@@ -47,40 +47,54 @@
                     </button>
                     <div class="cart-item__cell cart-item__cell_total"><?= $cartItem->getSum()?>&nbsp;руб.</div>
                 </li>
+                <div class="cart-separator"></div>
             <?php endforeach; ?>
         </ul>
         <div class="cart-footer"></div>
         <div class="cart-total cart-total_threshold">
             <div class="cart-total__price cart-total__price_subtotal">
                 <span class="cart-total__price-title">Подытог</span>
-                <span class="cart-total__price-val">2 998 руб.</span>
+                <span class="cart-total__price-val"><?= $model->subtotal ?> руб.</span>
             </div><div class="cart-total__price cart-total__price_amount">
                 <span class="cart-total__price-title">Доставка
                     <span class="cart-total__price-hint i_help hint-wrap">
-                        <div class="hint hint_hidden">При заказе от трех позиций — доставка бесплатно
+                        <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно
                         </div>
                     </span>
                 </span>
-                <span class="cart-total__price-val">299 руб.</span>
+                <span class="cart-total__price-val"><?= $model->shipping ?> руб.</span>
             </div>
-            <div class="cart-total__price cart-total__price_discount">
-                <span class="cart-total__price-title">Скидка</span>
-                <span class="cart-total__price-val">- 300 руб.</span>
-            </div>
+            <?php if($model->sale > 0) :?>
+                <div class="cart-total__price cart-total__price_discount">
+                    <span class="cart-total__price-title">Скидка</span>
+                    <span class="cart-total__price-val">- <?= $model->sale ?> руб.</span>
+                </div>
+            <?php endif; ?>
             <div class="cart-total__price cart-total__price_total">
                 <span class="cart-total__price-title">Итого</span>
-                <span class="cart-total__price-val">2 997 руб.</span>
+                <span class="cart-total__price-val"><?= $model->total ?> руб.</span>
             </div>
         </div>
-        <div class="cart-footer"></div>
+        <div class="cart-separator"></div>
         <div class="cart-navigation">
             <a href="" class="button button_blue button_big cart-navigation__order">
                 <span class="button__title">Отправить заказ</span>
                 <span class="button__progress"></span>
             </a>
         </div>
-        <div class="cart-footer"></div>
+        <div class="cart-separator"></div>
     </div>
 <?php else :?>
     <div class="cart_empty"><h2 class="h2">В корзину ничего не добавлено</h2></div>
 <?php endif; ?>
+
+<script>
+    $( ".i_help" ).hover(
+        function() {
+            $(this).children('.hint').addClass('hint-show');
+        },
+        function() {
+            $(this).children('.hint').removeClass('hint-show');
+        }
+    );
+</script>

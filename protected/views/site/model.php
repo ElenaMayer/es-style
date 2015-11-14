@@ -101,7 +101,7 @@
             $.ajax({
                 url: "/ajax/addToCart",
                 data: {
-                    id: <?= $model->id; ?>,
+                    item_id: <?= $model->id; ?>,
                     size: $(".button_pressed").text()
                 },
                 type: "POST",

@@ -6,12 +6,18 @@
  * The followings are the available columns in table 'cart':
  * @property integer $id
  * @property integer $user_id
- * @property integer $item_id
- * @property integer $size
- * @property integer $count
+ *
+ * The followings are the available model relations:
+ * @property User $user
+ * @property CartItem[] $cartItems
  */
 class Cart extends CActiveRecord
 {
+    public $subtotal;
+    public $shipping;
+    public $sale;
+    public $total;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -28,10 +34,10 @@ class Cart extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, item_id, size, count', 'numerical', 'integerOnly'=>true),
+			array('user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, item_id, size, count', 'safe', 'on'=>'search'),
+			array('id, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,7 +49,8 @@ class Cart extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'photo'=>array(self::BELONGS_TO, 'Photo', 'item_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'cartItems' => array(self::HAS_MANY, 'CartItem', 'cart_id'),
 		);
 	}
 
@@ -55,9 +62,6 @@ class Cart extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
-			'item_id' => 'Item',
-			'size' => 'Size',
-			'count' => 'Count',
 		);
 	}
 
@@ -81,9 +85,6 @@ class Cart extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('item_id',$this->item_id);
-		$criteria->compare('size',$this->size);
-		$criteria->compare('count',$this->count);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -101,11 +102,60 @@ class Cart extends CActiveRecord
 		return parent::model($className);
 	}
 
-    public function getSum(){
-        if ($this->photo->new_price)
-            $sum = $this->photo->new_price*$this->count;
+    public function afterFind(){
+        $subtotal = 0;
+        $sale = 0;
+        $count = 0;
+        foreach($this->cartItems as $item){
+            $subtotal += $item->photo->price * $item->count;
+            $count += $item->count;
+            if($item->photo->is_sale) {
+                $sale += ($item->photo->price - $item->photo->new_price) * $item->count;
+            }
+        }
+        $this->subtotal = $subtotal;
+        $this->sale = $sale;
+        if($count >= Yii::app()->params['shippingFreeCount'])
+            $this->shipping = 0;
         else
-            $sum = $this->photo->price*$this->count;
-        return $sum;
+            $this->shipping = Yii::app()->params['shippingCost'];
+        $this->total = $subtotal - $sale + $this->shipping;
     }
+
+    public function findAndAddCartItem($attributes){
+        $neededItem = null;
+        foreach($this->cartItems as $item){
+            if($item->item_id == $attributes["item_id"]) {
+                if (isset($attributes["size"])) {
+                    if ($item->size == $attributes["size"]) {
+                        $neededItem = $item;
+                        break;
+                    }
+                } else {
+                    $neededItem = $item;
+                    break;
+                }
+            }
+        }
+        if($neededItem) {
+            $neededItem->count++;
+            return $neededItem->save();
+        } else {
+            return $this->addCartItem($attributes);
+        }
+    }
+
+    public  function addCartItem($attributes){
+        $cartItem = new CartItem;
+        $cartItem->cart_id = $this->id;
+        $cartItem->item_id = $attributes['item_id'];
+        if(isset($attributes['size']))
+            $cartItem->size = $attributes['size'];
+        return $cartItem->save();
+    }
+
+    public function getSubtitle(){
+
+    }
+
 }

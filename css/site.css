@@ -1413,7 +1413,7 @@ h3.news {
     bottom: 20px;
     right: 17px;
 }
-.cart-footer {
+.cart-separator {
     margin-top: 5px;
     padding: 0;
     background: #fff;
@@ -1456,27 +1456,10 @@ h3.news {
     display: inline-block;
     vertical-align: middle;
     margin: 0 5px;
-    background: url(../data/i/cart_sprite.png) -72px -3px;
+    background: url(../data/i/cart_sprite.png) -72px -1px;
     width: 16px;
     height: 16px;
-}
-.hint {
-    z-index: 10;
-    display: block;
-    position: absolute;
-    top: 14px;
-    left: 0;
-    padding: 0;
-    background: rgba(0,0,0,.8);
-    color: #fff;
-    box-shadow: 0 1px 8px rgba(0,0,0,.25);
-    -webkit-transition: opacity .2s linear;
-    -moz-transition: opacity .2s linear;
-    -o-transition: opacity .2s linear;
-    transition: opacity .2s linear;
-}
-.hint_hidden {
-    display: none;
+    opacity: .6;
 }
 .cart-total__price-hint .hint {
     width: 190px;
@@ -1493,6 +1476,22 @@ h3.news {
 .cart-navigation__order {
     float: right;
 }
+.hint {
+    z-index: 10;
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    padding: 0;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,.25);
+    -webkit-transition: opacity .2s linear;
+    -moz-transition: opacity .2s linear;
+    -o-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+    opacity: 0;
+}
 .hint:before {
     content: '';
     display: block;
@@ -1506,4 +1505,14 @@ h3.news {
     border-style: solid;
     border-color: rgba(0,0,0,.8) transparent;
     background: 0 0;
+}
+.i_help:hover,
+.hint.hint-show {
+    opacity: 1;
+}
+.cart-total__price_discount .cart-total__price-val {
+    color: #CB2228;
+}
+.cart-total__price_total {
+    font-weight: 700;
 }
