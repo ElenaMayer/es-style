@@ -107,10 +107,12 @@ class Cart extends CActiveRecord
         $sale = 0;
         $count = 0;
         foreach($this->cartItems as $item){
-            $subtotal += $item->photo->price * $item->count;
-            $count += $item->count;
-            if($item->photo->is_sale) {
-                $sale += ($item->photo->price - $item->photo->new_price) * $item->count;
+            if($item->photo->is_available) {
+                $subtotal += $item->photo->price * $item->count;
+                $count += $item->count;
+                if ($item->photo->is_sale) {
+                    $sale += ($item->photo->price - $item->photo->new_price) * $item->count;
+                }
             }
         }
         $this->subtotal = $subtotal;

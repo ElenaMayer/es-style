@@ -32,4 +32,33 @@ class AjaxController extends Controller
         }
 //        $this->renderPartial('_register',array('modelAuth'=>$cart));
     }
+
+    public function actionChangeCount(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        if($cartItem){
+            if ($_POST['action_name'] == 'increase')
+                $cartItem->count++;
+            elseif ($_POST['action_name'] == 'decrease')
+                $cartItem->count--;
+            if ($cartItem->save())
+                echo $cartItem->count;
+            else
+                echo 0;
+            Yii::app()->end();
+        } else {
+            echo 0;
+            Yii::app()->end();
+        }
+    }
+
+    public function actionDeleteItemFromCart(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        if($cartItem){
+            echo $cartItem->delete();
+            Yii::app()->end();
+        } else {
+            echo false;
+            Yii::app()->end();
+        }
+    }
 }

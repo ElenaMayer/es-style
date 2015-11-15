@@ -107,8 +107,8 @@
                 type: "POST",
                 dataType : "html",
                 success: function( data ) {
-                    if (data == 1)
-                        $('#login-form').html(data);
+//                    if (data == 1)
+//                        $('#login-form').html(data);
                 }
             });
         }

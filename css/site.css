@@ -1290,6 +1290,9 @@ h3.news {
 
 /* Cart */
 
+.cart-list {
+    margin: 0 20px;
+}
 .cart-list__head {
     padding: 18px 20px 13px;
     background: #fff;
@@ -1305,7 +1308,6 @@ h3.news {
     position: relative;
     margin-top: 1px;
     background: #fff;
-    padding: 0 20px;
     text-align: right;
     white-space: nowrap;
     line-height: 17px;
@@ -1374,6 +1376,7 @@ h3.news {
     opacity: .6;
 }
 .cart-item__cell_quantity .change-quantity {
+    display: none;
     vertical-align: top;
     margin-top: -5px;
 }
@@ -1406,9 +1409,10 @@ h3.news {
     background: url(../data/i/cart_sprite.png) -16px 0 no-repeat;
 }
 .cart-item__quantity {
-    margin: 0 9px;
+    margin: 0 3px;
 }
 .cart-item .remove {
+    display: none;
     position: absolute;
     bottom: 20px;
     right: 17px;
@@ -1516,3 +1520,74 @@ h3.news {
 .cart-total__price_total {
     font-weight: 700;
 }
+.cart-item_out {
+    color: #999;
+}
+.cart-item_out .cart-item__photo {
+    opacity: .5;
+}
+.cart-list .cart-item:hover {
+    z-index: 2;
+    margin: 0 -5px -1px -1px;
+    padding-right: 4px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 0 4px #d9d9d9;
+}
+
+.button.button_active,
+.button.button_in-progress,
+.button_in-progress.button_active,
+.not-touch .button.button_active:hover,
+.not-touch .button.button_in-progress:hover,
+.touch .button.button_in-progress:active {
+    border-color:#cbc2ab;
+    box-shadow:0 0 0 2px rgba(255,215,119,.3),inset 0 1px 4px rgba(0,0,0,.25);
+    background:#eee;
+    background:-webkit-linear-gradient(top,#fcfcfc,#ececec);
+    background:-moz-linear-gradient(top,#fcfcfc,#ececec);
+    background:-o-linear-gradient(top,#fcfcfc,#ececec);
+    background:linear-gradient(to bottom,#fcfcfc,#ececec)
+}
+.button_blue.button_active,
+.button_blue.button_in-progress,
+.button_blue.button_in-progress.button_active,
+.not-touch .button_blue.button_active:hover,
+.not-touch .button_blue.button_in-progress:hover,
+.touch .button_blue.button_in-progress:active {
+    border-color:#5c779f;
+    background:#8299be;
+    background:-webkit-linear-gradient(top,#859cc1,#738bb0);
+    background:-moz-linear-gradient(top,#859cc1,#738bb0);
+    background:-o-linear-gradient(top,#859cc1,#738bb0);
+    background:linear-gradient(to bottom,#859cc1,#738bb0)
+}
+.button_in-progress .button__progress {
+    visibility:visible;
+    opacity:1
+}
+.button_in-progress{
+    cursor:default
+}
+.button__progress {
+    z-index: 1;
+     visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../data/i/in-progress.png) 0 0/auto 100% repeat-x;
+    -webkit-transition: opacity .4s ease;
+    -moz-transition: opacity .4s ease;
+    -o-transition: opacity .4s ease;
+    transition: opacity .4s ease;
+     opacity: 0;
+}
+
+
+
+
+
+
