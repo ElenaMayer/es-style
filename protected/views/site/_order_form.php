@@ -1,16 +1,4 @@
-<?php
-$this->widget('booster.widgets.TbAlert', array(
-    'id' => 'alert',
-    'fade' => true,
-    'closeText' => '&times;', // false equals no close link
-    'events' => array(),
-    'htmlOptions' => array(),
-    'userComponentId' => 'user',
-    'alerts' => array(
-        'warning' => array('closeText' => '&times;'),
-    ),
-));
-?>
+<?php $this->renderPartial('_alert'); ?>
 <div class="form">
 
     <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(

@@ -44,6 +44,7 @@ return array(
                 'history'=>'site/history',
                 'contact'=>'site/contact',
                 'cart'=>'site/cart',
+                'site/deleteItemFromCart'=>'site/deleteItemFromCart',
                 'ajax/<action:\w+>'=>'ajax/<action>',
             ),
 		),

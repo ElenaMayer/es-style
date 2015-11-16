@@ -150,7 +150,7 @@ class SiteController extends Controller
         $this->render('contact');
     }
 
-    public function actionOrder($type) {
+    public function actionOrderOld($type) {
         $type_str = $type=='shipping'?'В розницу':'Оптом';
         $this->pageTitle=Yii::app()->name.' - '.$type_str;
         $model=new Order($type);
@@ -159,17 +159,14 @@ class SiteController extends Controller
             $model->type=$type;
             if($model->save()){
                 $user = Yii::app()->getComponent('user');
-                $user->setFlash(
-                    'warning',
-                    "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!."
-                );
+                $user->setFlash( 'warning', "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!");
                 $model->sendMail();
             }
             $this->renderPartial('_order_form',array(
                 'model'=>$model, 'type'=>$type
             ));
         } else {
-            $this->render('order',array(
+            $this->render('order_old',array(
                 'model'=>$model, 'type'=>$type
             ));
         }
@@ -192,15 +189,18 @@ class SiteController extends Controller
         $modelPass = new User('changePassword');
         if(isset($_POST['User'])) {
             $model->attributes=$_POST['User'];
-            if($model->validate() && $model->save())
-                $this->refresh();
-            else
-                $modelPass = $model;
+            if($model->validate() && $model->save()) {
+                Yii::app()->user->setFlash( 'success', "Данные сохранены.");
+                if (isset($_POST["data_type"])) {
+                    $this->renderPartial('user/_'.$_POST["data_type"], array('model' => $model, 'modelPass' => $modelPass));
+                }
+            }
+        } else {
+            $this->render('user/customer', array(
+                'model' => $model,
+                'modelPass' => $modelPass,
+            ));
         }
-        $this->render('user/customer',array(
-            'model'=>$model,
-            'modelPass' => $modelPass,
-        ));
     }
 
     public function actionHistory(){
@@ -222,5 +222,37 @@ class SiteController extends Controller
         $this->render('cart',array(
             'model'=>$model,
         ));
+    }
+
+    public function actionDeleteItemFromCart(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        if($cartItem){
+            $cartItem->delete();
+            $this->renderPartial('cart/_cart_total',array('model'=>$cartItem->cart));
+        } else {
+            echo false;
+            Yii::app()->end();
+        }
+    }
+
+    public function actionOrder($id){
+        $cart = Cart::model()->findByPk($id);
+        if(!Yii::app()->user->isGuest) {
+            $user = User::model()->getUser();
+        }
+        if($cart) {
+            if((Yii::app()->user->isGuest && !$cart->user_id) || Yii::app()->user->id == $cart->user_id) {
+                if (isset($_POST['User'])) {
+                    $user->attributes = $_POST['User'];
+                    if ($user->validate() && $user->save()) {
+
+                    }
+                }
+                $this->render('order', array(
+                    'user' => $user,
+                    'cart' => $cart
+                ));
+            } else throw new CHttpException(404,'К сожалению, страница не найдена.');
+        } else throw new CHttpException(404,'К сожалению, страница не найдена.');
     }
 }

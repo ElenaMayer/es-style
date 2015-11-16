@@ -50,15 +50,4 @@ class AjaxController extends Controller
             Yii::app()->end();
         }
     }
-
-    public function actionDeleteItemFromCart(){
-        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
-        if($cartItem){
-            echo $cartItem->delete();
-            Yii::app()->end();
-        } else {
-            echo false;
-            Yii::app()->end();
-        }
-    }
 }
