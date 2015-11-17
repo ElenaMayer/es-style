@@ -17,6 +17,7 @@ class Cart extends CActiveRecord
     public $shipping;
     public $sale;
     public $total;
+    public $count;
 
 	/**
 	 * @return string the associated database table name
@@ -117,6 +118,7 @@ class Cart extends CActiveRecord
         }
         $this->subtotal = $subtotal;
         $this->sale = $sale;
+        $this->count = $count;
         if($count >= Yii::app()->params['shippingFreeCount'])
             $this->shipping = 0;
         else
@@ -141,7 +143,8 @@ class Cart extends CActiveRecord
         }
         if($neededItem) {
             $neededItem->count++;
-            return $neededItem->save();
+            if ($neededItem->save()) return $neededItem;
+            else return false;
         } else {
             return $this->addCartItem($attributes);
         }
@@ -153,7 +156,8 @@ class Cart extends CActiveRecord
         $cartItem->item_id = $attributes['item_id'];
         if(isset($attributes['size']))
             $cartItem->size = $attributes['size'];
-        return $cartItem->save();
+        if($cartItem->save()) return $cartItem;
+        else return false;
     }
 
     public function getSubtitle(){

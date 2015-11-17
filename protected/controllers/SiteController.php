@@ -2,6 +2,19 @@
 
 class SiteController extends Controller
 {
+    public $cart;
+
+    public function init(){
+        parent::init();
+        if(Yii::app()->user->isGuest) {
+            if (!empty(Yii::app()->session['cartId']))
+                $this->cart = Cart::model()->findByPk(Yii::app()->session['cartId']);
+            else
+                $this->cart = null;
+        } else {
+            $this->cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+        }
+    }
 
 	public function actions() {
 	}
@@ -212,47 +225,27 @@ class SiteController extends Controller
     }
 
     public function actionCart(){
-        $model = [];
-        if(Yii::app()->user->isGuest) {
-            if (!empty(Yii::app()->session['cartId']))
-                $model = Cart::model()->findByPk(Yii::app()->session['cartId']);
-        } else {
-            $model = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
-        }
         $this->render('cart',array(
-            'model'=>$model,
+            'model'=>$this->cart,
         ));
     }
 
-    public function actionDeleteItemFromCart(){
-        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
-        if($cartItem){
-            $cartItem->delete();
-            $this->renderPartial('cart/_cart_total',array('model'=>$cartItem->cart));
-        } else {
-            echo false;
-            Yii::app()->end();
-        }
-    }
-
     public function actionOrder($id){
-        $cart = Cart::model()->findByPk($id);
-        if(!Yii::app()->user->isGuest) {
-            $user = User::model()->getUser();
-        }
-        if($cart) {
-            if((Yii::app()->user->isGuest && !$cart->user_id) || Yii::app()->user->id == $cart->user_id) {
-                if (isset($_POST['User'])) {
-                    $user->attributes = $_POST['User'];
-                    if ($user->validate() && $user->save()) {
+        if(!empty($this->cart) && $this->cart->id == $id) {
+            if(!Yii::app()->user->isGuest) {
+                $user = User::model()->getUser();
+            }
+            if (isset($_POST['User'])) {
+                $user->attributes = $_POST['User'];
+                if ($user->validate() && $user->save()) {
 
-                    }
                 }
-                $this->render('order', array(
-                    'user' => $user,
-                    'cart' => $cart
-                ));
-            } else throw new CHttpException(404,'К сожалению, страница не найдена.');
+            }
+            $this->render('order', array(
+                'user' => $user,
+                'cart' => $this->cart
+            ));
         } else throw new CHttpException(404,'К сожалению, страница не найдена.');
     }
+
 }

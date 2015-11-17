@@ -68,7 +68,7 @@
                         <a class="basket-button button button_blue button_big"  href="/cart/">
                             <span class="button__title">
                                 <i class="button__icon"></i>
-                                <span class="basket-button-title">Моя корзина</span>
+                                <span class="basket-button-title">Моя корзина <?php if(isset($this->cart->count) && $this->cart->count > 0):?>(<?= $this->cart->count; ?>)<?php endif?></span>
                             </span>
                         </a>
                         <div class="user-nav__sign-in">

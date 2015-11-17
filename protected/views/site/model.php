@@ -48,6 +48,7 @@
                                 </span>
                             </div>
                             <div class="size">
+                                <div class="size_error__title">Укажите размер</div>
                                 <?php if(!$model->size) :?>
                                     <span class="size__title">Универсальный размер (подходит на размеры <?= $model->size_at ?>-<?= $model->size_to ?>)</span>
                                     <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
@@ -91,12 +92,15 @@
     </div>
 </div>
 <?php $this->renderPartial('_size_tab'); ?>
+<div class="add_to_cart">
+    <?php $this->renderPartial('cart/_cart_popup', array('cartItem' => [])); ?>
+</div>
 
 <script>
     $( 'body' ).on( 'click', '.buy-button', function() {
         is_uni_size = <?= empty($model->uni_size) ? 0 : 1 ?>;
         if ($(".button_pressed").length==0 && !is_uni_size){
-            alert('Выберите, пожалуйста, размер');
+            $('.size').addClass('size_error');
         } else {
             $.ajax({
                 url: "/ajax/addToCart",
@@ -107,10 +111,15 @@
                 type: "POST",
                 dataType : "html",
                 success: function( data ) {
-//                    if (data == 1)
-//                        $('#login-form').html(data);
+                    if (data) {
+                        $('.add_to_cart').html(data);
+                        jQuery('#add_to_cart').modal('show');
+                    }
                 }
             });
         }
+    });
+    $( 'body' ).on( 'click', '.size_button', function() {
+        $('.size_error').removeClass('size_error');
     });
 </script>

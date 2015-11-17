@@ -17,6 +17,13 @@
         <?php echo $form->textFieldGroup($user, 'phone', array('placeholder'=>'+7')); ?>
     </div>
     <div class="row">
+        <div class="form-group">
+            <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+            <?php echo $form->labelEx($user,'email'); ?>
+        </div>
+    </div>
+
+    <div class="row">
         <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'')); ?>
     </div>
     <div class="row">

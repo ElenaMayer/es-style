@@ -9,6 +9,17 @@ class AjaxController extends Controller
         Yii::app()->end();
     }
 
+    public function actionDeleteItemFromCart(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        if($cartItem){
+            $cartItem->delete();
+            $this->renderPartial('../site/cart/_cart_total',array('model'=>$cartItem->cart));
+        } else {
+            echo false;
+            Yii::app()->end();
+        }
+    }
+
     public function actionAddToCart(){
         $cart = null;
         if(Yii::app()->user->isGuest && !empty(Yii::app()->session['cartId']))
@@ -17,7 +28,10 @@ class AjaxController extends Controller
             $cart = Cart::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
 
         if($cart) {
-            echo $cart->findAndAddCartItem($_POST);
+            $cartItem = $cart->findAndAddCartItem($_POST);
+            if ($cartItem)
+                $this->renderPartial('../site/cart/_cart_popup', array('cartItem'=>$cartItem));
+            else  return false;
             Yii::app()->end();
         } else {
             $cart = new Cart;
@@ -26,11 +40,11 @@ class AjaxController extends Controller
             if($cart->save()) {
                 if(Yii::app()->user->isGuest)
                     Yii::app()->session['cartId'] = $cart->id;
-                echo $cart->addCartItem($_POST);
-                Yii::app()->end();
-            }
+                $cartItem = $cart->addCartItem($_POST);
+                $this->renderPartial('../site/cart/_cart_popup', array('cartItem'=>$cartItem));
+            } else return false;
+            Yii::app()->end();
         }
-//        $this->renderPartial('_register',array('modelAuth'=>$cart));
     }
 
     public function actionChangeCount(){

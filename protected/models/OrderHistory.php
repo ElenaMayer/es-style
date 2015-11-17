@@ -1,29 +1,28 @@
 <?php
 
 /**
- * This is the model class for table "cart_item".
+ * This is the model class for table "order_history".
  *
- * The followings are the available columns in table 'cart_item':
+ * The followings are the available columns in table 'order_history':
  * @property integer $id
- * @property integer $cart_id
- * @property integer $item_id
- * @property integer $size
- * @property integer $count
- * @property integer $order_id
+ * @property integer $user_id
+ * @property integer $status
+ * @property integer $is_paid
+ * @property string $shipping_method
+ * @property string $date_create
  *
  * The followings are the available model relations:
- * @property OrderHistory $order
- * @property Cart $cart
- * @property Photo $item
+ * @property CartItem[] $cartItems
+ * @property User $user
  */
-class CartItem extends CActiveRecord
+class OrderHistory extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'cart_item';
+		return 'order_history';
 	}
 
 	/**
@@ -34,10 +33,12 @@ class CartItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, item_id, size, count, order_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, status, is_paid', 'numerical', 'integerOnly'=>true),
+			array('shipping_method', 'length', 'max'=>255),
+			array('date_create', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, cart_id, item_id, size, count, order_id', 'safe', 'on'=>'search'),
+			array('id, user_id, status, is_paid, shipping_method, date_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +50,8 @@ class CartItem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'order' => array(self::BELONGS_TO, 'OrderHistory', 'order_id'),
-			'cart' => array(self::BELONGS_TO, 'Cart', 'cart_id'),
-			'photo' => array(self::BELONGS_TO, 'Photo', 'item_id'),
+			'cartItems' => array(self::HAS_MANY, 'CartItem', 'order_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -62,11 +62,11 @@ class CartItem extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'cart_id' => 'Cart',
-			'item_id' => 'Item',
-			'size' => 'Size',
-			'count' => 'Count',
-			'order_id' => 'Order',
+			'user_id' => 'User',
+			'status' => 'Status',
+			'is_paid' => 'Is Paid',
+			'shipping_method' => 'Shipping Method',
+			'date_create' => 'Date Create',
 		);
 	}
 
@@ -89,11 +89,11 @@ class CartItem extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('cart_id',$this->cart_id);
-		$criteria->compare('item_id',$this->item_id);
-		$criteria->compare('size',$this->size);
-		$criteria->compare('count',$this->count);
-		$criteria->compare('order_id',$this->order_id);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('is_paid',$this->is_paid);
+		$criteria->compare('shipping_method',$this->shipping_method,true);
+		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,18 +104,10 @@ class CartItem extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return CartItem the static model class
+	 * @return OrderHistory the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-
-    public function getSum(){
-        if ($this->photo->new_price)
-            $sum = $this->photo->new_price*$this->count;
-        else
-            $sum = $this->photo->price*$this->count;
-        return $sum;
-    }
 }

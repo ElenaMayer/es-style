@@ -70,7 +70,7 @@
             item_id = $(this).data("item-id");
             $(this).addClass('button_in-progress').addClass('button_disabled');
             $.ajax({
-                url: "/site/deleteItemFromCart",
+                url: "/ajax/deleteItemFromCart",
                 data: {
                     item_id: item_id
                 },
