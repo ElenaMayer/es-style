@@ -18,7 +18,7 @@
         <div class="cart-separator"></div>
         <div class="cart-navigation">
             <a href="/order/<?= $model->id?>" class="button button_blue button_big cart-navigation__order">
-                <span class="button__title">Отправить заказ</span>
+                <span class="button__title">Оформить заказ</span>
                 <span class="button__progress"></span>
             </a>
         </div>
@@ -29,7 +29,7 @@
 <?php endif; ?>
 
 <script>
-    $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')}),
+    $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
     $( "body" ).on("click", ".change-quantity", function() {
         if (!$(this).hasClass("button_disabled")) {

@@ -232,9 +232,10 @@ class SiteController extends Controller
 
     public function actionOrder($id){
         if(!empty($this->cart) && $this->cart->id == $id) {
-            if(!Yii::app()->user->isGuest) {
+            if(!Yii::app()->user->isGuest)
                 $user = User::model()->getUser();
-            }
+            else
+                $user = new User();
             if (isset($_POST['User'])) {
                 $user->attributes = $_POST['User'];
                 if ($user->validate() && $user->save()) {

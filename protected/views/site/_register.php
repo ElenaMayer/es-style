@@ -39,7 +39,7 @@
     <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'')); ?>
+    <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="form__controls">
     <span id='register-form_submit' class="button">Зарегистрироваться</span>

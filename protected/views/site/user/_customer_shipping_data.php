@@ -1,4 +1,4 @@
-<h2 class="account-header__title">Данные для отправки</h2>
+<h2 class="account-header__title">Данные для доставки</h2>
 <?php $this->renderPartial('_alert'); ?>
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'customer_shipping_data',
