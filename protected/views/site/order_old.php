@@ -2,7 +2,7 @@
     <?php $this->renderPartial('_'.$type); ?>
     <h2>Заказ</h2>
     <div id="data">
-        <?php $this->renderPartial('_order_form',array('model'=>$model, 'type'=>$type)); ?>
+        <?php $this->renderPartial('_order_form_old',array('model'=>$model, 'type'=>$type)); ?>
     </div>
 </div>
 

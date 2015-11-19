@@ -1,54 +1,65 @@
-<?php $this->renderPartial('_alert'); ?>
-<div class="form">
-
-    <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
-        'id'=>'order-form',
-    )); ?>
-
-    <p>Поля, отмеченные <span class="required">*</span> обязательны для заполнения.</p>
-
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
+    'id'=>'order-form',
+)); ?>
+    <?php if (Yii::app()->user->isGuest):?>
+        <div class="order-auth-checkout__login">Уже зарегистрированы?
+            <a class="button button_blue button_big order-login" data-toggle="modal" data-target="#auth_form">
+                <span class="button__title">Войти</span>
+            </a>
+        </div>
+        <div class="cart-separator"></div>
+    <?php endif ?>
+    <h4>Личные данные</h4>
     <div class="row">
-        <?php echo $form->textFieldGroup($model,'name', array('placeholder'=>'')); ?>
-    </div>
-    <?php if($type == 'wholesale') :?>
-        <div class="row">
-            <?php echo $form->textFieldGroup($model,'company',array('placeholder'=>'', 'size'=>60,'maxlength'=>255)); ?>
-        </div>
-        <div class="row">
-            <?php echo $form->textFieldGroup($model,'city',array('placeholder'=>'', 'size'=>60,'maxlength'=>255)); ?>
-        </div>
-    <?php endif;?>
-    <?php if($type == 'shipping') :?>
-        <div class="row">
-            <?php echo $form->textFieldGroup($model,'address',array('placeholder'=>'', 'size'=>60,'maxlength'=>255)); ?>
-        </div>
-        <div class="row">
-            <?php echo $form->textFieldGroup($model,'postcode', array('placeholder'=>'')); ?>
-        </div>
-    <?php endif;?>
-    <div class="row">
-        <?php echo $form->textFieldGroup($model,'phone',array('placeholder'=>'', 'size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->textFieldGroup($user, 'surname', array('placeholder'=>'')); ?>
     </div>
     <div class="row">
-        <?php echo $form->textFieldGroup($model,'email',array('placeholder'=>'', 'size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->textFieldGroup($user, 'name', array('placeholder'=>'')); ?>
     </div>
-    <?php if($type == 'wholesale') :?>
-        <div class="row">
-            <?php echo $form->textFieldGroup($model,'delivery',array('placeholder'=>'', 'placeholder'=>'Почта России или название ТК', 'size'=>60,'maxlength'=>255)); ?>
-        </div>
-    <?php endif;?>
     <div class="row">
-        <?php echo $form->textAreaGroup($model,'order',array('placeholder'=>'', 'rows'=>6, 'cols'=>50)); ?>
+        <?php echo $form->textFieldGroup($user, 'middlename', array('placeholder'=>'')); ?>
     </div>
-    <div class="row buttons">
-        <?php $this->widget( 'booster.widgets.TbButton',
-            array(
-                'id' => 'submit',
-                'label' => 'Отправить'
-            )
-        ); ?>
+    <div class="row">
+        <?php echo $form->textFieldGroup($user, 'phone', array('placeholder'=>'+7')); ?>
     </div>
-
-    <?php $this->endWidget(); ?>
-
-</div><!-- form -->
+    <div class="row">
+        <div class="form-group">
+            <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+            <?php echo $form->labelEx($user,'email'); ?>
+        </div>
+    </div>
+    <?php if (Yii::app()->user->isGuest):?>
+        <div class="row">
+            <div class="form-group">
+                <div class="order-auth-checkout__register">
+                    <?php echo CHtml::checkBox('create_profile', false, ['value'=>'1']); ?>
+                    <?php echo CHtml::label('Зарегистрироваться для упрощения покупки', 'create_profile'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="order-password">
+            <div class="row">
+                <?php echo $form->passwordFieldGroup($user, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+            </div>
+            <div class="row">
+                <?php echo $form->passwordFieldGroup($user, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+            </div>
+        </div>
+    <?php endif ?>
+    <h4>Данные для доставки</h4>
+    <div class="row">
+        <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'')); ?>
+    </div>
+    <div class="row">
+        <div class="form-group address">
+            <?php echo $form->labelEx($user,'address'); ?>
+            <?php echo $form->textField($user, 'address', array('placeholder'=>'', 'class' => 'form-control')); ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="payment">
+            <?php echo CHtml::radioButtonList('payment', 'cod', ['cod'=>'При получении на почте', 'card'=>'Онлайн-оплата картой']);?>
+        </div>
+        <?php echo CHtml::label('Способ оплаты', 'payment'); ?>
+    </div>
+<?php $this->endWidget(); ?>

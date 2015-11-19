@@ -20,7 +20,7 @@
     font-size: 22px;
     font-weight: 700;
     margin: 0 0 15px 0;
-    color: #CA0600;
+    color: #CB2228;
     line-height: 30px;
     margin-top: -5px;
 }
@@ -33,7 +33,7 @@
 .popup__error {
     border: 1px solid #f16048;
     background-color: #faebe7;
-    color: #df280a;
+    color: #CB2228;
     font-size: 11px;
     font-weight: 700;
     line-height: 15px;
@@ -77,7 +77,7 @@
 .form__error, .form__info {
     padding-top: 6px;
     font-size: 13px;
-    color: #e54c35;
+    color: #CB2228;
     display: none;
 }
 
@@ -179,7 +179,7 @@
 }
 
 .register-form .subscribed input{
-    margin: 10px 0 10px -163px !important;
+    margin: 10px 0 10px -160px !important;
 }
 
 .user-form .subscribed input{
@@ -197,37 +197,66 @@
     margin-right: 5px;
 }
 
-.subscribed label {
+.register-form .row .subscribed label {
     font-size: 11px;
     color: #888;
-    left: 20px !important;
+    left: -160px;
     font-weight: 300;
+    position: relative;
+    top: -3px;
 }
-
-.register-form .row, .user-form .row {
+.login-form .row {
+    margin: 0 0 -5px 100px !important;
+}
+.register-form .row {
+    margin: 0 0 -5px 150px !important;
+}
+.user-form .row {
     margin: 0 0 -5px 130px !important;
 }
 
-.register-form .row label, .user-form .row label{
+.user-form .row label{
     left: -130px;
 }
 
+.register-form .row label,
+.login-form .row label {
+    left: 20px;
+    top: initial;
+    font-weight: normal;
+}
+.login-form .row label {
+    margin-top: 10px;
+}
 
-.register-form .form__controls, .user-form .form__controls {
+.register-form .row input {
+    width: 90%;
+}
+.login-form .row input {
+    width: 85%;
+}
+.register-form .form__controls {
+    padding-left: 150px;
+}
+.login-form .form__controls {
+    padding-left: 100px;
+}
+
+.user-form .form__controls {
     padding-left: 130px;
 }
 
 .auth_form .has-error .control-label, .customer .has-error .control-label{
-    color: #CA0600;
+    color: #CB2228;
     font-size: 13px;
 }
 
 .auth_form .has-error .help-block, .customer .has-error .help-block {
-    color: #CA0600;
+    color: #CB2228;
 }
 
 .auth_form .has-error .form-control, .customer .has-error .form-control {
-    border-color: #CA0600;
+    border-color: #CB2228;
 }
 
 .customer {

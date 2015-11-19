@@ -17,6 +17,7 @@
 <?php $this->endWidget(); ?>
 
 <script>
+    action = '<?= Yii::app()->controller->action->id?>';
     $( "#login_form").find( "span.required").each(function() {
         $( this ).hide();
     });
@@ -60,10 +61,11 @@
             type: "POST",
             dataType : "html",
             success: function( data ) {
-                if (data == 1)
+                if (data == 1) {
                     window.location.reload();
-                else
+                } else {
                     $('#login-form').html(data);
+                }
             }});
     });
 

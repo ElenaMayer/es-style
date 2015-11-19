@@ -1501,7 +1501,8 @@ h3.news {
     left: 0;
     margin-top: 14px;
 }
-.cart-navigation__order {
+.cart-navigation__order,
+.order_submit {
     float: right;
 }
 .hint {
@@ -1679,4 +1680,22 @@ h3.news {
     position: relative;
     top: -2px;
     left: -190px;
+}
+
+.order-password {
+    display: none;
+}
+.order-form .error{
+    font-size: 14px;
+    width: auto;
+}
+.row input.error {
+    width: 50%;
+}
+.order-form .has-error .form-control {
+    border-color: #CB2228;
+}
+.order-form .has-error .help-block,
+.order-form .has-error .control-label {
+    color: #CB2228;
 }

@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'cart':
  * @property integer $id
  * @property integer $user_id
+ * @property integer $is_active
  *
  * The followings are the available model relations:
  * @property User $user
@@ -18,7 +19,6 @@ class Cart extends CActiveRecord
     public $sale;
     public $total;
     public $count;
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,10 +35,10 @@ class Cart extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, is_active', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id', 'safe', 'on'=>'search'),
+			array('id, user_id, is_active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +63,7 @@ class Cart extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
+			'is_active' => 'Is Active',
 		);
 	}
 
@@ -86,6 +87,7 @@ class Cart extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('is_active',$this->is_active);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -160,8 +162,10 @@ class Cart extends CActiveRecord
         else return false;
     }
 
-    public function getSubtitle(){
-
+    public function addItemsToCart($items){
+        foreach($items as $item){
+            $item->cart_id = $this->id;
+            $item->save();
+        }
     }
-
 }

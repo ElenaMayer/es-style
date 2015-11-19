@@ -50,14 +50,16 @@ class User extends CActiveRecord
 			array('date_of_birth, date, month, year, is_subscribed', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
+            array('password, name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('password, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'guestOrder', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
             array('password2, password_old, password_new', 'required', 'on' => 'changePassword', 'message'=>'Это поле необходимо заполнить.'),
 			array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
-            array('password', 'passwordMatch', 'on' => 'registration'),
+            array('password', 'passwordMatch', 'on' => 'registration, guestOrder'),
             array('password_new', 'passwordMatch', 'on' => 'changePassword'),
             array('password_old', 'passwordCheck', 'on' => 'changePassword'),
             array('email', 'emailCheck'),
-            array('email','unsafe','on'=>'customer'),
+            array('email','unsafe','on'=>'customer, userOrder'),
 		);
 	}
 

@@ -33,12 +33,13 @@ class OrderHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, status, is_paid', 'numerical', 'integerOnly'=>true),
-			array('shipping_method', 'length', 'max'=>255),
+			array('user_id, is_paid', 'numerical', 'integerOnly'=>true),
+			array('shipping_method, status', 'length', 'max'=>255),
 			array('date_create', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, status, is_paid, shipping_method, date_create', 'safe', 'on'=>'search'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 		);
 	}
 

@@ -7,7 +7,7 @@ class m151117_100623_order_history extends CDbMigration
         $this->createTable('order_history', array(
             'id' => 'pk',
             'user_id' => 'int',
-            'status' => 'int',
+            'status' => 'string',
             'is_paid' => 'boolean',
             'shipping_method' => 'string',
             'date_create' => 'datetime',
