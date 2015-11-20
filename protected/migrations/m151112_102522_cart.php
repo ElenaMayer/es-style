@@ -13,7 +13,9 @@ class m151112_102522_cart extends CDbMigration
             'cart_id' => 'int',
             'item_id' => 'int',
             'size' => 'int',
-            'count' => 'int NOT NULL DEFAULT 1'
+            'count' => 'int NOT NULL DEFAULT 1',
+            'price' => 'int',
+            'new_price' => 'int',
         ));
         $this->addForeignKey('FK_cart_user_id', 'cart', 'user_id', 'user', 'id', 'CASCADE', 'RESTRICT');
         $this->addForeignKey('FK_cart_item_cart_id', 'cart_item', 'cart_id', 'cart', 'id', 'CASCADE', 'RESTRICT');

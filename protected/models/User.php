@@ -23,6 +23,7 @@ class User extends CActiveRecord
     public $date;
     public $month;
     public $year;
+    public $password1;
     public $password2;
     public $password_old;
     public $password_new;
@@ -44,18 +45,19 @@ class User extends CActiveRecord
 	{
 		return array(
 			array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
-            array('password, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
+            array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
             array('email', 'email'),
             array('postcode', 'numerical', 'integerOnly'=>true),
 			array('date_of_birth, date, month, year, is_subscribed', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
-            array('email, name, password, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
-            array('password, name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder', 'message'=>'Это поле необходимо заполнить.'),
-            array('password, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'guestOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, surname, middlename, address, phone, postcode, email', 'required', 'on' => 'guestOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
             array('password2, password_old, password_new', 'required', 'on' => 'changePassword', 'message'=>'Это поле необходимо заполнить.'),
 			array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
-            array('password', 'passwordMatch', 'on' => 'registration, guestOrder'),
+            array('password1', 'passwordMatch', 'on' => 'registration, orderWithRegistration'),
             array('password_new', 'passwordMatch', 'on' => 'changePassword'),
             array('password_old', 'passwordCheck', 'on' => 'changePassword'),
             array('email', 'emailCheck'),
@@ -75,9 +77,9 @@ class User extends CActiveRecord
 
     public function emailCheck ( $attribute ) {
         $email=$this->findByAttributes(array('email'=>$this->email));
-        if (Yii::app()->controller->action->id == 'registration' && !empty($email))
-            $this->addError ( $attribute, "Другая учетная запись зарегистрирована на указанный адрес." );
-        elseif (Yii::app()->controller->action->id == 'login' && empty($email)) {
+        if (Yii::app()->controller->action->id != 'login' && !empty($email)) {
+            $this->addError($attribute, "Другая учетная запись зарегистрирована на указанный адрес.");
+        } elseif (Yii::app()->controller->action->id == 'login' && empty($email)) {
             $this->addError('password', "Неверный логин или пароль.");
         }
     }
@@ -104,6 +106,7 @@ class User extends CActiveRecord
 			'password' => 'Пароль',
             'password_old' => 'Текущий пароль',
             'password_new' => 'Новый пароль',
+            'password1' => 'Пароль',
             'password2' => 'Повторите пароль',
 			'name' => 'Имя',
             'surname' => 'Фамилия',
@@ -201,8 +204,7 @@ class User extends CActiveRecord
 
     protected function beforeSave()
     {
-        if(parent::beforeSave())
-        {
+        if(parent::beforeSave()) {
             if($this->isNewRecord) {
                 $this->password = $this->passwordCrypt($this->password);
             } else {
@@ -212,9 +214,14 @@ class User extends CActiveRecord
             if (!empty($this->date) && !empty($this->month) && !empty($this->year))
                 $this->date_of_birth = $this->year . '.' .$this->month . '.' . $this->date;
             return true;
-        }
-        else
+        } else
             return false;
+    }
+
+    protected function afterSave() {
+        parent::afterSave();
+        if(!empty($this->password1))
+            $this->login($this->password1);
     }
 
     protected function passwordCrypt($password){
@@ -222,10 +229,12 @@ class User extends CActiveRecord
         return crypt($password, $salt);
     }
 
-    public function login()
-    {
+    public function login($password = null) {
         if($this->_identity===null) {
-            $this->_identity=new UserIdentity($this->email, $this->password);
+            if($password)
+                $this->_identity=new UserIdentity($this->email, $password);
+            else
+                $this->_identity=new UserIdentity($this->email, $this->password);
             $this->_identity->authenticate();
         }
         if($this->_identity->errorCode===UserIdentity::ERROR_NONE) {
@@ -246,5 +255,19 @@ class User extends CActiveRecord
             $user->year = date('Y', $date_of_birth);
         }
         return $user;
+    }
+
+    public function saveUserData($attributes){
+        $this->attributes = $attributes['User'];
+        if(!isset($attributes['create_profile']) || !$attributes['create_profile']){
+            $this->scenario = 'guestOrder'; // else 'orderWithRegistration'
+        }
+        if ($this->validate()) {
+            if(isset($attributes['create_profile']) && $attributes['create_profile']){
+                $this->password = $this->password1;
+            }
+            $this->save();
+        }
+        return $this;
     }
 }

@@ -36,7 +36,7 @@
         ))); ?>
 </div>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    <?php echo $form->passwordFieldGroup($modelAuth, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
     <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>

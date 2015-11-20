@@ -6,9 +6,13 @@
  * The followings are the available columns in table 'order_history':
  * @property integer $id
  * @property integer $user_id
- * @property integer $status
+ * @property string $status
  * @property integer $is_paid
  * @property string $shipping_method
+ * @property integer $subtotal
+ * @property integer $sale
+ * @property integer $shipping
+ * @property integer $total
  * @property string $date_create
  *
  * The followings are the available model relations:
@@ -33,13 +37,14 @@ class OrderHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, is_paid', 'numerical', 'integerOnly'=>true),
-			array('shipping_method, status', 'length', 'max'=>255),
+			array('subtotal, sale, shipping, total', 'required'),
+			array('user_id, is_paid, subtotal, sale, shipping, total', 'numerical', 'integerOnly'=>true),
+			array('status, shipping_method', 'length', 'max'=>255),
 			array('date_create', 'safe'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, status, is_paid, shipping_method, date_create', 'safe', 'on'=>'search'),
-            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false, 'on'=>'insert'),
+			array('id, user_id, status, is_paid, shipping_method, subtotal, sale, shipping, total, date_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +72,10 @@ class OrderHistory extends CActiveRecord
 			'status' => 'Status',
 			'is_paid' => 'Is Paid',
 			'shipping_method' => 'Shipping Method',
+			'subtotal' => 'Subtotal',
+			'sale' => 'Sale',
+			'shipping' => 'Shipping',
+			'total' => 'Total',
 			'date_create' => 'Date Create',
 		);
 	}
@@ -91,9 +100,13 @@ class OrderHistory extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('status',$this->status,true);
 		$criteria->compare('is_paid',$this->is_paid);
 		$criteria->compare('shipping_method',$this->shipping_method,true);
+		$criteria->compare('subtotal',$this->subtotal);
+		$criteria->compare('sale',$this->sale);
+		$criteria->compare('shipping',$this->shipping);
+		$criteria->compare('total',$this->total);
 		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(

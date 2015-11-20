@@ -1,18 +1,6 @@
-<div class="customer">
-    <div class="table__column table__column_left">
-        <ul class="leftside-menu">
-            <li class="leftside-menu__item">
-                <a href="/customer/">Мои данные</a>
-            </li>
-            <li class="leftside-menu__item">
-                <a href="/history/">Мои заказы</a>
-            </li>
-            <li class="leftside-menu__item">
-                <a href="/cart/">Моя корзина</a>
-            </li>
-        </ul>
-    </div>
-    <div class="table__column table__column_right">
+<div class="lc">
+    <?php $this->renderPartial('user/_user_menu'); ?>
+    <div class="customer table__column table__column_right">
         <div class="table__cell account">
             <div id="customer_person_data">
                 <?php $this->renderPartial('user/_customer_person_data', array('model'=>$model)); ?>
@@ -28,7 +16,6 @@
         </div>
     </div>
 </div>
-
 <script>
     $( "body" ).on("click", "#submit-button", function() {
         form_id = "#" + $(this).parents('form').attr('id');

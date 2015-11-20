@@ -5,14 +5,18 @@ class m151117_100623_order_history extends CDbMigration
 	public function up()
 	{
         $this->createTable('order_history', array(
-            'id' => 'pk',
+            'id' => 'bigint NOT NULL',
             'user_id' => 'int',
             'status' => 'string',
             'is_paid' => 'boolean',
             'shipping_method' => 'string',
+            'subtotal' => 'int',
+            'sale' => 'int',
+            'shipping' => 'int',
+            'total' => 'int',
             'date_create' => 'datetime',
         ));
-        $this->addColumn('cart_item', 'order_id', 'int');
+        $this->addColumn('cart_item', 'order_id', 'bigint');
         $this->addForeignKey('FK_order_history_user_id', 'order_history', 'user_id', 'user', 'id', 'CASCADE', 'RESTRICT');
         $this->addForeignKey('FK_cart_item_order_id', 'cart_item', 'order_id', 'order_history', 'id', 'CASCADE', 'RESTRICT');
 

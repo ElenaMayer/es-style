@@ -132,7 +132,7 @@ class Cart extends CActiveRecord
         $neededItem = null;
         foreach($this->cartItems as $item){
             if($item->item_id == $attributes["item_id"]) {
-                if (isset($attributes["size"])) {
+                if ($attributes["size"]) {
                     if ($item->size == $attributes["size"]) {
                         $neededItem = $item;
                         break;
@@ -156,7 +156,7 @@ class Cart extends CActiveRecord
         $cartItem = new CartItem;
         $cartItem->cart_id = $this->id;
         $cartItem->item_id = $attributes['item_id'];
-        if(isset($attributes['size']))
+        if($attributes['size'])
             $cartItem->size = $attributes['size'];
         if($cartItem->save()) return $cartItem;
         else return false;

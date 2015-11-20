@@ -9,10 +9,11 @@
  * @property integer $item_id
  * @property integer $size
  * @property integer $count
- * @property integer $order_id
+ * @property integer $price
+ * @property integer $new_price
+ * @property string $order_id
  *
  * The followings are the available model relations:
- * @property OrderHistory $order
  * @property Cart $cart
  * @property Photo $item
  */
@@ -34,10 +35,11 @@ class CartItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, item_id, size, count, order_id', 'numerical', 'integerOnly'=>true),
+			array('cart_id, item_id, size, count, price, new_price', 'numerical', 'integerOnly'=>true),
+			array('order_id', 'length', 'max'=>13),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, cart_id, item_id, size, count, order_id', 'safe', 'on'=>'search'),
+			array('id, cart_id, item_id, size, count, price, new_price, order_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +51,9 @@ class CartItem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'order' => array(self::BELONGS_TO, 'OrderHistory', 'order_id'),
 			'cart' => array(self::BELONGS_TO, 'Cart', 'cart_id'),
 			'photo' => array(self::BELONGS_TO, 'Photo', 'item_id'),
+            'order' => array(self::BELONGS_TO, 'OrderHistory', 'order_id'),
 		);
 	}
 
@@ -66,6 +68,8 @@ class CartItem extends CActiveRecord
 			'item_id' => 'Item',
 			'size' => 'Size',
 			'count' => 'Count',
+			'price' => 'Price',
+			'new_price' => 'New Price',
 			'order_id' => 'Order',
 		);
 	}
@@ -91,9 +95,7 @@ class CartItem extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('cart_id',$this->cart_id);
 		$criteria->compare('item_id',$this->item_id);
-		$criteria->compare('size',$this->size);
-		$criteria->compare('count',$this->count);
-		$criteria->compare('order_id',$this->order_id);
+		$criteria->compare('order_id',$this->order_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -112,7 +114,7 @@ class CartItem extends CActiveRecord
 	}
 
     public function getSum(){
-        if ($this->photo->new_price)
+        if ($this->photo->is_sale)
             $sum = $this->photo->new_price*$this->count;
         else
             $sum = $this->photo->price*$this->count;

@@ -14,9 +14,7 @@
     </div>
     <div class="form__controls">
         <span id='login-form_submit' class="button">Войти</span>
-        <?php if (Yii::app()->controller->action->id != 'order') :?>
-            <span class="login-form__register link">Зарегистрироваться</span>
-        <?php endif ?>
+        <span class="login-form__register link">Зарегистрироваться</span>
     </div>
 <?php $this->endWidget(); ?>
 

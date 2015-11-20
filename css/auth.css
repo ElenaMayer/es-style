@@ -179,11 +179,10 @@
 }
 
 .register-form .subscribed input{
-    margin: 10px 0 10px -160px !important;
+    margin: 10px 0 10px -175px !important;
 }
-
-.user-form .subscribed input{
-    margin: 10px 0 10px -228px !important;
+.register-form .button{
+    margin-right: 10px;
 }
 
 .few_field .form-control, .sex .form-control {
@@ -211,21 +210,13 @@
 .register-form .row {
     margin: 0 0 -5px 150px !important;
 }
-.user-form .row {
-    margin: 0 0 -5px 130px !important;
-}
 
-.user-form .row label{
-    left: -130px;
-}
 
 .register-form .row label,
 .login-form .row label {
     left: 20px;
     top: initial;
     font-weight: normal;
-}
-.login-form .row label {
     margin-top: 10px;
 }
 
@@ -242,10 +233,6 @@
     padding-left: 100px;
 }
 
-.user-form .form__controls {
-    padding-left: 130px;
-}
-
 .auth_form .has-error .control-label, .customer .has-error .control-label{
     color: #CB2228;
     font-size: 13px;
@@ -257,53 +244,4 @@
 
 .auth_form .has-error .form-control, .customer .has-error .form-control {
     border-color: #CB2228;
-}
-
-.customer {
-    padding: 20px 0 0 40px;
-}
-
-.customer .table__column_left {
-    width: 13%;
-    padding-top: 20px;
-}
-
-.leftside-menu__item {
-    margin-bottom: 15px;
-    list-style-type: none;
-}
-
-.customer a {
-    color: #9e3c5d;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.customer a:hover {
-    color: #ff3d00;
-    text-decoration: none;
-}
-
-.customer h1 {
-    margin: -6px 180px 24px -2px;
-    font-size: 45px;
-    line-height: 45px;
-}
-
-.customer .row label {
-    font-weight: inherit;
-    font-size: 13px;
-}
-
-.customer .row button {
-    font-size: 13px;
-}
-
-.customer .form-group input[type='text'], .customer .form-group input[type='password'] {
-    width: 190px;
-    font-size: 13px;
-}
-
-.customer .address input[type='text'] {
-    width: 98%;
 }

@@ -31,7 +31,7 @@ class AjaxController extends Controller
             $cartItem = $cart->findAndAddCartItem($_POST);
             if ($cartItem)
                 $this->renderPartial('../site/cart/_cart_popup', array('cartItem'=>$cartItem));
-            else  return false;
+            else false;
             Yii::app()->end();
         } else {
             $cart = new Cart;

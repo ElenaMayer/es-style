@@ -24,7 +24,11 @@
     </div>
     <div class="row">
         <div class="form-group">
-            <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+            <?php if (Yii::app()->user->isGuest):?>
+                <?php echo $form->textField($user, 'email', array( 'class' => 'form-control')); ?>
+            <?php else :?>
+                <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+            <?php endif ?>
             <?php echo $form->labelEx($user,'email'); ?>
         </div>
     </div>
@@ -39,7 +43,7 @@
         </div>
         <div class="order-password">
             <div class="row">
-                <?php echo $form->passwordFieldGroup($user, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+                <?php echo $form->passwordFieldGroup($user, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
             </div>
             <div class="row">
                 <?php echo $form->passwordFieldGroup($user, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>

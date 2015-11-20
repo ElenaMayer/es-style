@@ -1085,7 +1085,7 @@ h3.news {
 .banner__description {
     font-size: 15px;
 }
-.table__column_left {
+.model .table__column_left {
     width: 40%;
     padding-right: 10px;
 }
@@ -1291,7 +1291,7 @@ h3.news {
     .table__column {
         display: block;
     }
-    .table__column_left {
+    .model  .table__column_left {
         width: 100%;
     }
     .MagicZoomBigImageCont{
@@ -1692,10 +1692,101 @@ h3.news {
 .row input.error {
     width: 50%;
 }
-.order-form .has-error .form-control {
+.order-form .has-error .form-control,
+.order-form .form-control.error {
     border-color: #CB2228;
 }
 .order-form .has-error .help-block,
-.order-form .has-error .control-label {
+.order-form .has-error .control-label,
+.order-form label.error {
     color: #CB2228;
+}
+.order-form label.error {
+    padding: 0;
+}
+
+.customer .row {
+    margin: 0 0 -5px 130px;
+}
+.customer .row label {
+    left: -130px;
+}
+.customer .form__controls {
+    padding-left: 130px;
+}
+.customer .subscribed label {
+    margin-left: 150px;
+}
+.customer .subscribed input {
+    margin: 10px 0 10px -200px;
+}
+
+.lc {
+    padding: 20px 0 0 40px;
+}
+.lc .table__column_left {
+    width: 13%;
+    padding-top: 20px;
+}
+.lc .leftside-menu__item {
+    margin-bottom: 15px;
+    list-style-type: none;
+}
+.lc a {
+    color: #9e3c5d;
+    text-decoration: none;
+    cursor: pointer;
+}
+.lc a:hover {
+    color: #ff3d00;
+    text-decoration: none;
+}
+.lc h1 {
+    margin: -6px 180px 24px -2px;
+    font-size: 45px;
+    line-height: 45px;
+}
+.customer .row label {
+    font-weight: inherit;
+    font-size: 13px;
+}
+.customer .row button {
+    font-size: 13px;
+}
+.customer .form-group input[type='text'],
+.customer .form-group input[type='password'] {
+    width: 190px;
+    font-size: 13px;
+}
+.customer .address input[type='text'] {
+    width: 98%;
+}
+
+.orders {
+    font-size: 13px;
+}
+.orders__cell {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    vertical-align: top;
+    text-align: left;
+    background: none;
+}
+.orders__cell_nr {
+    width: 140px;
+}
+.orders__cell_date {
+    width: 100px;
+}
+.orders__cell_dest {
+    width: 150px;
+}
+.orders__cell_price {
+    text-align: center;
+    width: 130px;
+    padding-right: 30px;
+}
+.order_empty {
+    height: 200px;
+    color: #999;
 }

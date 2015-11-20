@@ -56,6 +56,7 @@ class SiteController extends Controller
         $user->scenario = 'registration';
         $user->attributes = Yii::app()->request->getPost('User');
         if ($user->validate()) {
+            $user->password = $user->password1;
             if($user->save()) {
                 if($this->cart) {
                     $this->cart->user_id = $user->id;
@@ -78,7 +79,7 @@ class SiteController extends Controller
         $user->attributes = Yii::app()->request->getPost('User');
         if ($user->validate() && $user->login()) {
             if ($this->cart) {
-                $cart = Cart::model()->findByAttributes(array('user_id' => $user->id));
+                $cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
                 if($cart) {
                     $cart->addItemsToCart($this->cart->cartItems);
                     if(Yii::app()->controller->action->id == 'order'){
@@ -150,8 +151,6 @@ class SiteController extends Controller
 
     public function actionModel($type, $id){
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
-        if(!isset($model->is_show) || !$model->is_show)
-            throw new CHttpException(404,'К сожалению, модель не найдена.');
         $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
         $this->render('model',array('model'=>$model, 'type'=>$type));
     }
@@ -248,14 +247,6 @@ class SiteController extends Controller
         }
     }
 
-    public function actionHistory(){
-
-        $model = User::model()->getUser();
-        $this->render('user/history',array(
-            'model'=>$model,
-        ));
-    }
-
     public function actionCart(){
         $this->render('cart',array(
             'model'=>$this->cart,
@@ -269,53 +260,67 @@ class SiteController extends Controller
                 $user->scenario = 'userOrder';
             } else {
                 $user = new User();
-                $user->scenario = 'guestOrder';
+                $user->scenario = 'orderWithRegistration';
             }
             if (isset($_POST['User'])) {
-                $this->createOrder($user);
+                $user->saveUserData($_POST);
+                $user = $user->saveUserData($_POST);
+                $errors = $user->getErrors();
+                if(empty($errors)) {
+                    $this->createOrder($user->id);
+                } else {
+                    $this->renderPartial('_order_form', array('user' => $user));
+                    Yii::app()->end();
+                }
             }
             $this->render('order', array(
                 'user' => $user,
                 'cart' => $this->cart
             ));
-        } else {
-            $cart = Cart::model()->findByPk($id);
-            if($cart && $cart->is_active == false && !Yii::app()->user->isGuest && $cart->user_id == Yii::app()->user->id) {
-                $user = User::model()->getUser();
-                $user->scenario = 'userOrder';
-                if (isset($_POST['User'])) {
-                    $this->createOrder($user, $cart);
-                }
-                $this->render('order', array(
-                    'user' => $user,
-                    'cart' => $cart
-                ));
-            } else throw new CHttpException(404,'К сожалению, страница не найдена.');
+        }  else throw new CHttpException(404,'К сожалению, страница не найдена.');
+    }
+
+    public function createOrder($userId){
+        $order = new OrderHistory();
+        $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
+        $order->user_id = $userId;
+        $order->shipping_method = 'Почта России';
+
+        if($_POST['payment'] == 'cod') $order->status = 'in_progress';
+        elseif($_POST['payment'] == 'card') $order->status = 'payment';
+
+        $cart = $this->cart;
+        $order->subtotal = $cart->subtotal;
+        $order->sale = $cart->sale;
+        $order->shipping = $cart->shipping;
+        $order->total = $cart->total;
+        if ($order->save()){
+            foreach ($cart->cartItems as $item) {
+                $item->order_id = $order->id;
+                $item->cart_id = null;
+                $item->price = $item->photo->price;
+                if($item->photo->is_sale)
+                    $item->new_price = $item->photo->new_price;
+                $item->save();
+            }
+            if(!$cart->is_active) $cart->delete();
+            echo $order->status;
+            Yii::app()->end();
         }
     }
 
-    public function createOrder($user, $cart = null){
-        $user->attributes = $_POST['User'];
-        if ($user->validate() && $user->save()) {
-            $order = new OrderHistory();
-            $order->user_id = $user->id;
-            if($_POST['payment'] == 'cod') $order->status = 'in_progress';
-            elseif($_POST['payment'] == 'card') $order->status = 'payment';
-            if ($order->save()){
-                if(!$cart) $cart = $this->cart;
-                foreach ($cart->cartItems as $item) {
-                    $item->order_id = $order->id;
-                    $item->cart_id = null;
-                    $item->save();
-                }
-                if(!$cart->is_active) $cart->delete();
-                echo $order->status;
-                Yii::app()->end();
-            }
-        } else {
-            $this->renderPartial('_order_form', array('user'=>$user));
-            Yii::app()->end();
-        }
+    public function actionHistory(){
+        $history = OrderHistory::model()->findAllByAttributes(['user_id'=>Yii::app()->user->id], ['order'=>'id DESC']);
+        $this->render('user/history',array(
+            'history'=>$history,
+        ));
+    }
+
+    public function actionHistoryItem($id){
+        $order = OrderHistory::model()->findByPk($id);
+        $this->render('user/history_item',array(
+            'order'=>$order,
+        ));
     }
 
 }
