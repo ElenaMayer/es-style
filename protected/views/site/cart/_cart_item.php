@@ -17,5 +17,7 @@
         <span class="button__progress"></span>
         <span class="button__title"><i class="button__icon"></i>Убрать из корзины</span>
     </button>
-    <div class="cart-item__cell cart-item__cell_total"><?php if($cartItem->photo->is_available) :?><?= $cartItem->getSum()?><?php else :?>0<?php endif; ?>&nbsp;руб.</div>
+    <div class="cart-item__cell cart-item__cell_total">
+        <?php if($cartItem->photo->is_available) :?><?= $cartItem->getSum()?><?php else :?>0<?php endif; ?>&nbsp;руб.
+    </div>
 </li>

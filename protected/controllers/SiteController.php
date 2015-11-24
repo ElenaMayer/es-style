@@ -42,7 +42,7 @@ class SiteController extends Controller
                 'users'=>array('@'),
             ),
             array('deny',
-                'actions'=>array('customer', 'history'),
+                'actions'=>array('customer', 'history', 'historyItem'),
                 'users'=>array('?'),
             ),
             array('allow',
@@ -66,7 +66,7 @@ class SiteController extends Controller
                 Yii::app()->end();
             }
         } else {
-            $this->renderPartial('_register',array('modelAuth'=>$user));
+            $this->renderPartial('auth/_register',array('modelAuth'=>$user),false,true);
         }
     }
 
@@ -96,7 +96,7 @@ class SiteController extends Controller
             echo true;
             Yii::app()->end();
         } else {
-            $this->renderPartial('_login', array('modelAuth' => $user));
+            $this->renderPartial('auth/_login', array('modelAuth' => $user),false,true);
         }
     }
 
@@ -248,13 +248,13 @@ class SiteController extends Controller
     }
 
     public function actionCart(){
-        $this->render('cart',array(
+        $this->render('cart/cart',array(
             'model'=>$this->cart,
         ));
     }
 
     public function actionOrder($id){
-        if(!empty($this->cart) && $this->cart->id == $id) {
+        if(!empty($this->cart->cartItems) && $this->cart->id == $id) {
             if(!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
@@ -263,37 +263,44 @@ class SiteController extends Controller
                 $user->scenario = 'orderWithRegistration';
             }
             if (isset($_POST['User'])) {
-                $user->saveUserData($_POST);
-                $user = $user->saveUserData($_POST);
+                $user->saveUserData($_POST['User']);
+
                 $errors = $user->getErrors();
                 if(empty($errors)) {
-                    $this->createOrder($user->id);
+                    $order = $this->createOrder($user);
+                    $res['status'] = $order->status;
+                    $res['orderId'] = $order->id;
                 } else {
-                    $this->renderPartial('_order_form', array('user' => $user));
+                    $this->renderPartial('order/_order_form', array('user' => $user));
                     Yii::app()->end();
                 }
+                echo json_encode($res);
+                Yii::app()->end();
             }
-            $this->render('order', array(
+            $this->render('order/order', array(
                 'user' => $user,
                 'cart' => $this->cart
             ));
         }  else throw new CHttpException(404,'К сожалению, страница не найдена.');
     }
 
-    public function createOrder($userId){
+    public function createOrder($user){
         $order = new OrderHistory();
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
-        $order->user_id = $userId;
-        $order->shipping_method = 'Почта России';
+        $order->user_id = $user->id;
+        $order->shipping_method = 'russian_post';
+        $order->payment_method = $_POST['User']['payment'];
 
-        if($_POST['payment'] == 'cod') $order->status = 'in_progress';
-        elseif($_POST['payment'] == 'card') $order->status = 'payment';
+        if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
+        elseif($_POST['User']['payment'] == 'card') $order->status = 'payment';
 
         $cart = $this->cart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
         $order->shipping = $cart->shipping;
         $order->total = $cart->total;
+        $order->addressee = $user->name . " " . $user->surname;
+        $order->address = $user->postcode . ",<br>" . $user->address;
         if ($order->save()){
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
@@ -304,8 +311,7 @@ class SiteController extends Controller
                 $item->save();
             }
             if(!$cart->is_active) $cart->delete();
-            echo $order->status;
-            Yii::app()->end();
+            return $order;
         }
     }
 
@@ -318,9 +324,13 @@ class SiteController extends Controller
 
     public function actionHistoryItem($id){
         $order = OrderHistory::model()->findByPk($id);
-        $this->render('user/history_item',array(
-            'order'=>$order,
-        ));
+        if($order->user_id == Yii::app()->user->id) {
+            $this->render('user/history_item', array(
+                'order' => $order,
+            ));
+        } else {
+            throw new CHttpException(404,'К сожалению, страница не найдена.');
+        }
     }
 
 }

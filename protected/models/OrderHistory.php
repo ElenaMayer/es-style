@@ -4,11 +4,14 @@
  * This is the model class for table "order_history".
  *
  * The followings are the available columns in table 'order_history':
- * @property integer $id
+ * @property string $id
  * @property integer $user_id
  * @property string $status
  * @property integer $is_paid
  * @property string $shipping_method
+ * @property string $payment_method
+ * @property string $addressee
+ * @property string $address
  * @property integer $subtotal
  * @property integer $sale
  * @property integer $shipping
@@ -16,7 +19,6 @@
  * @property string $date_create
  *
  * The followings are the available model relations:
- * @property CartItem[] $cartItems
  * @property User $user
  */
 class OrderHistory extends CActiveRecord
@@ -37,14 +39,15 @@ class OrderHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('subtotal, sale, shipping, total', 'required'),
+			array('id, address, subtotal, sale, shipping, total', 'required'),
 			array('user_id, is_paid, subtotal, sale, shipping, total', 'numerical', 'integerOnly'=>true),
-			array('status, shipping_method', 'length', 'max'=>255),
+			array('id', 'length', 'max'=>13),
+			array('status, shipping_method, payment_method, addressee, address', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, status, is_paid, shipping_method, subtotal, sale, shipping, total, date_create', 'safe', 'on'=>'search'),
+			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +59,8 @@ class OrderHistory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cartItems' => array(self::HAS_MANY, 'CartItem', 'order_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+            'cartItems' => array(self::HAS_MANY, 'CartItem', 'order_id'),
 		);
 	}
 
@@ -72,6 +75,9 @@ class OrderHistory extends CActiveRecord
 			'status' => 'Status',
 			'is_paid' => 'Is Paid',
 			'shipping_method' => 'Shipping Method',
+			'payment_method' => 'Payment Method',
+			'addressee' => 'Addressee',
+			'address' => 'Address',
 			'subtotal' => 'Subtotal',
 			'sale' => 'Sale',
 			'shipping' => 'Shipping',
@@ -98,11 +104,14 @@ class OrderHistory extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('is_paid',$this->is_paid);
 		$criteria->compare('shipping_method',$this->shipping_method,true);
+		$criteria->compare('payment_method',$this->payment_method,true);
+		$criteria->compare('addressee',$this->addressee,true);
+		$criteria->compare('address',$this->address,true);
 		$criteria->compare('subtotal',$this->subtotal);
 		$criteria->compare('sale',$this->sale);
 		$criteria->compare('shipping',$this->shipping);

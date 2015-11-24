@@ -42,7 +42,20 @@
     <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="form__controls">
-    <span id='register-form_submit' class="button">Зарегистрироваться</span>
+    <?php echo CHtml::ajaxSubmitButton('Зарегистрироваться',
+        CHtml::normalizeUrl(array('/site/registration')),
+        array(
+            'type' => 'POST',
+            'success' => 'js: function(data) {
+                            if (data == 1)
+                                window.location.reload();
+                            else
+                                $("#register-form").html(data);
+                            }',
+            ),
+        array(
+            'class' => 'button button_blue'
+    )); ?>
     <span class="register-form__login link">У меня есть аккаунт</span>
 </div>
 

@@ -64,4 +64,19 @@ class AjaxController extends Controller
             Yii::app()->end();
         }
     }
+
+    public function actionGetOrderModal(){
+        $this->renderPartial('../site/order/_order_created', array('orderId'=>$_POST['order_id']));
+    }
+
+    public function actionRemindPassword(){
+        $user = new User;
+        $user->scenario = 'remindPassword';
+        $user->attributes = Yii::app()->request->getPost('User');
+        if ($user->validate()) {
+            echo $user->remindPassword();
+        }
+        $this->renderPartial('../site/auth/_lost',array('modelAuth'=>$user, 'isSent'=>$user->validate()),false,true);
+        Yii::app()->end();
+    }
 }

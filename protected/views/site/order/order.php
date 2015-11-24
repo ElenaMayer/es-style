@@ -1,6 +1,6 @@
 <div class="new-order">
     <div class="order-form">
-        <?php $this->renderPartial('_order_form', array('user'=>$user)); ?>
+        <?php $this->renderPartial('order/_order_form', array('user'=>$user)); ?>
     </div>
     <div class="cart-separator"></div>
     <div class="cart-total cart-total_threshold">
@@ -18,6 +18,9 @@
         </a>
     </div>
 </div>
+<div class="order_created">
+    <?php $this->renderPartial('order/_order_created', array('orderId'=>null)); ?>
+</div>
 <script>
     cart_id = <?= $cart->id ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
@@ -29,22 +32,35 @@
             data: $( "#order-form" ).serialize(),
             type: "POST",
             dataType: "html",
-            success: function (data) {
-                if (data == 'in_progress') {
-                    window.location = "ok";
-                } else if(data == 'payment'){
-                    window.location = "/payment";
+            success: function (res) {
+                error = false;
+                try {
+                    data = JSON.parse(res);
+                } catch(e) {
+                    error = true;
+                }
+                if (!error) {
+                    if (data.status == 'in_progress') {
+                        get_order_modal(data.orderId);
+                    } else if(data.status == 'payment') {
+                        window.location = "/payment";
+                    }
                 } else {
-                    $('.order-form').html(data);
+                    $('.order-form').html(res);
                 }
             }
         })
     });
-    $( 'body' ).on( 'change', '#create_profile', function() {
-        console.log($(this).prop('checked'));
-        if($(this).prop('checked'))
-            $('.order-password').show();
-        else
-            $('.order-password').hide();
-    });
+    function get_order_modal(order_id){
+        $.ajax({
+            url: "/ajax/getOrderModal",
+            data: {order_id: order_id},
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                $('.order_created').html(data);
+                jQuery('#order_created').modal('show');
+            }
+        })
+    }
 </script>

@@ -29,6 +29,8 @@ class User extends CActiveRecord
     public $password_new;
     public $is_subscribed = true;
     private $_identity;
+    public $payment = 'cod';
+    public $create_profile;
 
 	/**
 	 * @return string the associated database table name
@@ -46,7 +48,7 @@ class User extends CActiveRecord
 		return array(
 			array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
             array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
-            array('email', 'email'),
+            array('email', 'email', 'message'=>'Значение не является правильным e-mail адресом.'),
             array('postcode', 'numerical', 'integerOnly'=>true),
 			array('date_of_birth, date, month, year, is_subscribed', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
@@ -56,11 +58,12 @@ class User extends CActiveRecord
             array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
             array('password2, password_old, password_new', 'required', 'on' => 'changePassword', 'message'=>'Это поле необходимо заполнить.'),
+            array('email', 'required', 'on' => 'remindPassword', 'message'=>'Это поле необходимо заполнить.'),
 			array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
             array('password1', 'passwordMatch', 'on' => 'registration, orderWithRegistration'),
             array('password_new', 'passwordMatch', 'on' => 'changePassword'),
             array('password_old', 'passwordCheck', 'on' => 'changePassword'),
-            array('email', 'emailCheck'),
+            array('email', 'emailCheck', 'on'=> 'registration, orderWithRegistration'),
             array('email','unsafe','on'=>'customer, userOrder'),
 		);
 	}
@@ -118,6 +121,8 @@ class User extends CActiveRecord
 			'date_of_birth' => 'Дата рождения',
 			'sex' => 'Пол',
 			'is_subscribed' => 'Подписаться на новости и скидки',
+            'create_profile' => ' Зарегистрироваться для упрощения покупки',
+            'payment' => 'Способ оплаты'
 		);
 	}
 
@@ -258,7 +263,7 @@ class User extends CActiveRecord
     }
 
     public function saveUserData($attributes){
-        $this->attributes = $attributes['User'];
+        $this->attributes = $attributes;
         if(!isset($attributes['create_profile']) || !$attributes['create_profile']){
             $this->scenario = 'guestOrder'; // else 'orderWithRegistration'
         }
@@ -268,6 +273,11 @@ class User extends CActiveRecord
             }
             $this->save();
         }
-        return $this;
+        $this->payment = $attributes['payment'];
+        $this->create_profile = $attributes['create_profile'];
+    }
+
+    public function remindPassword(){
+
     }
 }

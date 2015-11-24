@@ -135,7 +135,7 @@
         Copyright &copy; <?php echo date('Y'); ?> by es-style.ru.<br/>
         All Rights Reserved.<br/>
     </div><!-- footer -->
-    <?php $this->renderPartial('_auth', array('modelAuth'=>new User('registration'))); ?>
+    <?php $this->renderPartial('auth/_auth', array('modelAuth'=>new User('registration'))); ?>
 </body>
 <script>
     $( "#auth_buttons" ).on( "click", ".logout", function() {

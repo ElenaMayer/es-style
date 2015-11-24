@@ -110,6 +110,24 @@
     margin-top: -40px;
     float: right;
 }
+.lost-form {
+    text-align: center;
+}
+.lost-form .button {
+    margin-right: 15px;
+}
+.lost-form .control-label {
+    display: none;
+}
+.lost-form .form-group {
+    margin: 15px;
+}
+.lost-form .row input {
+    width: 80%;
+}
+.lost-form .form__controls {
+    padding-left: 0;
+}
 
 .select {
     display: inline-block;
@@ -244,4 +262,19 @@
 
 .auth_form .has-error .form-control, .customer .has-error .form-control {
     border-color: #CB2228;
+}
+
+.form__success {
+    background-image: url(../data/i/main_sprite.png);
+    background-position: -1685px 0px;
+    width: 46px;
+    height: 44px;
+}
+.form__success {
+    display: block;
+    margin: 0 auto 11px;
+}
+.form__description {
+    font-size: 15px;
+    color: gray;
 }

@@ -25,7 +25,7 @@
     <div class="row">
         <div class="form-group">
             <?php if (Yii::app()->user->isGuest):?>
-                <?php echo $form->textField($user, 'email', array( 'class' => 'form-control')); ?>
+                <?php echo $form->textFieldGroup($user, 'email', array( 'class' => 'form-control', 'placeholder'=>'')); ?>
             <?php else :?>
                 <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
             <?php endif ?>
@@ -36,8 +36,8 @@
         <div class="row">
             <div class="form-group">
                 <div class="order-auth-checkout__register">
-                    <?php echo CHtml::checkBox('create_profile', false, ['value'=>'1']); ?>
-                    <?php echo CHtml::label('Зарегистрироваться для упрощения покупки', 'create_profile'); ?>
+                    <?php echo $form->checkBox($user, 'create_profile', ['value'=>'1']); ?>
+                    <?php echo $form->label($user, 'create_profile'); ?>
                 </div>
             </div>
         </div>
@@ -62,8 +62,21 @@
     </div>
     <div class="row">
         <div class="payment">
-            <?php echo CHtml::radioButtonList('payment', 'cod', ['cod'=>'При получении на почте', 'card'=>'Онлайн-оплата картой']);?>
+            <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте', 'card'=>'Онлайн-оплата картой']); ?>
         </div>
-        <?php echo CHtml::label('Способ оплаты', 'payment'); ?>
+        <?php echo $form->labelEx($user,'payment'); ?>
     </div>
 <?php $this->endWidget(); ?>
+
+<script>
+    $(document).ready(function() {
+        if($('#User_create_profile').prop('checked'))
+            $('.order-password').show();
+    });
+    $( 'body' ).on( 'change', '#User_create_profile', function() {
+        if($(this).prop('checked'))
+            $('.order-password').show();
+        else
+            $('.order-password').hide();
+    });
+</script>
