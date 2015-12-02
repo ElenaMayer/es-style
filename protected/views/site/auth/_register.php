@@ -47,9 +47,10 @@
         array(
             'type' => 'POST',
             'success' => 'js: function(data) {
-                            if (data == 1)
+                            if (data == 1){
+                            console.log(999);
                                 window.location.reload();
-                            else
+                            }else
                                 $("#register-form").html(data);
                             }',
             ),

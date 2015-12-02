@@ -1,10 +1,10 @@
-<h1>Доставка и оплата</h1>
+<h1>Одежда в розницу</h1>
 
 <h2>Заказ товара</h2>
 <p>Уточнить интересующую Вас информацию и сделать заказ</br> можно несколькими способами:</p>
 <ul class="list list_shopping">
+    <li class="list__item">Заполнить приведенную ниже форму.</li>
     <li class="list__item">Написать нам в социальных сетях.</li>
-    <li class="list__item">Написать нам по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
 </ul>
 
 <div class="hint">
@@ -16,21 +16,11 @@
 
 <h2>Доставка и оплата</h2>
 <ul class="list list_shopping">
-    <li class="list__item">После поступления заказа мы свяжемся с Вами по электронной почте.</li>
+    <li class="list__item">После поступления заказа, мы проверим наличие размеров и свяжемся с Вами.</li>
     <li class="list__item">После подтверждения заказа, мы вышлем заказ в течении суток.</li>
     <li class="list__item">Мы осуществляем доставку во все регионы России наложенным платежом.</li>
     <li class="list__item red">При заказе трех и более моделей доставка осуществляется бесплатно!</li>
     <li class="list__item">Оплата производится на почте в момент получения посылки.</li>
 </ul>
+
 <?php $this->renderPartial('_size_tab'); ?>
-<script>
-    $( "#email" ).on( "click", function() {
-        $.ajax({
-            url: '/ajax/getEmail',
-            success: function(email){
-                $("#email").parent().append('<a href="mailto:'+email+'" class="link">'+email+'</a>');
-                $("#email").hide();
-            }
-        });
-    });
-</script>

@@ -6,13 +6,13 @@
 )); ?>
 <?php echo CHtml::hiddenField('data_type', 'customer_password_data'); ?>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelPass, 'password_old', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    <?php echo $form->passwordFieldGroup($model, 'password_old', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelPass, 'password_new', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    <?php echo $form->passwordFieldGroup($model, 'password_new', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row">
-    <?php echo $form->passwordFieldGroup($modelPass, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    <?php echo $form->passwordFieldGroup($model, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="row buttons">
     <span class="button button_blue button_big" id="submit-button">

@@ -74,7 +74,17 @@ class AjaxController extends Controller
         $user->scenario = 'remindPassword';
         $user->attributes = Yii::app()->request->getPost('User');
         if ($user->validate()) {
-            echo $user->remindPassword();
+            $user=User::model()->findByAttributes(array('email'=>$_POST['User']['email']));
+            $user->createNewPassword();
+            if ($user->password_new){
+                $this->layout = '//layouts/mail';
+                $mail = new Mail();
+                $mail->to = $user->email;
+                $mail->subject = "Восстановление пароля на ".Yii::app()->params['domain'];
+                $this->render('../site/mail/email_remind',array('user'=>$user));
+//                $mail->message = $this->render('../site/mail/email_remind',array('user'=>$user),true);
+//                $mail->send();
+            }
         }
         $this->renderPartial('../site/auth/_lost',array('modelAuth'=>$user, 'isSent'=>$user->validate()),false,true);
         Yii::app()->end();

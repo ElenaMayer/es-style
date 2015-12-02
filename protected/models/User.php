@@ -32,41 +32,43 @@ class User extends CActiveRecord
     public $payment = 'cod';
     public $create_profile;
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'user';
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName()
+    {
+        return 'user';
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		return array(
-			array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules()
+    {
+        return array(
+            array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
             array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
             array('email', 'email', 'message'=>'Значение не является правильным e-mail адресом.'),
             array('postcode', 'numerical', 'integerOnly'=>true),
-			array('date_of_birth, date, month, year, is_subscribed', 'safe'),
+            array('date_of_birth, date, month, year, is_subscribed', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
             array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder', 'message'=>'Это поле необходимо заполнить.'),
             array('name, surname, middlename, address, phone, postcode, email', 'required', 'on' => 'guestOrder', 'message'=>'Это поле необходимо заполнить.'),
             array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
-            array('name', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
-            array('password2, password_old, password_new', 'required', 'on' => 'changePassword', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, password2, password_old, password_new', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
+            array('name', 'required', 'on' => 'customer_person_data', 'message'=>'Это поле необходимо заполнить.'),
+            array('password2, password_old, password_new', 'required', 'on' => 'customer_password_data', 'message'=>'Это поле необходимо заполнить.'),
             array('email', 'required', 'on' => 'remindPassword', 'message'=>'Это поле необходимо заполнить.'),
-			array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
+            array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
             array('password1', 'passwordMatch', 'on' => 'registration, orderWithRegistration'),
-            array('password_new', 'passwordMatch', 'on' => 'changePassword'),
-            array('password_old', 'passwordCheck', 'on' => 'changePassword'),
-            array('email', 'emailCheck', 'on'=> 'registration, orderWithRegistration'),
+            array('password_new', 'passwordMatch', 'on' => 'customer_password_data'),
+            array('password_old', 'passwordCheck', 'on' => 'customer_password_data'),
+            array('email', 'emailCheckForReg', 'on'=> 'registration, orderWithRegistration'),
+            array('email', 'emailCheckForRemind', 'on'=> 'remindPassword'),
             array('email','unsafe','on'=>'customer, userOrder'),
-		);
-	}
+        );
+    }
 
     public function passwordMatch ( $attribute ) {
         if ( $this->$attribute !== $this->password2 )
@@ -78,7 +80,7 @@ class User extends CActiveRecord
             $this->addError ( $attribute, "Текущий пароль указан неверно" );
     }
 
-    public function emailCheck ( $attribute ) {
+    public function emailCheckForReg ( $attribute ) {
         $email=$this->findByAttributes(array('email'=>$this->email));
         if (Yii::app()->controller->action->id != 'login' && !empty($email)) {
             $this->addError($attribute, "Другая учетная запись зарегистрирована на указанный адрес.");
@@ -87,88 +89,95 @@ class User extends CActiveRecord
         }
     }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    public function emailCheckForRemind ( $attribute ) {
+        $email=$this->findByAttributes(array('email'=>$this->email));
+        if (empty($email)) {
+            $this->addError($attribute, "По данному адресу учетная запись на найдена.");
+        }
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Пароль',
+    /**
+     * @return array relational rules.
+     */
+    public function relations()
+    {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+        );
+    }
+
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'id' => 'ID',
+            'username' => 'Username',
+            'password' => 'Пароль',
             'password_old' => 'Текущий пароль',
             'password_new' => 'Новый пароль',
             'password1' => 'Пароль',
             'password2' => 'Повторите пароль',
-			'name' => 'Имя',
+            'name' => 'Имя',
             'surname' => 'Фамилия',
             'middlename' => 'Отчество',
-			'phone' => 'Моб. телефон',
+            'phone' => 'Моб. телефон',
             'email' => 'Эл. почта',
             'address' => 'Адрес',
             'postcode' => 'Почтовый индекс',
-			'date_of_birth' => 'Дата рождения',
-			'sex' => 'Пол',
-			'is_subscribed' => 'Подписаться на новости и скидки',
+            'date_of_birth' => 'Дата рождения',
+            'sex' => 'Пол',
+            'is_subscribed' => 'Подписаться на новости и скидки',
             'create_profile' => ' Зарегистрироваться для упрощения покупки',
             'payment' => 'Способ оплаты'
-		);
-	}
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+        $criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('name',$this->name,true);
+        $criteria->compare('id',$this->id);
+        $criteria->compare('username',$this->username,true);
+        $criteria->compare('password',$this->password,true);
+        $criteria->compare('name',$this->name,true);
         $criteria->compare('surname',$this->surname,true);
-		$criteria->compare('phone',$this->phone,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('sex',$this->sex,true);
-		$criteria->compare('is_subscribed',$this->is_subscribed);
+        $criteria->compare('phone',$this->phone,true);
+        $criteria->compare('email',$this->email,true);
+        $criteria->compare('sex',$this->sex,true);
+        $criteria->compare('is_subscribed',$this->is_subscribed);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return User the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return User the static model class
+     */
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
 
     public function getMonthsArray()
     {
@@ -236,10 +245,11 @@ class User extends CActiveRecord
 
     public function login($password = null) {
         if($this->_identity===null) {
-            if($password)
-                $this->_identity=new UserIdentity($this->email, $password);
-            else
-                $this->_identity=new UserIdentity($this->email, $this->password);
+            if($password) {
+                $this->_identity = new UserIdentity($this->email, $password);
+            } else {
+                $this->_identity = new UserIdentity($this->email, $this->password);
+            }
             $this->_identity->authenticate();
         }
         if($this->_identity->errorCode===UserIdentity::ERROR_NONE) {
@@ -264,20 +274,34 @@ class User extends CActiveRecord
 
     public function saveUserData($attributes){
         $this->attributes = $attributes;
-        if(!isset($attributes['create_profile']) || !$attributes['create_profile']){
+        if(isset($attributes['create_profile']) && $attributes['create_profile'] == '0'){
             $this->scenario = 'guestOrder'; // else 'orderWithRegistration'
         }
         if ($this->validate()) {
-            if(isset($attributes['create_profile']) && $attributes['create_profile']){
+            if($attributes['create_profile'] == '1'){
                 $this->password = $this->password1;
             }
-            $this->save();
+            if($attributes['create_profile'] == '1' || !Yii::app()->user->isGuest)
+                $this->save();
         }
-        $this->payment = $attributes['payment'];
-        $this->create_profile = $attributes['create_profile'];
+        if (!empty($attributes['payment']))
+            $this->payment = $attributes['payment'];
+        if (!empty($attributes['create_profile']))
+            $this->create_profile = $attributes['create_profile'];
     }
 
-    public function remindPassword(){
+    public function createNewPassword(){
+        $this->password_new = $this->generatePassword();
+        $this->save();
+    }
 
+    public function generatePassword($length = 8) {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $count = mb_strlen($chars);
+        for ($i = 0, $result = ''; $i < $length; $i++) {
+            $index = rand(0, $count - 1);
+            $result .= mb_substr($chars, $index, 1);
+        }
+        return $result;
     }
 }

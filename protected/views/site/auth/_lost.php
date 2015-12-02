@@ -17,7 +17,7 @@
                     'type' => 'POST',
                     'success' => 'js: function(data) {
                                     if (data) $("#lost-form").html(data);
-                                    }'
+                                    } '
                 ),
                 array(
                     'class' => 'button button_blue'
@@ -30,3 +30,15 @@
     <?php endif ?>
     <?php $this->endWidget(); ?>
 </div>
+<script>
+    $( 'body' ).on( 'click', '.auth_form', function() {
+        console.log(111);
+        if($('.form__success').length > 0)
+            window.location.reload();
+    });
+    $( '.auth_form' ).on( 'click', '.close', function() {
+        console.log(222);
+        if($('.form__success').length > 0)
+            window.location.reload();
+    });
+</script>

@@ -13,16 +13,18 @@ class Mail {
     public $subject;
     public $message;
 
-    public function init(){
-        $this->to = Yii::app()->params['email'];
+    public function __construct(){
+        $this->from = Yii::app()->params['email'];
     }
 
     public function send(){
-        $headers = 'From: ' . $this->from . "\r\n" .
-            'Reply-To: ' . $this->from . "\r\n" .
-            'Content-type: text/html' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($$this->to, $$this->subject ,$$this->message, $headers);
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'To: ' . $this->to . "\r\n";
+        $headers .= 'From: Восточный стиль <' . $this->from . ">\r\n";
+        $headers .= 'Reply-To: ' . $this->from . "\r\n";
+
+        mail($this->to, $this->subject, $this->message, $headers);
     }
 
 } 

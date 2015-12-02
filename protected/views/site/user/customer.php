@@ -11,7 +11,7 @@
             </div>
 
             <div id="customer_password_data">
-                <?php $this->renderPartial('user/_customer_password_data', array('model'=>$model, 'modelPass' => $modelPass,)); ?>
+                <?php $this->renderPartial('user/_customer_password_data', array('model'=>$model)); ?>
             </div>
         </div>
     </div>

@@ -202,7 +202,9 @@
         color: #fff;
     }
 
-    .menu .container-fluid .menu__list .active a, .menu .container-fluid .menu__list .active a:hover
+    .menu .container-fluid .menu__list .active a,
+    .menu .container-fluid .menu__list .active a:hover,
+    .menu .container-fluid .menu__list .active a:focus
     {
         background-color: #A80500;
         color: #fff;
@@ -832,7 +834,7 @@
         background-position: 0 -60px;
     }
 
-    .content .row {
+    div.content .row {
         position: relative;
         margin: 0 0 -10px 120px;
     }
@@ -1732,7 +1734,7 @@
         margin-left: 150px;
     }
     .customer .subscribed input {
-        margin: 10px 0 10px -200px;
+        margin: 10px 0 10px -125px;
     }
 
     .lc {
@@ -1772,7 +1774,7 @@
     }
     .customer .form-group input[type='text'],
     .customer .form-group input[type='password'] {
-        width: 190px;
+        width: 300px;
         font-size: 13px;
     }
     .customer .address input[type='text'] {

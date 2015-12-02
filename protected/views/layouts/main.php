@@ -112,7 +112,7 @@
                                     array('label' => 'Кимоно', 'url' => '/kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
                                     array('label' => 'Адреса', 'url' => '/contact', 'active'=>strpos(Yii::app()->request->pathInfo, 'contact')===false? false:true),
-                                    array('label' => 'В розницу', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
+                                    array('label' => 'Доставка', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
                                     array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
                                 )
                             )
@@ -132,7 +132,7 @@
         <div class="clear"></div>
     </div><!-- page -->
     <div class="footer">
-        Copyright &copy; <?php echo date('Y'); ?> by es-style.ru.<br/>
+        Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br/>
         All Rights Reserved.<br/>
     </div><!-- footer -->
     <?php $this->renderPartial('auth/_auth', array('modelAuth'=>new User('registration'))); ?>

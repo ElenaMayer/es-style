@@ -1,9 +1,11 @@
 <div class="order">
     <?php $this->renderPartial('_'.$type); ?>
-    <h2>Заказ</h2>
-    <div id="data">
-        <?php $this->renderPartial('_order_form_old',array('model'=>$model, 'type'=>$type)); ?>
-    </div>
+    <?php if($type == 'wholesale'):?>
+        <h2>Заказ</h2>
+        <div id="data">
+            <?php $this->renderPartial('_order_form_old',array('model'=>$model, 'type'=>$type)); ?>
+        </div>
+    <?php endif;?>
 </div>
 
 <script>

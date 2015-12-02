@@ -38,7 +38,7 @@
                         </tfoot>
                     </table>&nbsp;
                 </dd>
-                <dt class="order-data__label">Метод оплаты</dt>
+                <dt class="order-data__label">Способ оплаты</dt>
                 <dd class="order-data__value"><?= Yii::app()->params['paymentMethod'][$order->payment_method];?>&nbsp;</dd>
                 <dt class="order-data__label">Доставка</dt>
                 <dd class="order-data__value">

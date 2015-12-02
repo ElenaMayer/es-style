@@ -16,8 +16,8 @@ class SiteController extends Controller
         }
     }
 
-	public function actions() {
-	}
+    public function actions() {
+    }
 
     /**
      * @return array action filters
@@ -108,10 +108,10 @@ class SiteController extends Controller
         Yii::app()->user->logout();
     }
 
-	public function actionIndex() {
+    public function actionIndex() {
 //        $this->sendOneMail();
-		$this->render('index');
-	}
+        $this->render('index');
+    }
 
 //    public function createOrderFromGuestCart(){
 //        $order = new OrderHistory();
@@ -155,15 +155,15 @@ class SiteController extends Controller
         $this->render('model',array('model'=>$model, 'type'=>$type));
     }
 
-	public function actionError() {
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
-	}
+    public function actionError() {
+        if($error=Yii::app()->errorHandler->error)
+        {
+            if(Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('error', $error);
+        }
+    }
 
     public function getOrder(){
         if(!isset(Yii::app()->session['catalog_order'])) {
@@ -229,20 +229,22 @@ class SiteController extends Controller
 
     public function actionCustomer(){
         $model = User::model()->getUser();
-        $model->scenario = 'customer';
-        $modelPass = new User('changePassword');
+        if (isset($_POST["data_type"])) {
+            $model->scenario = $_POST["data_type"];
+        } else {
+            $model->scenario = 'customer';
+        }
         if(isset($_POST['User'])) {
             $model->attributes=$_POST['User'];
             if($model->validate() && $model->save()) {
                 Yii::app()->user->setFlash( 'success', "Данные сохранены.");
-                if (isset($_POST["data_type"])) {
-                    $this->renderPartial('user/_'.$_POST["data_type"], array('model' => $model, 'modelPass' => $modelPass));
-                }
+            }
+            if (isset($_POST["data_type"])) {
+                $this->renderPartial('user/_'.$_POST["data_type"], array('model' => $model));
             }
         } else {
             $this->render('user/customer', array(
                 'model' => $model,
-                'modelPass' => $modelPass,
             ));
         }
     }
@@ -264,7 +266,6 @@ class SiteController extends Controller
             }
             if (isset($_POST['User'])) {
                 $user->saveUserData($_POST['User']);
-
                 $errors = $user->getErrors();
                 if(empty($errors)) {
                     $order = $this->createOrder($user);

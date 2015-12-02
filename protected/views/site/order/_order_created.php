@@ -13,7 +13,7 @@
         </h2>
         <p>Мы свяжемся с Вами в ближайшее время!</p>
         <?php if(!Yii::app()->user->isGuest) :?>
-            Следите за статусом заказа в <a href="/history/<?= $orderId ?>">"Истории заказов"</a>
+            Следите за статусом заказа в <a href="/history">"Истории заказов"</a>
         <?php endif ?>
     </div>
     <?php $this->endWidget(); ?>
