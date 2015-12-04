@@ -278,15 +278,16 @@ class User extends CActiveRecord
             $this->scenario = 'guestOrder'; // else 'orderWithRegistration'
         }
         if ($this->validate()) {
-            if($attributes['create_profile'] == '1'){
+            if(isset($attributes['create_profile']) && $attributes['create_profile'] == '1'){
                 $this->password = $this->password1;
+                $this->save();
             }
-            if($attributes['create_profile'] == '1' || !Yii::app()->user->isGuest)
+            if(!Yii::app()->user->isGuest)
                 $this->save();
         }
         if (!empty($attributes['payment']))
             $this->payment = $attributes['payment'];
-        if (!empty($attributes['create_profile']))
+        if (isset($attributes['create_profile']))
             $this->create_profile = $attributes['create_profile'];
     }
 

@@ -17,6 +17,7 @@
             <span class="button__progress"></span>
         </a>
     </div>
+    <div class="clear"></div>
 </div>
 <div class="order_created">
     <?php $this->renderPartial('order/_order_created', array('orderId'=>null)); ?>

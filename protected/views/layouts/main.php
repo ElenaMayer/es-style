@@ -59,7 +59,6 @@
                             <?= Yii::app()->params['phone'] ?>
                         </div>
                         <div class="header__contact_item_right">
-                            Мы в соцсетях:
                             <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
                             <a target="_blank" class="header__social-item header__social-item_ig" href="<?=Yii::app()->params['instagramLink']?>"></a>
                             <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
@@ -69,7 +68,7 @@
                         <a class="basket-button button button_blue button_big"  href="/cart/">
                             <span class="button__title">
                                 <i class="button__icon"></i>
-                                <span class="basket-button-title">Моя корзина <?php if(isset($this->cart->count) && $this->cart->count > 0):?>(<?= $this->cart->count; ?>)<?php endif?></span>
+                                <span class="basket-button-title"><?php if(isset($this->cart->count) && $this->cart->count > 0):?>(<?= $this->cart->count; ?>)<?php endif?></span>
                             </span>
                         </a>
                         <div class="user-nav__sign-in">

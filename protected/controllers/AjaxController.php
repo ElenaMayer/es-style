@@ -54,15 +54,10 @@ class AjaxController extends Controller
                 $cartItem->count++;
             elseif ($_POST['action_name'] == 'decrease')
                 $cartItem->count--;
-            if ($cartItem->save())
-                echo $cartItem->count;
-            else
-                echo 0;
-            Yii::app()->end();
-        } else {
-            echo 0;
-            Yii::app()->end();
+            $cartItem->save();
         }
+        $this->renderPartial('../site/cart/cart',array('model'=>$cartItem->cart,'path'=>'../site/'));
+        Yii::app()->end();
     }
 
     public function actionGetOrderModal(){

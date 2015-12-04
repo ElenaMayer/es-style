@@ -62,7 +62,7 @@
     </div>
     <div class="row">
         <div class="payment">
-            <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте', 'card'=>'Онлайн-оплата картой']); ?>
+            <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте',/* 'card'=>'Онлайн-оплата картой'*/]); ?>
         </div>
         <?php echo $form->labelEx($user,'payment'); ?>
     </div>

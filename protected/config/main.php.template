@@ -73,6 +73,7 @@ return array(
 	'params'=>array(
         'phone' => 'phone',
         'email' => 'email',
+        'domain' => 'domain',
         'ipAddress' => 'my_ip',
         'vkontakteLink' => 'link',
         'odnoklassnikiLink' => 'link',
@@ -104,6 +105,13 @@ return array(
             'shipping_by_rp' => 'Передан на доставку в Почту России',
             'shipping_by_tc' => 'Передан на доставку в ТК',
             'completed' => 'Выполнен'
+        ],
+        'paymentMethod' => [
+            'cod' => 'При получении на почте',
+            'card'  => 'Онлайн-оплата картой',
+        ],
+        'shippingMethod' => [
+            'russian_post' => 'Почта России',
         ],
     ),
 );

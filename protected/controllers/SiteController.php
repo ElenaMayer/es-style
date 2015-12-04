@@ -252,6 +252,7 @@ class SiteController extends Controller
     public function actionCart(){
         $this->render('cart/cart',array(
             'model'=>$this->cart,
+            'path'=>''
         ));
     }
 
@@ -271,6 +272,7 @@ class SiteController extends Controller
                     $order = $this->createOrder($user);
                     $res['status'] = $order->status;
                     $res['orderId'] = $order->id;
+                    $this->sentOrderMail($user, $order);
                 } else {
                     $this->renderPartial('order/_order_form', array('user' => $user));
                     Yii::app()->end();
@@ -283,6 +285,15 @@ class SiteController extends Controller
                 'cart' => $this->cart
             ));
         }  else throw new CHttpException(404,'К сожалению, страница не найдена.');
+    }
+
+    public function sentOrderMail($user, $order){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->to = $user->email;
+        $mail->subject = "Заказ № ". $order->id ." оформлен в интернет-магазине ".Yii::app()->params['domain'];
+        $mail->message = $this->render('../site/mail/order',array('user'=>$user, 'order'=>$order),true);
+        $mail->send();
     }
 
     public function createOrder($user){

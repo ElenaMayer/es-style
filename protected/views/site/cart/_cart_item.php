@@ -1,5 +1,5 @@
 <li id="cart_item_<?= $cartItem->id; ?>" class="cart-item<?php if(!$cartItem->photo->is_available) :?> cart-item_out<?php endif; ?>">
-    <?php $this->renderPartial('cart/_cart_item_base', array('cartItem'=>$cartItem)); ?>
+    <?php $this->renderPartial($path.'cart/_cart_item_base', array('cartItem'=>$cartItem)); ?>
     <div class="cart-item__cell cart-item__cell_quantity" data-item-id="<?= $cartItem->id; ?>">
         <?php if($cartItem->photo->is_available) :?>
             <button class="button<?php if($cartItem->count==1):?> button_disabled<?php endif; ?> change-quantity change-quantity_decrease">

@@ -63,9 +63,9 @@
             </dl>
             <ul class="cart-list__content">
                 <?php foreach($order->cartItems as $cartItem) :?>
-                <li class="cart-item">
-                    <?php $this->renderPartial('user/_history_item_base', array('cartItem'=>$cartItem)); ?>
-                </li>
+                    <li class="cart-item">
+                        <?php $this->renderPartial('user/_history_item_base', array('cartItem'=>$cartItem)); ?>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

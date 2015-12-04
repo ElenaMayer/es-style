@@ -22,7 +22,7 @@
                                 </td>
                                 <td class="orders__cell"><?= date("d.n.Y", strtotime($order->date_create)); ?></td>
                                 <td class="orders__cell"><?= $order->user->name ?> <?= $order->user->surname ?></td>
-                                <td class="orders__cell orders__cell_price"><?= $order->user->name ?></td>
+                                <td class="orders__cell orders__cell_price"><?= $order->total ?></td>
                                 <td class="orders__cell"><?=Yii::app()->params['orderStatuses'][$order->status]?></td>
                             </tr>
                         <?php endforeach; ?>

@@ -21,6 +21,7 @@
         <div class="catalog__cont">
             <span>Всего <?= count($model) ?> товаров</span>
         </div>
+        <div class="clear"></div>
     </div>
     <div class="catalog__data">
         <?php if(empty($model)): ?>

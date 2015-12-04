@@ -8,12 +8,12 @@
         </div>
         <ul class="cart-list__content">
             <?php foreach($model->cartItems as $cartItem) :?>
-                <?php $this->renderPartial('cart/_cart_item', array('cartItem'=>$cartItem)); ?>
+                <?php $this->renderPartial($path.'cart/_cart_item', array('cartItem'=>$cartItem, 'path'=>$path)); ?>
             <?php endforeach; ?>
         </ul>
         <div class="cart-separator"></div>
         <div class="cart-total cart-total_threshold">
-            <?php $this->renderPartial('cart/_cart_total', array('model'=>$model)); ?>
+            <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
         </div>
         <div class="cart-separator"></div>
         <div class="cart-navigation">
@@ -50,17 +50,20 @@
                 type: "POST",
                 dataType: "html",
                 success: function (data) {
-                    e = $('#cart_item_' + item_id)
-                    if (data > 0) {
-                        e.find('.cart-item__quantity').html(data);
-                        e.find('.button_disabled').removeClass('button_disabled');
-                        if(data == 1)
-                            e.find('.change-quantity_decrease').addClass('button_disabled');
-                        else if(data == max_count)
-                            e.find('.change-quantity_increase').addClass('button_disabled');
+//                    e = $('#cart_item_' + item_id);
+//                    if (data > 0) {
+//                        e.find('.cart-item__quantity').html(data);
+//                        e.find('.button_disabled').removeClass('button_disabled');
+//                        if(data == 1)
+//                            e.find('.change-quantity_decrease').addClass('button_disabled');
+//                        else if(data == max_count)
+//                            e.find('.change-quantity_increase').addClass('button_disabled');
+//                    }
+//                    e.find('.change-quantity_decrease').removeClass('button_in-progress');
+//                    e.find('.change-quantity_increase').removeClass('button_in-progress');
+                    if (data) {
+                        $('.content').html(data);
                     }
-                    e.find('.change-quantity_decrease').removeClass('button_in-progress');
-                    e.find('.change-quantity_increase').removeClass('button_in-progress');
                 }
             });
         }
