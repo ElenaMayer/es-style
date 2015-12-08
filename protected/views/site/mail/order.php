@@ -58,8 +58,9 @@
                                                 </font>
                                             </td>
                                             <td style="text-align: right;">
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> (<?= $order->shipping ?>&nbsp;р.)<br>
+                                                    <?= $order->address;?>
                                                 </font>
                                             </td>
                                         </tr>
@@ -113,64 +114,64 @@
                                     <tbody>
                                         <tr valign="top" align="right">
                                             <td width="405" align="left">
-                                                <font size="2" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Заказ</b></font>
+                                                <font size="2" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Заказ</b></font>
                                             </td>
                                             <td width="80">
-                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 14px;"><b>Кол-во</b></font>
+                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Кол-во</b></font>
                                             </td>
                                             <td width="110">
-                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 14px;"><b>Со скидкой</b></font>
+                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Со скидкой</b></font>
                                             </td>
                                         </tr>
                                         <?php foreach($order->cartItems as $cartItem) :?>
                                             <tr>
                                                 <td height="10" colspan="3"></td>
                                             </tr>
-                                            <tr valign="top" align="right">
+                                            <tr valign="top" align="right" style="line-height: 2;">
                                                 <td align="left">
                                                     <font size="3" style="font-size: 16px;" color="#1868a0" face="Arial, Helvetica, sans-serif">
                                                         <a href="http://<?= Yii::app()->params['domain'] ?>/<?= $cartItem->photo->category ?>/<?= $cartItem->photo->article ?>" target="_blank">
-                                                            <font size="3" style="font-size: 14px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif"><?= $cartItem->photo->title ?> арт. <?= $cartItem->photo->article ?></font>
+                                                            <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif"><?= $cartItem->photo->title ?> арт. <?= $cartItem->photo->article ?></font>
                                                         </a>
                                                     </font>
                                                 </td>
                                                 <td style="text-align: center;">
-                                                    <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= $cartItem->count ?></font>
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= $cartItem->count ?></font>
                                                 </td>
                                                 <td style="text-align: center;">
-                                                    <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                         <?= $cartItem->new_price > 0 ? $cartItem->new_price*$cartItem->count : $cartItem->price*$cartItem->count ?>&nbsp;р.
                                                     </font>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
 
-                                        <tr valign="top" align="right">
+                                        <tr valign="top" align="right" style="line-height: 2;">>
                                             <td align="left">
-                                                <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     Доставка
                                                 </font>
                                             </td>
                                             <td></td>
                                             <td style="text-align: center;">
-                                                <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <?= $order->shipping ?>&nbsp;р.
                                                 </font>
                                             </td>
                                         </tr>
-                                        <tr valign="top" align="right">
+                                        <tr valign="top" align="right" style="line-height: 2;">>
                                             <td align="left">
-                                                <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     Итого
                                                 </font>
                                             </td>
                                             <td style="text-align: center;">
-                                                <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <?= count($order->cartItems) ?>
                                                 </font>
                                             </td>
                                             <td style="text-align: center;">
-                                                <font size="3" style="font-size: 14px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <b><?= $order->total ?>&nbsp;р.</b>
                                                 </font>
                                             </td>

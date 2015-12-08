@@ -23,7 +23,7 @@
                 <table width="75%" border="0" cellpadding="0" cellspacing="0" align="left">
                     <tbody>
                         <tr>
-                            <td style="width:525px;border:none;padding:0px;margin:0px;line-height:20px;font-size:12px;color:#000000;background-color:#ffffff;font-family: Arial, Tahoma, sans-serif;" bgcolor="#ffffff" width="525">
+                            <td style="width:525px;border:none;padding:0 0 20px 0;margin:0px;line-height:20px;font-size:12px;color:#000000;background-color:#ffffff;font-family: Arial, Tahoma, sans-serif;" bgcolor="#ffffff" width="525">
                                 Спасибо, что выбрали <a target="_blank" href="http://<?php echo Yii::app()->params['domain']; ?>"><?php echo Yii::app()->params['domain']; ?></a>!<br>
                                 Скопируйте новый пароль в соответствующее окно.<br>
                                 При повторном входе на сайт рекомендуем Вам сменить пароль.<br>

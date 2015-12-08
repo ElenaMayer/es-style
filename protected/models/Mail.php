@@ -19,7 +19,7 @@ class Mail {
 
     public function send(){
         $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $headers .= 'To: ' . $this->to . "\r\n";
         $headers .= 'From: Восточный стиль <' . $this->from . ">\r\n";
         $headers .= 'Reply-To: ' . $this->from . "\r\n";

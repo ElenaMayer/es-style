@@ -70,9 +70,6 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Displays the login page
-     */
     public function actionLogin(){
         $user=new User;
         $user->scenario = 'login';
@@ -100,41 +97,15 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Logs out the current user and redirect to homepage.
-     */
     public function actionLogout()
     {
         Yii::app()->user->logout();
+        $this->redirect(array('site/index'));
     }
 
     public function actionIndex() {
-//        $this->sendOneMail();
         $this->render('index');
     }
-
-//    public function createOrderFromGuestCart(){
-//        $order = new OrderHistory();
-//        $order->status = 'new';
-//        $order->user_id = Yii::app()->user->id;
-//        if ($order->save()) {
-//            foreach ($this->cart as $item) {
-//                $item->order_id = $order->id;
-//                $item->save();
-//            }
-//        }
-//    }
-
-//    protected function sendOneMail(){
-//        $to = 'linner86@mail.ru';
-//        $subject = 'Восточный стиль - новинки!';
-//        include_once Yii::getPathOfAlias('root.protected.views.site').'\mail.php';
-//        $headers = 'From: esstyle54@gmail.com' . "\r\n" .
-//            'Reply-To: esstyle54@gmail.com' . "\r\n" .
-//            'Content-type: text/html' . "\r\n" .
-//            'X-Mailer: PHP/' . phpversion();
-//        mail($to, $subject ,$message, $headers);
-//    }
 
     public function actionCatalog($type){
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
@@ -273,6 +244,7 @@ class SiteController extends Controller
                     $res['status'] = $order->status;
                     $res['orderId'] = $order->id;
                     $this->sentOrderMail($user, $order);
+                    $this->sentOrderMailToAdmin($order);
                 } else {
                     $this->renderPartial('order/_order_form', array('user' => $user));
                     Yii::app()->end();
@@ -296,9 +268,18 @@ class SiteController extends Controller
         $mail->send();
     }
 
+    public function sentOrderMailToAdmin($order){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->to = Yii::app()->params['email'];
+        $mail->subject = "Заказ розница";
+        $mail->message = "Заказ № ". $order->id ." оформлен";
+        $mail->send();
+    }
+
     public function createOrder($user){
         $order = new OrderHistory();
-        $order->id = Yii::app()->dateFormatter->format('yyMMddHHmm', time());
+        $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
         $order->shipping_method = 'russian_post';
         $order->payment_method = $_POST['User']['payment'];

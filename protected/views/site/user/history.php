@@ -18,7 +18,7 @@
                         <?php foreach($history as $order) :?>
                             <tr>
                                 <td class="orders__cell">
-                                    <a href="<?= $order->id ?>" class="orders__cell-link"><?= $order->id ?></a>
+                                    <a href="/history/<?= $order->id ?>" class="orders__cell-link"><?= $order->id ?></a>
                                 </td>
                                 <td class="orders__cell"><?= date("d.n.Y", strtotime($order->date_create)); ?></td>
                                 <td class="orders__cell"><?= $order->user->name ?> <?= $order->user->surname ?></td>
