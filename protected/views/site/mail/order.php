@@ -2,7 +2,7 @@
     <tbody>
         <tr>
             <td align="center" style="padding:0 70px;">
-                <font color="#CB2228" size="5" style="font-size: 23px;" face="Arial, Helvetica, sans-serif">
+                <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
                     <b><?= $order->user->name ?>,
                         <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
                         <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
@@ -58,7 +58,7 @@
                                         <?php if(!empty($order->track_code)):?>
                                             <tr valign="top" align="left" style="height: 25px;">
                                                 <td width="100">
-                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <font size="3" style="font-size: 16px;line-height: 1.2;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                         <b>Почтовый идентификатор</b>
                                                     </font>
                                                 </td>
@@ -182,7 +182,7 @@
                                             </tr>
                                         <?php endforeach; ?>
 
-                                        <tr valign="top" align="right" style="line-height: 2;">>
+                                        <tr valign="top" align="right" style="line-height: 2;">
                                             <td align="left">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     Доставка
@@ -195,7 +195,7 @@
                                                 </font>
                                             </td>
                                         </tr>
-                                        <tr valign="top" align="right" style="line-height: 2;">>
+                                        <tr valign="top" align="right" style="line-height: 2;">
                                             <td align="left">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     Итого

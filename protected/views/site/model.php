@@ -98,7 +98,7 @@
 
 <script>
     $( 'body' ).on( 'click', '.buy-button', function() {
-        is_uni_size = <?= empty($model->uni_size) ? 0 : 1 ?>;
+        is_uni_size = <?= !empty($model->size) ? 0 : 1 ?>;
         if ($(".button_pressed").length==0 && !is_uni_size){
             $('.size').addClass('size_error');
         } else {
