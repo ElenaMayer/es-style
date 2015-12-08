@@ -3,7 +3,7 @@
         <tr>
             <td align="center" style="padding:0 70px;">
                 <font color="#CB2228" size="5" style="font-size: 23px;" face="Arial, Helvetica, sans-serif">
-                    <b><?= $user->name ?>,
+                    <b><?= $order->user->name ?>,
                         <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
                         <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
                         <?php elseif($order->status == 'shipping_by_rp') :?> Ваш заказ передан для доставки в Почту России!
@@ -145,7 +145,7 @@
                             <td colspan="5" height="30"></td>
                         </tr>
                         <tr valign="top">
-                            <td width="594">
+                            <td width="600">
                                 <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                         <tr valign="top" align="right">
