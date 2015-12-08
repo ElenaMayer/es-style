@@ -14,7 +14,7 @@ class Mail {
     public $message;
 
     public function __construct(){
-        $this->from = Yii::app()->params['email'];
+        $this->from = Yii::app()->params['emailFrom'];
     }
 
     public function send(){

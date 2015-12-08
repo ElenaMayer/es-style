@@ -3,11 +3,30 @@
         <tr>
             <td align="center" style="padding:0 70px;">
                 <font color="#CB2228" size="5" style="font-size: 23px;" face="Arial, Helvetica, sans-serif">
-                    <b><?= $user->name ?>, Ваш заказ принят!</b>
+                    <b><?= $user->name ?>,
+                        <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
+                        <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
+                        <?php elseif($order->status == 'shipping_by_rp') :?> Ваш заказ передан для доставки в Почту России!
+                        <?php endif ?>
+                        </b>
                 </font>
                 <br>
             </td>
         </tr>
+        <?php if(!empty($order->track_code)):?>
+            <tr>
+                <td align="center" style="padding:20px 70px;">
+                    <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
+                        Вы можете отслеживать посылку на сайте <a href="https://www.pochta.ru/tracking" target="_blank">
+                            <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
+                                Почты России
+                            </font>
+                        </a> по почтовому идентификатору
+                    </font>
+                    <br>
+                </td>
+            </tr>
+        <?php endif ?>
         <tr>
             <td>
                 <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -36,6 +55,23 @@
                                         <tr>
                                             <td height="10" colspan="2"></td>
                                         </tr>
+                                        <?php if(!empty($order->track_code)):?>
+                                            <tr valign="top" align="left" style="height: 25px;">
+                                                <td width="100">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <b>Почтовый идентификатор</b>
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <font size="3" style="font-size: 16px;" face="Arial, Helvetica, sans-serif">
+                                                        <b><?= $order->track_code ?></b>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="10" colspan="2"></td>
+                                            </tr>
+                                        <?php endif ?>
                                         <tr valign="top" align="left" style="height: 25px;">
                                             <td>
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">

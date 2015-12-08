@@ -17,6 +17,7 @@
  * @property integer $shipping
  * @property integer $total
  * @property string $date_create
+ * @property string $track_code
  *
  * The followings are the available model relations:
  * @property User $user
@@ -42,12 +43,10 @@ class OrderHistory extends CActiveRecord
 			array('id, address, subtotal, sale, shipping, total', 'required'),
 			array('user_id, is_paid, subtotal, sale, shipping, total', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
-			array('status, shipping_method, payment_method, addressee, address', 'length', 'max'=>255),
+			array('status, shipping_method, payment_method, addressee, address, track_code', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create', 'safe', 'on'=>'search'),
+			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, track_code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,18 +70,19 @@ class OrderHistory extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
-			'status' => 'Status',
-			'is_paid' => 'Is Paid',
-			'shipping_method' => 'Shipping Method',
-			'payment_method' => 'Payment Method',
-			'addressee' => 'Addressee',
-			'address' => 'Address',
-			'subtotal' => 'Subtotal',
-			'sale' => 'Sale',
-			'shipping' => 'Shipping',
-			'total' => 'Total',
-			'date_create' => 'Date Create',
+            'user_id' => 'Пользователь',
+            'status' => 'Статус',
+            'is_paid' => 'Оплачено',
+            'shipping_method' => 'Метод доставки',
+            'payment_method' => 'Оплата',
+            'addressee' => 'Получатель',
+            'address' => 'Адрес',
+            'subtotal' => 'Подитог',
+            'sale' => 'Скидка',
+            'shipping' => 'Доставка',
+            'total' => 'Итого',
+            'date_create' => 'Дата создания',
+			'track_code' => 'Почтовый идентификатор',
 		);
 	}
 
@@ -117,6 +117,7 @@ class OrderHistory extends CActiveRecord
 		$criteria->compare('shipping',$this->shipping);
 		$criteria->compare('total',$this->total);
 		$criteria->compare('date_create',$this->date_create,true);
+		$criteria->compare('track_code',$this->track_code,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

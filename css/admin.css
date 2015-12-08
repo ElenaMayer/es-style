@@ -16,6 +16,11 @@ div.label
     text-align: left;
 }
 
+#order-history-form div.label
+{
+    width: 190px;
+}
+
 div.buttons.indent
 {
     margin-left: 140px;

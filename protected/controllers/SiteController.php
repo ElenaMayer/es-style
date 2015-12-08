@@ -271,7 +271,7 @@ class SiteController extends Controller
     public function sentOrderMailToAdmin($order){
         $this->layout = '//layouts/mail';
         $mail = new Mail();
-        $mail->to = Yii::app()->params['email'];
+        $mail->to = Yii::app()->params['emailTo'];
         $mail->subject = "Заказ розница";
         $mail->message = "Заказ № ". $order->id ." оформлен";
         $mail->send();
