@@ -298,7 +298,7 @@ class SiteController extends Controller
 
     public function createOrder($user){
         $order = new OrderHistory();
-        $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
+        $order->id = Yii::app()->dateFormatter->format('yyMMddHHmm', time());
         $order->user_id = $user->id;
         $order->shipping_method = 'russian_post';
         $order->payment_method = $_POST['User']['payment'];
