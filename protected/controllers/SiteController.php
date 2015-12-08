@@ -292,7 +292,7 @@ class SiteController extends Controller
         $mail = new Mail();
         $mail->to = $user->email;
         $mail->subject = "Заказ № ". $order->id ." оформлен в интернет-магазине ".Yii::app()->params['domain'];
-        $mail->message = $this->render('../site/mail/order',array('user'=>$user, 'order'=>$order),true);
+        $mail->message = $this->render('/site/mail/order',array('user'=>$user, 'order'=>$order),true);
         $mail->send();
     }
 

@@ -13,7 +13,7 @@ class AjaxController extends Controller
         $cartItem = CartItem::model()->findByPk($_POST['item_id']);
         if($cartItem){
             $cartItem->delete();
-            $this->renderPartial('../site/cart/_cart_total',array('model'=>$cartItem->cart));
+            $this->renderPartial('/site/cart/_cart_total',array('model'=>$cartItem->cart));
         } else {
             echo false;
             Yii::app()->end();
@@ -30,7 +30,7 @@ class AjaxController extends Controller
         if($cart) {
             $cartItem = $cart->findAndAddCartItem($_POST);
             if ($cartItem)
-                $this->renderPartial('../site/cart/_cart_popup', array('cartItem'=>$cartItem));
+                $this->renderPartial('/site/cart/_cart_popup', array('cartItem'=>$cartItem));
             else false;
             Yii::app()->end();
         } else {
@@ -41,7 +41,7 @@ class AjaxController extends Controller
                 if(Yii::app()->user->isGuest)
                     Yii::app()->session['cartId'] = $cart->id;
                 $cartItem = $cart->addCartItem($_POST);
-                $this->renderPartial('../site/cart/_cart_popup', array('cartItem'=>$cartItem));
+                $this->renderPartial('/site/cart/_cart_popup', array('cartItem'=>$cartItem));
             } else return false;
             Yii::app()->end();
         }
@@ -56,12 +56,12 @@ class AjaxController extends Controller
                 $cartItem->count--;
             $cartItem->save();
         }
-        $this->renderPartial('../site/cart/cart',array('model'=>$cartItem->cart,'path'=>'../site/'));
+        $this->renderPartial('/site/cart/cart',array('model'=>$cartItem->cart,'path'=>'/site/'));
         Yii::app()->end();
     }
 
     public function actionGetOrderModal(){
-        $this->renderPartial('../site/order/_order_created', array('orderId'=>$_POST['order_id']));
+        $this->renderPartial('/site/order/_order_created', array('orderId'=>$_POST['order_id']));
     }
 
     public function actionRemindPassword(){
@@ -76,12 +76,11 @@ class AjaxController extends Controller
                 $mail = new Mail();
                 $mail->to = $user->email;
                 $mail->subject = "Восстановление пароля на ".Yii::app()->params['domain'];
-                $this->render('../site/mail/email_remind',array('user'=>$user));
-//                $mail->message = $this->render('../site/mail/email_remind',array('user'=>$user),true);
-//                $mail->send();
+                $mail->message = $this->render('/site/mail/email_remind',array('user'=>$user),true);
+                $mail->send();
             }
         }
-        $this->renderPartial('../site/auth/_lost',array('modelAuth'=>$user, 'isSent'=>$user->validate()),false,true);
+        $this->renderPartial('/site/auth/_lost',array('modelAuth'=>$user, 'isSent'=>$user->validate()),false,true);
         Yii::app()->end();
     }
 }

@@ -13,7 +13,7 @@
             </div>
             <div class="post-cart-add__cart js-popup__adapt-height">
                 <div class="cart-item cart-item_added">
-                    <?php $this->renderPartial('../site/cart/_cart_item_base', array('cartItem'=>$cartItem)); ?>
+                    <?php $this->renderPartial('/site/cart/_cart_item_base', array('cartItem'=>$cartItem)); ?>
                 </div>
             </div>
             <div class="post-cart-add__footer">
