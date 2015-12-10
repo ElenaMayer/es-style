@@ -15,7 +15,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Сохранить'); ?>
+    </div>
 
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'user_id'); ?></div>
@@ -37,25 +39,35 @@
         <div><?php echo (CHtml::encode($model->is_paid) ? 'Да' : 'Нет'); ?></div>
 	</div>
 
-	<div class="row">
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'shipping_method'); ?></div>
-        <div><?php echo Yii::app()->params["shippingMethod"][$model->shipping_method]; ?></div>
-	</div>
+        <div><?php echo $form->dropDownList($model,'shipping_method', Yii::app()->params['shippingMethod']); ?></div>
+    </div>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'payment_method'); ?></div>
         <div><?php echo Yii::app()->params["paymentMethod"][$model->payment_method]; ?></div>
 	</div>
 
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'phone'); ?></div>
+        <div><?php echo CHtml::encode($model->phone); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'email'); ?></div>
+        <div><?php echo CHtml::encode($model->email); ?></div>
+    </div>
+
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'addressee'); ?></div>
         <div><?php echo CHtml::encode($model->addressee); ?></div>
 	</div>
 
-	<div class="row">
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'address'); ?></div>
-        <div><?php echo CHtml::encode($model->address); ?></div>
-	</div>
+        <div class="address"><?php echo $form->textField($model,'address'); ?></div>
+    </div>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'subtotal'); ?></div>
@@ -67,24 +79,29 @@
         <div><?php echo CHtml::encode($model->sale); ?></div>
 	</div>
 
-	<div class="row">
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'shipping'); ?></div>
-        <div><?php echo CHtml::encode($model->shipping); ?></div>
-	</div>
+        <div><?php echo $form->textField($model,'shipping'); ?></div>
+    </div>
 
-	<div class="row">
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'total'); ?></div>
-        <div><?php echo CHtml::encode($model->total); ?></div>
-	</div>
+        <div><?php echo $form->textField($model,'total'); ?></div>
+    </div>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'date_create'); ?></div>
         <div><?php echo CHtml::encode($model->date_create); ?></div>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Сохранить'); ?>
-	</div>
+    <ul class="cart-list__content">
+        <?php foreach($model->cartItems as $cartItem) :?>
+            <li class="cart-item">
+                <?php $this->renderPartial('_item', array('cartItem'=>$cartItem)); ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
 
 <?php $this->endWidget(); ?>
 

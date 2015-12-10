@@ -131,7 +131,7 @@ body.main {
 
 .page {
     background: #eee;
-    /*background: url('../data/i/backgr.png') 0 0 repeat;*/
+    background: url('../data/i/backgr.png') 0 0 repeat;
     min-width: 330px;
     min-height: 100%;
     margin:0 auto -60px;

@@ -283,6 +283,8 @@ class SiteController extends Controller
         $order->user_id = $user->id;
         $order->shipping_method = 'russian_post';
         $order->payment_method = $_POST['User']['payment'];
+        $order->phone = $user->phone;
+        $order->email = $user->email;
 
         if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
         elseif($_POST['User']['payment'] == 'card') $order->status = 'payment';

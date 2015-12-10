@@ -18,6 +18,8 @@
  * @property integer $total
  * @property string $date_create
  * @property string $track_code
+ * @property string $phone
+ * @property string $email
  *
  * The followings are the available model relations:
  * @property User $user
@@ -43,10 +45,12 @@ class OrderHistory extends CActiveRecord
 			array('id, address, subtotal, sale, shipping, total', 'required'),
 			array('user_id, is_paid, subtotal, sale, shipping, total', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
-			array('status, shipping_method, payment_method, addressee, address, track_code', 'length', 'max'=>255),
+			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, track_code', 'safe', 'on'=>'search'),
+			// The following rule is used by search().
+			// @todo Please remove those attributes that should not be searched.
+			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,7 +86,9 @@ class OrderHistory extends CActiveRecord
             'shipping' => 'Доставка',
             'total' => 'Итого',
             'date_create' => 'Дата создания',
-			'track_code' => 'Почтовый идентификатор',
+            'track_code' => 'Почтовый идентификатор',
+			'phone' => 'Телефон',
+			'email' => 'Email',
 		);
 	}
 
@@ -118,6 +124,8 @@ class OrderHistory extends CActiveRecord
 		$criteria->compare('total',$this->total);
 		$criteria->compare('date_create',$this->date_create,true);
 		$criteria->compare('track_code',$this->track_code,true);
+		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('email',$this->email,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
