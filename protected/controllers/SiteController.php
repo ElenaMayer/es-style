@@ -272,8 +272,8 @@ class SiteController extends Controller
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->to = Yii::app()->params['emailTo'];
-        $mail->subject = "Заказ розница";
-        $mail->message = "Заказ № ". $order->id ." оформлен";
+        $mail->subject = "Новый заказ розница № ". $order->id;
+        $mail->message = $this->render('/site/mail/order_to_admin',array('order'=>$order),true);
         $mail->send();
     }
 
@@ -294,7 +294,7 @@ class SiteController extends Controller
         $order->sale = $cart->sale;
         $order->shipping = $cart->shipping;
         $order->total = $cart->total;
-        $order->addressee = $user->name . " " . $user->surname;
+        $order->addressee = $user->name . " " . $user->surname . " " . $user->middlename;
         $order->address = $user->postcode . ",<br>" . $user->address;
         if ($order->save()){
             foreach ($cart->cartItems as $item) {

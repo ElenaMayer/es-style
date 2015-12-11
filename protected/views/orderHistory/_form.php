@@ -21,7 +21,9 @@
 
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'user_id'); ?></div>
-        <div><?php echo CHtml::encode($model->user_id); ?></div>
+        <div>
+            <a href="/admin/user/update?id=<?= $model->user_id ?>" class="orders__cell-link"><?= $model->user->name .' '. $model->user->surname ?></a>
+        </div>
 	</div>
 
 	<div class="row">
@@ -101,7 +103,6 @@
             </li>
         <?php endforeach; ?>
     </ul>
-
 
 <?php $this->endWidget(); ?>
 

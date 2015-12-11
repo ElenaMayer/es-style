@@ -126,10 +126,20 @@ h1 {
     margin-top: 0 !important;
 }
 
-#order-history-form .address input {
-    width: 70%;
+#user-form div.label {
+    width: 35%;
 }
-
+#user-form div input[type=text] {
+    width: 30%;
+}
+#order-history-form .address input,
+#user-form .address input[type=text] {
+    width: 65%;
+}
+#order-history-form div.buttons,
+#user-form div.buttons {
+    text-align: right;
+}
 
 .cart-list__content {
     margin: 0;

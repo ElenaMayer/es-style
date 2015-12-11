@@ -17,9 +17,10 @@
             <tr>
                 <td align="center" style="padding:20px 70px;">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        Вы можете отслеживать посылку на сайте <a href="https://www.pochta.ru/tracking" target="_blank">
+                        Вы можете отслеживать посылку на сайте
+                        <a href="<?php if($order->shipping_method == 'russian_post'):?>https://www.pochta.ru/tracking<?php elseif($order->shipping_method == 'ems') :?>http://www.emspost.ru/ru/tracking/<?php endif;?>" target="_blank">
                             <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
-                                Почты России
+                                <?php if($order->shipping_method == 'ems') :?>EMS <?php endif;?>Почты России
                             </font>
                         </a> по почтовому идентификатору
                     </font>

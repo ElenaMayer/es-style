@@ -37,7 +37,8 @@
                 array('label'=>'Заказы розница', 'url'=>'/admin/orderHistory/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'orderHistory')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Заказы опт', 'url'=>'/admin/order', 'active'=>preg_match('/order$/', Yii::app()->request->pathInfo)===1? true:false, 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Прайсы', 'url'=>'/admin/price', 'active'=>strpos(Yii::app()->request->pathInfo, 'price')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Вход', 'url'=>'/admin/login', 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
+                array('label'=>'Пользователи', 'url'=>'/admin/user/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'user')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Вход', 'url'=>'/admin/login', 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
 				array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>'/admin/logout', 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
