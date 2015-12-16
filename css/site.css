@@ -1361,6 +1361,15 @@ h3.news {
     border-color: rgba(0,0,0,.8) transparent;
     background: 0 0;
 }
+.order .hint {
+    opacity: 1;
+    position: relative;
+    background: none;
+    box-shadow: none;
+}
+.order .hint:before {
+    display: none;
+}
 .i_help:hover,
 .hint.hint-show {
     opacity: 1;

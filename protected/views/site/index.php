@@ -1,7 +1,6 @@
 <?php
 $this->pageTitle=Yii::app()->name;
 ?>
-
 <div class="banners">
     <?php
     $this->widget(
@@ -71,7 +70,7 @@ $this->pageTitle=Yii::app()->name;
             </div>
         <?php endfor;?>
     </div>
-    <?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>.
 </div>
 
 <script>
@@ -83,4 +82,9 @@ $this->pageTitle=Yii::app()->name;
     $(".carousel-inner div:nth-child(2) img").click(function(){
         window.location = "<?=Yii::app()->params['carouselUrl']['second']?>";
     });
+    $(document).ready(function() {
+        if (<?= isset($_GET['login']) ? 1 : 0;?> == 1) {
+            jQuery('#auth_form').modal('show');
+    } });
+
 </script>
