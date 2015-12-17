@@ -35,7 +35,7 @@ class CartItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, item_id, size, count, price, new_price', 'numerical', 'integerOnly'=>true),
+			array('cart_id, item_id, count, price, new_price', 'numerical', 'integerOnly'=>true),
 			array('order_id', 'length', 'max'=>13),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

@@ -294,7 +294,7 @@ class SiteController extends Controller
         $order->sale = $cart->sale;
         $order->shipping = $cart->shipping;
         $order->total = $cart->total;
-        $order->addressee = $user->name . " " . $user->surname . " " . $user->middlename;
+        $order->addressee = $user->name . " " . $user->middlename . " " . $user->surname;
         $order->address = $user->postcode . ",<br>" . $user->address;
         if ($order->save()){
             foreach ($cart->cartItems as $item) {

@@ -12,7 +12,7 @@ class m151112_102522_cart extends CDbMigration
             'id' => 'pk',
             'cart_id' => 'int',
             'item_id' => 'int',
-            'size' => 'int',
+            'size' => 'string',
             'count' => 'int NOT NULL DEFAULT 1',
             'price' => 'int',
             'new_price' => 'int',

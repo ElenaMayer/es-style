@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Новый заказ от пользователя <?= $order->user->name . ' ' . $order->user->surname ?>.</b>
+            <b>Заказ №<?= $order->id ?> создан.</b>
         </font>
         <br>
     </td>
@@ -22,15 +22,25 @@
                         <tr valign="top" align="left" style="height: 25px;">
                             <td width="100">
                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                    <b>№ заказа</b>
+                                    <b>Получатель</b>
                                 </font>
                             </td>
                             <td style="text-align: right;">
-                                <a href="http://<?= Yii::app()->params['domain'] ?>/history/<?= $order->id ?>" target="_blank">
-                                    <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
-                                        <b><?= $order->id ?></b>
-                                    </font>
-                                </a>
+                                <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
+                                    <b><?= $order->addressee ?></b>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr valign="top" align="left" style="height: 25px;">
+                            <td width="100">
+                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                    <b>Телефон</b>
+                                </font>
+                            </td>
+                            <td style="text-align: right;">
+                                <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
+                                    <b><?= $order->phone ?></b>
+                                </font>
                             </td>
                         </tr>
                         <tr>
@@ -113,13 +123,16 @@
                     <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tbody>
                         <tr valign="top" align="right">
-                            <td width="405" align="left">
+                            <td width="315" align="left">
                                 <font size="2" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Заказ</b></font>
                             </td>
-                            <td width="80">
+                            <td width="70">
+                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Размер</b></font>
+                            </td>
+                            <td width="70">
                                 <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Кол-во</b></font>
                             </td>
-                            <td width="110">
+                            <td width="105">
                                 <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Со скидкой</b></font>
                             </td>
                         </tr>
@@ -134,6 +147,9 @@
                                             <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif"><?= $cartItem->photo->title ?> арт. <?= $cartItem->photo->article ?></font>
                                         </a>
                                     </font>
+                                </td>
+                                <td style="text-align: center;">
+                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= $cartItem->size ?></font>
                                 </td>
                                 <td style="text-align: center;">
                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= $cartItem->count ?></font>
@@ -153,6 +169,7 @@
                                 </font>
                             </td>
                             <td></td>
+                            <td></td>
                             <td style="text-align: center;">
                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                     <?= $order->shipping ?>&nbsp;р.
@@ -165,6 +182,7 @@
                                     Итого
                                 </font>
                             </td>
+                            <td></td>
                             <td style="text-align: center;">
                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                     <?= count($order->cartItems) ?>

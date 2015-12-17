@@ -18,7 +18,7 @@
                 'type' => 'POST',
                 'success' => 'js: function(data) {
                             if (data == 1)
-                                window.location.reload();
+                                window.location = "'.substr(Yii::app()->request->requestUri, 0, strpos(Yii::app()->request->requestUri, "?")).'";
                             else
                                 $("#login-form").html(data);
                             }',

@@ -158,6 +158,8 @@ class Cart extends CActiveRecord
         $cartItem->item_id = $attributes['item_id'];
         if($attributes['size'])
             $cartItem->size = $attributes['size'];
+        elseif(!$cartItem->photo->size)
+            $cartItem->size = $cartItem->photo->size_at .'-'.$cartItem->photo->size_to;
         if($cartItem->save()) return $cartItem;
         else return false;
     }
