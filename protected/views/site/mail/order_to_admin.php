@@ -26,10 +26,13 @@
                                 </font>
                             </td>
                             <td style="text-align: right;">
-                                <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
-                                    <b><?= $order->addressee ?></b>
+                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                    <?= $order->addressee ?>
                                 </font>
                             </td>
+                        </tr>
+                        <tr>
+                            <td height="10" colspan="2"></td>
                         </tr>
                         <tr valign="top" align="left" style="height: 25px;">
                             <td width="100">
@@ -38,8 +41,8 @@
                                 </font>
                             </td>
                             <td style="text-align: right;">
-                                <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
-                                    <b><?= $order->phone ?></b>
+                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                    <?= $order->phone ?>
                                 </font>
                             </td>
                         </tr>
@@ -72,17 +75,6 @@
                                     <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> (<?= $order->shipping ?>&nbsp;р.)<br>
                                     <?= $order->address;?>
                                 </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height="10" colspan="2"></td>
-                        </tr>
-                        <tr valign="top" align="left" style="height: 25px;">
-                            <td>
-                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Товаров</b></font>
-                            </td>
-                            <td style="text-align: right;">
-                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= count($order->cartItems) ?> шт.</font>
                             </td>
                         </tr>
                         <tr>

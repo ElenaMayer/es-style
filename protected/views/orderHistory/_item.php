@@ -9,16 +9,16 @@
         <div class="cart-item__size">Универсальный размер: <?= $cartItem->photo->size_at ?>-<?= $cartItem->photo->size_to ?></div>
     <?php endif; ?>
 </div>
-<?php if($cartItem->new_price) :?>
-<div class="cart-item__cell cart-item__cell_price"><?= $cartItem->new_price?>&nbsp;руб.
-    <div class="cart-item__old-price"><?= $cartItem->price?>&nbsp;руб.</div>
-    <?php else :?>
+<?php if($cartItem->is_sale) :?>
+<div class="cart-item__cell cart-item__cell_price"><?= $cartItem->price?>&nbsp;руб.
+    <div class="cart-item__old-price"><?= $cartItem->old_price?>&nbsp;руб.</div>
+<?php else :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->price?>&nbsp;руб.
-        <?php endif; ?>
+<?php endif; ?>
     </div>
     <div class="cart-item__cell cart-item__cell_quantity">
         <span class="cart-item__quantity"><?= $cartItem->count ?></span>
     </div>
     <div class="cart-item__cell cart-item__cell_total">
-        <?= $cartItem->new_price ? $cartItem->count * $cartItem->new_price : $cartItem->count * $cartItem->price ?>&nbsp;руб.
+        <?= $cartItem->getSum() ?>&nbsp;руб.
     </div>

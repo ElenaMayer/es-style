@@ -114,7 +114,7 @@ class Cart extends CActiveRecord
                 $subtotal += $item->photo->price * $item->count;
                 $count += $item->count;
                 if ($item->photo->is_sale) {
-                    $sale += ($item->photo->price - $item->photo->new_price) * $item->count;
+                    $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
                 }
             }
         }
@@ -125,7 +125,7 @@ class Cart extends CActiveRecord
             $this->shipping = 0;
         else
             $this->shipping = Yii::app()->params['shippingCost'];
-        $this->total = $subtotal - $sale + $this->shipping;
+        $this->total = $subtotal + $this->shipping;
     }
 
     public function findAndAddCartItem($attributes){

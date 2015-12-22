@@ -15,8 +15,8 @@
     <?php endif; ?>
 </div>
 <?php if($cartItem->photo->is_sale) :?>
-    <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->new_price?>&nbsp;руб.
-        <div class="cart-item__old-price"><?= $cartItem->photo->price?>&nbsp;руб.</div>
+    <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price?>&nbsp;руб.
+        <div class="cart-item__old-price"><?= $cartItem->photo->old_price?>&nbsp;руб.</div>
 <?php else :?>
         <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price?>&nbsp;руб.
 <?php endif; ?>

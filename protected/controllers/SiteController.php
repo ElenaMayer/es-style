@@ -300,9 +300,12 @@ class SiteController extends Controller
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
-                $item->price = $item->photo->price;
-                if($item->photo->is_sale)
-                    $item->new_price = $item->photo->new_price;
+                if($item->photo->is_sale) {
+                    $item->new_price = $item->photo->price;
+                    $item->price = $item->photo->old_price;
+                } else {
+                    $item->price = $item->photo->price;
+                }
                 $item->save();
             }
             if(!$cart->is_active) $cart->delete();

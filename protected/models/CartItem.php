@@ -7,11 +7,12 @@
  * @property integer $id
  * @property integer $cart_id
  * @property integer $item_id
- * @property integer $size
+ * @property string $size
  * @property integer $count
  * @property integer $price
  * @property integer $new_price
  * @property string $order_id
+ * @property string $date_create
  *
  * The followings are the available model relations:
  * @property Cart $cart
@@ -36,10 +37,13 @@ class CartItem extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('cart_id, item_id, count, price, new_price', 'numerical', 'integerOnly'=>true),
-			array('order_id', 'length', 'max'=>13),
+			array('size', 'length', 'max'=>255),
+			array('order_id', 'length', 'max'=>225),
+			array('date_create', 'safe'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, cart_id, item_id, size, count, price, new_price, order_id', 'safe', 'on'=>'search'),
+			array('id, cart_id, item_id, size, count, price, new_price, order_id, date_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +75,7 @@ class CartItem extends CActiveRecord
 			'price' => 'Price',
 			'new_price' => 'New Price',
 			'order_id' => 'Order',
+			'date_create' => 'Date Create',
 		);
 	}
 
@@ -95,7 +100,12 @@ class CartItem extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('cart_id',$this->cart_id);
 		$criteria->compare('item_id',$this->item_id);
+		$criteria->compare('size',$this->size,true);
+		$criteria->compare('count',$this->count);
+		$criteria->compare('price',$this->price);
+		$criteria->compare('new_price',$this->new_price);
 		$criteria->compare('order_id',$this->order_id,true);
+		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -114,10 +124,7 @@ class CartItem extends CActiveRecord
 	}
 
     public function getSum(){
-        if ($this->photo->is_sale)
-            $sum = $this->photo->new_price*$this->count;
-        else
-            $sum = $this->photo->price*$this->count;
-        return $sum;
+        return $this->photo->price*$this->count;
     }
+
 }

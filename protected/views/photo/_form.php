@@ -33,19 +33,29 @@
         <div class="label"><?php echo $form->labelEx($model,'is_new'); ?></div>
         <div><?php echo $form->checkBox($model,'is_new'); ?></div>
     </div>
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
-        <div><?php echo $form->textField($model,'price'); ?></div>
-	</div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'is_sale'); ?></div>
         <div><?php echo $form->checkBox($model,'is_sale'); ?></div>
     </div>
 
-    <div class="sale">
+    <div class="sale" style="display: none">
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
+            <div><?php echo $form->textField($model,'sale'); ?></div>
+        </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'new_price'); ?></div>
             <div><?php echo $form->textField($model,'new_price'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'old_price'); ?></div>
+            <div><?php echo $form->textField($model,'old_price'); ?></div>
+        </div>
+    </div>
+    <div class="not_sale">
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
+            <div><?php echo $form->textField($model,'price'); ?></div>
         </div>
     </div>
 
@@ -156,8 +166,10 @@
 
 <script>
     $( document ).ready(function() {
-        if($('#Photo_is_sale').prop('checked')) $('.sale').show();
-        else $('.sale').hide();
+        if($('#Photo_is_sale').prop('checked')){
+            $('.sale').show();
+            $('.not_sale').hide();
+        }
         if($('#Photo_size').prop('checked')){
             $('.size').show();
             $('.uni_size').hide();
@@ -167,8 +179,13 @@
         }
     });
     $("#Photo_is_sale").click(function() {
-        if($(this).prop('checked')) $('.sale').show();
-        else $('.sale').hide();
+        if($(this).prop('checked')) {
+            $('.sale').show();
+            $('.not_sale').hide();
+        } else {
+            $('.sale').hide();
+            $('.not_sale').show();
+        }
     });
     $("#Photo_size").click(function() {
         if($(this).prop('checked')){
@@ -179,8 +196,17 @@
             $('.uni_size').show();
         }
     });
-    $('#Photo_image').live('change', function(){
+    $('#Photo_image').change(function() {
         article = $(this).val().replace(/C:\\fakepath\\/i, '').replace(/\.jpg/i, '');
         $('#Photo_article').val(article);
+    });
+    $( "#Photo_sale" ).keyup(function() {
+        if ($('#Photo_price').val()) {
+            sale = parseInt($(this).val());
+            old_price = parseInt($('#Photo_price').val());
+            $('#Photo_old_price').val(old_price);
+            new_price = (100-sale)*old_price/100;
+            $('#Photo_new_price').val(new_price);
+        }
     });
 </script>

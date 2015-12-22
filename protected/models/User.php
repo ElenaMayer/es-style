@@ -17,6 +17,7 @@
  * @property string $sex
  * @property integer $postcode
  * @property integer $is_subscribed
+ * @property string $date_create
  */
 class User extends CActiveRecord
 {
@@ -67,6 +68,8 @@ class User extends CActiveRecord
             array('email', 'emailCheckForReg', 'on'=> 'registration, orderWithRegistration'),
             array('email', 'emailCheckForRemind', 'on'=> 'remindPassword'),
             array('email','unsafe','on'=>'customer, userOrder'),
+            array('date_create', 'safe'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
         );
     }
 
@@ -132,7 +135,8 @@ class User extends CActiveRecord
             'sex' => 'Пол',
             'is_subscribed' => 'Подписаться на новости и скидки',
             'create_profile' => ' Зарегистрироваться для упрощения покупки',
-            'payment' => 'Способ оплаты'
+            'payment' => 'Способ оплаты',
+            'date_create' => 'Дата создания',
         );
     }
 

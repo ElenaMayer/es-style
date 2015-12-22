@@ -2,11 +2,10 @@
     <div class="catalog__item">
         <a href="/<?= $type ?>/<?= $photo->article ?>" class="catalog__item__link">
             <?php if($photo->is_available) :?>
-                <?php if($photo->is_new) :?>
-                    <span class="item__label item__label_new_catalog">Новинка</span>
-                <?php endif; ?>
                 <?php if($photo->is_sale) :?>
                     <span class="item__label">− <?= $photo->sale ?>%</span>
+                <?php elseif($photo->is_new) :?>
+                    <span class="item__label item__label_new_catalog">Новинка</span>
                 <?php endif; ?>
             <?php endif; ?>
             <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
@@ -18,8 +17,8 @@
                     <?php if(!$photo->is_sale) :?>
                         <?= $photo->price ?>&nbsp;руб.
                     <?php else :?>
-                        <span class="price__old"><?= $photo->price ?>&nbsp;руб.</span>
-                        <span class="price__new"><?= $photo->new_price ?>&nbsp;руб.</span>
+                        <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
+                        <span class="price__new"><?= $photo->price ?>&nbsp;руб.</span>
                     <?php endif; ?>
                 <?php endif; ?>
             </span>

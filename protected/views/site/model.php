@@ -9,11 +9,10 @@
             <div class="table__cell_flat">
                 <div class="model_photo">
                     <?php if($model->is_available) :?>
-                        <?php if($model->is_new) :?>
-                            <span class="item__label item__label_new">Новинка</span>
-                        <?php endif; ?>
                         <?php if($model->is_sale) :?>
                             <span class="item__label">− <?= $model->sale ?>%</span>
+                        <?php elseif($model->is_new) :?>
+                            <span class="item__label item__label_new_catalog">Новинка</span>
                         <?php endif; ?>
                     <?php endif; ?>
                     <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
@@ -41,9 +40,9 @@
                                     <?php if(!$model->is_sale) :?>
                                         <?= $model->price ?>&nbsp;руб.
                                     <?php else :?>
-                                        <span class="price__old"><?= $model->price ?>&nbsp;руб.</span>
+                                        <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
                                         <wbr>
-                                        <span class="price__new"><?= $model->new_price ?>&nbsp;руб.</span>
+                                        <span class="price__new"><?= $model->price ?>&nbsp;руб.</span>
                                     <?php endif; ?>
                                 </span>
                             </div>

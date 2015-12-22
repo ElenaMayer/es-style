@@ -96,7 +96,36 @@
                                             </td>
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> (<?= $order->shipping ?>&nbsp;р.)<br>
+                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> (<?= $order->shipping ?>&nbsp;р.)
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="10" colspan="2"></td>
+                                        </tr>
+                                        <tr valign="top" align="left" style="height: 25px;">
+                                            <td width="100">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <b>Получатель</b>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <?= $order->addressee; ?>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="10" colspan="2"></td>
+                                        </tr>
+                                        <tr valign="top" align="left" style="height: 25px;">
+                                            <td>
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <b>Адрес</b>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <?= $order->address;?>
                                                 </font>
                                             </td>
