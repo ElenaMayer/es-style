@@ -39,8 +39,8 @@
                 action_name = "increase";
             else
                 action_name = "decrease";
-            $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled');
-            $(this).parent().children('.change-quantity_increase').addClass('button_in-progress').addClass('button_disabled');
+            $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
+            $(this).parent().children('.change-quantity_increase').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
             $.ajax({
                 url: "/ajax/changeCount",
                 data: {
@@ -50,17 +50,6 @@
                 type: "POST",
                 dataType: "html",
                 success: function (data) {
-//                    e = $('#cart_item_' + item_id);
-//                    if (data > 0) {
-//                        e.find('.cart-item__quantity').html(data);
-//                        e.find('.button_disabled').removeClass('button_disabled');
-//                        if(data == 1)
-//                            e.find('.change-quantity_decrease').addClass('button_disabled');
-//                        else if(data == max_count)
-//                            e.find('.change-quantity_increase').addClass('button_disabled');
-//                    }
-//                    e.find('.change-quantity_decrease').removeClass('button_in-progress');
-//                    e.find('.change-quantity_increase').removeClass('button_in-progress');
                     if (data) {
                         $('.content').html(data);
                     }

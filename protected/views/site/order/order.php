@@ -28,6 +28,8 @@
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
 
     $( 'body' ).on( 'click', '.order_submit', function() {
+        $(this).addClass('button_in-progress').addClass('button_disabled');
+        $(this).prop( "disabled", true );
         $.ajax({
             url: "/order/" + cart_id,
             data: $( "#order-form" ).serialize(),

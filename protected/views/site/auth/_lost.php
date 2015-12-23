@@ -11,17 +11,23 @@
             <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'htmlOptions'=>['class'=>'login_form'])); ?>
         </div>
         <div class="form__controls">
+            <span class="button button_blue">
             <?php echo CHtml::ajaxSubmitButton('Восстановить',
                 CHtml::normalizeUrl(array('/ajax/remindPassword')),
                 array(
                     'type' => 'POST',
                     'success' => 'js: function(data) {
-                                    if (data) $("#lost-form").html(data);
+                                    if (data) {
+                                        $("#lost-form").html(data);
+                                        $(".button_in-progress").removeClass("button_in-progress").removeClass("button_disabled").prop( "disabled", false );
+                                        }
                                     } '
                 ),
                 array(
-                    'class' => 'button button_blue'
+                    'class' => 'auth_button'
                 )); ?>
+                <span class="button__progress"></span>
+            </span>
             <span class="lost-form__login link">Вспомнил</span>
         </div>
     <?php else :?>
@@ -32,12 +38,10 @@
 </div>
 <script>
     $( 'body' ).on( 'click', '.auth_form', function() {
-        console.log(111);
         if($('.form__success').length > 0)
             window.location.reload();
     });
     $( '.auth_form' ).on( 'click', '.close', function() {
-        console.log(222);
         if($('.form__success').length > 0)
             window.location.reload();
     });

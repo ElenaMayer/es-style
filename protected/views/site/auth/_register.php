@@ -42,21 +42,25 @@
     <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>
 <div class="form__controls">
-    <?php echo CHtml::ajaxSubmitButton('Зарегистрироваться',
-        CHtml::normalizeUrl(array('/site/registration')),
-        array(
-            'type' => 'POST',
-            'success' => 'js: function(data) {
-                            if (data == 1){
-                            console.log(999);
-                                window.location.reload();
-                            }else
-                                $("#register-form").html(data);
-                            }',
-            ),
-        array(
-            'class' => 'button button_blue'
-    )); ?>
+    <span class="button button_blue">
+        <?php echo CHtml::ajaxSubmitButton('Зарегистрироваться',
+            CHtml::normalizeUrl(array('/site/registration')),
+            array(
+                'type' => 'POST',
+                'success' => 'js: function(data) {
+                                if (data == 1){
+                                    window.location.reload();
+                                }else {
+                                    $("#register-form").html(data);
+                                    $(".button_in-progress").removeClass("button_in-progress").removeClass("button_disabled").prop( "disabled", false );
+                                }
+                    }',
+                ),
+            array(
+                'class' => 'auth_button'
+        )); ?>
+        <span class="button__progress"></span>
+    </span>
     <span class="register-form__login link">У меня есть аккаунт</span>
 </div>
 

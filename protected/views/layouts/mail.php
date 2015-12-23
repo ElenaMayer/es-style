@@ -28,11 +28,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="border:none;">
-                                                            <table cellpadding="0" cellspacing="0" border="0" width="600" align="center" style="border:none;border-collapse:collapse;" bgcolor="#ffffff">
+                                                            <table cellpadding="0" cellspacing="0" border="0" width="600" align="center" style="border:none;border-collapse:collapse;" bgcolor="#EEEEEE">
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>
-                                                                            <table cellpadding="0" cellspacing="0" border="0" style="border:none;border-collapse:collapse;" bgcolor="#ffffff">
+                                                                            <table cellpadding="0" cellspacing="0" border="0" style="border:none;border-collapse:collapse;">
                                                                                 <tbody>
                                                                                 <tr>
                                                                                     <td style="border:none;line-height:0px;font-size:0;padding-left: 10px;padding-right: 60px;">
@@ -44,7 +44,7 @@
                                                                                         <img src="http://<?php echo Yii::app()->params['domain']; ?>/data/i/phone.png?1" border="0" style="border:none;text-decoration:none;line-height:0;vertical-align:top;display:block;padding:0px;margin:0px;" hspace="0" vspace="0">
                                                                                     </td>
                                                                                     <td width="5" style="width:5px;border:none;">&nbsp;</td>
-                                                                                    <td width="292" height="75" style="width: 105px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;background-color:#ffffff;" bgcolor="#ffffff">
+                                                                                    <td width="292" height="75" style="width: 105px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;">
                                                                                         <span style="color:#242424;font-family:Arial,tahoma,sans-serif;line-height:13px;font-size:13px;text-decoration:none">
                                                                                             <span>
                                                                                                 <span>

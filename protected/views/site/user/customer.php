@@ -19,7 +19,6 @@
 <script>
     $( "body" ).on("click", "#submit-button", function() {
         form_id = "#" + $(this).parents('form').attr('id');
-        console.log($( form_id));
         $.ajax({
             url: "",
             data: $( "form" + form_id ).serialize(),

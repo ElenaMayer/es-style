@@ -40,5 +40,8 @@
         $( "#lost_form" ).hide();
         $( "#login_form" ).show();
     });
-
+    $( 'body' ).on( 'click', '.auth_button', function() {
+        $(this).parent().addClass('button_in-progress').addClass('button_disabled');
+        $(this).parent().prop("disabled", true);
+    })
 </script>

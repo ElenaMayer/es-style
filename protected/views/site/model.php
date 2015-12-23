@@ -61,11 +61,10 @@
                             </div>
                             <div class="buy-widget__buy">
                                 <span class="button button_big button_blue buy-button">
-                                    <span class="button__progress" style="background-position: 5px 0px;"></span>
                                     <span class="button__title">
-                                        <span class="buy-widget__buy-icon"></span>
-                                        <span class="button__label">Добавить в корзину</span>
+                                        Добавить в корзину
                                     </span>
+                                    <span class="button__progress"></span>
                                 </span>
                             </div>
                         </div>
@@ -96,7 +95,13 @@
 </div>
 
 <script>
+    $( document ).ready(function() {
+        if($(".sizes").length > 0 && $(".sizes").get(0).childElementCount == 1) {
+            $('.size_button').addClass("button_pressed");
+        }
+    });
     $( 'body' ).on( 'click', '.buy-button', function() {
+        $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         is_uni_size = <?= !empty($model->size) ? 0 : 1 ?>;
         if ($(".button_pressed").length==0 && !is_uni_size){
             $('.size').addClass('size_error');
@@ -113,6 +118,7 @@
                     if (data) {
                         $('.add_to_cart').html(data);
                         jQuery('#add_to_cart').modal('show');
+                        $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );;
                     }
                 }
             });

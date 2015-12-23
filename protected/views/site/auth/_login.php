@@ -12,20 +12,25 @@
         <span class="login-form__lost link">Забыли?</span>
     </div>
     <div class="form__controls">
-        <?php echo CHtml::ajaxSubmitButton('Войти',
-            CHtml::normalizeUrl(array('/site/login')),
-            array(
-                'type' => 'POST',
-                'success' => 'js: function(data) {
-                            if (data == 1)
-                                window.location = "'.substr(Yii::app()->request->requestUri, 0, strpos(Yii::app()->request->requestUri, "?")).'";
-                            else
-                                $("#login-form").html(data);
-                            }',
-            ),
-            array(
-                'class' => 'button button_blue'
-            )); ?>
+        <span class="button button_blue">
+            <?php echo CHtml::ajaxSubmitButton('Войти',
+                CHtml::normalizeUrl(array('/site/login')),
+                array(
+                    'type' => 'POST',
+                    'success' => 'js: function(data) {
+                                if (data == 1)
+                                    window.location = "'.substr(Yii::app()->request->requestUri, 0, strpos(Yii::app()->request->requestUri, "?")).'";
+                                else {
+                                    $("#login-form").html(data);
+                                    $(".button_in-progress").removeClass("button_in-progress").removeClass("button_disabled").prop( "disabled", false );
+                                    }
+                                }',
+                ),
+                array(
+                    'class' => 'auth_button'
+                )); ?>
+            <span class="button__progress"></span>
+        </span>
         <span class="login-form__register link">Зарегистрироваться</span>
     </div>
 <?php $this->endWidget(); ?>
