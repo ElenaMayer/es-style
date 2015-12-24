@@ -33,6 +33,7 @@ $('.search-form form').submit(function(){
             'value'=>'Yii::app()->params["orderStatuses"][$data->status]',
             'filter'=>Yii::app()->params['status'],
         ),
+        'track_code',
         'total',
         'date_create',
         array(

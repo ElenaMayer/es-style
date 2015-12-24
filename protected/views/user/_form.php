@@ -69,6 +69,11 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'blocked'); ?></div>
+        <div><?php echo $form->checkBox($model,'blocked'); ?></div>
+    </div>
+
 <?php $this->endWidget(); ?>
 <?php if(!empty($model->orders)) :?>
     <?php $this->renderPartial('_orders', array('orders'=>$model->orders)); ?>

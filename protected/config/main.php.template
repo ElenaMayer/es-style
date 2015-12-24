@@ -70,7 +70,7 @@ return array(
             'class'=>'CImageHandler',
         ),
 	),
-	'params'=>array(
+    'params'=>array_merge(array(
         'phone' => 'phone',
         'email' => 'email',
         'domain' => 'domain',
@@ -78,40 +78,5 @@ return array(
         'vkontakteLink' => 'link',
         'odnoklassnikiLink' => 'link',
         'instagramLink' => 'link',
-        'categories' => array(
-            'dress' => 'Платья',
-            'blouse' => 'Блузки',
-            'kimono' => 'Кимоно',
-            'suit' => 'Костюмы',
-            'housecoat' => 'Халаты',
-            'man' => 'Мужское',
-            'child' => 'Детское',
-            'other' => 'Разное',
-        ),
-        'carouselUrl' => [
-            'first' => '',
-            'second' => '',
-            'third' => ''
-        ],
-        'shippingFreeCount' => 3,
-        'shippingFreeCountString' => 'трех',
-        'shippingCost' => 200,
-        'maxItemCountInCart' => 10,
-        'statuses' => [
-            'in_progress' => 'В обработке',
-            'confirmation'  => 'Ожидает подтверждения',
-            'collect' => 'Собирается',
-            'payment' => 'Ожидает оплаты',
-            'shipping_by_rp' => 'Передан на доставку в Почту России',
-            'shipping_by_tc' => 'Передан на доставку в ТК',
-            'completed' => 'Выполнен'
-        ],
-        'paymentMethod' => [
-            'cod' => 'При получении на почте',
-            'card'  => 'Онлайн-оплата картой',
-        ],
-        'shippingMethod' => [
-            'russian_post' => 'Почта России',
-        ],
-    ),
+        ), require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'params.php')),
 );

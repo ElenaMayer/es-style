@@ -50,19 +50,16 @@ class OrderHistoryController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
+	public function actionUpdate($id) {
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['OrderHistory']))
-		{
-            $newStatus = '';
-            if($model->status != $_POST['OrderHistory']['status'])
-                $newStatus = $_POST['OrderHistory']['status'];
+		if(isset($_POST['OrderHistory'])) {
+            $oldStatus = $model->status;
 			$model->attributes=$_POST['OrderHistory'];
+
 			if($model->save()) {
-                if(!empty($newStatus))
-                    $this->sendChangeStatusMail($model);
+                if($model->status != $oldStatus)
+                    $this->statusChanged($model);
                 $this->redirect(array('index'));
             }
 		}
@@ -70,6 +67,20 @@ class OrderHistoryController extends Controller
 			'model'=>$model,
 		));
 	}
+
+    private function statusChanged($model){
+        switch ($model->status){
+            case 'collect':
+            case 'shipping_by_rp':
+                $this->sendChangeStatusMail($model);
+                break;
+            case 'not_redeemed':
+                if (!empty($model->user)){
+                    $model->user->blockUser();
+                }
+                break;
+        }
+    }
 
     private function sendChangeStatusMail($model){
         $this->layout = '//layouts/mail';

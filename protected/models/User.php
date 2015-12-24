@@ -18,6 +18,7 @@
  * @property integer $postcode
  * @property integer $is_subscribed
  * @property string $date_create
+ * @property integer $blocked
  */
 class User extends CActiveRecord
 {
@@ -29,6 +30,7 @@ class User extends CActiveRecord
     public $password_old;
     public $password_new;
     public $is_subscribed = true;
+    public $blocked;
     private $_identity;
     public $payment = 'cod';
     public $create_profile;
@@ -51,7 +53,7 @@ class User extends CActiveRecord
             array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
             array('email', 'email', 'message'=>'Значение не является правильным e-mail адресом.'),
             array('postcode', 'numerical', 'integerOnly'=>true),
-            array('date_of_birth, date, month, year, is_subscribed', 'safe'),
+            array('date_of_birth, date, month, year, is_subscribed, blocked', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
             array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder', 'message'=>'Это поле необходимо заполнить.'),
@@ -134,6 +136,7 @@ class User extends CActiveRecord
             'date_of_birth' => 'Дата рождения',
             'sex' => 'Пол',
             'is_subscribed' => 'Подписаться на новости и скидки',
+            'blocked' => 'Заблокирован',
             'create_profile' => ' Зарегистрироваться для упрощения покупки',
             'payment' => 'Способ оплаты',
             'date_create' => 'Дата создания',
@@ -167,6 +170,7 @@ class User extends CActiveRecord
         $criteria->compare('email',$this->email,true);
         $criteria->compare('sex',$this->sex,true);
         $criteria->compare('is_subscribed',$this->is_subscribed);
+        $criteria->compare('blocked',$this->blocked);
 
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
@@ -309,5 +313,10 @@ class User extends CActiveRecord
             $result .= mb_substr($chars, $index, 1);
         }
         return $result;
+    }
+
+    public function blockUser(){
+        $this->blocked = true;
+        $this->save();
     }
 }

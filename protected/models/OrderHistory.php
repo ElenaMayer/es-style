@@ -106,22 +106,13 @@ class OrderHistory extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('is_paid',$this->is_paid);
-		$criteria->compare('shipping_method',$this->shipping_method,true);
-		$criteria->compare('payment_method',$this->payment_method,true);
 		$criteria->compare('addressee',$this->addressee,true);
-		$criteria->compare('address',$this->address,true);
-		$criteria->compare('subtotal',$this->subtotal);
-		$criteria->compare('sale',$this->sale);
-		$criteria->compare('shipping',$this->shipping);
-		$criteria->compare('total',$this->total);
 		$criteria->compare('date_create',$this->date_create,true);
 		$criteria->compare('track_code',$this->track_code,true);
 		$criteria->compare('phone',$this->phone,true);
@@ -129,6 +120,12 @@ class OrderHistory extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'Pagination' => array (
+                'PageSize' => 20
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 

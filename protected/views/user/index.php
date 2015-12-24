@@ -12,6 +12,12 @@
 		'phone',
 		'email',
         array(
+            'name' => 'blocked',
+            'type'=>'raw',
+            'value'=> '$data->blocked == 1?"Да":""',
+            'filter'=>[1=>'Да',0=>'Нет'],
+        ),
+        array(
             'class'=>'CButtonColumn',
             'template'=>'{update} {delete}',
         ),
