@@ -114,4 +114,18 @@ class News extends CActiveRecord
             array('order'=>'date_publish DESC',  'offset' => $number-1)
         );
     }
+
+    public function sentMailWithNews(){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->subject = $this->title;
+        $mail->message = $this->render('/site/mail/news',array('content'=>$this->content),true);
+        $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
+        foreach($users as $user){
+            if(!empty($user->email)){
+                $mail->to = $user->email;
+                $mail->send();
+            }
+        }
+    }
 }

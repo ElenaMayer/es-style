@@ -47,8 +47,10 @@ class NewsController extends Controller
 		if(isset($_POST['News']))
 		{
 			$model->attributes=$_POST['News'];
-			if($model->save())
-				$this->redirect(array('index'));
+			if($model->save()) {
+                $this->redirect(array('index'));
+                $model->sentMailWithNews();
+            }
 		}
 
 		$this->render('create',array(
