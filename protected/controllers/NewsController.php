@@ -48,8 +48,8 @@ class NewsController extends Controller
 		{
 			$model->attributes=$_POST['News'];
 			if($model->save()) {
+                $this->sentMailWithNews($model);
                 $this->redirect(array('index'));
-                $model->sentMailWithNews();
             }
 		}
 
@@ -77,6 +77,20 @@ class NewsController extends Controller
 			'model'=>$model,
 		));
 	}
+
+    public function sentMailWithNews($model){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->subject = $model->title;
+        $mail->message = $this->render('/site/mail/news',array('content'=>$model->content),true);
+        $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
+        foreach($users as $user){
+            if(!empty($user->email)){
+                $mail->to = $user->email;
+                $mail->send();
+            }
+        }
+    }
 
 	/**
 	 * Deletes a particular model.
