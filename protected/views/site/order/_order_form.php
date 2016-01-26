@@ -62,11 +62,11 @@
     </div>
     <div class="row">
         <div class="payment">
-            <?php if (!Yii::app()->user->isGuest && Yii::app()->user->blocked):?>
-                <?php echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата']); ?>
-            <?php else :?>
+            <?php /*if (!Yii::app()->user->isGuest && Yii::app()->user->blocked):*/?>
+                <?php /*echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата']); */?>
+            <?php /*else :*/?>
                 <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте']); ?>
-            <?php endif ?>
+            <?php /*endif */?>
         </div>
         <?php echo $form->labelEx($user,'payment'); ?>
     </div>

@@ -30,7 +30,6 @@ class User extends CActiveRecord
     public $password_old;
     public $password_new;
     public $is_subscribed = true;
-    public $blocked;
     private $_identity;
     public $payment = 'cod';
     public $create_profile;
