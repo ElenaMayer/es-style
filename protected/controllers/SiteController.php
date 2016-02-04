@@ -175,7 +175,7 @@ class SiteController extends Controller
             if($model->save()){
                 $user = Yii::app()->getComponent('user');
                 $user->setFlash( 'warning', "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!");
-                $model->sendMail();
+                $this->sendOldOrderMailToAdmin($model);
             }
             $this->renderPartial('_order_form_old',array(
                 'model'=>$model, 'type'=>$type
@@ -185,6 +185,28 @@ class SiteController extends Controller
                 'model'=>$model, 'type'=>$type
             ));
         }
+    }
+
+    public function sendOldOrderMailToAdmin($order){
+        $mail = new Mail();
+        $mail->to = Yii::app()->params['email'];
+        $mail->subject = $order->type == 'shipping'?'Заказ розница':'Заказ опт';
+        $mail->message = 'ФИО: '.$order->name. ' <br> ';
+        $mail->message .= 'E-mail: '.$order->email. ' <br> ';
+        $mail->message .= 'Телефон: '.$order->phone. ' <br> ';
+        if(!empty($this->postcode))
+            $mail->message .= 'Почтовый индекс: '.$order->postcode. ' <br> ';
+        if(!empty($this->address))
+            $mail->message .= 'Почтовый адрес: '.$order->address. ' <br> ';
+        if(!empty($this->company))
+            $mail->message .= 'Компания: '.$order->company. ' <br> ';
+        if(!empty($this->delivery))
+            $mail->message .= 'Способ доставки: '.$order->delivery. ' <br> ';
+        if(!empty($this->city))
+            $mail->message .= 'Город: '.$order->city. ' <br> ';
+        if(!empty($this->order))
+            $mail->message .= 'Заказ: '.$order->order. ' <br> ';
+        $mail->send();
     }
 
     public function actionPrice(){

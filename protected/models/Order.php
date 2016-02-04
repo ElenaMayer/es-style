@@ -129,30 +129,4 @@ class Order extends CActiveRecord
 		return parent::model($className);
 	}
 
-    public function sendMail(){
-        $to = Yii::app()->params['email'];
-        $subject = $this->type == 'shipping'?'Заказ розница':'Заказ опт';
-        $message = 'ФИО: '.$this->name. ' <br> ';
-        $message .= 'E-mail: '.$this->email. ' <br> ';
-        $message .= 'Телефон: '.$this->phone. ' <br> ';
-		if(!empty($this->postcode))
-            $message .= 'Почтовый индекс: '.$this->postcode. ' <br> ';
-		if(!empty($this->address))
-            $message .= 'Почтовый адрес: '.$this->address. ' <br> ';
-		if(!empty($this->company))
-            $message .= 'Компания: '.$this->company. ' <br> ';
-        if(!empty($this->delivery))
-            $message .= 'Способ доставки: '.$this->delivery. ' <br> ';
-		if(!empty($this->city))
-            $message .= 'Город: '.$this->city. ' <br> ';
-		if(!empty($this->order))
-            $message .= 'Заказ: '.$this->order. ' <br> ';
-
-        $headers = 'From: ' . $this->email . "\r\n" .
-            'Reply-To: ' . $this->email . "\r\n" .
-            'Content-type: text/html' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($to, $subject ,$message, $headers);
-    }
-
 }
