@@ -189,7 +189,7 @@ class SiteController extends Controller
 
     public function sendOldOrderMailToAdmin($order){
         $mail = new Mail();
-        $mail->to = Yii::app()->params['email'];
+        $mail->to = Yii::app()->params['emailTo'];
         $mail->subject = $order->type == 'shipping'?'Заказ розница':'Заказ опт';
         $mail->message = 'ФИО: '.$order->name. ' <br> ';
         $mail->message .= 'E-mail: '.$order->email. ' <br> ';
