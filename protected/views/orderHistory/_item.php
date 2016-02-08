@@ -10,8 +10,8 @@
     <?php endif; ?>
 </div>
 <?php if($cartItem->new_price) :?>
-<div class="cart-item__cell cart-item__cell_price"><?= $cartItem->price?>&nbsp;руб.
-    <div class="cart-item__old-price"><?= $cartItem->old_price?>&nbsp;руб.</div>
+<div class="cart-item__cell cart-item__cell_price"><?= $cartItem->new_price?>&nbsp;руб.
+    <div class="cart-item__old-price"><?= $cartItem->price?>&nbsp;руб.</div>
 <?php else :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->price?>&nbsp;руб.
 <?php endif; ?>
