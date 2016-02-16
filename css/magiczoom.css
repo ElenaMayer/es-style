@@ -1,7 +1,7 @@
 /*
 
 
-   Magic Zoom v4.5.29 
+   Magic Zoom v4.5.29
    Copyright 2014 Magic Toolbox
    Buy a license: www.magictoolbox.com/magiczoom/
 
@@ -52,7 +52,6 @@ td > .MagicZoom > img, td > .MagicZoom.magic-for-ie8 > img {
 
 /* Style of the hint text and image */
 .MagicZoomHint {
-    background: url(graphics/hint.gif) no-repeat 2px 50%;
     color: #444;
     font-size: 8pt;
     font-family: sans-serif;

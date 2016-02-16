@@ -165,7 +165,6 @@ class Photo extends CActiveRecord
     protected function beforeSave(){
         if(!parent::beforeSave())
             return false;
-//        print_r($this);die();
         if($this->is_sale){
             $this->price = $this->new_price;
         }

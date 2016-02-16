@@ -229,3 +229,8 @@ h1 {
 .sand_news_button {
     float: right;
 }
+.button.button_disabled {
+    background: #f6f6f6;
+    opacity: .6;
+    cursor: default;
+}
