@@ -49,6 +49,17 @@
         <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
         <div><?php echo $form->checkBox($model,'is_show'); ?></div>
     </div>
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'is_send_mail'); ?></div>
+        <div>
+            <?php if(!$model->is_send_mail): ?>
+                <?php echo $form->checkBox($model,'is_send_mail'); ?>
+            <?php else: ?>
+                Отправлена
+            <?php endif; ?>
+        </div>
+    </div>
+
 
 	<div class="row buttons indent">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>

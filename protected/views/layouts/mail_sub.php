@@ -138,10 +138,19 @@
                             <tbody>
                                 <tr>
                                     <td style="text-align: center;padding-bottom: 20px;border-collapse: collapse;" align="center">
-                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:20px;color:#858585;">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:20px;color:#858585;">
                                             <tbody>
                                                 <tr>
                                                     <td valign="top" align="center" style="padding-top:6px;">Copyright © <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br>All Rights Reserved.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">
+                                                        <font size="3" style="font-size: 11px;" color="#858585" face="Arial, Helvetica, sans-serif">Вы получили письмо, так как являетесь подписчиком сайта Восточный Стиль <?= Yii::app()->params['domain'] ?>.</font>
+                                                        </br>
+                                                        <font size="3" style="font-size: 11px;" color="#858585" face="Arial, Helvetica, sans-serif">Если Вы хотите отписать адрес <b><?= Yii::app()->userForMail->email ?></b>, нажмите <a href="http://<?= Yii::app()->params['domain'] ?>/unsubscribe/?id=<?= Yii::app()->userForMail->id ?>&email=<?= Yii::app()->userForMail->email ?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank" style="text-decoration: none;">
+                                                                <b><font size="3" style="font-size: 11px;color: #4e4e4e; text-align: center; width: 225px;" color="#4e4e4e" face="Arial, Helvetica, sans-serif">отписаться</font></b>
+                                                            </a>.</font>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

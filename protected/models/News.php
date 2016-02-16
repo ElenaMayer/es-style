@@ -10,6 +10,7 @@
  * @property integer $is_show
  * @property string $date_create
  * @property string $date_publish
+ * @property integer $is_send_mail
  */
 class News extends CActiveRecord
 {
@@ -29,10 +30,10 @@ class News extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('is_show', 'numerical', 'integerOnly'=>true),
+			array('is_show, is_send_mail', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('content, date_create, date_publish', 'safe'),
-			array('id, title, content, is_show, date_create, date_publish', 'safe', 'on'=>'search'),
+			array('id, title, content, is_show, is_send_mail, date_create, date_publish', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('title, content, date_publish', 'required'),
 		);
@@ -59,6 +60,7 @@ class News extends CActiveRecord
 			'title' => 'Название',
 			'content' => 'Контент',
 			'is_show' => 'Отображать',
+            'is_send_mail' => 'Рассылка',
 			'date_create' => 'Дата создания',
             'date_publish' => 'Дата публикации',
 		);
@@ -83,6 +85,7 @@ class News extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('is_show',$this->is_show);
+        $criteria->compare('is_send_mail',$this->is_send_mail);
 		$criteria->compare('date_create',$this->date_create,true);
         $criteria->compare('date_publish',$this->date_publish,true);
 

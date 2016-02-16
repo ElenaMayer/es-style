@@ -166,7 +166,7 @@ class SiteController extends Controller
     }
 
     public function actionOrderOld($type) {
-        $type_str = $type=='shipping'?'В розницу':'Оптом';
+        $type_str = $type=='shipping'?'Доставка':'Оптом';
         $this->pageTitle=Yii::app()->name.' - '.$type_str;
         $model=new Order($type);
         if(isset($_POST['Order'])) {
@@ -221,6 +221,7 @@ class SiteController extends Controller
     }
 
     public function actionCustomer(){
+        $this->pageTitle = Yii::app()->name.' - '.'Личный кабинет';
         $model = User::model()->getUser();
         if (isset($_POST["data_type"])) {
             $model->scenario = $_POST["data_type"];
@@ -243,6 +244,7 @@ class SiteController extends Controller
     }
 
     public function actionCart(){
+        $this->pageTitle = Yii::app()->name.' - '.'Корзина';
         $this->render('cart/cart',array(
             'model'=>$this->cart,
             'path'=>''
@@ -250,6 +252,7 @@ class SiteController extends Controller
     }
 
     public function actionOrder($id){
+        $this->pageTitle = Yii::app()->name.' - '.'Заказ';
         if(!empty($this->cart->cartItems) && $this->cart->id == $id) {
             if(!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
@@ -336,6 +339,7 @@ class SiteController extends Controller
     }
 
     public function actionHistory(){
+        $this->pageTitle = Yii::app()->name.' - '.'Мои заказы';
         $history = OrderHistory::model()->findAllByAttributes(['user_id'=>Yii::app()->user->id], ['order'=>'id DESC']);
         $this->render('user/history',array(
             'history'=>$history,
@@ -343,11 +347,30 @@ class SiteController extends Controller
     }
 
     public function actionHistoryItem($id){
+        $this->pageTitle = Yii::app()->name.' - '.'Заказ №'.$id;
         $order = OrderHistory::model()->findByPk($id);
         if($order->user_id == Yii::app()->user->id) {
             $this->render('user/history_item', array(
                 'order' => $order,
             ));
+        } else {
+            throw new CHttpException(404,'К сожалению, страница не найдена.');
+        }
+    }
+
+    public function actionUnsubscribe(){
+        $this->pageTitle = Yii::app()->name.' - '.'Отписаться от новостей';
+        if(!empty($_GET) && isset($_GET['id']) && isset($_GET['email']) && isset($_GET['hash'])){
+            $user = User::model()->findByPk($_GET['id']);
+            $hash = crypt($user->id, $user->name);
+            if($user->id == $_GET['id'] && $user->email == $_GET['email'] && $hash == $_GET['hash']) {
+                if ($user->unsubscribe())
+                    $this->render('unsubscribe');
+                else
+                    throw new CHttpException(404,'Попробуйте повторить запрос через какое-то время.');
+            } else {
+                throw new CHttpException(404,'К сожалению, страница не найдена.');
+            }
         } else {
             throw new CHttpException(404,'К сожалению, страница не найдена.');
         }

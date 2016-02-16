@@ -13,7 +13,7 @@
             <td class="orders__cell">
                 <a href="/admin/orderHistory/update?id=<?= $order->id ?>" class="orders__cell-link"><?= $order->id ?></a>
             </td>
-            <td class="orders__cell"><?= date("d.n.Y", strtotime($order->date_create)); ?></td>
+            <td class="orders__cell"><?= date("d.m.Y", strtotime($order->date_create)); ?></td>
             <td class="orders__cell orders__cell_price"><?= $order->total ?></td>
             <td class="orders__cell"><?=Yii::app()->params['orderStatuses'][$order->status]?></td>
         </tr>

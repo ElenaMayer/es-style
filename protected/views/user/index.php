@@ -1,4 +1,4 @@
-<h1>Manage Users</h1>
+<h1>Пользователи</h1>
 
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

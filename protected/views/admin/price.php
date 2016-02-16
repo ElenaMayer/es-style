@@ -14,11 +14,11 @@
 
     <div class="row">
         <?php echo $form->fileField($model_new,'file'); ?>
-        <?php echo $form->error($model_new,'file'); ?>
+        <?php echo $form->error($model_new, 'file'); ?>
     </div>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton('Добавить'); ?>
+        <?php echo CHtml::submitButton('Добавить', array('class'=>'button')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

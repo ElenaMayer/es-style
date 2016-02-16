@@ -311,4 +311,12 @@ class Photo extends CActiveRecord
         }
         return $sizes;
     }
+
+    public function getNewPhotos(){
+        return $this->findAllByAttributes([
+            'is_show'=>1,
+            'is_new'=>1,
+            'is_available'=>1,
+        ], ['limit' => Yii::app()->params['newPhotoCountInMail']]);
+    }
 }

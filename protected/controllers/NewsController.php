@@ -43,12 +43,12 @@ class NewsController extends Controller
 	public function actionCreate()
 	{
 		$model=new News;
-
 		if(isset($_POST['News']))
 		{
 			$model->attributes=$_POST['News'];
 			if($model->save()) {
-                $this->sentMailWithNews($model);
+                if($model->is_send_mail)
+                    $this->sentMailWithNews($model);
                 $this->redirect(array('index'));
             }
 		}
@@ -65,12 +65,15 @@ class NewsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
 		if(isset($_POST['News']))
 		{
 			$model->attributes=$_POST['News'];
-			if($model->save())
-				$this->redirect(array('index'));
+			if($model->save()) {
+                if (isset($_POST['News']['is_send_mail']) && $_POST['News']['is_send_mail'] == 1) {
+                    $this->sentMailWithNews($model);
+                }
+                $this->redirect(array('index'));
+            }
 		}
 
 		$this->render('update',array(
@@ -79,13 +82,14 @@ class NewsController extends Controller
 	}
 
     public function sentMailWithNews($model){
-        $this->layout = '//layouts/mail';
+        $this->layout = '//layouts/mail_sub';
         $mail = new Mail();
         $mail->subject = $model->title;
-        $mail->message = $this->render('/site/mail/news',array('content'=>$model->content),true);
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
         foreach($users as $user){
             if(!empty($user->email)){
+                Yii::app()->userForMail->setUser($user);
+                $mail->message = $this->render('/site/mail/news',array('content'=>$model->content),true);
                 $mail->to = $user->email;
                 $mail->send();
             }

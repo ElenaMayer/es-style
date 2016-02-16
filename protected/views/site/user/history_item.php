@@ -6,7 +6,7 @@
                 <h1 class="account-header__title">
                     <a href="/history/">Мои заказы</a>
                 </h1>
-                <h3 class="account-header__subtitle">№ <?= $order->id ?> от <?= date("d.n.Y", strtotime($order->date_create)); ?></h3>
+                <h3 class="account-header__subtitle">№ <?= $order->id ?> от <?= date("d.m.Y", strtotime($order->date_create)); ?></h3>
             </header>
             <dl class="order-data">
                 <dt class="order-data__label">Статус</dt>

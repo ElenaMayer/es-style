@@ -1,4 +1,6 @@
-<h1>Галерея <a href='<?php echo $this->createUrl('admin/photo/create'); ?>' class="admin_title_link">Добавить</a></h1>
+<h1>Галерея</h1>
+<a href='<?php echo $this->createUrl('admin/photo/create'); ?>' class="admin_title_link button">Добавить фото</a>
+<a href='<?php echo $this->createUrl('admin/photo/sendMailWithNews'); ?>' class="admin_title_link sand_news_button button">Отправить новиночную рассылку</a>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'photo-grid',

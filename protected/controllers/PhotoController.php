@@ -28,7 +28,7 @@ class PhotoController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew'),
+				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew', 'sendMailWithNews'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -136,7 +136,7 @@ class PhotoController extends Controller
             $photo->is_show = 1;
         else
             $photo->is_show = 0;
-        $photo->save();
+        echo $photo->save();
         Yii::app()->end();
     }
 
@@ -147,7 +147,7 @@ class PhotoController extends Controller
             $photo->is_available = 1;
         else
             $photo->is_available = 0;
-        $photo->save();
+        echo $photo->save();
         Yii::app()->end();
     }
 
@@ -158,7 +158,25 @@ class PhotoController extends Controller
             $photo->is_new = 1;
         else
             $photo->is_new = 0;
-        $photo->save();
+        echo $photo->save();
         Yii::app()->end();
+    }
+
+    public function actionSendMailWithNews() {
+        $this->layout = '//layouts/mail_sub';
+        $mail = new Mail();
+        $mail->subject = "Новинки ".Yii::app()->params['domain'];
+        $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
+        foreach($users as $user){
+            if(!empty($user->email)){
+                Yii::app()->userForMail->setUser($user);
+                $mail->message = $this->render('/site/mail/newPhotos', [
+                    'photos'=>Photo::model()->getNewPhotos()
+                ], true);
+                die();
+                $mail->to = $user->email;
+                $mail->send();
+            }
+        }
     }
 }

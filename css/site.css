@@ -319,7 +319,7 @@ body.main.modal-open {
     height: 23px;
     margin: -5px 0 0 7px;
     vertical-align: top;
-    background: url('../data/i/socials.png?1') 0 0 no-repeat;
+    background: url('../data/i/socials.png?2') 0 0 no-repeat;
 }
 
 .header__social-item_vk:hover {
@@ -1696,6 +1696,13 @@ h3.news {
 }
 .header__contact_item_right:before {
     content: 'Мы в соцсетях:';
+}
+.static {
+    padding: 40px;
+}
+.static h1 {
+    font-size: 20px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 991px) {

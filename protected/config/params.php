@@ -6,6 +6,7 @@ return array(
         'third' => ''
     ],
     'newsCount' => 3,
+    'newPhotoCountInMail' => 6,
     'categories' => array(
         'dress' => 'Платья',
         'blouse' => 'Блузки',

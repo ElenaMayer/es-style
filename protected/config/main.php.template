@@ -26,6 +26,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+        'userForMail'=>[
+            'class'=>'UserForMail'
+        ],
         'booster' => [
             'class' => 'ext.booster.components.Booster',
         ],

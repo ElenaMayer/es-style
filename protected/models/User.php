@@ -318,4 +318,13 @@ class User extends CActiveRecord
         $this->blocked = true;
         $this->save();
     }
+
+    public function unsubscribe(){
+        if($this->is_subscribed) {
+            $this->is_subscribed = false;
+            return $this->save();
+        } else {
+            return false;
+        }
+    }
 }
