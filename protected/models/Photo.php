@@ -228,6 +228,11 @@ class Photo extends CActiveRecord
         return Yii::app()->getBaseUrl().'/data/photo/preview/p_'.$this->img;
     }
 
+    public function getFullPreviewUrl()
+    {
+        return Yii::app()->params['domain'].'/data/photo/preview/p_'.$this->img;
+    }
+
     public function getOriginalUrl()
     {
         return Yii::app()->getBaseUrl().'/data/photo/original/'.$this->img;

@@ -25,7 +25,7 @@
                                     <font size="3" style="font-size: 16px;" color="#1868a0" face="Arial, Helvetica, sans-serif">
                                         <a href="http://<?= Yii::app()->params['domain'] ?>/<?= $photo->category ?>/<?= $photo->article ?>" target="_blank" style="text-decoration: none;">
                                             <font size="3" style="font-size: 16px;color: #CB2228; display: block; text-align: center; width: 225px;" color="#1868a0" face="Arial, Helvetica, sans-serif"><?= $photo->title ?> арт. <?= $photo->article ?></font>
-                                            <img src="<?= $photo->getPreviewUrl(); ?>" style="width: 225px; height: 300px;">
+                                            <img src="http://<?= $photo->getFullPreviewUrl(); ?>" style="width: 225px; height: 300px;">
                                         </a>
                                     </font>
                                 </td>
