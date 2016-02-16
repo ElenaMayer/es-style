@@ -70,7 +70,7 @@ class User extends CActiveRecord
             array('email', 'emailCheckForRemind', 'on'=> 'remindPassword'),
             array('email','unsafe','on'=>'customer, userOrder'),
             array('date_create', 'safe'),
-            array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('date_create','default', 'value'=>new CDbExpression('NOW()')),
         );
     }
 

@@ -43,6 +43,7 @@ return array(
                 '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
                 '<type:(wholesale|shipping)>'=>'site/order',
+                'unsubscribe'=>'site/unsubscribe',
                 'customer'=>'site/customer',
                 'history'=>'site/history',
                 'contact'=>'site/contact',
