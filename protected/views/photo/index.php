@@ -1,7 +1,7 @@
 <h1>Галерея</h1>
 <a href='<?php echo $this->createUrl('admin/photo/create'); ?>' class="admin_title_link button">Добавить фото</a>
 <?php if(!$mailComplete): ?>
-    <a href='<?php echo $this->createUrl('admin/photo/sendMailWithNews'); ?>' class="admin_title_link sand_news_button button">Отправить новиночную рассылку</a>
+    <a href="javascript:sendNewPhotoMail();" class="admin_title_link sand_news_button button">Отправить новиночную рассылку</a>
 <?php else: ?>
     <a class="admin_title_link sand_news_button button button_disabled">Отправлено</a>
 <?php endif; ?>
@@ -86,5 +86,12 @@
             else
                 $(e).addClass('false');
         }, "json");
+    }
+    function sendNewPhotoMail(){
+        if(confirm('Отправляем?')){
+            $('.sand_news_button').addClass('button_disabled');
+            $('.sand_news_button').text('Отправляется.....');
+            window.location.href = '/admin/photo/sendMailWithNews'
+        }
     }
 </script>

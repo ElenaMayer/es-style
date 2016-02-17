@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','order','price','logout','priceDelete'),
+                'actions'=>array('index','order','price','logout','priceDelete', 'mailLog'),
                 'users'=>array('admin'),
             ),
             array('allow',
@@ -128,4 +128,13 @@ class AdminController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect('/');
 	}
+
+    public function actionMailLog()
+    {
+        $model=new MailLog('search');
+        $model->unsetAttributes();
+        $this->render('mail_log',array(
+            'model'=>$model,
+        ));
+    }
 }
