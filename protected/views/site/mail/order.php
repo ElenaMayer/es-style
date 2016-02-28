@@ -7,13 +7,14 @@
                         <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
                         <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
                         <?php elseif($order->status == 'shipping_by_rp') :?> Ваш заказ передан для доставки в Почту России!
+                        <?php elseif($order->status == 'waiting_delivery') :?> Заказ ожидает Вас в <?php echo($order->shipping_method == 'russian_post' ? "почтовом отделении" : "пункте выдачи");?>!
                         <?php endif ?>
                         </b>
                 </font>
                 <br>
             </td>
         </tr>
-        <?php if(!empty($order->track_code)):?>
+        <?php if($order->status == 'shipping_by_rp' && !empty($order->track_code)):?>
             <tr>
                 <td align="center" style="padding:20px 70px;">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">

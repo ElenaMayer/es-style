@@ -92,7 +92,7 @@ class OrderHistoryController extends Controller
         } elseif($model->status == 'shipping_by_rp') {
             $mail->subject = "Заказ № ". $model->id ." передан в доставку. Интернет-магазин ".Yii::app()->params['domain'];
         } elseif($model->status == 'waiting_delivery') {
-            $mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($model->shipping_method == 'russian_post') ? " в почтовом отделении" : "" ."! Интернет-магазин ".Yii::app()->params['domain'];
+            $mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($model->shipping_method == 'russian_post' ? " в почтовом отделении" : "") ."! Интернет-магазин ".Yii::app()->params['domain'];
         }
         $mail->message = $this->render('/site/mail/order',array('order'=>$model),true);
         $mail->send();
