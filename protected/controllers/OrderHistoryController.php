@@ -72,6 +72,7 @@ class OrderHistoryController extends Controller
         switch ($model->status){
             case 'collect':
             case 'shipping_by_rp':
+            case 'waiting_delivery':
                 $this->sendChangeStatusMail($model);
                 break;
             case 'not_redeemed':
@@ -90,6 +91,8 @@ class OrderHistoryController extends Controller
             $mail->subject = "Заказ № ". $model->id ." передан на комплектацию. Интернет-магазин ".Yii::app()->params['domain'];
         } elseif($model->status == 'shipping_by_rp') {
             $mail->subject = "Заказ № ". $model->id ." передан в доставку. Интернет-магазин ".Yii::app()->params['domain'];
+        } elseif($model->status == 'waiting_delivery') {
+            $mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($this->shipping_method == 'russian_post') ? " в почтовом отделении" : "" ."! Интернет-магазин ".Yii::app()->params['domain'];
         }
         $mail->message = $this->render('/site/mail/order',array('order'=>$model),true);
         $mail->send();

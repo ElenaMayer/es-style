@@ -94,6 +94,8 @@ class PhotoController extends Controller
         $model=new Photo('search');
         $model->unsetAttributes();  // clear any default values
         $mailComplete = false;
+        if(isset($_GET['Photo']))
+            $model->attributes=$_GET['Photo'];
         if(isset($_GET['mailComplete']))
             $mailComplete = true;
 

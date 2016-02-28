@@ -28,6 +28,7 @@ return array(
         'payment' => 'Ожидает оплаты',
         'shipping_by_rp' => 'Передан на доставку в Почту России',
         'shipping_by_tc' => 'Передан на доставку в ТК',
+        'waiting_delivery' => 'Ожидает вручения',
         'completed' => 'Выполнен',
         'not_redeemed' => 'Не выкуплен'
     ],
