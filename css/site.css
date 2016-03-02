@@ -2024,6 +2024,9 @@ h3.news {
         padding: 0px 0 0 145px;
     }
     .history .cart-item__cell_description {
-         margin-left: 0;
+        margin-left: 0;
     }
+    .basket-button .guest-basket-button .button__icon {
+        margin: 5px 0 0 -4px;
+     }
 }

@@ -66,7 +66,7 @@
                     </div>
                     <div class="user-nav user-nav_signed">
                         <a class="basket-button button button_blue button_big"  href="/cart/">
-                            <span class="button__title">
+                            <span class="button__title<?php if (Yii::app()->user->isGuest):?> guest-basket-button<?php endif; ?>">
                                 <i class="button__icon"></i>
                                 <span class="basket-button-title"><?php if(isset($this->cart->count) && $this->cart->count > 0):?>(<?= $this->cart->count; ?>)<?php endif?></span>
                             </span>

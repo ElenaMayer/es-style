@@ -196,9 +196,6 @@
     cursor: default;
 }
 
-.register-form .subscribed input{
-    margin: 10px 0 10px -175px !important;
-}
 .register-form .button{
     margin-right: 10px;
 }
@@ -217,16 +214,15 @@
 .register-form .row .subscribed label {
     font-size: 11px;
     color: #888;
-    left: -160px;
     font-weight: 300;
     position: relative;
     top: -3px;
 }
 .login-form .row {
-    margin: 0 0 -5px 100px !important;
+    margin: 0 0 -5px 100px;
 }
 .register-form .row {
-    margin: 0 0 -5px 150px !important;
+    margin: 0 0 -5px 150px;
 }
 
 
@@ -238,8 +234,8 @@
     margin-top: 10px;
 }
 
-.register-form .row input {
-    width: 90%;
+.register-form .row .subscribed input {
+    width: auto;
 }
 .login-form .row input {
     width: 85%;
@@ -277,4 +273,59 @@
 .form__description {
     font-size: 15px;
     color: gray;
+}
+.register-form .row input {
+    width: 80%;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .login-form .row input {
+        width: 80%;
+    }
+    .register-form .row input {
+        width: 100%;
+    }
+    .register-form .form__controls {
+        padding-left: 110px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .login-form .row,
+    .register-form .row {
+        margin: 0;
+    }
+    .login-form .row label,
+    .register-form .row label {
+        position: initial;
+        display: block;
+    }
+    .login-form__lost {
+        float: none;
+    }
+    .login-form .form__controls,
+    .register-form .form__controls {
+        padding-left: 0;
+        padding-top: 10px;
+    }
+    .login-form .row input,
+    .register-form .row input {
+        width: 100%;
+        display: block;
+    }
+    .register-form .form-group {
+         margin-bottom: 0;
+    }
+    .register-form .subscribed input {
+        margin-top: 10px;
+        display: inline;
+    }
+    .register-form .row .subscribed label {
+        display: inline;
+    }
+    .register-form .register-form__login {
+        display: block;
+        margin: 10px 0 0 10px;
+    }
 }
