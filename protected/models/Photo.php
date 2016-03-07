@@ -223,6 +223,11 @@ class Photo extends CActiveRecord
         return Yii::app()->getBaseUrl().'/data/photo/'.$this->img;
     }
 
+    public function getFullImageUrl()
+    {
+        return Yii::app()->params['domain'].'/data/photo/'.$this->img;
+    }
+
     public function getPreviewUrl()
     {
         return Yii::app()->getBaseUrl().'/data/photo/preview/p_'.$this->img;
@@ -238,12 +243,17 @@ class Photo extends CActiveRecord
         return Yii::app()->getBaseUrl().'/data/photo/original/'.$this->img;
     }
 
+    public function getFullOriginalUrl()
+    {
+        return Yii::app()->params['domain'].'/data/photo/original/'.$this->img;
+    }
+
     public static function getWatermarkPath()
     {
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
     }
 
-    public function getPhotos($category, $order_str, $size){
+    public function getPhotos($category, $order_str = 'по артиклю', $size = 'все'){
         switch($order_str) {
             case 'по новинкам':
                 $order = 'is_available DESC, is_new  DESC';

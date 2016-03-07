@@ -49,6 +49,7 @@ return array(
                 'contact'=>'site/contact',
                 'cart'=>'site/cart',
                 'ajax/<action:\w+>'=>'ajax/<action>',
+                'api/<action:\w+>'=>'api/<action>',
             ),
 		),
 		'db'=>array(
