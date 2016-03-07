@@ -19,44 +19,44 @@ class ApiController extends Controller
             foreach ($catalog as $item) {
                 array_push($arrayCatalog, $item->getAttributes());
             }
-            return json_encode($arrayCatalog);
+            echo json_encode($arrayCatalog);
         } else
-            return null;
+            echo null;
     }
 
     public function actionGetImagePreviewURLByModelId(){
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $model = Photo::model()->findByPk($_GET['id']);
             $imagePreviewURL = $model->getFullPreviewUrl();
-            return json_encode($imagePreviewURL);
+            echo json_encode($imagePreviewURL);
         } else
-            return null;
+            echo null;
     }
 
     public function actionGetModelByModelId(){
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $model = Photo::model()->findByPk($_GET['id']);
-            return json_encode($model->getAttributes());
+            echo json_encode($model->getAttributes());
         } else
-            return null;
+            echo null;
     }
 
     public function actionGetImageURLByModelId(){
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $model = Photo::model()->findByPk($_GET['id']);
             $imageURL = $model->getFullImageUrl();
-            return json_encode($imageURL);
+            echo json_encode($imageURL);
         } else
-            return null;
+            echo null;
     }
 
     public function actionGetImageOriginalURLByModelId(){
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $model = Photo::model()->findByPk($_GET['id']);
             $imageOriginalURL = $model->getFullOriginalUrl();
-            return json_encode($imageOriginalURL);
+            echo json_encode($imageOriginalURL);
         } else
-            return null;
+            echo null;
     }
 
 //    public function actionAuthorization(){
