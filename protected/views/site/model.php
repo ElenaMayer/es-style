@@ -61,7 +61,7 @@
                             </div>
                             <div class="buy-widget__buy">
                                 <span class="button button_big button_blue buy-button">
-                                    <span class="button__title">
+                                    <span class="button__title buy-button_title">
                                         Добавить в корзину
                                     </span>
                                     <span class="button__progress"></span>
@@ -100,8 +100,8 @@
             $('.size_button').addClass("button_pressed");
         }
     });
-    $( 'body' ).on( 'click', '.buy-button', function() {
-        $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
+    $( '.model_detail' ).on( 'click', '.buy-button_title', function($e) {
+        $(this).parent('span').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         is_uni_size = <?= !empty($model->size) ? 0 : 1 ?>;
         if ($(".button_pressed").length==0 && !is_uni_size){
             $('.size').addClass('size_error');
@@ -124,7 +124,9 @@
             });
         }
     });
-    $( 'body' ).on( 'click', '.size_button', function() {
+    $( document ).on( 'click', '.size_button', function() {
         $('.size_error').removeClass('size_error');
+        $('.button_in-progress').removeClass('button_in-progress');
+        $('.button_disabled').removeClass('button_disabled');
     });
 </script>

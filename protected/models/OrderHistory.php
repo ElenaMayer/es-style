@@ -26,6 +26,9 @@
  */
 class OrderHistory extends CActiveRecord
 {
+
+    public $itemsCount;
+
 	/**
 	 * @return string the associated database table name
 	 */

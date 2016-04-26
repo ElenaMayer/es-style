@@ -30,7 +30,8 @@ return array(
         'shipping_by_tc' => 'Передан на доставку в ТК',
         'waiting_delivery' => 'Ожидает вручения',
         'completed' => 'Выполнен',
-        'not_redeemed' => 'Не выкуплен'
+        'not_redeemed' => 'Не выкуплен',
+        'canceled' => 'Отменен'
     ],
     'paymentMethod' => [
         'cod' => 'При получении на почте',
