@@ -8,6 +8,7 @@
                         <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
                         <?php elseif($order->status == 'shipping_by_rp') :?> Ваш заказ передан для доставки в Почту России!
                         <?php elseif($order->status == 'waiting_delivery') :?> Заказ ожидает Вас в <?php echo($order->shipping_method == 'russian_post' ? "почтовом отделении" : "пункте выдачи");?>!
+                        <?php elseif($order->status == 'confirmation') :?> К сожалению, мы не можем дозвониться по указанному телефону :( Для подтверждения заказа ответьте, пожалуйста, на это письмо!
                         <?php endif ?>
                         </b>
                 </font>

@@ -235,3 +235,46 @@ h1 {
     cursor: default;
     text-decoration: none;
 }
+
+.yellow {
+    background-color: #fdffd8;
+}
+.red {
+    background-color: #ffb9bc;
+}
+.blue {
+    background-color: #d1d1ff;
+}
+.orange {
+    background-color: #ffdab7;
+}
+.green {
+    background-color: #d0edda;
+}
+.violet {
+    background-color: #ffcdfa;
+}
+.gray {
+    background-color: #cdcdcd;
+}
+.yellow:hover {
+    background-color: #ffff6f !important;
+}
+.red:hover {
+    background-color: #ff9ca1 !important;
+}
+.blue:hover {
+    background-color: #9b9cff !important;
+}
+.orange:hover {
+    background-color: #ffbb68 !important;
+}
+.green:hover {
+    background-color: #8ded92 !important;
+}
+.violet:hover {
+    background-color: #faa1ff !important;
+}
+.gray:hover {
+    background-color: #b8b8b8 !important;
+}

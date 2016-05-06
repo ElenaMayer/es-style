@@ -142,4 +142,41 @@ class OrderHistory extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getColor(){
+		$color = '';
+		switch ($this->status) {
+			case 'in_progress':
+				$color = 'yellow';
+				break;
+			case 'confirmation':
+				$color = 'violet';
+				break;
+        	case 'collect':
+				$color = 'yellow';
+				break;
+			case 'payment':
+				$color = 'violet';
+				break;
+			case 'shipping_by_rp':
+				$color = 'blue';
+				break;
+			case 'shipping_by_tc':
+				$color = 'blue';
+				break;
+			case 'waiting_delivery':
+				$color = 'orange';
+				break;
+			case 'completed':
+				$color = 'green';
+				break;
+			case 'not_redeemed':
+				$color = 'red';
+				break;
+			case 'canceled':
+				$color = 'gray';
+				break;
+		}
+		return $color;
+	}
 }

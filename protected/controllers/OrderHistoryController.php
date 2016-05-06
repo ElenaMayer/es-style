@@ -45,6 +45,24 @@ class OrderHistoryController extends Controller
 		);
 	}
 
+	public function actionCreate() {
+		$model=new OrderHistory();
+		$modelCartItem=new CartItem();
+		if(isset($_POST['OrderHistory'])) {
+			$model->attributes = $_POST['OrderHistory'];
+			$model->id = floatval(Yii::app()->dateFormatter->format('yyMMdd', $model->date_create)) . floatval(Yii::app()->dateFormatter->format('HHmmss', time()));
+			if($model->save()) {
+				$this->saveModelsToOrder($model->id);
+				$this->redirect(array('index'));
+			}
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+			'modelCartItem' => $modelCartItem
+		));
+	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -52,20 +70,40 @@ class OrderHistoryController extends Controller
 	 */
 	public function actionUpdate($id) {
 		$model=$this->loadModel($id);
+		$modelCartItem=new CartItem();
 
 		if(isset($_POST['OrderHistory'])) {
             $oldStatus = $model->status;
 			$model->attributes=$_POST['OrderHistory'];
 
 			if($model->save()) {
-                if($model->status != $oldStatus)
+				$this->saveModelsToOrder($model->id);
+                if($model->status != $oldStatus && !empty($model->email))
                     $this->statusChanged($model);
                 $this->redirect(array('index'));
             }
 		}
 		$this->render('update',array(
 			'model'=>$model,
+			'modelCartItem' => $modelCartItem
 		));
+	}
+
+	private function saveModelsToOrder($order_id){
+		if(isset($_POST['CartItemNew'])){
+			foreach ($_POST['CartItemNew'] as $cartItem){
+				$newItem = new CartItem();
+				$newItem->attributes = $cartItem;
+				$newItem->order_id = $order_id;
+				if ($newItem->photo->is_sale){
+					$newItem->price = $newItem->photo->old_price;
+					$newItem->new_price = $newItem->photo->new_price;
+				} else {
+					$newItem->price = $newItem->photo->price;
+				}
+				$newItem->save();
+			}
+		}
 	}
 
     private function statusChanged($model){
@@ -73,6 +111,7 @@ class OrderHistoryController extends Controller
             case 'collect':
             case 'shipping_by_rp':
             case 'waiting_delivery':
+			case 'confirmation':
                 $this->sendChangeStatusMail($model);
                 break;
             case 'not_redeemed':
@@ -93,7 +132,9 @@ class OrderHistoryController extends Controller
             $mail->subject = "Заказ № ". $model->id ." передан в доставку. Интернет-магазин ".Yii::app()->params['domain'];
         } elseif($model->status == 'waiting_delivery') {
             $mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($model->shipping_method == 'russian_post' ? " в почтовом отделении" : "") ."! Интернет-магазин ".Yii::app()->params['domain'];
-        }
+        } elseif($model->status == 'confirmation') {
+			$mail->subject = "Заказ № ". $model->id ." ожидает подтверждения. Интернет-магазин ".Yii::app()->params['domain'];
+		}
         $mail->message = $this->render('/site/mail/order',array('order'=>$model),true);
         $mail->send();
     }

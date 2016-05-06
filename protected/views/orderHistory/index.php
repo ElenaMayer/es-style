@@ -1,4 +1,4 @@
-<h1>Заказы розница</h1>
+<h1>Заказы розница <a href='<?php echo $this->createUrl('admin/orderHistory/create'); ?>' class="admin_title_link button">Добавить заказ</a></h1>
 
 <?php
 
@@ -25,6 +25,9 @@ $('.search-form form').submit(function(){
     'id'=>'order-history-grid',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
+    'rowCssClassExpression'=>'$data->getColor()',
+    'selectableRows'=>1,
+    'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('update').'?id="+$.fn.yiiGridView.getSelection(id);}',
     'columns'=>array(
         'id',
         'addressee',

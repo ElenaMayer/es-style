@@ -333,4 +333,53 @@ class Photo extends CActiveRecord
             'is_available'=>1,
         ], ['limit' => Yii::app()->params['newPhotoCountInMail']]);
     }
+    
+    public function getArticlesByCategory($category){
+        $model = $this->findAllByAttributes([
+            'category'=>$category,
+            ]);
+        $articles = [];
+        foreach ($model as $item) {
+            $articles[$item->id] = $item->article;
+        }
+        return $articles;
+    }
+
+    public function getSizesByArticle($article){
+        $model = $this->findByAttributes([
+            'article'=>$article,
+        ]);
+        return $this->prepareSizes($model);
+    }
+
+    public function getSizesById($id){
+        $model = $this->findByPk($id);
+        return $this->prepareSizes($model);
+    }
+
+    private function prepareSizes($model){
+        $sizes = [];
+        if ($model->size) {
+            if ($model->size_40)
+                $sizes['40'] = '40';
+            if ($model->size_42)
+                $sizes['42'] = '42';
+            if ($model->size_44)
+                $sizes['44'] = '44';
+            if ($model->size_46)
+                $sizes['46'] = '46';
+            if ($model->size_48)
+                $sizes['48'] = '48';
+            if ($model->size_50)
+                $sizes['50'] = '50';
+            if ($model->size_52)
+                $sizes['52'] = '52';
+            if ($model->size_54)
+                $sizes['54'] = '54';
+        } else {
+            $size = $model->size_at . " - " . $model->size_to;
+            $sizes[$size] = $size;
+        }
+        return $sizes;
+    }
 }

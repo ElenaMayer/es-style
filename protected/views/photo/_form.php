@@ -201,9 +201,9 @@
         $('#Photo_article').val(article);
     });
     $( "#Photo_sale" ).keyup(function() {
-        if ($('#Photo_price').val()) {
+        if ($('#Photo_old_price').val()) {
             sale = parseInt($(this).val());
-            old_price = parseInt($('#Photo_price').val());
+            old_price = parseInt($('#Photo_old_price').val());
             $('#Photo_old_price').val(old_price);
             new_price = (100-sale)*old_price/100;
             $('#Photo_new_price').val(new_price);

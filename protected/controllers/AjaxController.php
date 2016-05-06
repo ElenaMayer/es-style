@@ -83,4 +83,19 @@ class AjaxController extends Controller
         $this->renderPartial('/site/auth/_lost',array('modelAuth'=>$user, 'isSent'=>$user->validate()),false,true);
         Yii::app()->end();
     }
+
+    public function actionGetArticlesByCategory(){
+        if ($_POST['category']){
+            $models = Photo::model()->getArticlesByCategory($_POST['category']);
+            echo json_encode($models);
+        }
+    }
+    
+    public function actionGetSizesById(){
+        if ($_POST['id']){
+            $models = Photo::model()->getSizesById($_POST['id']);
+            echo json_encode($models);
+        }
+    }
+
 }
