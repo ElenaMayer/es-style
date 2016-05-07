@@ -12,7 +12,7 @@
             <div class="catalog__item__article">Арт.&nbsp;<?= $photo->article ?></div>
             <span class="price">
                 <?php if(!$photo->is_available) :?>
-                    <div class="not_available_small">Нет в наличии</div>
+                    <span class="not_available_small">Нет в наличии</span>
                 <?php else :?>
                     <?php if(!$photo->is_sale) :?>
                         <?= $photo->price ?>&nbsp;руб.
