@@ -147,31 +147,31 @@ class OrderHistory extends CActiveRecord
 		$color = '';
 		switch ($this->status) {
 			case 'in_progress':
-				$color = 'yellow';
+				$color = 'green';
 				break;
 			case 'confirmation':
-				$color = 'violet';
+				$color = 'red';
 				break;
         	case 'collect':
-				$color = 'yellow';
+				$color = 'green';
 				break;
 			case 'payment':
-				$color = 'violet';
+				$color = 'red';
 				break;
 			case 'shipping_by_rp':
-				$color = 'blue';
+				$color = 'yellow';
 				break;
 			case 'shipping_by_tc':
-				$color = 'blue';
+				$color = 'yellow';
 				break;
 			case 'waiting_delivery':
 				$color = 'orange';
 				break;
 			case 'completed':
-				$color = 'green';
+				$color = 'light_green';
 				break;
 			case 'not_redeemed':
-				$color = 'red';
+				$color = 'light_red';
 				break;
 			case 'canceled':
 				$color = 'gray';

@@ -237,43 +237,43 @@ h1 {
 }
 
 .yellow {
-    background-color: #fdffd8;
+    background-color: yellow;
 }
 .red {
+    background-color: red;
+}
+.light_red {
     background-color: #ffb9bc;
 }
-.blue {
-    background-color: #d1d1ff;
-}
 .orange {
-    background-color: #ffdab7;
+    background-color: orange;
 }
 .green {
-    background-color: #d0edda;
+    background-color: green;
 }
-.violet {
-    background-color: #ffcdfa;
+.light_green {
+    background-color: #d0edda;
 }
 .gray {
     background-color: #cdcdcd;
 }
 .yellow:hover {
-    background-color: #ffff6f !important;
+    background-color: yellow !important;
 }
 .red:hover {
-    background-color: #ff9ca1 !important;
+    background-color: red !important;
 }
-.blue:hover {
-    background-color: #9b9cff !important;
+.light_red:hover {
+    background-color: #ffb9bc !important;
 }
 .orange:hover {
-    background-color: #ffbb68 !important;
+    background-color: orange !important;
 }
 .green:hover {
-    background-color: #8ded92 !important;
+    background-color: green !important;
 }
-.violet:hover {
-    background-color: #faa1ff !important;
+.light_green:hover {
+    background-color: #d0edda !important;
 }
 .gray:hover {
     background-color: #b8b8b8 !important;

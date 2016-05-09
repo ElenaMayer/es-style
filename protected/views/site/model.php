@@ -124,9 +124,4 @@
             });
         }
     });
-    $( document ).on( 'click', '.size_button', function() {
-        $('.size_error').removeClass('size_error');
-        $('.button_in-progress').removeClass('button_in-progress');
-        $('.button_disabled').removeClass('button_disabled');
-    });
 </script>

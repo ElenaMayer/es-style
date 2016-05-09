@@ -26,8 +26,8 @@ $('.search-form form').submit(function(){
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'rowCssClassExpression'=>'$data->getColor()',
-    'selectableRows'=>1,
-    'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('update').'?id="+$.fn.yiiGridView.getSelection(id);}',
+//    'selectableRows'=>1,
+//    'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('update').'?id="+$.fn.yiiGridView.getSelection(id);}',
     'columns'=>array(
         'id',
         'addressee',
