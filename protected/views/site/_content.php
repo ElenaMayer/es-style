@@ -25,10 +25,12 @@
                 </span>
             </a>
             <?php if($photo->is_available) :?>
-                <div class="size">
-                    <span class="size_error__title">Укажите размер</span>
-                    <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
-                </div>
+                <?php if($photo->size) :?>
+                    <div class="size">
+                        <span class="size_error__title">Укажите размер</span>
+                        <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
+                    </div>
+                <?php endif; ?>
                 <span id="<?= $photo->id ?>" class="button button_big button_blue buy-button basket-button <?= $photo->size?'':'uni_size' ?>">
                     <i class="button__icon"></i>
                     <span class="button__progress"></span>

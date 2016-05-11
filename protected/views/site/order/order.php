@@ -36,6 +36,9 @@
             type: "POST",
             dataType: "html",
             success: function (res) {
+                $('.button_in-progress').prop( "disabled", true ).removeClass('button_in-progress');
+                $('.button_disabled').removeClass('button_disabled');
+                $(this).prop( "disabled", true );
                 error = false;
                 try {
                     data = JSON.parse(res);
