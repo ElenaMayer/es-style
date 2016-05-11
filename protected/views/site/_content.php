@@ -9,7 +9,10 @@
                 <?php endif; ?>
             <?php endif; ?>
             <a href="/<?= $type ?>/<?= $photo->article ?>">
-                <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                <noscript>
+                    <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                </noscript>
                 <div class="catalog__item__article">Арт.&nbsp;<?= $photo->article ?></div>
                 <span class="price">
                     <?php if(!$photo->is_available) :?>
@@ -44,6 +47,11 @@
 </div>
 
 <script>
+    $(function() {
+        $("img.lazy").show().lazyload({
+            effect : "fadeIn"
+        });
+    });
 
     $( '.catalog__item' ).on( 'click', '.buy-button', function() {
         $(".size.size_error").removeClass("size_error");

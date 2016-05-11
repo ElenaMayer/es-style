@@ -375,6 +375,7 @@ body.main.modal-open {
     position: relative;
     border: 1px solid #fff;
     padding-bottom: 8px;
+    width: 223px;
 }
 
 .catalog__item__link:hover,
@@ -423,7 +424,6 @@ body.main.modal-open {
 
 .catalog__item__img {
     display: block;
-    width: 100%;
     position: relative;
     z-index: 1;
 }
@@ -1767,6 +1767,19 @@ h3.news {
     font-size: 20px;
     text-align: center;
 }
+.lazy {
+    display: none;
+}
+
+/*
+
+IPad 1024×768, 2048×1536
+IPhone 4 640×960
+IPhone 5 640×1136
+IPhone 6 1334×750
+IPhone 6Plus 1920×1080
+
+*/
 
 @media only screen and (max-width: 991px) {
 
@@ -1826,28 +1839,26 @@ h3.news {
     .new-order .row .payment label {
         left: -160px;
     }
-    .catalog__item .size {
-        height: 55px;
-    }
     .catalog__item .size.size_error {
         height: 61px;
     }
     .header__contact_item_right {
         margin-left: 0;
     }
-    .catalog__item .price {
-        font-size: 12px;
-    }
-    .catalog__item .basket-button {
-        right: 10px;
-    }
 }
 
 /*iPad in portrait & landscape*/
-@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+@media only screen and (min-width : 768px) and (max-width : 1023px)  {
     .basket-button-title:after {
         content: '.';
         color: #A54E68;
+    }
+    .catalog__item {
+        width: 33%;
+        padding: 6px 13px 0;
+    }
+    .catalog__item .size {
+        right: auto;
     }
 }
 
@@ -1883,7 +1894,7 @@ h3.news {
         top: 18px;
     }
     .catalog__item {
-        width: 33.3%;
+        width: 50%;
     }
     .catalog__cont {
         font-size: 20px;
@@ -1996,13 +2007,6 @@ h3.news {
     .order-data__table {
         width: 100%;
     }
-    .catalog__item .basket-button {
-        bottom: 22px;
-        position: absolute;
-    }
-    .catalog__item .price {
-        top: 6px;
-    }
 }
 
 @media only screen and (max-width: 479px) {
@@ -2010,7 +2014,7 @@ h3.news {
         float: none;
     }
     .catalog__item {
-        width: 50%;
+        width: 51%;
     }
     .page .header .menu {
         margin-bottom: 10px;
@@ -2112,7 +2116,4 @@ h3.news {
     .history .cart-item__cell_description {
         margin-left: 0;
     }
-    .basket-button .guest-basket-button .button__icon {
-        margin: 5px 0 0 -4px;
-     }
 }
