@@ -29,6 +29,9 @@
 <?php endif; ?>
 
 <script>
+    $( document ).ready(function() {
+        $(".banner").show();
+    });
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
     $( "body" ).on("click", ".change-quantity", function() {

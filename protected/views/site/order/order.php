@@ -23,6 +23,9 @@
     <?php $this->renderPartial('order/_order_created', array('orderId'=>null)); ?>
 </div>
 <script>
+    $( document ).ready(function() {
+        $(".banner").show();
+    });
     cart_id = <?= $cart->id ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});

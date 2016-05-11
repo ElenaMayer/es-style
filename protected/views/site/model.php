@@ -96,6 +96,7 @@
 
 <script>
     $( document ).ready(function() {
+        $(".banner").show();
         if($(".sizes").length > 0 && $(".sizes").get(0).childElementCount == 1) {
             $('.size_button').addClass("button_pressed");
         }
