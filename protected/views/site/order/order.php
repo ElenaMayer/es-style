@@ -31,17 +31,14 @@
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
 
     $( 'body' ).on( 'click', '.order_submit', function() {
-        $(this).addClass('button_in-progress').addClass('button_disabled');
-        $(this).prop( "disabled", true );
+        $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         $.ajax({
             url: "/order/" + cart_id,
             data: $( "#order-form" ).serialize(),
             type: "POST",
             dataType: "html",
             success: function (res) {
-                $('.button_in-progress').prop( "disabled", true ).removeClass('button_in-progress');
-                $('.button_disabled').removeClass('button_disabled');
-                $(this).prop( "disabled", true );
+                $('.button_in-progress').prop( "disabled", false ).removeClass('button_disabled').removeClass('button_in-progress');
                 error = false;
                 try {
                     data = JSON.parse(res);

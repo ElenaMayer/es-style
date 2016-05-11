@@ -119,7 +119,7 @@
                     if (data) {
                         $('.add_to_cart').html(data);
                         jQuery('#add_to_cart').modal('show');
-                        $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );;
+                        $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );
                     }
                 }
             });

@@ -43,7 +43,6 @@
             else
                 action_name = "decrease";
             $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
-            $(this).parent().children('.change-quantity_increase').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
             $.ajax({
                 url: "/ajax/changeCount",
                 data: {
@@ -53,6 +52,7 @@
                 type: "POST",
                 dataType: "html",
                 success: function (data) {
+                    $('.button_in-progress').prop( "disabled", false ).removeClass('button_disabled').removeClass('button_in-progress');
                     if (data) {
                         $('.content').html(data);
                     }
