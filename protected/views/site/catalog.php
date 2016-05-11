@@ -34,13 +34,12 @@
 
 <script>
     $( document ).ready(function() {
+        $(".banner").show();
         $(".order_menu>ul.dropdown-menu>li").each(function( index ) {
             if ($(this).text().replace(/^\s+/, "") == '<?=Yii::app()->session['catalog_order']?>'.replace(/^\s+/, "")){
                 $(this).addClass('active');
             }
         });
-    });
-    $( document ).ready(function() {
         $(".size_menu>ul.dropdown-menu>li").each(function( index ) {
             if ($(this).text().replace(/^\s+/, "") == '<?=Yii::app()->session['catalog_size']?>'.replace(/^\s+/, "")){
                 $(this).addClass('active');

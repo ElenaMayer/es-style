@@ -1771,6 +1771,18 @@ h3.news {
     display: none;
 }
 
+/* Banner */
+
+.banner {
+    background-color: #AC5870;
+    display: none;
+}
+.banner img {
+    max-height: 70px;
+    width: 100%;
+    max-width: 970px;
+}
+
 /*
 
 IPad 1024×768, 2048×1536

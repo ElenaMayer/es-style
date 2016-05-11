@@ -93,6 +93,9 @@
                     </div>
                 </div>
             </div>
+            <div class="banner">
+                <img src="data/i/banner.png">
+            </div>
             <?php
                 $this->widget(
                     'booster.widgets.TbNavbar',

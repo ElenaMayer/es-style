@@ -8,10 +8,13 @@ $this->pageTitle=Yii::app()->name;
         array(
             'items' => array(
                 array(
-                    'image' => $this->bu('data/i/carousel_first.jpg?1'),
+                    'image' => $this->bu('data/i/carousel_fourth.jpg'),
                 ),
                 array(
                     'image' => $this->bu('data/i/carousel_second.jpg?2'),
+                ),
+                array(
+                    'image' => $this->bu('data/i/carousel_first.jpg?1'),
                 ),
                 array(
                     'image' => $this->bu('data/i/carousel_third.jpg?1'),
