@@ -8,8 +8,8 @@
 </ul>
 
 <div class="hint">
-    <div class="hint__icon-shipping"></div>
-    <span class="hint__title">Оплата при получении</span>
+    <div class="hint__icon-payment"></div>
+    <span class="hint__title">Оплата </br>при получении</span>
 </div>
 <h2>Определение размера</h2>
 <p>Вы можете определить размер по <a class="link" href="?size_tab"><b>таблице</b></a>.</p>
@@ -23,6 +23,10 @@
     <li class="list__item">Оплата производится на почте в момент получения посылки.</li>
 </ul>
 
+<div class="hint">
+    <div class="hint__icon-shipping"></div>
+    <span class="hint__title">Доставка во все</br>регионы России</span>
+</div>
 <h2>Возврат</h2>
 <ul class="list list_shopping">
     <li class="list__item">В случае брака мы возвращаем полную стоимость товара.</li>

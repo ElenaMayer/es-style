@@ -97,5 +97,22 @@ class AjaxController extends Controller
             echo json_encode($models);
         }
     }
+    
+    public function actionGetCartCount(){
+        if(Yii::app()->user->isGuest) {
+            if (!empty(Yii::app()->session['cartId'])) {
+                $cart = Cart::model()->findByPk(Yii::app()->session['cartId']);
+                echo $cart->count;
+                Yii::app()->end();
+            } else {
+                echo 0;
+                Yii::app()->end();
+            }
+        } else {
+            $cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'is_active' => true));
+            echo $cart->count;
+            Yii::app()->end();
+        }
+    }
 
 }

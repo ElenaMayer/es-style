@@ -820,15 +820,20 @@ body.main.modal-open {
     cursor: pointer;
 }
 
-.hint__icon-shipping {
+.hint__icon-shipping,
+.hint__icon-payment {
     width: 60px;
     height: 60px;
     position: relative;
     display: inline-block;
     vertical-align: middle;
+}
+.hint__icon-shipping {
     background: url('../data/i/shipping.png') no-repeat 100% 0;
 }
-
+.hint__icon-payment {
+    background: url('../data/i/payment.png') no-repeat 100% 0;
+}
 .hint__icon-price {
     width: 60px;
     height: 60px;
@@ -842,7 +847,7 @@ body.main.modal-open {
     display: inline-block;
     vertical-align: middle;
     margin-left: 10px;
-    color: #999;
+    color: #AC5770;
     font-size: 14px;
 }
 

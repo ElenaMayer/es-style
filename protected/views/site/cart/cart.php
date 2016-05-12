@@ -55,6 +55,7 @@
                     $('.button_in-progress').prop( "disabled", false ).removeClass('button_disabled').removeClass('button_in-progress');
                     if (data) {
                         $('.content').html(data);
+                        updateCartCount();
                     }
                 }
             });
@@ -76,6 +77,7 @@
                     if (data) {
                         e.hide('slow');
                         $('.cart-total').html(data);
+                        updateCartCount();
                     } else {
                         e.find('button.remove').removeClass('button_in-progress').removeClass('button_disabled');
                     }

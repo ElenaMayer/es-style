@@ -268,7 +268,7 @@ class Photo extends CActiveRecord
                 $order = 'is_available DESC, price DESC';
                 break;
             case 'по скидкам':
-                $order = 'is_available DESC, sale DESC';
+                $order = 'is_available DESC, is_sale DESC, sale DESC';
                 break;
         }
         if ($size == 'все') {

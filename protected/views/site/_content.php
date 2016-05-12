@@ -82,10 +82,11 @@
                 success: function( data ) {
                     if (data) {
                         $('.add_to_cart').html(data);
-                        jQuery('#add_to_cart').modal('show');
+                        $('#add_to_cart').modal('show');
                         $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );
                         $(".catalog__item__link.selected").removeClass("selected");
                         $(".button.button_pressed").removeClass("button_pressed");
+                        updateCartCount();
                     }
                 }
             });
