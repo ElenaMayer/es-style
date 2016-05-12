@@ -1856,9 +1856,6 @@ IPhone 6Plus 1920×1080
     .new-order .row .payment label {
         left: -160px;
     }
-    .catalog__item .size.size_error {
-        height: 61px;
-    }
     .header__contact_item_right {
         margin-left: 0;
     }
@@ -1873,9 +1870,6 @@ IPhone 6Plus 1920×1080
     .catalog__item {
         width: 33%;
         padding: 6px 13px 0;
-    }
-    .catalog__item .size {
-        right: auto;
     }
 }
 

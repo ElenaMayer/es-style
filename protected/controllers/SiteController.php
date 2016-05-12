@@ -14,6 +14,7 @@ class SiteController extends Controller
         } else {
             $this->cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'is_active' => true));
         }
+        self::saveUTM();
     }
 
     public function actions() {
@@ -49,6 +50,18 @@ class SiteController extends Controller
                 'users'=>array('*'),
             ),
         );
+    }
+
+    private static function saveUTM(){
+        if($_GET && isset($_GET['utm_source'])){
+            $utm = new Utm();
+            $utm->utm_source = $_GET['utm_source'];
+            if ($_GET['utm_medium']) $utm->utm_medium = $_GET['utm_medium'];
+            if ($_GET['utm_campaign']) $utm->utm_campaign = $_GET['utm_campaign'];
+            if ($_GET['utm_term']) $utm->utm_term = $_GET['utm_term'];
+            if ($_GET['utm_content']) $utm->utm_content = $_GET['utm_content'];
+            $utm->save();
+        }
     }
 
     public function actionRegistration(){

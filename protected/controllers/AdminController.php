@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','order','price','logout','priceDelete', 'mailLog'),
+                'actions'=>array('index','order','price','logout','priceDelete', 'mailLog', 'utmLog'),
                 'users'=>array('admin'),
             ),
             array('allow',
@@ -134,6 +134,15 @@ class AdminController extends Controller
         $model=new MailLog('search');
         $model->unsetAttributes();
         $this->render('mail_log',array(
+            'model'=>$model,
+        ));
+    }
+    
+    public function actionUtmLog()
+    {
+        $model=new Utm('search');
+        $model->unsetAttributes();
+        $this->render('utm',array(
             'model'=>$model,
         ));
     }
