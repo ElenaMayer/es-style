@@ -15,7 +15,6 @@
 class Cart extends CActiveRecord
 {
     public $subtotal;
-    public $shipping;
     public $sale;
     public $total;
     public $count;
@@ -111,7 +110,7 @@ class Cart extends CActiveRecord
         $count = 0;
         foreach($this->cartItems as $item){
             if($item->photo->is_available) {
-                $subtotal += $item->photo->price * $item->count;
+                $subtotal += $item->photo->is_sale ? $item->photo->old_price : $item->photo->price * $item->count;
                 $count += $item->count;
                 if ($item->photo->is_sale) {
                     $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
@@ -121,11 +120,7 @@ class Cart extends CActiveRecord
         $this->subtotal = $subtotal;
         $this->sale = $sale;
         $this->count = $count;
-        if($count >= Yii::app()->params['shippingFreeCount'])
-            $this->shipping = 0;
-        else
-            $this->shipping = Yii::app()->params['shippingCost'];
-        $this->total = $subtotal + $this->shipping;
+        $this->total = $subtotal - $this->sale;
     }
 
     public function findAndAddCartItem($attributes){

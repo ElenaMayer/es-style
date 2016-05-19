@@ -278,7 +278,8 @@ class SiteController extends Controller
                 $user->saveUserData($_POST['User']);
                 $errors = $user->getErrors();
                 if(empty($errors)) {
-                    $order = $this->createOrder($user);
+                    $order = $this->createOrder($user, $_POST['User']['shipping']);
+
                     $res['status'] = $order->status;
                     $res['orderId'] = $order->id;
                     $this->sentOrderMail($order);
@@ -315,7 +316,7 @@ class SiteController extends Controller
         $mail->send();
     }
 
-    public function createOrder($user){
+    public function createOrder($user, $shipping){
         $order = new OrderHistory();
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
@@ -323,6 +324,7 @@ class SiteController extends Controller
         $order->payment_method = $_POST['User']['payment'];
         $order->phone = $user->phone;
         $order->email = $user->email;
+        $order->shipping = $shipping;
 
         if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
         elseif($_POST['User']['payment'] == 'card') $order->status = 'payment';
@@ -330,7 +332,6 @@ class SiteController extends Controller
         $cart = $this->cart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
-        $order->shipping = $cart->shipping;
         $order->total = $cart->total;
         $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
         $order->address = $user->postcode . ",<br>" . $user->address;

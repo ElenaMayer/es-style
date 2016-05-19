@@ -240,7 +240,7 @@ h1 {
     background-color: yellow;
 }
 .red {
-    background-color: red;
+    background-color: #ff4c4f;
 }
 .light_red {
     background-color: #ffb9bc;
@@ -249,7 +249,7 @@ h1 {
     background-color: orange;
 }
 .green {
-    background-color: green;
+    background-color: #00b200;
 }
 .light_green {
     background-color: #d0edda;

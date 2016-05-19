@@ -1364,7 +1364,7 @@ h3.news {
     margin-bottom: 21px;
 }
 .cart-total {
-    width: 160px;
+    width: 190px;
     float: right;
     text-align: right;
     margin: 20px 20px 20px 0;
@@ -1447,7 +1447,7 @@ h3.news {
 .hint.hint-show {
     opacity: 1;
 }
-.cart-total__price_discount .cart-total__price-val {
+.cart-total__price_discount .cart-sale-val {
     color: #CB2228;
 }
 .cart-total__price_total {

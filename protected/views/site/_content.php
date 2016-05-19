@@ -58,7 +58,7 @@
         $(".catalog__item__link.selected").removeClass("selected");
         if ($(this).parent('div').find(".button_pressed").length==0 && !$(this).hasClass("uni_size")){
             if ($(this).parent('div').find(".size_button").length==1){
-                $(this).parent('div').find(".size_button").addClass(".button_pressed");
+                $(this).parent('div').find(".size_button").addClass("button_pressed");
                 addItemToCart($(this).attr('id'));
             } else {
                 $(this).parent('.catalog__item__link').children('.size').addClass('size_error');

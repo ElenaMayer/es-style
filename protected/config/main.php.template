@@ -80,6 +80,8 @@ return array(
         'email' => 'email',
         'domain' => 'domain',
         'ipAddress' => 'my_ip',
+		'postcode' => 0,
+		'postcalcUrl' => 'http://test.postcalc.ru/mystat.php/',
         'vkontakteLink' => 'link',
         'odnoklassnikiLink' => 'link',
         'instagramLink' => 'link',

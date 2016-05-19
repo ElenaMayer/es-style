@@ -4,7 +4,7 @@
     </div>
     <div class="cart-separator"></div>
     <div class="cart-total cart-total_threshold">
-        <?php $this->renderPartial('cart/_cart_total', array('model'=>$cart)); ?>
+        <?php $this->renderPartial('order/_order_total', array('model'=>$cart)); ?>
     </div>
     <div class="cart-separator"></div>
     <div class="cart-navigation">
@@ -54,6 +54,9 @@
                 } else {
                     $('.order-form').html(res);
                 }
+            },
+            error: function () {
+                $('.button_in-progress').prop( "disabled", false ).removeClass('button_disabled').removeClass('button_in-progress');
             }
         })
     });
@@ -69,4 +72,35 @@
             }
         })
     }
+    postcalc_url = "<?=Yii::app()->params['postcalcUrl']?>";
+    postcode_from = <?=Yii::app()->params['postcode']?>;
+    total = parseInt($('.cart-total-val').children('span').text());
+    $( 'body' ).on( 'keyup', '#User_postcode', function() {
+        if ($(this).val().length == 6) {
+            postcode_to = $(this).val();
+            weight = 600;
+            url = postcalc_url + '?f=' + postcode_from + '&t=' + postcode_to +'&v=' + total +'&w=' + weight +'&o=json';
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: 'jsonp',
+                success: function (data) {
+                    if (data['Status'] == "OK") {
+                        tariff = parseInt(data['Отправления']['ЦеннаяПосылка']['Тариф']);
+                        shipping_cost = tariff + (total + tariff) * 0.04;
+                        new_total = total + shipping_cost;
+                        $("#User_postcode_error").val(0);
+                        $("#User_shipping").val(shipping_cost.toFixed(0));
+                        $('.cart-shipping-val').text(shipping_cost.toFixed(0) + " руб.");
+                        $('.cart-total-val').children('span').text(new_total.toFixed(0));
+                    } else if(data['Status'] == "BAD_TO_INDEX"){
+                        $("#User_postcode_error").val(1);
+                        $("#User_shipping").val(null);
+                        $('.cart-shipping-val').text("Не определена");
+                        $('.cart-total-val').children('span').text(total);
+                    }
+                }
+            })
+        }
+    });
 </script>

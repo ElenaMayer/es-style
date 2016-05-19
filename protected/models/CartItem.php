@@ -123,8 +123,14 @@ class CartItem extends CActiveRecord
 		return parent::model($className);
 	}
 
-    public function getSum(){
-        return $this->photo->price*$this->count;
-    }
+	public function getSum(){
+		if (!empty($this->new_price))
+			return $this->new_price*$this->count;
+		elseif(!empty($this->price))
+			return $this->price*$this->count;
+		else
+			return $this->photo->price*$this->count;
+
+	}
 
 }

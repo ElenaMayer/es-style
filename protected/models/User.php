@@ -33,6 +33,8 @@ class User extends CActiveRecord
     private $_identity;
     public $payment = 'cod';
     public $create_profile;
+    public $postcode_error;
+    public $shipping;
 
     /**
      * @return string the associated database table name
@@ -50,6 +52,8 @@ class User extends CActiveRecord
         return array(
             array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
             array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
+            array('postcode', 'length', 'min'=>6, 'max'=>6, 'tooShort'=>'Длина индекса должна быть 6 символов'),
+            array('postcode_error', 'checkPostcode', 'on'=> 'userOrder, orderWithRegistration, guestOrder'),
             array('email', 'email', 'message'=>'Значение не является правильным e-mail адресом.'),
             array('postcode', 'numerical', 'integerOnly'=>true),
             array('date_of_birth, date, month, year, is_subscribed, blocked', 'safe'),
@@ -68,20 +72,20 @@ class User extends CActiveRecord
             array('password_old', 'passwordCheck', 'on' => 'customer_password_data'),
             array('email', 'emailCheckForReg', 'on'=> 'registration, orderWithRegistration'),
             array('email', 'emailCheckForRemind', 'on'=> 'remindPassword'),
-            array('email','unsafe','on'=>'customer, userOrder'),
+            array('email', 'unsafe', 'on'=>'customer, userOrder'),
             array('date_create', 'safe'),
-            array('date_create','default', 'value'=>new CDbExpression('NOW()')),
+            array('date_create', 'default', 'value'=>new CDbExpression('NOW()')),
         );
     }
 
     public function passwordMatch ( $attribute ) {
         if ( $this->$attribute !== $this->password2 )
-            $this->addError ( 'password2', "Пожалуйста, убедитесь, что Ваши пароли совпадают" );
+            $this->addError ( 'password2', "Пожалуйста, убедитесь, что Ваши пароли совпадают." );
     }
 
     public function passwordCheck ( $attribute ) {
         if(!CPasswordHelper::verifyPassword($this->$attribute, $this->password))
-            $this->addError ( $attribute, "Текущий пароль указан неверно" );
+            $this->addError ( $attribute, "Текущий пароль указан неверно." );
     }
 
     public function emailCheckForReg ( $attribute ) {
@@ -97,6 +101,12 @@ class User extends CActiveRecord
         $email=$this->findByAttributes(array('email'=>$this->email));
         if (empty($email)) {
             $this->addError($attribute, "По данному адресу учетная запись на найдена.");
+        }
+    }
+
+    public function checkPostcode ( $attribute ) {
+        if ($this->$attribute == 1) {
+            $this->addError('postcode', "Несуществующий индекс.");
         }
     }
 

@@ -7,7 +7,7 @@
     <meta name="description" content="Одежда восточный стиль, женская одежда восточный стиль, женская одежда оптом"/>
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon"/>
 
-    <?php Yii::app()->clientScript->registerScriptFile('/js/common.js', CClientScript::POS_HEAD) ?>
+    <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?1', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/magiczoom.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/social-likes.min.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/jquery_lazyload-1.9.3/jquery.lazyload.js', CClientScript::POS_HEAD) ?>
