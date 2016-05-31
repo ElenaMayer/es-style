@@ -29,6 +29,7 @@
  * @property integer $size_54
  * @property integer $size_at
  * @property integer $size_to
+ * @property integer $weight
  */
 class Photo extends CActiveRecord
 {
@@ -60,13 +61,13 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, is_show, is_available, is_new, price, is_sale, sale, new_price, old_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
+            array('article, weight, is_show, is_available, is_new, price, is_sale, sale, new_price, old_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
             array('img, title, category', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
             array('article, is_show, is_available, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
-            array('category, title, article, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
+            array('category, title, article, weight, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
 		);
 	}
 
@@ -92,6 +93,7 @@ class Photo extends CActiveRecord
             'image' => 'Фото',
 			'category' => 'Категория',
 			'article' => 'Артикул',
+            'weight' => 'Вес',
 			'price' => 'Цена',
 			'title' => 'Название',
 			'description' => 'Описание',

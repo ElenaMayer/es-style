@@ -295,7 +295,8 @@ class SiteController extends Controller
                 'user' => $user,
                 'cart' => $this->cart
             ));
-        }  else throw new CHttpException(404,'К сожалению, страница не найдена.');
+        }  else
+            throw new CHttpException(404,'К сожалению, страница не найдена.');
     }
 
     public function sentOrderMail($order){
@@ -332,7 +333,7 @@ class SiteController extends Controller
         $cart = $this->cart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
-        $order->total = $cart->total;
+        $order->total = $cart->subtotal + $shipping;
         $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
         $order->address = $user->postcode . ",<br>" . $user->address;
         if ($order->save()){

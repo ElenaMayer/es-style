@@ -1788,6 +1788,13 @@ h3.news {
     max-width: 970px;
 }
 
+.postcalc {
+    font-size: 11px;
+    text-align: center;
+    padding-bottom: 5px;
+    color: gray;
+}
+
 /*
 
 IPad 1024×768, 2048×1536

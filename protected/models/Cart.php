@@ -18,6 +18,7 @@ class Cart extends CActiveRecord
     public $sale;
     public $total;
     public $count;
+	public $weight;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -108,10 +109,12 @@ class Cart extends CActiveRecord
         $subtotal = 0;
         $sale = 0;
         $count = 0;
+		$weight = 0;
         foreach($this->cartItems as $item){
             if($item->photo->is_available) {
                 $subtotal += $item->photo->is_sale ? $item->photo->old_price : $item->photo->price * $item->count;
                 $count += $item->count;
+				$weight += $item->photo->weight * $item->count;
                 if ($item->photo->is_sale) {
                     $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
                 }
@@ -121,6 +124,7 @@ class Cart extends CActiveRecord
         $this->sale = $sale;
         $this->count = $count;
         $this->total = $subtotal - $this->sale;
+		$this->weight = $weight;
     }
 
     public function findAndAddCartItem($attributes){

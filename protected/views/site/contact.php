@@ -5,9 +5,7 @@
     <div class="contacts contacts-address">
         <span class="contacts__title">Мичурина 12 - Центральный рынок (1й вещевой павильон)</span>
         <br>
-        Ряд №6 Место №209
-        <br>
-        Ряд №8 Место №255
+        Ряд №6 Место №184
     </div>
     <div class="contacts contacts-time">
         <span class="contacts__title">Время работы</span>

@@ -107,6 +107,8 @@ class User extends CActiveRecord
     public function checkPostcode ( $attribute ) {
         if ($this->$attribute == 1) {
             $this->addError('postcode', "Несуществующий индекс.");
+        } elseif ($this->$attribute == 2) {
+            $this->addError('postcode', "Доставка в Ваш регион в данный момент невозможна.");
         }
     }
 

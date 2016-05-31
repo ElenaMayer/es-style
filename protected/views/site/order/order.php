@@ -22,9 +22,13 @@
 <div class="order_created">
     <?php $this->renderPartial('order/_order_created', array('orderId'=>null)); ?>
 </div>
+<div class="postcalc">
+    Сайт использует в расчетах www.postcalc.ru
+</div>
 <script>
     $( document ).ready(function() {
         $(".banner").show();
+        check_shipping();
     });
     cart_id = <?= $cart->id ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
@@ -72,35 +76,74 @@
             }
         })
     }
-    postcalc_url = "<?=Yii::app()->params['postcalcUrl']?>";
-    postcode_from = <?=Yii::app()->params['postcode']?>;
-    total = parseInt($('.cart-total-val').children('span').text());
     $( 'body' ).on( 'keyup', '#User_postcode', function() {
-        if ($(this).val().length == 6) {
-            postcode_to = $(this).val();
-            weight = 600;
-            url = postcalc_url + '?f=' + postcode_from + '&t=' + postcode_to +'&v=' + total +'&w=' + weight +'&o=json';
-            $.ajax({
-                url: url,
-                type: "GET",
-                dataType: 'jsonp',
-                success: function (data) {
-                    if (data['Status'] == "OK") {
-                        tariff = parseInt(data['Отправления']['ЦеннаяПосылка']['Тариф']);
-                        shipping_cost = tariff + (total + tariff) * 0.04;
-                        new_total = total + shipping_cost;
-                        $("#User_postcode_error").val(0);
-                        $("#User_shipping").val(shipping_cost.toFixed(0));
-                        $('.cart-shipping-val').text(shipping_cost.toFixed(0) + " руб.");
-                        $('.cart-total-val').children('span').text(new_total.toFixed(0));
-                    } else if(data['Status'] == "BAD_TO_INDEX"){
-                        $("#User_postcode_error").val(1);
-                        $("#User_shipping").val(null);
-                        $('.cart-shipping-val').text("Не определена");
-                        $('.cart-total-val').children('span').text(total);
-                    }
-                }
-            })
+        item_count = <?= $cart->count ?>;
+        if (item_count < 3) {
+            if ($(this).val().length == 6) {
+                get_shipping($(this).val());
+            }
         }
     });
+    function check_shipping() {
+        item_count = <?= $cart->count ?>;
+        if (item_count >= 3){
+            $("#User_shipping").val(0);
+            $('.cart-shipping-val').text(0 + " руб.");
+        } else {
+            get_shipping(parseInt($('#User_postcode').val()));
+        }
+    }
+
+    total = parseInt($('.cart-total-val').children('span').text());
+    
+    function get_shipping(postcode_to) {
+        postcalc_url = "<?=Yii::app()->params['postcalcUrl']?>";
+        postcode_from = <?=Yii::app()->params['postcode']?>;
+        weight = <?= $cart->weight ?>;
+        url = postcalc_url + '?f=' + postcode_from + '&t=' + postcode_to +'&v=' + total +'&w=' + weight +'&o=json';
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'jsonp',
+            success: function (data) {
+                if (data['Status'] == "OK") {
+                    tariff = parseInt(data['Отправления']['ЦеннаяПосылка']['Тариф']);
+                    if (tariff == 0) {
+                        tariff = parseInt(data['Отправления']['ЦеннаяБандероль1Класс']['Тариф']);
+                        if (tariff == 0) {
+                            show_shipping_error(2);
+                        } else {
+                            show_shipping(tariff);
+                        }
+                    } else {
+                        show_shipping(tariff);
+                    }
+                } else if(data['Status'] == "BAD_TO_INDEX"){
+                    show_shipping_error(1);
+                }
+            }
+        })
+    }
+
+    function show_shipping(tariff) {
+        shipping_cost = tariff + (total + tariff) * 0.04;
+        new_total = total + shipping_cost;
+        $("#User_postcode_error").val(0);
+        $("#User_shipping").val(shipping_cost.toFixed(0));
+        $('.cart-shipping-val').text(shipping_cost.toFixed(0) + " руб.");
+        $('.cart-total-val').children('span').text(new_total.toFixed(0));
+    }
+
+/*
+    Error codes
+    0 - Ok
+    1 - Bad Index
+    2 - Delivery is not possible
+ */
+    function show_shipping_error(error_code) {
+        $("#User_postcode_error").val(error_code);
+        $("#User_shipping").val(null);
+        $('.cart-shipping-val').text("Не определена");
+        $('.cart-total-val').children('span').text(total);
+    }
 </script>
