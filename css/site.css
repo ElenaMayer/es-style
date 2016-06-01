@@ -1582,11 +1582,12 @@ h3.news {
 .new-order .row .payment input,
 .new-order .row .order-auth-checkout__register input {
     left: 10px;
+    top: 7px;
 }
 .new-order .row .payment label,
 .new-order .row .order-auth-checkout__register label {
     position: relative;
-    top: -2px;
+    top: 6px;
     left: -185px;
 }
 
@@ -1860,11 +1861,13 @@ IPhone 6Plus 1920×1080
     .new-order div.content .row {
         margin-left: 0;
     }
-    .new-order .row .payment label {
-        left: -160px;
-    }
     .header__contact_item_right {
         margin-left: 0;
+    }
+    .new-order .row .payment label,
+    .new-order .row .order-auth-checkout__register label {
+        left: -130px;
+        font-size: 13px;
     }
 }
 
@@ -1988,12 +1991,14 @@ IPhone 6Plus 1920×1080
     .new-order div.content .row {
         margin-left: 120px;
     }
-    .new-order .row .payment input {
+    .new-order .row .payment input,
+    .new-order .row .order-auth-checkout__register input {
         left: 0;
         top: 8px;
         width: auto;
     }
-    .new-order .row .payment label {
+    .new-order .row .payment label,
+    .new-order .row .order-auth-checkout__register label {
         left: 20px;
         top: -5px;
     }

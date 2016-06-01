@@ -3,7 +3,7 @@
         <tr>
             <td style="border:none;padding:0px 5px;margin:0px;">
                 <span style="text-align:left;font-size: 13px;color: #000000;line-height:16px;font-family: Arial, Tahoma, sans-serif;">
-                    <center><span style="text-transform: capitalize;"><b>Здравствуйте, <?= $user->name ?>!</b></span></center>
+                    <center><span style="text-transform: capitalize;"><b>Здравствуйте, <?= $user->getTitleName(); ?>!</b></span></center>
                     <br><br>
                 </span>
             </td>

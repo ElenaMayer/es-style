@@ -35,6 +35,7 @@ class User extends CActiveRecord
     public $create_profile;
     public $postcode_error;
     public $shipping;
+    public $titleName;
 
     /**
      * @return string the associated database table name
@@ -338,5 +339,9 @@ class User extends CActiveRecord
         } else {
             return false;
         }
+    }
+    
+    public function getTitleName(){
+        return mb_convert_case($this->name, MB_CASE_TITLE, "UTF-8");
     }
 }
