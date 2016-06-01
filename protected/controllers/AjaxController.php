@@ -115,4 +115,8 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionRemoveAvailableSum(){
+        unset(Yii::app()->request->cookies['availableSum']);
+        Yii::app()->end();
+    }
 }

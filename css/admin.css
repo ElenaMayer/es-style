@@ -1,3 +1,10 @@
+.container a {
+    cursor: pointer;
+}
+.container a:hover {
+    text-decoration: none;
+}
+
 .admin_title_link
 {
 	font: bold 17px Arial;
@@ -277,4 +284,9 @@ h1 {
 }
 .gray:hover {
     background-color: #b8b8b8 !important;
+}
+
+.availableSum {
+    font-size: 18px;
+    padding-top: 10px;
 }

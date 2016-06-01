@@ -119,24 +119,28 @@ class OrderHistoryController extends Controller
                     $model->user->blockUser();
                 }
                 break;
+			case 'completed':
+				$currentSum = (string)Yii::app()->request->cookies['availableSum'];
+				Yii::app()->request->cookies['availableSum'] = new CHttpCookie('availableSum', $currentSum + $model->total);
+				break;
         }
     }
 
     private function sendChangeStatusMail($model){
-        $this->layout = '//layouts/mail';
-        $mail = new Mail();
-        $mail->to = $model->user->email;
-        if($model->status == 'collect'){
-            $mail->subject = "Заказ № ". $model->id ." передан на комплектацию. Интернет-магазин ".Yii::app()->params['domain'];
-        } elseif($model->status == 'shipping_by_rp') {
-            $mail->subject = "Заказ № ". $model->id ." передан в доставку. Интернет-магазин ".Yii::app()->params['domain'];
-        } elseif($model->status == 'waiting_delivery') {
-            $mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($model->shipping_method == 'russian_post' ? " в почтовом отделении" : "") ."! Интернет-магазин ".Yii::app()->params['domain'];
-        } elseif($model->status == 'confirmation') {
+		$this->layout = '//layouts/mail';
+		$mail = new Mail();
+		$mail->to = $model->email;
+		if($model->status == 'collect'){
+			$mail->subject = "Заказ № ". $model->id ." передан на комплектацию. Интернет-магазин ".Yii::app()->params['domain'];
+		} elseif($model->status == 'shipping_by_rp') {
+			$mail->subject = "Заказ № ". $model->id ." передан в доставку. Интернет-магазин ".Yii::app()->params['domain'];
+		} elseif($model->status == 'waiting_delivery') {
+			$mail->subject = "Заказ № ". $model->id ." ожидает вручения". ($model->shipping_method == 'russian_post' ? " в почтовом отделении" : "") ."! Интернет-магазин ".Yii::app()->params['domain'];
+		} elseif($model->status == 'confirmation') {
 			$mail->subject = "Заказ № ". $model->id ." ожидает подтверждения. Интернет-магазин ".Yii::app()->params['domain'];
 		}
-        $mail->message = $this->render('/site/mail/order',array('order'=>$model),true);
-        $mail->send();
+		$mail->message = $this->render('/site/mail/order',array('order'=>$model),true);
+		$mail->send();
     }
 
 	/**

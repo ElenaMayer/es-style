@@ -1,4 +1,10 @@
 <h1>Заказы розница <a href='<?php echo $this->createUrl('admin/orderHistory/create'); ?>' class="admin_title_link button">Добавить заказ</a></h1>
+<?php if(Yii::app()->request->cookies['availableSum']): ?>
+<div class="availableSum">
+    Сумма к получению <b><?= (string)Yii::app()->request->cookies['availableSum']; ?> руб.</b>
+    <a class="availableSum_link">Получено</a>
+</div>
+<?php endif; ?>
 
 <?php
 
@@ -45,3 +51,14 @@ $('.search-form form').submit(function(){
         ),
     ),
 )); ?>
+
+<script>
+    $( '#content' ).on( 'click', '.availableSum_link', function() {
+        $.ajax({
+            url: "/ajax/removeAvailableSum",
+            success: function (data) {
+                $('.availableSum').hide();
+            }
+        })
+    })
+</script>
