@@ -31,11 +31,11 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('index','order','price','logout','priceDelete', 'mailLog', 'utmLog'),
+                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog'),
                 'users'=>array('admin'),
             ),
             array('allow',
-                'actions'=>array('login'),
+                'actions'=>array('index','login'),
                 'users'=>array('*'),
             ),
             array('deny',  // deny all users
@@ -50,7 +50,12 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
     {
-        $this->render('index');
+        if (!Yii::app()->user->isGuest){
+            $this->render('index');
+        } else {
+            $this->redirect(array('login'));
+        }
+
 	}
 
     public function actionOrder()

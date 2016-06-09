@@ -285,6 +285,9 @@ h1 {
 .gray:hover {
     background-color: #b8b8b8 !important;
 }
+.purple:hover {
+    background-color: #D7C3D7 !important;
+}
 
 .availableSum {
     font-size: 18px;

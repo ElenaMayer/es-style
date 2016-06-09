@@ -31,7 +31,7 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Главная', 'url'=>'/admin/index', 'active'=>Yii::app()->request->pathInfo != 'admin'? false:true, 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Главная', 'url'=>'/admin/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'index')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Галерея', 'url'=>'/admin/photo/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'photo')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Новости', 'url'=>'/admin/news/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'news')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Заказы розница', 'url'=>'/admin/orderHistory/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'orderHistory')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),

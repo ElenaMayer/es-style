@@ -176,6 +176,9 @@ class OrderHistory extends CActiveRecord
 			case 'canceled':
 				$color = 'gray';
 				break;
+			case 'lost':
+				$color = 'purple';
+				break;
 		}
 		return $color;
 	}

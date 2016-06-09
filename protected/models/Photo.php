@@ -44,6 +44,7 @@ class Photo extends CActiveRecord
     public $is_available = true;
     public $is_new = true;
     public $size = true;
+    public $weight = 300;
 
 	/**
 	 * @return string the associated database table name

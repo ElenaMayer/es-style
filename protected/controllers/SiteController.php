@@ -270,6 +270,8 @@ class SiteController extends Controller
             if(!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
+                if ($user->blocked)
+                    $user->payment = 'prepay';
             } else {
                 $user = new User();
                 $user->scenario = 'orderWithRegistration';

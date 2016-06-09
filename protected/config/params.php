@@ -30,6 +30,7 @@ return array(
         'shipping_by_tc' => 'Передан на доставку в ТК',
         'waiting_delivery' => 'Ожидает вручения',
         'completed' => 'Выполнен',
+        'lost' => 'Потеряна',
         'not_redeemed' => 'Не выкуплен',
         'canceled' => 'Отменен'
     ],
