@@ -54,7 +54,7 @@
     <div class="row">
         <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'')); ?>
         <?php echo $form->hiddenField($user, 'postcode_error'); ?>
-        <?php echo $form->hiddenField($user, 'shipping'); ?>
+        <?php echo $form->hiddenField($user, 'shipping', ['value'=> isset($shipping)? $shipping : '']); ?>
     </div>
     <div class="row">
         <div class="form-group address">
@@ -65,7 +65,7 @@
     <div class="row">
         <div class="payment">
             <?php if (!Yii::app()->user->isGuest && Yii::app()->user->blocked):?>
-                <?php echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата']); ?>
+                <?php echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата'], ['value' => 'prepay']); ?>
             <?php else :?>
                 <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте']); ?>
             <?php endif ?>

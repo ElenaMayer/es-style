@@ -287,7 +287,7 @@ class SiteController extends Controller
                     $this->sentOrderMail($order);
                     $this->sentOrderMailToAdmin($order);
                 } else {
-                    $this->renderPartial('order/_order_form', array('user' => $user));
+                    $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
                     Yii::app()->end();
                 }
                 echo json_encode($res);
