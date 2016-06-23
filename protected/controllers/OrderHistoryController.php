@@ -45,6 +45,7 @@ class OrderHistoryController extends Controller
 			$model->id = floatval(Yii::app()->dateFormatter->format('yyMMdd', $model->date_create)) . floatval(Yii::app()->dateFormatter->format('HHmmss', time()));
 			if($model->save()) {
 				$this->saveModelsToOrder($model->id);
+				OrderHistory::setOrderNewSum($model->total);
 				$this->redirect(array('index'));
 			}
 		}
@@ -70,7 +71,7 @@ class OrderHistoryController extends Controller
 
 			if($model->save()) {
 				$this->saveModelsToOrder($model->id);
-                if($model->status != $oldStatus && !empty($model->email))
+                if($model->status != $oldStatus)
                     $this->statusChanged($model);
                 $this->redirect(array('index'));
             }
@@ -101,19 +102,29 @@ class OrderHistoryController extends Controller
     private function statusChanged($model){
         switch ($model->status){
             case 'collect':
-            case 'shipping_by_rp':
             case 'waiting_delivery':
 			case 'confirmation':
-                $this->sendChangeStatusMail($model);
+				if(!empty($model->email))
+					$this->sendChangeStatusMail($model);
                 break;
+			case 'shipping_by_rp':
+				if(!empty($model->email))
+					$this->sendChangeStatusMail($model);
+				OrderHistory::setOrderSendSum($model->total);
+				OrderHistory::setOrderNewSum($model->total, 'minus');
+				break;
             case 'not_redeemed':
                 if (!empty($model->user)){
                     $model->user->blockUser();
                 }
+				OrderHistory::setOrderSendSum($model->total, 'minus');
                 break;
 			case 'completed':
-				$currentSum = (string)Yii::app()->request->cookies['availableSum'];
-				Yii::app()->request->cookies['availableSum'] = new CHttpCookie('availableSum', $currentSum + $model->total);
+				OrderHistory::setOrderSendSum($model->total, 'minus');
+				OrderHistory::setOrderAvailableSum($model->total);
+				break;
+			case 'canceled':
+				OrderHistory::setOrderNewSum($model->total, 'minus');
 				break;
         }
     }
@@ -142,7 +153,9 @@ class OrderHistoryController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		OrderHistory::setOrderNewSum($model->total, 'minus');
+		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

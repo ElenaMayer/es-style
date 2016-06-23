@@ -64,7 +64,7 @@
     </div>
     <div class="row">
         <div class="payment">
-            <?php if (!Yii::app()->user->isGuest && Yii::app()->user->blocked):?>
+            <?php if (!Yii::app()->user->isGuest && $user->blocked):?>
                 <?php echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата'], ['value' => 'prepay']); ?>
             <?php else :?>
                 <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте']); ?>

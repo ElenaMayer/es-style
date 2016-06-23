@@ -289,7 +289,13 @@ h1 {
     background-color: #D7C3D7 !important;
 }
 
-.availableSum {
+.orderSum {
     font-size: 18px;
     padding-top: 10px;
+}
+
+.orderSum input {
+    margin-left: 10px;
+    width: 50px;
+    font-size: 14px;
 }

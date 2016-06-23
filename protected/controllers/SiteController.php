@@ -281,11 +281,11 @@ class SiteController extends Controller
                 $errors = $user->getErrors();
                 if(empty($errors)) {
                     $order = $this->createOrder($user, $_POST['User']['shipping']);
-
                     $res['status'] = $order->status;
                     $res['orderId'] = $order->id;
                     $this->sentOrderMail($order);
                     $this->sentOrderMailToAdmin($order);
+                    OrderHistory::setOrderNewSum($order->total);
                 } else {
                     $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
                     Yii::app()->end();
@@ -330,7 +330,7 @@ class SiteController extends Controller
         $order->shipping = $shipping;
 
         if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
-        elseif($_POST['User']['payment'] == 'card') $order->status = 'payment';
+        elseif($_POST['User']['payment'] == 'prepay') $order->status = 'payment';
 
         $cart = $this->cart;
         $order->subtotal = $cart->subtotal;

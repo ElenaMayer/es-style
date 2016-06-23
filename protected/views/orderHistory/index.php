@@ -1,9 +1,17 @@
 <h1>Заказы розница <a href='<?php echo $this->createUrl('admin/orderHistory/create'); ?>' class="admin_title_link button">Добавить заказ</a></h1>
-<?php if(Yii::app()->request->cookies['availableSum']): ?>
-<div class="availableSum">
-    Сумма к получению <b><?= (string)Yii::app()->request->cookies['availableSum']; ?> руб.</b>
-    <a class="availableSum_link">Получено</a>
+<?php if(OrderHistory::getOrderNewSum() > 0): ?>
+    <div class="orderSum">
+        Новых заказов на сумму: <b><?= OrderHistory::getOrderNewSum() ?> руб.</b>
+    </div>
+<?php endif; ?>
+<div class="orderSum">
+    Отправлено на сумму (без оплаты): <b><?= OrderHistory::getOrderSendSum() ?> руб.</b>
 </div>
+<?php if(OrderHistory::getOrderAvailableSum() > 0): ?>
+    <div class="orderSum orderAvailableSum">
+        Оплачено на сумму: <b><span><?= OrderHistory::getOrderAvailableSum() ?></span> руб.</b>
+        <a class="orderAvailableSum_link">Получено</a><input type="text" value="<?= OrderHistory::getOrderAvailableSum() ?>"/>
+    </div>
 <?php endif; ?>
 
 <?php
@@ -53,11 +61,19 @@ $('.search-form form').submit(function(){
 )); ?>
 
 <script>
-    $( '#content' ).on( 'click', '.availableSum_link', function() {
+    expected_sum = <?= OrderHistory::getOrderAvailableSum() ?>;
+    $( '#content' ).on( 'click', '.orderAvailableSum_link', function() {
+        sum = $('.orderSum').children('input').val();
         $.ajax({
             url: "/ajax/removeAvailableSum",
+            data: {sum: sum},
+            type: "POST",
             success: function (data) {
-                $('.availableSum').hide();
+                if (sum == expected_sum) {
+                    $('.orderAvailableSum').hide();
+                } else {
+                    $('.orderAvailableSum span').html(expected_sum - sum);
+                }
             }
         })
     })

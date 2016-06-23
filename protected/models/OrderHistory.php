@@ -124,7 +124,7 @@ class OrderHistory extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
             'Pagination' => array (
-                'PageSize' => 20
+                'PageSize' =>25
             ),
             'sort'=>array(
                 'defaultOrder'=>'date_create DESC',
@@ -181,5 +181,75 @@ class OrderHistory extends CActiveRecord
 				break;
 		}
 		return $color;
+	}
+	
+	public static function getOrderNewSum(){
+		$sum = (string)Yii::app()->request->cookies['orderNewSum'];
+		if($sum == 0 || $sum == '') {
+			$sum = 0;
+			$orders = OrderHistory::model()->findAllByAttributes(['status' => ['in_progress', 'confirmation', 'collect', 'payment']]);
+			foreach ($orders as $order) {
+				$sum += $order->total;
+			}
+			Yii::app()->request->cookies['orderNewSum'] = new CHttpCookie('orderNewSum', $sum);
+		}
+		return $sum;
+	}
+
+	public static function setOrderNewSum($sum, $type='plus'){
+		$currentSum = OrderHistory::getOrderNewSum();
+		$resultSum = 0;
+		if ($type == 'plus') {
+			$resultSum = $currentSum + $sum;
+		} elseif($type == 'minus') {
+			$resultSum = $currentSum - $sum;
+		}
+		Yii::app()->request->cookies['orderNewSum'] = new CHttpCookie('orderNewSum', $resultSum);
+	}
+	
+	public static function getOrderSendSum(){
+		$sum = (string)Yii::app()->request->cookies['orderSendSum'];
+		if($sum == 0 || $sum == '') {
+			$sum = 0;
+			$orders = OrderHistory::model()->findAllByAttributes(['status' => ['shipping_by_rp', 'shipping_by_tc', 'waiting_delivery']]);
+			foreach ($orders as $order) {
+				$sum += $order->total;
+			}
+			Yii::app()->request->cookies['orderSendSum'] = new CHttpCookie('orderSendSum', $sum);
+		}
+		return $sum;
+	}
+
+	public static function setOrderSendSum($sum, $type='plus'){
+		$currentSum = OrderHistory::getOrderSendSum();
+		$resultSum = 0;
+		if ($type == 'plus') {
+			$resultSum = $currentSum + $sum;
+		} elseif($type == 'minus') {
+			$resultSum = $currentSum - $sum;
+		}
+		Yii::app()->request->cookies['orderSendSum'] = new CHttpCookie('orderSendSum', $resultSum);
+	}
+		
+	public static function getOrderAvailableSum(){
+		if (Yii::app()->request->cookies['orderAvailableSum'])
+			return (string)Yii::app()->request->cookies['orderAvailableSum'];
+		else
+			return 0;
+	}
+	
+	public static function setOrderAvailableSum($sum, $type='plus'){
+		$currentSum = OrderHistory::getOrderAvailableSum();
+		$resultSum = 0;
+		if ($type == 'plus') {
+			$resultSum = $currentSum + $sum;
+		} elseif($type == 'minus') {
+			$resultSum = $currentSum - $sum;
+		}
+		Yii::app()->request->cookies['orderAvailableSum'] = new CHttpCookie('orderAvailableSum', $resultSum);
+	}
+
+	public static function unsetOrderAvailableSum(){
+		unset(Yii::app()->request->cookies['orderAvailableSum']);
 	}
 }

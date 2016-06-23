@@ -116,7 +116,11 @@ class AjaxController extends Controller
     }
 
     public function actionRemoveAvailableSum(){
-        unset(Yii::app()->request->cookies['availableSum']);
+        if ($_POST['sum'] == OrderHistory::getOrderAvailableSum()) {
+            OrderHistory::unsetOrderAvailableSum();
+        } else {
+            OrderHistory::setOrderAvailableSum($_POST['sum'], 'minus');
+        }
         Yii::app()->end();
     }
 }

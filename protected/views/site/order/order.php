@@ -50,11 +50,11 @@
                     error = true;
                 }
                 if (!error) {
-                    if (data.status == 'in_progress') {
+//                    if (data.status == 'in_progress') {
                         get_order_modal(data.orderId);
-                    } else if(data.status == 'payment') {
-                        window.location = "/payment";
-                    }
+//                    } else if(data.status == 'payment') {
+//                        window.location = "/payment";
+//                    }
                 } else {
                     $('.order-form').html(res);
                 }
