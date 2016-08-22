@@ -335,7 +335,7 @@ class SiteController extends Controller
         $cart = $this->cart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
-        $order->total = $cart->subtotal + $shipping;
+        $order->total = $cart->subtotal - $cart->sale + $shipping;
         $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
         $order->address = $user->postcode . ",<br>" . $user->address;
         if ($order->save()){
