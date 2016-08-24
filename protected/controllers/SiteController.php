@@ -126,8 +126,10 @@ class SiteController extends Controller
             $this->setOrder($_GET['order']);
         if(isset($_GET['size']))
             $this->setSize($_GET['size']);
-        $model = Photo::model()->getPhotos($type, $this->getOrder(), $this->getSize());
-        if(isset($_GET['order']) || isset($_GET['size']))
+        if(isset($_GET['color']))
+            $this->setColor($_GET['color']);
+        $model = Photo::model()->getPhotos($type, $this->getOrder(), $this->getSize(), $this->getColor());
+        if(isset($_GET['order']) || isset($_GET['size']) || isset($_GET['color']))
             $this->renderPartial('catalog',array('model'=>$model, 'type'=>$type));
         else
             $this->render('catalog',array('model'=>$model, 'type'=>$type));
@@ -140,8 +142,7 @@ class SiteController extends Controller
     }
 
     public function actionError() {
-        if($error=Yii::app()->errorHandler->error)
-        {
+        if($error=Yii::app()->errorHandler->error) {
             if(Yii::app()->request->isAjaxRequest)
                 echo $error['message'];
             else
@@ -162,15 +163,48 @@ class SiteController extends Controller
 
     public function getSize(){
         if(isset(Yii::app()->session['catalog_size']))
-            $order = Yii::app()->session['catalog_size'];
+            $size = Yii::app()->session['catalog_size'];
         else {
-            $order = Yii::app()->session['catalog_size'] = 'все';
+            $size = Yii::app()->session['catalog_size'] = 'все';
         }
-        return $order;
+        return $size;
+    }
+
+    public function getColor(){
+        if(isset(Yii::app()->session['catalog_color']))
+            $color = Yii::app()->session['catalog_color'];
+        else {
+            $color = Yii::app()->session['catalog_color'] = 'все';
+        }
+        return $color;
     }
 
     public function setSize($size){
-        Yii::app()->session['catalog_size'] = $size;
+        $this->setSessionMultiParam('catalog_size', $size);
+    }
+
+    public function setColor($color){
+        $this->setSessionMultiParam('catalog_color', $color);
+    }
+
+    public function setSessionMultiParam($sessionName, $param){
+        if ($param == 'все') {
+            Yii::app()->session[$sessionName] = 'все';
+        } else {
+            if(empty(Yii::app()->session[$sessionName]) || Yii::app()->session[$sessionName] == 'все') {
+                Yii::app()->session[$sessionName] = $param;
+            } else {
+                if (strpos(Yii::app()->session[$sessionName], $param) !== false) {
+                    if (strpos(Yii::app()->session[$sessionName], ',') !== false) {
+                        Yii::app()->session[$sessionName] = trim(str_replace(',,', ',', str_replace($param, '', Yii::app()->session[$sessionName])), ',');
+                    } else {
+                        Yii::app()->session[$sessionName] = 'все';
+                    }
+                } else {
+                    Yii::app()->session[$sessionName] .= ','.$param;
+                }
+            }
+        }
     }
 
     public function actionContact() {

@@ -139,28 +139,6 @@
     overflow: auto;
 }
 
-.select__item {
-    position: relative;
-    padding: 2px 20px;
-    font-size: 13px;
-    line-height: 16px;
-}
-
-.select__item_current .select__tick {
-    display: inline-block;
-}
-
-.select__tick {
-    display: none;
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    margin-top: -6px;
-    background-color: #9e3c5d;
-}
-
 .select .dropdown {
     display: none;
     position: absolute;

@@ -20,6 +20,7 @@
  * @property integer $new_price
  * @property integer $old_price
  * @property integer $size
+ * @property string $sizes
  * @property integer $size_42
  * @property integer $size_44
  * @property integer $size_46
@@ -63,9 +64,9 @@ class Photo extends CActiveRecord
 		// will receive user inputs.
 		return array(
             array('article, weight, is_show, is_available, is_new, price, is_sale, sale, new_price, old_price, size, size_40, size_42, size_44, size_46, size_48, size_50, size_52, size_54, size_at, size_to', 'numerical', 'integerOnly'=>true),
-            array('img, title, category', 'length', 'max'=>255),
+            array('img, title, category, sizes', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('article, is_show, is_available, is_new, price, category, is_sale', 'safe', 'on'=>'search'),
+            array('article, is_show, is_available, is_new, price, category, is_sale, sizes', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
             array('category, title, article, weight, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
@@ -106,7 +107,8 @@ class Photo extends CActiveRecord
             'sale' => 'Процент скидки',
             'new_price' => 'Новая цена',
             'old_price' => 'Старая цена',
-            'size' => 'Размер',
+            'size' => 'Имеет размеры',
+            'sizes' => 'Размеры',
             'size_40' => '40',
             'size_42' => '42',
             'size_44' => '44',
@@ -256,49 +258,53 @@ class Photo extends CActiveRecord
         return Yii::getPathOfAlias('root.protected.data').DIRECTORY_SEPARATOR.'watermark.png';
     }
 
-    public function getPhotos($category, $order_str = 'по артиклю', $size = 'все'){
+    public function getPhotos($category, $order_str = 'по артиклю', $sizes = 'все', $colors = 'все'){
+        $criteria = new CDbCriteria();
         switch($order_str) {
             case 'по новинкам':
-                $order = 'is_available DESC, is_new  DESC';
+                $criteria->order = 'is_available DESC, is_new  DESC';
                 break;
             case 'по артиклю':
-                $order = 'article';
+                $criteria->order = 'article';
                 break;
             case 'по возрастанию цены':
-                $order = 'is_available DESC, price';
+                $criteria->order = 'is_available DESC, price';
                 break;
             case 'по убыванию цены':
-                $order = 'is_available DESC, price DESC';
+                $criteria->order = 'is_available DESC, price DESC';
                 break;
             case 'по скидкам':
-                $order = 'is_available DESC, is_sale DESC, sale DESC';
+                $criteria->order = 'is_available DESC, is_sale DESC, sale DESC';
                 break;
         }
-        if ($size == 'все') {
-            return $this->findAllByAttributes(
-                array('is_show' => 1, 'category' => $category),
-                array('order' => $order)
-            );
-        } else {
-            if($size <= 54) {
-                $sql = 'SELECT * FROM photo
-                        WHERE
-                          is_show = 1 AND
-                          category = :category AND
-                          ((size = 0 AND size_at <= :size AND size_to >= :size)
-                          OR (size = 1 AND size_' . $size . ' = 1))
-                          ORDER BY '.$order;
-            } else {
-                $sql = 'SELECT * FROM photo
-                        WHERE
-                          is_show = 1 AND
-                          category = :category AND
-                          size = 0 AND size_at <= :size AND size_to >= :size
-                          ORDER BY '.$order;
+        $criteria->compare('is_show', 1);
+        $criteria->compare('category', $category);
+
+        if ($sizes != 'все') {
+            $criteriaS = new CDbCriteria();
+            $sizesArr = explode(",", $sizes);
+            foreach ($sizesArr as $size) {
+                $criteriaWS = new CDbCriteria();
+                $criteriaWUS = new CDbCriteria();
+                $criteriaWS->compare('size', 1);
+                $criteriaWS->addSearchCondition('sizes', $size);
+                $criteriaWUS->compare('size', 0);
+                $criteriaWUS->compare('size_at', '<='.$size);
+                $criteriaWUS->compare('size_to', '>='.$size);
+                $criteriaWS->mergeWith($criteriaWUS, 'OR');
+                $criteriaS->mergeWith($criteriaWS, 'OR');
             }
-            $params = [':category'=>$category, ':size'=>$size];
-            return $this->findAllBySql($sql, $params);
+            $criteria->mergeWith($criteriaS);
         }
+        if ($colors != 'все') {
+            $criteria_colors = new CDbCriteria();
+            $colorsArr = explode(",", $colors);
+            foreach ($colorsArr as $color) {
+                $criteria_colors->addSearchCondition('color', $color, true, 'OR');
+            }
+            $criteria->mergeWith($criteria_colors);
+        }
+        return $this->findAll($criteria);
     }
 
     public function getOrderList($type){
@@ -321,12 +327,21 @@ class Photo extends CActiveRecord
     }
 
     public function getSizes(){
-        $sizes= [];
-        $sizes['all']['label']= 'все';
+        $sizes = [];
+        $sizes['all']['label'] = 'все';
         for ($i=40; $i<= 60; $i+=2) {
             $sizes[$i]['label'] = $i;
         }
         return $sizes;
+    }
+
+    public function getColors(){
+        $colors = [];
+        $colors['all']['label'] = 'все';
+        foreach (Yii::app()->params['colors'] as $color => $name) {
+            $colors[$color]['label'] = $name;
+        }
+        return $colors;
     }
 
     public function getNewPhotos(){
