@@ -8,7 +8,7 @@
                     <span class="item__label item__label_new_catalog">Новинка</span>
                 <?php endif; ?>
             <?php endif; ?>
-            <a href="/<?= $type ?>/<?= $photo->article ?>">
+            <a href="/<?= $type ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
                 <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
                 <noscript>
                     <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">

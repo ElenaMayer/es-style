@@ -1,6 +1,7 @@
 <div class="breadcrumbs">
     <a href="/" class="breadcrumbs__item">Главная</a>
     <a class="breadcrumbs__item" href="/<?=$type?>"><?=Yii::app()->params["categories"][$type]?></a>
+    <?php if (isset($_GET['subcategory'])):?><a class="breadcrumbs__item" href="/<?= $type ?>?subcategory=<?= $_GET['subcategory'] ?>"><?=Yii::app()->params["subcategories"][$type][$_GET['subcategory']] ?></a><?php endif; ?>
     <span class="breadcrumbs__item"><?=$model->title?> арт. <?=$model->article?></span>
 </div>
 <div class="model">
@@ -96,7 +97,6 @@
 
 <script>
     $( document ).ready(function() {
-        $(".banner").show();
         if($(".sizes").length > 0 && $(".sizes").get(0).childElementCount == 1) {
             $('.size_button').addClass("button_pressed");
         }

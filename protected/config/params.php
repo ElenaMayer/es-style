@@ -13,98 +13,38 @@ return array(
         'kimono' => 'Кимоно',
         'other' => 'Разное',
     ],
-    'categories_full' => [
+    'subcategories' => [
         'dress' => [
-            'name' => 'Платья',
-            'subcategories' => [
-                'dress_es' => [
-                    'name' => 'Платья в восточном стиле'
-                ],
-                'dress_midi' => [
-                    'name' => 'Платья-миди'
-                ],
-                'dress_maxi' => [
-                    'name' => 'Платья-макси'
-                ],
-                'dress_mini' => [
-                    'name' => 'Платья-мини'
-                ],
-                'evening_dress' => [
-                    'name' => 'Вечерние платья'
-                ],
-                'knitted_dress' => [
-                    'name' => 'Трикотажные платья'
-                ],
-                'cocktail_dress' => [
-                    'name' => 'Коктейльные платья'
-                ],
-                'sarafan_dress' => [
-                    'name' => 'Сарафаны'
-                ]
-            ]
+            'dress_es' => 'Платья в восточном стиле',
+            'dress_midi' => 'Платья-миди',
+            'dress_maxi' => 'Платья-макси',
+            'dress_mini' => 'Платья-мини',
+            'evening_dress' => 'Вечерние платья',
+            'knitted_dress' => 'Трикотажные платья',
+            'cocktail_dress' => 'Коктейльные платья',
+            'sarafan_dress' => 'Сарафаны'
         ],
         'blouse' => [
-            'name' => 'Блузки',
-            'subcategories' => [
-                'blouse_es' => [
-                    'name' => 'Блузки в восточном стиле'
-                ],
-                'blouse_ss' => [
-                    'name' => 'Блузки с коротким рукавом'
-                ],
-                'blouse_ls' => [
-                    'name' => 'Блузки с длинным рукавом'
-                ],
-                'blouse_tunic' => [
-                    'name' => 'Туники'
-                ],
-                'blouse_jumper' => [
-                    'name' => 'Джемперы'
-                ],
-                'blouse_cardigan' => [
-                    'name' => 'Кардиганы'
-                ],
-                'blouse_turtleneck' => [
-                    'name' => 'Водолазки'
-                ],
-                'blouse_jacket' => [
-                    'name' => 'Жакеты'
-                ],
-                'blouse_vest' => [
-                    'name' => 'Жилеты'
-                ]
-            ]
+            'blouse_es' => 'Блузки в восточном стиле',
+            'blouse_ss' => 'Блузки с коротким рукавом',
+            'blouse_ls' => 'Блузки с длинным рукавом',
+            'blouse_tunic' => 'Туники',
+            'blouse_jumper' => 'Джемперы',
+            'blouse_cardigan' => 'Кардиганы',
+            'blouse_turtleneck' => 'Водолазки',
+            'blouse_jacket' => 'Жакеты',
+            'blouse_vest' => 'Жилеты'
         ],
         'kimono' => [
-            'name' => 'Кимоно',
-            'subcategories' => [
-                'kimono_midi' => [
-                    'name' => 'Кимоно-миди'
-                ],
-                'kimono_maxi' => [
-                    'name' => 'Кимоно-макси'
-                ],
-                'kimono_mini' => [
-                    'name' => 'Кимоно-мини'
-                ],
-                'kimono_silk' => [
-                    'name' => 'Шелковые кимоно'
-                ],
-                'kimono_cotton' => [
-                    'name' => 'Хлопковые кимоно'
-                ]
-            ]
+            'kimono_midi' => 'Кимоно-миди',
+            'kimono_maxi' => 'Кимоно-макси',
+            'kimono_mini' => 'Кимоно-мини',
+            'kimono_silk' => 'Шелковые кимоно',
+            'kimono_cotton' => 'Хлопковые кимоно'
         ],
         'other' => [
-            'name' => 'Разное',
-            'subcategories' => [
-                'other_homekit' => [
-                    'name' => 'Домашние комплекты'
-                ],
-                'other_robe' => [
-                    'name' => 'Халаты'
-                ],
-            ]
+            'other_homekit' => 'Домашние комплекты',
+            'other_robe' => 'Халаты'
         ]
     ],
     'shippingFreeCount' => 3,
@@ -134,18 +74,18 @@ return array(
         'ems' => 'EMS Почта России',
     ],
     'colors' => [
-        'black' => 'черный',
-        'white' => 'белый',
-        'beige' => 'бежевый',
-        'brown' => 'коричневый',
-        'yellow' => 'желтый',
-        'orange' => 'оранжевый',
-        'red' => 'красный',
-        'pink' => 'розовый',
-        'purple' => 'фиолетовый',
-        'blue' => 'голубой',
-        'dark_blue' => 'синий',
-        'green' => 'зеленый',
-        'gray' => 'серый',
+        'черный' => 'черный',
+        'белый' => 'белый',
+        'бежевый' => 'бежевый',
+        'коричневый' => 'коричневый',
+        'желтый' => 'желтый',
+        'оранжевый' => 'оранжевый',
+        'красный' => 'красный',
+        'розовый' => 'розовый',
+        'фиолетовый' => 'фиолетовый',
+        'голубой' => 'голубой',
+        'синий' => 'синий',
+        'зеленый' => 'зеленый',
+        'серый' => 'серый',
     ]
 );

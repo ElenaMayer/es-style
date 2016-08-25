@@ -4,16 +4,18 @@
         <div class="js-fix_side_block  catalog-navigation-wrap">
             <div class="catalog-navigation__title">Категории</div>
             <ul class="catalog-navigation">
-                <?php foreach (Yii::app()->params['categories_full'] as $categoryId => $category): ?>
+                <?php foreach (Yii::app()->params['categories'] as $categoryId => $categoryName): ?>
                     <li class="catalog-navigation__item">
-                        <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>"><?= $category['name'] ?></a>
-                        <span class="catalog-navigation__cnt">25163</span>
+                        <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>"><?= $categoryName ?></a>
+                        <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountByCategory($categoryId) ?></span>
                         <ul class="catalog-navigation catalog-navigation_subtree<?php if($categoryId != $type):?> hidden<?php endif; ?>">
-                            <?php foreach ($category['subcategories'] as $subcategoryId => $subcategory): ?>
-                                <li class="catalog-navigation__item">
-                                    <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>?subcategory=<?= $subcategoryId ?>"><?= $subcategory['name'] ?></a>
-                                    <span class="catalog-navigation__cnt">1262</span>
-                                </li>
+                            <?php foreach (Yii::app()->params['subcategories'][$categoryId] as $subcategoryId => $subcategoryName): ?>
+                                <?php if (Photo::model()->itemCountBySubcategory($subcategoryId) > 0): ?>
+                                    <li class="catalog-navigation__item">
+                                        <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>?subcategory=<?= $subcategoryId ?>"><?= $subcategoryName ?></a>
+                                        <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountBySubcategory($subcategoryId) ?></span>
+                                    </li>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
                     </li>
@@ -33,18 +35,18 @@
                     )); ?>
                 </span>
                 <div class="title">
-                    <h2>Женские платья и сарафаны</h2>
+                    <h2><?php if (isset($_GET['subcategory'])):?><?= Yii::app()->params['subcategories'][$type][$_GET['subcategory']] ?><?php else: ?><?= Yii::app()->params['categories'][$type] ?><?php endif; ?></h2>
                     <span class="products-catalog__head-counter"><?= count($model) ?> товаров</span>
                 </div>
             </div>
             <div class="js-multifilters-container" style="height: auto;">
                 <div class="js-multifilters">
                     <div class="multifilters-new">
-                        <span class="btn button_s button_wo-pdng-r multifilter-new__button-reset-all js-multifilters-flush-all">Очистить фильтры</span>
+                        <span class="btn button_s button_wo-pdng-r multifilter-new__button-reset-all clear_filter<?php if(!$isFilter): ?> hidden<?php endif; ?>">Очистить фильтры</span>
                         <span class="multifilters-new__title">Фильтры:</span>
                         <?php $this->widget('booster.widgets.TbButtonGroup', array(
                             'buttons'=>array(
-                                array('label'=>Yii::app()->session['catalog_size'] == 'все' ? 'Размер' : 'Размер: ' . Yii::app()->session['catalog_size'], 'items'=>Photo::model()->getSizes()),
+                                array('label'=>Yii::app()->session['catalog_size'] == 'все' ? 'Размер' : 'Размер: ' . Yii::app()->session['catalog_size'], 'items'=>Photo::getSizes()),
                             ),
                             'htmlOptions'=>Yii::app()->session['catalog_size'] == 'все' ? array('class'=>'size_menu') : array('class'=>'size_menu selected')
                         )); ?>
@@ -70,7 +72,6 @@
 
 <script>
     $( document ).ready(function() {
-        $(".banner").show();
         $(".order_menu>ul.dropdown-menu>li").each(function( index ) {
             if ($(this).text().replace(/^\s+/, "") == '<?=Yii::app()->session['catalog_order']?>'.replace(/^\s+/, "")){
                 $(this).addClass('active');
@@ -124,6 +125,19 @@
             url: '/<?= $type?>',
             data: {
                 color: color
+            },
+            type: "GET",
+            dataType : "html",
+            success: function( data ) {
+                $('#data').html(data);
+            }});
+    });
+    $( ".clear_filter" ).click(function() {
+        $.ajax({
+            url: '/<?= $type?>',
+            data: {
+                color: 'все',
+                size: 'все'
             },
             type: "GET",
             dataType : "html",

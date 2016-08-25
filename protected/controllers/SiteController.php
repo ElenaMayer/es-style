@@ -128,11 +128,19 @@ class SiteController extends Controller
             $this->setSize($_GET['size']);
         if(isset($_GET['color']))
             $this->setColor($_GET['color']);
-        $model = Photo::model()->getPhotos($type, $this->getOrder(), $this->getSize(), $this->getColor());
+        $params = [
+            'category' => $type,
+            'order' => $this->getOrder(),
+            'size' => $this->getSize(),
+            'color' => $this->getColor()
+        ];
+        if (isset($_GET['subcategory']))
+            $params['subcategory'] = $_GET['subcategory'];
+        $model = Photo::model()->getPhotos($params);
         if(isset($_GET['order']) || isset($_GET['size']) || isset($_GET['color']))
-            $this->renderPartial('catalog',array('model'=>$model, 'type'=>$type));
+            $this->renderPartial('catalog',array('model'=>$model, 'type'=>$type, 'isFilter'=>$this->isFilter()));
         else
-            $this->render('catalog',array('model'=>$model, 'type'=>$type));
+            $this->render('catalog',array('model'=>$model, 'type'=>$type, 'isFilter'=>$this->isFilter()));
     }
 
     public function actionModel($type, $id){
@@ -426,5 +434,10 @@ class SiteController extends Controller
             throw new CHttpException(404,'К сожалению, страница не найдена.');
         }
     }
-
+    public function isFilter(){
+        if ($this->getSize() == 'все' && $this->getColor() == 'все')
+            return false;
+        else
+            return true;
+    }
 }

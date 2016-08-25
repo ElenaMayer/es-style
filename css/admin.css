@@ -299,3 +299,41 @@ h1 {
     width: 50px;
     font-size: 14px;
 }
+
+.row .checkbox_list {
+    padding-left: 140px;
+}
+.row .checkbox_list input {
+    float: left;
+    margin: 0 10px 0 0;
+}
+.row .checkbox_list br {
+    content: ' ';
+}
+.size .row .checkbox_list {
+    padding-left: 80px;
+    padding-top: 5px;
+}
+.size .row div.label {
+    width: 80px;
+}
+div.form .size .row {
+    width: 140px;
+}
+#photo-form>p {
+    width: 250px;
+    float: left;
+    margin-bottom: -270px;
+}
+#photo-form>p>img {
+    width: 225px;
+}
+#photo-form>div.right_column {
+    padding-left: 250px;
+}
+.uni_size div.label {
+    width: 100px;
+}
+.uni_size div.input {
+    padding-left: 115px;
+}

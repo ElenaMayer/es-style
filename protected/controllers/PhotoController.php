@@ -46,11 +46,14 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
+            $model->subcategory = implode(",", $_POST['Photo']['subcategory']);
+            if ($_POST['Photo']['size'] == 1)
+                $model->sizes = implode(",", $_POST['Photo']['sizes']);
+            $model->color = implode(",", $_POST['Photo']['color']);
 			if($model->save()){
 				$this->redirect('/admin/photo/create');
             }
 		}
-
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -67,6 +70,10 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
+            $model->subcategory = implode(",", $_POST['Photo']['subcategory']);
+            if ($_POST['Photo']['size'] == 1)
+                $model->sizes = implode(",", $_POST['Photo']['sizes']);
+            $model->color = implode(",", $_POST['Photo']['color']);
 			if($model->save()){
 				$this->redirect(array('index'));
             }

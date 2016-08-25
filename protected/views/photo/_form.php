@@ -5,119 +5,97 @@
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>
 
-    <?php if($model->img): ?>
-        <p><img src="<?php echo $model->getPreviewUrl()?>"/></p>
-    <?php endif; ?>
+    <p><img id="photo_image" <?php if(!$model->img): ?>class="hidden"<?php endif; ?> src="<?php echo $model->getPreviewUrl()?>"/></p>
+    <div class="right_column">
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'image'); ?></div>
+            <div><?php echo $form->fileField($model,'image'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
+            <div><?php echo $form->checkBox($model,'is_show'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'is_available'); ?></div>
+            <div><?php echo $form->checkBox($model,'is_available'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
+            <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories'], array('prompt'=>'')); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'subcategory'); ?></div>
+            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'subcategory',isset($model->category)?Yii::app()->params['subcategories'][$model->category]:[]); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>
+            <div><?php echo $form->textField($model,'article'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'is_new'); ?></div>
+            <div><?php echo $form->checkBox($model,'is_new'); ?></div>
+        </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'is_sale'); ?></div>
+            <div><?php echo $form->checkBox($model,'is_sale'); ?></div>
+        </div>
 
-	<div class="row">
-		<div class="label"><?php echo $form->labelEx($model,'image'); ?></div>
-        <div><?php echo $form->fileField($model,'image'); ?></div>
-	</div>
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'is_show'); ?></div>
-        <div><?php echo $form->checkBox($model,'is_show'); ?></div>
-    </div>
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'is_available'); ?></div>
-        <div><?php echo $form->checkBox($model,'is_available'); ?></div>
-    </div>
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
-        <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories'], array('prompt'=>'')); ?></div>
-	</div>
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>
-        <div><?php echo $form->textField($model,'article'); ?></div>
-	</div>
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'is_new'); ?></div>
-        <div><?php echo $form->checkBox($model,'is_new'); ?></div>
-    </div>
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'is_sale'); ?></div>
-        <div><?php echo $form->checkBox($model,'is_sale'); ?></div>
-    </div>
+        <div class="sale" style="display: none">
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
+                <div><?php echo $form->textField($model,'sale'); ?></div>
+            </div>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'new_price'); ?></div>
+                <div><?php echo $form->textField($model,'new_price'); ?></div>
+            </div>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'old_price'); ?></div>
+                <div><?php echo $form->textField($model,'old_price'); ?></div>
+            </div>
+        </div>
+        <div class="not_sale">
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
+                <div><?php echo $form->textField($model,'price'); ?></div>
+            </div>
+        </div>
 
-    <div class="sale" style="display: none">
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
-            <div><?php echo $form->textField($model,'sale'); ?></div>
+            <div class="label"><?php echo $form->labelEx($model,'size'); ?></div>
+            <div><?php echo $form->checkBox($model,'size'); ?></div>
+        </div>
+        <div class="size">
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'sizes'); ?></div>
+                <div class="checkbox_list"><?php echo $form->checkBoxList($model,'sizes', Photo::getSizesForAdmin()); ?></div>
+            </div>
+        </div>
+        <div class="uni_size">
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'size_at'); ?></div>
+                <div class="input"><?php echo $form->textField($model,'size_at'); ?></div>
+            </div>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'size_to'); ?></div>
+                <div class="input"><?php echo $form->textField($model,'size_to'); ?></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'weight'); ?></div>
+            <div><?php echo $form->textField($model,'weight'); ?></div>
         </div>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'new_price'); ?></div>
-            <div><?php echo $form->textField($model,'new_price'); ?></div>
+            <div class="label"><?php echo $form->labelEx($model,'color'); ?></div>
+            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'color', Yii::app()->params['colors']); ?></div>
         </div>
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'old_price'); ?></div>
-            <div><?php echo $form->textField($model,'old_price'); ?></div>
-        </div>
-    </div>
-    <div class="not_sale">
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'price'); ?></div>
-            <div><?php echo $form->textField($model,'price'); ?></div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'size'); ?></div>
-        <div><?php echo $form->checkBox($model,'size'); ?></div>
-    </div>
-    <div class="size">
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_40'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_40'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_42'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_42'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_44'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_44'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_46'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_46'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_48'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_48'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_50'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_50'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_52'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_52'); ?></div>
-        </div>
-        <div class="row">
-            <div class="sizes"><?php echo $form->labelEx($model,'size_54'); ?></div>
-            <div class="sizes"><?php echo $form->checkBox($model,'size_54'); ?></div>
-        </div>
-    </div>
-    <div class="uni_size">
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_at'); ?></div>
-            <div class="input"><?php echo $form->textField($model,'size_at'); ?></div>
-        </div>
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'size_to'); ?></div>
-            <div class="input"><?php echo $form->textField($model,'size_to'); ?></div>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'weight'); ?></div>
-        <div><?php echo $form->textField($model,'weight'); ?></div>
     </div>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'title'); ?></div>
         <div><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?></div>
     </div>
-
-	<div class="row">
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'description'); ?></div>
         <div>
             <?php $htmlOptions = [
@@ -158,17 +136,18 @@
                 'htmlOptions'=>$htmlOptions
             ]); ?>
         </div>
-	</div>
+    </div>
 
-	<div class="row buttons indent">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
-	</div>
+    <div class="row buttons indent">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
 
 <script>
+    subcategory = <?= json_encode(Yii::app()->params['subcategories'])?>;
     $( document ).ready(function() {
         if($('#Photo_is_sale').prop('checked')){
             $('.sale').show();
@@ -200,6 +179,16 @@
             $('.uni_size').show();
         }
     });
+    $("#Photo_category").change(function() {
+        e = $( "#Photo_subcategory" );
+        e.empty();
+        i = 0;
+        $.each(subcategory[$(this).val()], function( key, value ) {
+            input = '<input id="Photo_subcategory_'+i+'" value="'+key+'" type="checkbox" name="Photo[subcategory][]">';
+            label = '<label for="Photo_subcategory_'+i+'">'+value+'</label>';
+            e.append(input, label);
+        });
+    });
     $('#Photo_image').change(function() {
         article = $(this).val().replace(/C:\\fakepath\\/i, '').replace(/\.jpg/i, '');
         $('#Photo_article').val(article);
@@ -212,5 +201,18 @@
             new_price = (100-sale)*old_price/100;
             $('#Photo_new_price').val(new_price);
         }
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#photo_image').attr('src', e.target.result);
+                $('#photo_image').removeClass('hidden');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#Photo_image").change(function(){
+        readURL(this);
     });
 </script>

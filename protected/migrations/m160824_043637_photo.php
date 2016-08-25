@@ -34,6 +34,19 @@ class m160824_043637_photo extends CDbMigration
                             WHEN 8 THEN 'голубой'
                             WHEN 9 THEN 'зеленый' 
                         END");
+        $this->execute("UPDATE `photo` SET `subcategory` = 'dress_es,dress_midi' where `category` = 'dress' AND `article` < 14000");
+        $this->execute("UPDATE `photo` SET `subcategory` = 'blouse_es,blouse_ss' where `category` = 'blouse' AND `article` < 22000");
+        $this->execute("UPDATE `photo` SET `subcategory` = 'kimono_silk,kimono_midi' where `category` = 'kimono' AND `article` < 45090");
+        $this->execute("UPDATE `photo` SET `subcategory` = 'kimono_silk,kimono_mini' where `category` = 'kimono' AND `article` > 45090 AND `article` < 48000");
+        $this->execute("UPDATE `photo` SET `subcategory` = 'kimono_cotton,kimono_midi' where `category` = 'kimono' AND `article` > 48000");
+        $this->dropColumn('photo', 'size_40');
+        $this->dropColumn('photo', 'size_42');
+        $this->dropColumn('photo', 'size_44');
+        $this->dropColumn('photo', 'size_46');
+        $this->dropColumn('photo', 'size_48');
+        $this->dropColumn('photo', 'size_50');
+        $this->dropColumn('photo', 'size_52');
+        $this->dropColumn('photo', 'size_54');
 	}
 
 	public function down()

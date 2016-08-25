@@ -27,7 +27,6 @@
 </div>
 <script>
     $( document ).ready(function() {
-        $(".banner").show();
         check_shipping();
     });
     cart_id = <?= $cart->id ?>;

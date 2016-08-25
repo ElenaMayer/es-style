@@ -353,14 +353,19 @@ body.main.modal-open {
     background-position: -52px -26px;
 }
 
-.content > div:first-child {
+.content > div {
     width: 960px;
     margin: 0 auto;
     background-color: #fff;
     max-width: 100%;
 }
+.content > div.modal {
+    width: inherit;
+    background-color: inherit;
+}
 .content > div.catalog {
     width: 1192px;
+    min-height: 400px; /* @todo */
 }
 
 .banners {
@@ -408,7 +413,7 @@ body.main.modal-open {
 .products-catalog__head {
     position: relative;
     padding: 10px 10px 0;
-    border-bottom: 1px solid #777;
+    border-bottom: 3px solid #9e3c5d;
 }
 .products-catalog__sort {
     position: absolute;
@@ -457,6 +462,7 @@ body.main.modal-open {
     padding: 9px 0 8px 75px;
     background: #fff;
     font-size: 0;
+    margin: 0 5px 0 15px;
 }
 .button.button_wo-pdng-r {
     padding-right: 0;
@@ -499,6 +505,9 @@ body.main.modal-open {
     -webkit-user-select: none;
     background: none;
 }
+.catalog .btn:active {
+    box-shadow: none;
+}
 .select .button:after {
     font: 14px fontello;
     content: '\f107';
@@ -507,14 +516,13 @@ body.main.modal-open {
     margin-left: 4px;
 }
 .table__left-column {
-    width: 192px;
     float: left;
     padding: 10px 20px 0 0;
     position: relative;
 }
 .catalog-navigation-wrap {
     position: absolute;
-    width: 192px;
+    width: 220px;
     top: 0;
     padding-left: 20px;
     padding-top: 10px;
@@ -577,9 +585,15 @@ body.main.modal-open {
     color: #777;
     cursor: pointer;
 }
+.catalog .modal .link, a {
+    color: #9e3c5d;
+}
 .catalog .link:hover, a:hover,
 .catalog .catalog-navigation__link_active {
     color: #222;
+}
+.catalog .modal .link:hover, a:hover {
+    color: #ff3d00;
 }
 
 .item__label {
@@ -965,10 +979,11 @@ body.main.modal-open {
     margin-bottom: 21px;
 }
 
-.contact h1, .order h1 {
+.contact h1,
+.order h1 {
     color: #27292c;
     margin: -26px 0 26px;
-    border-bottom: 5px solid #9e3c5d;
+    border-bottom: 3px solid #9e3c5d;
     font-size: 37px;
     line-height: 100px;
 }
@@ -1973,7 +1988,7 @@ h3.news {
 
 .banner {
     background-color: #AC5870;
-    display: none;
+    height: 70px;
 }
 .banner img {
     max-height: 70px;
@@ -2000,7 +2015,7 @@ IPhone 6Plus 1920×1080
 
 @media only screen and (max-width: 991px) {
 
-    /*Планшеты в режиме portrait.*/
+    /* Планшеты в режиме portrait. */
     .header__inner {
         width: 100%;
         padding-left: 350px;
@@ -2222,6 +2237,33 @@ IPhone 6Plus 1920×1080
     .order-data__table {
         width: 100%;
     }
+    .products-catalog__head .title {
+        margin-right: 200px;
+    }
+    .products-catalog__head h2 {
+        font-size: 16px;
+        margin-right: 5px;
+    }
+    .products-catalog__head-counter {
+        font-size: 16px;
+    }
+    .products-catalog__sort {
+        bottom: 3px;
+    }
+    .catalog .btn {
+        padding: 0 10px;
+    }
+    .multifilters-new {
+        z-index: 4;
+        position: relative;
+        padding-bottom: 0;
+    }
+    .dropdown-menu {
+        font-size: 13px;
+    }
+    .banner {
+        height: 54px;
+    }
 }
 
 @media only screen and (max-width: 479px) {
@@ -2330,5 +2372,21 @@ IPhone 6Plus 1920×1080
     }
     .history .cart-item__cell_description {
         margin-left: 0;
+    }
+    .table__right-column {
+        padding-left: 195px;
+    }
+    .catalog-navigation-wrap {
+        width: 190px;
+    }
+    .products-catalog__head .title {
+        margin-right: 0;
+        padding-bottom: 20px;
+    }
+    .products-catalog__sort {
+        top: 30px;
+    }
+    .banner {
+        height: 33px;
     }
 }
