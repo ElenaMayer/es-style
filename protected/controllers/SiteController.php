@@ -325,9 +325,15 @@ class SiteController extends Controller
                     $order = $this->createOrder($user, $_POST['User']['shipping']);
                     $res['status'] = $order->status;
                     $res['orderId'] = $order->id;
+                    //Логи @todo
+                    Yii::log('Новый заказ:', 'warning');
+                    Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
+                    Yii::log('Id корзины:', 'warning');
+                    Yii::log($this->cart->id, 'warning');
+
                     $this->sentOrderMail($order);
                     $this->sentOrderMailToAdmin($order);
-                    OrderHistory::setOrderNewSum($order->total);
+                    OrderHistory::refreshOrderNewSum();
                 } else {
                     $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
                     Yii::app()->end();

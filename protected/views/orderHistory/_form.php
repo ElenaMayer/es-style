@@ -65,12 +65,12 @@
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'addressee'); ?></div>
-        <div><?php echo $form->textField($model,'addressee'); ?></div>
+        <div class="long_field"><?php echo $form->textField($model,'addressee'); ?></div>
 	</div>
 
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'address'); ?></div>
-        <div class="address"><?php echo $form->textField($model,'address'); ?></div>
+        <div class="long_field"><?php echo $form->textField($model,'address'); ?></div>
     </div>
 
 	<div class="row">

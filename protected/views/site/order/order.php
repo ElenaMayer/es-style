@@ -34,6 +34,7 @@
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
 
     $( 'body' ).on( 'click', '.order_submit', function() {
+        yaCounter37654655.reachGoal('create_order');
         $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         $.ajax({
             url: "/order/" + cart_id,

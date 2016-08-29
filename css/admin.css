@@ -139,8 +139,8 @@ h1 {
 #user-form div input[type=text] {
     width: 30%;
 }
-#order-history-form .address input,
-#user-form .address input[type=text] {
+#order-history-form .long_field input,
+#user-form .long_field input[type=text] {
     width: 65%;
 }
 #order-history-form div.buttons,

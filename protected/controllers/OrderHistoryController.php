@@ -45,7 +45,7 @@ class OrderHistoryController extends Controller
 			$model->id = floatval(Yii::app()->dateFormatter->format('yyMMdd', $model->date_create)) . floatval(Yii::app()->dateFormatter->format('HHmmss', time()));
 			if($model->save()) {
 				$this->saveModelsToOrder($model->id);
-				OrderHistory::setOrderNewSum($model->total);
+				OrderHistory::refreshOrderNewSum();
 				$this->redirect(array('index'));
 			}
 		}
@@ -73,6 +73,7 @@ class OrderHistoryController extends Controller
 				$this->saveModelsToOrder($model->id);
                 if($model->status != $oldStatus)
                     $this->statusChanged($model);
+                OrderHistory::refreshOrderSum();
                 $this->redirect(array('index'));
             }
 		}
@@ -110,21 +111,16 @@ class OrderHistoryController extends Controller
 			case 'shipping_by_rp':
 				if(!empty($model->email))
 					$this->sendChangeStatusMail($model);
-				OrderHistory::setOrderSendSum($model->total);
-				OrderHistory::setOrderNewSum($model->total, 'minus');
 				break;
             case 'not_redeemed':
                 if (!empty($model->user)){
                     $model->user->blockUser();
                 }
-				OrderHistory::setOrderSendSum($model->total, 'minus');
                 break;
 			case 'completed':
-				OrderHistory::setOrderSendSum($model->total, 'minus');
 				OrderHistory::setOrderAvailableSum($model->total);
 				break;
 			case 'canceled':
-				OrderHistory::setOrderNewSum($model->total, 'minus');
 				break;
         }
     }
@@ -154,7 +150,7 @@ class OrderHistoryController extends Controller
 	public function actionDelete($id)
 	{
 		$model = $this->loadModel($id);
-		OrderHistory::setOrderNewSum($model->total, 'minus');
+		OrderHistory::refreshOrderNewSum();
 		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
