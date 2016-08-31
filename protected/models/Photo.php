@@ -41,6 +41,9 @@ class Photo extends CActiveRecord
     public $is_new = true;
     public $size = true;
     public $weight = 300;
+    public $subcategoryArr;
+    public $sizesArr;
+    public $colorArr;
 
 	/**
 	 * @return string the associated database table name
@@ -127,7 +130,6 @@ class Photo extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->compare('category',$this->category);
-        $criteria->compare('subcategory',$this->subcategory);
 		$criteria->compare('article',$this->article);
 		$criteria->compare('price',$this->price,true);
         $criteria->compare('is_show',$this->is_show);
@@ -181,9 +183,9 @@ class Photo extends CActiveRecord
 
     protected function afterFind(){
         parent::afterFind();
-        $this->subcategory = explode(",", $this->subcategory);
-        $this->sizes = explode(",", $this->sizes);
-        $this->color = explode(",", $this->color);
+        $this->subcategoryArr = explode(",", $this->subcategory);
+        $this->sizesArr = explode(",", $this->sizes);
+        $this->colorArr = explode(",", $this->color);
     }
 
     public function deleteImage(){
@@ -386,7 +388,7 @@ class Photo extends CActiveRecord
     private function prepareSizes(){
         $sizes = [];
         if ($this->size) {
-            foreach ($this->sizes as $size){
+            foreach ($this->sizesArr as $size){
                 $sizes[$size] = $size;
             }
         } else {

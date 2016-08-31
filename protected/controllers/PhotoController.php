@@ -46,10 +46,10 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-            $model->subcategory = implode(",", $_POST['Photo']['subcategory']);
+            $model->subcategory = implode(",", $_POST['Photo']['subcategoryArr']);
             if ($_POST['Photo']['size'] == 1)
-                $model->sizes = implode(",", $_POST['Photo']['sizes']);
-            $model->color = implode(",", $_POST['Photo']['color']);
+                $model->sizes = implode(",", $_POST['Photo']['sizesArr']);
+            $model->color = implode(",", $_POST['Photo']['colorArr']);
 			if($model->save()){
 				$this->redirect('/admin/photo/create');
             }
@@ -70,10 +70,10 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-            $model->subcategory = implode(",", $_POST['Photo']['subcategory']);
+            $model->subcategory = implode(",", $_POST['Photo']['subcategoryArr']);
             if ($_POST['Photo']['size'] == 1)
-                $model->sizes = implode(",", $_POST['Photo']['sizes']);
-            $model->color = implode(",", $_POST['Photo']['color']);
+                $model->sizes = implode(",", $_POST['Photo']['sizesArr']);
+            $model->color = implode(",", $_POST['Photo']['colorArr']);
 			if($model->save()){
 				$this->redirect(array('index'));
             }

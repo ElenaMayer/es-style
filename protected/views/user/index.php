@@ -17,6 +17,7 @@
             'value'=> '$data->blocked == 1?"Да":""',
             'filter'=>[1=>'Да',0=>'Нет'],
         ),
+		'date_create',
         array(
             'class'=>'CButtonColumn',
             'template'=>'{update} {delete}',

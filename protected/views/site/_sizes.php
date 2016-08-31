@@ -1,5 +1,5 @@
 <div class="sizes">
-    <?php foreach ($model->sizes as $size): ?>
+    <?php foreach ($model->sizesArr as $size): ?>
         <span class="button size_button"><?= $size ?></span>
     <?php endforeach; ?>
 </div>

@@ -2005,11 +2005,11 @@ h3.news {
 
 /*
 
-IPad 1024×768, 2048×1536
-IPhone 4 640×960
-IPhone 5 640×1136
-IPhone 6 1334×750
-IPhone 6Plus 1920×1080
+IPad 768×1024
+IPhone 4 320×480
+IPhone 5 320×568
+IPhone 6 375×667
+IPhone 6 Plus 414×736
 
 */
 
@@ -2087,6 +2087,12 @@ IPhone 6Plus 1920×1080
     .catalog__item {
         width: 33%;
         padding: 6px 13px 0;
+    }
+    .table__right-column {
+        padding-left: 165px;
+    }
+    .catalog-navigation-wrap {
+        width: 165px;
     }
 }
 
@@ -2264,6 +2270,12 @@ IPhone 6Plus 1920×1080
     .banner {
         height: 54px;
     }
+    .table__right-column {
+        padding-left: 160px;
+    }
+    .catalog-navigation-wrap {
+        width: 160px;
+    }
 }
 
 @media only screen and (max-width: 479px) {
@@ -2373,12 +2385,6 @@ IPhone 6Plus 1920×1080
     .history .cart-item__cell_description {
         margin-left: 0;
     }
-    .table__right-column {
-        padding-left: 195px;
-    }
-    .catalog-navigation-wrap {
-        width: 190px;
-    }
     .products-catalog__head .title {
         margin-right: 0;
         padding-bottom: 20px;
@@ -2388,5 +2394,47 @@ IPhone 6Plus 1920×1080
     }
     .banner {
         height: 33px;
+    }
+    .basket-button .button__icon {
+        margin: 5px 0 0 -4px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .header__logo {
+        background-size: 310px;
+    }
+    .user-nav__sign-in {
+        padding-right: 10px;
+    }
+    .banner {
+        height: 26px;
+    }
+    .catalog-navigation-wrap {
+        width: 98%;
+    }
+    .catalog-navigation-wrap {
+        position: relative;
+        padding-top: 1px;
+    }
+    .table__right-column {
+        padding-left: 0;
+        border-top: 3px solid #9e3c5d;
+    }
+    .table__left-column {
+        float: none;
+        padding: 0;
+    }
+    .catalog-navigation__item {
+        margin: 0 0 10px;
+    }
+    .products-catalog__head .title {
+        padding-bottom: 25px;
+    }
+    .content .dropdown-menu {
+        min-width: 120px;
+        font-size: 12px;
+    }
+    .products-catalog__head {
+        margin-right: 10px;
     }
 }

@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'subcategory'); ?></div>
-            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'subcategory',isset($model->category)?Yii::app()->params['subcategories'][$model->category]:[]); ?></div>
+            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'subcategoryArr',isset($model->category)?Yii::app()->params['subcategories'][$model->category]:[]); ?></div>
         </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>
@@ -68,7 +68,7 @@
         <div class="size">
             <div class="row">
                 <div class="label"><?php echo $form->labelEx($model,'sizes'); ?></div>
-                <div class="checkbox_list"><?php echo $form->checkBoxList($model,'sizes', Photo::getSizesForAdmin()); ?></div>
+                <div class="checkbox_list"><?php echo $form->checkBoxList($model,'sizesArr', Photo::getSizesForAdmin()); ?></div>
             </div>
         </div>
         <div class="uni_size">
@@ -88,7 +88,7 @@
         </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'color'); ?></div>
-            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'color', Yii::app()->params['colors']); ?></div>
+            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'colorArr', Yii::app()->params['colors']); ?></div>
         </div>
     </div>
     <div class="row">
@@ -180,12 +180,12 @@
         }
     });
     $("#Photo_category").change(function() {
-        e = $( "#Photo_subcategory" );
+        e = $( "#Photo_subcategoryArr" );
         e.empty();
         i = 0;
         $.each(subcategory[$(this).val()], function( key, value ) {
-            input = '<input id="Photo_subcategory_'+i+'" value="'+key+'" type="checkbox" name="Photo[subcategory][]">';
-            label = '<label for="Photo_subcategory_'+i+'">'+value+'</label>';
+            input = '<input id="Photo_subcategoryArr_'+i+'" value="'+key+'" type="checkbox" name="Photo[subcategoryArr][]">';
+            label = '<label for="Photo_subcategoryArr_'+i+'">'+value+'</label>';
             e.append(input, label);
         });
     });
