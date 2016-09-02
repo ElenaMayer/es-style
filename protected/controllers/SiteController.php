@@ -1,19 +1,9 @@
 <?php
 
-class SiteController extends Controller
-{
-    public $cart;
+class SiteController extends Controller {
 
     public function init(){
         parent::init();
-        if(Yii::app()->user->isGuest) {
-            if (!empty(Yii::app()->session['cartId']))
-                $this->cart = Cart::model()->findByPk(Yii::app()->session['cartId']);
-            else
-                $this->cart = null;
-        } else {
-            $this->cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'is_active' => true));
-        }
         self::saveUTM();
     }
 
@@ -71,9 +61,9 @@ class SiteController extends Controller
         if ($user->validate()) {
             $user->password = $user->password1;
             if($user->save()) {
-                if($this->cart) {
-                    $this->cart->user_id = $user->id;
-                    $this->cart->save();
+                if(Yii::app()->cart->currentCart) {
+                    Yii::app()->cart->currentCart->user_id = $user->id;
+                    Yii::app()->cart->currentCart->save();
                 }
                 echo true;
                 Yii::app()->end();
@@ -88,19 +78,19 @@ class SiteController extends Controller
         $user->scenario = 'login';
         $user->attributes = Yii::app()->request->getPost('User');
         if ($user->validate() && $user->login()) {
-            if ($this->cart) {
+            if (Yii::app()->cart->currentCart) {
                 $cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
                 if($cart) {
-                    $cart->addItemsToCart($this->cart->cartItems);
+                    $cart->addItemsToCart(Yii::app()->cart->currentCart->cartItems);
                     if(Yii::app()->controller->action->id == 'order'){
-                        $this->cart->user_id = $user->id;
-                        $this->cart->is_active = false;
-                        $this->cart->save();
+                        Yii::app()->cart->currentCart->user_id = $user->id;
+                        Yii::app()->cart->currentCart->is_active = false;
+                        Yii::app()->cart->currentCart->save();
                     } else {
-                        $this->cart->delete();
+                        Yii::app()->cart->currentCart->delete();
                     }
                 } else {
-                    $this->cart->user_id = $user->id;
+                    Yii::app()->cart->currentCart->user_id = $user->id;
                 }
             }
             echo true;
@@ -301,14 +291,14 @@ class SiteController extends Controller
     public function actionCart(){
         $this->pageTitle = Yii::app()->name.' - '.'Корзина';
         $this->render('cart/cart',array(
-            'model'=>$this->cart,
+            'model'=>Yii::app()->cart->currentCart,
             'path'=>''
         ));
     }
 
     public function actionOrder($id){
         $this->pageTitle = Yii::app()->name.' - '.'Заказ';
-        if(!empty($this->cart->cartItems) && $this->cart->id == $id) {
+        if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->id == $id) {
             if(!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
@@ -329,7 +319,7 @@ class SiteController extends Controller
                     Yii::log('Новый заказ:', 'warning');
                     Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
                     Yii::log('Id корзины:', 'warning');
-                    Yii::log($this->cart->id, 'warning');
+                    Yii::log(Yii::app()->cart->currentCart->id, 'warning');
 
                     $this->sentOrderMail($order);
                     $this->sentOrderMailToAdmin($order);
@@ -343,7 +333,7 @@ class SiteController extends Controller
             }
             $this->render('order/order', array(
                 'user' => $user,
-                'cart' => $this->cart
+                'cart' => Yii::app()->cart->currentCart
             ));
         }  else
             throw new CHttpException(404,'К сожалению, страница не найдена.');
@@ -380,7 +370,7 @@ class SiteController extends Controller
         if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
         elseif($_POST['User']['payment'] == 'prepay') $order->status = 'payment';
 
-        $cart = $this->cart;
+        $cart = Yii::app()->cart->currentCart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
         $order->total = $cart->subtotal - $cart->sale + $shipping;

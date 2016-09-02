@@ -6,13 +6,13 @@
         <a class="close" data-dismiss="modal">&times;</a>
         <div class="popup__content">
             <div id="login_form">
-                <?php $this->renderPartial('auth/_login', array('modelAuth'=>$modelAuth)); ?>
+                <?php $this->renderPartial('application.views.site.auth._login', array('modelAuth'=>$modelAuth)); ?>
             </div>
             <div id="register_form" style="display: none;">
-                <?php $this->renderPartial('auth/_register', array('modelAuth'=>$modelAuth)); ?>
+                <?php $this->renderPartial('application.views.site.auth._register', array('modelAuth'=>$modelAuth)); ?>
             </div>
             <div id="lost_form" style="display: none;">
-                <?php $this->renderPartial('auth/_lost', array('modelAuth'=>$modelAuth, 'isSent'=>false)); ?>
+                <?php $this->renderPartial('application.views.site.auth._lost', array('modelAuth'=>$modelAuth, 'isSent'=>false)); ?>
             </div>
         </div>
     </div>

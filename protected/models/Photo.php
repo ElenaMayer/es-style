@@ -211,7 +211,6 @@ class Photo extends CActiveRecord
             ->resize($this->originalWidth, $this->originalHeight)
             ->save(Yii::getPathOfAlias('data.photo.original').DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageWidth, $this->imageHeight)
-            //->watermark($this->getWatermarkPath(), 0, 0)
             ->save(Yii::getPathOfAlias('data.photo').DIRECTORY_SEPARATOR.$this->img);
     }
 

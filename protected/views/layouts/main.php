@@ -24,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
+    <?php if (strpos(Yii::app()->request->pathInfo, 'blog')!==false):?>
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css?4" />
+    <?php endif;?>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
@@ -69,7 +72,7 @@
                         <a class="basket-button button button_blue button_big"  href="/cart/">
                             <span class="button__title<?php if (Yii::app()->user->isGuest):?> guest-basket-button<?php endif; ?>">
                                 <i class="button__icon"></i>
-                                <span class="basket-button-title"><?php if(isset($this->cart->count) && $this->cart->count > 0):?>(<?= $this->cart->count; ?>)<?php endif?></span>
+                                <span class="basket-button-title"><?php if(isset(Yii::app()->cart->currentCart->count) && Yii::app()->cart->currentCart->count > 0):?>(<?= Yii::app()->cart->currentCart->count; ?>)<?php endif?></span>
                             </span>
                         </a>
                         <div class="user-nav__sign-in">
@@ -138,7 +141,7 @@
         Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br/>
         All Rights Reserved.<br/>
     </div><!-- footer -->
-    <?php $this->renderPartial('auth/_auth', array('modelAuth'=>new User('registration'))); ?>
+    <?php $this->renderPartial('application.views.site.auth._auth', array('modelAuth'=>new User('registration'))); ?>
 </body>
 <script>
     $( "#auth_buttons" ).on( "click", ".logout", function() {

@@ -20,6 +20,9 @@ return array(
 	),
 
 	'modules'=>array(
+        'blog'=>array(
+            'class'=>'application.modules.blog.BlogModule',
+        )
 	),
 	'components'=>array(
 		'user'=>array(
@@ -50,6 +53,7 @@ return array(
                 'cart'=>'site/cart',
                 'ajax/<action:\w+>'=>'ajax/<action>',
                 'api/<action:\w+>'=>'api/<action>',
+                'blog/<url:\w+>'=>'blog/default/post',
             ),
 		),
 		'db'=>array(
@@ -73,6 +77,9 @@ return array(
 		),
         'image'=>array(
             'class'=>'CImageHandler',
+        ),
+        'cart' => array(
+            'class'=>'UserCart'
         ),
 	),
     'params'=>array_merge(array(

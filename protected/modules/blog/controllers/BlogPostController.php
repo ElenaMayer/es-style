@@ -1,12 +1,12 @@
 <?php
 
-class NewsController extends Controller
+class BlogPostController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-    public $layout='//layouts/admin_column';
+	public $layout='//layouts/admin_column';
 
 	/**
 	 * @return array action filters
@@ -19,13 +19,13 @@ class NewsController extends Controller
 		);
 	}
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
         return array(
             array('allow',
                 'actions'=>array('create','update','index','delete','setIsShow'),
@@ -35,22 +35,24 @@ class NewsController extends Controller
                 'users'=>array('*'),
             ),
         );
-	}
+    }
 
 	/**
 	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new News;
-		if(isset($_POST['News']))
+		$model=new BlogPost;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['BlogPost']))
 		{
-			$model->attributes=$_POST['News'];
-			if($model->save()) {
-                if($model->is_send_mail)
-                    $this->sentMailWithNews($model);
-                $this->redirect(array('index'));
-            }
+			$model->attributes=$_POST['BlogPost'];
+			if($model->save())
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -60,41 +62,25 @@ class NewsController extends Controller
 
 	/**
 	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		if(isset($_POST['News']))
+
+		if(isset($_POST['BlogPost']))
 		{
-			$model->attributes=$_POST['News'];
-			if($model->save()) {
-                if (isset($_POST['News']['is_send_mail']) && $_POST['News']['is_send_mail'] == 1) {
-                    $this->sentMailWithNews($model);
-                }
-                $this->redirect(array('index'));
-            }
+			$model->attributes=$_POST['BlogPost'];
+            $model->image = $_POST['BlogPost']['image'];
+			if($model->save())
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
-
-    public function sentMailWithNews($model){
-        $this->layout = '//layouts/mail_sub';
-        $mail = new Mail();
-        $mail->subject = $model->title;
-        $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
-        foreach($users as $user){
-            if(!empty($user->email)){
-                Yii::app()->userForMail->setUser($user);
-                $mail->message = $this->render('/site/mail/news',array('content'=>$model->content),true);
-                $mail->to = $user->email;
-                $mail->send();
-            }
-        }
-    }
 
 	/**
 	 * Deletes a particular model.
@@ -107,34 +93,34 @@ class NewsController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
-	 * Manages all models.
+	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$model=new News('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['News']))
-			$model->attributes=$_GET['News'];
+        $model=new BlogPost('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['BlogPost']))
+            $model->attributes=$_GET['BlogPost'];
 
-		$this->render('index',array(
-			'model'=>$model,
-		));
+        $this->render('index',array(
+            'model'=>$model,
+        ));
 	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return News the loaded model
+	 * @return BlogPost the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=News::model()->findByPk($id);
+		$model=BlogPost::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -142,11 +128,11 @@ class NewsController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param News $model the model to be validated
+	 * @param BlogPost $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='news-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='blog-post-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -155,12 +141,12 @@ class NewsController extends Controller
 
     //ajax method
     public function actionSetIsShow($id){
-        $news = News::model()->findByPk($id);
-        if(empty($news->is_show))
-            $news->is_show = 1;
+        $post = BlogPost::model()->findByPk($id);
+        if(empty($post->is_show))
+            $post->is_show = 1;
         else
-            $news->is_show = 0;
-        echo $news->save();
+            $post->is_show = 0;
+        echo $post->save();
         Yii::app()->end();
     }
 }
