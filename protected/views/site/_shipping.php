@@ -22,6 +22,7 @@
     <li class="list__item">Стоимость доставки расчитывается по тарифам Почты России в зависимости от региона.</li>
     <li class="list__item red">При заказе трех и более моделей доставка осуществляется бесплатно!</li>
     <li class="list__item">Оплата производится на почте в момент получения посылки.</li>
+    <li class="list__item">Жители Новосибирске могут забрать свой заказ в точке розничной продажи с оплатой при получении.</li>
 </ul>
 
 <div class="hint">
@@ -33,6 +34,31 @@
     <li class="list__item">В случае брака мы возвращаем полную стоимость товара.</li>
 </ul>
 <?php $this->renderPartial('_size_tab'); ?>
+
+
+<h2>Точка розничной продажи в Новосибирске</h2>
+<div class="contacts">
+    Адрес: Мичурина 12 - Ряд №6 Место №184
+</div>
+<div class="contacts">
+    Время работы: 10:00 - 19:00 Без выходных
+</div>
+<div id="map_rinok" class="gis_map"></div>
+
+<script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
+<script type="text/javascript">
+    var map_rinok;
+    DG.then(function () {
+        map_rinok = DG.map('map_rinok', {
+            "center": [55.042049, 82.924407],
+            "zoom": 16
+        });
+        DG.marker([55.027069, 82.921052]).addTo(map_rinok);
+        DG.marker([55.042049, 82.924407]).addTo(map_rinok);
+        DG.marker([54.982592, 82.891341]).addTo(map_rinok);
+    });
+</script>
+
 <script>
     $( "#email" ).on( "click", function() {
         $.ajax({

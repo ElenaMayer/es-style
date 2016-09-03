@@ -3,12 +3,21 @@
 class DefaultController extends Controller {
 
 	public function actionIndex() {
-        $posts = BlogPost::model()->findAllByAttributes(['is_show' => true]);
+        $this->pageTitle=Yii::app()->name .' - Статьи';
+
+        $criteria = new CDbCriteria();
+        $criteria->compare('is_show', 1);
+        if (isset($_GET['tag'])) {
+            $criteria->addSearchCondition('tags', $_GET['tag']);
+        }
+        $posts = BlogPost::model()->findAll($criteria);
 		$this->render('index', ['posts' => $posts]);
 	}
 
     public function actionPost($url) {
         $post = BlogPost::model()->findByAttributes(['is_show' => true, 'url' => $url]);
+
+        $this->pageTitle=Yii::app()->name .' - '. $post->title;
         $this->render('post', ['post' => $post]);
     }
 

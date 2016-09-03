@@ -49,7 +49,6 @@ return array(
                 'unsubscribe'=>'site/unsubscribe',
                 'customer'=>'site/customer',
                 'history'=>'site/history',
-                'contact'=>'site/contact',
                 'cart'=>'site/cart',
                 'ajax/<action:\w+>'=>'ajax/<action>',
                 'api/<action:\w+>'=>'api/<action>',

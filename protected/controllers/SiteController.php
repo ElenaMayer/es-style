@@ -205,11 +205,6 @@ class SiteController extends Controller {
         }
     }
 
-    public function actionContact() {
-        $this->pageTitle=Yii::app()->name .' - Адреса';
-        $this->render('contact');
-    }
-
     public function actionOrderOld($type) {
         $type_str = $type=='shipping'?'Доставка':'Оптом';
         $this->pageTitle=Yii::app()->name.' - '.$type_str;

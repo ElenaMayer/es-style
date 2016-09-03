@@ -187,6 +187,7 @@
             input = '<input id="Photo_subcategoryArr_'+i+'" value="'+key+'" type="checkbox" name="Photo[subcategoryArr][]">';
             label = '<label for="Photo_subcategoryArr_'+i+'">'+value+'</label>';
             e.append(input, label);
+            i++;
         });
     });
     $('#Photo_image').change(function() {

@@ -2,6 +2,30 @@
     padding-top: 40px;
 }
 
+.blog_header {
+    padding: 15px 60px 40px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.blog_header h1 {
+    font: 400 40px Brandon Text,sans-serif;
+    color: #4e5056;
+}
+
+.blog_header h1 span {
+    color: #9e3c5d;
+    font-weight: bold;
+}
+
+.blog_header a {
+    font-size: 18px;
+    color: #4e5056;
+}
+
+.blog_all_articles {
+    text-align: right;
+}
+
 .blog_article {
     margin: 0 0 30px;
     padding: 15px 60px 40px;
@@ -40,7 +64,8 @@
 }
 
 .blog_title a:hover,
-.blog_tags a:hover {
+.blog_tags a:hover,
+.blog_header a:hover {
     color: #7d818e;
 }
 

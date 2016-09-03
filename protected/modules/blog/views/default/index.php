@@ -1,4 +1,13 @@
 <div class="blog">
+
+    <?php if (isset($_GET['tag'])):?>
+        <div class="blog_header">
+            <h1>Показаны статьи по тэгу <span><?=$_GET['tag']?></span></h1>
+            <div class="blog_all_articles">
+                <a href="/blog/">Все статьи</a>
+            </div>
+        </div>
+    <?php endif; ?>
     <?php foreach ($posts as $post): ?>
         <div class="blog_article">
             <div class="blog_date">

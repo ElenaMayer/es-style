@@ -81,4 +81,22 @@
 	$("#BlogPost_image").change(function(){
 		readURL(this);
 	});
+
+	function translit(ru_str) {
+		var translitJson = '{"Я":"Ya","я":"ya","Ю":"Yu","ю":"yu","Ч":"Ch","ч":"ch","Ш":"Sh","ш":"sh","Щ":"Sh","щ":"sh","Ж":"Zh","ж":"zh","А":"A","а":"a","Б":"B","б":"b","В":"V","в":"v","Г":"G","г":"g","Д":"D","д":"d","Е":"E","е":"e","Ё":"E","ё":"e","З":"Z","з":"z","И":"I","и":"i","Й":"J","й":"j","К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","О":"O","о":"o","П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u","Ф":"F","ф":"f","Х":"H","х":"h","Ц":"C","ц":"c","Ы":"Y","ы":"y","Ь":"`","ь":"`","Ъ":"","ъ":"","Э":"E","э":"e"," ":"_",".":"","!":"","?":""}';
+		var translitArr = jQuery.parseJSON(translitJson);
+		var en_str = '';
+		for (var i = 0, len = ru_str.length; i < len; i++) {
+			if (translitArr[ru_str[i]] && translitArr[ru_str[i]].length > 0)
+				en_str += translitArr[ru_str[i]];
+			else
+				en_str += ru_str[i];
+		}
+		return en_str;
+	}
+
+	$( "#BlogPost_title" ).keyup(function(e) {
+		ru_str = $(this).val();
+		$('#BlogPost_url').val(translit(ru_str));
+	});
 </script>

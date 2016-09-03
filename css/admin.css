@@ -302,6 +302,7 @@ h1 {
 
 .row .checkbox_list {
     padding-left: 140px;
+    width: 345px;
 }
 .row .checkbox_list input {
     float: left;
@@ -313,6 +314,7 @@ h1 {
 .size .row .checkbox_list {
     padding-left: 80px;
     padding-top: 5px;
+    width: 100%;
 }
 .size .row div.label {
     width: 80px;

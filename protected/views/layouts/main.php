@@ -117,7 +117,7 @@
                                     array('label' => 'Блузки', 'url' => '/blouse', 'active'=>strpos(Yii::app()->request->pathInfo, 'blouse')===false? false:true),
                                     array('label' => 'Кимоно', 'url' => '/kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
-                                    array('label' => 'Адреса', 'url' => '/contact', 'active'=>strpos(Yii::app()->request->pathInfo, 'contact')===false? false:true),
+                                    array('label' => 'Статьи', 'url' => '/blog', 'active'=>strpos(Yii::app()->request->pathInfo, 'blog')===false? false:true),
                                     array('label' => 'Доставка', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
                                     array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
                                 )

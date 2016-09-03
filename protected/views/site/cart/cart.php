@@ -31,31 +31,35 @@
 <script>
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
+    var i = 0;
     $( "body" ).on("click", ".change-quantity", function() {
-        if (!$(this).hasClass("button_disabled")) {
-            item_id = $(this).parent().data("item-id");
-            max_count = <?= Yii::app()->params['maxItemCountInCart']?>;
-            if ($(this).hasClass('change-quantity_increase'))
-                action_name = "increase";
-            else
-                action_name = "decrease";
-            $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
-            $.ajax({
-                url: "/ajax/changeCount",
-                data: {
-                    item_id: item_id,
-                    action_name: action_name
-                },
-                type: "POST",
-                dataType: "html",
-                success: function (data) {
-                    $('.button_in-progress').prop( "disabled", false ).removeClass('button_disabled').removeClass('button_in-progress');
-                    if (data) {
-                        $('.content').html(data);
-                        updateCartCount();
+        if (i < 1) {
+            if (!$(this).hasClass("button_disabled")) {
+                item_id = $(this).parent().data("item-id");
+                max_count = <?= Yii::app()->params['maxItemCountInCart']?>;
+                if ($(this).hasClass('change-quantity_increase'))
+                    action_name = "increase";
+                else
+                    action_name = "decrease";
+                $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled').prop("disabled", true);
+                i = 1;
+                $.ajax({
+                    url: "/ajax/changeCount",
+                    data: {
+                        item_id: item_id,
+                        action_name: action_name
+                    },
+                    type: "POST",
+                    dataType: "html",
+                    success: function (data) {
+                        $('.button_in-progress').prop("disabled", false).removeClass('button_disabled').removeClass('button_in-progress');
+                        if (data) {
+                            $('.content').html(data);
+                            updateCartCount();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     });
     $( "body" ).on("click", "button.remove", function() {

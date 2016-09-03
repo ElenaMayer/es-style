@@ -964,7 +964,7 @@ body.main.modal-open {
     background-color: #f5f5f5;
     font-weight: 700;
 }
-.contact, .order {
+.order {
     padding: 40px;
 }
 
@@ -1009,6 +1009,7 @@ body.main.modal-open {
     margin: 0 0 17px 0;
     padding: 0;
     list-style: none;
+    width: 75%;
 }
 
 .list__item {
@@ -1397,11 +1398,8 @@ h3.news {
     width: 154% !important;
     left: 103% !important;
 }
-.contacts-address {
-    width: 50%;
-}
 .contacts {
-    margin-bottom: 27px;
+    margin-bottom: 10px;
     line-height: 1.5;
 }
 .hint {
@@ -1435,6 +1433,13 @@ h3.news {
     padding: 0;
     list-style-type: none;
 }
+.lc .history .cart-list__content {
+    padding-right: 75px;
+
+}
+.lc .history .cart-item__cell_quantity {
+    width: 60px;
+}
 .cart-item {
     position: relative;
     margin-top: 1px;
@@ -1442,6 +1447,9 @@ h3.news {
     text-align: right;
     white-space: nowrap;
     line-height: 17px;
+}
+.cart-list .cart-item {
+    padding-right: 20px;
 }
 .cart-item:after {
     content: '';
@@ -1491,6 +1499,9 @@ h3.news {
     width: 100px;
     margin-left: 6px;
     text-align: right;
+}
+.history .cart-item__cell_total {
+    width: 70px;
 }
 .cart-item__name, .cart-item__size {
     padding-bottom: 12px;
@@ -1669,7 +1680,7 @@ h3.news {
 .cart-list .cart-item:hover {
     z-index: 2;
     margin: 0 -5px -1px -1px;
-    padding-right: 4px;
+    padding-right: 24px;
     border: 1px solid #d9d9d9;
     box-shadow: 0 0 4px #d9d9d9;
 }
@@ -1955,8 +1966,10 @@ h3.news {
     margin-left: 0;
     padding-top: 0;
 }
-.history .cart-item__cell_description {
+.lc .history .cart-item__cell_description {
     margin-left: 24px;
+    white-space: normal;
+    width: 47%;
 }
 
 .modal-body.order_modal {
@@ -2178,9 +2191,6 @@ IPhone 6 Plus 414×736
     .social-likes {
         width: 100%;
     }
-    .contacts-address {
-        width: 100%;
-    }
     .contacts {
         margin-bottom: 10px;
     }
@@ -2275,6 +2285,9 @@ IPhone 6 Plus 414×736
     }
     .catalog-navigation-wrap {
         width: 160px;
+    }
+    .list {
+        width: 100%;
     }
 }
 
@@ -2397,6 +2410,9 @@ IPhone 6 Plus 414×736
     }
     .basket-button .button__icon {
         margin: 5px 0 0 -4px;
+    }
+    .history .cart-item__cell_total {
+        text-align: left;
     }
 }
 @media only screen and (max-width: 320px) {
