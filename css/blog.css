@@ -175,3 +175,18 @@ a.blog_button_border:hover {
 .blog_like_icon:hover {
     background-position: 0 -25px;
 }
+
+/* Admin */
+
+.admin .post_image {
+    width: 840px;
+}
+.admin input[type=text] {
+    width: 700px;
+}
+.admin .like_count input {
+    width: 50px;
+}
+.admin textarea {
+    width: 700px;
+}

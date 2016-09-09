@@ -16,7 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/admin.css" />
-
+	<?php if (strpos(Yii::app()->request->pathInfo, 'blog')!==false):?>
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css?4" />
+	<?php endif;?>
 	<title>Админка <?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 

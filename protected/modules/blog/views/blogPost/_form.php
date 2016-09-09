@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form admin">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'blog-post-form',
@@ -15,11 +15,11 @@
 		<div><?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>255)); ?></div>
 	</div>
 
-	<p><img id="post_image" <?php if(!$model->img): ?>class="hidden"<?php endif; ?> src="<?php echo $model->getImageUrl()?>"/></p>
 	<div class="row">
 		<div class="label"><?php echo $form->labelEx($model,'image'); ?></div>
 		<div><?php echo $form->fileField($model,'image'); ?></div>
 	</div>
+	<p><img id="post_image" class="post_image<?php if(!$model->img): ?> hidden<?php endif; ?>" src="<?php echo $model->getImageUrl()?>"/></p>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'description'); ?></div>
@@ -35,11 +35,11 @@
 				'editorOptions'=>[
 					'language'=>'ru',
 					'width'=>'100%',
-					'height'=>'300px'
+					'height'=>'600px'
 				],
 				'htmlOptions'=>['class'=>'editor',
 					'width'=>'100%',
-					'height'=>'300px']
+					'height'=>'600px']
 			]); ?>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
         <div><?php echo $form->textField($model,'tags',array('size'=>60,'maxlength'=>255)); ?></div>
 	</div>
 
-	<div class="row">
+	<div class="row like_count">
         <div class="label"><?php echo $form->labelEx($model,'likeCount'); ?></div>
         <div><?php echo $form->textField($model,'likeCount'); ?></div>
 	</div>
@@ -67,6 +67,7 @@
 
 </div><!-- form -->
 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
 	function readURL(input) {
 		if (input.files && input.files[0]) {
@@ -94,9 +95,48 @@
 		}
 		return en_str;
 	}
-
 	$( "#BlogPost_title" ).keyup(function(e) {
 		ru_str = $(this).val();
 		$('#BlogPost_url').val(translit(ru_str));
 	});
+
+	$( function() {
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+
+		$( "#BlogPost_tags" )
+		// don't navigate away from the field on tab when selecting an item
+			.on( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB &&
+					$( this ).autocomplete( "instance" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				source: function( request, response ) {
+					$.getJSON( "/blog/blogPost/getTagList", {
+						term: extractLast( request.term )
+					}, response );
+				},
+				focus: function() {
+					// prevent value inserted on focus
+					return false;
+				},
+				select: function( event, ui ) {
+					var terms = split( this.value );
+					// remove the current input
+					terms.pop();
+					// add the selected item
+					terms.push( ui.item.value );
+					// add placeholder to get the comma-and-space at the end
+					terms.push( "" );
+					this.value = terms.join( ", " );
+					return false;
+				}
+			});
+	} );
 </script>

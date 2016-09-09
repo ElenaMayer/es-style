@@ -28,7 +28,7 @@ class BlogPostController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('create','update','index','delete','setIsShow'),
+                'actions'=>array('create','update','index','delete','setIsShow','getTagList'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -44,13 +44,12 @@ class BlogPostController extends Controller
 	public function actionCreate()
 	{
 		$model=new BlogPost;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        $model->likeCount = rand(2, 12);
 
 		if(isset($_POST['BlogPost']))
 		{
 			$model->attributes=$_POST['BlogPost'];
+            $this->addTagsFromString($_POST['BlogPost']['tags']);
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -71,6 +70,7 @@ class BlogPostController extends Controller
 
 		if(isset($_POST['BlogPost']))
 		{
+            $this->updateTagsFromString($model->tags, $_POST['BlogPost']['tags']);
 			$model->attributes=$_POST['BlogPost'];
             $model->image = $_POST['BlogPost']['image'];
 			if($model->save())
@@ -89,7 +89,10 @@ class BlogPostController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+        $this->removeTags(explode(',',$model->tags));
+
+        $model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -148,5 +151,57 @@ class BlogPostController extends Controller
             $post->is_show = 0;
         echo $post->save();
         Yii::app()->end();
+    }
+
+    //ajax method
+    public function actionGetTagList(){
+        $tags = [];
+        $criteria = new CDbCriteria();
+        $criteria->select = 'name';
+        $criteria->order = 'frequency  DESC';
+        if (isset($_GET['term']))
+            $criteria->addSearchCondition('name', $_GET['term']);
+        $model = BlogTag::model()->findAll($criteria);
+        foreach ($model as $item) {
+            array_push($tags, $item->name);
+        }
+        echo CJSON::encode($tags);
+        Yii::app()->end();
+    }
+
+    public function addTagsFromString($tagsString) {
+        $tags = explode(',',$tagsString);
+        $this->addTags($tags);
+    }
+
+    public function addTags($tags){
+        foreach ($tags as $tag){
+            $tagModel = BlogTag::model()->findByAttributes(['name'=>trim($tag)]);
+            if(empty($tagModel)) {
+                $tagModel = new BlogTag;
+                $tagModel->name = trim($tag);
+                $tagModel->frequency = 1;
+            } else {
+                $tagModel->frequency ++;
+            }
+            $tagModel->save();
+        }
+    }
+
+    public function updateTagsFromString($oldTagsString, $newTagsString) {
+        $oldTags = explode(',',$oldTagsString);
+        $newTags = explode(',',$newTagsString);
+        $tagsToAdd = array_diff($newTags, $oldTags);
+        $tagsToRemove = array_diff($oldTags, $newTags);
+        $this->addTags($tagsToAdd);
+        $this->removeTags($tagsToRemove);
+    }
+
+    public function removeTags($tags){
+        foreach ($tags as $tag){
+            $tagModel = BlogTag::model()->findByAttributes(['name'=>trim($tag)]);
+            $tagModel->frequency --;
+            $tagModel->save();
+        }
     }
 }
