@@ -25,16 +25,17 @@ class Mail {
         $headers .= 'From: Восточный стиль <' . $this->from . ">\r\n";
         $headers .= 'Reply-To: ' . $this->from . "\r\n";
 
-        if (mail($this->to, $this->subject, $this->message, $headers)) {
-            $this->saveLog();
-        }
+        if (mail($this->to, $this->subject, $this->message, $headers))
+            return $this->saveLog();
+        else
+            return false;
     }
 
     private function saveLog(){
         $log = new MailLog();
         $log->email = $this->to;
         $log->action = Yii::app()->controller->id.'/'.Yii::app()->controller->action->id;
-        $log->save();
+        return $log->save();
     }
 
 } 

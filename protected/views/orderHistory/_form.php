@@ -15,10 +15,14 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <div class="row buttons">
+    <div class="row buttons save_button">
         <?php echo CHtml::submitButton('Сохранить'); ?>
     </div>
-
+    <?php if (Yii::app()->controller->action->id == 'update' && $model->status == 'shipping_by_rp'): ?>
+        <div class="row buttons">
+            <?php echo CHtml::button('Отправить напоминание', ['id'=>'remind']); ?>
+        </div>
+    <?php endif; ?>
     <?php if ($model->user_id): ?>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'user_id'); ?></div>
@@ -135,6 +139,7 @@
 
 <script>
     var model_form_count = 0;
+    var order_id = <?= $model->id ?>;
 
     $( "form" ).on( "change", ".category", function() {
         e = $(this);
@@ -197,5 +202,14 @@
 
     $( "form" ).on( "click", ".remove_model_button", function() {
         $(this).parent('div').parent('div').remove();
+    });
+    $( "form" ).on( "click", "#remind", function() {
+        var day_count = prompt("Срок зранения истекает через:", "7 дней");
+        if (day_count != null) {
+            $.post( "/ajax/sendRemindMail", { order_id: order_id, day_count: day_count })
+                .done(function( data ) {
+                    alert( "Уведомление отправлено." );
+                });
+        }
     });
 </script>

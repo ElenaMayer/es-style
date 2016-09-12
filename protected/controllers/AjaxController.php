@@ -115,12 +115,14 @@ class AjaxController extends Controller
         }
     }
 
-    public function actionRemoveAvailableSum(){
-        if ($_POST['sum'] == OrderHistory::getOrderAvailableSum()) {
-            OrderHistory::unsetOrderAvailableSum();
-        } else {
-            OrderHistory::setOrderAvailableSum($_POST['sum'], 'minus');
-        }
+    public function actionSendRemindMail(){
+        $this->layout = '//layouts/mail';
+        $order = OrderHistory::model()->findByPk($_POST['order_id']);
+        $mail = new Mail();
+        $mail->to = $order->email;
+        $mail->subject = "Срок хранения Вашего заказа истекает через ".$_POST['day_count'].". Интернет-магазин ".Yii::app()->params['domain'];
+        $mail->message = $this->render('/site/mail/order',array('order'=>$order, 'dayCount' => $_POST['day_count']),true);
+        echo $mail->send();
         Yii::app()->end();
     }
 }

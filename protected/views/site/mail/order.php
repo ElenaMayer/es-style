@@ -6,7 +6,12 @@
                     <b><?php if(!empty($order->user)):?><?= $order->user->getTitleName(); ?>,<?php endif ?>
                         <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
                         <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
-                        <?php elseif($order->status == 'shipping_by_rp') :?> Ваш заказ передан для доставки в Почту России!
+                        <?php elseif($order->status == 'shipping_by_rp') :?>
+                            <?php if(isset($dayCount)):?>
+                                Ваш заказ очень ждет Вас в почтовом отделении, через <?= $dayCount ?> он будет вынужден отправиться в обратный путь :(
+                            <?php else: ?>
+                                Ваш заказ передан для доставки в Почту России!
+                            <?php endif ?>
                         <?php elseif($order->status == 'waiting_delivery') :?> Заказ ожидает Вас в <?php echo($order->shipping_method == 'russian_post' ? "почтовом отделении" : "пункте выдачи");?>!
                         <?php elseif($order->status == 'confirmation') :?> К сожалению, мы не можем дозвониться по указанному телефону :( Для подтверждения заказа ответьте, пожалуйста, на это письмо!
                         <?php endif ?>

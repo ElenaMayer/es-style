@@ -264,6 +264,9 @@ h1 {
 .gray {
     background-color: #cdcdcd;
 }
+.cyan {
+    background-color: cyan;
+}
 .yellow:hover {
     background-color: yellow !important;
 }
@@ -287,6 +290,9 @@ h1 {
 }
 .purple:hover {
     background-color: #D7C3D7 !important;
+}
+.cyan:hover {
+    background-color: cyan !important;
 }
 
 .orderSum {
@@ -338,4 +344,8 @@ div.form .size .row {
 }
 .uni_size div.input {
     padding-left: 115px;
+}
+div.form .row.buttons.save_button {
+    float: right;
+    margin: 0 5px;
 }

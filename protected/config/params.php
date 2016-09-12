@@ -59,6 +59,7 @@ return array(
         'shipping_by_rp' => 'Передан на доставку в Почту России',
         'shipping_by_tc' => 'Передан на доставку в ТК',
         'waiting_delivery' => 'Ожидает вручения',
+        'paid' => 'Оплачено',
         'completed' => 'Выполнен',
         'lost' => 'Потеряна',
         'not_redeemed' => 'Не выкуплен',

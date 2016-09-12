@@ -117,9 +117,6 @@ class OrderHistoryController extends Controller
                     $model->user->blockUser();
                 }
                 break;
-			case 'completed':
-				OrderHistory::setOrderAvailableSum($model->total);
-				break;
 			case 'canceled':
 				break;
         }

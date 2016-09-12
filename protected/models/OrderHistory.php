@@ -167,6 +167,9 @@ class OrderHistory extends CActiveRecord
 			case 'waiting_delivery':
 				$color = 'orange';
 				break;
+            case 'paid':
+                $color = 'cyan';
+                break;
 			case 'completed':
 				$color = 'light_green';
 				break;
@@ -220,27 +223,23 @@ class OrderHistory extends CActiveRecord
     public static function refreshOrderSum(){
         OrderHistory::refreshOrderNewSum();
         OrderHistory::refreshOrderSendSum();
+        OrderHistory::refreshOrderAvailableSum();
     }
 		
 	public static function getOrderAvailableSum(){
-		if (Yii::app()->request->cookies['orderAvailableSum'])
-			return (string)Yii::app()->request->cookies['orderAvailableSum'];
-		else
-			return 0;
-	}
-	
-	public static function setOrderAvailableSum($sum, $type='plus'){
-		$currentSum = OrderHistory::getOrderAvailableSum();
-		$resultSum = 0;
-		if ($type == 'plus') {
-			$resultSum = $currentSum + $sum;
-		} elseif($type == 'minus') {
-			$resultSum = $currentSum - $sum;
-		}
-		Yii::app()->request->cookies['orderAvailableSum'] = new CHttpCookie('orderAvailableSum', $resultSum);
+        $sum = (string)Yii::app()->request->cookies['orderAvailableSum'];
+        if($sum == 0 || $sum == '') {
+            $sum = OrderHistory::refreshOrderAvailableSum();
+        }
+        return $sum;
 	}
 
-	public static function unsetOrderAvailableSum(){
-		unset(Yii::app()->request->cookies['orderAvailableSum']);
-	}
+    public static function refreshOrderAvailableSum(){
+        $sum = 0;
+        $orders = OrderHistory::model()->findAllByAttributes(['status' => 'paid']);
+        foreach ($orders as $order) {
+            $sum += $order->total;
+        }
+        Yii::app()->request->cookies['orderAvailableSum'] = new CHttpCookie('orderAvailableSum', $sum);
+    }
 }

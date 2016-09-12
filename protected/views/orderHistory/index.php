@@ -10,7 +10,6 @@
 <?php if(OrderHistory::getOrderAvailableSum() > 0): ?>
     <div class="orderSum orderAvailableSum">
         Оплачено на сумму: <b><span><?= OrderHistory::getOrderAvailableSum() ?></span> руб.</b>
-        <a class="orderAvailableSum_link">Получено</a><input type="text" value="<?= OrderHistory::getOrderAvailableSum() ?>"/>
     </div>
 <?php endif; ?>
 
@@ -59,22 +58,3 @@ $('.search-form form').submit(function(){
         ),
     ),
 )); ?>
-
-<script>
-    expected_sum = <?= OrderHistory::getOrderAvailableSum() ?>;
-    $( '#content' ).on( 'click', '.orderAvailableSum_link', function() {
-        sum = $('.orderSum').children('input').val();
-        $.ajax({
-            url: "/ajax/removeAvailableSum",
-            data: {sum: sum},
-            type: "POST",
-            success: function (data) {
-                if (sum == expected_sum) {
-                    $('.orderAvailableSum').hide();
-                } else {
-                    $('.orderAvailableSum span').html(expected_sum - sum);
-                }
-            }
-        })
-    })
-</script>
