@@ -14,7 +14,7 @@
                 <?= $this->dateFormat($post->date_create) ?>
             </div>
             <h2 class="blog_title">
-                <a href="/blog/<?= $post->url ?>"><?= $post->title ?></a>
+                <a href="/blog/<?= $post->url ?><?php if (isset($_GET['tag'])):?>?tag=<?=$_GET['tag']?><?php endif; ?>"><?= $post->title ?></a>
             </h2>
             <?php if ($post->img):?>
                 <div class="blog_image">

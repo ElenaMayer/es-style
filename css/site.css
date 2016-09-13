@@ -1384,7 +1384,9 @@ h3.news {
 }
 .model .table__column_left {
     width: 40%;
-    padding-right: 10px;
+}
+.model .model_photo {
+    padding-right: 5px;
 }
 .size .button {
     margin-right: 5px;

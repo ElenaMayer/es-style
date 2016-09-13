@@ -1,3 +1,9 @@
+<div class="breadcrumbs blog_breadcrumbs">
+    <a href="/" class="breadcrumbs__item">Главная</a>
+    <a class="breadcrumbs__item" href="/blog">Статьи</a>
+    <?php if (isset($_GET['tag'])):?><a class="breadcrumbs__item" href="/blog?tag=<?= $_GET['tag'] ?>"><?= $_GET['tag'] ?></a><?php endif; ?>
+    <span class="breadcrumbs__item"><?=$post->title?></span>
+</div>
 <div class="blog post">
     <div class="blog_article">
         <div class="blog_date">
