@@ -349,3 +349,6 @@ div.form .row.buttons.save_button {
     float: right;
     margin: 0 5px;
 }
+#order-history-form div.buttons.remind_button {
+    text-align: left;
+}

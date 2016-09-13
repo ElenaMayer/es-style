@@ -30,7 +30,7 @@
                     <a href="?tag=<?= $tag ?>"><?= $tag ?></a>&nbsp;<?php if (isset($post->tagsArr[$key+1])):?>,<?php endif;?>
                 <?php endforeach; ?>
             </div>
-            <a class="blog_readmore blog_button" href="/blog/<?= $post->url ?>">Далее</a>
+            <a class="blog_readmore blog_button" href="/blog/<?= $post->url ?>">Подробнее</a>
             <span class="blog_comment">
                 <a class="blog_button_border" href="/blog/<?= $post->url ?>#comments">Комментариев: 16</a>
             </span>
