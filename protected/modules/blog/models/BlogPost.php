@@ -100,6 +100,9 @@ class BlogPost extends CActiveRecord {
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 
@@ -138,31 +141,43 @@ class BlogPost extends CActiveRecord {
         $this->tagsArr = explode(",", $this->tags);
     }
 
+    private function getOriginImagePath(){
+        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.origin');
+    }
+
+    private function getMediumImagePath(){
+        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.medium');
+    }
+
+    private function getSmallImagePath(){
+        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.small');
+    }
+
     public function deleteImage(){
-        $imagePath=Yii::getPathOfAlias('data.blog').DIRECTORY_SEPARATOR.$this->img;
+        $imagePath=$this->getOriginImagePath().DIRECTORY_SEPARATOR.$this->img;
         if(is_file($imagePath))
             unlink($imagePath);
-        $imageMediumPath=Yii::getPathOfAlias('data.blog.medium').DIRECTORY_SEPARATOR.$this->img;
+        $imageMediumPath=$this->getMediumImagePath().DIRECTORY_SEPARATOR.$this->img;
         if(is_file($imageMediumPath))
             unlink($imageMediumPath);
-        $imageSmallPath=Yii::getPathOfAlias('data.blog.small').DIRECTORY_SEPARATOR.$this->img;
+        $imageSmallPath=$this->getSmallImagePath().DIRECTORY_SEPARATOR.$this->img;
         if(is_file($imageSmallPath))
             unlink($imageSmallPath);
     }
 
     public function prepareImage(){
         Yii::app()->image
-            ->load(Yii::getPathOfAlias('data.blog').DIRECTORY_SEPARATOR.$this->img)
+            ->load($this->getOriginImagePath().DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageWidth, false, true)
-            ->save(Yii::getPathOfAlias('data.blog').DIRECTORY_SEPARATOR.$this->img)
+            ->save($this->getOriginImagePath().DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageMediumWidth, false, true)
-            ->save(Yii::getPathOfAlias('data.blog.medium').DIRECTORY_SEPARATOR.$this->img)
+            ->save($this->getMediumImagePath().DIRECTORY_SEPARATOR.$this->img)
             ->resize($this->imageSmallWidth, false, true)
-            ->save(Yii::getPathOfAlias('data.blog.small').DIRECTORY_SEPARATOR.$this->img);
+            ->save($this->getSmallImagePath().DIRECTORY_SEPARATOR.$this->img);
     }
 
     public function getImageUrl(){
-        return Yii::app()->getBaseUrl().'/data/blog/'.$this->img;
+        return Yii::app()->assetManager->publish($this->getOriginImagePath().DIRECTORY_SEPARATOR.$this->img);
     }
 
     public function getPreviousPostUrl(){

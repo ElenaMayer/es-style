@@ -1,5 +1,4 @@
 <div class="blog">
-
     <?php if (isset($_GET['tag'])):?>
         <div class="blog_header">
             <h1>Показаны статьи по тэгу <span><?=$_GET['tag']?></span></h1>
@@ -40,6 +39,19 @@
             </span>
         </div>
     <?php endforeach; ?>
+    <div class="blog_footer">
+        <div class="blog_pager">
+            <?php $this->widget('CLinkPager', array(
+                'pages' => $pagination,
+                'header' => '',
+                'nextPageLabel' => '>',
+                'prevPageLabel' => '<',
+                'firstPageLabel' => '<<',
+                'lastPageLabel' => '>>',
+                'maxButtonCount' => Yii::app()->controller->module->maxButtonCount
+            )); ?>
+        </div>
+    </div>
 </div>
 
 <script>

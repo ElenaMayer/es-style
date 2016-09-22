@@ -43,8 +43,9 @@ return array(
             'kimono_cotton' => 'Хлопковые кимоно'
         ],
         'other' => [
+            'other_robe' => 'Халаты',
             'other_homekit' => 'Домашние комплекты',
-            'other_robe' => 'Халаты'
+            'other_nightie' => 'Ночные сорочки',
         ]
     ],
     'shippingFreeCount' => 3,

@@ -338,7 +338,7 @@ class Photo extends CActiveRecord
 
     public static function getSizesForAdmin(){
         $sizes = [];
-        for ($i=40; $i<= 54; $i+=2) {
+        for ($i=40; $i<=66; $i+=2) {
             $sizes[$i] = $i;
         }
         return $sizes;

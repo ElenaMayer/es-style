@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="ru" />
-    <meta name="description" content="Одежда восточный стиль, женская одежда восточный стиль, женская одежда оптом"/>
+    <meta name="description" content="Интернет-магазин женской одежды в восточном стиле. Платья, блузки, кимоно, домашняя одежда оптом и в розницу. Позновательные статьи о востоке."/>
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon"/>
 
     <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?1', CClientScript::POS_HEAD) ?>

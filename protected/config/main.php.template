@@ -22,6 +22,9 @@ return array(
 	'modules'=>array(
         'blog'=>array(
             'class'=>'application.modules.blog.BlogModule',
+            'pageSize' => 5,
+            'dataPath' => 'data.blog',
+            'maxButtonCount' => 5
         )
 	),
 	'components'=>array(
@@ -37,6 +40,7 @@ return array(
         ],
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+            'showScriptName' => false,
 			'rules'=>array(
                 'admin/orderView/<id:\d+>'=>'admin/orderView',
                 'admin/orderDelete/<id:\d+>'=>'admin/orderDelete',
@@ -53,6 +57,7 @@ return array(
                 'ajax/<action:\w+>'=>'ajax/<action>',
                 'api/<action:\w+>'=>'api/<action>',
                 'blog/<url:\w+>'=>'blog/default/post',
+                'blog/page/<page:\d+>'=>'blog/default/indexWithPage',
             ),
 		),
 		'db'=>array(

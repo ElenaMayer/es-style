@@ -1,7 +1,11 @@
 <?php
 
-class BlogModule extends CWebModule
-{
+class BlogModule extends CWebModule {
+
+    public $pageSize;
+    public $dataPath;
+    public $maxButtonCount;
+
 	public function init()
 	{
 		// this method is called when the module is being created
