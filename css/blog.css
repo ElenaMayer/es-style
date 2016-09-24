@@ -3,7 +3,8 @@
 }
 
 .blog_header,
-.blog_footer {
+.blog_footer,
+.blog_comments {
     padding: 15px 60px 40px;
     border-bottom: 1px solid rgba(0,0,0,.05);
 }
@@ -78,7 +79,8 @@
     width: 100%;
 }
 
-a.blog_button {
+a.blog_button,
+.comment_form .blog_submit_button button {
     float: right;
     font-weight: 400;
     line-height: 1.33333;
@@ -99,13 +101,15 @@ a.blog_button {
     font-size: 15px;
     padding: .6em 1.6em;
     border-radius: .4em;
-    background-color: #9e3c5d;
+    background: #9e3c5d;
     color: #fff;
     -webkit-transition: background-color .25s ease-out;
     transition: background-color .25s ease-out;
+    height: inherit;
 }
 
-a.blog_button:hover {
+a.blog_button:hover,
+.comment_form .blog_submit_button button:hover {
     background-color: #ff3d00;
     color: #fff;
 }
@@ -205,6 +209,72 @@ a.blog_button_border:hover,
 .blog .blog_pager .selected a:visited {
     background: #9e3c5d;
     color: white;
+}
+
+/* Comments */
+.blog_comments {
+    font: 400 18px/1.6 Brandon Text,sans-serif;
+    color: #4e5056;
+}
+.com-list-noava {
+    clear: both;
+    margin: 35px 0;
+    padding: 0;
+    list-style-type: none;
+}
+.com-list-noava .commentstd:nth-child(odd) {
+    background-color: #fafafa;
+    border: none;
+}
+.com-list-noava .commentstd {
+    padding: 25px;
+}
+.com-list-noava .commentstd .number {
+    position: relative;
+    float: right;
+    font-size: 1.2em;
+    font-weight: 200;
+    top: -10px;
+    color: #7d818e;
+}
+.com-list-noava .commentstd .com-meta .date {
+    display: inline-block;
+    margin-left: 10px;
+    color: #7d818e;
+    font-size: .8em;
+}
+.com-meta .user_name {
+    font-weight: bold;
+}
+.comment_form input,
+.comment_form textarea {
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    background-color: #f3f3f3;
+    background-color: rgba(0, 0, 0, .03);
+    margin: 5px 0 15px;
+    padding: 10px;
+    font-size: 1em;
+}
+.comment_form input {
+    width: 70%;
+}
+.comment_form textarea.form-control {
+    width: 100%;
+    height: 150px;
+}
+.comment_form input:focus,
+.comment_form textarea:focus {
+    outline: none;
+    background-color: #eee;
+    background-color: rgba(0,0,0,.06);
+}
+.comment_form label {
+    font-weight: normal;
+}
+.comment_form label.error {
+    width: inherit;
+    font-size: 18px;
 }
 
 /* Admin */

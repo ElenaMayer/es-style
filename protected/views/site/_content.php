@@ -75,7 +75,6 @@
     });
 
     function addItemToCart(itemId) {
-        yaCounter37654655.reachGoal('add_to_cart');
         $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         $.ajax({
                 url: "/ajax/addToCart",

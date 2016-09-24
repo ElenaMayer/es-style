@@ -40,6 +40,13 @@
             <span id="<?= $post->id ?>" class="blog_like_icon"></span>
         </span>
     </div>
+    <div id="comment-data">
+        <?php $this->renderPartial('comments', [
+                'post' => $post,
+                'comments' => $comments,
+                'newComment' => $newComment
+            ]); ?>
+    </div>
 </div>
 
 <script>

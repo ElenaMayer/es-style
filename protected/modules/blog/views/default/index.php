@@ -31,7 +31,7 @@
             </div>
             <a class="blog_readmore blog_button" href="/blog/<?= $post->url ?>">Подробнее</a>
             <span class="blog_comment">
-                <a class="blog_button_border" href="/blog/<?= $post->url ?>#comments">Комментариев: 16</a>
+                <a class="blog_button_border" href="/blog/<?= $post->url ?>#comments">Комментариев: <?= $post->getActiveCommentCount() ?></a>
             </span>
             <span class="blog_like">
                 Нравиться: <p><?= $post->likeCount ?></p>

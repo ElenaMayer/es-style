@@ -23,6 +23,7 @@ class BlogPost extends CActiveRecord {
     public $imageMediumWidth = 730;
     public $imageSmallWidth = 310;
     public $tagsArr;
+    public $comments;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -52,8 +53,8 @@ class BlogPost extends CActiveRecord {
 	public function relations() {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
-		);
+        return array(
+        );
 	}
 
 	/**
@@ -139,6 +140,7 @@ class BlogPost extends CActiveRecord {
     protected function afterFind(){
         parent::afterFind();
         $this->tagsArr = explode(",", $this->tags);
+        $this->comments = Comment::model()->findAllByAttributes(['type' => 'blog_post', 'item_id' => $this->id]);
     }
 
     private function getOriginImagePath(){
@@ -186,5 +188,13 @@ class BlogPost extends CActiveRecord {
 
     public function getNextPostUrl(){
         return false;
+    }
+
+    public function getActiveCommentCount(){
+        $criteria = new CDbCriteria();
+        $criteria->compare('type', 'blog_post');
+        $criteria->compare('is_show', 1);
+        $criteria->compare('item_id', $this->id);
+        return Comment::model()->count($criteria);
     }
 }

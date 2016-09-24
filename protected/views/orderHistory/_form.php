@@ -204,7 +204,7 @@
         $(this).parent('div').parent('div').remove();
     });
     $( "form" ).on( "click", "#remind", function() {
-        var day_count = prompt("Срок зранения истекает через:", "7 дней");
+        var day_count = prompt("Срок хранения истекает через:", "10 дней");
         if (day_count != null) {
             $.post( "/ajax/sendRemindMail", { order_id: order_id, day_count: day_count })
                 .done(function( data ) {

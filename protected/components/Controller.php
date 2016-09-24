@@ -49,4 +49,10 @@ class Controller extends CController
         $res .= date(" Y", strtotime($date));
         return $res;
     }
+
+    public function dateFormatWithTime($date){
+        $res = $this->dateFormat($date);
+        $res .= date(" H:i", strtotime($date));
+        return $res;
+    }
 }
