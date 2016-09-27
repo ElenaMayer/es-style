@@ -124,7 +124,7 @@ class BlogPost extends CActiveRecord {
         if(($this->scenario=='insert' || $this->scenario=='update') && $image){
             $this->deleteImage();
             $this->img=$image->name;
-            $image->saveAs(Yii::getPathOfAlias('data.blog').DIRECTORY_SEPARATOR.$image->name);
+            $image->saveAs($this->getOriginImagePath().DIRECTORY_SEPARATOR.$image->name);
             $this->prepareImage();
         }
         return true;

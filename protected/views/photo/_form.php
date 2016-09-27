@@ -193,6 +193,7 @@
     $('#Photo_image').change(function() {
         article = $(this).val().replace(/C:\\fakepath\\/i, '').replace(/\.jpg/i, '');
         $('#Photo_article').val(article);
+        readURL(this);
     });
     $( "#Photo_sale" ).keyup(function() {
         if ($('#Photo_old_price').val()) {
@@ -213,7 +214,4 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#Photo_image").change(function(){
-        readURL(this);
-    });
 </script>
