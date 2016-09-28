@@ -4,7 +4,7 @@ class SiteController extends Controller {
 
     public function init(){
         parent::init();
-        self::saveUTM();
+//        self::saveUTM();
     }
 
     public function actions() {

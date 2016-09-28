@@ -111,26 +111,26 @@
     <?php if (!empty($model->cartItems)): ?>
         <ul class="cart-list__content">
             <?php foreach($model->cartItems as $cartItem) :?>
-                <li class="cart-item">
-                    <?php $this->renderPartial('_item', array('cartItem'=>$cartItem)); ?>
-                </li>
+                <?php $this->renderPartial('/orderHistory/_item', array('cartItem'=>$cartItem)); ?>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
-
-    <div class="row buttons">
-        <a class="add_model_button">Добавить в заказ</a>
-    </div>
-
-    <div class="add_model_form_t hide">
-        <div>
-            <?php echo CHtml::dropDownList('category', 0, Yii::app()->params['categories'], ['class'=>'category']) ?>
-            <?php echo $form->dropDownList($modelCartItem,'item_id', Photo::model()->getArticlesByCategory('dress')) ?>
-            <?php echo $form->dropDownList($modelCartItem,'size', Photo::model()->getSizesByArticle('11010')) ?>
-            <?php echo $form->textField($modelCartItem,'count'); ?>
-            <a class="remove_model_button">Удалить</a>
+    <?php if (Yii::app()->controller->action->id == 'update'):?>
+        <div class="row buttons">
+            <a class="add_model_button">Добавить модель</a>
         </div>
-    </div>
+
+        <div class="add_model_form_t hide">
+            <div>
+                <?php echo CHtml::dropDownList('category', 0, Yii::app()->params['categories'], ['class'=>'category']) ?>
+                <?php echo $form->dropDownList($modelCartItem,'item_id', Photo::model()->getArticlesByCategory('dress')) ?>
+                <?php echo $form->dropDownList($modelCartItem,'size', Photo::model()->getSizesByArticle('11010')) ?>
+                <?php echo $form->textField($modelCartItem,'count'); ?>
+                <a class="save_model">Сохранить</a>
+                <a class="remove_model_button">Удалить</a>
+            </div>
+        </div>
+    <?php endif;?>
 
     <div class="add_model_form"></div>
 
@@ -139,7 +139,7 @@
 
 <script>
     var model_form_count = 0;
-    var order_id = <?= $model->id ?>;
+    var order_id = <?= isset($model->id) ? $model->id : 0 ?>;
 
     $( "form" ).on( "change", ".category", function() {
         e = $(this);
@@ -170,7 +170,6 @@
     });
 
     function replaceSizes(e) {
-        console.log(e);
         $.ajax({
             url: "/ajax/getSizesById",
             data: {id: $(e).children("option:selected").val()},
@@ -202,6 +201,61 @@
 
     $( "form" ).on( "click", ".remove_model_button", function() {
         $(this).parent('div').parent('div').remove();
+    });
+    $( "form" ).on( "click", ".save_model", function() {
+        e = $(this).parent();
+        $.ajax({
+            url: "/ajax/addModelToOrder",
+            data: {
+                order_id: order_id,
+                item_id: e.children('#CartItem_item_id').children("option:selected").val(),
+                size: e.children('#CartItem_size').children("option:selected").val(),
+                count: e.children('#CartItem_count').val()
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                console.log(data);
+                var is_json = true;
+                try {
+                    var json = $.parseJSON(data);
+                } catch(err) {
+                    is_json = false;
+                }
+                if (is_json) {
+                    alert(json['error']);
+                } else {
+                    $('#data').html(data);
+                }
+            }
+        })
+    });
+    $( "form" ).on( "click", ".delete_model", function() {
+        if(confirm('Хорошо подумал?')) {
+            $.ajax({
+                url: "/ajax/deleteModelFromOrder",
+                data: {
+                    order_id: order_id,
+                    item_id: $(this).attr('data-id'),
+                },
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    console.log(data);
+                    var is_json = true;
+                    try {
+                        var json = $.parseJSON(data);
+                    } catch (err) {
+                        is_json = false;
+                    }
+                    if (is_json) {
+                        alert(json['error']);
+                    } else {
+                        $('#data').html(data);
+                    }
+                }
+            })
+        }
     });
     $( "form" ).on( "click", "#remind", function() {
         var day_count = prompt("Срок хранения истекает через:", "10 дней");

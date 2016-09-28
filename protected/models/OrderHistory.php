@@ -26,7 +26,6 @@
  */
 class OrderHistory extends CActiveRecord
 {
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -247,5 +246,20 @@ class OrderHistory extends CActiveRecord
             $count += $item->count;
         }
         return $count;
+    }
+
+    public function recountOrderSum(){
+        $subtotal = 0;
+        $sale = 0;
+        foreach($this->cartItems as $item){
+            if(isset($item->new_price)){
+                $sale += ($item->price - $item->new_price) * $item->count;
+            }
+            $subtotal += $item->price * $item->count;
+        }
+        $this->subtotal = $subtotal;
+        $this->sale = $sale;
+        $this->total = $subtotal - $sale;
+        return $this->save();
     }
 }

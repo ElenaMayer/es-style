@@ -125,4 +125,60 @@ class AjaxController extends Controller
         echo $mail->send();
         Yii::app()->end();
     }
+
+    public function actionAddModelToOrder(){
+        $order = OrderHistory::model()->findByPk($_POST['order_id']);
+        if($order){
+            if(isset($_POST['item_id'])){
+                $newItem = new CartItem();
+                $newItem->order_id = $order->id;
+                $newItem->item_id = $_POST['item_id'];
+                if (isset($_POST['size']))
+                    $newItem->size = $_POST['size'];
+                $newItem->count = $_POST['count'];
+                if ($newItem->photo->is_sale){
+                    $newItem->price = $newItem->photo->old_price;
+                    $newItem->new_price = $newItem->photo->new_price;
+                } else {
+                    $newItem->price = $newItem->photo->price;
+                }
+                if ($newItem->save()){
+                    if ($order->recountOrderSum())
+                        $this->renderPartial('/orderHistory/_form',array(
+                            'model'=>$order,
+                            'modelCartItem' => new CartItem()
+                        ));
+                    else
+                        echo json_encode(['error'=>'Ошибка пересчета суммы заказа']);
+                } else
+                    echo json_encode(['error'=>'Ошибка сохранения модели']);
+            } else
+                echo json_encode(['error'=>'Не указана модель']);
+        } else
+            echo json_encode(['error'=>'Заказ не найден']);
+        Yii::app()->end();
+    }
+
+    public function actionDeleteModelFromOrder(){
+        $order = OrderHistory::model()->findByPk($_POST['order_id']);
+        if($order){
+            $item = CartItem::model()->findByPk($_POST['item_id']);
+            if($item){
+                if ($item->delete()){
+                    if ($order->recountOrderSum())
+                        $this->renderPartial('/orderHistory/_form',array(
+                            'model'=>$order,
+                            'modelCartItem' => new CartItem()
+                        ));
+                    else
+                        echo json_encode(['error'=>'Ошибка пересчета суммы заказа']);
+                } else
+                    echo json_encode(['error'=>'Ошибка удаления модели']);
+            } else
+                echo json_encode(['error'=>'Не указана модель']);
+        } else
+            echo json_encode(['error'=>'Заказ не найден']);
+        Yii::app()->end();
+    }
+
 }

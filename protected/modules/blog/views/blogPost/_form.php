@@ -16,6 +16,11 @@
 	</div>
 
 	<div class="row">
+		<div class="label"><?php echo $form->labelEx($model,'date_create'); ?></div>
+		<div><?php echo $form->dateField($model,'date_create'); ?></div>
+	</div>
+
+	<div class="row">
 		<div class="label"><?php echo $form->labelEx($model,'image'); ?></div>
 		<div><?php echo $form->fileField($model,'image'); ?></div>
 	</div>

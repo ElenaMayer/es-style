@@ -44,7 +44,6 @@ class OrderHistoryController extends Controller
 			$model->attributes = $_POST['OrderHistory'];
 			$model->id = floatval(Yii::app()->dateFormatter->format('yyMMdd', $model->date_create)) . floatval(Yii::app()->dateFormatter->format('HHmmss', time()));
 			if($model->save()) {
-				$this->saveModelsToOrder($model->id);
 				OrderHistory::refreshOrderNewSum();
 				$this->redirect(array('index'));
 			}
@@ -70,7 +69,6 @@ class OrderHistoryController extends Controller
 			$model->attributes=$_POST['OrderHistory'];
 
 			if($model->save()) {
-				$this->saveModelsToOrder($model->id);
                 if($model->status != $oldStatus)
                     $this->statusChanged($model);
                 OrderHistory::refreshOrderSum();
@@ -81,23 +79,6 @@ class OrderHistoryController extends Controller
 			'model'=>$model,
 			'modelCartItem' => $modelCartItem
 		));
-	}
-
-	private function saveModelsToOrder($order_id){
-		if(isset($_POST['CartItemNew'])){
-			foreach ($_POST['CartItemNew'] as $cartItem){
-				$newItem = new CartItem();
-				$newItem->attributes = $cartItem;
-				$newItem->order_id = $order_id;
-				if ($newItem->photo->is_sale){
-					$newItem->price = $newItem->photo->old_price;
-					$newItem->new_price = $newItem->photo->new_price;
-				} else {
-					$newItem->price = $newItem->photo->price;
-				}
-				$newItem->save();
-			}
-		}
 	}
 
     private function statusChanged($model){

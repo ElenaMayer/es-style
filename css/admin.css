@@ -352,3 +352,7 @@ div.form .row.buttons.save_button {
 #order-history-form div.buttons.remind_button {
     text-align: left;
 }
+.delete_model {
+    float: right;
+    padding-top: 26px;
+}
