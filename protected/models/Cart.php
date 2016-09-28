@@ -112,7 +112,7 @@ class Cart extends CActiveRecord
 		$weight = 0;
         foreach($this->cartItems as $item){
             if($item->photo->is_available) {
-                $subtotal += $item->photo->is_sale ? $item->photo->old_price : $item->photo->price * $item->count;
+                $subtotal += $item->photo->is_sale ? $item->photo->old_price * $item->count : $item->photo->price * $item->count;
                 $count += $item->count;
 				$weight += $item->photo->weight * $item->count;
                 if ($item->photo->is_sale) {

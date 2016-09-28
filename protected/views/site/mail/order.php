@@ -248,7 +248,7 @@
                                             <td></td>
                                             <td style="text-align: center;">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= count($order->cartItems) ?>
+                                                    <?= $order->getOrderItemsCount() ?>
                                                 </font>
                                             </td>
                                             <td style="text-align: center;">

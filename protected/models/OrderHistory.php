@@ -27,8 +27,6 @@
 class OrderHistory extends CActiveRecord
 {
 
-    public $itemsCount;
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -241,5 +239,13 @@ class OrderHistory extends CActiveRecord
             $sum += $order->total;
         }
         Yii::app()->request->cookies['orderAvailableSum'] = new CHttpCookie('orderAvailableSum', $sum);
+    }
+
+    public function getOrderItemsCount(){
+        $count = 0;
+        foreach ($this->cartItems as $item) {
+            $count += $item->count;
+        }
+        return $count;
     }
 }
