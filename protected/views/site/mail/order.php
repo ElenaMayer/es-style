@@ -145,7 +145,7 @@
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Товаров</b></font>
                                             </td>
                                             <td style="text-align: right;">
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= count($order->cartItems) ?> шт.</font>
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><?= $order->getOrderItemsCount() ?> шт.</font>
                                             </td>
                                         </tr>
                                         <tr>
