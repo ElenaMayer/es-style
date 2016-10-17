@@ -370,7 +370,8 @@ class SiteController extends Controller {
         $order->sale = $cart->sale;
         $order->total = $cart->subtotal - $cart->sale + $shipping;
         $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
-        $order->address = $user->postcode . ",<br>" . $user->address;
+        $order->postcode = $user->postcode;
+        $order->address = $user->address;
         if ($order->save()){
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;

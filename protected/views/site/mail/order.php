@@ -126,6 +126,21 @@
                                             <td height="10" colspan="2"></td>
                                         </tr>
                                         <tr valign="top" align="left" style="height: 25px;">
+                                            <td width="100">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <b>Телефон</b>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                    <?= $order->phone ?>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="10" colspan="2"></td>
+                                        </tr>
+                                        <tr valign="top" align="left" style="height: 25px;">
                                             <td>
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <b>Адрес</b>
@@ -133,7 +148,7 @@
                                             </td>
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= $order->address;?>
+                                                    <?= $order->postcode;?>,</br><?= $order->address;?>
                                                 </font>
                                             </td>
                                         </tr>
@@ -242,13 +257,13 @@
                                         <tr valign="top" align="right" style="line-height: 2;">
                                             <td align="left">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    Итого
+                                                    <b>Итого</b>
                                                 </font>
                                             </td>
                                             <td></td>
                                             <td style="text-align: center;">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= $order->getOrderItemsCount() ?>
+                                                    <b><?= $order->getOrderItemsCount() ?></b>
                                                 </font>
                                             </td>
                                             <td style="text-align: center;">

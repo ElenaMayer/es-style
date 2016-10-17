@@ -47,7 +47,7 @@
                         <tbody>
                         <tr class="order-data__table-row">
                             <td class="order-data__table-cell">Адрес</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->address ?></td>
+                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->postcode;?>,</br><?= $order->address;?></td>
                         </tr>
                         </tbody>
                     </table>

@@ -352,6 +352,12 @@ body.main.modal-open {
 .header__social-item_ig:hover {
     background-position: -52px -26px;
 }
+.header__social-item_fb {
+    background-position: -78px 0;
+}
+.header__social-item_fb:hover {
+    background-position: -78px -26px;
+}
 
 .content > div {
     width: 960px;
@@ -1384,6 +1390,7 @@ h3.news {
 }
 .model .table__column_left {
     width: 40%;
+    background-color: #eeeeee;
 }
 .model .model_photo {
     padding-right: 5px;

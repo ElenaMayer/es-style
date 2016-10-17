@@ -160,6 +160,19 @@
             $('.size').hide();
             $('.uni_size').show();
         }
+        sub_cat = $("#Photo_subcategoryArr");
+        if(sub_cat.children().length == 0){
+            cat = $("#Photo_category").val();
+            if(cat.length > 0) {
+                i = 0;
+                $.each(subcategory[cat], function (key, value) {
+                    input = '<input id="Photo_subcategoryArr_' + i + '" value="' + key + '" type="checkbox" name="Photo[subcategoryArr][]">';
+                    label = '<label for="Photo_subcategoryArr_' + i + '">' + value + '</label>';
+                    sub_cat.append(input, label);
+                    i++;
+                });
+            }
+        }
     });
     $("#Photo_is_sale").click(function() {
         if($(this).prop('checked')) {

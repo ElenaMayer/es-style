@@ -362,9 +362,7 @@ class Photo extends CActiveRecord
     }
     
     public function getArticlesByCategory($category){
-        $model = $this->findAllByAttributes([
-            'category'=>$category,
-            ]);
+        $model = $this->findAllByAttributes(['category'=>$category,], ['order' => 'article']);
         $articles = [];
         foreach ($model as $item) {
             $articles[$item->id] = $item->article;

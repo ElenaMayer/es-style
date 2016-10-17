@@ -44,6 +44,7 @@ $('.search-form form').submit(function(){
     'columns'=>array(
         'id',
         'addressee',
+        'postcode',
         array(
             'name'=>'status',
             'value'=>'Yii::app()->params["orderStatuses"][$data->status]',

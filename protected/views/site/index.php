@@ -11,9 +11,6 @@ $this->pageTitle=Yii::app()->name;
                     'image' => $this->bu('data/i/carousel_fourth.jpg'),
                 ),
                 array(
-                    'image' => $this->bu('data/i/carousel_second.jpg?2'),
-                ),
-                array(
                     'image' => $this->bu('data/i/carousel_first.jpg?1'),
                 ),
                 array(

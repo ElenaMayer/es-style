@@ -67,6 +67,11 @@
         <div><?php echo $form->textField($model,'email'); ?></div>
     </div>
 
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'postcode'); ?></div>
+        <div class="long_field"><?php echo $form->textField($model,'postcode'); ?></div>
+    </div>
+
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'addressee'); ?></div>
         <div class="long_field"><?php echo $form->textField($model,'addressee'); ?></div>
