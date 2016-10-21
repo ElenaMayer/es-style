@@ -1,5 +1,5 @@
 <div class="cart-total__price cart-total__price_subtotal">
-    <span class="cart-total__price-title">Подытог</span>
+    <span class="cart-total__price-title">Подитог</span>
     <span class="cart-subtotal-val"><?= $model->subtotal ?> руб.</span>
 </div>
 <?php if($model->sale > 0) :?>

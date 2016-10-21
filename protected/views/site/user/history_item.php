@@ -16,7 +16,7 @@
                     <table class="order-data__table">
                         <tbody>
                         <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Подытог</td>
+                            <td class="order-data__table-cell">Подитог</td>
                             <td class="order-data__table-cell order-data__table-cell_right"><?= $order->subtotal ?>&nbsp;руб.</td>
                         </tr>
                         <?php if($order->sale > 0) :?>
