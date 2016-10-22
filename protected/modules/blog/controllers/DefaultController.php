@@ -40,6 +40,7 @@ class DefaultController extends Controller {
         $post = BlogPost::model()->findByAttributes(['is_show' => true, 'url' => $url]);
         $comments = Comment::model()->findAllByAttributes(['is_show' => true, 'type' => 'blog_post', 'item_id' => $post->id]);
         $comment = new Comment;
+        $comment->scenario = 'blogPost';
         if (!Yii::app()->user->isGuest)
             $comment->name = Yii::app()->user->name;
         $this->pageTitle=Yii::app()->name .' - '. $post->title;

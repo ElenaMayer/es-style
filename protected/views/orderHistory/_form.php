@@ -220,7 +220,6 @@
             type: "POST",
             dataType: "html",
             success: function (data) {
-                console.log(data);
                 var is_json = true;
                 try {
                     var json = $.parseJSON(data);
@@ -246,7 +245,6 @@
                 type: "POST",
                 dataType: "html",
                 success: function (data) {
-                    console.log(data);
                     var is_json = true;
                     try {
                         var json = $.parseJSON(data);

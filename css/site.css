@@ -970,7 +970,8 @@ body.main.modal-open {
     background-color: #f5f5f5;
     font-weight: 700;
 }
-.order {
+.order,
+.reviews {
     padding: 40px;
 }
 
@@ -985,7 +986,7 @@ body.main.modal-open {
     margin-bottom: 21px;
 }
 
-.contact h1,
+.reviews h1,
 .order h1 {
     color: #27292c;
     margin: -26px 0 26px;
@@ -1257,7 +1258,8 @@ h3.news {
     background: url(../data/i/user.png) no-repeat;
 }
 
-.button:hover, .button:active {
+.button:not(.button_disabled):hover,
+.button:not(.button_disabled):active {
     background: #f2f2f2;
     background: -webkit-linear-gradient(top,#fff,#e7e7e7);
     background: -moz-linear-gradient(top,#fff,#e7e7e7);
@@ -1266,7 +1268,7 @@ h3.news {
     text-decoration: blink;
 }
 
-.basket-button:active {
+.basket-button:not(.button_disabled):active {
     box-shadow: 0 0 0 2px rgba(255,215,119,.3),inset 0 1px 4px rgba(0,0,0,.25);
     background: -webkit-linear-gradient(top,#ac6174, #85364a);
     background: -moz-linear-gradient(top,#ac6174, #85364a);
@@ -1275,7 +1277,7 @@ h3.news {
     text-decoration: blink;
 }
 
-.button_blue:hover {
+.button_blue:not(.button_disabled):hover {
     background: #c37689;
     background: -webkit-linear-gradient(top,#c37689,#9e3c5d);
     background: -moz-linear-gradient(top,#c37689,#9e3c5d);
@@ -2029,6 +2031,275 @@ h3.news {
     color: red;
 }
 
+/* Reviews */
+
+.reviews .form-group label.control-label,
+.reviews .comment-counter{
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: block;
+}
+.reviews .comment-counter {
+    padding-left: 20px;
+}
+.reviews textarea.form-control {
+    height: 180px;
+}
+.reviews .comments {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(0,0,0,.05);
+    clear: both;
+}
+.reviews .is_guest_comment_msg {
+    padding: 10px 0 20px;
+    color: #9e3c5d;
+    font-weight: bold;
+}
+.reviews .review_modal {
+    text-align: center;
+}
+.reviews .image_file {
+    padding: 20px 0;
+    text-align: -webkit-center;
+}
+.reviews .table__right-column {
+    padding-left: 25%;
+    text-align: right;
+}
+.reviews .review_photo {
+    max-width: 100%;
+    max-height: 400px;
+}
+.reviews .table__left-column {
+    padding-top: 0;
+    width: 25%;
+    text-align: center;
+}
+.reviews .review_submit {
+    margin-top: 20px;
+    float: right;
+}
+.reviews .btn-default:hover,
+.reviews .btn-default:focus,
+.reviews .btn-default:active,
+.reviews .btn-default.active,
+.reviews .btn-default.review_submit.button_disabled:hover,
+.reviews .btn-default.review_submit.button_disabled:focus,
+.reviews .btn-default.review_submit.button_disabled:active,
+.reviews .btn-default.review_submit.button_disabled.active {
+    background-color: #9e3c5d;
+    color: #fff;
+    border-color: #9e3c5d;
+}
+.reviews .btn-default {
+    border-color: #9e3c5d;
+    color: #9e3c5d;
+    -webkit-transition: background-color .25s ease-out;
+     transition: background-color .25s ease-out;
+}
+.reviews .btn-default.review_submit  {
+    background-color: #9e3c5d;
+}
+.reviews .btn-default.review_submit:not(.button_disabled):hover,
+.reviews .btn-default.review_submit:not(.button_disabled):focus,
+.reviews .btn-default.review_submit:not(.button_disabled):active,
+.reviews .btn-default.review_submit:not(.button_disabled).active {
+    background-color: #ff3d00;
+    border-color: #ff3d00;
+}
+.reviews .review_submit .button__title {
+    color: #fff;
+}
+.reviews .review_submit.button_disabled {
+    margin-bottom: 10px;
+}
+.reviews .btn-default.disabled,
+.reviews .btn-default[disabled],
+.reviews .btn-default.disabled:hover,
+.reviews .btn-default[disabled]:hover,
+.reviews .btn-default.disabled:focus,
+.reviews .btn-default[disabled]:focus,
+.reviews .btn-default.disabled:active,
+.reviews .btn-default[disabled]:active,
+.reviews .btn-default.disabled.active,
+.reviews .btn-default[disabled].active {
+    border-color: #9e3c5d;
+}
+.reviews .btn-default .badge {
+    background-color: #9e3c5d;
+}
+.reviews .form-control.error {
+    border-color: #a94442;
+}
+.reviews div.help-block.error {
+    padding: 0;
+    font-size: 13px;
+    color: #a94442;
+}
+.reviews .error_form .review_submit {
+    margin: 0 0 5px 0;
+}
+.reviews .review_modal {
+    text-align: center;
+}
+.reviews .table__row {
+    margin-bottom: 10px;
+    display: block;
+}
+.reviews .commententry,
+.reviews .commententry_admin {
+    white-space: pre-line;
+    margin-top: -10px;
+    clear: both;
+    font-size: 14px;
+}
+.reviews .review_rating_icon {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    vertical-align: top;
+    background: url('../data/i/star.png') 0 0 no-repeat;
+}
+.reviews .review_rating_icon.inactive {
+    background-position: 0 -23px;
+}
+.reviews .review_rating_icon.disabled {
+    background-position: 0 -23px;
+    cursor: default;
+}
+.reviews .review_rating {
+    display: inline;
+    top: 25px;
+    right: 30px;
+    position: relative;
+}
+.reviews .error_form .review_rating {
+    top: 5px;
+}
+.reviews .com-meta {
+    float: left;
+    margin: 0;
+}
+.reviews .rating {
+    text-align: right;
+}
+.reviews .comment_ansver {
+    text-align: right;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(0,0,0,.05);
+}
+.reviews .commentimg {
+    max-width: 100%;
+}
+
+.com-list-noava {
+    clear: both;
+    margin: 20px 0;
+    padding: 0;
+    list-style-type: none;
+}
+.com-list-noava .commentstd:nth-child(odd) {
+    background-color: #fafafa;
+    border: none;
+}
+.com-meta .user_name,
+.com-meta .user_city {
+    font-weight: bold;
+}
+.com-meta_admin .admin_name {
+    font-weight: bold;
+    color: #ca0600;
+}
+.com-meta .user_city {
+    margin-left: 5px;
+}
+
+.com-list-noava .commentstd .com-meta .date,
+.com-list-noava .commentstd .com-meta_admin .date {
+    display: inline-block;
+    margin-left: 10px;
+    color: #7d818e;
+    font-size: .8em;
+}
+.com-list-noava .commentstd {
+    padding: 20px;
+}
+.comments {
+    font: 400 18px/1.6 Brandon Text,sans-serif;
+    color: #4e5056;
+}
+
+/* File button */
+.content .input-group .form-control {
+    width: 50%;
+}
+.content .input-group-btn:first-child>.btn,
+.content .input-group-btn:first-child>.btn-group {
+    margin-right: -2px;
+}
+
+/* Pager */
+.site_pager {
+    text-align: center;
+}
+
+a.button_border,
+.site_pager ul.yiiPager a:link,
+.site_pager ul.yiiPager a:visited {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.33333;
+    letter-spacing: .03333em;
+    text-shadow: .06667em .06667em .2em rgba(0,0,0,.05);
+    border: .06667em solid hsla(0,0%,100%,.1);
+    will-change: background-color,color,border;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    font-size: 15px;
+    padding: .8em 1.6em;
+    border-radius: 1.4em;
+    background-color: transparent;
+    border-color: rgba(158, 60, 93, 0.5);
+    color: #9e3c5d;
+    -webkit-transition: background-color .15s ease-out,color .25s ease-in;
+    transition: background-color .15s ease-out,color .25s ease-in;
+}
+a.button_border:hover,
+.site_pager ul.yiiPager a:hover {
+    background-color: #9e3c5d;
+    color: #fff;
+}
+.site_pager ul.yiiPager .page {
+    background: #fff;
+}
+.site_pager ul.yiiPager a:link {
+    padding: 10px 15px;
+    margin: 0 2px;
+}
+.site_pager .page.selected,
+.site_pager .page.selected a:link,
+.site_pager .page.selected a:hover,
+.site_pager .page.selected a:visited {
+    background: #9e3c5d;
+    color: white;
+}
+.site_pager ul.yiiPager .first,
+.site_pager ul.yiiPager .last {
+    display: inherit;
+}
+
 /*
 
 IPad 768×1024
@@ -2122,7 +2393,7 @@ IPhone 6 Plus 414×736
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
 
     /*Здесь стили более разумных, но все еще мобильных устройств. Android, iPhone  и так далее.*/
     .header__logo
@@ -2302,9 +2573,15 @@ IPhone 6 Plus 414×736
     .list {
         width: 100%;
     }
+    .reviews .table__left-column {
+        width: 35%;
+    }
+    .reviews .table__right-column {
+        padding-left: 35%;
+    }
 }
 
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 480px) {
     .catalog__dd {
         float: none;
     }
@@ -2427,6 +2704,19 @@ IPhone 6 Plus 414×736
     .history .cart-item__cell_total {
         text-align: left;
     }
+    .reviews .review_rating {
+        display: block;
+        top: 10px;
+    }
+    .reviews .btn-default.review_submit {
+        margin-bottom: 10px;
+    }
+    .reviews .table__left-column {
+        width: 50%;
+    }
+    .reviews .table__right-column {
+        padding-left: 50%;
+    }
 }
 @media only screen and (max-width: 320px) {
     .header__logo {
@@ -2465,5 +2755,12 @@ IPhone 6 Plus 414×736
     }
     .products-catalog__head {
         margin-right: 10px;
+    }
+    .reviews .table__right-column {
+        padding-left: 0;
+        border-top: none;
+    }
+    .reviews .table__left-column {
+        width: 100%;
     }
 }

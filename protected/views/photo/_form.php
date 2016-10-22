@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'subcategory'); ?></div>
-            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'subcategoryArr',isset($model->category)?Yii::app()->params['subcategories'][$model->category]:[]); ?></div>
+            <div class="checkbox_list"><?php echo $form->checkBoxList($model,'subcategoryArr',(isset($model->category)&&isset(Yii::app()->params['subcategories'][$model->category]))?Yii::app()->params['subcategories'][$model->category]:[]); ?></div>
         </div>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'article'); ?></div>

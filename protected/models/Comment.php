@@ -11,12 +11,19 @@
  * @property string $type
  * @property integer $item_id
  * @property integer $is_show
+ * @property string $img
+ * @property integer $rating
+ * @property string $city
  * @property string $date_create
  */
 class Comment extends CActiveRecord
 {
 
     public $is_show = 1;
+    public $image;
+    public $imageHeight = 300;
+    public $imageWidth = 600;
+    public $answer;
 
 	/**
 	 * @return string the associated database table name
@@ -34,12 +41,14 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, item_id, is_show', 'numerical', 'integerOnly'=>true),
-			array('name, comment, type', 'length', 'max'=>255),
+			array('user_id, item_id, is_show, rating', 'numerical', 'integerOnly'=>true),
+			array('img, name, type, city', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()')),
 			array('id, user_id, item_id, name, comment, type, is_show, date_create', 'safe', 'on'=>'search'),
-            array('name, comment', 'required', 'message'=>'Это поле необходимо заполнить.'),
+            array('comment', 'required', 'message'=>'Это поле необходимо заполнить.'),
+            array('name', 'required', 'on'=>'blogPost', 'message'=>'Это поле необходимо заполнить.'),
+            array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true),
 		);
 	}
 
@@ -64,13 +73,25 @@ class Comment extends CActiveRecord
 			'id' => 'Id',
 			'user_id' => 'Пользователь',
 			'name' => 'Имя',
+            'rating' => 'Рейтинг',
+            'city' => 'Город',
 			'comment' => 'Комментарий',
 			'type' => 'Тип',
             'item_id' => 'Id элемента',
 			'is_show' => 'Показывать',
+            'img' => 'Фото',
+            'image' => 'Загрузить фото',
 			'date_create' => 'Дата создания',
 		);
 	}
+
+    public function init()
+    {
+        if ($this->scenario == 'create' && !Yii::app()->user->isGuest) {
+            $this->name = Yii::app()->user->name;
+        }
+    }
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -111,4 +132,34 @@ class Comment extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    protected function beforeSave(){
+        if(!parent::beforeSave())
+            return false;
+        if($image=CUploadedFile::getInstance($this,'image')){
+            $img_name = $this->user_id.'_'.Yii::app()->dateFormatter->format('yyMMddHms', time()).'.'.$image->extensionName;
+            $this->img=$img_name;
+            $image->saveAs(Yii::getPathOfAlias('data.comment').DIRECTORY_SEPARATOR.$img_name);
+            $this->prepareImage();
+        }
+        return true;
+    }
+
+    public function prepareImage(){
+        Yii::app()->image
+            ->load(Yii::getPathOfAlias('data.comment').DIRECTORY_SEPARATOR.$this->img)
+            ->resize($this->imageWidth, $this->imageHeight)
+            ->save(Yii::getPathOfAlias('data.comment').DIRECTORY_SEPARATOR.$this->img);
+    }
+
+    public function getImageUrl() {
+        return Yii::app()->getBaseUrl().'/data/comment/'.$this->img;
+    }
+
+    protected function afterFind(){
+        parent::afterFind();
+
+        $this->answer = Comment::model()->findByAttributes(['item_id' => $this->id]);
+    }
+
 }

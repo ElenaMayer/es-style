@@ -53,7 +53,6 @@
             type: 'POST',
             data: $("#comment-form").serialize(),
             success: function (responseText) {
-                console.log($('#comment-data'));
                 $('#comment-data').html(responseText);
                 $("#comment-form").find('textarea').val('');
             }

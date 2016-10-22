@@ -432,4 +432,71 @@ class SiteController extends Controller {
         else
             return true;
     }
+
+    public function actionReviews(){
+        $this->reviews();
+    }
+
+    public function actionReviewsWithPage($page){
+        $this->reviews($page);
+    }
+
+    public function reviews($page = 1){
+        $this->pageTitle = Yii::app()->name.' - '.'Отзывы';
+        $userPostcode = !Yii::app()->user->isGuest ? User::model()->findByPk(Yii::app()->user->id)->postcode : null;
+
+        if(isset($_POST['Comment'])) {
+            $comment = new Comment;
+            $comment->attributes=$_POST['Comment'];
+            $comment->type='reviews';
+            $comment->user_id=Yii::app()->user->id;
+            if ($comment->save()) {
+                $this->sendReviewMailToAdmin($comment);
+                $this->layout='//layouts/column1';
+            }
+        }
+        $this->render('reviews/reviews', [
+            'userPostcode' => $userPostcode,
+            'reviews' => $this->getActiveReviewsOnPage($page),
+            'newReview' => new Comment('create'),
+            'pagination' => $this->getPagerOnPage($page)
+        ]);
+    }
+
+    private function getActiveReviewsOnPage($page){
+
+        $comments = Comment::model()->findAll($this->getReviewsCriteriaOnPage($page));
+        return $comments;
+    }
+
+    private function getPagerOnPage($page){
+
+        $criteria = $this->getReviewsCriteriaOnPage($page);
+        $count = Comment::model()->count($criteria);
+        $pagination = new CPagination($count);
+        $pagination->pageSize = Yii::app()->params['reviewsPerPage'];
+        $pagination->applyLimit($criteria);
+        $pagination->currentPage = $page - 1;
+        $pagination->route = '/reviews';
+        return $pagination;
+    }
+
+    private function getReviewsCriteriaOnPage($page){
+        $criteria = new CDbCriteria();
+        $criteria->compare('is_show', 1);
+        $criteria->compare('type', 'reviews');
+        $criteria->limit = Yii::app()->params['reviewsPerPage'];
+        $criteria->offset = $criteria->limit * ($page - 1);
+        $criteria->order = "date_create DESC";
+        return $criteria;
+    }
+
+    public function sendReviewMailToAdmin($comment, $error = false){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->to = Yii::app()->params['emailTo'];
+        $mail->subject = "Новый отзыв";
+        $mail->message = $this->render('mail/review',array('comment'=>$comment),true);
+        $mail->send();
+    }
 }

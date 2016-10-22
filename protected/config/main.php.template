@@ -58,6 +58,8 @@ return array(
                 'api/<action:\w+>'=>'api/<action>',
                 'blog/<url:\w+>'=>'blog/default/post',
                 'blog/page/<page:\d+>'=>'blog/default/indexWithPage',
+                'reviews'=>'site/reviews',
+                'reviews/page/<page:\d+>'=>'site/reviewsWithPage',
             ),
 		),
 		'db'=>array(

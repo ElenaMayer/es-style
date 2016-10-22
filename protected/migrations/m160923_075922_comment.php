@@ -8,7 +8,7 @@ class m160923_075922_comment extends CDbMigration
             'id' => 'pk',
             'user_id' => 'int',
             'name' => 'string',
-            'comment' => 'string',
+            'comment' => 'text',
             'type' => 'string',
             'item_id' => 'int',
             'is_show' => 'boolean',

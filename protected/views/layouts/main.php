@@ -11,6 +11,7 @@
     <?php Yii::app()->clientScript->registerScriptFile('/js/magiczoom.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/social-likes.min.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/jquery_lazyload-1.9.3/jquery.lazyload.js', CClientScript::POS_HEAD) ?>
+    <?php Yii::app()->clientScript->registerScriptFile('/js/bootstrap-filestyle.min.js', CClientScript::POS_HEAD) ?>
 
     <!-- blueprint CSS framework -->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
@@ -46,13 +47,6 @@
 <body class="main">
     <div class="page">
         <div class="header">
-            <!--div style="
-                    background-color: white;
-                    padding: 13px;
-                    color: rgb(207, 30, 25);
-                    font-size: 18px;">
-                Дорогие покупатели! Временно не будет </br>осуществляться прием и отправка оптовых заказов с <strong>1 по 8 июля</strong>. Спасибо за понимание!
-            </div-->
             <div class="header__content">
                 <a href="/" class="header__logo"></a>
                 <!--a href="/" class="header__logo" style="top: 85px;"></a-->
@@ -119,7 +113,8 @@
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
                                     array('label' => 'Статьи', 'url' => '/blog', 'active'=>strpos(Yii::app()->request->pathInfo, 'blog')===false? false:true),
                                     array('label' => 'Доставка', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
-                                    array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
+                                    array('label' => 'Отзывы', 'url' => '/reviews', 'active'=>strpos(Yii::app()->request->pathInfo, 'reviews')===false? false:true),
+//                                    array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
                                 )
                             )
                         )

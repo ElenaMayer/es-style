@@ -68,7 +68,6 @@
             $.post( "/blog/default/like/id/" + id, function(data) {
                 e = $('#'+id+'.blog_like_icon');
                 e.addClass('like');
-                console.log(e.parent('.blog_like').children('p'));
                 count = e.parent('.blog_like').children('p');
                 count.text(parseInt(count.text())+1);
             }, "json")

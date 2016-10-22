@@ -7,6 +7,8 @@ return array(
     ],
     'newsCount' => 3,
     'newPhotoCountInMail' => 6,
+    'reviewsPerPage' => 6,
+    'maxPagerButtonCount' => 5,
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',
