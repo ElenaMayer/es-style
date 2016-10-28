@@ -25,6 +25,12 @@
                                 <td class="order-data__table-cell order-data__table-cell_right"><?= $order->sale ?>&nbsp;руб.</td>
                             </tr>
                         <?php endif ?>
+                        <?php if($order->coupon_sale > 0) :?>
+                            <tr class="order-data__table-row">
+                                <td class="order-data__table-cell">Скидка по купону</td>
+                                <td class="order-data__table-cell order-data__table-cell_right"><?= $order->coupon_sale ?>&nbsp;руб.</td>
+                            </tr>
+                        <?php endif ?>
                         <tr class="order-data__table-row">
                             <td class="order-data__table-cell">Доставка</td>
                             <td class="order-data__table-cell order-data__table-cell_right"><?= $order->shipping ?>&nbsp;руб.</td>

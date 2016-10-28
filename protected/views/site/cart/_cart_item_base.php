@@ -16,8 +16,11 @@
 </div>
 <?php if($cartItem->photo->is_sale) :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price?>&nbsp;руб.
-        <div class="cart-item__old-price"><?= $cartItem->photo->old_price?>&nbsp;руб.</div>
+    <div class="cart-item__old-price"><?= $cartItem->photo->old_price?>&nbsp;руб.</div>
+<?php elseif($cartItem->cart->coupon_id) :?>
+    <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price * (100 - $cartItem->cart->coupon->sale)/100 ?>&nbsp;руб.
+    <div class="cart-item__old-price"><?= $cartItem->photo->price ?>&nbsp;руб.</div>
 <?php else :?>
-        <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price?>&nbsp;руб.
+    <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->price?>&nbsp;руб.
 <?php endif; ?>
 </div>

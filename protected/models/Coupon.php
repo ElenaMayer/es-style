@@ -1,31 +1,35 @@
 <?php
 
 /**
- * This is the model class for table "cart_item".
+ * This is the model class for table "coupon".
  *
- * The followings are the available columns in table 'cart_item':
+ * The followings are the available columns in table 'coupon':
  * @property integer $id
- * @property integer $cart_id
- * @property integer $item_id
- * @property string $size
- * @property integer $count
- * @property integer $price
- * @property integer $new_price
- * @property string $order_id
+ * @property string $coupon
+ * @property integer $sale
+ * @property integer $is_active
+ * @property integer $is_reusable
+ * @property integer $is_used
+ * @property string $until_date
  * @property string $date_create
  *
  * The followings are the available model relations:
- * @property Cart $cart
- * @property Photo $item
+ * @property Cart[] $carts
+ * @property User[] $users
  */
-class CartItem extends CActiveRecord
+class Coupon extends CActiveRecord
 {
+
+    public $count;
+    public $is_active = 1;
+    public $is_used = 0;
+
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'cart_item';
+		return 'coupon';
 	}
 
 	/**
@@ -36,14 +40,11 @@ class CartItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, item_id, count, price, new_price', 'numerical', 'integerOnly'=>true),
-			array('size', 'length', 'max'=>255),
-			array('order_id', 'length', 'max'=>225),
-			array('date_create', 'safe'),
+			array('sale, is_active, is_reusable, is_used, count', 'numerical', 'integerOnly'=>true),
+			array('coupon', 'length', 'max'=>255),
+			array('until_date, date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, cart_id, item_id, size, count, price, new_price, order_id, date_create', 'safe', 'on'=>'search'),
+			array('id, coupon, sale, is_active, is_reusable, is_used, until_date, date_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,9 +56,8 @@ class CartItem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cart' => array(self::BELONGS_TO, 'Cart', 'cart_id'),
-			'photo' => array(self::BELONGS_TO, 'Photo', 'item_id'),
-            'order' => array(self::BELONGS_TO, 'OrderHistory', 'order_id'),
+			'carts' => array(self::HAS_MANY, 'Cart', 'coupon_id'),
+			'users' => array(self::HAS_MANY, 'User', 'coupon_id'),
 		);
 	}
 
@@ -68,14 +68,14 @@ class CartItem extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'cart_id' => 'Cart',
-			'item_id' => 'Item',
-			'size' => 'Size',
-			'count' => 'Count',
-			'price' => 'Price',
-			'new_price' => 'New Price',
-			'order_id' => 'Order',
-			'date_create' => 'Date Create',
+			'coupon' => 'Купон',
+			'sale' => 'Скидка, %',
+			'is_active' => 'Активен',
+			'is_reusable' => 'Многоразовый',
+			'is_used' => 'Использован',
+			'until_date' => 'Использовать до',
+			'date_create' => 'Дата создания',
+            'count' => 'Количество, шт.',
 		);
 	}
 
@@ -98,13 +98,12 @@ class CartItem extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('cart_id',$this->cart_id);
-		$criteria->compare('item_id',$this->item_id);
-		$criteria->compare('size',$this->size,true);
-		$criteria->compare('count',$this->count);
-		$criteria->compare('price',$this->price);
-		$criteria->compare('new_price',$this->new_price);
-		$criteria->compare('order_id',$this->order_id,true);
+		$criteria->compare('coupon',$this->coupon,true);
+		$criteria->compare('sale',$this->sale);
+		$criteria->compare('is_active',$this->is_active);
+		$criteria->compare('is_reusable',$this->is_reusable);
+		$criteria->compare('is_used',$this->is_used);
+		$criteria->compare('until_date',$this->until_date,true);
 		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
@@ -116,23 +115,30 @@ class CartItem extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return CartItem the static model class
+	 * @return Coupon the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 
-	public function getSum(){
-		if (!empty($this->new_price))
-			return $this->new_price*$this->count;
-		elseif(!empty($this->price))
-			return $this->price*$this->count;
-        elseif(!empty($this->cart->coupon_id))
-            return $this->photo->price*$this->count*(100-$this->cart->coupon->sale)/100;
-		else
-			return $this->photo->price*$this->count;
+	public function generate(){
 
-	}
+        if (!$this->is_reusable) {
+            for ($i = 0; $i < $this->count; $i++){
+                $coupon = new Coupon();
+                $coupon->attributes = $this->attributes;
+                $coupon->coupon = uniqid();
+                $coupon->save();
+            }
+            return true;
+        } else {
+            return $this->save();
+        }
+    }
 
+    public function isUsed(){
+        $this->is_used = 1;
+        $this->save();
+    }
 }

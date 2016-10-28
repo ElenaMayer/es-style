@@ -91,6 +91,12 @@
         <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
         <div><?php echo $form->textField($model,'sale'); ?></div>
 	</div>
+    <?php if ($model->coupon_id): ?>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'coupon_sale'); ?></div>
+            <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. (<?php echo CHtml::encode($model->coupon->sale); ?>%)</div>
+        </div>
+    <?php endif; ?>
 
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'shipping'); ?></div>

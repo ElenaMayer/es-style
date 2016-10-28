@@ -15,6 +15,7 @@
         <div class="cart-total cart-total_threshold">
             <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
         </div>
+        <?php $this->renderPartial('/site/_coupon'); ?>
         <div class="cart-separator"></div>
         <div class="cart-navigation">
             <a href="/order/<?= $model->id?>" class="button button_blue button_big cart-navigation__order">

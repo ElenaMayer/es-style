@@ -368,17 +368,23 @@ class SiteController extends Controller {
         $cart = Yii::app()->cart->currentCart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
-        $order->total = $cart->subtotal - $cart->sale + $shipping;
+        $order->coupon_id = $cart->coupon_id;
+        $order->coupon_sale = $cart->coupon_sale;
+        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $shipping;
         $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
         if ($order->save()){
+            $order->coupon->isUsed();
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
                 if($item->photo->is_sale) {
                     $item->new_price = $item->photo->price;
                     $item->price = $item->photo->old_price;
+                } elseif($order->coupon_id) {
+                    $item->new_price = $item->photo->price * (100 - $order->coupon->sale) / 100;
+                    $item->price = $item->photo->price;
                 } else {
                     $item->price = $item->photo->price;
                 }

@@ -21,6 +21,8 @@
  * @property string $track_code
  * @property string $phone
  * @property string $email
+ * @property integer $coupon_id
+ * @property integer $coupon_sale
  *
  * The followings are the available model relations:
  * @property User $user
@@ -44,14 +46,14 @@ class OrderHistory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, address, subtotal, sale, shipping, total', 'required'),
-			array('user_id, is_paid, subtotal, sale, shipping, total, postcode', 'numerical', 'integerOnly'=>true),
+			array('user_id, is_paid, subtotal, sale, shipping, total, postcode, coupon_id, coupon_sale', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
 			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email, postcode', 'safe', 'on'=>'search'),
+			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email, postcode, coupon_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,6 +67,7 @@ class OrderHistory extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
             'cartItems' => array(self::HAS_MANY, 'CartItem', 'order_id'),
+            'coupon' => array(self::BELONGS_TO, 'Coupon', 'coupon_id'),
 		);
 	}
 
@@ -84,6 +87,8 @@ class OrderHistory extends CActiveRecord
             'addressee' => 'Получатель',
             'address' => 'Адрес',
             'subtotal' => 'Подитог',
+            'coupon_id' => 'Купон',
+            'coupon_sale' => 'Скидка по купону',
             'sale' => 'Скидка',
             'shipping' => 'Доставка',
             'total' => 'Итого',

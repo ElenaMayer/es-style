@@ -11,6 +11,7 @@
         'surname',
 		'phone',
 		'email',
+		'coupon_id',
         array(
             'name' => 'blocked',
             'type'=>'raw',

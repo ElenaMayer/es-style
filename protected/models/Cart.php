@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $is_active
+ * @property integer $coupon_id
  *
  * The followings are the available model relations:
  * @property User $user
@@ -16,6 +17,7 @@ class Cart extends CActiveRecord
 {
     public $subtotal;
     public $sale;
+    public $coupon_sale;
     public $total;
     public $count;
 	public $weight;
@@ -35,10 +37,10 @@ class Cart extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, is_active', 'numerical', 'integerOnly'=>true),
+			array('user_id, is_active, coupon_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, is_active', 'safe', 'on'=>'search'),
+			array('id, user_id, is_active, coupon_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,6 +54,7 @@ class Cart extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'cartItems' => array(self::HAS_MANY, 'CartItem', 'cart_id'),
+            'coupon' => array(self::BELONGS_TO, 'Coupon', 'coupon_id'),
 		);
 	}
 
@@ -64,6 +67,7 @@ class Cart extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'is_active' => 'Is Active',
+            'coupon_id' => 'Купон',
 		);
 	}
 
@@ -106,25 +110,39 @@ class Cart extends CActiveRecord
 	}
 
     public function afterFind(){
+        $this->calculateParams();
+    }
+
+    public function calculateParams(){
         $subtotal = 0;
         $sale = 0;
+        $coupon_sale = 0;
         $count = 0;
-		$weight = 0;
+        $weight = 0;
         foreach($this->cartItems as $item){
             if($item->photo->is_available) {
                 $subtotal += $item->photo->is_sale ? $item->photo->old_price * $item->count : $item->photo->price * $item->count;
                 $count += $item->count;
-				$weight += $item->photo->weight * $item->count;
+                $weight += $item->photo->weight * $item->count;
                 if ($item->photo->is_sale) {
                     $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
+                } else {
+                    if ($this->coupon_id) {
+                        if(!$this->coupon->is_used && $this->coupon->until_date >= date("Y-m-d")) {
+                            $coupon_sale += $item->photo->price * $item->count * $this->coupon->sale / 100;
+                        } else {
+                            $this->deleteCoupon();
+                        }
+                    }
                 }
             }
         }
         $this->subtotal = $subtotal;
         $this->sale = $sale;
+        $this->coupon_sale = $coupon_sale;
         $this->count = $count;
-        $this->total = $subtotal - $this->sale;
-		$this->weight = $weight;
+        $this->total = $subtotal - $this->sale - $this->coupon_sale;
+        $this->weight = $weight;
     }
 
     public function findAndAddCartItem($attributes){
@@ -168,5 +186,17 @@ class Cart extends CActiveRecord
             $item->cart_id = $this->id;
             $item->save();
         }
+    }
+
+    public function addCoupon($couponId){
+
+        $this->coupon_id = $couponId;
+        $this->save();
+        Yii::app()->cart->updateCart();
+    }
+
+    public function deleteCoupon(){
+        $this->coupon_id = null;
+        return $this->save();
     }
 }

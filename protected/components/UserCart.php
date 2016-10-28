@@ -22,4 +22,8 @@ class UserCart extends CApplicationComponent {
 
     }
 
+    public function updateCart(){
+        $this->init();
+    }
+
 }

@@ -19,6 +19,7 @@
  * @property integer $is_subscribed
  * @property string $date_create
  * @property integer $blocked
+ * @property integer $coupon_id
  */
 class User extends CActiveRecord
 {
@@ -122,6 +123,7 @@ class User extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'orders' => array(self::HAS_MANY, 'OrderHistory', 'user_id'),
+            'coupon' => array(self::BELONGS_TO, 'Coupon', 'coupon_id'),
         );
     }
 
@@ -151,6 +153,7 @@ class User extends CActiveRecord
             'blocked' => 'Заблокирован',
             'create_profile' => ' Зарегистрироваться для упрощения покупки',
             'payment' => 'Способ оплаты',
+            'coupon_id' => 'Купон',
             'date_create' => 'Дата создания',
         );
     }
@@ -182,6 +185,7 @@ class User extends CActiveRecord
         $criteria->compare('email',$this->email,true);
         $criteria->compare('sex',$this->sex,true);
         $criteria->compare('is_subscribed',$this->is_subscribed);
+        $criteria->compare('coupon_id',$this->coupon_id);
         $criteria->compare('blocked',$this->blocked);
 
         return new CActiveDataProvider($this, array(

@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog'),
+                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog', 'coupon', 'couponGenerate'),
                 'users'=>array('admin'),
             ),
             array('allow',
@@ -139,6 +139,29 @@ class AdminController extends Controller
         $model=new MailLog('search');
         $model->unsetAttributes();
         $this->render('mail_log',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionCoupon()
+    {
+        $model=new Coupon('search');
+        $model->unsetAttributes();
+        $this->render('coupon',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionCouponGenerate()
+    {
+        $model=new Coupon;
+        if(isset($_POST['Coupon'])) {
+            $model->attributes=$_POST['Coupon'];
+            if($model->generate()) {
+                $this->redirect(array('coupon'));
+            }
+        }
+        $this->render('coupon_generate',array(
             'model'=>$model,
         ));
     }
