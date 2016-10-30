@@ -31,11 +31,11 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog', 'coupon', 'couponGenerate'),
+                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog', 'coupon', 'couponGenerate', 'comments', 'commentView', 'orderView'),
                 'users'=>array('admin'),
             ),
             array('allow',
-                'actions'=>array('index','login'),
+                'actions'=>array('index','login','fromMail'),
                 'users'=>array('*'),
             ),
             array('deny',  // deny all users
@@ -50,10 +50,12 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
     {
-        if (!Yii::app()->user->isGuest){
-            $this->render('index');
-        } else {
+        if (Yii::app()->user->isGuest){
             $this->redirect(array('login'));
+        } elseif(Yii::app()->user->name !='admin') {
+            $this->redirect(array('/'));
+        } else {
+            $this->render('index');
         }
 
 	}
@@ -165,6 +167,15 @@ class AdminController extends Controller
             'model'=>$model,
         ));
     }
+
+    public function actionComments()
+    {
+        $model=new Comment('search');
+        $model->unsetAttributes();
+        $this->render('comments',array(
+            'model'=>$model,
+        ));
+    }
     
     public function actionUtmLog()
     {
@@ -172,6 +183,78 @@ class AdminController extends Controller
         $model->unsetAttributes();
         $this->render('utm',array(
             'model'=>$model,
+        ));
+    }
+
+    public function actionFromMail(){
+        if(!empty($_GET) && isset($_GET['action'])  && isset($_GET['hash'])){
+            $admin = User::model()->findByAttributes(['username' => 'admin']);
+            if ($admin->getAdminHash() == $_GET['hash']){
+                // $this->rejectReview(); - Отклонение отзыва
+                // $this->sendCouponMail(); - Отправка письма с купоном
+                return $this->$_GET['action'];
+            }
+        }
+        $this->redirect(array('/'));
+    }
+
+    public function rejectReview(){
+        if (isset($_GET['review_id'])) {
+            $review = Comment::model()->findByPk($_GET['review_id']);
+            if($review) {
+                $review->is_show = 0;
+                $review->save();
+                if($this->sendRejectReviewMail($review)){
+                    echo "Отправлено";
+                    return true;
+                } else
+                    echo "Ошибка при отправлении";
+            } else
+                echo "Отзыв не найден";
+        }
+        return false;
+    }
+
+    public function sendRejectReviewMail($review){
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->subject = "Ваш отзыв на ".Yii::app()->params['domain']." отклонен";
+        $mail->message = $this->render('/site/mail/reject_review', [], true);
+        $mail->to = $review->email;
+        return $mail->send();
+    }
+
+    public function sendCouponMail(){
+        if (isset($_GET['review_id'])) {
+            $review = Comment::model()->findByPk($_GET['review_id']);
+            if($review) {
+                if ($review->img)
+                    $sale = 15;
+                else
+                    $sale = 10;
+                $coupon = Coupon::model()->getOneOffCouponBySale($sale);
+                if($coupon){
+                    $this->layout = '//layouts/mail';
+                    $mail = new Mail();
+                    $mail->subject = "Подарок за отзыв от ".Yii::app()->params['domain']."!";
+                    $mail->message = $this->render('/site/mail/coupon', ['coupon' => $coupon], true);
+                    $mail->to = $review->email;
+                    if($mail->send()){
+                        echo "Отправлено";
+                        return true;
+                    } else
+                        echo "Ошибка при отправлении";
+                } else
+                    echo "Купоны со скидкой ".$sale."% закончились, надо сгенерить";
+            } else
+                echo "Отзыв не найден";
+        }
+        return false;
+    }
+
+    public function actionCommentView($id){
+        $this->render('comment_view',array(
+            'model'=>Comment::model()->findByPk($id),
         ));
     }
 }

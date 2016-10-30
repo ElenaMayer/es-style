@@ -7,6 +7,7 @@ class m161021_103622_comment_img extends CDbMigration
         $this->addColumn('comment', 'img', 'string');
         $this->addColumn('comment', 'rating', 'int');
         $this->addColumn('comment', 'city', 'string');
+        $this->addColumn('comment', 'email', 'string');
 
         $this->createTable('coupon', array(
             'id' => 'pk',

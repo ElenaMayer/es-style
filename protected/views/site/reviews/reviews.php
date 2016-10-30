@@ -104,6 +104,22 @@
                 $('.comment_name').removeClass('error');
                 $('.comment_name_error').addClass('hide');
             }
+            if ($('.comment_email').val().length == 0) {
+                $('.comment_email').addClass('error');
+                $('.comment_email_error').text('Это поле необходимо заполнить.');
+                $('.comment_email_error').removeClass('hide');
+                $('.table__right-column').addClass('error_form');
+                is_form_valid = false;
+            } else if(!isEmail($('.comment_email').val())) {
+                $('.comment_email').addClass('error');
+                $('.comment_email_error').text('Неверный формат email.');
+                $('.comment_email_error').removeClass('hide');
+                $('.table__right-column').addClass('error_form');
+                is_form_valid = false;
+            } else {
+                $('.comment_email').removeClass('error');
+                $('.comment_email_error').addClass('hide');
+            }
             if ($('.comment_text').val().length == 0) {
                 $('.comment_text').addClass('error');
                 $('.comment_text_error').removeClass('hide');
@@ -111,7 +127,7 @@
                 is_form_valid = false;
             } else {
                 $('.comment_text').removeClass('error');
-                $('.comment_name_error').addClass('hide');
+                $('.comment_text_error').addClass('hide');
             }
             if (is_form_valid) {
                 $(this).addClass('button_disabled').prop("disabled", true);
@@ -119,6 +135,11 @@
             }
         }
     });
+
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
 
     $('#Comment_image').change(function() {
         if (this.files && this.files[0]) {

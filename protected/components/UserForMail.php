@@ -12,4 +12,9 @@ class UserForMail extends CApplicationComponent {
         $this->email = $user->email;
         $this->hash = crypt($this->_model->id, $this->_model->name);
     }
+
+    public function setUserByUsername($username) {
+        $user = User::model()->findByAttributes(['username' => $username]);
+        $this->setUser($user);
+    }
 }

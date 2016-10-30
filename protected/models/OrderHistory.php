@@ -270,4 +270,14 @@ class OrderHistory extends CActiveRecord
         $this->total = $subtotal - $sale;
         return $this->save();
     }
+
+    public function reviewForCouponMailIsSent(){
+        $this->is_paid = 1;
+        $this->save();
+        $otherOrders = OrderHistory::model()->findAllByAttributes(['email' => $this->email, 'condition'=>'id <>'.$this->id]);
+        foreach ($otherOrders as $order){
+            $order->is_paid = 1;
+            $order->save();
+        }
+    }
 }

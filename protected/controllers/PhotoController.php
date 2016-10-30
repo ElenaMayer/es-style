@@ -183,7 +183,7 @@ class PhotoController extends Controller
         foreach($users as $user){
             if(!empty($user->email)){
                 Yii::app()->userForMail->setUser($user);
-                $mail->message = $this->render('/site/mail/newPhotos', [
+                $mail->message = $this->render('/site/mail/new_photos', [
                     'photos'=>Photo::model()->getNewPhotos()
                 ], true);
                 $mail->to = $user->email;

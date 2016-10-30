@@ -14,10 +14,17 @@
  * @property string $img
  * @property integer $rating
  * @property string $city
+ * @property string $email
  * @property string $date_create
  */
 class Comment extends CActiveRecord
 {
+    /*
+     * $type:
+     * reviews - Отзыв
+     * review_answer - Ответ на отзыв
+     * blog_post - Коментарии к статье
+     */
 
     public $is_show = 1;
     public $image;
@@ -42,7 +49,7 @@ class Comment extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, item_id, is_show, rating', 'numerical', 'integerOnly'=>true),
-			array('img, name, type, city', 'length', 'max'=>255),
+			array('img, name, type, city, email', 'length', 'max'=>255),
 			array('date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()')),
 			array('id, user_id, item_id, name, comment, type, is_show, date_create', 'safe', 'on'=>'search'),
@@ -75,6 +82,7 @@ class Comment extends CActiveRecord
 			'name' => 'Имя',
             'rating' => 'Рейтинг',
             'city' => 'Город',
+            'email' => 'Email',
 			'comment' => 'Комментарий',
 			'type' => 'Тип',
             'item_id' => 'Id элемента',
@@ -89,6 +97,14 @@ class Comment extends CActiveRecord
     {
         if ($this->scenario == 'create' && !Yii::app()->user->isGuest) {
             $this->name = Yii::app()->user->name;
+            $this->email = Yii::app()->user->email;
+        } elseif (!empty($_GET) && isset($_GET['user_id']) && isset($_GET['email']) && isset($_GET['hash'])){
+            $user = User::model()->findByPk($_GET['user_id']);
+            $hash = crypt($user->id, $user->name);
+            if ($user->email == $_GET['email'] && $hash == $_GET['hash']) {
+                $this->name = $user->name;
+                $this->email = $user->email;
+            }
         }
     }
 
@@ -115,10 +131,17 @@ class Comment extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('is_show',$this->is_show);
+        $criteria->compare('email',$this->email);
 		$criteria->compare('date_create',$this->date_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>'20',
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 
@@ -159,7 +182,7 @@ class Comment extends CActiveRecord
     protected function afterFind(){
         parent::afterFind();
 
-        $this->answer = Comment::model()->findByAttributes(['item_id' => $this->id]);
+        $this->answer = Comment::model()->findByAttributes(['item_id' => $this->id, 'type' => 'review_answer']);
     }
 
 }

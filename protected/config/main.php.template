@@ -44,6 +44,7 @@ return array(
 			'rules'=>array(
                 'admin/orderView/<id:\d+>'=>'admin/orderView',
                 'admin/orderDelete/<id:\d+>'=>'admin/orderDelete',
+                'admin/commentView/<id:\d+>'=>'admin/commentView',
                 'admin/priceDelete/<id:\d+>'=>'admin/priceDelete',
                 'admin/<controller:\w+>/<action:\w+>/' => '<controller>/<action>/',
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',

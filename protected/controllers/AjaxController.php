@@ -203,4 +203,47 @@ class AjaxController extends Controller
         Yii::app()->end();
     }
 
+    public function actionSendReviewForCouponMail() {
+        // is_paid - используется как флаг, что письмо уже отправлялось
+        $this->layout = '//layouts/mail';
+        $mail = new Mail();
+        $mail->subject = "Скидка за отзыв от ".Yii::app()->params['domain'];
+        $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (is_paid = 0 OR is_paid IS NULL) LIMIT ".$_POST['count']);
+        foreach($orders as $order){
+            if(!empty($order->user_id)) {
+                Yii::app()->userForMail->setUser($order->user);
+            }
+            $mail->message = $this->render('/site/mail/coupon_for_review', [
+                'order'=>$order
+            ], true);
+            $mail->to = $order->email;
+            if($mail->send())
+                $order->reviewForCouponMailIsSent();
+        }
+        echo true;
+        Yii::app()->end();
+    }
+
+    public function actionAddAnswerToComment(){
+        if (isset($_POST['comment_id']) && isset($_POST['answer'])){
+            $comment = new Comment;
+            $comment->type = 'review_answer';
+            $comment->email = 'admin';
+            $comment->item_id = $_POST['comment_id'];
+            $comment->comment = $_POST['answer'];
+            echo $comment->save();
+            Yii::app()->end();
+        }
+    }
+
+    public function actionSetCommentIsShow(){
+        if (isset($_POST['comment_id'])){
+            $comment = Comment::model()->findByPk($_POST['comment_id']);
+            print_r($comment->is_show);
+            $comment->is_show = ($comment->is_show) ? 0 : 1;
+            echo $comment->save();
+            Yii::app()->end();
+        }
+    }
+
 }

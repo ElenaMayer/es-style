@@ -375,7 +375,8 @@ class SiteController extends Controller {
         $order->postcode = $user->postcode;
         $order->address = $user->address;
         if ($order->save()){
-            $order->coupon->isUsed();
+            if($order->coupon_id)
+                $order->coupon->isUsed();
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
@@ -420,7 +421,7 @@ class SiteController extends Controller {
         if(!empty($_GET) && isset($_GET['id']) && isset($_GET['email']) && isset($_GET['hash'])){
             $user = User::model()->findByPk($_GET['id']);
             $hash = crypt($user->id, $user->name);
-            if($user->id == $_GET['id'] && $user->email == $_GET['email'] && $hash == $_GET['hash']) {
+            if($user->email == $_GET['email'] && $hash == $_GET['hash']) {
                 if ($user->unsubscribe())
                     $this->render('unsubscribe');
                 else
@@ -432,6 +433,7 @@ class SiteController extends Controller {
             throw new CHttpException(404,'К сожалению, страница не найдена.');
         }
     }
+
     public function isFilter(){
         if ($this->getSize() == 'все' && $this->getColor() == 'все')
             return false;
@@ -449,20 +451,20 @@ class SiteController extends Controller {
 
     public function reviews($page = 1){
         $this->pageTitle = Yii::app()->name.' - '.'Отзывы';
-        $userPostcode = !Yii::app()->user->isGuest ? User::model()->findByPk(Yii::app()->user->id)->postcode : null;
-
         if(isset($_POST['Comment'])) {
             $comment = new Comment;
             $comment->attributes=$_POST['Comment'];
             $comment->type='reviews';
-            $comment->user_id=Yii::app()->user->id;
+            if(!Yii::app()->user->isGuest)
+                $comment->user_id=Yii::app()->user->id;
             if ($comment->save()) {
+                Yii::app()->userForMail->setUserByUsername('admin');
                 $this->sendReviewMailToAdmin($comment);
                 $this->layout='//layouts/column1';
             }
         }
         $this->render('reviews/reviews', [
-            'userPostcode' => $userPostcode,
+            'userPostcode' => User::getPostcode(),
             'reviews' => $this->getActiveReviewsOnPage($page),
             'newReview' => new Comment('create'),
             'pagination' => $this->getPagerOnPage($page)
@@ -497,11 +499,11 @@ class SiteController extends Controller {
         return $criteria;
     }
 
-    public function sendReviewMailToAdmin($comment, $error = false){
+    public function sendReviewMailToAdmin($comment){
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->to = Yii::app()->params['emailTo'];
-        $mail->subject = "Новый отзыв";
+        $mail->subject = "Новый отзыв на ".Yii::app()->params['domain'];
         $mail->message = $this->render('mail/review',array('comment'=>$comment),true);
         $mail->send();
     }

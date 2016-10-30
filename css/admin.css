@@ -356,3 +356,13 @@ div.form .row.buttons.save_button {
     float: right;
     padding-top: 26px;
 }
+.comment_answer_form {
+    padding: 10px;
+    text-align: right;
+}
+.comment_answer_form textarea {
+    margin-bottom: 10px;
+}
+.comment_answer {
+    padding: 10px;
+}

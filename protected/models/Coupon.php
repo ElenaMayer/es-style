@@ -23,6 +23,7 @@ class Coupon extends CActiveRecord
     public $count;
     public $is_active = 1;
     public $is_used = 0;
+    public $is_reusable = 0;
 
 	/**
 	 * @return string the associated database table name
@@ -108,6 +109,12 @@ class Coupon extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>'20',
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            )
 		));
 	}
 
@@ -123,7 +130,6 @@ class Coupon extends CActiveRecord
 	}
 
 	public function generate(){
-
         if (!$this->is_reusable) {
             for ($i = 0; $i < $this->count; $i++){
                 $coupon = new Coupon();
@@ -140,5 +146,15 @@ class Coupon extends CActiveRecord
     public function isUsed(){
         $this->is_used = 1;
         $this->save();
+    }
+
+    public function getOneOffCouponBySale($sale){
+        $coupon = $this->findByAttributes(['is_active'=>1, 'is_reusable'=>0, 'is_used'=>0, 'condition'=>'until_date >= '.date("Y-m-d")]);
+        if ($coupon) {
+            $coupon->is_active = 0;
+            $coupon->save();
+            return $coupon;
+        } else
+            return false;
     }
 }

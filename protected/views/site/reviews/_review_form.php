@@ -6,26 +6,28 @@
         <label class="control-label" for="Comment_comment">Оставить отзыв</label>
         <div class="table__left-column">
             <img class="review_photo" src="/data/i/review_img.jpg">
-            <div class="image_file"><?php echo $form->fileField($newReview,'image',[ 'data-buttonText' => "Загрузить фото", 'class' => "filestyle", 'data-input' => "false", 'data-icon' => 'false', 'data-disabled' => Yii::app()->user->isGuest ? "true" : "false"]); ?></div>
+            <div class="image_file"><?php echo $form->fileField($newReview,'image',[ 'data-buttonText' => "Загрузить фото", 'class' => "filestyle", 'data-input' => "false", 'data-icon' => 'false', 'data-disabled' => (Yii::app()->user->isGuest && 0) ? "true" : "false"]); ?></div>
         </div>
         <div class="table__right-column">
-            <div class="table__row"><?php echo $form->textField($newReview, 'name', array('placeholder'=>'Ваше имя', 'class'=>"form-control comment_name", 'disabled' => Yii::app()->user->isGuest ? 'disabled' : '')); ?></div>
+            <div class="table__row"><?php echo $form->textField($newReview, 'name', array('placeholder'=>'Ваше имя', 'class'=>"form-control comment_name", 'disabled' => (Yii::app()->user->isGuest && 0) ? 'disabled' : '')); ?></div>
             <div class="comment_name_error help-block error hide">Это поле необходимо заполнить.</div>
-            <div class="table__row"><?php echo $form->textField($newReview, 'city', array('placeholder'=>'Ваш город', 'class'=>"form-control comment_city", 'disabled' => Yii::app()->user->isGuest ? 'disabled' : '')); ?></div>
-            <?php echo $form->textArea($newReview,'comment',array('placeholder'=>'Текст сообщения', 'class'=>'form-control comment_text', 'disabled' => Yii::app()->user->isGuest ? 'disabled' : '')); ?>
+            <div class="table__row"><?php echo $form->textField($newReview, 'email', array('placeholder'=>'Ваш email', 'class'=>"form-control comment_email", 'disabled' => (Yii::app()->user->isGuest && 0) ? 'disabled' : '')); ?></div>
+            <div class="comment_email_error help-block error hide"></div>
+            <div class="table__row"><?php echo $form->textField($newReview, 'city', array('placeholder'=>'Ваш город', 'class'=>"form-control comment_city", 'disabled' => (Yii::app()->user->isGuest && 0) ? 'disabled' : '')); ?></div>
+            <?php echo $form->textArea($newReview,'comment',array('placeholder'=>'Текст сообщения', 'class'=>'form-control comment_text', 'disabled' => (Yii::app()->user->isGuest && 0) ? 'disabled' : '')); ?>
             <div class="comment_text_error help-block error hide">Это поле необходимо заполнить.</div>
-            <?php if(Yii::app()->user->isGuest) :?>
+            <?php if(Yii::app()->user->isGuest && 0) :?>
                 <div class="is_guest_comment_msg">Пожалуйста, авторизуйтесь, чтобы оставить отзыв.</div>
             <?php endif; ?>
             <div class="review_rating">
                 <?php echo $form->hiddenField($newReview, 'rating'); ?>
-                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest) :?>disabled<?php endif; ?>" data-rating="1"></a>
-                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest) :?>disabled<?php endif; ?>" data-rating="2"></a>
-                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest) :?>disabled<?php endif; ?>" data-rating="3"></a>
-                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest) :?>disabled<?php endif; ?>" data-rating="4"></a>
-                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest) :?>disabled<?php endif; ?>" data-rating="5"></a>
+                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest && 0) :?>disabled<?php endif; ?>" data-rating="1"></a>
+                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest && 0) :?>disabled<?php endif; ?>" data-rating="2"></a>
+                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest && 0) :?>disabled<?php endif; ?>" data-rating="3"></a>
+                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest && 0) :?>disabled<?php endif; ?>" data-rating="4"></a>
+                <a class="review_rating_icon inactive <?php if(Yii::app()->user->isGuest && 0) :?>disabled<?php endif; ?>" data-rating="5"></a>
             </div>
-            <a class="btn btn-default review_submit <?php if(Yii::app()->user->isGuest) :?>button_disabled<?php endif; ?>">
+            <a class="btn btn-default review_submit <?php if(Yii::app()->user->isGuest && 0) :?>button_disabled<?php endif; ?>">
                 <span class="button__title">Отправить</span>
                 <span class="button__progress"></span>
             </a>

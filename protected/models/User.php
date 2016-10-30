@@ -351,4 +351,21 @@ class User extends CActiveRecord
     public function getTitleName(){
         return mb_convert_case($this->name, MB_CASE_TITLE, "UTF-8");
     }
+
+    public function getAdminHash(){
+        return crypt($this->id, $this->username);
+    }
+
+    public static function getPostcode(){
+        if (!Yii::app()->user->isGuest) {
+            return User::model()->findByPk(Yii::app()->user->id)->postcode;
+        } elseif(!empty($_GET) && isset($_GET['user_id']) && isset($_GET['email']) && isset($_GET['hash'])){
+            $user = User::model()->findByPk($_GET['user_id']);
+            $hash = crypt($user->id, $user->name);
+            if($user->email == $_GET['email'] && $hash == $_GET['hash']) {
+                return $user->postcode;
+            }
+        }
+        return 0;
+    }
 }

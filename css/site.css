@@ -2103,6 +2103,7 @@ h3.news {
 }
 .reviews .btn-default.review_submit  {
     background-color: #9e3c5d;
+    margin-bottom: 10px;
 }
 .reviews .btn-default.review_submit:not(.button_disabled):hover,
 .reviews .btn-default.review_submit:not(.button_disabled):focus,

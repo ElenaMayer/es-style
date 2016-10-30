@@ -25,7 +25,16 @@ class Mail {
         $headers .= 'From: Восточный стиль <' . $this->from . ">\r\n";
         $headers .= 'Reply-To: ' . $this->from . "\r\n";
 
-        if (mail($this->to, $this->subject, $this->message, $headers))
+        $is_sent = false;
+
+        try {
+            $is_sent = mail($this->to, $this->subject, $this->message, $headers);
+        } catch (Exception $e) {
+            Yii::log('Ошибка отправки письма:', 'error');
+            Yii::log($e->getMessage(), 'error');
+        }
+
+        if ($is_sent)
             return $this->saveLog();
         else
             return false;

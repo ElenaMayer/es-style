@@ -85,8 +85,8 @@
                                                                                             </a>
                                                                                         </td>
                                                                                         <td width="98" height="30" style="width: 60px;height:30px;border:none;line-height:13px;font-size:13px;background: #ca0600;vertical-align:middle;" valign="middle" align="center" bgcolor="#28292d">
-                                                                                            <a target="_blank" href="http://<?php echo Yii::app()->params['domain']; ?>/wholesale" style="text-decoration:none;display:block;line-height:32px;">
-                                                                                                <span style="color:#ffffff;line-height:13px;font-size:13px;">Оптом</span>
+                                                                                            <a target="_blank" href="http://<?php echo Yii::app()->params['domain']; ?>/reviews" style="text-decoration:none;display:block;line-height:32px;">
+                                                                                                <span style="color:#ffffff;line-height:13px;font-size:13px;">Отзывы</span>
                                                                                             </a>
                                                                                         </td>
                                                                                     </tr>

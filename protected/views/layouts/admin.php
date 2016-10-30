@@ -43,6 +43,7 @@
                 array('label'=>'Пользователи', 'url'=>'/admin/user/index', 'active'=>strpos(Yii::app()->request->pathInfo, 'user')===false? false:true, 'visible'=>(Yii::app()->user->name == 'admin')),
                 array('label'=>'Мэйл лог', 'url'=>'/admin/mailLog', 'active'=>strpos(Yii::app()->request->pathInfo, 'mailLog')===false? false:true, 'visible'=>(Yii::app()->user->name == 'admin')),
 				array('label'=>'Купоны', 'url'=>'/admin/coupon', 'active'=>strpos(Yii::app()->request->pathInfo, 'coupon')===false? false:true, 'visible'=>(Yii::app()->user->name == 'admin')),
+				array('label'=>'Отзывы', 'url'=>'/admin/comments', 'active'=>strpos(Yii::app()->request->pathInfo, 'comments')===false? false:true, 'visible'=>(Yii::app()->user->name == 'admin')),
 //				array('label'=>'UTM метки', 'url'=>'/admin/utmLog', 'active'=>strpos(Yii::app()->request->pathInfo, 'utmLog')===false? false:true, 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Вход', 'url'=>'/admin/login', 'visible'=>Yii::app()->user->isGuest, 'active'=>strpos(Yii::app()->request->pathInfo, 'login')===false? false:true),
 				array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>'/admin/logout', 'visible'=>(Yii::app()->user->name == 'admin'))
