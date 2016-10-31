@@ -27,6 +27,7 @@
     Сайт использует в расчетах www.postcalc.ru
 </div>
 <script>
+    var shipping_cost;
     $( document ).ready(function() {
         check_shipping();
     });
@@ -90,6 +91,7 @@
         if (item_count >= 3){
             $("#User_shipping").val(0);
             $('.cart-shipping-val').text(0 + " руб.");
+            shipping_cost = 0;
         } else {
             get_shipping(parseInt($('#User_postcode').val()));
         }
@@ -127,7 +129,7 @@
     }
 
     function show_shipping(tariff) {
-        shipping_cost = tariff + (total + tariff) * 0.04;
+        shipping_cost = parseInt(tariff + (total + tariff) * 0.04);
         new_total = total + shipping_cost;
         $("#User_postcode_error").val(0);
         $("#User_shipping").val(shipping_cost.toFixed(0));

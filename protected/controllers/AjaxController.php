@@ -189,7 +189,7 @@ class AjaxController extends Controller
                     if($coupon->until_date >= date("Y-m-d")) {
                         Yii::app()->cart->currentCart->addCoupon($coupon->id);
                         if ($_POST['action'] == 'order')
-                            $this->renderPartial('/site/order/_order_total',array('model'=>Yii::app()->cart->currentCart));
+                            $this->renderPartial('/site/order/_order_total',array('model'=>Yii::app()->cart->currentCart, 'shipping' => $_POST['shipping_cost']));
                         elseif ($_POST['action'] == 'cart')
                             $this->renderPartial('/site/cart/cart',array('model'=>Yii::app()->cart->currentCart,'path'=>'/site/'));
                     } else
@@ -207,7 +207,7 @@ class AjaxController extends Controller
         // is_paid - используется как флаг, что письмо уже отправлялось
         $this->layout = '//layouts/mail';
         $mail = new Mail();
-        $mail->subject = "Скидка за отзыв от ".Yii::app()->params['domain'];
+        $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
         $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (is_paid = 0 OR is_paid IS NULL) LIMIT ".$_POST['count']);
         foreach($orders as $order){
             if(!empty($order->user_id)) {
@@ -239,7 +239,6 @@ class AjaxController extends Controller
     public function actionSetCommentIsShow(){
         if (isset($_POST['comment_id'])){
             $comment = Comment::model()->findByPk($_POST['comment_id']);
-            print_r($comment->is_show);
             $comment->is_show = ($comment->is_show) ? 0 : 1;
             echo $comment->save();
             Yii::app()->end();

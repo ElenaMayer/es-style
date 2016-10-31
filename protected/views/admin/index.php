@@ -35,7 +35,6 @@ $this->pageTitle=Yii::app()->name;
                     dataType: "html",
                     success: function (data) {
                         $('.sand_mail_button').removeClass('button_disabled');
-//                        $('body').html(data);
                         alert('Отправлено');
                     }
                 });

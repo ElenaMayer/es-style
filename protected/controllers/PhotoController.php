@@ -178,7 +178,7 @@ class PhotoController extends Controller
     public function actionSendMailWithNews() {
         $this->layout = '//layouts/mail_sub';
         $mail = new Mail();
-        $mail->subject = "Новинки ".Yii::app()->params['domain'];
+        $mail->subject = "Новинки интернет-магазина".Yii::app()->params['domain'];
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
         foreach($users as $user){
             if(!empty($user->email)){

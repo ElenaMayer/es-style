@@ -9,14 +9,19 @@
     $( "body" ).on("click", ".coupon_use_link", function() {
         if (!$(this).hasClass("button_disabled")) {
             if ($('.coupon_field').val().length > 0) {
+
+                var data = {
+                    coupon: $('.coupon_field').val(),
+                    action: action
+                }
+                if (typeof shipping_cost !== "undefined")
+                    data['shipping_cost'] = shipping_cost;
+
                 $(this).addClass('button_in-progress').addClass('button_disabled');
                 $('.cart_coupon .help-block').addClass('hide');
                 $.ajax({
                     url: "/ajax/addCouponToCart",
-                    data: {
-                        coupon: $('.coupon_field').val(),
-                        action: action
-                    },
+                    data: data,
                     type: "POST",
                     dataType: "html",
                     success: function (data) {

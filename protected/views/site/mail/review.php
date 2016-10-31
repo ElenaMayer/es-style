@@ -95,29 +95,29 @@
                                 </td>
                                 <td style="text-align: right;">
                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                        <img src="http://<?php echo Yii::app()->params['domain']; ?>/data/comment/<?= $comment->img ?>" border="0" style="border:none;text-decoration:none;line-height:0;vertical-align:top;display:block;padding:0px;margin:0px;" hspace="0" vspace="0">
+                                        <img src="http://<?php echo Yii::app()->params['domain']; ?>/data/comment/<?= $comment->img ?>" border="0" style="border:none;text-decoration:none;line-height:0;vertical-align:top;padding:0px;margin:0px;" hspace="0" vspace="0">
                                     </font>
                                 </td>
                             </tr>
                         <?php endif;?>
+                        <tr valign="top" align="left" style="height: 25px;">
+                            <td width="100">
+                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                    <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=rejectReview&review_id=<?= $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
+                                            <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif">Отклонить отзыв</font>
+                                        </a></b>
+                                </font>
+                            </td>
+                            <td width="100">
+                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                    <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=sendCouponMail&review_id=<?= $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
+                                            <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif">Отправить купон</font>
+                                        </a></b>
+                                </font>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
-                </td>
-            </tr>
-            <tr valign="top" align="left" style="height: 25px;">
-                <td width="100">
-                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                        <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=rejectReview&review_id=<?php $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
-                            <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif">Отклонить отзыв</font>
-                        </a></b>
-                    </font>
-                </td>
-                <td width="100">
-                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                        <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=sendCouponMail&review_id=<?php $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
-                            <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif">Отправить купон</font>
-                        </a></b>
-                    </font>
                 </td>
             </tr>
             </tbody>

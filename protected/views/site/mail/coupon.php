@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;text-align: center;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                <b>Скидка <?php $coupon->sale ?>% в подарок!</b>
+                <b>Скидка <?= $coupon->sale ?>% в подарок!</b>
         </font>
         <br>
         <br>
@@ -18,9 +18,9 @@
     </td>
 </tr>
 <tr>
-    <td align="center" style="padding:0 70px;text-align: center;">
-        <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Ваш купон на скидку: <?php $coupon->coupon ?></b>
+    <td style="padding:0 30px;">
+        <font color="#CB2228" size="5" style="font-size: 20px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
+            <b>Ваш купон на скидку: <font color="black"><?= $coupon->coupon ?></font></b>
         </font>
         <br>
         <br>
@@ -33,7 +33,7 @@
             <tr>
                 <td style="padding:15px 30px;">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10003 Чтобы воспользоваться скидкой, введите номер купона на нашем сайте в специальное поле в карзине или при оформлении заказа.
+                        &#10004 Чтобы воспользоваться скидкой, введите номер купона на нашем сайте в специальное поле в карзине или при оформлении заказа.
                     </font>
                     <br>
                 </td>
@@ -41,7 +41,7 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10003 Купон действителен на весь ассортимент интернет-магазина, за исключением товаров со скидкой.
+                        &#10004 Купон действителен на весь ассортимент интернет-магазина, за исключением товаров со скидкой.
                     </font>
                     <br>
                 </td>
@@ -49,7 +49,7 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен до <?php $this->dateFormat($coupon->until_date) ?>.
+                        &#10004 Купон действителен до <b><?= $this->dateFormat($coupon->until_date) ?></b>.
                     </font>
                     <br>
                 </td>

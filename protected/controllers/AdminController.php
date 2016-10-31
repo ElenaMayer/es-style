@@ -192,7 +192,7 @@ class AdminController extends Controller
             if ($admin->getAdminHash() == $_GET['hash']){
                 // $this->rejectReview(); - Отклонение отзыва
                 // $this->sendCouponMail(); - Отправка письма с купоном
-                return $this->$_GET['action'];
+                return $this->$_GET['action']();
             }
         }
         $this->redirect(array('/'));
@@ -236,7 +236,7 @@ class AdminController extends Controller
                 if($coupon){
                     $this->layout = '//layouts/mail';
                     $mail = new Mail();
-                    $mail->subject = "Подарок за отзыв от ".Yii::app()->params['domain']."!";
+                    $mail->subject = "Подарок за отзыв от интернет-магазина ".Yii::app()->params['domain']."!";
                     $mail->message = $this->render('/site/mail/coupon', ['coupon' => $coupon], true);
                     $mail->to = $review->email;
                     if($mail->send()){
