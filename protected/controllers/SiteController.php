@@ -331,7 +331,7 @@ class SiteController extends Controller {
                 'cart' => Yii::app()->cart->currentCart
             ));
         }  else
-            throw new CHttpException(404,'К сожалению, страница не найдена.');
+            $this->redirect(array('site/index'));
     }
 
     public function sentOrderMail($order){
@@ -371,7 +371,7 @@ class SiteController extends Controller {
         $order->coupon_id = $cart->coupon_id;
         $order->coupon_sale = $cart->coupon_sale;
         $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $shipping;
-        $order->addressee = $user->surname . " " .$user->name . " " . $user->middlename ;
+        $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
         if ($order->save()){

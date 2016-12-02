@@ -48,29 +48,14 @@ $this->pageTitle=Yii::app()->name;
     </div>
 </div>
 
-<div class="banners">
-    <h3 class="news">Новости компании</h3>
-    <?php $collapse = $this->beginWidget('booster.widgets.TbCollapse'); ?>
-    <div class="panel-group" id="accordion">
-        <?php for($i=1;$i<=Yii::app()->params['newsCount'];$i++):?>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <p><?= $this->dateFormat(News::model()->getNewsByNumber($i)->date_publish);?></p>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<?=$i;?>">
-                            <?php echo News::model()->getNewsByNumber($i)->title;?>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse_<?= $i?>" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <?php echo News::model()->getNewsByNumber($i)->content;?>
-                    </div>
-                </div>
-            </div>
-        <?php endfor;?>
-    </div>
-    <?php $this->endWidget(); ?>.
+<div class="main-description">
+    <div class="main-title">О нас</div>
+    <p>Добро пожаловать в интернет-магазин одежды в восточном стиле!</p>
+    <p>У нас вы сможете не просто купить платье, а создать свой собственный образ и наполнить его особым смыслом.</p>
+    <p>Ассортимент нашего магазина постоянно обновляется и пополняется новыми моделями на любой вкус и цвет.</p>
+    <p>Зарегистрированные пользователи получают актуальную информацию об акциях и скидках на товары, а также персональные скидки.</p>
+    <p>В нашем магазине, Вы без труда выберете интересный подарок для Вашего любимого человека, подруги или члена Вашей семьи.</p>
+    <p>Ваша дочь, жена, подруга или коллега будут приятно удивлены получив такой подарок на какой-нибудь праздник или просто пусть это будет сюрприз, подаренный им или себе просто "от души".</p>
 </div>
 
 <script>

@@ -23,13 +23,13 @@
         <?php echo $form->textFieldGroup($user, 'phone', array('placeholder'=>'+7')); ?>
     </div>
     <div class="row">
-        <div class="form-group">
+        <div class="form-group email_group">
             <?php if (Yii::app()->user->isGuest):?>
-                <?php echo $form->textFieldGroup($user, 'email', array( 'class' => 'form-control', 'placeholder'=>'')); ?>
+                <?php echo $form->textField($user, 'email', array( 'class' => 'form-control', 'placeholder'=>'example@mail.ru')); ?>
             <?php else :?>
                 <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
             <?php endif ?>
-            <?php echo $form->labelEx($user,'email'); ?>
+            <?php echo $form->labelEx($user, 'email'); ?>
         </div>
     </div>
     <?php if (Yii::app()->user->isGuest):?>
@@ -78,11 +78,16 @@
     $(document).ready(function() {
         if($('#User_create_profile').prop('checked'))
             $('.order-password').show();
+        else
+            $('.email_group>label>span').hide();
     });
     $( 'body' ).on( 'change', '#User_create_profile', function() {
-        if($(this).prop('checked'))
+        if($(this).prop('checked')) {
             $('.order-password').show();
-        else
+            $('.email_group>label>span').show();
+        } else {
             $('.order-password').hide();
+            $('.email_group>label>span').hide();
+        }
     });
 </script>

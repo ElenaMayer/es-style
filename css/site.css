@@ -1774,7 +1774,12 @@ h3.news {
 }
 .post-cart-add__close {
     float: left;
-    margin-top: 5px;
+    border: 1px solid #9e3c5d;
+    padding: 6px;
+    border-radius: 3px;
+}
+.post-cart-add__close:hover {
+    border-color: #ff3d00;
 }
 .button_big .button__corner {
     width: 10px;
@@ -2031,6 +2036,20 @@ h3.news {
 
 .red {
     color: red;
+}
+.main-description {
+    padding: 30px;
+    background-color: #fff;
+    width: 960px;
+    margin: 0 auto;
+}
+.main-description p {
+    padding-bottom: 5px;
+    line-height: 20px;
+}
+.main-description .main-title {
+    padding-bottom: 20px;
+    font-size: 24px;
 }
 
 /* Reviews */
@@ -2398,6 +2417,13 @@ IPhone 6 Plus 414×736
         left: -130px;
         font-size: 13px;
     }
+    .main-description {
+        width: 100%;
+        font-size: 13px;
+    }
+    .main-description p {
+        line-height: 15px;
+    }
 }
 
 /*iPad in portrait & landscape*/
@@ -2741,6 +2767,12 @@ IPhone 6 Plus 414×736
     }
     .reviews .table__right-column {
         padding-left: 50%;
+    }
+    .main-description {
+        font-size: 12px;
+    }
+    .main-description p {
+        padding-bottom: 0px;
     }
 }
 @media only screen and (max-width: 320px) {
