@@ -307,24 +307,12 @@ class SiteController extends Controller {
                 $user->saveUserData($_POST['User']);
                 $errors = $user->getErrors();
                 if(empty($errors)) {
-                    $order = $this->createOrder($user, $_POST['User']['shipping']);
-                    $res['status'] = $order->status;
-                    $res['orderId'] = $order->id;
-                    //Логи @todo
-                    Yii::log('Новый заказ:', 'warning');
-                    Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
-                    Yii::log('Id корзины:', 'warning');
-                    Yii::log(Yii::app()->cart->currentCart->id, 'warning');
-
-                    $this->sentOrderMail($order);
-                    $this->sentOrderMailToAdmin($order);
-                    OrderHistory::refreshOrderNewSum();
+                    echo json_encode($this->processingOrder($user));
+                    Yii::app()->end();
                 } else {
                     $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
                     Yii::app()->end();
                 }
-                echo json_encode($res);
-                Yii::app()->end();
             }
             $this->render('order/order', array(
                 'user' => $user,
@@ -332,6 +320,27 @@ class SiteController extends Controller {
             ));
         }  else
             $this->redirect(array('site/index'));
+    }
+
+    public function processingOrder($orderData){
+        $order = $this->createOrder($orderData, $_POST['User']['shipping']);
+        $res['status'] = $order->status;
+        if($res['status'] == 'payment'){
+            $robokassa = new Robokassa();
+            $res['robokassaUrl'] = $robokassa->getPaymentFormUrlWithOrderIdAndSum($order->id, $order->total_with_commission?$order->total_with_commission:$order->total);
+        }
+        $res['orderId'] = $order->id;
+        //Логи @todo
+        Yii::log('Новый заказ:', 'warning');
+        Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
+        Yii::log('Id корзины:', 'warning');
+        Yii::log(Yii::app()->cart->currentCart->id, 'warning');
+
+        $this->sentOrderMail($order);
+        $this->sentOrderMailToAdmin($order);
+        OrderHistory::refreshOrderNewSum();
+
+        return $res;
     }
 
     public function sentOrderMail($order){
@@ -362,9 +371,6 @@ class SiteController extends Controller {
         $order->email = $user->email;
         $order->shipping = $shipping;
 
-        if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
-        elseif($_POST['User']['payment'] == 'prepay') $order->status = 'payment';
-
         $cart = Yii::app()->cart->currentCart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
@@ -374,6 +380,14 @@ class SiteController extends Controller {
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
+
+        if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
+        elseif($_POST['User']['payment'] == 'online') {
+            $order->status = 'payment';
+            $rk = new Robokassa();
+            $order->total_with_commission = $rk->getSumWithCommission($order->total);
+        }
+
         if ($order->save()){
             if($order->coupon_id)
                 $order->coupon->isUsed();
@@ -507,4 +521,10 @@ class SiteController extends Controller {
         $mail->message = $this->render('mail/review',array('comment'=>$comment),true);
         $mail->send();
     }
+
+    public function actionOffer(){
+        $this->pageTitle = Yii::app()->name.' - '.'Публичная оферта';
+        $this->render('offer');
+    }
+
 }

@@ -204,11 +204,11 @@ class AjaxController extends Controller
     }
 
     public function actionSendReviewForCouponMail() {
-        // is_paid - используется как флаг, что письмо уже отправлялось
+        // coupon_mail_flag - используется как флаг, что письмо уже отправлялось
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
-        $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (is_paid = 0 OR is_paid IS NULL) LIMIT ".$_POST['count']);
+        $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (coupon_mail_flag = 0 OR coupon_mail_flag IS NULL) LIMIT ".$_POST['count']);
         foreach($orders as $order){
             if(!empty($order->user_id)) {
                 Yii::app()->userForMail->setUser($order->user);
@@ -243,6 +243,14 @@ class AjaxController extends Controller
             echo $comment->save();
             Yii::app()->end();
         }
+    }
+
+    public function actionCheckPayment(){
+        if(isset($_POST['order_id'])){
+            $rk = new Robokassa();
+            echo json_encode($rk->checkPayment($_POST['order_id']));
+        }
+        Yii::app()->end();
     }
 
 }

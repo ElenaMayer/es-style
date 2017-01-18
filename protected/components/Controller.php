@@ -55,4 +55,39 @@ class Controller extends CController
         $res .= date(" H:i", strtotime($date));
         return $res;
     }
+
+    public function httpResponse($url){
+
+        try {
+            $ch = curl_init();
+
+            if (FALSE === $ch)
+                throw new Exception('failed to initialize');
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+            $content = curl_exec($ch);
+
+            if (FALSE === $content)
+                throw new Exception(curl_error($ch), curl_errno($ch));
+            else
+                return $content;
+
+        } catch(Exception $e) {
+
+            trigger_error(sprintf(
+                'Curl failed with error #%d: %s',
+                $e->getCode(), $e->getMessage()),
+                E_USER_ERROR);
+
+        }
+    }
+
+    public function arrayFromXml($xml) {
+        $oXml = simplexml_load_string($xml);
+        $json = json_encode($oXml);
+        return json_decode($json,true);
+    }
 }

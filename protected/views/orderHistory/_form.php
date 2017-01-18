@@ -18,8 +18,8 @@
     <div class="row buttons save_button">
         <?php echo CHtml::submitButton('Сохранить'); ?>
     </div>
-    <?php if (Yii::app()->controller->action->id == 'update' && $model->status == 'waiting_delivery'): ?>
-        <div class="row buttons remind_button">
+    <?php if(Yii::app()->controller->action->id == 'update' && $model->status == 'waiting_delivery'): ?>
+        <div class="row buttons status_button">
             <?php echo CHtml::button('Отправить напоминание', ['id'=>'remind']); ?>
         </div>
     <?php endif; ?>

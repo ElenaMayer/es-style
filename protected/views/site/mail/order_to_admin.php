@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Заказ №<?= $order->id ?> создан.</b>
+            <b>Заказ №<?= $order->id ?> <?= $order->is_paid ? "оплачен" : "создан" ?>.</b>
         </font>
         <br>
     </td>

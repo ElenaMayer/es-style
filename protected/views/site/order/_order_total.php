@@ -5,8 +5,7 @@
 <div class="cart-total__price cart-total__price_amount">
         <span class="cart-total__price-title">Доставка
             <span class="cart-total__price-hint i_help hint-wrap">
-                <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно
-                </div>
+                <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
             </span>
         </span>
     <span class="cart-shipping-val">

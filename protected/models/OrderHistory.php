@@ -17,12 +17,14 @@
  * @property integer $sale
  * @property integer $shipping
  * @property integer $total
+ * @property integer $total_with_commission
  * @property string $date_create
  * @property string $track_code
  * @property string $phone
  * @property string $email
  * @property integer $coupon_id
  * @property integer $coupon_sale
+ * @property integer $coupon_mail_flag
  *
  * The followings are the available model relations:
  * @property User $user
@@ -80,7 +82,7 @@ class OrderHistory extends CActiveRecord
 			'id' => 'ID',
             'user_id' => 'Пользователь',
             'status' => 'Статус',
-            'is_paid' => 'Оплачено',
+            'is_paid' => 'Оплата заказа',
             'shipping_method' => 'Метод доставки',
             'payment_method' => 'Оплата',
             'postcode' => 'Индекс',
@@ -92,10 +94,12 @@ class OrderHistory extends CActiveRecord
             'sale' => 'Скидка',
             'shipping' => 'Доставка',
             'total' => 'Итого',
+            'total_with_commission' => 'С комиссией',
             'date_create' => 'Дата создания',
             'track_code' => 'Почтовый идентификатор',
 			'phone' => 'Телефон',
 			'email' => 'Email',
+            'coupon_mail_flag' => 'Получино письмо с просьбой написать отзыв за купон',
 		);
 	}
 
@@ -272,12 +276,18 @@ class OrderHistory extends CActiveRecord
     }
 
     public function reviewForCouponMailIsSent(){
-        $this->is_paid = 1;
+        $this->coupon_mail_flag = 1;
         $this->save();
         $otherOrders = OrderHistory::model()->findAllByAttributes(['email' => $this->email], 'id <>'.$this->id);
         foreach ($otherOrders as $order){
-            $order->is_paid = 1;
+            $order->coupon_mail_flag = 1;
             $order->save();
         }
+    }
+
+    public function isPaid(){
+        $this->is_paid = 1;
+        $this->status = 'paid';
+        $this->save();
     }
 }

@@ -64,11 +64,18 @@
     </div>
     <div class="row">
         <div class="payment">
-            <?php if (!Yii::app()->user->isGuest && $user->blocked):?>
-                <?php echo $form->radioButtonList($user, 'payment', ['prepay'  => 'Предоплата'], ['value' => 'prepay']); ?>
-            <?php else :?>
-                <?php echo $form->radioButtonList($user, 'payment', ['cod'=>'При получении на почте']); ?>
-            <?php endif ?>
+<!--            --><?php //echo $form->radioButtonList($user, 'payment', $user->blocked ? ['online'  => 'Онлайн-оплата']: Yii::app()->params['paymentMethod']); ?>
+            <input id="ytUser_payment" type="hidden" value="" name="User[payment]">
+            <span id="User_payment">
+                <input id="User_payment_0" value="online" checked="checked" type="radio" name="User[payment]">
+                <label for="User_payment_0">Онлайн-оплата</label>
+                <i class="payment_method"></i>
+                <?php if (!$user->blocked):?>
+                    <input class="payment_cod" id="User_payment_1" value="cod" type="radio" name="User[payment]">
+                    <label class="payment_cod" for="User_payment_1">При получении (взимается комиссия за наложенный платеж)</label>
+                <?php endif ?>
+            </span>
+
         </div>
         <?php echo $form->labelEx($user,'payment'); ?>
     </div>

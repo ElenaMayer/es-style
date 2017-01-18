@@ -5,7 +5,8 @@
                 <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
                     <b><?php if(!empty($order->user)):?><?= $order->user->getTitleName(); ?>,<?php endif ?>
                         <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
-                        <?php elseif($order->status == 'collect') :?> Ваш заказ передан на комплектацию!
+                        <?php elseif($order->status == 'collect') :?>
+                            <?php if($order->is_paid):?>Оплата получена. <?php endif ?>Заказ передан на комплектацию!
                         <?php elseif($order->status == 'shipping_by_rp') :?>
                             <?php if(isset($dayCount)):?>
                                 Ваш заказ очень ждет Вас в почтовом отделении, через <?= $dayCount ?> он будет вынужден отправиться в обратный путь :(

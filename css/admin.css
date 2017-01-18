@@ -1,3 +1,6 @@
+body .container {
+    width: 1300px;
+}
 .container a {
     cursor: pointer;
 }
@@ -349,7 +352,7 @@ div.form .row.buttons.save_button {
     float: right;
     margin: 0 5px;
 }
-#order-history-form div.buttons.remind_button {
+div.buttons.status_button {
     text-align: left;
 }
 .delete_model {
@@ -365,4 +368,29 @@ div.form .row.buttons.save_button {
 }
 .comment_answer {
     padding: 10px;
+}
+.buttons.button_disabled input {
+    color: grey;
+    cursor: wait;
+}
+.is-paid .check-payment {
+    color: blue;
+    cursor: pointer;
+
+}
+.is-paid .check-payment.disabled {
+    color: inherit;
+    cursor: default;
+}
+.payment-info {
+    display: none;
+    font-size: 20px;
+    text-align: right;
+    background-color: #00b200;
+}
+.payment-info.error {
+    background-color: #ff4c4f;
+}
+.grid-view .items tr td p {
+    margin: 0;
 }

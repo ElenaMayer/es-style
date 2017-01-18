@@ -32,7 +32,7 @@ class User extends CActiveRecord
     public $password_new;
     public $is_subscribed = true;
     private $_identity;
-    public $payment = 'cod';
+    public $payment = 'online';
     public $create_profile;
     public $postcode_error;
     public $shipping;
