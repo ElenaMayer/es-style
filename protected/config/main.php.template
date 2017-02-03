@@ -49,8 +49,8 @@ return array(
                 'admin/<controller:\w+>/<action:\w+>/' => '<controller>/<action>/',
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>/',
                 '<type:(dress|blouse|kimono|other)>'=>'site/catalog',
+                '<type:(dress|blouse|kimono|other)>/page/<page:\d+>'=>'site/catalogWithPage',
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
-                '<type:(wholesale|shipping)>'=>'site/order',
                 'unsubscribe'=>'site/unsubscribe',
                 'customer'=>'site/customer',
                 'history'=>'site/history',
@@ -62,7 +62,7 @@ return array(
                 'reviews'=>'site/reviews',
                 'reviews/page/<page:\d+>'=>'site/reviewsWithPage',
                 'robokassa/<action:\w+>/'=>'robokassa/<action>/',
-                'offer'=>'site/offer',
+                'about/<action:\w+>'=>'site/about',
             ),
 		),
 		'db'=>array(

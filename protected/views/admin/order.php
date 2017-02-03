@@ -22,11 +22,6 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-        array(
-            'name' => 'type',
-            'value'=> '$data->type == "shipping"?"Розница":"Опт"',
-            'filter'=>['wholesale'=>'Опт','shipping'=>'Розница'],
-        ),
 		'name',
 		'email',
 		'phone',

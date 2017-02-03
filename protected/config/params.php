@@ -7,6 +7,7 @@ return array(
     ],
     'newsCount' => 3,
     'newPhotoCountInMail' => 6,
+    'photoPerPage' => 20,
     'reviewsPerPage' => 10,
     'maxPagerButtonCount' => 5,
     'categories' => [
@@ -75,6 +76,7 @@ return array(
     'shippingMethod' => [
         'russian_post' => 'Почта России',
         'ems' => 'EMS Почта России',
+        'store' => 'Получение в магазине',
     ],
     'colors' => [
         'черный' => 'черный',

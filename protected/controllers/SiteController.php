@@ -111,6 +111,14 @@ class SiteController extends Controller {
     }
 
     public function actionCatalog($type){
+        $this->catalog($type);
+    }
+
+    public function actionCatalogWithPage($type, $page){
+        $this->catalog($type, $page);
+    }
+
+    public function catalog($type, $page = 1){
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
@@ -122,15 +130,35 @@ class SiteController extends Controller {
             'category' => $type,
             'order' => $this->getOrder(),
             'size' => $this->getSize(),
-            'color' => $this->getColor()
+            'color' => $this->getColor(),
+            'page' => $page,
         ];
         if (isset($_GET['subcategory']))
             $params['subcategory'] = $_GET['subcategory'];
         $model = Photo::model()->getPhotos($params);
+        $criteria = Photo::model()->getPhotosCriteria($params);
+        $count = Photo::model()->count($criteria);
+        $pagination = new CPagination($count);
+        $pagination->pageSize = Yii::app()->params['photoPerPage'];
+        $pagination->applyLimit($criteria);
+        $pagination->currentPage = $page - 1;
+        $pagination->route = "/$type";
+        $pagination->params = array('page'=>$page);
+
         if(isset($_GET['order']) || isset($_GET['size']) || isset($_GET['color']))
-            $this->renderPartial('catalog',array('model'=>$model, 'type'=>$type, 'isFilter'=>$this->isFilter()));
+            $this->renderPartial('catalog',array(
+                'model'=>$model,
+                'type'=>$type,
+                'isFilter'=>$this->isFilter(),
+                'pagination' => $pagination
+            ));
         else
-            $this->render('catalog',array('model'=>$model, 'type'=>$type, 'isFilter'=>$this->isFilter()));
+            $this->render('catalog',array(
+                'model'=>$model,
+                'type'=>$type,
+                'isFilter'=>$this->isFilter(),
+                'pagination' => $pagination
+            ));
     }
 
     public function actionModel($type, $id){
@@ -205,50 +233,6 @@ class SiteController extends Controller {
         }
     }
 
-    public function actionOrderOld($type) {
-        $type_str = $type=='shipping'?'Доставка':'Оптом';
-        $this->pageTitle=Yii::app()->name.' - '.$type_str;
-        $model=new Order($type);
-        if(isset($_POST['Order'])) {
-            $model->attributes=$_POST['Order'];
-            $model->type=$type;
-            if($model->save()){
-                $user = Yii::app()->getComponent('user');
-                $user->setFlash( 'warning', "Спасибо за заявку! Мы свяжемся с вами в ближайшее время!");
-                $this->sendOldOrderMailToAdmin($model);
-            }
-            $this->renderPartial('_order_form_old',array(
-                'model'=>$model, 'type'=>$type
-            ));
-        } else {
-            $this->render('order_old',array(
-                'model'=>$model, 'type'=>$type
-            ));
-        }
-    }
-
-    public function sendOldOrderMailToAdmin($order){
-        $mail = new Mail();
-        $mail->to = Yii::app()->params['emailTo'];
-        $mail->subject = $order->type == 'shipping'?'Заказ розница':'Заказ опт';
-        $mail->message = 'ФИО: '.$order->name. ' <br> ';
-        $mail->message .= 'E-mail: '.$order->email. ' <br> ';
-        $mail->message .= 'Телефон: '.$order->phone. ' <br> ';
-        if(!empty($this->postcode))
-            $mail->message .= 'Почтовый индекс: '.$order->postcode. ' <br> ';
-        if(!empty($this->address))
-            $mail->message .= 'Почтовый адрес: '.$order->address. ' <br> ';
-        if(!empty($this->company))
-            $mail->message .= 'Компания: '.$order->company. ' <br> ';
-        if(!empty($this->delivery))
-            $mail->message .= 'Способ доставки: '.$order->delivery. ' <br> ';
-        if(!empty($this->city))
-            $mail->message .= 'Город: '.$order->city. ' <br> ';
-        if(!empty($this->order))
-            $mail->message .= 'Заказ: '.$order->order. ' <br> ';
-        $mail->send();
-    }
-
     public function actionPrice(){
         $price = Price::model()->find(array('order'=>'date_create DESC'));
         $name = Yii::getPathOfAlias('data').'/price/'.$price->file;
@@ -298,7 +282,7 @@ class SiteController extends Controller {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
                 if ($user->blocked)
-                    $user->payment = 'prepay';
+                    $user->payment = 'online';
             } else {
                 $user = new User();
                 $user->scenario = 'orderWithRegistration';
@@ -323,7 +307,7 @@ class SiteController extends Controller {
     }
 
     public function processingOrder($orderData){
-        $order = $this->createOrder($orderData, $_POST['User']['shipping']);
+        $order = $this->createOrder($orderData);
         $res['status'] = $order->status;
         if($res['status'] == 'payment'){
             $robokassa = new Robokassa();
@@ -361,27 +345,28 @@ class SiteController extends Controller {
         $mail->send();
     }
 
-    public function createOrder($user, $shipping){
+    public function createOrder($user){
         $order = new OrderHistory();
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
-        $order->shipping_method = 'russian_post';
+        $order->shipping_method = $_POST['User']['shipping_method'];
         $order->payment_method = $_POST['User']['payment'];
         $order->phone = $user->phone;
         $order->email = $user->email;
-        $order->shipping = $shipping;
+        $order->shipping = ($order->shipping_method == 'russian_post') ? $_POST['User']['shipping'] : 0;
 
         $cart = Yii::app()->cart->currentCart;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
         $order->coupon_id = $cart->coupon_id;
         $order->coupon_sale = $cart->coupon_sale;
-        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $shipping;
+        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $_POST['User']['shipping'];
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
 
-        if($_POST['User']['payment'] == 'cod') $order->status = 'in_progress';
+        if($_POST['User']['payment'] == 'cod')
+            $order->status = 'in_progress';
         elseif($_POST['User']['payment'] == 'online') {
             $order->status = 'payment';
             $rk = new Robokassa();
@@ -406,8 +391,8 @@ class SiteController extends Controller {
                 $item->save();
             }
             if(!$cart->is_active) $cart->delete();
-            return $order;
         }
+        return $order;
     }
 
     public function actionHistory(){
@@ -522,9 +507,27 @@ class SiteController extends Controller {
         $mail->send();
     }
 
-    public function actionOffer(){
-        $this->pageTitle = Yii::app()->name.' - '.'Публичная оферта';
-        $this->render('offer');
+    public function actionAbout($action){
+        if ($action == 'offer'){
+            $this->pageTitle = Yii::app()->name.' - '.'Публичная оферта';
+        } elseif ($action == 'shipping'){
+            $this->pageTitle = Yii::app()->name.' - '.'Доставка';
+        } elseif ($action == 'contact'){
+            $this->pageTitle = Yii::app()->name.' - '.'Контакты';
+        } elseif ($action == 'wholesale'){
+            $this->pageTitle = Yii::app()->name.' - '.'Оптом';
+        } elseif ($action == 'order'){
+            $this->pageTitle = Yii::app()->name.' - '.'Как сделать заказ';
+        } elseif ($action == 'payment'){
+            $this->pageTitle = Yii::app()->name.' - '.'Оплата';
+        } elseif ($action == 'refund'){
+            $this->pageTitle = Yii::app()->name.' - '.'Возврат товара';
+        } elseif ($action == 'sizes'){
+            $this->pageTitle = Yii::app()->name.' - '.'Как выбрать размер';
+        } else {
+            $this->redirect(array('site/index'));
+        }
+        $this->render("about/$action");
     }
 
 }

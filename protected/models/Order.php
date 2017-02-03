@@ -42,7 +42,6 @@ class Order extends CActiveRecord
             array('date_create','default', 'value'=>new CDbExpression('NOW()')),
             array('name, email, phone, order', 'required', 'message'=>'Это поле необходимо заполнить.'),
             array('postcode, address', 'required', 'on'=>'shipping', 'message'=>'Это поле необходимо заполнить.'),
-            array('city', 'required', 'on'=>'wholesale', 'message'=>'Это поле необходимо заполнить.'),
             array('email', 'email', 'message'=>'Пожалуйста, введите корректный адрес. Например, name@domain.ru'),
 		);
 	}

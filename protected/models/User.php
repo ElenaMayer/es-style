@@ -33,6 +33,7 @@ class User extends CActiveRecord
     public $is_subscribed = true;
     private $_identity;
     public $payment = 'online';
+    public $shipping_method;
     public $create_profile;
     public $postcode_error;
     public $shipping;
@@ -62,7 +63,9 @@ class User extends CActiveRecord
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
             array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder, guestOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, phone', 'required', 'on' => 'guestOrderToStore', 'message'=>'Это поле необходимо заполнить.'),
             array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
+            array('password1, password2, name, phone, email', 'required', 'on' => 'orderWithRegistrationToStore', 'message'=>'Это поле необходимо заполнить.'),
             array('name, password2, password_old, password_new', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on' => 'customer_person_data', 'message'=>'Это поле необходимо заполнить.'),
             array('password2, password_old, password_new', 'required', 'on' => 'customer_password_data', 'message'=>'Это поле необходимо заполнить.'),
@@ -152,6 +155,7 @@ class User extends CActiveRecord
             'blocked' => 'Заблокирован',
             'create_profile' => ' Зарегистрироваться для упрощения покупки',
             'payment' => 'Способ оплаты',
+            'shipping_method' => 'Способ доставки',
             'coupon_id' => 'Купон',
             'date_create' => 'Дата создания',
         );
@@ -302,7 +306,16 @@ class User extends CActiveRecord
     public function saveUserData($attributes){
         $this->attributes = $attributes;
         if(isset($attributes['create_profile']) && $attributes['create_profile'] == '0'){
-            $this->scenario = 'guestOrder'; // else 'orderWithRegistration'
+            if ($attributes['shipping_method'] == 'russian_post')
+                $this->scenario = 'guestOrder';
+            else
+                $this->scenario = 'guestOrderToStore';
+        } else {
+            if ($attributes['shipping_method'] == 'russian_post')
+                $this->scenario = 'orderWithRegistration';
+            else
+                $this->scenario = 'orderWithRegistrationToStore';
+
         }
         if ($this->validate()) {
             if(isset($attributes['create_profile']) && $attributes['create_profile'] == '1'){
@@ -314,6 +327,8 @@ class User extends CActiveRecord
         }
         if (!empty($attributes['payment']))
             $this->payment = $attributes['payment'];
+        if (!empty($attributes['shipping_method']))
+            $this->shipping_method = $attributes['shipping_method'];
         if (isset($attributes['create_profile']))
             $this->create_profile = $attributes['create_profile'];
     }

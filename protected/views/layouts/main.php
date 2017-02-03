@@ -56,11 +56,6 @@
                             <i class="header__phone-icon"></i>
                             <?= Yii::app()->params['phone'] ?>
                         </div>
-                        <div class="header__contact_item_right">
-                            <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
-                            <a target="_blank" class="header__social-item header__social-item_ig" href="<?=Yii::app()->params['instagramLink']?>"></a>
-                            <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
-                        </div>
                     </div>
                     <div class="user-nav user-nav_signed">
                         <a class="basket-button button button_blue button_big"  href="/cart/">
@@ -112,9 +107,7 @@
                                     array('label' => 'Кимоно', 'url' => '/kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
                                     array('label' => 'Статьи', 'url' => '/blog', 'active'=>strpos(Yii::app()->request->pathInfo, 'blog')===false? false:true),
-                                    array('label' => 'Доставка', 'url' => '/shipping', 'active'=>strpos(Yii::app()->request->pathInfo, 'shipping')===false? false:true),
                                     array('label' => 'Отзывы', 'url' => '/reviews', 'active'=>strpos(Yii::app()->request->pathInfo, 'reviews')===false? false:true),
-//                                    array('label' => 'Оптом', 'url' => '/wholesale', 'active'=>strpos(Yii::app()->request->pathInfo, 'wholesale')===false? false:true),
                                 )
                             )
                         )
@@ -130,10 +123,36 @@
         <div class="content">
             <?php echo $content; ?>
         </div>
+        <div class="footer_with_menu">
+            <div class="footer-menu">
+                <div class="footer__column">
+                    <h1>О нас</h1>
+                    <a href="/about/contact">Контакты</a>
+                    <a href="/about/wholesale">Оптом</a>
+                    <a href="/about/offer">Публичня оферта</a>
+                </div>
+                <div class="footer__column">
+                    <h1>Помощь</h1>
+                    <a href="/about/order">Как сделать заказ</a>
+                    <a href="/about/shipping">Информация о доставке</a>
+                    <a href="/about/payment">Способы оплаты</a>
+                    <a href="/about/refund">Возврат товара</a>
+                    <a href="/about/sizes">Как выбрать размер</a>
+                </div>
+                <div class="footer__column last_column">
+                    <h1>Мы в соцсетях</h1>
+                    <div class="header__contact_item">
+                        <a target="_blank" class="header__social-item header__social-item_vk" href="<?=Yii::app()->params['vkontakteLink']?>"></a>
+                        <a target="_blank" class="header__social-item header__social-item_ig" href="<?=Yii::app()->params['instagramLink']?>"></a>
+                        <a target="_blank" class="header__social-item header__social-item_ok" href="<?=Yii::app()->params['odnoklassnikiLink']?>"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="clear"></div>
     </div><!-- page -->
     <div class="footer">
-        Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br/>
+        Copyright &copy; 2014 - 2017 by <?php echo Yii::app()->params['domain']; ?>.<br/>
         All Rights Reserved.<br/>
     </div><!-- footer -->
     <?php $this->renderPartial('application.views.site.auth._auth', array('modelAuth'=>new User('registration'))); ?>

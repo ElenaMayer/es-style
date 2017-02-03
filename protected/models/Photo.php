@@ -257,7 +257,17 @@ class Photo extends CActiveRecord
     }
 
     public function getPhotos($params){
+        $criteria = $this->getPhotosCriteria($params);
+
+        $criteria->limit = Yii::app()->params['photoPerPage'];
+        $criteria->offset = $criteria->limit * ($params['page'] - 1);
+
+        return $this->findAll($criteria);
+    }
+
+    public function getPhotosCriteria($params){
         $criteria = new CDbCriteria();
+
         switch($params['order']) {
             case 'по новинкам':
                 $criteria->order = 'is_available DESC, is_new  DESC';
@@ -305,7 +315,7 @@ class Photo extends CActiveRecord
             }
             $criteria->mergeWith($criteria_colors);
         }
-        return $this->findAll($criteria);
+        return $criteria;
     }
 
     public function getOrderList($type){

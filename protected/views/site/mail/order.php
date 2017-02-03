@@ -104,7 +104,7 @@
                                             </td>
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> (<?= $order->shipping ?>&nbsp;р.)
+                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping):?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
                                                 </font>
                                             </td>
                                         </tr>
@@ -141,21 +141,23 @@
                                         <tr>
                                             <td height="10" colspan="2"></td>
                                         </tr>
-                                        <tr valign="top" align="left" style="height: 25px;">
-                                            <td>
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <b>Адрес</b>
-                                                </font>
-                                            </td>
-                                            <td style="text-align: right;">
-                                                <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= $order->postcode;?>,</br><?= $order->address;?>
-                                                </font>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td height="10" colspan="2"></td>
-                                        </tr>
+                                        <?php if($order->postcode && $order->address):?>
+                                            <tr valign="top" align="left" style="height: 25px;">
+                                                <td>
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <b>Адрес</b>
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <?= $order->postcode;?>,</br><?= $order->address;?>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="10" colspan="2"></td>
+                                            </tr>
+                                        <?php endif;?>
                                         <tr valign="top" align="left" style="height: 25px;">
                                             <td>
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif"><b>Товаров</b></font>
@@ -240,21 +242,22 @@
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-
-                                        <tr valign="top" align="right" style="line-height: 2;">
-                                            <td align="left">
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    Доставка
-                                                </font>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align: center;">
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= $order->shipping ?>&nbsp;р.
-                                                </font>
-                                            </td>
-                                        </tr>
+                                        <?php if($order->shipping):?>
+                                            <tr valign="top" align="right" style="line-height: 2;">
+                                                <td align="left">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        Доставка
+                                                    </font>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: center;">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <?= $order->shipping ?>&nbsp;р.
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
                                         <tr valign="top" align="right" style="line-height: 2;">
                                             <td align="left">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">

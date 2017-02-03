@@ -3,6 +3,9 @@
     <div class="table__left-column">
         <div class="js-fix_side_block  catalog-navigation-wrap">
             <div class="catalog-navigation__title">Категории</div>
+            <?php if(isset($_GET['subcategory'])):?>
+                <input type="hidden" class="subcategory" value="<?= $_GET['subcategory']?>">
+            <?php endif; ?>
             <ul class="catalog-navigation">
                 <?php foreach (Yii::app()->params['categories'] as $categoryId => $categoryName): ?>
                     <li class="catalog-navigation__item">
@@ -36,7 +39,7 @@
                 </span>
                 <div class="title">
                     <h2><?php if (isset($_GET['subcategory'])):?><?= Yii::app()->params['subcategories'][$type][$_GET['subcategory']] ?><?php else: ?><?= Yii::app()->params['categories'][$type] ?><?php endif; ?></h2>
-                    <span class="products-catalog__head-counter"><?= count($model) ?> товаров</span>
+                    <span class="products-catalog__head-counter"><?= $pagination->itemCount ?> товаров</span>
                 </div>
             </div>
             <div class="js-multifilters-container" style="height: auto;">
@@ -68,6 +71,17 @@
             <?php endif; ?>
         </div>
     </div>
+    <div class="site_pager">
+        <?php $this->widget('CLinkPager', array(
+            'pages' => $pagination,
+            'header' => '',
+            'nextPageLabel' => '>',
+            'prevPageLabel' => '<',
+            'firstPageLabel' => '<<',
+            'lastPageLabel' => '>>',
+            'maxButtonCount' => Yii::app()->params['maxPagerButtonCount']
+        )); ?>
+    </div>
 </div>
 
 <script>
@@ -89,6 +103,11 @@
                 $(this).addClass('active');
             }
         });
+        if($('.subcategory').length > 0) {
+            $(".yiiPager a").each(function( e ) {
+                $(this).attr("href", $(this).attr("href") + '?subcategory=' + $('.subcategory').val());
+            });
+        }
     });
     $( ".order_menu>ul.dropdown-menu>li>a" ).click(function() {
         order = $(this).text();
