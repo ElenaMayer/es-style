@@ -1,2509 +1,2509 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-    <loc>http://es-style.ru/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/cart/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/shipping</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/wholesale</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16045</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16103</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=evening_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress?subcategory=sarafan_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_ss</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_ls</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_tunic</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_jumper</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_cardigan</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_turtleneck</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_jacket</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse?subcategory=blouse_vest</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono?subcategory=kimono_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono?subcategory=kimono_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono?subcategory=kimono_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono?subcategory=kimono_silk</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono?subcategory=kimono_cotton</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other?subcategory=other_homekit</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other?subcategory=other_robe</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11010</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11011</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11020</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11021</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11031</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11033</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11034</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11035</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11039</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11047</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11060</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11061</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11071</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11080</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11081</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11090</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11113</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11118</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11121</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11140</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11150</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11151</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11160</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11161</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11180</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11188</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11212</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11213</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11214</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11217</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11219</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11231</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11240</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11241</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11260</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11261</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11278</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11281</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11291</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11300</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11311</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11330</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11332</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11355</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11360</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11361</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11370</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11384</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11407</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12311</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12318</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12320</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12477</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12480</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12497</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12501</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12504</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12529</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12555</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12560</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12575</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13604</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13607</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13611</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14001</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14511</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14512</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14515</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14531</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14533</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14553</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14593</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14903</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14925</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14926</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15005</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15013</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15025</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15033</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15040</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15057</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15063</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15074</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15077</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15083</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15099</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16010</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16011</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16012</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16018</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16033</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16037</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16039</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16044</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16047</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16055</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16105</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16108</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16109</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17001</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17005</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17013</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17025</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21010</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21011</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21015</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21030</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21031</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21032</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21033</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21034</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21035</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21036</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21038</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21044</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21047</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21060</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21078</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21090</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21101</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21121</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/21131</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22340</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22350</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22365</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22375</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22376</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22379</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22801</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22900</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22901</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22904</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22933</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22936</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22939</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22957</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22971</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22975</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22985</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22995</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22997</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/22998</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23021</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23031</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23034</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23038</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23410</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23510</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23514</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23611</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23626</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23631</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23634</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23640</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23644</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23653</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23655</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blouse/23661</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/41075</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/41094</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/41095</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/42106</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/42109</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/42146</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/42155</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/44410</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/44411</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45075</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45094</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45099</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45101</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45104</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45107</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/45117</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/47059</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48012</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48014</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48017</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48018</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48035</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48053</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48059</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48073</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48084</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48085</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48154</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48156</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48164</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48167</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48174</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48177</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48188</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48194</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/kimono/48196</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/5015</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/5022</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/50030</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/50048</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/50055</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/other/51043</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blog/Vostochnyj_kalendar</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blog?tag=Восточный%20календарь</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/blog?tag=%20Новый%20год</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/shipping?size_tab</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11010?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11011?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11020?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11021?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11031?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11033?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11034?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11035?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11039?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11047?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11060?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11061?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11071?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11080?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11081?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11090?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11113?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11118?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11121?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11140?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11150?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11151?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11160?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11161?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11180?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11188?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11212?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11213?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11214?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11217?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11219?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11231?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11240?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11241?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11260?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11261?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11278?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11281?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11291?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11300?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11311?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11330?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11332?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11355?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11360?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11361?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11370?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11384?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11407?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12311?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12318?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12320?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12477?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12480?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12497?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12501?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12504?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12529?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12555?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12560?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12575?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13604?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13607?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13611?subcategory=dress_es</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11010?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11011?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11020?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11021?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11031?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11033?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11034?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11035?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11039?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11047?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11060?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11061?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11071?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11080?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11081?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11090?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11113?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11118?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11121?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11140?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11150?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11151?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11160?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11161?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11180?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11188?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11212?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11213?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11214?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11217?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11219?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11231?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11240?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11241?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11260?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11261?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11278?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11281?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11291?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11300?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11311?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11330?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11332?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11355?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11360?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11361?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11370?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11384?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11407?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12311?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12318?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12320?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12477?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12480?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12497?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12501?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12504?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12529?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12555?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12560?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12575?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14001?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14511?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14512?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14515?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14531?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14533?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14593?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14903?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14925?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14926?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15005?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15013?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15033?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15040?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15057?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15063?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15074?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15077?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15083?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/15099?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16010?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16011?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16012?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16018?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16044?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16045?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16047?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16055?subcategory=dress_midi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13604?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13607?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/13611?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16103?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16105?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16108?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16109?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17001?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17005?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17013?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17025?subcategory=dress_maxi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11021?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11047?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11080?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11081?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11160?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11161?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11180?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11212?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11213?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11219?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11231?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11330?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11332?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11407?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12311?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12318?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12320?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12477?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12480?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12497?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12529?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/12575?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14511?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14512?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14515?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14531?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14533?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14903?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14925?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14926?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16033?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16037?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16039?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16044?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16045?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16047?subcategory=dress_mini</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17001?subcategory=evening_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17005?subcategory=evening_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17013?subcategory=evening_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/17025?subcategory=evening_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14511?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14512?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14515?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14531?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14533?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/14553?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16033?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16037?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16039?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16055?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16103?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16105?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16108?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/16109?subcategory=knitted_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11010?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11011?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11020?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11021?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11031?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11033?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11034?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11035?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11039?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11047?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11060?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11061?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11071?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11080?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11081?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11090?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11113?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11118?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11121?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11140?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11150?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11151?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11160?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11161?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11180?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11188?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11212?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11213?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11214?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11217?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11219?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11231?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11240?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11241?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11260?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11261?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11278?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11281?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11291?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11300?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11311?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11330?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://es-style.ru/dress/11332?subcategory=cocktail_dress</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.51</priority>
-  </url>
+<url>
+  <loc>http://es-style.ru/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/cart/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/reviews</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/contact</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/wholesale</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/offer</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/order</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/shipping</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/payment</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/refund</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/about/sizes</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=evening_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_cardigan</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_turtleneck</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse?subcategory=blouse_vest</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other?subcategory=other_robe</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other?subcategory=other_homekit</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other?subcategory=other_nightie</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11010</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11011</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11020</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11021</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11031</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11034</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11035</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11039</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11047</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11060</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11061</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11071</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11080</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11081</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11090</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11113</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11118</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11121</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11140</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11150</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/page/2</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/page/3</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/page/4</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/page/5</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/page/6</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21010</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21011</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21015</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21030</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21031</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21032</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21033</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21034</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21035</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21036</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21038</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21044</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21047</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21060</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21078</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21090</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21101</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21121</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21131</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22340</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/page/2</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/page/3</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41075</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41094</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41095</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42106</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42109</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42146</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42155</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44410</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44411</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45075</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45099</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45101</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45104</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45107</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/47059</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48012</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48014</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48017</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48018</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48053</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/page/2</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/5015</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/5022</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/50048</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/51043</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/52025</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53012</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53025</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53050</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog/Kitajskie_risunki_i_simvoly</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=Символы</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Дракон</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Феникс</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Пион</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Лотос</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog/Cipao_Chonsam_ili_kitajskoe_tradicionnoe_plate</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=Восточный%20стиль</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Ципао</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog/Vostochnyj_kalendar</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=Восточный%20календарь</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blog?tag=%20Новый%20год</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11278</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/reviews/page/2</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11010?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11011?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11020?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11021?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11031?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11034?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11035?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11039?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11047?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11060?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11061?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11071?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11080?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11081?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11090?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11113?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11118?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11121?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11140?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11150?subcategory=dress_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11010?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11011?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11020?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11021?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11031?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11034?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11035?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11039?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11047?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11060?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11061?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11071?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11080?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11081?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11090?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11113?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11118?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11121?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11140?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11150?subcategory=dress_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13604?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13607?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13611?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16103?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16105?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16108?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16109?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17001?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17005?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17013?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17025?subcategory=dress_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11021?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11047?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11080?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11081?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11160?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11161?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11180?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11212?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11213?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11219?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11231?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11330?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11332?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11407?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12311?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12318?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12320?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12477?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12480?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12497?subcategory=dress_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17001?subcategory=evening_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17005?subcategory=evening_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17013?subcategory=evening_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/17025?subcategory=evening_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14511?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14512?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14515?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14531?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14533?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14553?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15103?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15122?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15133?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15152?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15161?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15172?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15199?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15201?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16033?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16037?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16039?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16055?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16103?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16105?subcategory=knitted_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11010?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11011?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11020?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11021?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11031?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11034?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11035?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11039?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11047?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11060?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11061?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11071?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11080?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11081?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11090?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11113?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11118?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11121?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11140?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11150?subcategory=cocktail_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14001?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16010?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16011?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16012?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16018?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16033?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16037?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16039?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16044?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16045?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16047?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16055?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16103?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16105?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16108?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16109?subcategory=sarafan_dress</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21010?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21011?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21015?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21030?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21031?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21032?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21033?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21034?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21035?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21036?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21038?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21044?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21047?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21060?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21078?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21090?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21101?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21121?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21131?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22340?subcategory=blouse_es</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21010?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21011?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21015?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21030?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21031?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21032?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21033?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21034?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21035?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21036?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21038?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21044?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21047?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21060?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21078?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21090?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21101?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21121?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/21131?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22801?subcategory=blouse_ss</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22340?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22350?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22365?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22375?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22376?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22379?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22900?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22901?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22904?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23611?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23626?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23631?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23634?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23640?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23644?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23653?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23655?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23661?subcategory=blouse_ls</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22971?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22975?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23021?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23034?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23038?subcategory=blouse_tunic</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23626?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23631?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23634?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23653?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23655?subcategory=blouse_jumper</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23611?subcategory=blouse_cardigan</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23640?subcategory=blouse_cardigan</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23644?subcategory=blouse_cardigan</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23661?subcategory=blouse_cardigan</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22985?subcategory=blouse_turtleneck</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22995?subcategory=blouse_turtleneck</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22997?subcategory=blouse_turtleneck</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22998?subcategory=blouse_turtleneck</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22365?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22375?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22376?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/22379?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23410?subcategory=blouse_jacket</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23510?subcategory=blouse_vest</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/blouse/23514?subcategory=blouse_vest</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41075?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41094?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41095?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42106?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42109?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42146?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42155?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44410?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44411?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45075?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48012?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48014?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48017?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48018?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48053?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48059?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48073?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48084?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48085?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48154?subcategory=kimono_midi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48154?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48174?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48203?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48208?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48213?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48229?subcategory=kimono_maxi</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44410?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44411?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45099?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45101?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45104?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45107?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/47059?subcategory=kimono_mini</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41075?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41094?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/41095?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42106?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42109?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42146?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/42155?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44410?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/44411?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45075?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45099?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45101?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45104?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/45107?subcategory=kimono_silk</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/47059?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48012?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48014?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48017?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48018?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48053?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48059?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48073?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48084?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48085?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48154?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48158?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48164?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48167?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48174?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48188?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48194?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48196?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48203?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/kimono/48208?subcategory=kimono_cotton</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/50048?subcategory=other_robe</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/52025?subcategory=other_robe</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/5015?subcategory=other_homekit</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/5022?subcategory=other_homekit</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/51043?subcategory=other_homekit</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/52025?subcategory=other_homekit</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/52025?subcategory=other_nightie</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53012?subcategory=other_nightie</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53025?subcategory=other_nightie</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/other/53050?subcategory=other_nightie</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11151</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11160</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11161</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11180</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11188</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11212</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11213</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11214</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11217</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11219</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11231</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11240</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11241</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11260</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11261</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11291</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11311</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11330</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11332</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11355</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11360</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11361</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11370</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11384</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/11407</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12311</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12318</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12320</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12477</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12480</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12497</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12501</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12504</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12529</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12555</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12560</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/12575</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13604</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13607</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/13611</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14001</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14511</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14512</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14515</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14531</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14533</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14553</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14593</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14903</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14925</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/14926</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15005</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15013</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15025</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15033</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15040</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15057</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15063</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15074</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15077</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15083</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15103</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15113</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15122</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15133</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15144</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15152</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15161</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15172</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15188</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15199</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/15201</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16010</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16011</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16012</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16018</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16033</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://es-style.ru/dress/16037</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
 </urlset>
