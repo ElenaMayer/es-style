@@ -30,6 +30,9 @@
                 <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
             <?php endif ?>
             <?php echo $form->labelEx($user, 'email'); ?>
+            <?php if (isset($user->getErrors()['email'])):?>
+                <div class="help-block error"><?= array_shift($user->getErrors()['email']) ?></div>
+            <?php endif ?>
         </div>
     </div>
     <?php if (Yii::app()->user->isGuest):?>

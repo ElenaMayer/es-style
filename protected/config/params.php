@@ -64,6 +64,7 @@ return array(
         'shipping_by_tc' => 'Передан на доставку в ТК',
         'waiting_delivery' => 'Ожидает вручения',
         'paid' => 'Оплачено',
+        'waiting_shipping' => 'Оплачено, ожидает отправки',
         'completed' => 'Выполнен',
         'lost' => 'Потеряна',
         'not_redeemed' => 'Не выкуплен',
@@ -71,7 +72,7 @@ return array(
     ],
     'paymentMethod' => [
         'online'  => 'Онлайн-оплата',
-        'cod' => 'При получении (взимается комиссия за наложенный платеж)',
+        'cod' => 'При получении',
     ],
     'shippingMethod' => [
         'russian_post' => 'Почта России',

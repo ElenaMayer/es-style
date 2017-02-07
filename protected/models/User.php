@@ -63,7 +63,7 @@ class User extends CActiveRecord
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
             array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder, guestOrder', 'message'=>'Это поле необходимо заполнить.'),
-            array('name, phone', 'required', 'on' => 'guestOrderToStore', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, phone', 'required', 'on' => 'userOrderToStore, guestOrderToStore', 'message'=>'Это поле необходимо заполнить.'),
             array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
             array('password1, password2, name, phone, email', 'required', 'on' => 'orderWithRegistrationToStore', 'message'=>'Это поле необходимо заполнить.'),
             array('name, password2, password_old, password_new', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
@@ -305,7 +305,12 @@ class User extends CActiveRecord
 
     public function saveUserData($attributes){
         $this->attributes = $attributes;
-        if(isset($attributes['create_profile']) && $attributes['create_profile'] == '0'){
+        if(!Yii::app()->user->isGuest) {
+            if ($attributes['shipping_method'] == 'russian_post')
+                $this->scenario = 'userOrder';
+            else
+                $this->scenario = 'userOrderToStore';
+        } else if(isset($attributes['create_profile']) && $attributes['create_profile'] == '0' && Yii::app()->user->isGuest){
             if ($attributes['shipping_method'] == 'russian_post')
                 $this->scenario = 'guestOrder';
             else

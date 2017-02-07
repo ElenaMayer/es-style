@@ -177,6 +177,7 @@ class OrderHistory extends CActiveRecord
 				$color = 'orange';
 				break;
             case 'paid':
+            case 'waiting_shipping':
                 $color = 'cyan';
                 break;
 			case 'completed':
@@ -245,7 +246,7 @@ class OrderHistory extends CActiveRecord
 
     public static function refreshOrderAvailableSum(){
         $sum = 0;
-        $orders = OrderHistory::model()->findAllByAttributes(['status' => 'paid']);
+        $orders = OrderHistory::model()->findAllByAttributes(['status' => 'waiting_shipping']);
         foreach ($orders as $order) {
             $sum += $order->total;
         }
@@ -287,7 +288,7 @@ class OrderHistory extends CActiveRecord
 
     public function isPaid(){
         $this->is_paid = 1;
-        $this->status = 'paid';
+        $this->status = 'waiting_shipping';
         $this->save();
     }
 }

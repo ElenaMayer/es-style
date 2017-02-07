@@ -197,7 +197,7 @@ class AjaxController extends Controller
                 } else
                     echo json_encode(['error'=>'Купон использован']);
             } else
-                echo json_encode(['error'=>'Купон не найдет']);
+                echo json_encode(['error'=>'Купон не найден']);
         } else
             echo false;
         Yii::app()->end();

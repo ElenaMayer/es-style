@@ -131,7 +131,8 @@ class Robokassa {
         $url = "https://auth.robokassa.ru/Merchant/Index.aspx?".
             "MerchantLogin=$this->mrh_login&OutSum=$sum&InvoiceID=$invoiceId&Shp_id=$orderId".
             "&Description=$this->inv_desc&IncCurrLabel=$this->incCurrLabel&SignatureValue=$crc";
-        $url .= "&IsTest=1";
+        if(Yii::app()->params['robokassaDevMode'])
+            $url .= "&IsTest=1";
         return $url;
     }
 
@@ -140,7 +141,8 @@ class Robokassa {
         $crc = md5("$this->mrh_login:$invoiceId:$this->mrh_pass2");
         $url = "https://auth.robokassa.ru/Merchant/WebService/Service.asmx/OpState?".
             "MerchantLogin=$this->mrh_login&InvoiceID=$invoiceId&Signature=$crc";
-        $url .= "&IsTest=1";
+        if(Yii::app()->params['robokassaDevMode'])
+            $url .= "&IsTest=1";
         return $url;
     }
 
@@ -214,7 +216,7 @@ class Robokassa {
     public function confirmPayment($orderId) {
         $order = OrderHistory::model()->findByPk($orderId);
         if($order) {
-            $order->status = 'paid';
+            $order->status = 'waiting_shipping';
             $order->is_paid = 1;
             return $order->save();
         } else

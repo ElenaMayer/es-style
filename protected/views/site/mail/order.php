@@ -89,7 +89,10 @@
                                             </td>
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['paymentMethod'][$order->payment_method];?><br>
+                                                    <?= Yii::app()->params['paymentMethod'][$order->payment_method];?> <br>
+                                                    <?php if($order->payment_method != 'online' && $order->shipping_method == 'store'):?>
+                                                        (взимается комиссия за наложенный платеж)
+                                                    <?php endif;?>
                                                 </font>
                                             </td>
                                         </tr>
@@ -104,7 +107,7 @@
                                             </td>
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping):?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
+                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping_method == 'store'):?>(Мичурина 12)<?php else:?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
                                                 </font>
                                             </td>
                                         </tr>

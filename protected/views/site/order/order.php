@@ -31,6 +31,7 @@
     var shipping_cost;
     $( document ).ready(function() {
         check_shipping();
+        ga('send', 'event', 'order', 'begin_order');
     });
     cart_id = <?= $cart->id ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
@@ -38,6 +39,7 @@
 
     $( 'body' ).on( 'click', '.order_submit', function() {
         yaCounter37654655.reachGoal('create_order');
+        ga('send', 'event', 'order', 'create_order');
         $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         $.ajax({
             url: "/order/" + cart_id,

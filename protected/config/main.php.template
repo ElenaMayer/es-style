@@ -107,5 +107,6 @@ return array(
         'robokassaLogin' => "login",
         'robokassaPass1' => "pass1",
         'robokassaPass2' => "pass2",
+        'debugMode' => 1,
         ), require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'params.php')),
 );

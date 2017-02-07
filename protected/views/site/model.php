@@ -107,6 +107,8 @@
         if ($(".button_pressed").length==0 && !is_uni_size){
             $('.size').addClass('size_error');
         } else {
+            yaCounter37654655.reachGoal('add_to_cart');
+            ga('send', 'event', 'cart', 'add_to_cart');
             $.ajax({
                 url: "/ajax/addToCart",
                 data: {

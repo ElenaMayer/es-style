@@ -77,11 +77,12 @@ class SiteController extends Controller {
         $user=new User;
         $user->scenario = 'login';
         $user->attributes = Yii::app()->request->getPost('User');
+        $current_cart = Yii::app()->cart->currentCart;
         if ($user->validate() && $user->login()) {
-            if (Yii::app()->cart->currentCart) {
+            if ($current_cart) {
                 $cart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
                 if($cart) {
-                    $cart->addItemsToCart(Yii::app()->cart->currentCart->cartItems);
+                    $cart->addItemsToCart($current_cart->cartItems);
                     if(Yii::app()->controller->action->id == 'order'){
                         Yii::app()->cart->currentCart->user_id = $user->id;
                         Yii::app()->cart->currentCart->is_active = false;
@@ -277,8 +278,12 @@ class SiteController extends Controller {
 
     public function actionOrder($id){
         $this->pageTitle = Yii::app()->name.' - '.'Заказ';
+        if(Yii::app()->params['debugMode']){
+            Yii::log('Переход к оформлению заказа, IP:', 'warning');
+            Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
+        }
         if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->id == $id) {
-            if(!Yii::app()->user->isGuest) {
+            if (!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
                 if ($user->blocked)
@@ -288,12 +293,22 @@ class SiteController extends Controller {
                 $user->scenario = 'orderWithRegistration';
             }
             if (isset($_POST['User'])) {
+                if(Yii::app()->params['debugMode']){
+                    Yii::log('Отправить заказ, IP:', 'warning');
+                    Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
+                    Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
+                }
                 $user->saveUserData($_POST['User']);
                 $errors = $user->getErrors();
                 if(empty($errors)) {
                     echo json_encode($this->processingOrder($user));
                     Yii::app()->end();
                 } else {
+                    if(Yii::app()->params['debugMode']){
+                        Yii::log('Ошибки при оформлении, IP:', 'warning');
+                        Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
+                        Yii::log(CVarDumper::dumpAsString($errors), 'warning');
+                    }
                     $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
                     Yii::app()->end();
                 }
@@ -314,12 +329,12 @@ class SiteController extends Controller {
             $res['robokassaUrl'] = $robokassa->getPaymentFormUrlWithOrderIdAndSum($order->id, $order->total_with_commission?$order->total_with_commission:$order->total);
         }
         $res['orderId'] = $order->id;
-        //Логи @todo
-        Yii::log('Новый заказ:', 'warning');
-        Yii::log(CVarDumper::dumpAsString($_POST), 'warning');
-        Yii::log('Id корзины:', 'warning');
-        Yii::log(Yii::app()->cart->currentCart->id, 'warning');
-
+        if(Yii::app()->params['debugMode']) {
+            Yii::log('Заказ успешно создан, IP:', 'warning');
+            Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
+            Yii::log('Id корзины:', 'warning');
+            Yii::log(Yii::app()->cart->currentCart->id, 'warning');
+        }
         $this->sentOrderMail($order);
         $this->sentOrderMailToAdmin($order);
         OrderHistory::refreshOrderNewSum();
