@@ -34,6 +34,7 @@
         ga('send', 'event', 'order', 'begin_order');
     });
     cart_id = <?= $cart->id ?>;
+    default_tariff = <?= Yii::app()->params['defaultShippingTariff']; ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
 
@@ -96,7 +97,8 @@
             $('.cart-shipping-val').text(0 + " руб.");
             shipping_cost = 0;
         } else {
-            get_shipping(parseInt($('#User_postcode').val()));
+            if(parseInt($('#User_postcode').val()))
+                get_shipping(parseInt($('#User_postcode').val()));
         }
     }
 
@@ -127,6 +129,9 @@
                 } else if(data['Status'] == "BAD_TO_INDEX"){
                     show_shipping_error(1);
                 }
+            },
+            error:function (data) {
+                show_shipping(default_tariff);
             }
         })
     }
