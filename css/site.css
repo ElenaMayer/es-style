@@ -1513,14 +1513,32 @@ h3.news {
     margin-top: -110px;
     margin-right: 15px;
 }
-.row input {
+.row input,
+.row select {
     display: inline-block;
     position: relative;
-    width: 50%;
+    width: 40%;
+}
+.row.big-row input {
+    width: 92%;
 }
 .catalog__head .clear,
 .new-order .clear {
     height: auto;
+}
+.new-order .fio_group .fio input {
+    display: inline;
+    width: 30%;
+}
+.new-order .shipping_method {
+    padding-bottom: 20px;
+}
+.new-order .order-stuff {
+    padding: 20px 0 20px 20px;
+    text-align: left;
+}
+.new-order .order-form {
+    padding-left: 20px;
 }
 
 /* Cart */
@@ -1803,12 +1821,10 @@ h3.news {
     box-shadow: 0 0 4px #d9d9d9;
 }
 .cart-offer {
-    clear: both;
-    float: right;
-    text-align: right;
+    text-align: left;
     width: 320px;
     line-height: 1.5;
-    margin-right: 20px;
+    padding-bottom: 15px;
 }
 
 .button.button_active,
@@ -1918,7 +1934,6 @@ h3.news {
     font-weight: normal;
 }
 .new-order .row label {
-    left: 40px;
     font-weight: normal;
 }
 .new-order .row {
@@ -1931,8 +1946,8 @@ h3.news {
 }
 .new-order .row .payment input,
 .new-order .row .order-auth-checkout__register input,
-.new-order .row .shipping_method input {
-    left: 10px;
+.new-order .row .shipping_method select {
+    left: -50px;
     top: 7px;
 }
 .new-order .row .payment label,
@@ -1946,26 +1961,36 @@ h3.news {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #eee;
+    margin-left: -20px;
 }
 .after_shipping {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
+    margin-left: -20px;
 }
-.new-order .row .shipping_method {
+.new-order .row .shipping_method,
+.new-order .row .payment {
     padding-bottom: 30px;
 }
 .new-order .row .order-auth-checkout__register {
     padding-bottom: 10px;
 }
+.new-order .row {
+    text-align: left;
+    padding-left: 50px;
+}
 .order-password {
     display: none;
 }
-.order-form .error{
+.order-form .error {
     font-size: 14px;
     width: auto;
 }
 .row input.error {
-    width: 50%;
+    width: 40%;
+}
+.row.big-row input.error {
+    width: 92%;
 }
 .order-form .has-error .form-control,
 .order-form .form-control.error {
@@ -2523,6 +2548,11 @@ a.button_border:hover,
     float: right;
     clear: both;
 }
+.new-order .cart_coupon {
+    padding: 0;
+    float: none;
+    clear: none;
+}
 .cart_coupon .form-control {
     display: inline;
     width: inherit;
@@ -2537,13 +2567,9 @@ a.button_border:hover,
     text-align: right;
     margin-bottom: 0;
 }
-
-/* About */
-
-.shipping_method {
-
+.new-order .cart_coupon .help-block.error {
+    text-align: left;
 }
-
 /*
 
 IPad 768×1024
@@ -2624,9 +2650,6 @@ IPhone 6 Plus 414×736
     }
     .main-description p {
         line-height: 15px;
-    }
-    .new-order .row label {
-        left: 30px;
     }
     .new-order .payment label.payment_cod {
         left: -40px;
@@ -2761,9 +2784,6 @@ IPhone 6 Plus 414×736
     .header__contact_item_right:before {
         content: '';
     }
-    .new-order .row label {
-        left: -130px;
-    }
     .new-order div.content .row {
         margin-left: 120px;
     }
@@ -2844,7 +2864,7 @@ IPhone 6 Plus 414×736
         width: auto;
     }
     .new-order .row .payment input,
-    .new-order .row .shipping_method input {
+    .new-order .row .shipping_method {
         top: 35px;
         width: auto;
         left: -130px;

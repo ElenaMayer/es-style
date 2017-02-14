@@ -32,7 +32,7 @@ class User extends CActiveRecord
     public $password_new;
     public $is_subscribed = true;
     private $_identity;
-    public $payment = 'online';
+    public $payment;
     public $shipping_method;
     public $create_profile;
     public $postcode_error;
@@ -62,9 +62,9 @@ class User extends CActiveRecord
             array('date_of_birth, date, month, year, is_subscribed, blocked', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
-            array('name, surname, middlename, address, phone, postcode', 'required', 'on' => 'userOrder, guestOrder', 'message'=>'Это поле необходимо заполнить.'),
+            array('name, address, phone, postcode', 'required', 'on' => 'userOrder, guestOrder', 'message'=>'Это поле необходимо заполнить.'),
             array('name, phone', 'required', 'on' => 'userOrderToStore, guestOrderToStore', 'message'=>'Это поле необходимо заполнить.'),
-            array('password1, password2, name, surname, middlename, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
+            array('password1, password2, name, address, phone, email, postcode', 'required', 'on' => 'orderWithRegistration', 'message'=>'Это поле необходимо заполнить.'),
             array('password1, password2, name, phone, email', 'required', 'on' => 'orderWithRegistrationToStore', 'message'=>'Это поле необходимо заполнить.'),
             array('name, password2, password_old, password_new', 'required', 'on' => 'customer', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on' => 'customer_person_data', 'message'=>'Это поле необходимо заполнить.'),
@@ -158,6 +158,7 @@ class User extends CActiveRecord
             'shipping_method' => 'Способ доставки',
             'coupon_id' => 'Купон',
             'date_create' => 'Дата создания',
+            'fio' => 'ФИО',
         );
     }
 

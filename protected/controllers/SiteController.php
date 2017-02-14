@@ -58,10 +58,12 @@ class SiteController extends Controller {
         $user = new User;
         $user->scenario = 'registration';
         $user->attributes = Yii::app()->request->getPost('User');
+        $current_cart = Yii::app()->cart->currentCart;
         if ($user->validate()) {
             $user->password = $user->password1;
             if($user->save()) {
-                if(Yii::app()->cart->currentCart) {
+                if($current_cart) {
+                    Yii::app()->cart->currentCart = $current_cart;
                     Yii::app()->cart->currentCart->user_id = $user->id;
                     Yii::app()->cart->currentCart->save();
                 }

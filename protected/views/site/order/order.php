@@ -6,8 +6,10 @@
     <div class="cart-total cart-total_threshold">
         <?php $this->renderPartial('order/_order_total', array('model'=>$cart)); ?>
     </div>
-    <div class="cart-offer">Нажимая на кнопку "Отправить заказ", вы принимаете условия <a href="/about/offer" target="_blank">Публичной оферты</a></div>
-    <?php $this->renderPartial('/site/_coupon'); ?>
+    <div class="order-stuff">
+        <div class="cart-offer">Нажимая на кнопку "Отправить заказ", вы принимаете условия <a href="/about/offer" target="_blank">Публичной оферты</a></div>
+        <?php $this->renderPartial('/site/_coupon'); ?>
+    </div>
     <div class="cart-separator"></div>
     <div class="cart-navigation">
         <a href="/cart" class="button button_big button_corner-left">
