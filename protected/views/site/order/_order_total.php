@@ -9,7 +9,7 @@
             </span>
         </span>
     <span class="cart-shipping-val">
-        <?php if($model->count < Yii::app()->params['shippingFreeCount'] && $user->shipping_method != 'store') :?><?=Yii::app()->params['defaultShippingTariff']?><?php else: ?>0<?php endif; ?> руб.
+        <?= $model->shipping ?> руб.
     </span>
 </div>
 <?php if($model->sale > 0) :?>
@@ -27,6 +27,6 @@
 <div class="cart-total__price cart-total__price_total">
     <span class="cart-total__price-title">Итого</span>
     <div class="cart-total-val">
-        <span><?php if(isset($shipping)) :?><?=$model->total+$shipping?><?php else: ?><?= $model->total ?><?php endif; ?></span> руб.
+        <span><?= $model->total ?></span> руб.
     </div>
 </div>

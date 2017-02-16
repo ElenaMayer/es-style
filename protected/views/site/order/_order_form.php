@@ -92,8 +92,6 @@
             $('.email_group>label>span').hide();
         if($('#User_shipping_method_1').prop('checked'))
             shipping_to_store();
-        else
-            shipping_by_post();
     });
     $( 'body' ).on( 'change', '#User_create_profile', function() {
         if($(this).prop('checked')) {

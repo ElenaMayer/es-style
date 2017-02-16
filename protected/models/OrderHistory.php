@@ -246,7 +246,7 @@ class OrderHistory extends CActiveRecord
 
     public static function refreshOrderAvailableSum(){
         $sum = 0;
-        $orders = OrderHistory::model()->findAllByAttributes(['status' => 'waiting_shipping']);
+        $orders = OrderHistory::model()->findAllByAttributes(['status' => 'paid']);
         foreach ($orders as $order) {
             $sum += $order->total;
         }

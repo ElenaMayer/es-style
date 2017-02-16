@@ -27,12 +27,10 @@
     <?php $this->renderPartial('order/_order_created', array('orderId'=>null)); ?>
 </div>
 <script>
-    var shipping_cost;
     $( document ).ready(function() {
         ga('send', 'event', 'order', 'begin_order');
     });
     cart_id = <?= $cart->id ?>;
-    default_tariff = <?= Yii::app()->params['defaultShippingTariff']; ?>;
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
     $( "body" ).on("mouseleave", ".i_help", function() {$(this).children('.hint').removeClass('hint-show')});
 

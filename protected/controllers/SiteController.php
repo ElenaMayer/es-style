@@ -370,9 +370,9 @@ class SiteController extends Controller {
         $order->payment_method = $_POST['User']['payment'];
         $order->phone = $user->phone;
         $order->email = $user->email;
-        $order->shipping = ($order->shipping_method == 'russian_post') ? $_POST['User']['shipping'] : 0;
 
         $cart = Yii::app()->cart->currentCart;
+        $order->shipping = ($order->shipping_method == 'russian_post') ? $cart->shipping : 0;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
         $order->coupon_id = $cart->coupon_id;

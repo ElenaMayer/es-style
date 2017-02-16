@@ -9,7 +9,7 @@
             </span>
         </span>
     <span class="cart-shipping-val">
-        <?php if($model->count < Yii::app()->params['shippingFreeCount']):?><?=Yii::app()->params['defaultShippingTariff']?><?php else: ?>0<?php endif; ?> руб.
+        <?= $model->shipping ?> руб.
     </span>
 </div>
 <?php if($model->sale > 0) :?>

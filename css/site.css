@@ -1513,13 +1513,18 @@ h3.news {
     margin-top: -110px;
     margin-right: 15px;
 }
-.row input,
-.row select {
+.row input {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+}
+.new-order .row input,
+.new-order .row select {
     display: inline-block;
     position: relative;
     width: 40%;
 }
-.row.big-row input {
+.new-order .row.big-row input {
     width: 92%;
 }
 .catalog__head .clear,
@@ -1824,7 +1829,7 @@ h3.news {
     border: 1px solid #d9d9d9;
     box-shadow: 0 0 4px #d9d9d9;
 }
-.cart-offer {
+.new-order .cart-offer {
     text-align: left;
     width: 320px;
     line-height: 1.5;
@@ -1961,13 +1966,13 @@ h3.news {
     top: 6px;
     left: -185px;
 }
-.before_shipping {
+.new-order .before_shipping {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #eee;
     margin-left: -20px;
 }
-.after_shipping {
+.new-order .after_shipping {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
     margin-left: -20px;
@@ -1991,9 +1996,12 @@ h3.news {
     width: auto;
 }
 .row input.error {
+    width: 50%;
+}
+.new-order .row input.error {
     width: 40%;
 }
-.row.big-row input.error {
+.new-order .row.big-row input.error {
     width: 92%;
 }
 .order-form .has-error .form-control,
@@ -2912,7 +2920,7 @@ IPhone 6 Plus 414×736
     .new-order .fio_group .fio input {
         width: 32%;
     }
-    .row select {
+    .new-order .row select {
         width: 100%;
     }
     .new-order .fio_group .error {
@@ -3100,14 +3108,11 @@ IPhone 6 Plus 414×736
         padding: 0;
         font-size: 10px;
     }
-    div.content .row {
+    .new-order div.content .row {
         position: relative;
         margin: 0 0 -10px 80px;
     }
-    div.content .row {
-        margin: 0 0 -10px 80px;
-    }
-    .row label {
+    .new-order .row label {
         left: -80px;
         width: 93px;
     }
@@ -3127,10 +3132,10 @@ IPhone 6 Plus 414×736
         width: 100%;
         margin-bottom: 5px;
     }
-    .cart-offer {
+    .new-order .cart-offer {
         font-size: 13px;
     }
-    .order-auth-checkout__login {
+    .new-order .order-auth-checkout__login {
         font-size: 17px;
     }
 }

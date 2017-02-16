@@ -18,6 +18,7 @@ class Cart extends CActiveRecord
     public $subtotal;
     public $sale;
     public $coupon_sale;
+    public $shipping;
     public $total;
     public $count;
 	public $weight;
@@ -141,7 +142,8 @@ class Cart extends CActiveRecord
         $this->sale = $sale;
         $this->coupon_sale = $coupon_sale;
         $this->count = $count;
-        $this->total = $subtotal - $this->sale - $this->coupon_sale;
+        $this->shipping = ($this->count < Yii::app()->params['shippingFreeCount']) ? Yii::app()->params['defaultShippingTariff'] : 0;
+        $this->total = $subtotal - $this->sale - $this->coupon_sale + $this->shipping;
         $this->weight = $weight;
     }
 
