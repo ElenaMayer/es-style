@@ -10,7 +10,7 @@ return array(
     'photoPerPage' => 20,
     'reviewsPerPage' => 10,
     'maxPagerButtonCount' => 5,
-    'defaultShippingTariff'=> 250,
+    'defaultShippingTariff'=> 300,
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',

@@ -9,7 +9,7 @@
             </span>
         </span>
     <span class="cart-shipping-val">
-        <?php if(isset($shipping)) :?><?=$shipping?> руб.<?php else: ?>Не определена<?php endif; ?>
+        <?php if($model->count < Yii::app()->params['shippingFreeCount'] && $user->shipping_method != 'store') :?><?=Yii::app()->params['defaultShippingTariff']?><?php else: ?>0<?php endif; ?> руб.
     </span>
 </div>
 <?php if($model->sale > 0) :?>

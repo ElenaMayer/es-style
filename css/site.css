@@ -1530,6 +1530,10 @@ h3.news {
     display: inline;
     width: 30%;
 }
+.new-order .fio_group .error {
+    padding-left: 222px;
+    font-size: 13px;
+}
 .new-order .shipping_method {
     padding-bottom: 20px;
 }
@@ -2545,13 +2549,9 @@ a.button_border:hover,
 
 .cart_coupon {
     padding: 20px;
-    float: right;
-    clear: both;
 }
 .new-order .cart_coupon {
     padding: 0;
-    float: none;
-    clear: none;
 }
 .cart_coupon .form-control {
     display: inline;
@@ -2562,13 +2562,6 @@ a.button_border:hover,
     height: 34px;
     vertical-align: top;
     padding: 2px 10px;
-}
-.cart_coupon .help-block.error {
-    text-align: right;
-    margin-bottom: 0;
-}
-.new-order .cart_coupon .help-block.error {
-    text-align: left;
 }
 /*
 
@@ -2664,6 +2657,9 @@ IPhone 6 Plus 414×736
     }
     .new-order .payment #User_payment input.payment_cod {
         width: 35%;
+    }
+    .footer__column {
+        width: 32%;
     }
 }
 
@@ -2909,6 +2905,29 @@ IPhone 6 Plus 414×736
         padding: 2px;
         font-size: 11px;
     }
+
+    .new-order .row {
+        padding-left: 10px;
+    }
+    .new-order .fio_group .fio input {
+        width: 32%;
+    }
+    .row select {
+        width: 100%;
+    }
+    .new-order .fio_group .error {
+        padding-left: 45px;
+    }
+    .cart_coupon .coupon_use_link {
+        width: 88px;
+        padding: 2px 5px;
+    }
+    .cart_coupon .form-control {
+        width: 132px;
+    }
+    .new-order .order-form {
+        padding-left: 0;
+    }
 }
 
 @media only screen and (width: 767px) {
@@ -2918,6 +2937,7 @@ IPhone 6 Plus 414×736
         width: auto;
     }
 }
+
 @media only screen and (max-width: 480px) {
     .catalog__dd {
         float: none;
@@ -3079,6 +3099,39 @@ IPhone 6 Plus 414×736
     .about th, .about td {
         padding: 0;
         font-size: 10px;
+    }
+    div.content .row {
+        position: relative;
+        margin: 0 0 -10px 80px;
+    }
+    div.content .row {
+        margin: 0 0 -10px 80px;
+    }
+    .row label {
+        left: -80px;
+        width: 93px;
+    }
+    .new-order .row .order-auth-checkout__register input {
+        left: -90px;
+    }
+    .new-order .row .order-auth-checkout__register label {
+        width: 150%;
+        left: -70px;
+    }
+    .new-order .order-stuff {
+        padding: 0;
+        display: inline-block;
+    }
+    .new-order .fio_group .fio input {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .cart-offer {
+        font-size: 13px;
+    }
+    .order-auth-checkout__login {
+        font-size: 17px;
     }
 }
 @media only screen and (max-width: 320px) {

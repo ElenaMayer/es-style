@@ -311,7 +311,7 @@ class SiteController extends Controller {
                         Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
                         Yii::log(CVarDumper::dumpAsString($errors), 'warning');
                     }
-                    $this->renderPartial('order/_order_form', array('user' => $user, 'shipping' => $_POST['User']['shipping']));
+                    $this->renderPartial('order/_order_form', array('user' => $user, 'model' => Yii::app()->cart->currentCart));
                     Yii::app()->end();
                 }
             }
