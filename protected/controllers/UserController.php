@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew', 'sendMailWithNews'),
+				'actions'=>array('update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users

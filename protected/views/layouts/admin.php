@@ -62,7 +62,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br/>
+		Copyright &copy; 2014 - 2017 by <?php echo Yii::app()->params['domain']; ?>.<br/>
 		All Rights Reserved.<br/>
 	</div><!-- footer -->
 

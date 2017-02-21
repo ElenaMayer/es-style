@@ -9,6 +9,10 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 
+    'import'=>array(
+        'application.models.*',
+        'application.components.*',
+    ),
 	// application components
 	'components'=>array(
         'db'=>array(
@@ -27,5 +31,8 @@ return array(
 				),
 			),
 		),
+        'userForMail'=>[
+            'class'=>'UserForMail'
+        ],
 	),
 );

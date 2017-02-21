@@ -2001,6 +2001,9 @@ h3.news {
 .new-order .row input.error {
     width: 40%;
 }
+.new-order .row .fio_group input.error {
+    width: 30%;
+}
 .new-order .row.big-row input.error {
     width: 92%;
 }
@@ -2936,6 +2939,15 @@ IPhone 6 Plus 414×736
     .new-order .order-form {
         padding-left: 0;
     }
+    .page .navbar-toggle {
+        display: none;
+    }
+    .page .collapse {
+        display: block;
+    }
+    .page .navbar-collapse {
+        border: 0;
+    }
 }
 
 @media only screen and (width: 767px) {
@@ -3062,9 +3074,6 @@ IPhone 6 Plus 414×736
     .banner {
         height: 33px;
     }
-    .basket-button .button__icon {
-        margin: 5px 0 0 -4px;
-    }
     .history .cart-item__cell_total {
         text-align: left;
     }
@@ -3137,6 +3146,13 @@ IPhone 6 Plus 414×736
     }
     .new-order .order-auth-checkout__login {
         font-size: 17px;
+    }
+    .menu .container-fluid {
+        padding: 0;
+        font-size: 12px;
+    }
+    .menu .container-fluid .menu__list a {
+        padding: 0;
     }
 }
 @media only screen and (max-width: 320px) {

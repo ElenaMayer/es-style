@@ -28,7 +28,7 @@ class PhotoController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew', 'sendMailWithNews'),
+				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -173,23 +173,5 @@ class PhotoController extends Controller
             $photo->is_new = 0;
         echo $photo->save();
         Yii::app()->end();
-    }
-
-    public function actionSendMailWithNews() {
-        $this->layout = '//layouts/mail_sub';
-        $mail = new Mail();
-        $mail->subject = "Новинки интернет-магазина".Yii::app()->params['domain'];
-        $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
-        foreach($users as $user){
-            if(!empty($user->email)){
-                Yii::app()->userForMail->setUser($user);
-                $mail->message = $this->render('/site/mail/new_photos', [
-                    'photos'=>Photo::model()->getNewPhotos()
-                ], true);
-                $mail->to = $user->email;
-                $mail->send();
-            }
-        }
-        $this->redirect('/admin/photo/index?mailComplete');
     }
 }

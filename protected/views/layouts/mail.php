@@ -141,7 +141,7 @@
                                         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:20px;color:#858585;">
                                             <tbody>
                                                 <tr>
-                                                    <td valign="top" align="center" style="padding-top:6px;">Copyright © <?php echo date('Y'); ?> by <?php echo Yii::app()->params['domain']; ?>.<br>All Rights Reserved.</td>
+                                                    <td valign="top" align="center" style="padding-top:6px;">Copyright © 2014 - 2017 by <?php echo Yii::app()->params['domain']; ?>.<br>All Rights Reserved.</td>
                                                 </tr>
                                             </tbody>
                                         </table>

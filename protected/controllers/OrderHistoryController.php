@@ -28,7 +28,7 @@ class OrderHistoryController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew', 'sendMailWithNews'),
+				'actions'=>array('create','update','index','delete', 'setIsShow', 'setIsAvailable', 'setIsNew'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
