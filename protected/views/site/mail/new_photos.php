@@ -21,7 +21,7 @@
                         <tbody>
                         <?php foreach($photos as $key=>$photo) :?>
                             <?php if(($key+1)%2 == 1):?><tr valign="top" align="right" style="line-height: 2;"><?php endif; ?>
-                                <td align="left">
+                                <td align="center">
                                     <font size="3" style="font-size: 16px;" color="#1868a0" face="Arial, Helvetica, sans-serif">
                                         <a href="http://<?= Yii::app()->params['domain'] ?>/<?= $photo->category ?>/<?= $photo->article ?>" target="_blank" style="text-decoration: none;">
                                             <font size="3" style="font-size: 16px;color: #CB2228; display: block; text-align: center; width: 225px;" color="#1868a0" face="Arial, Helvetica, sans-serif"><?= $photo->title ?> арт. <?= $photo->article ?></font>

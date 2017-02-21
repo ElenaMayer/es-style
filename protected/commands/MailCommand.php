@@ -10,7 +10,7 @@ class MailCommand extends CConsoleCommand {
 
     public function actionNewPhotos() {
         $mail = new Mail();
-        $mail->subject = "Новинки интернет-магазина".Yii::app()->params['domain'];
+        $mail->subject = "Новинки интернет-магазина ".Yii::app()->params['domain'];
 
         if(isset(Yii::app()->controller))
             $controller = Yii::app()->controller;
