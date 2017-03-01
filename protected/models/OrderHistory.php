@@ -25,6 +25,7 @@
  * @property integer $coupon_id
  * @property integer $coupon_sale
  * @property integer $coupon_mail_flag
+ * @property date $sms_date
  *
  * The followings are the available model relations:
  * @property User $user
@@ -47,7 +48,7 @@ class OrderHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, subtotal, sale, total', 'required'),
+			array('id', 'required'),
 			array('user_id, is_paid, subtotal, sale, shipping, total, postcode, coupon_id, coupon_sale', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
 			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
@@ -94,12 +95,13 @@ class OrderHistory extends CActiveRecord
             'sale' => 'Скидка',
             'shipping' => 'Доставка',
             'total' => 'Итого',
-            'total_with_commission' => 'С комиссией',
+            'total_with_commission' => 'Итого с комиссией',
             'date_create' => 'Дата создания',
             'track_code' => 'Почтовый идентификатор',
 			'phone' => 'Телефон',
 			'email' => 'Email',
             'coupon_mail_flag' => 'Получино письмо с просьбой написать отзыв за купон',
+            'sms_date' => 'Отправлено смс',
 		);
 	}
 
@@ -290,5 +292,17 @@ class OrderHistory extends CActiveRecord
         $this->is_paid = 1;
         $this->status = 'waiting_shipping';
         $this->save();
+    }
+
+    public function smsWasSent(){
+        if($this->sms_date)
+            return intval((time() - strtotime($this->sms_date))/(60*60*24));
+        else
+            return false;
+    }
+
+    public function setSmsDate(){
+        $this->sms_date = date("Y-m-d");
+        return $this->save();
     }
 }

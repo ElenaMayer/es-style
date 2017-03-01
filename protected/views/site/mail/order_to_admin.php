@@ -93,7 +93,7 @@
                             <td style="text-align: right;">
                                 <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
                                     <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping_method == 'store'):?>(Мичурина 12)<?php else:?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
-                                    <?php if($order->postcode):?><?= $order->postcode;?>,</br><?= $order->address;?><?php endif;?>
+                                    <?php if($order->postcode):?><?= $order->postcode;?><?php endif;?><?php if($order->postcode && $order->address):?>,</br><?php endif;?><?php if($order->address):?><?= $order->address;?><?php endif;?>
                                 </font>
                             </td>
                         </tr>

@@ -55,13 +55,17 @@ $('.search-form form').submit(function(){
         ),
         'track_code',
         'total',
-        'total_with_commission',
         'date_create',
         array(
             'name' => 'is_paid',
             'type'=>'raw',
             'value'=> '"<p class=\"is-paid\">".CHtml::openTag("span", ["id" => $data->id, "class" => ($data->status == "payment" && $data->is_paid != 1)?"check-payment":""]).($data->is_paid == 1?"Оплачено":"Не оплачено")."</span></p>"',
             'filter'=>[1=>'Оплачено',0=>'Не оплачено'],
+        ),
+        array(
+            'name' => 'sms_date',
+            'type'=>'raw',
+            'value'=> '($data->sms_date && $data->status=="shipping_by_rp")?("<p class=\"sms-date\">Прошло дней: ".$data->smsWasSent()." ".CHtml::openTag("span", ["id" => $data->id, "class" => "sms-date-update", "value" => "Обновить" ])."Обновить</span></p>"):""',
         ),
         array(
             'class' => 'CButtonColumn',
@@ -103,6 +107,21 @@ $('.search-form form').submit(function(){
                                 $(this).removeClass('disabled');
                             });
                         }
+                    }
+                })
+        }
+    });
+
+    $( "body" ).on( "click", ".sms-date-update", function() {
+        if(!$(this).hasClass('disabled')) {
+            $.each($('.sms-date-update'), function () {
+                $(this).addClass('disabled');
+            });
+            order_id = $(this).attr('id');
+            $.post("/ajax/updateSmsDate", {order_id: order_id})
+                .done(function (data) {
+                    if (data) {
+                        window.location.reload();
                     }
                 })
         }

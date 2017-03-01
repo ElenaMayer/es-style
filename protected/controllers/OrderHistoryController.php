@@ -92,6 +92,7 @@ class OrderHistoryController extends Controller
 			case 'shipping_by_rp':
 				if(!empty($model->email))
 					$this->sendChangeStatusMail($model);
+                $model->setSmsDate();
 				break;
             case 'not_redeemed':
                 if (!empty($model->user)){

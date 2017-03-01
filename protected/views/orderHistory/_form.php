@@ -8,10 +8,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'order-history-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -107,7 +103,12 @@
         <div class="label"><?php echo $form->labelEx($model,'total'); ?></div>
         <div><?php echo $form->textField($model,'total'); ?></div>
     </div>
-
+    <?php if ($model->total_with_commission): ?>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'total_with_commission'); ?></div>
+            <div><?php echo $form->textField($model,'total_with_commission'); ?></div>
+        </div>
+    <?php endif; ?>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'date_create'); ?></div>
         <div>

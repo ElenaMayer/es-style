@@ -377,7 +377,7 @@ class SiteController extends Controller {
         $order->sale = $cart->sale;
         $order->coupon_id = $cart->coupon_id;
         $order->coupon_sale = $cart->coupon_sale;
-        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $_POST['User']['shipping'];
+        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $cart->shipping;
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;

@@ -253,4 +253,13 @@ class AjaxController extends Controller
         Yii::app()->end();
     }
 
+    public function actionUpdateSmsDate(){
+        if(isset($_POST['order_id'])){
+            $order = OrderHistory::model()->findByPk($_POST['order_id']);
+            if($order){
+                echo $order->setSmsDate();
+            }
+        }
+        Yii::app()->end();
+    }
 }
