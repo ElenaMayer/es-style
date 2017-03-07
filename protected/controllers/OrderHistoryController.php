@@ -84,10 +84,14 @@ class OrderHistoryController extends Controller
     private function statusChanged($model){
         switch ($model->status){
             case 'collect':
-            case 'waiting_delivery':
 			case 'confirmation':
 				if(!empty($model->email))
 					$this->sendChangeStatusMail($model);
+                break;
+            case 'waiting_delivery':
+                if(!empty($model->email))
+                    $this->sendChangeStatusMail($model);
+                $model->setSmsDate();
                 break;
 			case 'shipping_by_rp':
 				if(!empty($model->email))

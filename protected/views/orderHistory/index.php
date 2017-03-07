@@ -65,7 +65,11 @@ $('.search-form form').submit(function(){
         array(
             'name' => 'sms_date',
             'type'=>'raw',
-            'value'=> '($data->sms_date && $data->status=="shipping_by_rp")?("<p class=\"sms-date\">Прошло дней: ".$data->smsWasSent()." ".CHtml::openTag("span", ["id" => $data->id, "class" => "sms-date-update", "value" => "Обновить" ])."Обновить</span></p>"):""',
+            'value'=> '($data->sms_date && ($data->status=="shipping_by_rp" || $data->status=="waiting_delivery"))?
+                            ("<p class=\"sms-date\">".($data->status!="shipping_by_rp"?
+                                   ("Прошло дней: ".$data->smsWasSent()." ".CHtml::openTag("span", ["id" => $data->id, "class" => "sms-date-update", "value" => "Обновить" ])."Обновить</span>"):
+                                   ("Дней в пути: ".$data->smsWasSent()))."</p>"):
+                            ""',
         ),
         array(
             'class' => 'CButtonColumn',
