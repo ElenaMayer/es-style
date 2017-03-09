@@ -36,6 +36,10 @@
             <div><?php echo $form->checkBox($model,'is_new'); ?></div>
         </div>
         <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'is_hit'); ?></div>
+            <div><?php echo $form->checkBox($model,'is_hit'); ?></div>
+        </div>
+        <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'is_sale'); ?></div>
             <div><?php echo $form->checkBox($model,'is_sale'); ?></div>
         </div>

@@ -87,6 +87,15 @@ p.photo, p.icon
     cursor: pointer;
 }
 
+.grid-view .is_hit {
+    margin: 9px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../data/i/is_hit.png) 0 0;
+    cursor: pointer;
+}
+
 .grid-view .is_sale {
     margin: 9px;
     display: inline-block;
@@ -95,7 +104,11 @@ p.photo, p.icon
     background: url(../data/i/is_sale.png) 0 0;
 }
 
-.grid-view .is_show.false, .is_new.false, .is_sale.false ,.is_available.false{
+.grid-view .is_show.false,
+.is_new.false,
+.is_sale.false,
+.is_available.false,
+.is_hit.false {
     background-position: 0 50px;
 }
 

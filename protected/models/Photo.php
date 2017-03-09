@@ -26,6 +26,7 @@
  * @property integer $size_at
  * @property integer $size_to
  * @property integer $weight
+ * @property integer $is_hit
  */
 class Photo extends CActiveRecord
 {
@@ -61,10 +62,10 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, weight, is_show, is_available, is_new, price, is_sale, sale, new_price, old_price, size, size_at, size_to', 'numerical', 'integerOnly'=>true),
+            array('article, weight, is_show, is_available, is_new, is_hit, price, is_sale, sale, new_price, old_price, size, size_at, size_to', 'numerical', 'integerOnly'=>true),
             array('img, title, category', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('article, is_show, is_available, is_new, price, category, subcategory, is_sale, sizes, color', 'safe', 'on'=>'search'),
+            array('article, is_show, is_available, is_new, is_hit, price, category, subcategory, is_sale, sizes, color', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
             array('category, title, article, weight, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
@@ -101,6 +102,7 @@ class Photo extends CActiveRecord
             'is_show' => 'Отображать',
             'is_available' => 'В наличии',
             'is_new' => 'Новинка',
+            'is_hit' => 'Хит продаж',
 			'date_create' => 'Дата добавления',
             'is_sale' => 'Скидка',
             'sale' => 'Процент скидки',
@@ -135,6 +137,7 @@ class Photo extends CActiveRecord
         $criteria->compare('is_show',$this->is_show);
         $criteria->compare('is_available',$this->is_available);
         $criteria->compare('is_new',$this->is_new);
+        $criteria->compare('is_hit',$this->is_hit);
         $criteria->compare('is_sale',$this->is_sale);
 
 		return new CActiveDataProvider($this, array(
@@ -269,6 +272,9 @@ class Photo extends CActiveRecord
         $criteria = new CDbCriteria();
 
         switch($params['order']) {
+            case 'по популярности':
+                $criteria->order = 'is_available DESC, is_hit  DESC';
+                break;
             case 'по новинкам':
                 $criteria->order = 'is_available DESC, is_new  DESC';
                 break;
@@ -282,12 +288,26 @@ class Photo extends CActiveRecord
                 $criteria->order = 'is_available DESC, is_sale DESC, sale DESC';
                 break;
             case 'по артиклю':
-            default:
                 $criteria->order = 'article';
+                break;
+            default:
+                $criteria->order = 'is_available DESC, is_hit  DESC';
                 break;
         }
         $criteria->compare('is_show', 1);
-        $criteria->compare('category', $params['category']);
+        if($params['category'] == 'hit'){
+            $criteria->compare('is_hit', 1);
+            $criteria->compare('is_available', 1);
+        } elseif ($params['category'] == 'new'){
+            $criteria->compare('is_new', 1);
+            $criteria->compare('is_available', 1);
+        } elseif ($params['category'] == 'sale'){
+            $criteria->compare('is_sale', 1);
+            $criteria->compare('is_available', 1);
+        } else {
+            $criteria->compare('category', $params['category']);
+        }
+
         if (isset($params['subcategory']))
             $criteria->addSearchCondition('subcategory', $params['subcategory']);
 
@@ -320,6 +340,7 @@ class Photo extends CActiveRecord
 
     public function getOrderList($type){
         $res = array(
+            array('label'=>'по популярности'),
             array('label'=>'по артиклю'),
             array('label'=>'по возрастанию цены'),
             array('label'=>'по убыванию цены'),
@@ -405,10 +426,20 @@ class Photo extends CActiveRecord
         return $sizes;
     }
     public function itemCountByCategory($category){
-        return $this->countByAttributes([
-            'is_show' => 1,
-            'category' => $category
-        ]);
+        $attr = ['is_show' => 1];
+        if($category == 'hit'){
+            $attr['is_hit'] = 1;
+            $attr['is_available'] = 1;
+        } elseif ($category == 'new'){
+            $attr['is_new'] = 1;
+            $attr['is_available'] = 1;
+        } elseif ($category == 'sale'){
+            $attr['is_sale'] = 1;
+            $attr['is_available'] = 1;
+        } else {
+            $attr['category'] = $category;
+        }
+        return $this->countByAttributes($attr);
     }
     public function itemCountBySubcategory($subcategory){
         $criteria = new CDbCriteria();

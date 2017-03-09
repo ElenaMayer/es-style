@@ -262,4 +262,14 @@ class AjaxController extends Controller
         }
         Yii::app()->end();
     }
+
+    public function actionSetPhotoParam(){
+        $photo = Photo::model()->findByPk($_POST['id']);
+        if(empty($photo->$_POST['param']))
+            $photo->$_POST['param'] = 1;
+        else
+            $photo->$_POST['param'] = 0;
+        echo $photo->save();
+        Yii::app()->end();
+    }
 }

@@ -8,19 +8,21 @@
             <?php endif; ?>
             <ul class="catalog-navigation">
                 <?php foreach (Yii::app()->params['categories'] as $categoryId => $categoryName): ?>
-                    <li class="catalog-navigation__item">
+                    <li class="catalog-navigation__item category__<?= $categoryId ?>">
                         <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>"><?= $categoryName ?></a>
                         <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountByCategory($categoryId) ?></span>
-                        <ul class="catalog-navigation catalog-navigation_subtree<?php if($categoryId != $type):?> hidden<?php endif; ?>">
-                            <?php foreach (Yii::app()->params['subcategories'][$categoryId] as $subcategoryId => $subcategoryName): ?>
-                                <?php if (Photo::model()->itemCountBySubcategory($subcategoryId) > 0): ?>
-                                    <li class="catalog-navigation__item">
-                                        <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>?subcategory=<?= $subcategoryId ?>"><?= $subcategoryName ?></a>
-                                        <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountBySubcategory($subcategoryId) ?></span>
-                                    </li>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </ul>
+                        <?php if(isset(Yii::app()->params['subcategories'][$categoryId])):?>
+                            <ul class="catalog-navigation catalog-navigation_subtree<?php if($categoryId != $type):?> hidden<?php endif; ?>">
+                                <?php foreach (Yii::app()->params['subcategories'][$categoryId] as $subcategoryId => $subcategoryName): ?>
+                                    <?php if (Photo::model()->itemCountBySubcategory($subcategoryId) > 0): ?>
+                                        <li class="catalog-navigation__item">
+                                            <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>?subcategory=<?= $subcategoryId ?>"><?= $subcategoryName ?></a>
+                                            <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountBySubcategory($subcategoryId) ?></span>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif;?>
                     </li>
                 <?php endforeach; ?>
             </ul>

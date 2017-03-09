@@ -16,6 +16,9 @@ return array(
         'blouse' => 'Блузки',
         'kimono' => 'Кимоно',
         'other' => 'Разное',
+        'hit' => 'Хит продаж',
+        'new' => 'Новинки',
+        'sale' => 'Скидки',
     ],
     'subcategories' => [
         'dress' => [

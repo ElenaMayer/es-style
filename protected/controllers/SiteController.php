@@ -181,7 +181,7 @@ class SiteController extends Controller {
 
     public function getOrder(){
         if(!isset(Yii::app()->session['catalog_order'])) {
-            Yii::app()->session['catalog_order'] = 'по артиклю';
+            Yii::app()->session['catalog_order'] = 'по популярности';
         }
         return Yii::app()->session['catalog_order'];
     }

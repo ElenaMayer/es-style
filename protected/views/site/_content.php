@@ -3,12 +3,14 @@
         <div class="catalog__item__link">
             <?php if($photo->is_available) :?>
                 <?php if($photo->is_sale) :?>
-                    <span class="item__label">− <?= $photo->sale ?>%</span>
+                    <span class="item__label">-<?= $photo->sale ?>%</span>
                 <?php elseif($photo->is_new) :?>
-                    <span class="item__label item__label_new_catalog">Новинка</span>
+                    <span class="item__label item__label_new">NEW</span>
+                <?php elseif($photo->is_hit) :?>
+                    <span class="item__label item__label_hit"><i class="ico-hit"></i></span>
                 <?php endif; ?>
             <?php endif; ?>
-            <a href="/<?= $type ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
+            <a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
                 <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
                 <noscript>
                     <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
