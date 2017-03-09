@@ -709,13 +709,11 @@ body.main.modal-open {
     padding: 0;
 }
 
-/*Dinamic classes*/
+/* Dinamic classes category__new, category__sale, category__hit */
 .catalog .category__new a.link {
-    font-weight: bold;
     color: #3AA73A;
 }
 .catalog .category__sale a.link {
-    font-weight: bold;
     color: #ff3d00;
 }
 .catalog .category__hit {
@@ -724,13 +722,17 @@ body.main.modal-open {
     height: 13px;
 }
 .catalog .category__hit a.link {
-    font-weight: bold;
     color: #f45057;
     position: absolute;
     padding-left: 15px;
 }
 .catalog .category__hit .catalog-navigation__cnt {
-    padding-left: 93px;
+    padding-left: 92px;
+}
+.category__new .catalog-navigation__link_active,
+.category__sale .catalog-navigation__link_active,
+.category__hit .catalog-navigation__link_active {
+    font-weight: bold;
 }
 
 .ico-hit {
