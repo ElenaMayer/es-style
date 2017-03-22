@@ -11,6 +11,7 @@
  */
 class MailLog extends CActiveRecord
 {
+    public $maxDate;
 	/**
 	 * @return string the associated database table name
 	 */

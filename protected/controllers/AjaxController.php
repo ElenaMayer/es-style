@@ -205,6 +205,9 @@ class AjaxController extends Controller
 
     public function actionSendReviewForCouponMail() {
         // coupon_mail_flag - используется как флаг, что письмо уже отправлялось
+
+        $this->checkNewOrdersForReview();
+
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
@@ -222,6 +225,26 @@ class AjaxController extends Controller
         }
         echo true;
         Yii::app()->end();
+    }
+
+    private function checkNewOrdersForReview(){
+        $mailLogCriteria = new CDbCriteria;
+        $mailLogCriteria->select = new CDbExpression('MAX(send_date) AS maxDate');
+        $mailLogCriteria->compare('action', 'ajax/sendReviewForCouponMail');
+        $mailLog = MailLog::model()->find($mailLogCriteria);
+        $maxDate = $mailLog['maxDate'];
+
+        $commentCriteria = new CDbCriteria;
+        $commentCriteria->compare('type', 'reviews');
+        $commentCriteria->condition="date_create >= '$maxDate'";
+        $comments = Comment::model()->findAll($commentCriteria);
+
+        foreach ($comments as $comment){
+            $order = OrderHistory::model()->findByAttributes(['email' => $comment->email]);
+            if($order){
+                $order->reviewForCouponMailIsSent();
+            }
+        }
     }
 
     public function actionAddAnswerToComment(){

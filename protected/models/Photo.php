@@ -273,7 +273,7 @@ class Photo extends CActiveRecord
 
         switch($params['order']) {
             case 'по популярности':
-                $criteria->order = 'is_available DESC, is_hit  DESC';
+                $criteria->order = 'is_available DESC, is_hit DESC, article';
                 break;
             case 'по новинкам':
                 $criteria->order = 'is_available DESC, is_new  DESC';
@@ -291,7 +291,7 @@ class Photo extends CActiveRecord
                 $criteria->order = 'article';
                 break;
             default:
-                $criteria->order = 'is_available DESC, is_hit  DESC';
+                $criteria->order = 'is_available DESC, is_hit DESC, article';
                 break;
         }
         $criteria->compare('is_show', 1);
