@@ -11,6 +11,18 @@
         'coupon',
         'sale',
         array(
+            'name' => 'type',
+            'type'=> 'raw',
+            'value'=> 'Coupon::types()[$data->type]',
+            'filter'=> Coupon::types(),
+        ),
+        array(
+            'name' => 'category',
+            'type'=>'raw',
+            'value'=> '$data->category?Yii::app()->params[\'categories\'][$data->category]:""',
+            'filter'=>Yii::app()->params['categories'],
+        ),
+        array(
             'name' => 'is_active',
             'type'=>'raw',
             'value'=> '$data->is_active == 1?"Да":"Нет"',

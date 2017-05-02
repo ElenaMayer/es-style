@@ -90,7 +90,7 @@
     <?php if ($model->coupon_id): ?>
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'coupon_sale'); ?></div>
-            <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. (<?php echo CHtml::encode($model->coupon->sale); ?>%)</div>
+            <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. <?php if ($model->coupon->type == 'percent'): ?>(<?php echo CHtml::encode($model->coupon->sale); ?>%)<?php endif; ?></div>
         </div>
     <?php endif; ?>
 
@@ -109,6 +109,12 @@
             <div><?php echo $form->textField($model,'total_with_commission'); ?></div>
         </div>
     <?php endif; ?>
+
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'comment'); ?></div>
+        <div><?php echo $form->textArea($model,'comment'); ?></div>
+    </div>
+
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'date_create'); ?></div>
         <div>

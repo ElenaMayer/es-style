@@ -16,6 +16,9 @@ body .container {
 	line-height: 15px;
 	text-decoration: none;
 }
+div.form textarea {
+    width: 65%;
+}
 
 div.label
 {

@@ -2622,6 +2622,82 @@ a.button_border:hover,
     vertical-align: top;
     padding: 2px 10px;
 }
+
+/* Popup banner */
+.subscription-fast-pop::before {
+    top: 23px;
+    margin-left: -34px;
+    width: 68px;
+    height: 67px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    background: url("../data/i/present.png") no-repeat 0;
+}
+.modal-content .subscription-fast-pop {
+    text-align: center;
+}
+.modal-content .subscription-fast-pop .h2 {
+    padding-top: 80px;
+}
+.subscription-fast-title {
+    font-size: 40px;
+}
+.subscription-fast-title span {
+    color: #ff3d00;
+}
+.subscription-fast-pop label {
+    font-weight: normal;
+    font-size: 22px;
+}
+.subscription-fast-form input {
+    box-sizing: border-box;
+    padding: 9px 13px;
+    margin: 10px;
+    width: 65%;
+    font: 20px tahoma,arial,sans-serif;
+}
+.btn-simple.btn-default:hover,
+.btn-simple.btn-default:focus,
+.btn-simple.btn-default:active,
+.btn-simple.btn-default.active {
+    background-color: #9e3c5d;
+    color: #fff;
+    border-color: #9e3c5d;
+}
+.btn-simple.btn-default {
+    border-color: #9e3c5d;
+    -webkit-transition: background-color .25s ease-out;
+    transition: background-color .25s ease-out;
+    background-color: #9e3c5d;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.btn-simple.btn-default:not(.button_disabled):hover,
+.btn-simple.btn-default:not(.button_disabled):focus,
+.btn-simple.btn-default:not(.button_disabled):active,
+.btn-simple.btn-default:not(.button_disabled).active {
+    background-color: #ff3d00;
+    border-color: #ff3d00;
+}
+.subscription-fast-pop .btn {
+    display: block;
+    margin: 10px auto;
+    font-size: 22px;
+    width: 280px;
+}
+#coupon_banner .modal-dialog {
+    width: 710px;
+}
+.subscription-fast-text,
+.close_subscription-fast-pop {
+    font-size: 16px;
+}
+.subscription-fast-pop .error {
+    padding: 0;
+    color: #ca0600;
+}
+
 /*
 
 IPad 768×1024

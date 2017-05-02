@@ -1,4 +1,5 @@
 <?php
+//Yii::app()->params['']
 return array(
     'carouselUrl' => [
         'first' => '/dress',
@@ -7,10 +8,13 @@ return array(
     ],
     'newsCount' => 3,
     'newPhotoCountInMail' => 6,
-    'photoPerPage' => 20,
+    'photoPerPage' => 28,
     'reviewsPerPage' => 10,
     'maxPagerButtonCount' => 5,
     'defaultShippingTariff'=> 300,
+    'show_catalog_banner'=>true,
+    'popup_banner_sale'=>200,
+    'catalog_banner_coupon'=>'SALE200',
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',

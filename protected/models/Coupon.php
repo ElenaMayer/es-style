@@ -12,10 +12,18 @@
  * @property integer $is_used
  * @property string $until_date
  * @property string $date_create
+ * @property string $type
+ * @property string $category
  *
  * The followings are the available model relations:
  * @property Cart[] $carts
  * @property User[] $users
+ */
+
+/*
+ * is_active: для одноразового купона 1 - может быть отправлено пользователю, 0 - отправлен пользователю
+ * is_reusable: 1 - может быть использован много раз, 0 - одноразовый
+ * is_used: 1 - использован, 0 - не использован
  */
 class Coupon extends CActiveRecord
 {
@@ -24,6 +32,7 @@ class Coupon extends CActiveRecord
     public $is_active = 1;
     public $is_used = 0;
     public $is_reusable = 0;
+    public $type = 'percent';
 
 	/**
 	 * @return string the associated database table name
@@ -42,7 +51,7 @@ class Coupon extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('sale, is_active, is_reusable, is_used, count', 'numerical', 'integerOnly'=>true),
-			array('coupon', 'length', 'max'=>255),
+			array('coupon, type, category', 'length', 'max'=>255),
 			array('until_date, date_create', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			array('id, coupon, sale, is_active, is_reusable, is_used, until_date, date_create', 'safe', 'on'=>'search'),
@@ -74,6 +83,8 @@ class Coupon extends CActiveRecord
 			'is_active' => 'Активен',
 			'is_reusable' => 'Многоразовый',
 			'is_used' => 'Использован',
+            'type' => 'Тип',
+            'category' => 'Категория',
 			'until_date' => 'Использовать до',
 			'date_create' => 'Дата создания',
             'count' => 'Количество, шт.',
@@ -100,6 +111,8 @@ class Coupon extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('coupon',$this->coupon,true);
+        $criteria->compare('type',$this->type,true);
+        $criteria->compare('category',$this->category,true);
 		$criteria->compare('sale',$this->sale);
 		$criteria->compare('is_active',$this->is_active);
 		$criteria->compare('is_reusable',$this->is_reusable);
@@ -156,5 +169,64 @@ class Coupon extends CActiveRecord
             return $coupon;
         } else
             return false;
+    }
+
+    public static function types(){
+        return ['percent' => 'Процент', 'sum' => 'Сумма'];
+    }
+
+    public function getSumWithSaleInRub($sum, $category = null){
+        if($this->type == 'percent') {
+            if($this->category){
+                if($category && $this->category == $category)
+                    return $sum * (100 - $this->sale) / 100;
+                else
+                    return $sum;
+            } else
+                return $sum * (100 - $this->sale) / 100;
+        } else {
+            if(!$category){
+                return $sum - $this->sale;
+            } else
+                return $sum;
+        }
+    }
+
+    public function getSaleInRub($sum, $category = null){
+        if($this->type == 'percent') {
+            if($this->category){
+                if($category && $this->category == $category)
+                    return $sum * $this->sale / 100;
+                else
+                    return 0;
+            } else
+                return $sum * $this->sale / 100;
+        } else {
+            if(!$category){
+                return $this->sale;
+            } else
+                return 0;
+        }
+    }
+
+    public function getTotalSaleInRub($items) {
+        if($this->type != 'percent') {
+            if($this->checkCategory($items))
+                return $this->sale;
+            else
+                return 0;
+        }
+    }
+
+    public function checkCategory($items){
+        $has_category = 1;
+        if($this->category){
+            $has_category = 0;
+            foreach ($items as $item) {
+                if($item->photo->category === $this->category)
+                    $has_category = 1;
+            }
+        }
+        return $has_category;
     }
 }

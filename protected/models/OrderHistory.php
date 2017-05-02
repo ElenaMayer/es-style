@@ -26,6 +26,7 @@
  * @property integer $coupon_sale
  * @property integer $coupon_mail_flag
  * @property date $sms_date
+ * @property string $comment
  *
  * The followings are the available model relations:
  * @property User $user
@@ -52,7 +53,7 @@ class OrderHistory extends CActiveRecord
 			array('user_id, is_paid, subtotal, sale, shipping, total, postcode, coupon_id, coupon_sale', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
 			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
-			array('date_create', 'safe'),
+			array('date_create, comment', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -102,6 +103,7 @@ class OrderHistory extends CActiveRecord
 			'email' => 'Email',
             'coupon_mail_flag' => 'Получино письмо с просьбой написать отзыв за купон',
             'sms_date' => 'Отправлено смс',
+            'comment' => 'Комментарий',
 		);
 	}
 

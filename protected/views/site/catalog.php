@@ -85,6 +85,9 @@
         )); ?>
     </div>
 </div>
+<?php if(Yii::app()->params['show_catalog_banner']):?>
+    <?php $this->renderPartial('_coupon_banner'); ?>
+<?php endif;?>
 
 <script>
     $( document ).ready(function() {
@@ -165,5 +168,18 @@
             success: function( data ) {
                 $('#data').html(data);
             }});
+    });
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            $.ajax({
+                url: '/ajax/bannerHasShowed',
+                type: "GET",
+                dataType : "html",
+                success: function( data ) {
+                    if(data == 1){
+                        jQuery('#coupon_banner').modal('show');
+                    }
+                }});
+        }
     });
 </script>

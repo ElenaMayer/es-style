@@ -62,6 +62,7 @@ $('.search-form form').submit(function(){
             'value'=> '"<p class=\"is-paid\">".CHtml::openTag("span", ["id" => $data->id, "class" => ($data->status == "payment" && $data->is_paid != 1)?"check-payment":""]).($data->is_paid == 1?"Оплачено":"Не оплачено")."</span></p>"',
             'filter'=>[1=>'Оплачено',0=>'Не оплачено'],
         ),
+        'comment',
         array(
             'name' => 'sms_date',
             'type'=>'raw',

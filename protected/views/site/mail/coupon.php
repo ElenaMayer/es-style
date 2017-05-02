@@ -3,17 +3,9 @@
 <tr>
     <td align="center" style="padding:0 70px;text-align: center;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                <b>Скидка <?= $coupon->sale ?>% в подарок!</b>
+                <b>Скидка <?= $coupon->sale ?><?php if($coupon->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?> в подарок!</b>
         </font>
         <br>
-        <br>
-    </td>
-</tr>
-<tr>
-    <td style="padding:15px 30px;">
-        <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            Спасибо за отзыв, нам очень важно Ваше мнение!
-        </font>
         <br>
     </td>
 </tr>
@@ -41,7 +33,7 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен на весь ассортимент интернет-магазина, за исключением товаров со скидкой.
+                        &#10004 Купон действителен на <?php if(!$coupon->category) :?>весь ассортимент<?php else :?>все <?= Yii::app()->params['categories'][$coupon->category];?><?php endif; ?> интернет-магазина<?php if($coupon->type == 'percent') :?>, за исключением товаров со скидкой<?php endif; ?>.
                     </font>
                     <br>
                 </td>
@@ -54,14 +46,16 @@
                     <br>
                 </td>
             </tr>
-            <tr>
-                <td style="padding:15px 30px;6">
-                    <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен на один заказ.
-                    </font>
-                    <br>
-                </td>
-            </tr>
+            <?php if(!$coupon->is_reusable) :?>
+                <tr>
+                    <td style="padding:15px 30px;6">
+                        <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
+                            &#10004 Купон действителен на один заказ.
+                        </font>
+                        <br>
+                    </td>
+                </tr>
+            <?php endif; ?>
             </tbody>
         </table>
     </td>

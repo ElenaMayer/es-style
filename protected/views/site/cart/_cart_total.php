@@ -21,7 +21,7 @@
 <?php if($model->coupon_id) :?>
     <div class="cart-total__price cart-total__price_discount">
         <span class="cart-total__price-title">Скидка по купону</span>
-        <span class="cart-sale-val">- <?= $model->coupon_sale ?> руб.</span>
+        <span class="cart-sale-val">- <?= $model->coupon_sale ? $model->coupon_sale : 0 ?> руб.</span>
     </div>
 <?php endif; ?>
 <div class="cart-total__price cart-total__price_total">

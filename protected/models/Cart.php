@@ -111,6 +111,7 @@ class Cart extends CActiveRecord
 	}
 
     public function afterFind(){
+        $this->checkCoupon();
         $this->calculateParams();
     }
 
@@ -127,24 +128,27 @@ class Cart extends CActiveRecord
                 $weight += $item->photo->weight * $item->count;
                 if ($item->photo->is_sale) {
                     $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
-                } else {
-                    if ($this->coupon_id) {
-                        if(!$this->coupon->is_used && $this->coupon->until_date >= date("Y-m-d")) {
-                            $coupon_sale += $item->photo->price * $item->count * $this->coupon->sale / 100;
-                        } else {
-                            $this->deleteCoupon();
-                        }
-                    }
+                }
+                if ($this->coupon_id) {
+                    $coupon_sale += $this->coupon->getSaleInRub($item->photo->price, $item->photo->category) * $item->count;
                 }
             }
         }
         $this->subtotal = $subtotal;
         $this->sale = $sale;
-        $this->coupon_sale = $coupon_sale;
+        $this->coupon_sale = $coupon_sale ? $coupon_sale : ($this->coupon_id ? $this->coupon->getTotalSaleInRub($this->cartItems) : 0);
         $this->count = $count;
         $this->shipping = ($this->count < Yii::app()->params['shippingFreeCount']) ? Yii::app()->params['defaultShippingTariff'] : 0;
         $this->total = $subtotal - $this->sale - $this->coupon_sale + $this->shipping;
         $this->weight = $weight;
+    }
+
+    public function checkCoupon(){
+        if($this->coupon_id){
+            if($this->coupon->is_used || $this->coupon->until_date < date("Y-m-d")) {
+                $this->deleteCoupon();
+            }
+        }
     }
 
     public function findAndAddCartItem($attributes){

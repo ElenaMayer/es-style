@@ -58,7 +58,7 @@
                             <td style="text-align: right;">
                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                     <?= Yii::app()->params['paymentMethod'][$order->payment_method];?><br>
-                                    <?php if($order->payment_method != 'online' && $order->shipping_method == 'store'):?>
+                                    <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
                                         (взимается комиссия за наложенный платеж)
                                     <?php endif;?>
                                 </font>
@@ -71,7 +71,7 @@
                             <tr valign="top" align="left" style="height: 25px;">
                                 <td>
                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                        <b>Скидка по купону (<?= $order->coupon->sale;?>%)</b>
+                                        <b>Скидка по купону (<?= $order->coupon->sale;?><?php if($order->coupon->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?>)</b>
                                     </font>
                                 </td>
                                 <td style="text-align: right;">

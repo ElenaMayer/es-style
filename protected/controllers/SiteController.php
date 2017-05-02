@@ -377,7 +377,7 @@ class SiteController extends Controller {
         $order->sale = $cart->sale;
         $order->coupon_id = $cart->coupon_id;
         $order->coupon_sale = $cart->coupon_sale;
-        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $cart->shipping;
+        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $order->shipping;
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
@@ -391,8 +391,9 @@ class SiteController extends Controller {
         }
 
         if ($order->save()){
-            if($order->coupon_id)
+            if($order->coupon_id && !$order->coupon->is_reusable)
                 $order->coupon->isUsed();
+            $cart->deleteCoupon();
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
@@ -400,7 +401,7 @@ class SiteController extends Controller {
                     $item->new_price = $item->photo->price;
                     $item->price = $item->photo->old_price;
                 } elseif($order->coupon_id) {
-                    $item->new_price = $item->photo->price * (100 - $order->coupon->sale) / 100;
+                    $item->new_price = $order->coupon->getSumWithSaleInRub($item->photo->price, $item->photo->category);
                     $item->price = $item->photo->price;
                 } else {
                     $item->price = $item->photo->price;

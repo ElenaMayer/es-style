@@ -12,6 +12,16 @@
         <div><?php echo $form->checkBox($model,'is_reusable'); ?></div>
     </div>
 
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'type'); ?></div>
+        <div><?php echo $form->dropDownList($model,'type', Coupon::types(), array('prompt'=>'')); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'category'); ?></div>
+        <div><?php echo $form->dropDownList($model,'category', Yii::app()->params['categories'], array('prompt'=>'')); ?></div>
+    </div>
+
     <div class="row count_field">
         <div class="label"><?php echo $form->labelEx($model,'count'); ?></div>
         <div><?php echo $form->textField($model,'count'); ?></div>

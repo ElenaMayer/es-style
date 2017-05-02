@@ -90,7 +90,7 @@
                                             <td style="text-align: right;">
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <?= Yii::app()->params['paymentMethod'][$order->payment_method];?> <br>
-                                                    <?php if($order->payment_method != 'online' && $order->shipping_method == 'store'):?>
+                                                    <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
                                                         (взимается комиссия за наложенный платеж)
                                                     <?php endif;?>
                                                 </font>
