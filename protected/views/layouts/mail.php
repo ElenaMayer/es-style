@@ -44,7 +44,7 @@
                                                                                         <img src="http://<?php echo Yii::app()->params['domain']; ?>/data/i/phone.png?1" border="0" style="border:none;text-decoration:none;line-height:0;vertical-align:top;display:block;padding:0px;margin:0px;" hspace="0" vspace="0">
                                                                                     </td>
                                                                                     <td width="5" style="width:5px;border:none;">&nbsp;</td>
-                                                                                    <td width="292" height="75" style="width: 105px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;">
+                                                                                    <td width="292" height="75" style="width: 110px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;">
                                                                                         <span style="color:#242424;font-family:Arial,tahoma,sans-serif;line-height:13px;font-size:13px;text-decoration:none">
                                                                                             <span>
                                                                                                 <span>
@@ -117,13 +117,13 @@
                                                 <td width="60" valign="top" style="font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #404040;padding-top: 10px;">Мы в соцсетях:</td>
                                                     <td width="160" style="vertical-align: top;padding-top: 5px;">
                                                         <a target="_blank" style="text-decoration: none;padding-right: 20px;" href="<?php echo Yii::app()->params['vkontakteLink']; ?>" border="0">
-                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: 1px -25px;" height="25" width="25" align="baseline" border="0" hspace="0" vspace="0">
+                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: 1px -25px;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">
                                                         </a>
                                                         <a target="_blank" style="text-decoration: none;padding-right: 20px;" href="<?php echo Yii::app()->params['instagramLink']; ?>" border="0">
-                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -51px -25px;" height="25" width="25" align="baseline" border="0" hspace="0" vspace="0">
+                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -51px -25px;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">
                                                         </a>
                                                         <a target="_blank" style="text-decoration: none;" href="<?php echo Yii::app()->params['odnoklassnikiLink']; ?>" border="0">
-                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -25px -25px;;" height="25" width="25" align="baseline" border="0" hspace="0" vspace="0">
+                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -25px -25px;;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">
                                                         </a>
                                                     </td>
                                                     <td width="20"></td>

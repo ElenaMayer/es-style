@@ -10,7 +10,7 @@
     </td>
 </tr>
 <tr>
-    <td style="padding:0 30px;">
+    <td align="center" style="padding:0 30px;text-align: center;">
         <font color="#CB2228" size="5" style="font-size: 20px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
             <b>Ваш купон на скидку: <font color="black"><?= $coupon->coupon ?></font></b>
         </font>

@@ -79,7 +79,7 @@ class Coupon extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'coupon' => 'Купон',
-			'sale' => 'Скидка, %',
+			'sale' => 'Скидка',
 			'is_active' => 'Активен',
 			'is_reusable' => 'Многоразовый',
 			'is_used' => 'Использован',

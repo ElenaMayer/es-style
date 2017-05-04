@@ -4,8 +4,7 @@ class m170424_015937_order_comment extends CDbMigration
 {
 	public function up()
 	{
-        //$this->addColumn('order_history', 'comment', 'text');
-
+        $this->addColumn('order_history', 'comment', 'text');
         $this->createTable('subscription', array(
             'id' => 'pk',
             'email' => 'string',

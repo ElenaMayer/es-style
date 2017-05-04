@@ -55,8 +55,6 @@ class OrderHistory extends CActiveRecord
 			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
 			array('date_create, comment', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email, postcode, coupon_id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -91,6 +89,7 @@ class OrderHistory extends CActiveRecord
             'addressee' => 'Получатель',
             'address' => 'Адрес',
             'subtotal' => 'Подитог',
+            'coupon' => 'Купон',
             'coupon_id' => 'Купон',
             'coupon_sale' => 'Скидка по купону',
             'sale' => 'Скидка',

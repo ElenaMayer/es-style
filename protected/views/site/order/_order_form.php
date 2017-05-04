@@ -68,7 +68,7 @@
         <div class="row">
             <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'630000')); ?>
             <?php echo $form->hiddenField($user, 'postcode_error'); ?>
-            <?php echo $form->hiddenField($user, 'shipping', ['value'=> ($model->count < Yii::app()->params['shippingFreeCountString'] || $user->shipping_method != 'store') ? Yii::app()->params['defaultShippingTariff'] : 0]); ?>
+            <?php echo $form->hiddenField($user, 'shipping', ['value'=> ($model->count < Yii::app()->params['shippingFreeCountString'] && $user->shipping_method != 'store') ? Yii::app()->params['defaultShippingTariff'] : 0]); ?>
         </div>
         <div class="row big-row">
             <div class="form-group address">

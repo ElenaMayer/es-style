@@ -89,6 +89,12 @@
 	</div>
     <?php if ($model->coupon_id): ?>
         <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'coupon'); ?></div>
+            <div>
+                <div><?php echo CHtml::encode($model->coupon->coupon); ?></div>
+            </div>
+        </div>
+        <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'coupon_sale'); ?></div>
             <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. <?php if ($model->coupon->type == 'percent'): ?>(<?php echo CHtml::encode($model->coupon->sale); ?>%)<?php endif; ?></div>
         </div>
