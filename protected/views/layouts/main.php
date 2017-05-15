@@ -21,12 +21,15 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?16" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?17" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
     <?php if (strpos(Yii::app()->request->pathInfo, 'blog')!==false):?>
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css?4" />
+    <?php endif;?>
+    <?php if (strpos(Yii::app()->request->pathInfo, 'horoscope')!==false):?>
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?5" />
     <?php endif;?>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -122,6 +125,7 @@
             )); ?><!-- breadcrumbs -->
         <?php endif;?>
         <div class="content">
+            <?php $this->renderPartial('application.views.site._horoscope_popup'); ?>
             <?php echo $content; ?>
         </div>
         <div class="footer_with_menu">

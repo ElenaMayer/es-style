@@ -314,7 +314,11 @@ class AjaxController extends Controller
         $subscription->save();
 
         $this->layout = '//layouts/mail';
-        $coupon = Coupon::model()->findByAttributes(['coupon'=>Yii::app()->params['catalog_banner_coupon']]);
+        if($_POST['action'] == 'catalog')
+            $couponStr = Yii::app()->params['catalog_banner_coupon'];
+        else
+            $couponStr = Yii::app()->params['horoscope_coupon'];
+        $coupon = Coupon::model()->findByAttributes(['coupon'=>$couponStr]);
         if($email && $coupon){
             $mail = new Mail();
             $mail->to = $email;

@@ -1,0 +1,107 @@
+.horoscope {
+    padding: 20px;
+    min-height: 500px;
+}
+.horoscope h1 {
+    text-align: center;
+    margin: 10px 0 20px;
+    font: 400 36px 'Roboto Condensed', sans-serif;
+}
+.horoscope_form {
+    padding: 20px;
+    border: solid 1px #ececec;
+    background-color: #ececec;
+    border-radius: 20px;
+    text-align: center;
+    width: 470px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+.horoscope_form_title {
+    font: 400 23px 'Roboto Condensed', sans-serif;
+}
+.horoscope_form_date {
+    padding: 15px 0;
+}
+.horoscope .form-control {
+    width: 70px;
+    display: inline;
+    margin: 0 10px;
+    padding: 10px 0;
+}
+.horoscope_form_sex {
+    padding-bottom: 15px;
+}
+.horoscope .horoscope_form_sex input {
+    margin: 5px 10px;
+}
+.horoscope .btn-default.submit {
+    background-color: #9e3c5d;
+    margin-bottom: 10px;
+    border-color: #9e3c5d;
+    color: #9e3c5d;
+    -webkit-transition: background-color .25s ease-out;
+    transition: background-color .25s ease-out;
+    color: white;
+}
+.horoscope .submit .button__title {
+    color: #fff;
+}
+.horoscope .btn-default.submit:not(.button_disabled):hover,
+.horoscope .btn-default.submit:not(.button_disabled):focus,
+.horoscope .btn-default.submit:not(.button_disabled):active,
+.horoscope .btn-default.submit:not(.button_disabled).active {
+    background-color: #ff3d00;
+    border-color: #ff3d00;
+}
+
+.horoscope_result_table {
+    position: relative;
+    background: #f5f5f7;
+    margin: 25px 0;
+    border-left: 5px solid #9e3c5d;
+    font: 400 17px/24px Roboto, sans-serif;
+    padding: 20px;
+}
+.horoscope_result_table div{
+    padding: 5px;
+}
+.horoscope b.red {
+    color: #ca0600;
+}
+.horoscope b.orange {
+    color: #ff3d00;
+}
+.horoscope b.purple {
+    color: #9e3c5d;
+}
+.horoscope h2 {
+    text-align: center;
+    font: 400 24px/30px 'Roboto Condensed', sans-serif;
+    color: #222;
+    margin: 25px 0 15px;
+}
+.horoscope_result p {
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 15px;
+    white-space: pre-line;
+    font-family: 'Roboto', sans-serif;
+}
+.horoscope_by_year img {
+    float: right;
+    padding-left: 20px;
+}
+.horoscope_by_month img {
+    float: left;
+    padding-right: 20px;
+}
+.horoscope_by_month {
+    clear: both;
+}
+.horoscope_model {
+    text-align: center;
+}
+.horoscope_model a {
+    display: inline-block;
+}

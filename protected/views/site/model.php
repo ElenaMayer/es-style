@@ -80,12 +80,7 @@
                 </div>
                 <div class="table__row">
                     <div class="table__cell social">
-                        <div class="social-likes"  data-title="Женская одежда в восточном стиле">
-                            <div class="twitter" title="Поделиться ссылкой в Твиттере">Twitter</div>
-                            <div class="mailru" title="Поделиться ссылкой в Моём мире">Мой мир</div>
-                            <div class="vkontakte" title="Поделиться ссылкой во Вконтакте">Вконтакте</div>
-                            <div class="odnoklassniki" title="Поделиться ссылкой в Одноклассниках">Одноклассники</div>
-                        </div>
+                        <?php $this->renderPartial('_social'); ?>
                     </div>
                 </div>
             </div>

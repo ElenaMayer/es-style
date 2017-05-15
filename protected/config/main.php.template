@@ -25,7 +25,10 @@ return array(
             'pageSize' => 5,
             'dataPath' => 'data.blog',
             'maxButtonCount' => 5
-        )
+        ),
+             'horoscope'=>array(
+                 'class'=>'application.modules.horoscope.HoroscopeModule',
+             )
 	),
 	'components'=>array(
 		'user'=>array(
@@ -63,6 +66,7 @@ return array(
                 'reviews/page/<page:\d+>'=>'site/reviewsWithPage',
                 'robokassa/<action:\w+>/'=>'robokassa/<action>/',
                 'about/<action:\w+>'=>'site/about',
+                'horoscope'=>'horoscope/default/index',
             ),
 		),
 		'db'=>array(

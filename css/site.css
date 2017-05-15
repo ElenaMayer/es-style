@@ -8,6 +8,10 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: ChinaCyr;
+    src: url(../font/ChinaCyr.ttf);
+}
 
 .content a,
 .content a:focus,
@@ -869,8 +873,7 @@ body.main.modal-open {
 }
 
 .table__cell .social {
-    padding: 0px 0px 5px;
-    text-align: center;
+    padding: 0px 20px 10px;
 }
 
 .table__cell_flat {
@@ -2624,7 +2627,7 @@ a.button_border:hover,
 }
 
 /* Popup banner */
-.subscription-fast-pop::before {
+.modal-content .subscription-fast-pop::before {
     top: 23px;
     margin-left: -34px;
     width: 68px;
@@ -2634,7 +2637,8 @@ a.button_border:hover,
     left: 50%;
     background: url("../data/i/present.png") no-repeat 0;
 }
-.modal-content .subscription-fast-pop {
+.modal-content .subscription-fast-pop,
+.content .subscription-fast-pop {
     text-align: center;
 }
 .modal-content .subscription-fast-pop .h2 {
@@ -2645,17 +2649,24 @@ a.button_border:hover,
 }
 .subscription-fast-title span {
     color: #ff3d00;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal-content .subscription-fast-title span {
+    font-weight: normal;
+    font-size: 40px;
 }
 .subscription-fast-pop label {
     font-weight: normal;
-    font-size: 22px;
+    font-size: 18px;
 }
 .subscription-fast-form input {
     box-sizing: border-box;
-    padding: 9px 13px;
+    padding: 7px 13px;
     margin: 10px;
-    width: 65%;
-    font: 20px tahoma,arial,sans-serif;
+    width: 40%;
+    font-size: 18px;
 }
 .btn-simple.btn-default:hover,
 .btn-simple.btn-default:focus,
@@ -2696,7 +2707,32 @@ a.button_border:hover,
 .subscription-fast-pop .error {
     padding: 0;
     color: #ca0600;
+    text-align: center;
 }
+
+/* Horoscope popup */
+.content .horoscope_popup {
+    position: fixed;
+    width: 230px;
+    height: 210px;
+    background-color: #ca0600;
+    border-radius: 5px;
+    padding: 25px;
+    right: 2%;
+    z-index: 100;
+    font-size: 29px;
+    opacity: 0.8;
+    font-weight: bold;
+    top: 104px;
+}
+.content .horoscope_popup .close {
+    color: white;
+}
+.content .horoscope_popup a {
+    color: #ffc733;
+    font-family: Roboto Condensed;
+}
+
 
 /*
 

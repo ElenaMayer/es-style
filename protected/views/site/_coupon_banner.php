@@ -37,7 +37,8 @@
             $.ajax({
                 url: "/ajax/sendCoupon",
                 data: {
-                    email: $("#subscription-email").val()
+                    email: $("#subscription-email").val(),
+                    action: 'catalog'
                 },
                 type: "POST",
                 dataType: "html",

@@ -12,9 +12,11 @@ return array(
     'reviewsPerPage' => 10,
     'maxPagerButtonCount' => 5,
     'defaultShippingTariff'=> 300,
-    'show_catalog_banner'=>true,
+    'show_catalog_banner'=>false,
     'popup_banner_sale'=>200,
     'catalog_banner_coupon'=>'SALE200',
+    'horoscope_sale'=>300,
+    'horoscope_coupon'=>'HOROSCOPE_GIFT',
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',
