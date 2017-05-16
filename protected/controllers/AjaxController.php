@@ -329,4 +329,12 @@ class AjaxController extends Controller
         echo true;
         Yii::app()->end();
     }
+    public function actionHoroscopePopupHasShowed(){
+        if(!empty(Yii::app()->session['horoscopePopupWithSale'])){
+            echo 0;
+        } else {
+            Yii::app()->session['horoscopePopupWithSale'] = 1;
+            echo 1;
+        }
+    }
 }

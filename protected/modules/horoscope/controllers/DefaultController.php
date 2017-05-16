@@ -32,11 +32,11 @@ class DefaultController extends Controller {
 
 	public function actionIndex() {
         $this->pageTitle=Yii::app()->name .' - Гороскоп';
-        if($_POST){
-            $year = $_POST['year'];
-            $month = $_POST['month'];
-            $day = $_POST['day'];
-            $sex = $_POST['sex'];
+        if($_GET){
+            $year = $_GET['year'];
+            $month = $_GET['month'];
+            $day = $_GET['day'];
+            $sex = $_GET['sex'];
 
             $signByYear = $this->getSignOfYear($year);
             $signByDate = $this->getSignByDate($month, $day);

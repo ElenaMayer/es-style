@@ -2,7 +2,7 @@
     <h1>Восточный гороскоп</h1>
     <div class="horoscope_form">
         <span class="horoscope_form_title">Введите дату рождения</span>
-        <form id="horoscope_form" action="/horoscope" method="post">
+        <form id="horoscope_form" action="/horoscope" method="get">
             <div class="horoscope_form_date">
                 <label for="day">День</label>
                 <select name="day" class="form-control">
@@ -49,7 +49,10 @@
                     Цвета: <?= HoroscopeColorBySign::getColorsStringBySigns([$signByDate, $signByYear]);?></b>
                 </div>
             </div>
-            <?php $this->renderPartial('application.views.site._social'); ?>
+            <p class="social_title">Поделиться с друзьями</p>
+            <div>
+                <?php $this->renderPartial('application.views.site._social'); ?>
+            </div>
             <div class="horoscope_by_year">
                 <h2>Характеристика <b class="red"><?= HoroscopeSignByYear::getSignStringRP($signByYear);?></b></h2>
                 <img src="/data/horoscope/<?= $signByYear?>.jpg">
@@ -105,6 +108,15 @@
     <?php endif;?>
 </div>
 <script>
+//    if($('.horoscope_result').length > 0) {
+        Ya.share2('ya-share2', {
+            content: {
+                title: 'Мой восточный гороскоп от <?= Yii::app()->params["domain"]; ?>',
+                description: $('.horoscope_result_table').html(),
+                image: 'http://<?= $model->model->getFullPreviewUrl(); ?>'
+            }
+        });
+//    }
     $( '.content' ).on( 'click', '.get-coupon-button', function($e) {
         if(!$("#subscription-email").val()){
             $('.popup-email-error').html('Введите E-mail');

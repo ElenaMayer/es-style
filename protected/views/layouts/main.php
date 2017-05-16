@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="ru" />
-    <meta name="description" content="Интернет-магазин женской одежды в восточном стиле. Платья, блузки, кимоно, домашняя одежда оптом и в розницу. Позновательные статьи о востоке."/>
+    <meta name="description" content="Интернет-магазин женской одежды в восточном стиле. Платья, блузки, кимоно и домашняя одежда. Индивидуальный восточный гороскоп."/>
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon"/>
 
     <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?2', CClientScript::POS_HEAD) ?>
@@ -21,7 +21,7 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?17" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?18" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
@@ -29,7 +29,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css?4" />
     <?php endif;?>
     <?php if (strpos(Yii::app()->request->pathInfo, 'horoscope')!==false):?>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?5" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?6" />
     <?php endif;?>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -110,7 +110,8 @@
                                     array('label' => 'Блузки', 'url' => '/blouse', 'active'=>strpos(Yii::app()->request->pathInfo, 'blouse')===false? false:true),
                                     array('label' => 'Кимоно', 'url' => '/kimono', 'active'=>strpos(Yii::app()->request->pathInfo, 'kimono')===false? false:true),
                                     array('label' => 'Разное', 'url' => '/other', 'active'=>strpos(Yii::app()->request->pathInfo, 'other')===false? false:true),
-                                    array('label' => 'Статьи', 'url' => '/blog', 'active'=>strpos(Yii::app()->request->pathInfo, 'blog')===false? false:true),
+//                                    array('label' => 'Статьи', 'url' => '/blog', 'active'=>strpos(Yii::app()->request->pathInfo, 'blog')===false? false:true),
+                                    array('label' => 'Гороскоп', 'url' => '/horoscope', 'active'=>strpos(Yii::app()->request->pathInfo, 'horoscope')===false? false:true),
                                     array('label' => 'Отзывы', 'url' => '/reviews', 'active'=>strpos(Yii::app()->request->pathInfo, 'reviews')===false? false:true),
                                 )
                             )

@@ -2733,6 +2733,9 @@ a.button_border:hover,
     font-family: Roboto Condensed;
 }
 
+.content .horoscope_popup a:hover {
+    color: white;
+}
 
 /*
 
