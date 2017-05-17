@@ -43,17 +43,23 @@ class MailCommand extends CConsoleCommand {
 
         $this->checkNewOrdersForReview();
 
-        $this->layout = '//layouts/mail';
+        if(isset(Yii::app()->controller))
+            $controller = Yii::app()->controller;
+        else
+            $controller = new CController('YiiMail');
+        $controller->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
         if($test){
             echo 'TEST MODE' . PHP_EOL;
-            $orders=OrderHistory::model()->findAllByAttributes(['email'=> Yii::model()->params['testEmail']]);
+            $orders=OrderHistory::model()->findAllByAttributes(['email'=> Yii::app()->params['testEmail']]);
         } else {
-            $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (coupon_mail_flag = 0 OR coupon_mail_flag IS NULL)");
+            $sql = "SELECT * FROM `order_history` WHERE `status` = 'completed' AND (coupon_mail_flag = 0 OR coupon_mail_flag IS NULL)";
             if($count != 'all'){
-                $orders .= " LIMIT ".$count;
+                $sql .= " LIMIT ".$count;
             }
+            $orders=OrderHistory::model()->findAllBySql($sql);
+
         }
 
         foreach($orders as $order){
@@ -61,7 +67,8 @@ class MailCommand extends CConsoleCommand {
                 if (!empty($order->user_id)) {
                     Yii::app()->userForMail->setUser($order->user);
                 }
-                $mail->message = $this->render('/site/mail/coupon_for_review', [
+                $viewPath = Yii::getPathOfAlias('application.views.site.mail.coupon_for_review').'.php';
+                $mail->message = $controller->renderInternal($viewPath, [
                     'order' => $order
                 ], true);
                 $mail->to = $order->email;
@@ -98,7 +105,7 @@ class MailCommand extends CConsoleCommand {
                 $order->reviewForCouponMailIsSent();
             }
         }
-        echo 'New comments was cacked' . PHP_EOL;
+        echo 'New comments was checked' . PHP_EOL;
     }
 
 }

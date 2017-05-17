@@ -110,7 +110,7 @@
                             </td>
                             <td width="100">
                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                    <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=sendCouponMail&review_id=<?= $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
+                                    <b><a href="http://<?= Yii::app()->params['domain'] ?>/admin/fromMail?action=actionSendCouponMail&review_id=<?= $comment->id?>&hash=<?= Yii::app()->userForMail->hash ?>" target="_blank">
                                             <font size="3" style="font-size: 16px;color: #CB2228;" color="#1868a0" face="Arial, Helvetica, sans-serif">Отправить купон</font>
                                         </a></b>
                                 </font>

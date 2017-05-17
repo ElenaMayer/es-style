@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog', 'coupon', 'couponGenerate', 'comments', 'commentView', 'orderView'),
+                'actions'=>array('order','price','logout','priceDelete', 'mailLog', 'utmLog', 'coupon', 'couponGenerate', 'comments', 'commentView', 'orderView', 'sendCouponMail'),
                 'users'=>array('admin'),
             ),
             array('allow',
@@ -191,7 +191,7 @@ class AdminController extends Controller
             $admin = User::model()->findByAttributes(['username' => 'admin']);
             if ($admin->getAdminHash() == $_GET['hash']){
                 // $this->rejectReview(); - Отклонение отзыва
-                // $this->sendCouponMail(); - Отправка письма с купоном
+                // $this->actionSendCouponMail(); - Отправка письма с купоном
                 return $this->$_GET['action']();
             }
         }
@@ -224,14 +224,14 @@ class AdminController extends Controller
         return $mail->send();
     }
 
-    public function sendCouponMail(){
+    public function actionSendCouponMail(){
         if (isset($_GET['review_id'])) {
             $review = Comment::model()->findByPk($_GET['review_id']);
             if($review) {
-                if ($review->img)
-                    $sale = 15;
-                else
+                if (empty($review->img))
                     $sale = 10;
+                else
+                    $sale = 15;
                 $coupon = Coupon::model()->getOneOffCouponBySale($sale);
                 if($coupon){
                     $this->layout = '//layouts/mail';
@@ -240,16 +240,15 @@ class AdminController extends Controller
                     $mail->message = $this->render('/site/mail/coupon', ['coupon' => $coupon], true);
                     $mail->to = $review->email;
                     if($mail->send()){
-                        echo "Отправлено";
-                        return true;
+                        echo CHtml::encode("Отправлено");
                     } else
-                        echo "Ошибка при отправлении";
+                        echo CHtml::encode("Ошибка при отправлении");
                 } else
-                    echo "Купоны со скидкой ".$sale."% закончились, надо сгенерить";
+                    echo CHtml::encode("Купоны со скидкой ".$sale."% закончились, надо сгенерить");
             } else
-                echo "Отзыв не найден";
+                echo CHtml::encode("Отзыв не найден");
         }
-        return false;
+        return true;
     }
 
     public function actionCommentView($id){

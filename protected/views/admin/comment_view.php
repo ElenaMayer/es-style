@@ -1,5 +1,8 @@
 <?php if ($model->type == 'reviews'):?>
     <h1>Отзыв №<?php echo $model->id; ?></h1>
+    <?php if ($model->email && !$model->answer && OrderHistory::isCouponForReviewMailWasSent($model->email)):?>
+        <a href="/admin/sendCouponMail?review_id=<?=$model->id?>">Отправить купон</a>
+    <?php endif; ?>
 <?php elseif ($model->type == 'review_answer'):?>
     <h1>Ответ на отзыв <a href='/admin/commentView/<?php echo $model->item_id; ?>'>№<?php echo $model->item_id; ?></a></h1>
 <?php else: ?>

@@ -306,4 +306,12 @@ class OrderHistory extends CActiveRecord
         $this->sms_date = date("Y-m-d");
         return $this->save();
     }
+
+    public static function isCouponForReviewMailWasSent($email){
+        $order = OrderHistory::model()->findByAttributes(['email'=>$email]);
+        if(!empty($order) && $order->coupon_mail_flag){
+            return true;
+        } else
+            return false;
+    }
 }

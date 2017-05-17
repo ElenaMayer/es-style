@@ -162,7 +162,7 @@ class Coupon extends CActiveRecord
     }
 
     public function getOneOffCouponBySale($sale){
-        $coupon = $this->findByAttributes(['is_active'=>1, 'is_reusable'=>0, 'is_used'=>0], 'until_date >= '.date("Y-m-d"));
+        $coupon = $this->findByAttributes(['is_active'=>1, 'is_reusable'=>0, 'is_used'=>0, 'sale'=>$sale], "until_date >= '".date("Y-m-d")."'");
         if ($coupon) {
             $coupon->is_active = 0;
             $coupon->save();
