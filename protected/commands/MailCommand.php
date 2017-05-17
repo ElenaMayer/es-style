@@ -108,21 +108,22 @@ class MailCommand extends CConsoleCommand {
         echo 'New comments was checked' . PHP_EOL;
     }
 
-    // php yiic mail saleMail --sendToOrderedUser=false - Рассылка купонов на скидку
-    public function actionSaleMail($sendToOrderedUser = true) {
+    // php yiic mail saleMail --sendToOrderedUser=0 - Рассылка купонов на скидку
+    public function actionSaleMail($sendToOrderedUser = 1) {
         $mail = new Mail();
         $mail->subject = "200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain'];
 
         if(isset(Yii::app()->controller))
             $controller = Yii::app()->controller;
         else
-            $controller = new CController('YiiMail');
+            $controller = new Controller('YiiMail');
 
         $controller->layout = '//layouts/mail';
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
+        $mailCount = 0;
         foreach($users as $user){
             if(!empty($user->email)) {
-                if ($sendToOrderedUser || count($user->orders) < 1) {
+                if ($sendToOrderedUser || (!$sendToOrderedUser && count($user->orders) == 0)) {
                     Yii::app()->userForMail->setUser($user);
                     $coupon = Coupon::model()->findByAttributes(['coupon'=>'SALE200']);
                     $viewPath = Yii::getPathOfAlias('application.views.site.mail.coupon').'.php';
@@ -133,10 +134,12 @@ class MailCommand extends CConsoleCommand {
 
                     echo $user->email . PHP_EOL;
                     $mail->send();
-                    echo 'Send' . PHP_EOL;
+                    $mailCount++;
+                    echo 'Sent' . PHP_EOL;
                 }
             }
         }
+        echo $mailCount.' mail was sent' . PHP_EOL;
     }
 
 }
