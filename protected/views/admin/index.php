@@ -18,28 +18,8 @@ $this->pageTitle=Yii::app()->name;
     <li>Чтоб удалить фото с сайта, нажать на <code>Голубую иконку с надписью Show</code></li>
 </ul>
 
-<a class="admin_title_link sand_mail_button button">Отправить рассылку "Отзыв за купон"</a>
-
-<script>
-    $( "body" ).on("click", ".sand_mail_button", function() {
-        if (!$(this).hasClass("button_disabled")) {
-            var count = prompt("Количество пользователей:", 10);
-            if (count) {
-                $('.sand_mail_button').addClass('button_disabled');
-                $.ajax({
-                    url: "/ajax/sendReviewForCouponMail",
-                    data: {
-                        count: count
-                    },
-                    type: "POST",
-                    dataType: "html",
-                    success: function (data) {
-                        $('.sand_mail_button').removeClass('button_disabled');
-                        alert('Отправлено');
-                    }
-                });
-            }
-        }
-    });
-
-</script>
+<p>Рассылки из консоли:</p>
+<ul>
+    <li>Новиночная рассылка <code>php yiic mail newPhotos</code></li>
+    <li>Рассылка "Отзыв за купон" <code>php yiic mail reviewForCouponMail --test=false --count=all</code></li>
+</ul>

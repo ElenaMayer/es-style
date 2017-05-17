@@ -40,6 +40,7 @@ return array(
             'email' => 'email@gmail.com',
             'emailTo' => 'email@gmail.com',
             'emailFrom' => 'email@gmail.com',
+            'testEmail' => 'email@gmail.com',
             'domain' => 'es-style.ru',
         ), require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'params.php'))
 );

@@ -1,4 +1,4 @@
-<?php if($_SERVER['REQUEST_URI'] != '/horoscope' && empty(Yii::app()->session['horoscopePopupWithSale'])):?>
+<?php if(strpos($_SERVER['REQUEST_URI'], 'horoscope') === false && empty(Yii::app()->session['horoscopePopupWithSale'])):?>
     <div class="horoscope_popup">
         <a class="close">×</a>
         <a href="/horoscope">Узнай свой восточный гороскоп и получи подарок! &#127873;</a>

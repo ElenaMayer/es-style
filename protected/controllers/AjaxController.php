@@ -206,50 +206,6 @@ class AjaxController extends Controller
         Yii::app()->end();
     }
 
-    public function actionSendReviewForCouponMail() {
-        // coupon_mail_flag - используется как флаг, что письмо уже отправлялось
-
-        $this->checkNewOrdersForReview();
-
-        $this->layout = '//layouts/mail';
-        $mail = new Mail();
-        $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
-        $orders=OrderHistory::model()->findAllBySql("SELECT * FROM `order_history` WHERE `status` = 'completed' AND user_id IS NOT NULL  AND (coupon_mail_flag = 0 OR coupon_mail_flag IS NULL) LIMIT ".$_POST['count']);
-        foreach($orders as $order){
-            if(!empty($order->user_id)) {
-                Yii::app()->userForMail->setUser($order->user);
-            }
-            $mail->message = $this->render('/site/mail/coupon_for_review', [
-                'order'=>$order
-            ], true);
-            $mail->to = $order->email;
-            if($mail->send())
-                $order->reviewForCouponMailIsSent();
-        }
-        echo true;
-        Yii::app()->end();
-    }
-
-    private function checkNewOrdersForReview(){
-        $mailLogCriteria = new CDbCriteria;
-        $mailLogCriteria->select = new CDbExpression('MAX(send_date) AS maxDate');
-        $mailLogCriteria->compare('action', 'ajax/sendReviewForCouponMail');
-        $mailLog = MailLog::model()->find($mailLogCriteria);
-        $maxDate = $mailLog['maxDate'];
-
-        $commentCriteria = new CDbCriteria;
-        $commentCriteria->compare('type', 'reviews');
-        $commentCriteria->condition="date_create >= '$maxDate'";
-        $comments = Comment::model()->findAll($commentCriteria);
-
-        foreach ($comments as $comment){
-            $order = OrderHistory::model()->findByAttributes(['email' => $comment->email]);
-            if($order){
-                $order->reviewForCouponMailIsSent();
-            }
-        }
-    }
-
     public function actionAddAnswerToComment(){
         if (isset($_POST['comment_id']) && isset($_POST['answer'])){
             $comment = new Comment;
