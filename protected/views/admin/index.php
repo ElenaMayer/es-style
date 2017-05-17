@@ -22,4 +22,5 @@ $this->pageTitle=Yii::app()->name;
 <ul>
     <li>Новиночная рассылка <code>php yiic mail newPhotos</code></li>
     <li>Рассылка "Отзыв за купон" <code>php yiic mail reviewForCouponMail --test=false --count=all</code></li>
+    <li>Купон на скидку 200 рублей <code>php yiic mail saleMail --sendToOrderedUser=false</code></li>
 </ul>

@@ -33,7 +33,7 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен на <?php if(!$coupon->category) :?>весь ассортимент<?php else :?>все <?= Yii::app()->params['categories'][$coupon->category];?><?php endif; ?> интернет-магазина<?php if($coupon->type == 'percent') :?>, за исключением товаров со скидкой<?php endif; ?>.
+                        &#10004 Купон действителен на <?php if(!$coupon->category) :?>весь ассортимент<?php else :?>все <?= Yii::app()->params['categories'][$coupon->category];?><?php endif; ?> интернет-магазина<?php if($coupon->type == 'percent') :?>, включая товары со скидкой<?php endif; ?>.
                     </font>
                     <br>
                 </td>
