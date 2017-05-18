@@ -108,15 +108,19 @@
     <?php endif;?>
 </div>
 <script>
-    if($('.horoscope_result').length > 0) {
-        Ya.share2('ya-share2', {
-            content: {
-                title: 'Мой восточный гороскоп от <?= Yii::app()->params["domain"]; ?>',
-                description: $('.horoscope_result_table').html(),
-                image: 'http://<?= isset($model->model)?$model->model->getFullPreviewUrl():''; ?>'
-            }
-        });
-    }
+    $( document ).ready(function() {
+        if($('.horoscope_result').length > 0) {
+            $('meta[name=description]').attr('content', '<?= $description ?>');
+            Ya.share2('ya-share2', {
+                content: {
+                    title: 'Мой восточный гороскоп от <?= Yii::app()->params["domain"]; ?>',
+                    description: '<?= $description ?>',
+                    image: 'http://<?= isset($model->model)?$model->model->getFullPreviewUrl():''; ?>'
+                }
+            });
+        }
+    });
+
     $( '.content' ).on( 'click', '.get-coupon-button', function($e) {
         if(!$("#subscription-email").val()){
             $('.popup-email-error').html('Введите E-mail');

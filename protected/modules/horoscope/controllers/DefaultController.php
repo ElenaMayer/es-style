@@ -31,7 +31,7 @@ class DefaultController extends Controller {
     public $defaultYear = 1990;
 
 	public function actionIndex() {
-        $this->pageTitle=Yii::app()->name .' - Гороскоп';
+        $this->pageTitle='Мой гороскоп от '.Yii::app()->params['domain'];
         if($_GET){
             $year = $_GET['year'];
             $month = $_GET['month'];
@@ -40,7 +40,11 @@ class DefaultController extends Controller {
 
             $signByYear = $this->getSignOfYear($year);
             $signByDate = $this->getSignByDate($month, $day);
+            $colorByYear = $this->getColorOfYear($year);
 
+            $description = 'Мой знак по восточному календарю - '. HoroscopeSignByYear::getColorString($colorByYear, $signByYear) . ' ' . HoroscopeSignByYear::getSignString($signByYear) . '. ' .
+                'Мой знак зодиака - '. HoroscopeSignByMonth::getSignString($signByDate) . '. ' .
+                'Мои цвета - '. HoroscopeColorBySign::getColorsStringBySigns([$signByDate, $signByYear]) . '. ';
             $this->render('index', [
                 'year' => $year,
                 'month' => $month,
@@ -48,11 +52,12 @@ class DefaultController extends Controller {
                 'sex' => $sex,
                 'signByYear' => $signByYear,
                 'signByDate' => $signByDate,
-                'colorByYear' => $this->getColorOfYear($year),
+                'colorByYear' => $colorByYear,
                 'models' => HoroscopeModelByColor::getModelsByColors(HoroscopeColorBySign::getColorsArrayBySigns([$signByDate, $signByYear])),
                 'horoscopeByYear' => HoroscopeSignByYear::model()->findByAttributes(['sign'=>$signByYear]),
                 'horoscopeByMonth' => HoroscopeSignByMonth::model()->findByAttributes(['sign'=>$signByDate]),
                 'horoscopeByYearAndMonth' => HoroscopeYearAndMonth::model()->findByAttributes(['sign_by_year'=>$signByYear, 'sign_by_month'=>$signByDate]),
+                'description' => $description,
             ]);
         } else {
             $this->render('index', ['year' => $this->defaultYear]);
