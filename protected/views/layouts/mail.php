@@ -44,7 +44,7 @@
                                                                                         <img src="http://<?php echo Yii::app()->params['domain']; ?>/data/i/phone.png?1" border="0" style="border:none;text-decoration:none;line-height:0;vertical-align:top;display:block;padding:0px;margin:0px;" hspace="0" vspace="0">
                                                                                     </td>
                                                                                     <td width="5" style="width:5px;border:none;">&nbsp;</td>
-                                                                                    <td width="292" height="75" style="width: 110px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;">
+                                                                                    <td width="292" height="75" style="width: 140px;height:75px;border:none;font-weight:normal;padding:0px;margin:0px;color:#000000;">
                                                                                         <span style="color:#242424;font-family:Arial,tahoma,sans-serif;line-height:13px;font-size:13px;text-decoration:none">
                                                                                             <span>
                                                                                                 <span>
@@ -77,11 +77,6 @@
                                                                                         <td width="70" height="30" style="width:70px;height:30px;border:none;line-height:13px;font-size:13px;background: #ca0600;vertical-align:middle;" valign="middle" align="center" bgcolor="#28292d">
                                                                                             <a target="_blank" href="http://<?php echo Yii::app()->params['domain']; ?>/other" style="text-decoration:none;display:block;line-height:32px;">
                                                                                                 <span style="color: #ffffff;line-height:13px;font-size:13px;">Разное</span>
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td width="98" height="30" style="width: 60px;height:30px;border:none;line-height:130px;font-size:13px;background: #ca0600;vertical-align:middle;" valign="middle" align="center" bgcolor="#28292d">
-                                                                                            <a target="_blank" href="http://<?php echo Yii::app()->params['domain']; ?>/contact" style="text-decoration:none;display:block;line-height:32px;">
-                                                                                                <span style="color: #ffffff;line-height:13px;font-size:13px;">Адреса</span>
                                                                                             </a>
                                                                                         </td>
                                                                                         <td width="98" height="30" style="width: 60px;height:30px;border:none;line-height:13px;font-size:13px;background: #ca0600;vertical-align:middle;" valign="middle" align="center" bgcolor="#28292d">
