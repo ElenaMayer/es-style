@@ -279,7 +279,7 @@ class AjaxController extends Controller
             $mail = new Mail();
             $mail->to = $email;
             $mail->subject = "Ваш купон на скидку от ".Yii::app()->params['domain']. "!";
-            $mail->message = $this->render('/site/mail/coupon', ['coupon' => $coupon], true);
+            $mail->message = $this->render('/site/mail/coupon', ['model' => $coupon], true);
             $mail->send();
         }
         echo true;

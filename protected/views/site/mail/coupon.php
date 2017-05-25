@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;text-align: center;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                <b>Скидка <?= $coupon->sale ?><?php if($coupon->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?> в подарок!</b>
+                <b>Скидка <?= $model->sale ?><?php if($model->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?> в подарок!</b>
         </font>
         <br>
         <br>
@@ -12,7 +12,7 @@
 <tr>
     <td align="center" style="padding:0 30px;text-align: center;">
         <font color="#CB2228" size="5" style="font-size: 20px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Ваш купон на скидку: <font color="black"><?= $coupon->coupon ?></font></b>
+            <b>Ваш купон на скидку: <font color="black"><?= $model->coupon ?></font></b>
         </font>
         <br>
         <br>
@@ -33,7 +33,7 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен на <?php if(!$coupon->category) :?>весь ассортимент<?php else :?>все <?= Yii::app()->params['categories'][$coupon->category];?><?php endif; ?> интернет-магазина<?php if($coupon->type == 'percent') :?>, включая товары со скидкой<?php endif; ?>.
+                        &#10004 Купон действителен на <?php if(!$model->category) :?>весь ассортимент<?php else :?>все <?= Yii::app()->params['categories'][$model->category];?><?php endif; ?> интернет-магазина<?php if($model->type == 'percent') :?>, включая товары со скидкой<?php endif; ?>.
                     </font>
                     <br>
                 </td>
@@ -41,12 +41,12 @@
             <tr>
                 <td style="padding:15px 30px;6">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        &#10004 Купон действителен до <b><?= $this->dateFormat($coupon->until_date) ?></b>.
+                        &#10004 Купон действителен до <b><?= $this->dateFormat($model->until_date) ?></b>.
                     </font>
                     <br>
                 </td>
             </tr>
-            <?php if(!$coupon->is_reusable) :?>
+            <?php if(!$model->is_reusable) :?>
                 <tr>
                     <td style="padding:15px 30px;6">
                         <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">

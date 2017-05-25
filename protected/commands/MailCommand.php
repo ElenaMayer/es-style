@@ -110,8 +110,26 @@ class MailCommand extends CConsoleCommand {
 
     // php yiic mail saleMail --sendToOrderedUser=0 - Рассылка купонов на скидку
     public function actionSaleMail($sendToOrderedUser = 1) {
+
+        $subject = "200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain'];
+        $coupon = Coupon::model()->findByAttributes(['coupon'=>'SALE200']);
+        $this->sendMailToSubscribers($subject, 'one_model_sale', $sendToOrderedUser, ['model'=>$coupon]);
+    }
+
+    // php yiic mail saleMail --article=11010 --sale=20 --saleType=percent --sendToOrderedUser=0 - Скидка на одно платье
+    public function actionOneModelSaleMail($article, $sale, $saleType = 'sum', $sendToOrderedUser = 1) {
+        $model = Photo::model()->findByAttributes(['article'=>$article]);
+        if(!empty($model)){
+            $subject = "Только сегодня! 💥 Максимальная выгода! Скидка ".$sale.$saleType=='sum'?' руб.':'%'." для вас! ➜  ".Yii::app()->params['domain'];
+            $this->sendMailToSubscribers($subject, 'one_model_sale', $sendToOrderedUser, ['model'=>$model, 'sale'=>$sale, 'saleType' => $saleType]);
+        } else {
+            echo 'Model not found' . PHP_EOL;
+        }
+    }
+
+    public function sendMailToSubscribers($subject, $view, $sendToOrderedUser, $params=[]){
         $mail = new Mail();
-        $mail->subject = "200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain'];
+        $mail->subject = $subject;
 
         if(isset(Yii::app()->controller))
             $controller = Yii::app()->controller;
@@ -125,11 +143,11 @@ class MailCommand extends CConsoleCommand {
             if(!empty($user->email)) {
                 if ($sendToOrderedUser || (!$sendToOrderedUser && count($user->orders) == 0)) {
                     Yii::app()->userForMail->setUser($user);
-                    $coupon = Coupon::model()->findByAttributes(['coupon'=>'SALE200']);
-                    $viewPath = Yii::getPathOfAlias('application.views.site.mail.coupon').'.php';
-                    $mail->message = $controller->renderInternal($viewPath, [
-                        'coupon' => $coupon
-                    ], true);
+                    $viewPath = Yii::getPathOfAlias('application.views.site.mail.'.$view).'.php';
+                    if($params['model'])
+                        $mail->message = $controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true);
+                    else
+                        $mail->message = $controller->renderInternal($viewPath, ['params' => $params], true);
                     $mail->to = $user->email;
 
                     echo $user->email . PHP_EOL;
