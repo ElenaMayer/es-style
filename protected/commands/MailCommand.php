@@ -36,9 +36,9 @@ class MailCommand extends CConsoleCommand {
         }
     }
 
-    // php yiic mail reviewForCouponMail --test=true - Рассылка "Отзыв за купон"
+    // php yiic mail reviewForCouponMail --test=1 - Рассылка "Отзыв за купон"
     // php yiic mail reviewForCouponMail --count=20 - Рассылка "Отзыв за купон"
-    public function actionReviewForCouponMail($count=10, $test=false) {
+    public function actionReviewForCouponMail($count=10, $test=0) {
         // coupon_mail_flag - флаг, что письмо уже отправлялось
 
         $this->checkNewOrdersForReview();
@@ -113,14 +113,14 @@ class MailCommand extends CConsoleCommand {
 
         $subject = "200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain'];
         $coupon = Coupon::model()->findByAttributes(['coupon'=>'SALE200']);
-        $this->sendMailToSubscribers($subject, 'one_model_sale', $sendToOrderedUser, ['model'=>$coupon]);
+        $this->sendMailToSubscribers($subject, 'coupon', $sendToOrderedUser, ['model'=>$coupon]);
     }
 
-    // php yiic mail saleMail --article=11010 --sale=20 --saleType=percent --sendToOrderedUser=0 - Скидка на одно платье
+    // php yiic mail oneModelSaleMail --article=11010 --sale=20 --saleType=percent --sendToOrderedUser=0 - Скидка на одно платье
     public function actionOneModelSaleMail($article, $sale, $saleType = 'sum', $sendToOrderedUser = 1) {
         $model = Photo::model()->findByAttributes(['article'=>$article]);
         if(!empty($model)){
-            $subject = "Только сегодня! 💥 Максимальная выгода! Скидка ".$sale.$saleType=='sum'?' руб.':'%'." для вас! ➜  ".Yii::app()->params['domain'];
+            $subject = "Только сегодня! 💥 Максимальная выгода! Скидка ".$sale.($saleType=='sum'?' руб.':'%')." для вас! ➜  ".Yii::app()->params['domain'];
             $this->sendMailToSubscribers($subject, 'one_model_sale', $sendToOrderedUser, ['model'=>$model, 'sale'=>$sale, 'saleType' => $saleType]);
         } else {
             echo 'Model not found' . PHP_EOL;
@@ -136,16 +136,16 @@ class MailCommand extends CConsoleCommand {
         else
             $controller = new Controller('YiiMail');
 
-        $controller->layout = '//layouts/mail';
+        $controller->layout = Yii::getPathOfAlias('application.views.layouts.mail_sub').'.php';
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
         $mailCount = 0;
+        $viewPath = Yii::getPathOfAlias('application.views.site.mail.'.$view).'.php';
         foreach($users as $user){
             if(!empty($user->email)) {
                 if ($sendToOrderedUser || (!$sendToOrderedUser && count($user->orders) == 0)) {
                     Yii::app()->userForMail->setUser($user);
-                    $viewPath = Yii::getPathOfAlias('application.views.site.mail.'.$view).'.php';
                     if($params['model'])
-                        $mail->message = $controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true);
+                        $mail->message = $controller->renderInternal($controller->layout, ['content'=>($controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true))], true);
                     else
                         $mail->message = $controller->renderInternal($viewPath, ['params' => $params], true);
                     $mail->to = $user->email;
