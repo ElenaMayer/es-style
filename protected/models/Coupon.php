@@ -179,11 +179,11 @@ class Coupon extends CActiveRecord
         if($this->type == 'percent') {
             if($this->category){
                 if($category && $this->category == $category)
-                    return $sum * (100 - $this->sale) / 100;
+                    return intval($sum * (100 - $this->sale) / 100);
                 else
                     return $sum;
             } else
-                return $sum * (100 - $this->sale) / 100;
+                return intval($sum * (100 - $this->sale) / 100);
         } else {
             if(!$category){
                 return $sum - $this->sale;
@@ -196,11 +196,11 @@ class Coupon extends CActiveRecord
         if($this->type == 'percent') {
             if($this->category){
                 if($category && $this->category == $category)
-                    return $sum * $this->sale / 100;
+                    return intval($sum * $this->sale / 100);
                 else
                     return 0;
             } else
-                return $sum * $this->sale / 100;
+                return intval($sum * $this->sale / 100);
         } else {
             if(!$category){
                 return $this->sale;

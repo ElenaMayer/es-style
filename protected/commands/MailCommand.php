@@ -111,7 +111,7 @@ class MailCommand extends CConsoleCommand {
     // php yiic mail saleMail --sendToOrderedUser=0 - Рассылка купонов на скидку
     public function actionSaleMail($sendToOrderedUser = 1) {
 
-        $subject = "200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain'];
+        $subject = "🔥 Вот это да! 200 рублей в подарок от интернет-магазина ".Yii::app()->params['domain']." 🔥";
         $coupon = Coupon::model()->findByAttributes(['coupon'=>'SALE200']);
         $this->sendMailToSubscribers($subject, 'coupon', $sendToOrderedUser, ['model'=>$coupon]);
     }
