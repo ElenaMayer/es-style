@@ -99,23 +99,6 @@
                                         <tr>
                                             <td height="10" colspan="2"></td>
                                         </tr>
-                                        <?php if($order->coupon_id):?>
-                                            <tr valign="top" align="left" style="height: 25px;">
-                                                <td>
-                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                        <b>Скидка по купону (<?= $order->coupon->sale;?><?php if($order->coupon->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?>)</b>
-                                                    </font>
-                                                </td>
-                                                <td style="text-align: right;">
-                                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                        <?= $order->coupon_sale;?>
-                                                    </font>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height="10" colspan="2"></td>
-                                            </tr>
-                                        <?php endif; ?>
                                         <tr valign="top" align="left" style="height: 25px;">
                                             <td>
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
@@ -262,6 +245,22 @@
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
+                                        <?php if($order->coupon_id):?>
+                                            <tr valign="top" align="left" style="height: 25px;">
+                                                <td align="left">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <b>Скидка по купону (<?= $order->coupon->sale;?><?php if($order->coupon->type == 'percent') :?>%<?php else :?> рублей<?php endif; ?>)</b>
+                                                    </font>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right;">
+                                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <?= $order->coupon_sale;?>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
                                         <?php if($order->shipping):?>
                                             <tr valign="top" align="right" style="line-height: 2;">
                                                 <td align="left">
