@@ -169,14 +169,80 @@ class MailCommand extends CConsoleCommand {
         echo $mailCount.' mail was sent' . PHP_EOL;
     }
 
+
+    public function sendMailToAll($subject, $view, $params=[], $isTest = 0){
+        $mail = new Mail();
+        $mail->subject = $subject;
+
+        if(isset(Yii::app()->controller))
+            $controller = Yii::app()->controller;
+        else
+            $controller = new Controller('YiiMail');
+
+        $controller->layout = Yii::getPathOfAlias('application.views.layouts.mail_sub').'.php';
+        $mailCount = 0;
+        $viewPath = Yii::getPathOfAlias('application.views.site.mail.'.$view).'.php';
+        if($params['model'])
+            $mail->message = $controller->renderInternal($controller->layout, ['content'=>($controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true))], true);
+        else
+            $mail->message = $controller->renderInternal($viewPath, ['params' => $params], true);
+        if (!$isTest) {
+            foreach($this->getEmailToSendMail() as $email){
+                if(!empty($email)) {
+                    $mail->to = $email;
+
+                    echo $email . PHP_EOL;
+                    $mail->send();
+                    $mailCount++;
+                    echo 'Sent' . PHP_EOL;
+                }
+            }
+        } else {
+            $mail->to = Yii::app()->params['email'];
+
+            echo Yii::app()->params['email'] . PHP_EOL;
+            $mail->send();
+            echo 'Sent' . PHP_EOL;
+        }
+
+        echo $mailCount.' mail was sent' . PHP_EOL;
+    }
+
     // php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0 --isTest = 0 - Новостная рассылка
-    public function actionNewsMail($news_id, $sendToOrderedUser = 1, $isTest = 0) {
+    public function actionNewsMail($news_id, $isTest = 0) {
+        print_r($this->sendMailToAll());die();
         $model = News::model()->findByAttributes(['id'=>$news_id]);
         if(!empty($model)){
             $subject = $model->title;
-            $this->sendMailToSubscribers($subject, 'news_mail', $sendToOrderedUser, ['model'=>$model], $isTest);
+            $this->sendMailToSubscribers($subject, 'news_mail', ['model'=>$model], $isTest);
         } else {
             echo 'Model not found' . PHP_EOL;
         }
+    }
+
+    private function getEmailToSendMail(){
+        $subscriptions = Subscription::model()->findAll();
+        $subscriptionArr = CHtml::listData( $subscriptions, 'id' , 'email');
+
+        $orders = OrderHistory::model()->findAll(array(
+            'select'=>'id, email'));
+        $orderArr = CHtml::listData( $orders, 'id' , 'email');
+
+        $users = User::model()->findAll(array(
+            'select'=>'id, email'));
+        $userArr = CHtml::listData( $users, 'id' , 'email');
+
+        $result = array_unique(array_merge ( $subscriptionArr, $orderArr, $userArr ));
+
+        $usersUnsub = User::model()->findAllByAttributes(['is_subscribed'=>0], array('select'=>'id, email'));
+        $usersUnsubArr = CHtml::listData( $usersUnsub, 'id' , 'email');
+
+        $unsetArr = array_intersect($usersUnsubArr, $result);
+        foreach ($unsetArr as $unset) {
+            $key = array_search($unset, $result);
+            unset($result[$key]);
+        }
+
+        return $result;
     }
 }
