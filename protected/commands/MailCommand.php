@@ -127,7 +127,7 @@ class MailCommand extends CConsoleCommand {
         }
     }
 
-    public function sendMailToSubscribers($subject, $view, $sendToOrderedUser, $params=[]){
+    public function sendMailToSubscribers($subject, $view, $sendToOrderedUser, $params=[], $isTest = 0){
         $mail = new Mail();
         $mail->subject = $subject;
 
@@ -140,32 +140,41 @@ class MailCommand extends CConsoleCommand {
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
         $mailCount = 0;
         $viewPath = Yii::getPathOfAlias('application.views.site.mail.'.$view).'.php';
-        foreach($users as $user){
-            if(!empty($user->email)) {
-                if ($sendToOrderedUser || (!$sendToOrderedUser && count($user->orders) == 0)) {
-                    Yii::app()->userForMail->setUser($user);
-                    if($params['model'])
-                        $mail->message = $controller->renderInternal($controller->layout, ['content'=>($controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true))], true);
-                    else
-                        $mail->message = $controller->renderInternal($viewPath, ['params' => $params], true);
-                    $mail->to = $user->email;
+        if($params['model'])
+            $mail->message = $controller->renderInternal($controller->layout, ['content'=>($controller->renderInternal($viewPath, ['model' => $params['model'], 'params' => $params], true))], true);
+        else
+            $mail->message = $controller->renderInternal($viewPath, ['params' => $params], true);
+        if (!$isTest) {
+            foreach($users as $user){
+                if(!empty($user->email)) {
+                    if ($sendToOrderedUser || (!$sendToOrderedUser && count($user->orders) == 0)) {
+                        Yii::app()->userForMail->setUser($user);
+                        $mail->to = $user->email;
 
-                    echo $user->email . PHP_EOL;
-                    $mail->send();
-                    $mailCount++;
-                    echo 'Sent' . PHP_EOL;
+                        echo $user->email . PHP_EOL;
+                        $mail->send();
+                        $mailCount++;
+                        echo 'Sent' . PHP_EOL;
+                    }
                 }
             }
+        } else {
+            $mail->to = Yii::app()->params['email'];
+
+            echo Yii::app()->params['email'] . PHP_EOL;
+            $mail->send();
+            echo 'Sent' . PHP_EOL;
         }
+
         echo $mailCount.' mail was sent' . PHP_EOL;
     }
 
-    // php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0 - Новостная рассылка
-    public function actionNewsMail($news_id, $sendToOrderedUser = 1) {
+    // php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0 --isTest = 0 - Новостная рассылка
+    public function actionNewsMail($news_id, $sendToOrderedUser = 1, $isTest = 0) {
         $model = News::model()->findByAttributes(['id'=>$news_id]);
         if(!empty($model)){
             $subject = $model->title;
-            $this->sendMailToSubscribers($subject, 'news_mail', $sendToOrderedUser, ['model'=>$model]);
+            $this->sendMailToSubscribers($subject, 'news_mail', $sendToOrderedUser, ['model'=>$model], $isTest);
         } else {
             echo 'Model not found' . PHP_EOL;
         }
