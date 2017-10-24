@@ -1467,7 +1467,7 @@ h3.news {
     float: right;
     bottom: 12px;
     right: 14px;
-    height: 26px;
+    height: 25px;
     display: none;
 }
 
@@ -2280,7 +2280,7 @@ h3.news {
 /* Banner */
 
 .banner {
-    background-color: #AC5870;
+    background-color: #ff7a28;
     height: 70px;
 }
 .banner img {
