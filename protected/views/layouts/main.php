@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="banner">
-                <img src="/data/i/banner.png">
+                <img src="/data/i/banner.png?1">
             </div>
             <?php
                 $this->widget(

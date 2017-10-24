@@ -160,4 +160,14 @@ class MailCommand extends CConsoleCommand {
         echo $mailCount.' mail was sent' . PHP_EOL;
     }
 
+    // php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0 - Новостная рассылка
+    public function actionNewsMail($news_id, $sendToOrderedUser = 1) {
+        $model = News::model()->findByAttributes(['id'=>$news_id]);
+        if(!empty($model)){
+            $subject = $model->title;
+            $this->sendMailToSubscribers($subject, 'news_mail', $sendToOrderedUser, ['model'=>$model]);
+        } else {
+            echo 'Model not found' . PHP_EOL;
+        }
+    }
 }

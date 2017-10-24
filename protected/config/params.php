@@ -11,7 +11,9 @@ return array(
     'photoPerPage' => 28,
     'reviewsPerPage' => 10,
     'maxPagerButtonCount' => 5,
-    'defaultShippingTariff'=> 300,
+    'defaultShippingTariff'=> 350,
+    'shippingFreeCount' => 3,
+    'shippingFreeCountString' => 'трех',
     'show_catalog_banner'=>false,
     'popup_banner_sale'=>200,
     'catalog_banner_coupon'=>'SALE200',
@@ -61,9 +63,6 @@ return array(
             'other_nightie' => 'Ночные сорочки',
         ]
     ],
-    'shippingFreeCount' => 3,
-    'shippingFreeCountString' => 'трех',
-    'shippingCost' => 200,
     'maxItemCountInCart' => 10,
     'orderStatuses' => [
         'in_progress' => 'В обработке',

@@ -24,4 +24,5 @@ $this->pageTitle=Yii::app()->name;
     <li>Рассылка "Отзыв за купон" <code>php yiic mail reviewForCouponMail --test=0 --count=all</code></li>
     <li>Купон на скидку 200 рублей <code>php yiic mail saleMail --sendToOrderedUser=0</code></li>
     <li>Скидка на одну модель <code>php yiic mail oneModelSaleMail --article=11010 --sale=20 --saleType=percent --sendToOrderedUser=0</code></li>
+    <li>Новостная рассылка <code>php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0</code></li>
 </ul>
