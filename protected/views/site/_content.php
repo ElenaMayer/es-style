@@ -2,7 +2,7 @@
     <div class="catalog__item">
         <div class="catalog__item__link">
             <?php if($photo->is_available) :?>
-                <?php if($photo->is_sale && !Yii::app()->cart->isWholesale()) :?>
+                <?php if($photo->is_sale && !Cart::isWholesale()) :?>
                     <span class="item__label">-<?= $photo->sale ?>%</span>
                 <?php elseif($photo->is_new) :?>
                     <span class="item__label item__label_new">NEW</span>
@@ -20,7 +20,7 @@
                     <?php if(!$photo->is_available) :?>
                         <span class="not_available_small">Нет в наличии</span>
                     <?php else :?>
-                        <?php if(Yii::app()->cart->isWholesale()) :?>
+                        <?php if(Cart::isWholesale()) :?>
                             <?= $photo->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
                         <?php else :?>
                             <?php if(!$photo->is_sale) :?>

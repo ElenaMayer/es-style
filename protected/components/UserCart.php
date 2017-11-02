@@ -24,8 +24,4 @@ class UserCart extends CApplicationComponent {
     public function updateCart(){
         $this->init();
     }
-
-    public function isWholesale(){
-        return $this->currentCart->isWholesale();
-    }
 }

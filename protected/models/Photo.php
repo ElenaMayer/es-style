@@ -355,7 +355,7 @@ class Photo extends CActiveRecord
         $sale = $this->findAllByAttributes(
             array('is_show' => 1, 'category' => $type, 'is_sale' => 1)
         );
-        if(!empty($sale) && !Yii::app()->cart->isWholesale())
+        if(!empty($sale) && !Cart::isWholesale())
             array_push($res, array('label'=>'по скидкам'));
         return $res;
     }

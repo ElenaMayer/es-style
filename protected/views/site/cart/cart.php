@@ -15,11 +15,11 @@
         <div class="cart-total cart-total_threshold">
             <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
         </div>
-        <?php if(!Yii::app()->cart->isWholesale()) :?>
+        <?php if(!Cart::isWholesale()) :?>
             <?php $this->renderPartial('/site/_coupon'); ?>
         <?php endif;?>
         <div class="cart-separator"></div>
-        <?php if(Yii::app()->cart->isWholesale() && !$model->isReadyToOrder()) :?>
+        <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
             <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?> руб.</span>
         <?php endif;?>
         <div class="cart-navigation">

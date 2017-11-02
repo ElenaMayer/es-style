@@ -10,7 +10,7 @@
             <div class="table__cell_flat">
                 <div class="model_photo">
                     <?php if($model->is_available) :?>
-                        <?php if($model->is_sale && !Yii::app()->cart->isWholesale()) :?>
+                        <?php if($model->is_sale && !Cart::isWholesale()) :?>
                             <span class="item__label item__label_m">-<?= $model->sale ?>%</span>
                         <?php elseif($model->is_new) :?>
                             <span class="item__label item__label_m item__label_new">NEW</span>
@@ -40,7 +40,7 @@
                         <div class="model_detail" >
                             <div class="model__price" >
                                 <span class="price price_model">
-                                    <?php if(Yii::app()->cart->isWholesale()) :?>
+                                    <?php if(Cart::isWholesale()) :?>
                                         <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
                                     <?php else :?>
                                         <?php if(!$model->is_sale) :?>

@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Заказ <?php if(Yii::app()->cart->isWholesale()):?>ОПТ <?php endif;?>№<?= $order->id ?> <?= $order->is_paid ? "оплачен" : "создан" ?>.</b>
+            <b>Заказ <?php if(Cart::isWholesale()):?>ОПТ <?php endif;?>№<?= $order->id ?> <?= $order->is_paid ? "оплачен" : "создан" ?>.</b>
         </font>
         <br>
     </td>
@@ -49,7 +49,7 @@
                         <tr>
                             <td height="10" colspan="2"></td>
                         </tr>
-                        <?php if(!Yii::app()->cart->isWholesale()):?>
+                        <?php if(!Cart::isWholesale()):?>
                             <tr valign="top" align="left" style="height: 25px;">
                                 <td>
                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
@@ -92,7 +92,7 @@
                                     <b>Доставка</b>
                                 </font>
                             </td>
-                            <?php if(Yii::app()->cart->isWholesale()):?>
+                            <?php if(Cart::isWholesale()):?>
                                 <td style="text-align: right;">
                                     <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
                                         Транспортная компания "<?= Yii::app()->params['tcList'][$order->user->tc];?>".

@@ -29,7 +29,7 @@
                 <br>
             </td>
         </tr>
-        <?php if(Yii::app()->cart->isWholesale()):?>
+        <?php if(Cart::isWholesale()):?>
             <tr>
                 <td style="padding:0 70px;">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
@@ -117,7 +117,7 @@
                                                 <td height="10" colspan="2"></td>
                                             </tr>
                                         <?php endif ?>
-                                        <?php if(!Yii::app()->cart->isWholesale()):?>
+                                        <?php if(!Cart::isWholesale()):?>
                                             <tr valign="top" align="left" style="height: 25px;">
                                                 <td>
                                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
@@ -143,7 +143,7 @@
                                                     <b>Доставка</b>
                                                 </font>
                                             </td>
-                                            <?php if(Yii::app()->cart->isWholesale()):?>
+                                            <?php if(Cart::isWholesale()):?>
                                                 <td style="text-align: right;">
                                                     <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                         Транспортная компания "<?= Yii::app()->params['tcList'][$order->user->tc];?>".
@@ -189,7 +189,7 @@
                                         <tr>
                                             <td height="10" colspan="2"></td>
                                         </tr>
-                                        <?php if(!Yii::app()->cart->isWholesale() && ($order->postcode || $order->address)):?>
+                                        <?php if(!Cart::isWholesale() && ($order->postcode || $order->address)):?>
                                             <tr valign="top" align="left" style="height: 25px;">
                                                 <td>
                                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">

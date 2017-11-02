@@ -314,7 +314,7 @@ class User extends CActiveRecord
     public function saveUserData($attributes){
         $this->attributes = $attributes;
         if(!Yii::app()->user->isGuest) {
-            if ((isset($attributes['shipping_method']) && $attributes['shipping_method'] == 'russian_post') || Yii::app()->cart->isWholesale())
+            if ((isset($attributes['shipping_method']) && $attributes['shipping_method'] == 'russian_post') || Cart::isWholesale())
                 $this->scenario = 'userOrder';
             else
                 $this->scenario = 'userOrderToStore';

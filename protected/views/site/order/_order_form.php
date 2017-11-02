@@ -60,7 +60,7 @@
     <?php endif ?>
     <div class="before_shipping"></div>
     <h4>Данные для доставки</h4>
-    <?php if(Yii::app()->cart->isWholesale()) :?>
+    <?php if(Cart::isWholesale()) :?>
         <div class="row shipping_method">
             <?php echo $form->dropDownList($user,'tc', Yii::app()->params['tcList'], array('class' => 'form-control')); ?>
             <?php echo $form->labelEx($user,'tc'); ?>
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <?php if(Yii::app()->cart->isWholesale()) :?>
+    <?php if(Cart::isWholesale()) :?>
         <div class="wholesale_shipping_data">
             <div class="row big-row">
                 <div class="form-group address">
@@ -96,7 +96,7 @@
     <?php endif ?>
     <div class="after_shipping"></div>
     <div class="row payment">
-        <?php if(Yii::app()->cart->isWholesale()) :?>
+        <?php if(Cart::isWholesale()) :?>
             <span>На карту или счет Сбербанк</span>
         <?php else:?>
             <?php echo $form->dropDownList($user,'payment', ['cod'=>'При получении', 'online'=>'Онлайн-оплата'], array('class' => 'form-control')); ?>

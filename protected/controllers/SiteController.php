@@ -357,7 +357,7 @@ class SiteController extends Controller {
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->to = Yii::app()->params['emailTo'];
-        if(Yii::app()->cart->isWholesale())
+        if(Cart::isWholesale())
             $mail->subject = "Новый заказ ОПТ № ". $order->id;
         else
             $mail->subject = "Новый заказ розница № ". $order->id;
@@ -370,7 +370,7 @@ class SiteController extends Controller {
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
         $cart = Yii::app()->cart->currentCart;
-        if(!$cart->isWholesale()){
+        if(!Cart::isWholesale()){
             $order->shipping_method = $_POST['User']['shipping_method'];
             $order->payment_method = $_POST['User']['payment'];
         }
@@ -386,7 +386,7 @@ class SiteController extends Controller {
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
-        if(!$cart->isWholesale()) {
+        if(!Cart::isWholesale()) {
             if ($_POST['User']['payment'] == 'cod')
                 $order->status = 'in_progress';
             elseif ($_POST['User']['payment'] == 'online') {
@@ -404,7 +404,7 @@ class SiteController extends Controller {
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
-                if($cart->isWholesale()) {
+                if(Cart::isWholesale()) {
                     $item->price = $item->photo->wholesale_price;
                 }elseif($item->photo->is_sale) {
                     $item->new_price = $item->photo->price;

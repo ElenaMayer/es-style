@@ -14,7 +14,7 @@
         </div>
     <?php endif; ?>
 </div>
-<?php if(Yii::app()->cart->isWholesale()) :?>
+<?php if(Cart::isWholesale()) :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->wholesale_price?>&nbsp;руб.
 <?php elseif($cartItem->cart->coupon_id && ($newPrice = $cartItem->cart->coupon->getSumWithSaleInRub($cartItem->photo->price, $cartItem->photo->category)) && $cartItem->photo->price!=$newPrice) :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $newPrice ?>&nbsp;руб.

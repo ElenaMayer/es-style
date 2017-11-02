@@ -8,7 +8,7 @@
     </div>
     <div class="order-stuff">
         <div class="cart-offer">Нажимая на кнопку "Отправить заказ", вы принимаете условия <a href="/about/offer" target="_blank">Публичной оферты</a></div>
-        <?php if(!Yii::app()->cart->isWholesale()) :?>
+        <?php if(!Cart::isWholesale()) :?>
             <?php $this->renderPartial('/site/_coupon'); ?>
         <?php endif;?>
     </div>

@@ -230,7 +230,7 @@ class Cart extends CActiveRecord
         }
     }
 
-    public function isWholesale(){
+    public static function isWholesale(){
         if(!Yii::app()->user->isGuest && Yii::app()->user->is_wholesaler){
             return true;
         } else {
