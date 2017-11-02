@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="cart-separator"></div>
-    <?php endif ?>
+    <?php endif; ?>
     <h4>Личные данные</h4>
 
     <div class="row">
@@ -59,12 +59,19 @@
         </div>
     <?php endif ?>
     <div class="before_shipping"></div>
-    <div class="row shipping_method">
-        <?php echo $form->dropDownList($user,'shipping_method', ['russian_post'=>'Почта России', 'store'=>'Получение в магазине (для Новосибирска)'], array('class' => 'form-control')); ?>
-        <?php echo $form->labelEx($user,'shipping_method'); ?>
-    </div>
+    <h4>Данные для доставки</h4>
+    <?php if(Yii::app()->cart->isWholesale()) :?>
+        <div class="row shipping_method">
+            <?php echo $form->dropDownList($user,'tc', Yii::app()->params['tcList'], array('class' => 'form-control')); ?>
+            <?php echo $form->labelEx($user,'tc'); ?>
+        </div>
+    <?php else: ?>
+        <div class="row shipping_method">
+            <?php echo $form->dropDownList($user,'shipping_method', ['russian_post'=>'Почта России', 'store'=>'Получение в магазине (для Новосибирска)'], array('class' => 'form-control')); ?>
+            <?php echo $form->labelEx($user,'shipping_method'); ?>
+        </div>
+    <?php endif ?>
     <div class="shipping_data">
-        <h4>Данные для доставки</h4>
         <div class="row">
             <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'630000')); ?>
             <?php echo $form->hiddenField($user, 'postcode_error'); ?>
@@ -77,9 +84,23 @@
             </div>
         </div>
     </div>
+    <?php if(Yii::app()->cart->isWholesale()) :?>
+        <div class="wholesale_shipping_data">
+            <div class="row big-row">
+                <div class="form-group address">
+                    <?php echo $form->labelEx($user,'delivery_data'); ?>
+                    <?php echo $form->textFieldGroup($user, 'delivery_data', array('placeholder'=>'Город, паспортные данные, ФИО получателя, телефон (если отличается от данных заказчика)', 'class' => 'form-control')); ?>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
     <div class="after_shipping"></div>
     <div class="row payment">
-        <?php echo $form->dropDownList($user,'payment', ['cod'=>'При получении', 'online'=>'Онлайн-оплата'], array('class' => 'form-control')); ?>
+        <?php if(Yii::app()->cart->isWholesale()) :?>
+            <span>На карту или счет Сбербанк</span>
+        <?php else:?>
+            <?php echo $form->dropDownList($user,'payment', ['cod'=>'При получении', 'online'=>'Онлайн-оплата'], array('class' => 'form-control')); ?>
+        <?php endif ?>
         <?php echo $form->labelEx($user,'payment'); ?>
     </div>
 <?php $this->endWidget(); ?>
@@ -92,6 +113,12 @@
             $('.email_group>label>span').hide();
         if($('#User_shipping_method_1').prop('checked'))
             shipping_to_store();
+
+        if ($('#User_tc').val() == 'pr') {
+            $('.wholesale_shipping_data').hide();
+        } else {
+            $('.shipping_data').hide();
+        }
     });
     $( 'body' ).on( 'change', '#User_create_profile', function() {
         if($(this).prop('checked')) {
@@ -135,4 +162,13 @@
         $('.cart-shipping-val').text("0 руб.");
     }
 
+    $("#User_tc").change(function() {
+        if($(this).val() == 'pr') {
+            $('.wholesale_shipping_data').hide();
+            $('.shipping_data').show();
+        } else {
+            $('.shipping_data').hide();
+            $('.wholesale_shipping_data').show();
+        }
+    });
 </script>

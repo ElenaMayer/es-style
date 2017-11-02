@@ -4,7 +4,7 @@
     <h2>Условия сотрудничестваа</h2>
     <ul class="list">
         <li class="list__item">Мы работаем с физическими лицами и организаторами совместных покупок.</li>
-        <li class="list__item">Минимальная оптовая партия - <b>12 000 руб.</b></li>
+        <li class="list__item">Минимальная оптовая партия - <b><?= Yii::app()->params['minWholesaleSum'] ?> руб.</b></li>
         <li class="list__item">Запросить прайс-лист и сделать заказ можно по телефону <b><?=Yii::app()->params['phone']?></b> или по электронной почте <b><a href="mailto:<?=Yii::app()->params['email']?>" id="email"><?=Yii::app()->params['email']?></a></b>.</li>
     </ul>
 

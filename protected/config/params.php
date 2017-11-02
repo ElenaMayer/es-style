@@ -19,6 +19,7 @@ return array(
     'catalog_banner_coupon'=>'SALE200',
     'horoscope_sale'=>300,
     'horoscope_coupon'=>'HOROSCOPE_GIFT',
+    'minWholesaleSum'=>5000,
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',
@@ -102,5 +103,11 @@ return array(
         'синий' => 'синий',
         'зеленый' => 'зеленый',
         'серый' => 'серый',
-    ]
+    ],
+    'tcList' => [
+        'pec'  => 'ПЭК',
+        'dellin' => 'Деловые Линии',
+        'energia'  => 'Энергия',
+        'pr' => 'Почта России',
+    ],
 );

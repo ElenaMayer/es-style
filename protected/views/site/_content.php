@@ -2,7 +2,7 @@
     <div class="catalog__item">
         <div class="catalog__item__link">
             <?php if($photo->is_available) :?>
-                <?php if($photo->is_sale) :?>
+                <?php if($photo->is_sale && !Yii::app()->cart->isWholesale()) :?>
                     <span class="item__label">-<?= $photo->sale ?>%</span>
                 <?php elseif($photo->is_new) :?>
                     <span class="item__label item__label_new">NEW</span>
@@ -11,20 +11,24 @@
                 <?php endif; ?>
             <?php endif; ?>
             <a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
-                <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
                 <noscript>
-                    <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                    <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
                 </noscript>
                 <div class="catalog__item__article">Арт.&nbsp;<?= $photo->article ?></div>
                 <span class="price">
                     <?php if(!$photo->is_available) :?>
                         <span class="not_available_small">Нет в наличии</span>
                     <?php else :?>
-                        <?php if(!$photo->is_sale) :?>
-                            <?= $photo->price ?>&nbsp;руб.
+                        <?php if(Yii::app()->cart->isWholesale()) :?>
+                            <?= $photo->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
                         <?php else :?>
-                            <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
-                            <span class="price__new"><?= $photo->price ?>&nbsp;руб.</span>
+                            <?php if(!$photo->is_sale) :?>
+                                <?= $photo->price ?>&nbsp;руб.
+                            <?php else :?>
+                                <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
+                                <span class="price__new"><?= $photo->price ?>&nbsp;руб.</span>
+                            <?php endif; ?>
                         <?php endif; ?>
                     <?php endif; ?>
                 </span>

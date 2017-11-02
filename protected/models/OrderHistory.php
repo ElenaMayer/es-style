@@ -27,6 +27,7 @@
  * @property integer $coupon_mail_flag
  * @property date $sms_date
  * @property string $comment
+ * @property integer $is_wholesale
  *
  * The followings are the available model relations:
  * @property User $user
@@ -50,12 +51,12 @@ class OrderHistory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id', 'required'),
-			array('user_id, is_paid, subtotal, sale, shipping, total, postcode, coupon_id, coupon_sale', 'numerical', 'integerOnly'=>true),
+			array('user_id, is_paid, is_wholesale, subtotal, sale, shipping, total, postcode, coupon_id, coupon_sale', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>13),
 			array('status, shipping_method, payment_method, addressee, address, track_code, phone, email', 'length', 'max'=>255),
 			array('date_create, comment', 'safe'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-			array('id, user_id, status, is_paid, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email, postcode, coupon_id', 'safe', 'on'=>'search'),
+			array('id, user_id, status, is_paid, is_wholesale, shipping_method, payment_method, addressee, address, subtotal, sale, shipping, total, date_create, track_code, phone, email, postcode, coupon_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +84,7 @@ class OrderHistory extends CActiveRecord
             'user_id' => 'Пользователь',
             'status' => 'Статус',
             'is_paid' => 'Оплата заказа',
+            'is_wholesale' => 'Опт',
             'shipping_method' => 'Метод доставки',
             'payment_method' => 'Оплата',
             'postcode' => 'Индекс',
@@ -103,6 +105,8 @@ class OrderHistory extends CActiveRecord
             'coupon_mail_flag' => 'Получино письмо с просьбой написать отзыв за купон',
             'sms_date' => 'Отправлено смс',
             'comment' => 'Комментарий',
+            'tc' => 'Транспортная компания',
+            'delivery_data' => 'Данные для доставки',
 		);
 	}
 

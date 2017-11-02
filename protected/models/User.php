@@ -17,9 +17,12 @@
  * @property string $sex
  * @property integer $postcode
  * @property integer $is_subscribed
+ * @property integer $is_wholesaler
  * @property string $date_create
  * @property integer $blocked
  * @property integer $coupon_id
+ * @property string $tc
+ * @property string $delivery_data
  */
 class User extends CActiveRecord
 {
@@ -53,13 +56,13 @@ class User extends CActiveRecord
     public function rules()
     {
         return array(
-            array('username, password, name, surname, middlename, address, phone, email, sex', 'length', 'max'=>255),
+            array('username, password, name, surname, middlename, address, tc, delivery_data, phone, email, sex', 'length', 'max'=>255),
             array('password, password1, password2', 'length', 'min'=>6, 'tooShort'=>'Минимальная длина пароля 6 символов'),
             array('postcode', 'length', 'min'=>6, 'max'=>6, 'tooShort'=>'Длина индекса должна быть 6 символов'),
             array('postcode_error', 'checkPostcode', 'on'=> 'userOrder, orderWithRegistration, guestOrder'),
             array('email', 'email', 'message'=>'Значение не является правильным e-mail адресом.'),
             array('postcode', 'numerical', 'integerOnly'=>true),
-            array('date_of_birth, date, month, year, is_subscribed, blocked', 'safe'),
+            array('date_of_birth, date, month, year, is_subscribed, is_wholesaler, blocked', 'safe'),
             array('email, password', 'required', 'on' => 'login', 'message'=>'Это поле необходимо заполнить.'),
             array('email, name, password1, password2', 'required', 'on' => 'registration', 'message'=>'Это поле необходимо заполнить.'),
             array('name, phone', 'required', 'on' => 'userOrder, guestOrder', 'message'=>'Это поле необходимо заполнить.'),
@@ -70,7 +73,7 @@ class User extends CActiveRecord
             array('name', 'required', 'on' => 'customer_person_data', 'message'=>'Это поле необходимо заполнить.'),
             array('password2, password_old, password_new', 'required', 'on' => 'customer_password_data', 'message'=>'Это поле необходимо заполнить.'),
             array('email', 'required', 'on' => 'remindPassword', 'message'=>'Это поле необходимо заполнить.'),
-            array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed', 'safe', 'on'=>'search'),
+            array('id, name, surname, phone, email, date_of_birth, sex, is_subscribed, is_wholesaler', 'safe', 'on'=>'search'),
             array('password1', 'passwordMatch', 'on' => 'registration, orderWithRegistration'),
             array('password_new', 'passwordMatch', 'on' => 'customer_password_data'),
             array('password_old', 'passwordCheck', 'on' => 'customer_password_data'),
@@ -152,6 +155,7 @@ class User extends CActiveRecord
             'date_of_birth' => 'Дата рождения',
             'sex' => 'Пол',
             'is_subscribed' => 'Подписаться на новости и скидки',
+            'is_wholesaler' => 'Оптовый аккаунт',
             'blocked' => 'Заблокирован',
             'create_profile' => ' Зарегистрироваться при отправке заказа',
             'payment' => 'Способ оплаты',
@@ -159,6 +163,8 @@ class User extends CActiveRecord
             'coupon_id' => 'Купон',
             'date_create' => 'Дата создания',
             'fio' => 'ФИО',
+            'tc' => 'Транспортная компания',
+            'delivery_data' => 'Данные для доставки',
         );
     }
 
@@ -189,6 +195,7 @@ class User extends CActiveRecord
         $criteria->compare('email',$this->email,true);
         $criteria->compare('sex',$this->sex,true);
         $criteria->compare('is_subscribed',$this->is_subscribed);
+        $criteria->compare('is_wholesaler',$this->is_wholesaler);
         $criteria->compare('coupon_id',$this->coupon_id);
         $criteria->compare('blocked',$this->blocked);
 
@@ -307,7 +314,7 @@ class User extends CActiveRecord
     public function saveUserData($attributes){
         $this->attributes = $attributes;
         if(!Yii::app()->user->isGuest) {
-            if ($attributes['shipping_method'] == 'russian_post')
+            if ((isset($attributes['shipping_method']) && $attributes['shipping_method'] == 'russian_post') || Yii::app()->cart->isWholesale())
                 $this->scenario = 'userOrder';
             else
                 $this->scenario = 'userOrderToStore';

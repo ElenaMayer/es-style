@@ -14,6 +14,7 @@
  * @property string $date_create
  * @property integer $is_new
  * @property integer $price
+ * @property integer $wholesale_price
  * @property string $category
  * @property string $subcategory
  * @property integer $is_sale
@@ -62,13 +63,13 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('article, weight, is_show, is_available, is_new, is_hit, price, is_sale, sale, new_price, old_price, size, size_at, size_to', 'numerical', 'integerOnly'=>true),
+            array('article, weight, is_show, is_available, is_new, is_hit, price, wholesale_price, is_sale, sale, new_price, old_price, size, size_at, size_to', 'numerical', 'integerOnly'=>true),
             array('img, title, category', 'length', 'max'=>255),
             array('description, date_create', 'safe'),
-            array('article, is_show, is_available, is_new, is_hit, price, category, subcategory, is_sale, sizes, color', 'safe', 'on'=>'search'),
+            array('article, is_show, is_available, is_new, is_hit, price, wholesale_price, category, subcategory, is_sale, sizes, color', 'safe', 'on'=>'search'),
             array('date_create','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true,'on'=>'insert,update'),
-            array('category, title, article, weight, price', 'required', 'message'=>'Это поле необходимо заполнить.'),
+            array('category, title, article, weight, price, wholesale_price', 'required', 'message'=>'Это поле необходимо заполнить.'),
 		);
 	}
 
@@ -97,6 +98,7 @@ class Photo extends CActiveRecord
 			'article' => 'Артикул',
             'weight' => 'Вес',
 			'price' => 'Цена',
+            'wholesale_price' => 'Оптовая цена',
 			'title' => 'Название',
 			'description' => 'Описание',
             'is_show' => 'Отображать',
@@ -353,7 +355,7 @@ class Photo extends CActiveRecord
         $sale = $this->findAllByAttributes(
             array('is_show' => 1, 'category' => $type, 'is_sale' => 1)
         );
-        if(!empty($sale))
+        if(!empty($sale) && !Yii::app()->cart->isWholesale())
             array_push($res, array('label'=>'по скидкам'));
         return $res;
     }

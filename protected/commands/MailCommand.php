@@ -210,11 +210,10 @@ class MailCommand extends CConsoleCommand {
 
     // php yiic mail NewsMail --news_id=1 --sendToOrderedUser=0 --isTest = 0 - Новостная рассылка
     public function actionNewsMail($news_id, $isTest = 0) {
-        print_r($this->sendMailToAll());die();
         $model = News::model()->findByAttributes(['id'=>$news_id]);
         if(!empty($model)){
             $subject = $model->title;
-            $this->sendMailToSubscribers($subject, 'news_mail', ['model'=>$model], $isTest);
+            $this->sendMailToAll($subject, 'news_mail', ['model'=>$model], $isTest);
         } else {
             echo 'Model not found' . PHP_EOL;
         }

@@ -42,17 +42,17 @@
         <div class="label"><?php echo $form->labelEx($model,'is_paid'); ?></div>
         <div><?php echo $form->dropDownList($model,'is_paid', [0 => 'Нет', 1 => 'Да']) ?></div>
 	</div>
+    <?php if (!$model->is_wholesale): ?>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'shipping_method'); ?></div>
+            <div><?php echo $form->dropDownList($model,'shipping_method', Yii::app()->params['shippingMethod']); ?></div>
+        </div>
 
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'shipping_method'); ?></div>
-        <div><?php echo $form->dropDownList($model,'shipping_method', Yii::app()->params['shippingMethod']); ?></div>
-    </div>
-
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'payment_method'); ?></div>
-        <div><?php echo $form->dropDownList($model,'payment_method', Yii::app()->params['paymentMethod']); ?></div>
-	</div>
-
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'payment_method'); ?></div>
+            <div><?php echo $form->dropDownList($model,'payment_method', Yii::app()->params['paymentMethod']); ?></div>
+        </div>
+    <?php endif; ?>
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'phone'); ?></div>
         <div><?php echo $form->textField($model,'phone'); ?></div>
@@ -64,42 +64,62 @@
     </div>
 
     <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'postcode'); ?></div>
-        <div class="long_field"><?php echo $form->textField($model,'postcode'); ?></div>
-    </div>
-
-	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'addressee'); ?></div>
         <div class="long_field"><?php echo $form->textField($model,'addressee'); ?></div>
-	</div>
-
-    <div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'address'); ?></div>
-        <div class="long_field"><?php echo $form->textField($model,'address'); ?></div>
     </div>
+
+    <?php if ($model->is_wholesale): ?>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'tc'); ?></div>
+            <div><?php echo CHtml::encode(Yii::app()->params['tcList'][$model->user->tc]); ?></div>
+        </div>
+        <?php if ($model->user->tc == 'pr'): ?>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'delivery_data'); ?></div>
+                <div><?php echo CHtml::encode($model->user->delivery_data); ?></div>
+            </div>
+        <?php else: ?>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'delivery_data'); ?></div>
+                <div><?php echo CHtml::encode($model->user->delivery_data); ?></div>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if (!$model->is_wholesale || $model->user->tc == 'pr'): ?>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'postcode'); ?></div>
+            <div class="long_field"><?php echo $form->textField($model,'postcode'); ?></div>
+        </div>
+
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'address'); ?></div>
+            <div class="long_field"><?php echo $form->textField($model,'address'); ?></div>
+        </div>
+    <?php endif; ?>
 
 	<div class="row">
         <div class="label"><?php echo $form->labelEx($model,'subtotal'); ?></div>
         <div><?php echo $form->textField($model,'subtotal'); ?></div>
 	</div>
-
-	<div class="row">
-        <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
-        <div><?php echo $form->textField($model,'sale'); ?></div>
-	</div>
-    <?php if ($model->coupon_id): ?>
+    <?php if (!$model->is_wholesale): ?>
         <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'coupon'); ?></div>
-            <div>
-                <div><?php echo CHtml::encode($model->coupon->coupon); ?></div>
+            <div class="label"><?php echo $form->labelEx($model,'sale'); ?></div>
+            <div><?php echo $form->textField($model,'sale'); ?></div>
+        </div>
+        <?php if ($model->coupon_id): ?>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'coupon'); ?></div>
+                <div>
+                    <div><?php echo CHtml::encode($model->coupon->coupon); ?></div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="label"><?php echo $form->labelEx($model,'coupon_sale'); ?></div>
-            <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. <?php if ($model->coupon->type == 'percent'): ?>(<?php echo CHtml::encode($model->coupon->sale); ?>%)<?php endif; ?></div>
-        </div>
+            <div class="row">
+                <div class="label"><?php echo $form->labelEx($model,'coupon_sale'); ?></div>
+                <div><?php echo CHtml::encode($model->coupon_sale); ?> руб. <?php if ($model->coupon->type == 'percent'): ?>(<?php echo CHtml::encode($model->coupon->sale); ?>%)<?php endif; ?></div>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
-
     <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'shipping'); ?></div>
         <div><?php echo $form->textField($model,'shipping'); ?></div>

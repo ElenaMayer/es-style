@@ -7,7 +7,11 @@
                 <input type="hidden" class="subcategory" value="<?= $_GET['subcategory']?>">
             <?php endif; ?>
             <ul class="catalog-navigation">
-                <?php foreach (Yii::app()->params['categories'] as $categoryId => $categoryName): ?>
+                <?php
+                    $categories = Yii::app()->params['categories'];
+                    if(Yii::app()->cart->isWholesale()) unset($categories['sale']);
+                ?>
+                <?php foreach ($categories as $categoryId => $categoryName): ?>
                     <li class="catalog-navigation__item category__<?= $categoryId ?>">
                         <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>"><?= $categoryName ?></a>
                         <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountByCategory($categoryId) ?></span>

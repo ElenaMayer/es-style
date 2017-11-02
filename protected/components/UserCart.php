@@ -19,11 +19,13 @@ class UserCart extends CApplicationComponent {
             $this->currentCart = Cart::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'is_active' => true));
         }
         parent::init();
-
     }
 
     public function updateCart(){
         $this->init();
     }
 
+    public function isWholesale(){
+        return $this->currentCart->isWholesale();
+    }
 }

@@ -4,7 +4,10 @@
             <td align="center" style="padding:0 70px;">
                 <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
                     <b><?php if(!empty($order->user)):?><?= $order->user->getTitleName(); ?>,<?php endif ?>
-                        <?php if($order->status == 'in_progress'):?> Ваш заказ принят!
+                        <?php if($order->status == 'in_progress'):?>
+                            Ваш заказ принят!
+                        <?php elseif($order->status == 'payment') :?>
+                            Заказ ожидает оплаты!
                         <?php elseif($order->status == 'collect') :?>
                             <?php if($order->is_paid):?>Оплата получена. <?php endif ?>Заказ передан на комплектацию!
                         <?php elseif($order->status == 'shipping_by_rp') :?>
@@ -12,29 +15,62 @@
                                 Ваш заказ очень ждет Вас в почтовом отделении, через <?= $dayCount ?> он будет вынужден отправиться в обратный путь :(
                             <?php else: ?>
                                 Ваш заказ передан для доставки в Почту России!
-                            <?php endif ?>
-                        <?php elseif($order->status == 'waiting_delivery') :?> Заказ ожидает Вас в <?php echo($order->shipping_method == 'russian_post' ? "почтовом отделении" : "пункте выдачи");?>!
-                        <?php elseif($order->status == 'confirmation') :?> К сожалению, мы не можем дозвониться по указанному телефону :( Для подтверждения заказа ответьте, пожалуйста, на это письмо!
+                        <?php endif ?><?php elseif($order->status == 'shipping_by_tc') :?>
+                            Ваш заказ передан для доставки в Транспортную компанию!
+                        <?php elseif($order->status == 'waiting_delivery') :?>
+                            Заказ ожидает Вас в <?php echo($order->shipping_method == 'russian_post' ? "почтовом отделении" : "пункте выдачи");?>!
+                        <?php elseif($order->status == 'confirmation') :?>
+                            К сожалению, мы не можем дозвониться по указанному телефону :( Для подтверждения заказа ответьте, пожалуйста, на это письмо!
+                        <?php elseif($order->status == 'waiting_shipping') :?>
+                            Заказ ожидает отправки!
                         <?php endif ?>
-                        </b>
+                    </b>
                 </font>
                 <br>
             </td>
         </tr>
-        <?php if($order->status == 'shipping_by_rp' && !empty($order->track_code)):?>
+        <?php if(Yii::app()->cart->isWholesale()):?>
             <tr>
-                <td align="center" style="padding:20px 70px;">
+                <td style="padding:0 70px;">
                     <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-                        Вы можете отслеживать посылку на сайте
-                        <a href="<?php if($order->shipping_method == 'russian_post'):?>https://www.pochta.ru/tracking#<?= $order->track_code ?><?php elseif($order->shipping_method == 'ems') :?>http://www.emspost.ru/ru/tracking/<?php endif;?>" target="_blank">
-                            <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
-                                <?php if($order->shipping_method == 'ems') :?>EMS <?php endif;?>Почты России
-                            </font>
-                        </a> по почтовому идентификатору
+                        <?php if($order->status == 'in_progress'):?>
+                            Мы проверим наличие размеров и свяжемся с Вами в течении суток.
+                        <?php elseif($order->status == 'payment') :?>
+                            <?php $this->renderPartial('_requisites'); ?>
+                            После поступления средств на счет, заказ будет отправлен в течении суток.
+                        <?php elseif($order->status == 'waiting_shipping') :?>
+                            Оплату получена. В течении суток заказ будет отправлен.
+                        <?php endif ?>
                     </font>
                     <br>
                 </td>
             </tr>
+        <?php endif ?>
+        <?php if(!empty($order->track_code)):?>
+            <?php if($order->status == 'shipping_by_rp'):?>
+                <tr>
+                    <td align="center" style="padding:20px 70px;">
+                        <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
+                            Вы можете отслеживать посылку на сайте
+                            <a href="<?php if($order->shipping_method == 'russian_post'):?>https://www.pochta.ru/tracking#<?= $order->track_code ?><?php elseif($order->shipping_method == 'ems') :?>http://www.emspost.ru/ru/tracking/<?php endif;?>" target="_blank">
+                                <font size="3" style="font-size: 16px;" color="#CB2228" face="Arial, Helvetica, sans-serif">
+                                    <?php if($order->shipping_method == 'ems') :?>EMS <?php endif;?>Почты России
+                                </font>
+                            </a> по почтовому идентификатору
+                        </font>
+                        <br>
+                    </td>
+                </tr>
+                <?php elseif($order->status == 'shipping_by_tc'):?>
+                    <tr>
+                        <td align="center" style="padding:20px 70px;">
+                            <font size="5" style="font-size: 16px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
+                                Идеификатор груза: <?= $order->track_code ?>
+                            </font>
+                            <br>
+                        </td>
+                    </tr>
+                <?php endif ?>
         <?php endif ?>
         <tr>
             <td>
@@ -81,35 +117,44 @@
                                                 <td height="10" colspan="2"></td>
                                             </tr>
                                         <?php endif ?>
-                                        <tr valign="top" align="left" style="height: 25px;">
-                                            <td>
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <b>Оплата</b>
-                                                </font>
-                                            </td>
-                                            <td style="text-align: right;">
-                                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['paymentMethod'][$order->payment_method];?> <br>
-                                                    <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
-                                                        (взимается комиссия за наложенный платеж)
-                                                    <?php endif;?>
-                                                </font>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td height="10" colspan="2"></td>
-                                        </tr>
+                                        <?php if(!Yii::app()->cart->isWholesale()):?>
+                                            <tr valign="top" align="left" style="height: 25px;">
+                                                <td>
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <b>Оплата</b>
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        <?= Yii::app()->params['paymentMethod'][$order->payment_method];?> <br>
+                                                        <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
+                                                            (взимается комиссия за наложенный платеж)
+                                                        <?php endif;?>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="10" colspan="2"></td>
+                                            </tr>
+                                        <?php endif ?>
                                         <tr valign="top" align="left" style="height: 25px;">
                                             <td>
                                                 <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
                                                     <b>Доставка</b>
                                                 </font>
                                             </td>
-                                            <td style="text-align: right;">
-                                                <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping_method == 'store'):?>(Мичурина 12)<?php else:?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
-                                                </font>
-                                            </td>
+                                            <?php if(Yii::app()->cart->isWholesale()):?>
+                                                <td style="text-align: right;">
+                                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                                        Транспортная компания "<?= Yii::app()->params['tcList'][$order->user->tc];?>".
+                                                        <?php if($order->user->tc == 'pr'):?>
+                                                            <?php if($order->postcode):?><?= $order->postcode;?><?php endif;?><?php if($order->postcode && $order->address):?>,</br><?php endif;?><?php if($order->address):?><?= $order->address;?><?php endif;?>
+                                                        <?php elseif($order->user->delivery_data):?>
+                                                            <?= $order->user->delivery_data;?>
+                                                        <?php endif;?>
+                                                    </font>
+                                                </td>
+                                            <?php endif; ?>
                                         </tr>
                                         <tr>
                                             <td height="10" colspan="2"></td>
@@ -144,7 +189,7 @@
                                         <tr>
                                             <td height="10" colspan="2"></td>
                                         </tr>
-                                        <?php if($order->postcode || $order->address):?>
+                                        <?php if(!Yii::app()->cart->isWholesale() && ($order->postcode || $order->address)):?>
                                             <tr valign="top" align="left" style="height: 25px;">
                                                 <td>
                                                     <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">

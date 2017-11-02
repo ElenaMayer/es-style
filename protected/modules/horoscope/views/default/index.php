@@ -67,7 +67,7 @@
                     <h2>Подходящие модели</h2>
                     <?php foreach ($models as $model):?>
                         <a href="/<?= $model->model->category ?>/<?= $model->model->article ?>">
-                            <img class="catalog__item__img" src="<?= $model->model->getPreviewUrl(); ?>" width="223" height="298" alt="Женская одежда, <?=$model->model->title; ?> арт. <?= $model->model->article; ?>">
+                            <img class="catalog__item__img" src="<?= $model->model->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$model->model->title; ?> арт. <?= $model->model->article; ?>">
                         </a>
                     <?php endforeach;?>
                 </div>

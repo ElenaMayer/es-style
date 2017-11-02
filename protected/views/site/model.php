@@ -10,7 +10,7 @@
             <div class="table__cell_flat">
                 <div class="model_photo">
                     <?php if($model->is_available) :?>
-                        <?php if($model->is_sale) :?>
+                        <?php if($model->is_sale && !Yii::app()->cart->isWholesale()) :?>
                             <span class="item__label item__label_m">-<?= $model->sale ?>%</span>
                         <?php elseif($model->is_new) :?>
                             <span class="item__label item__label_m item__label_new">NEW</span>
@@ -18,7 +18,7 @@
                             <span class="item__label item__label_m item__label_hit"><i class="ico-hit"></i></span>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="Женская одежда, <?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
+                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="<?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
                 </div>
             </div>
         </div>
@@ -40,12 +40,16 @@
                         <div class="model_detail" >
                             <div class="model__price" >
                                 <span class="price price_model">
-                                    <?php if(!$model->is_sale) :?>
-                                        <?= $model->price ?>&nbsp;руб.
+                                    <?php if(Yii::app()->cart->isWholesale()) :?>
+                                        <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
                                     <?php else :?>
-                                        <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
-                                        <wbr>
-                                        <span class="price__new"><?= $model->price ?>&nbsp;руб.</span>
+                                        <?php if(!$model->is_sale) :?>
+                                            <?= $model->price ?>&nbsp;руб.
+                                        <?php else :?>
+                                            <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
+                                            <wbr>
+                                            <span class="price__new"><?= $model->price ?>&nbsp;руб.</span>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </span>
                             </div>

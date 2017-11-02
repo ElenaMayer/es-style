@@ -124,7 +124,9 @@ class CartItem extends CActiveRecord
 	}
 
 	public function getSum(){
-		if (!empty($this->new_price))
+        if(Yii::app()->cart->isWholesale()) {
+            return $this->photo->wholesale_price*$this->count;
+        } elseif (!empty($this->new_price))
 			return $this->new_price*$this->count;
 		elseif(!empty($this->price))
 			return $this->price*$this->count;

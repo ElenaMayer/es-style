@@ -32,7 +32,7 @@
                             </tr>
                         <?php endif ?>
                         <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Доставка</td>
+                            <td class="order-data__table-cell">Доставка<?php if(Yii::app()->cart->isWholesale()) :?> до ТК<?php endif?></td>
                             <td class="order-data__table-cell order-data__table-cell_right"><?= $order->shipping ?>&nbsp;руб.</td>
                         </tr>
                         </tbody>
@@ -44,19 +44,15 @@
                         </tfoot>
                     </table>&nbsp;
                 </dd>
-                <dt class="order-data__label">Способ оплаты</dt>
-                <dd class="order-data__value"><?= Yii::app()->params['paymentMethod'][$order->payment_method];?>&nbsp;</dd>
+                <?php if(!Yii::app()->cart->isWholesale()) :?>
+                    <dt class="order-data__label">Способ оплаты</dt>
+                    <dd class="order-data__value"><?= Yii::app()->params['paymentMethod'][$order->payment_method];?>&nbsp;</dd>
+                <?php endif?>
                 <dt class="order-data__label">Доставка</dt>
                 <dd class="order-data__value">
-                    <div class="order-data__value-row"><?= Yii::app()->params['shippingMethod'][$order->shipping_method];?></div>
-                    <table class="order-data__table order-data__table_top-margin">
-                        <tbody>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Адрес</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->postcode;?>,</br><?= $order->address;?></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <?php if(!Yii::app()->cart->isWholesale()) :?>
+                        <div class="order-data__value-row"><?= Yii::app()->params['shippingMethod'][$order->shipping_method];?></div>
+                    <?php endif?>
                     <table class="order-data__table order-data__table_top-margin">
                         <tbody>
                         <tr class="order-data__table-row">
@@ -65,6 +61,28 @@
                         </tr>
                         </tbody>
                     </table>&nbsp;
+                    <table class="order-data__table order-data__table_top-margin">
+                        <tbody>
+                        <?php if(Yii::app()->cart->isWholesale()) :?>
+                            <tr class="order-data__table-row">
+                                <td class="order-data__table-cell">Транспортная компания</td>
+                                <td class="order-data__table-cell order-data__table-cell_right"><?= Yii::app()->params['tcList'][$order->user->tc]?></td>
+                            </tr>
+                        <?php endif?>
+                        <?php if(Yii::app()->cart->isWholesale() && $order->user->tc != 'pr') :?>
+                        <tr class="order-data__table-row">
+                            <td class="order-data__table-cell">Данные для доставки</td>
+                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->user->delivery_data?></td>
+                        </tr>
+                        <?php endif?>
+                        <?php if(!Yii::app()->cart->isWholesale() || $order->user->tc == 'pr') :?>
+                        <tr class="order-data__table-row">
+                            <td class="order-data__table-cell">Адрес</td>
+                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->postcode;?>,</br><?= $order->address;?></td>
+                        </tr>
+                        <?php endif?>
+                        </tbody>
+                    </table>
                 </dd>
             </dl>
             <ul class="cart-list__content">

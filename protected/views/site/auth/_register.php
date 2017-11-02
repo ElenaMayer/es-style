@@ -8,6 +8,13 @@
 <div class="row">
     <?php echo $form->textFieldGroup($modelAuth, 'name', array('placeholder'=>'')); ?>
 </div>
+
+<div class="row">
+    <div class="form-group subscribed">
+        <?php echo $form->checkBox($modelAuth,'is_wholesaler'); ?>
+        <?php echo $form->labelEx($modelAuth,'is_wholesaler'); ?>
+    </div>
+</div>
 <div class="row">
     <?php echo $form->textFieldGroup($modelAuth, 'phone', array('placeholder'=>'+7')); ?>
 </div>
@@ -35,6 +42,7 @@
             'htmlOptions' => array('class' => 'form-control'),
         ))); ?>
 </div>
+
 <div class="row">
     <?php echo $form->passwordFieldGroup($modelAuth, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
 </div>

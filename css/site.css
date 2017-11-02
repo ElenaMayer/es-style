@@ -2074,9 +2074,6 @@ h3.news {
 .customer .row {
     margin: 0 0 -5px 130px;
 }
-.customer .row label {
-    left: -130px;
-}
 .customer .form__controls {
     padding-left: 130px;
 }
@@ -2118,6 +2115,8 @@ h3.news {
 .customer .row label {
     font-weight: inherit;
     font-size: 13px;
+    left: -130px;
+    max-width: 130px;
 }
 .customer .row button {
     font-size: 13px;
@@ -2134,6 +2133,9 @@ h3.news {
     display: inline-block;
     position: relative;
     width: auto;
+}
+.customer .row.tc-list .form-group .form-control {
+    width: inherit;
 }
 
 .orders {
@@ -2209,6 +2211,12 @@ h3.news {
     margin-left: 24px;
     white-space: normal;
     width: 47%;
+}
+.cart-list .cart_min-wholesale-sum {
+    padding-top: 5px;
+    float: right;
+    padding-right: 25px;
+    color: #ca0500;
 }
 
 .modal-body.order_modal {

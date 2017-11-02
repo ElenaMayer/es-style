@@ -280,11 +280,11 @@ class SiteController extends Controller {
 
     public function actionOrder($id){
         $this->pageTitle = Yii::app()->name.' - '.'Заказ';
-        if(Yii::app()->params['debugMode']){
-            Yii::log('Переход к оформлению заказа, IP:', 'warning');
-            Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
-        }
-        if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->id == $id) {
+        if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->id == $id && Yii::app()->cart->currentCart->isReadyToOrder()) {
+            if(Yii::app()->params['debugMode']){
+                Yii::log('Переход к оформлению заказа, IP:', 'warning');
+                Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
+            }
             if (!Yii::app()->user->isGuest) {
                 $user = User::model()->getUser();
                 $user->scenario = 'userOrder';
@@ -320,7 +320,7 @@ class SiteController extends Controller {
                 'cart' => Yii::app()->cart->currentCart
             ));
         }  else
-            $this->redirect(array('site/index'));
+            $this->redirect(array('cart'));
     }
 
     public function processingOrder($orderData){
@@ -357,7 +357,10 @@ class SiteController extends Controller {
         $this->layout = '//layouts/mail';
         $mail = new Mail();
         $mail->to = Yii::app()->params['emailTo'];
-        $mail->subject = "Новый заказ розница № ". $order->id;
+        if(Yii::app()->cart->isWholesale())
+            $mail->subject = "Новый заказ ОПТ № ". $order->id;
+        else
+            $mail->subject = "Новый заказ розница № ". $order->id;
         $mail->message = $this->render('/site/mail/order_to_admin',array('order'=>$order),true);
         $mail->send();
     }
@@ -366,12 +369,14 @@ class SiteController extends Controller {
         $order = new OrderHistory();
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
-        $order->shipping_method = $_POST['User']['shipping_method'];
-        $order->payment_method = $_POST['User']['payment'];
+        $cart = Yii::app()->cart->currentCart;
+        if(!$cart->isWholesale()){
+            $order->shipping_method = $_POST['User']['shipping_method'];
+            $order->payment_method = $_POST['User']['payment'];
+        }
         $order->phone = $user->phone;
         $order->email = $user->email;
 
-        $cart = Yii::app()->cart->currentCart;
         $order->shipping = ($order->shipping_method == 'russian_post') ? $cart->shipping : 0;
         $order->subtotal = $cart->subtotal;
         $order->sale = $cart->sale;
@@ -381,15 +386,17 @@ class SiteController extends Controller {
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
-
-        if($_POST['User']['payment'] == 'cod')
+        if(!$cart->isWholesale()) {
+            if ($_POST['User']['payment'] == 'cod')
+                $order->status = 'in_progress';
+            elseif ($_POST['User']['payment'] == 'online') {
+                $order->status = 'payment';
+                $rk = new Robokassa();
+                $order->total_with_commission = $rk->getSumWithCommission($order->total);
+            }
+        } else {
             $order->status = 'in_progress';
-        elseif($_POST['User']['payment'] == 'online') {
-            $order->status = 'payment';
-            $rk = new Robokassa();
-            $order->total_with_commission = $rk->getSumWithCommission($order->total);
         }
-
         if ($order->save()){
             if($order->coupon_id && !$order->coupon->is_reusable)
                 $order->coupon->isUsed();
@@ -397,7 +404,9 @@ class SiteController extends Controller {
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
-                if($item->photo->is_sale) {
+                if($cart->isWholesale()) {
+                    $item->price = $item->photo->wholesale_price;
+                }elseif($item->photo->is_sale) {
                     $item->new_price = $item->photo->price;
                     $item->price = $item->photo->old_price;
                 } elseif($order->coupon_id) {

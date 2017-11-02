@@ -51,6 +51,11 @@
     </div>
 
     <div class="row">
+        <div class="label"><?php echo $form->labelEx($model,'is_wholesaler'); ?></div>
+        <div><?php echo $form->checkBox($model,'is_wholesaler'); ?></div>
+    </div>
+
+    <div class="row">
         <div class="label"><?php echo $form->labelEx($model,'is_subscribed'); ?></div>
         <div><?php echo $form->checkBox($model,'is_subscribed'); ?></div>
     </div>

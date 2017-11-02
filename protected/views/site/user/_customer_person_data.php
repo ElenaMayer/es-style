@@ -1,4 +1,9 @@
-<h1 class="account-header__title">Мои данные</h1>
+<?php if(Yii::app()->user->is_wholesaler): ?>
+    <h1 class="account-header__title wholesaler">Оптовый аккаунт</h1>
+    <h2 class="account-header__title">Данные заказчика</h2>
+<?php else: ?>
+    <h1 class="account-header__title">Мои данные</h1>
+<?php endif;?>
 <?php $this->renderPartial('_alert'); ?>
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'customer_person_data',

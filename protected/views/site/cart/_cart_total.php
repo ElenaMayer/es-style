@@ -3,10 +3,13 @@
     <span class="cart-subtotal-val"><?= $model->subtotal ?> руб.</span>
 </div>
 <div class="cart-total__price cart-total__price_amount">
-        <span class="cart-total__price-title">Доставка
+        <span class="cart-total__price-title">Доставка<?php if(Yii::app()->cart->isWholesale()):?> до ТК<?php endif; ?>
             <span class="cart-total__price-hint i_help hint-wrap">
-                <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
-            </span>
+                <?php if(!Yii::app()->user->isGuest && Yii::app()->user->is_wholesaler):?>
+                    <div class="hint">Доставка до ТК бесплатно, услуги ТК оплачиваются при получении</div>
+                <?php else:?>
+                    <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
+                <?php endif;?>            </span>
         </span>
     <span class="cart-shipping-val">
         <?= $model->shipping ?> руб.

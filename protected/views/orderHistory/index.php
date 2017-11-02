@@ -45,6 +45,12 @@ $('.search-form form').submit(function(){
 //    'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('update').'?id="+$.fn.yiiGridView.getSelection(id);}',
     'columns'=>array(
         'id',
+        array(
+            'name' => 'is_wholesale',
+            'type'=>'raw',
+            'value'=> '$data->is_wholesale == 1?"Да":""',
+            'filter'=>[1=>'Да',0=>'Нет'],
+        ),
         'addressee',
         'postcode',
         array(

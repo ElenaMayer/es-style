@@ -64,6 +64,10 @@
                 <div><?php echo $form->textField($model,'price'); ?></div>
             </div>
         </div>
+        <div class="row">
+            <div class="label"><?php echo $form->labelEx($model,'wholesale_price'); ?></div>
+            <div><?php echo $form->textField($model,'wholesale_price'); ?></div>
+        </div>
 
         <div class="row">
             <div class="label"><?php echo $form->labelEx($model,'size'); ?></div>

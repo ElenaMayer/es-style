@@ -22,6 +22,7 @@ class Cart extends CActiveRecord
     public $total;
     public $count;
 	public $weight;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -123,22 +124,34 @@ class Cart extends CActiveRecord
         $weight = 0;
         foreach($this->cartItems as $item){
             if($item->photo->is_available) {
-                $subtotal += $item->photo->is_sale ? $item->photo->old_price * $item->count : $item->photo->price * $item->count;
-                $count += $item->count;
-                $weight += $item->photo->weight * $item->count;
-                if ($item->photo->is_sale) {
-                    $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
+                if($this->isWholesale()) {
+                    $subtotal += $item->photo->wholesale_price * $item->count;
+                } else {
+                    $subtotal += $item->photo->is_sale ? $item->photo->old_price * $item->count : $item->photo->price * $item->count;
                 }
-                if ($this->coupon_id) {
-                    $coupon_sale += $this->coupon->getSaleInRub($item->photo->price, $item->photo->category) * $item->count;
+                $count += $item->count;
+                if (Yii::app()->user->isGuest || !$this->isWholesale()) {
+                    $weight += $item->photo->weight * $item->count;
+                    if ($item->photo->is_sale) {
+                        $sale += ($item->photo->old_price - $item->photo->price) * $item->count;
+                    }
+                    if ($this->coupon_id) {
+                        $coupon_sale += $this->coupon->getSaleInRub($item->photo->price, $item->photo->category) * $item->count;
+                    }
                 }
             }
         }
         $this->subtotal = $subtotal;
         $this->sale = $sale;
-        $this->coupon_sale = $coupon_sale ? $coupon_sale : ($this->coupon_id ? $this->coupon->getTotalSaleInRub($this->cartItems) : 0);
+        if($this->isWholesale())
+            $this->coupon_sale = 0;
+        else
+            $this->coupon_sale = $coupon_sale ? $coupon_sale : ($this->coupon_id ? $this->coupon->getTotalSaleInRub($this->cartItems) : 0);
         $this->count = $count;
-        $this->shipping = ($this->count < Yii::app()->params['shippingFreeCount']) ? Yii::app()->params['defaultShippingTariff'] : 0;
+        if($this->isWholesale())
+            $this->shipping = 0;
+        else
+            $this->shipping = ($this->count < Yii::app()->params['shippingFreeCount']) ? Yii::app()->params['defaultShippingTariff'] : 0;
         $this->total = $subtotal - $this->sale - $this->coupon_sale + $this->shipping;
         $this->weight = $weight;
     }
@@ -204,5 +217,24 @@ class Cart extends CActiveRecord
     public function deleteCoupon(){
         $this->coupon_id = null;
         return $this->save();
+    }
+
+    public function isReadyToOrder(){
+        if ($this->isWholesale()) {
+            if($this->total >= Yii::app()->params['minWholesaleSum'])
+                return true;
+            else
+                return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function isWholesale(){
+        if(!Yii::app()->user->isGuest && Yii::app()->user->is_wholesaler){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

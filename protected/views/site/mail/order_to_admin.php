@@ -3,7 +3,7 @@
 <tr>
     <td align="center" style="padding:0 70px;">
         <font color="#CB2228" size="5" style="font-size: 23px;line-height: 1.2;" face="Arial, Helvetica, sans-serif">
-            <b>Заказ №<?= $order->id ?> <?= $order->is_paid ? "оплачен" : "создан" ?>.</b>
+            <b>Заказ <?php if(Yii::app()->cart->isWholesale()):?>ОПТ <?php endif;?>№<?= $order->id ?> <?= $order->is_paid ? "оплачен" : "создан" ?>.</b>
         </font>
         <br>
     </td>
@@ -49,24 +49,26 @@
                         <tr>
                             <td height="10" colspan="2"></td>
                         </tr>
-                        <tr valign="top" align="left" style="height: 25px;">
-                            <td>
-                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                    <b>Оплата</b>
-                                </font>
-                            </td>
-                            <td style="text-align: right;">
-                                <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                    <?= Yii::app()->params['paymentMethod'][$order->payment_method];?><br>
-                                    <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
-                                        (взимается комиссия за наложенный платеж)
-                                    <?php endif;?>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height="10" colspan="2"></td>
-                        </tr>
+                        <?php if(!Yii::app()->cart->isWholesale()):?>
+                            <tr valign="top" align="left" style="height: 25px;">
+                                <td>
+                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                        <b>Оплата</b>
+                                    </font>
+                                </td>
+                                <td style="text-align: right;">
+                                    <font size="3" style="font-size: 16px;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                        <?= Yii::app()->params['paymentMethod'][$order->payment_method];?><br>
+                                        <?php if($order->payment_method != 'online' && $order->shipping_method != 'store'):?>
+                                            (взимается комиссия за наложенный платеж)
+                                        <?php endif;?>
+                                    </font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="10" colspan="2"></td>
+                            </tr>
+                        <?php endif;?>
                         <?php if($order->coupon_id):?>
                             <tr valign="top" align="left" style="height: 25px;">
                                 <td>
@@ -90,12 +92,25 @@
                                     <b>Доставка</b>
                                 </font>
                             </td>
-                            <td style="text-align: right;">
-                                <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
-                                    <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping_method == 'store'):?>(Мичурина 12)<?php else:?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
-                                    <?php if($order->postcode):?><?= $order->postcode;?><?php endif;?><?php if($order->postcode && $order->address):?>,</br><?php endif;?><?php if($order->address):?><?= $order->address;?><?php endif;?>
-                                </font>
-                            </td>
+                            <?php if(Yii::app()->cart->isWholesale()):?>
+                                <td style="text-align: right;">
+                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                        Транспортная компания "<?= Yii::app()->params['tcList'][$order->user->tc];?>".
+                                        <?php if($order->user->tc == 'pr'):?>
+                                            <?php if($order->postcode):?><?= $order->postcode;?><?php endif;?><?php if($order->postcode && $order->address):?>,</br><?php endif;?><?php if($order->address):?><?= $order->address;?><?php endif;?>
+                                        <?php else:?>
+                                            <?= $order->user->delivery_data;?>
+                                        <?php endif;?>
+                                    </font>
+                                </td>
+                            <?php else: ?>
+                                <td style="text-align: right;">
+                                    <font size="3" style="font-size: 16px;line-height: 1.3;" color="#333333" face="Arial, Helvetica, sans-serif">
+                                        <?= Yii::app()->params['shippingMethod'][$order->shipping_method];?> <?php if($order->shipping_method == 'store'):?>(Мичурина 12)<?php else:?>(<?= $order->shipping ?>&nbsp;р.)<?php endif;?>
+                                        <?php if($order->postcode):?><?= $order->postcode;?><?php endif;?><?php if($order->postcode && $order->address):?>,</br><?php endif;?><?php if($order->address):?><?= $order->address;?><?php endif;?>
+                                    </font>
+                                </td>
+                            <?php endif; ?>
                         </tr>
                         <tr>
                             <td height="10" colspan="2"></td>

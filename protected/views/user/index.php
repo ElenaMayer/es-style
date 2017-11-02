@@ -13,6 +13,12 @@
 		'email',
 		'coupon_id',
         array(
+            'name' => 'is_wholesaler',
+            'type'=>'raw',
+            'value'=> '$data->is_wholesaler == 1?"Да":""',
+            'filter'=>[1=>'Да',0=>'Нет'],
+        ),
+        array(
             'name' => 'blocked',
             'type'=>'raw',
             'value'=> '$data->blocked == 1?"Да":""',
