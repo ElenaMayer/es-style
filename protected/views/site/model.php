@@ -14,7 +14,7 @@
                             <span class="item__label item__label_m">-<?= $model->sale ?>%</span>
                         <?php elseif($model->is_new) :?>
                             <span class="item__label item__label_m item__label_new">NEW</span>
-                        <?php elseif($model->is_hit) :?>
+                        <?php elseif($model->is_hit && !Cart::isWholesale()) :?>
                             <span class="item__label item__label_m item__label_hit"><i class="ico-hit"></i></span>
                         <?php endif; ?>
                     <?php endif; ?>
@@ -41,7 +41,7 @@
                             <div class="model__price" >
                                 <span class="price price_model">
                                     <?php if(Cart::isWholesale()) :?>
-                                        <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
+                                        <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
                                     <?php else :?>
                                         <?php if(!$model->is_sale) :?>
                                             <?= $model->price ?>&nbsp;руб.

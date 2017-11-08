@@ -20,6 +20,7 @@ return array(
     'horoscope_sale'=>300,
     'horoscope_coupon'=>'HOROSCOPE_GIFT',
     'minWholesaleSum'=>5000,
+    'bannerUrl' => '/about/wholesale',
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',

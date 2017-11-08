@@ -6,7 +6,7 @@
                     <span class="item__label">-<?= $photo->sale ?>%</span>
                 <?php elseif($photo->is_new) :?>
                     <span class="item__label item__label_new">NEW</span>
-                <?php elseif($photo->is_hit) :?>
+                <?php elseif($photo->is_hit && !Cart::isWholesale()) :?>
                     <span class="item__label item__label_hit"><i class="ico-hit"></i></span>
                 <?php endif; ?>
             <?php endif; ?>
@@ -21,7 +21,7 @@
                         <span class="not_available_small">Нет в наличии</span>
                     <?php else :?>
                         <?php if(Cart::isWholesale()) :?>
-                            <?= $photo->wholesale_price ?>&nbsp;руб. <span class="red">(ОПТ)</span>
+                            <?= $photo->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
                         <?php else :?>
                             <?php if(!$photo->is_sale) :?>
                                 <?= $photo->price ?>&nbsp;руб.

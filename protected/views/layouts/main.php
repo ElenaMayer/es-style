@@ -21,7 +21,7 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?23" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?28" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
@@ -90,7 +90,9 @@
                 </div>
             </div>
             <div class="banner">
-                <img src="/data/i/banner.png?1">
+                <a href="<?= Yii::app()->params['bannerUrl'] ?>">
+                    <img src="/data/i/banner.png?4">
+                </a>
             </div>
             <?php
                 $this->widget(
@@ -126,7 +128,9 @@
             )); ?><!-- breadcrumbs -->
         <?php endif;?>
         <div class="content">
-            <?php $this->renderPartial('application.views.site._horoscope_popup'); ?>
+            <?php if(!Cart::isWholesale()):?>
+                <?php $this->renderPartial('application.views.site._horoscope_popup'); ?>
+            <?php endif;?>
             <?php echo $content; ?>
         </div>
         <div class="footer_with_menu">
@@ -157,6 +161,9 @@
         </div>
         <div class="clear"></div>
     </div><!-- page -->
+    <div class="getprice">
+        <a href="site/price">Скачать прайс</a>
+    </div>
     <div class="footer">
         Copyright &copy; 2014 - 2017 by <?php echo Yii::app()->params['domain']; ?>.<br/>
         All Rights Reserved.<br/>

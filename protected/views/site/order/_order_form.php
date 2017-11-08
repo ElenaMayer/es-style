@@ -107,17 +107,19 @@
 
 <script>
     $(document).ready(function() {
-        if($('#User_create_profile').prop('checked'))
+        if ($('#User_create_profile').prop('checked'))
             $('.order-password').show();
         else
             $('.email_group>label>span').hide();
-        if($('#User_shipping_method_1').prop('checked'))
+        if ($('#User_shipping_method_1').prop('checked'))
             shipping_to_store();
 
-        if ($('#User_tc').val() == 'pr') {
-            $('.wholesale_shipping_data').hide();
-        } else {
-            $('.shipping_data').hide();
+        if ($('#User_tc').length > 0){
+            if ($('#User_tc').val() == 'pr') {
+                $('.wholesale_shipping_data').hide();
+            } else {
+                $('.shipping_data').hide();
+            }
         }
     });
     $( 'body' ).on( 'change', '#User_create_profile', function() {

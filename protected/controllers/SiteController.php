@@ -181,7 +181,10 @@ class SiteController extends Controller {
 
     public function getOrder(){
         if(!isset(Yii::app()->session['catalog_order'])) {
-            Yii::app()->session['catalog_order'] = 'по популярности';
+            if(Cart::isWholesale())
+                Yii::app()->session['catalog_order'] = 'по артиклю';
+            else
+                Yii::app()->session['catalog_order'] = 'по популярности';
         }
         return Yii::app()->session['catalog_order'];
     }
@@ -365,7 +368,7 @@ class SiteController extends Controller {
         $mail->send();
     }
 
-    public function createOrder($user){
+    public function  createOrder($user){
         $order = new OrderHistory();
         $order->id = floatval(Yii::app()->dateFormatter->format('yyMMddHHmmss', time()));
         $order->user_id = $user->id;
@@ -395,6 +398,7 @@ class SiteController extends Controller {
                 $order->total_with_commission = $rk->getSumWithCommission($order->total);
             }
         } else {
+            $order->is_wholesale = 1;
             $order->status = 'in_progress';
         }
         if ($order->save()){

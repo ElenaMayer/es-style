@@ -9,7 +9,10 @@
             <ul class="catalog-navigation">
                 <?php
                     $categories = Yii::app()->params['categories'];
-                    if(Cart::isWholesale()) unset($categories['sale']);
+                    if(Cart::isWholesale()) {
+                        unset($categories['sale']);
+                        unset($categories['hit']);
+                    }
                 ?>
                 <?php foreach ($categories as $categoryId => $categoryName): ?>
                     <li class="catalog-navigation__item category__<?= $categoryId ?>">

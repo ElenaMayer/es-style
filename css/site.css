@@ -139,6 +139,10 @@
     padding: 20px 0px 10px;
 }
 
+.about span {
+    line-height: 2;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -257,6 +261,32 @@ body.main.modal-open {
     margin-bottom: 20px;
 }
 
+.getprice {
+    position: fixed;
+    right: -63px;
+    top: 270px;
+    z-index: 9999;
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.getprice a {
+    padding: 15px 20px;
+    display: block;
+    background-color: #ff0000;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    font-family: arial;
+}
+.getprice a:hover,
+.getprice a:focus {
+    color: #fff;
+    text-decoration: none;
+}
 .page .header .menu
 {
     z-index: 11;
@@ -2288,7 +2318,7 @@ h3.news {
 /* Banner */
 
 .banner {
-    background-color: #ff7a28;
+    background-color: white;
     height: 70px;
 }
 .banner img {
@@ -2726,7 +2756,7 @@ a.button_border:hover,
     background-color: #ca0600;
     border-radius: 5px;
     padding: 25px;
-    right: 2%;
+    right: 3%;
     z-index: 100;
     font-size: 29px;
     opacity: 0.8;

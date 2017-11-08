@@ -342,7 +342,6 @@ class Photo extends CActiveRecord
 
     public function getOrderList($type){
         $res = array(
-            array('label'=>'по популярности'),
             array('label'=>'по артиклю'),
             array('label'=>'по возрастанию цены'),
             array('label'=>'по убыванию цены'),
@@ -355,8 +354,10 @@ class Photo extends CActiveRecord
         $sale = $this->findAllByAttributes(
             array('is_show' => 1, 'category' => $type, 'is_sale' => 1)
         );
-        if(!empty($sale) && !Cart::isWholesale())
-            array_push($res, array('label'=>'по скидкам'));
+        if(!empty($sale) && !Cart::isWholesale()) {
+            array_push($res, array('label' => 'по скидкам'));
+            array_push($res, array('label' => 'по популярности'));
+        }
         return $res;
     }
 

@@ -41,6 +41,7 @@ class User extends CActiveRecord
     public $postcode_error;
     public $shipping;
     public $titleName;
+    public $is_wholesaler = 0;
 
     /**
      * @return string the associated database table name

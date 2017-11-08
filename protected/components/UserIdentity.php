@@ -19,6 +19,8 @@ class UserIdentity extends CUserIdentity
         {
             $this->_id=$record->id;
             $this->setState('username', $record->username);
+            $this->setState('is_wholesaler', 0);
+            $this->setState('email', 0);
             $this->errorCode=self::ERROR_NONE;
         }
         return !$this->errorCode;

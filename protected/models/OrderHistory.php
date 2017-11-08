@@ -105,7 +105,7 @@ class OrderHistory extends CActiveRecord
             'coupon_mail_flag' => 'Получино письмо с просьбой написать отзыв за купон',
             'sms_date' => 'Отправлено смс',
             'comment' => 'Комментарий',
-            'tc' => 'Транспортная компания',
+            'tc' => 'Способ доставки',
             'delivery_data' => 'Данные для доставки',
 		);
 	}
