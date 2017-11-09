@@ -264,7 +264,7 @@ body.main.modal-open {
 .getprice {
     position: fixed;
     right: -63px;
-    top: 270px;
+    top: 275px;
     z-index: 9999;
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -279,7 +279,7 @@ body.main.modal-open {
     background-color: #ff0000;
     font-size: 18px;
     color: #fff;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     font-family: arial;
 }
 .getprice a:hover,
@@ -2773,6 +2773,22 @@ a.button_border:hover,
 
 .content .horoscope_popup a:hover {
     color: white;
+}
+
+/* Parser */
+.content #grably-button[data-position="position-right"] {
+    top: 435px;
+    width: 150px;
+    height: 104px;
+    text-transform: none;
+    font-family: arial;
+    font-size: 18px;
+    font-weight: normal;
+    background-color: #a34c67;
+    transform: rotate(-90deg);
+    right: -85px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /*
