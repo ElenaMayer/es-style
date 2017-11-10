@@ -263,7 +263,7 @@ body.main.modal-open {
 
 .getprice {
     position: fixed;
-    right: -63px;
+    right: -81px;
     top: 275px;
     z-index: 9999;
     -moz-transform: rotate(-90deg);
@@ -2790,7 +2790,7 @@ a.button_border:hover,
     font-family: arial;
     font-size: 18px;
     font-weight: normal;
-    background-color: #a34c67;
+    background-color: #68a527;
     transform: rotate(-90deg);
     right: -85px;
     border-top-left-radius: 5px;

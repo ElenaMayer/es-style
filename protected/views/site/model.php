@@ -39,6 +39,11 @@
                     <div class="table__row">
                         <div class="model_detail" >
                             <div class="model__price" >
+                                <!-- For parser   -->
+                                <span class="price_model hide">
+                                    <div><?= $model->wholesale_price ?>&nbsp;руб.</div>
+                                </span>
+                                <!-- /For parser   -->
                                 <span class="price price_model">
                                     <?php if(Cart::isWholesale()) :?>
                                         <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
@@ -59,6 +64,11 @@
                                     <span class="size__title">Универсальный размер (подходит на размеры <?= $model->size_at ?>-<?= $model->size_to ?>)</span>
                                     <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                                 <?php else :?>
+                                    <!-- For parser   -->
+                                    <div class="size__title hide">
+                                        <?php echo $model->sizes ?>
+                                    </div>
+                                    <!-- /For parser   -->
                                     <div class="size__title">
                                         Российский размер
                                         <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
