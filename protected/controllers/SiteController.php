@@ -350,6 +350,7 @@ class SiteController extends Controller {
     public function sentOrderMail($order){
         $this->layout = '//layouts/mail';
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailOrder'];
         $mail->to = $order->email;
         $mail->subject = "Заказ № ". $order->id ." оформлен в интернет-магазине ".Yii::app()->params['domain'];
         $mail->message = $this->render('/site/mail/order',array('order'=>$order),true);
@@ -389,6 +390,7 @@ class SiteController extends Controller {
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;
+        $order->comment = $user->comment;
         if(!Cart::isWholesale()) {
             if ($_POST['User']['payment'] == 'cod')
                 $order->status = 'in_progress';

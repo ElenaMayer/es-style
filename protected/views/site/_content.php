@@ -29,7 +29,7 @@
                                 <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
                                 <span class="price__new"><?= $photo->price ?>&nbsp;руб.</span>
                             <?php endif; ?>
-                            <span class="wholesale-price hide"><?= $photo->wholesale_price ?>&nbsp;руб. </span>
+                            <div class="wholesale-price hide"><?= $photo->wholesale_price ?>&nbsp;руб. </div>
                         <?php endif; ?>
                     <?php endif; ?>
                 </span>

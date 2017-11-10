@@ -114,6 +114,7 @@ class OrderHistoryController extends Controller
     private function sendChangeStatusMail($model){
 		$this->layout = '//layouts/mail';
 		$mail = new Mail();
+        $mail->from = Yii::app()->params['emailOrder'];
 		$mail->to = $model->email;
 		if($model->status == 'collect'){
 			$mail->subject = "Заказ № ". $model->id ." передан на комплектацию. Интернет-магазин ".Yii::app()->params['domain'];

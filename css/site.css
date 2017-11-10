@@ -2062,6 +2062,12 @@ h3.news {
 .new-order .row .payment {
     padding-bottom: 30px;
 }
+.new-order .row.payment {
+    min-height: 45px;
+}
+.new-order .row.comment textarea {
+    width: 92%;
+}
 .new-order .row .order-auth-checkout__register {
     padding-bottom: 10px;
 }

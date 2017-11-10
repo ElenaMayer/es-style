@@ -42,6 +42,7 @@ class User extends CActiveRecord
     public $shipping;
     public $titleName;
     public $is_wholesaler = 0;
+    public $comment;
 
     /**
      * @return string the associated database table name
@@ -164,8 +165,9 @@ class User extends CActiveRecord
             'coupon_id' => 'Купон',
             'date_create' => 'Дата создания',
             'fio' => 'ФИО',
-            'tc' => 'Транспортная компания',
+            'tc' => 'Способ доставки',
             'delivery_data' => 'Данные для доставки',
+            'comment' => 'Комментарий',
         );
     }
 
@@ -345,6 +347,8 @@ class User extends CActiveRecord
             $this->shipping_method = $attributes['shipping_method'];
         if (isset($attributes['create_profile']))
             $this->create_profile = $attributes['create_profile'];
+        if (isset($attributes['comment']))
+            $this->comment = $attributes['comment'];
     }
 
     public function createNewPassword(){

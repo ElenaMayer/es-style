@@ -103,6 +103,13 @@
         <?php endif ?>
         <?php echo $form->labelEx($user,'payment'); ?>
     </div>
+
+    <div class="row comment">
+        <div class="form-group">
+            <?php echo $form->labelEx($user,'comment'); ?>
+            <?php echo $form->textArea($user, 'comment', array('placeholder'=>'', 'class' => 'form-control')); ?>
+        </div>
+    </div>
 <?php $this->endWidget(); ?>
 
 <script>

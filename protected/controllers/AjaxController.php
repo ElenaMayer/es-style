@@ -119,6 +119,7 @@ class AjaxController extends Controller
         $this->layout = '//layouts/mail';
         $order = OrderHistory::model()->findByPk($_POST['order_id']);
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailOrder'];
         $mail->to = $order->email;
         $mail->subject = "Срок хранения Вашего заказа истекает через ".$_POST['day_count'].". Интернет-магазин ".Yii::app()->params['domain'];
         $mail->message = $this->render('/site/mail/order',array('order'=>$order, 'dayCount' => $_POST['day_count']),true);
@@ -278,6 +279,7 @@ class AjaxController extends Controller
         if($email && $coupon){
             $mail = new Mail();
             $mail->to = $email;
+            $mail->from = Yii::app()->params['emailNews'];
             $mail->subject = "Ваш купон на скидку от ".Yii::app()->params['domain']. "!";
             $mail->message = $this->render('/site/mail/coupon', ['model' => $coupon], true);
             $mail->send();

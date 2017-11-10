@@ -236,6 +236,7 @@ class AdminController extends Controller
                 if($coupon){
                     $this->layout = '//layouts/mail';
                     $mail = new Mail();
+                    $mail->from = Yii::app()->params['emailNews'];
                     $mail->subject = "Подарок за отзыв от интернет-магазина ".Yii::app()->params['domain']."!";
                     $mail->message = $this->render('/site/mail/coupon', ['coupon' => $coupon], true);
                     $mail->to = $review->email;

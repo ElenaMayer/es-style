@@ -84,6 +84,7 @@ class NewsController extends Controller
     public function sentMailWithNews($model){
         $this->layout = '//layouts/mail_sub';
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailNews'];
         $mail->subject = $model->title;
         $users = User::model()->findAllByAttributes(['is_subscribed'=>1]);
         foreach($users as $user){

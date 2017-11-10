@@ -11,6 +11,7 @@ class MailCommand extends CConsoleCommand {
     // php yiic mail newPhotos - Новиночная рассылка
     public function actionNewPhotos() {
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailNews'];
         $mail->subject = "Новинки интернет-магазина ".Yii::app()->params['domain'];
 
         if(isset(Yii::app()->controller))
@@ -49,6 +50,7 @@ class MailCommand extends CConsoleCommand {
             $controller = new CController('YiiMail');
         $controller->layout = '//layouts/mail';
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailNews'];
         $mail->subject = "Скидка за отзыв от интернет-магазина".Yii::app()->params['domain'];
         if($test){
             echo 'TEST MODE' . PHP_EOL;
@@ -129,6 +131,7 @@ class MailCommand extends CConsoleCommand {
 
     public function sendMailToSubscribers($subject, $view, $sendToOrderedUser, $params=[], $isTest = 0){
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailNews'];
         $mail->subject = $subject;
 
         if(isset(Yii::app()->controller))
@@ -172,6 +175,7 @@ class MailCommand extends CConsoleCommand {
 
     public function sendMailToAll($subject, $view, $params=[], $isTest = 0){
         $mail = new Mail();
+        $mail->from = Yii::app()->params['emailNews'];
         $mail->subject = $subject;
 
         if(isset(Yii::app()->controller))

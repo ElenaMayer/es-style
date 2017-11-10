@@ -65,7 +65,7 @@
                         <tbody>
                         <?php if(Cart::isWholesale()) :?>
                             <tr class="order-data__table-row">
-                                <td class="order-data__table-cell">Транспортная компания</td>
+                                <td class="order-data__table-cell">Способ доставки</td>
                                 <td class="order-data__table-cell order-data__table-cell_right"><?= Yii::app()->params['tcList'][$order->user->tc]?></td>
                             </tr>
                         <?php endif?>
