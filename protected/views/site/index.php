@@ -11,7 +11,7 @@ $this->pageTitle=Yii::app()->name;
                     'image' => $this->bu('data/i/carousel_fourth.jpg'),
                 ),
                 array(
-                    'image' => $this->bu('data/i/carousel_first.jpg?3'),
+                    'image' => $this->bu('data/i/carousel_first.jpg?4'),
                 ),
                 array(
                     'image' => $this->bu('data/i/carousel_third.jpg?1'),
@@ -27,21 +27,21 @@ $this->pageTitle=Yii::app()->name;
 <div class="banners">
     <div class="banners__item">
         <a class="banner__link" href="dress">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_dress.jpg') ?>" alt="banner">
+            <img class="banner__img" src="<?= $this->bu('data/i/main_dress.jpg?1') ?>" alt="banner">
             <div class="banner__title">Платья</div>
             <span class="banner__description">Изысканные цвета и фасоны</span>
         </a>
     </div>
     <div class="banners__item">
         <a class="banner__link" href="blouse">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_blouse.jpg') ?>" alt="banner">
+            <img class="banner__img" src="<?= $this->bu('data/i/main_blouse.jpg?1') ?>" alt="banner">
             <div class="banner__title">Блузки</div>
             <span class="banner__description">Качественные материалы и фурнитура</span>
         </a>
     </div>
     <div class="banners__item">
         <a class="banner__link" href="kimono">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg?1') ?>" alt="banner">
+            <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg?2') ?>" alt="banner">
             <div class="banner__title">Кимоно</div>
             <span class="banner__description">Сочетание красоты и комфорта</span>
         </a>

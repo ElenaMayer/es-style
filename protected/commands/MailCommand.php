@@ -230,12 +230,16 @@ class MailCommand extends CConsoleCommand {
         $orders = OrderHistory::model()->findAll(array(
             'select'=>'id, email'));
         $orderArr = CHtml::listData( $orders, 'id' , 'email');
+//        @todo
+        $ordersW = Order::model()->findAll(array(
+            'select'=>'id, email'));
+        $orderWArr = CHtml::listData( $ordersW, 'id' , 'email');
 
         $users = User::model()->findAll(array(
             'select'=>'id, email'));
         $userArr = CHtml::listData( $users, 'id' , 'email');
 
-        $result = array_unique(array_merge ( $subscriptionArr, $orderArr, $userArr ));
+        $result = array_unique(array_merge ( $subscriptionArr, $orderArr, $userArr, $orderWArr));
 
         $usersUnsub = User::model()->findAllByAttributes(['is_subscribed'=>0], array('select'=>'id, email'));
         $usersUnsubArr = CHtml::listData( $usersUnsub, 'id' , 'email');
