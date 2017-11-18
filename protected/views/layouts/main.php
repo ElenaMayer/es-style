@@ -162,7 +162,7 @@
         <div class="clear"></div>
     </div><!-- page -->
     <div class="getprice">
-        <a href="site/price">Скачать опт. прайс</a>
+        <a href="/site/price">Скачать опт. прайс</a>
     </div>
     <div class="footer">
         Copyright &copy; 2014 - 2017 by <?php echo Yii::app()->params['domain']; ?>.<br/>
