@@ -49,11 +49,15 @@
                                         <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
                                     <?php else :?>
                                         <?php if(!$model->is_sale) :?>
-                                            <?= $model->price ?>&nbsp;руб.
+                                            <?= $model->price ?>&nbsp;руб. <span>РОЗНИЦА</span>
+                                            </br></br>
+                                            <span class="red"><?= $model->wholesale_price ?>&nbsp;руб. ОПТ</span>
                                         <?php else :?>
                                             <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
                                             <wbr>
                                             <span class="price__new"><?= $model->price ?>&nbsp;руб.</span>
+                                            </br></br>
+                                            <span class="red"><?= $model->wholesale_price ?>&nbsp;руб. ОПТ</span>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </span>
