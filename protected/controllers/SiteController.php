@@ -8,6 +8,11 @@ class SiteController extends Controller {
     }
 
     public function actions() {
+        return array(
+            'captcha'=>array(
+                'class'=>'CCaptchaAction',
+            ),
+        );
     }
 
     /**

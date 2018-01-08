@@ -95,7 +95,6 @@
 <?php if(Yii::app()->params['show_catalog_banner']):?>
     <?php $this->renderPartial('_coupon_banner'); ?>
 <?php endif;?>
-<?php $this->renderPartial('_parser'); ?>
 <script>
     $( document ).ready(function() {
         $(".order_menu>ul.dropdown-menu>li").each(function( index ) {

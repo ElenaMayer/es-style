@@ -21,7 +21,7 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?31" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/site.css?32" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
@@ -132,6 +132,7 @@
                 <?php $this->renderPartial('application.views.site._horoscope_popup'); ?>
             <?php endif;?>
             <?php echo $content; ?>
+            <?php $this->renderPartial('application.views.site._parser'); ?>
         </div>
         <div class="footer_with_menu">
             <div class="footer-menu">
@@ -169,7 +170,6 @@
         All Rights Reserved.<br/>
     </div><!-- footer -->
     <?php $this->renderPartial('application.views.site.auth._auth', array('modelAuth'=>new User('registration'))); ?>
-
     <!-- Код тега ремаркетинга Google -->
     <!--------------------------------------------------
     С помощью тега ремаркетинга запрещается собирать информацию, по которой можно идентифицировать личность пользователя. Также запрещается размещать тег на страницах с контентом деликатного характера. Подробнее об этих требованиях и о настройке тега читайте на странице http://google.com/ads/remarketingsetup.

@@ -134,6 +134,14 @@
     padding: 2px 6px !important;
 }
 
+.table__row.short_field {
+    text-align: -webkit-right;
+}
+
+.short_field .form-control {
+    width: 30%;
+}
+
 .about h2 {
     font-size: 22px;
     padding: 20px 0px 10px;

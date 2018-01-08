@@ -26,11 +26,12 @@ class Comment extends CActiveRecord
      * blog_post - Коментарии к статье
      */
 
-    public $is_show = 1;
+    public $is_show = 0;
     public $image;
     public $imageHeight = 300;
     public $imageWidth = 600;
     public $answer;
+    public $verifyCode;
 
 	/**
 	 * @return string the associated database table name
@@ -56,6 +57,7 @@ class Comment extends CActiveRecord
             array('comment', 'required', 'message'=>'Это поле необходимо заполнить.'),
             array('name', 'required', 'on'=>'blogPost', 'message'=>'Это поле необходимо заполнить.'),
             array('image', 'file', 'types'=>'jpg, gif, png', 'allowEmpty'=>true),
+            array('verifyCode', 'captcha', 'allowEmpty'=>!Yii::app()->user->isGuest || !CCaptcha::checkRequirements()),
 		);
 	}
 
@@ -90,6 +92,7 @@ class Comment extends CActiveRecord
             'img' => 'Фото',
             'image' => 'Загрузить фото',
 			'date_create' => 'Дата создания',
+            'verifyCode' => 'Код проверки',
 		);
 	}
 
