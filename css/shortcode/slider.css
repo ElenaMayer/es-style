@@ -1,0 +1,383 @@
+/*-----------------------------------------------------------------------------------
+  Template Name: Eme eCommerce HTML5 Template.
+  Template URI: #
+  Description: Eme is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: HasTech
+  Author URI: https://themeforest.net/user/hastech/portfolio
+  Version: 1.0
+-----------------------------------------------------------------------------------*/
+/*
+    font-family: 'Old Standard TT', serif;
+
+    font-family: 'Poppins', sans-serif;
+*/
+
+
+.slider__bg--1 {
+  background: rgba(0, 0, 0, 0) url("../../images/slider/bg/1.jpg") no-repeat fixed 0 0 / cover ;
+}
+
+
+/*-----------------------------------------
+  Background variation Content
+-------------------------------------------*/
+
+/*-----------------------------------------
+  Slider One
+-------------------------------------------*/
+.slide{
+  height: 100%;
+}
+.slider {
+  height: 100vh;
+}
+
+.slider__fixed--height {
+    height: 900px;
+}
+.slider--one .slide {
+    align-items: flex-end;
+    display: flex;
+}
+.slider--one .slide img, .owl-carousel.slider__activation__wrap .owl-item img{
+    width: 100%;
+}
+.slider--one .slider__inner {
+    left: 10px;
+    bottom: 0;
+    position: absolute;
+    margin-left: 90px;
+    padding-top: 35px;
+    margin-bottom: 65px;
+    padding-right: 30px;
+}
+.slider--one .slider__inner h1 {
+    color: #ff6363;
+    font-size: 36px;
+    text-transform: capitalize;
+}
+.slider--one .slider__inner p {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 6px;
+    text-transform: capitalize;
+}
+.slider--one .slider__inner::before {
+    background: #ff6363 none repeat scroll 0 0;
+    bottom: 5px;
+    content: "";
+    height: 100%;
+    left: -10px;
+    position: absolute;
+    width: 5px;
+}
+
+
+.slider--one .slider__activation__wrap .slider, 
+.slider--one .container-fluid{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/*-----------------------------------------
+  Slider Two
+-------------------------------------------*/
+
+.slider__activation__wrap {
+    align-items: center;
+    display: flex;
+}
+.slider--two .slider,
+.slider--3 .slider {
+    align-items: center;
+    display: flex;
+}
+.slider--two .slider__inner span {
+    color: #ff6363;
+    display: inline-block;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1;
+    padding-bottom: 0;
+    position: relative;
+    padding: 0;
+    margin-left: 10px;
+}
+.slider--two .slider__inner span::before {
+    background: #ff6363 none repeat scroll 0 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 10px;
+    left: 0;
+}
+.slider--two .slider__inner h1 {
+    color: #000000;
+    font-size: 100px;
+    line-height: 90px;
+    padding-top: 40px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.slider--two .slider__inner h4 {
+    color: #000000;
+    font-size: 100px;
+    line-height: 90px;
+    margin-top: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.slider--two .single__slide {
+  align-items: center;
+  display: flex;
+}
+
+.slider__activation__wrap--2 {
+  position: relative;
+}
+.slider--two .slider__inner {
+  writing-mode: vertical-rl;
+
+}
+
+.slider__activation__wrap--2 .owl-nav div {
+  left: 100px;
+  position: absolute;
+  top: 50%;
+}
+.slider__activation__wrap--2 .owl-nav div.owl-next {
+  left: auto;
+  right: 100px;
+}
+.slider__activation__wrap--2 .owl-nav div i {
+  color: #313131;
+  font-size: 100px;
+  padding-right: 21px;
+}
+.slider__activation__wrap--2.owl-theme .owl-nav [class*="owl-"] {
+  padding: 0;
+}
+
+
+
+
+.slider__activation__wrap--2 .owl-nav div span {
+  color: #222222;
+  font-size: 21px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+}
+.slider__activation__wrap--2.owl-theme .owl-nav [class*="owl-"] {
+  background: transparent none repeat scroll 0 0;
+}
+.slider__activation__wrap--2.owl-theme .owl-nav [class*="owl-"]:hover {
+  background: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------
+  Slider Three
+-------------------------------------------*/
+.slider__height--100vh{
+  height: 100vh;
+}
+
+.slider--3 .slider {
+    justify-content: center;
+    padding-top: 150px;
+}
+.slider--3 .slider__inner p {
+    color: #fefefe;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+.slider--3 .slider__inner h1 {
+    color: #ffffff;
+    font-family: Old Standard TT;
+    font-size: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.slider--3 .slider__inner {
+    text-align: center;
+}
+.ht__slider__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+}
+.ht__slider__btn a {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    display: inline-block;
+    font-family: Poppins;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 16px;
+    padding: 0 50px;
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+}
+.ht__slider__btn a:hover {
+    background: #ff6363 none repeat scroll 0 0;
+    border: 1px solid #ff6363;
+}
+.slider--3 .slider {
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------
+  Slider Five
+-------------------------------------------*/
+
+
+
+.slider--5 .slider__fixed--height {
+  height: 660px;
+}
+.slider--5 .slider {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.slider--5 .slider__inner h1 {
+  color: #ffffff;
+  font-family: Old Standard TT,serif;
+  font-size: 72px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+}
+.slider--5 .slider__inner h1 span {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  margin-top: 11px;
+}
+.slider--5 .slider__inner h1 span::before {
+  background: #fff none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------
+  Animation
+-------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------
+  cd-headline
+------------------------*/
+
+.cd-headline.loading-bar .cd-words-wrapper::after {
+  background: #4c8bf5 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  transition: width 0.3s ease -0.1s;
+  width: 0;
+  z-index: 2;
+}
+.cd-headline.loading-bar span {
+  display: inline-block;
+  padding: 0;
+}
+.theme-color span.cd-words-wrapper b{
+ color: #4c8bf5;
+}
+.cd-headline.loading-bar .cd-words-wrapper::after {
+  background: #4c8bf5 none repeat scroll 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Slider Activation */
+.slider__activation__wrap .col-md-4 {
+  width: 100% !important;
+}
+.arrow-down-long{
+  position: relative;
+}
+.arrow-down-long:before {
+    content: "";
+    height: 90px;
+    background: url(../../images/icons/arrow-down-long.png);
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    background-repeat: no-repeat;
+}
+
+.slider__activation__wrap--5 .single-slide{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.slider__activation__wrap--5 .single-slide:focus {
+    outline: none;
+}

@@ -1,8 +1,6 @@
-<div class="sizes">
-    <?php foreach ($model->sizesArr as $size): ?>
-        <span class="button size_button"><?= $size ?></span>
-    <?php endforeach; ?>
-</div>
+<?php foreach ($model->sizesArr as $size): ?>
+    <span class="button size_button"><?= $size ?></span>
+<?php endforeach; ?>
 
 <script>
     $( 'body' ).on( 'click', '.size_button', function() {

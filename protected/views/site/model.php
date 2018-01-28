@@ -1,146 +1,136 @@
-<div class="breadcrumbs">
-    <a href="/" class="breadcrumbs__item">Главная</a>
-    <a class="breadcrumbs__item" href="/<?=$type?>"><?=Yii::app()->params["categories"][$type]?></a>
-    <?php if (isset($_GET['subcategory'])):?><a class="breadcrumbs__item" href="/<?= $type ?>?subcategory=<?= $_GET['subcategory'] ?>"><?=Yii::app()->params["subcategories"][$type][$_GET['subcategory']] ?></a><?php endif; ?>
-    <span class="breadcrumbs__item"><?=$model->title?> арт. <?=$model->article?></span>
-</div>
-<div class="model">
-    <div class="table__column table__column_left">
-        <div class="table__table">
-            <div class="table__cell_flat">
-                <div class="model_photo">
-                    <?php if($model->is_available) :?>
-                        <?php if($model->is_sale && !Cart::isWholesale()) :?>
-                            <span class="item__label item__label_m">-<?= $model->sale ?>%</span>
-                        <?php elseif($model->is_new) :?>
-                            <span class="item__label item__label_m item__label_new">NEW</span>
-                        <?php elseif($model->is_hit && !Cart::isWholesale()) :?>
-                            <span class="item__label item__label_m item__label_hit"><i class="ico-hit"></i></span>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="<?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(../images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <a href="/<?= $type ?>" class="breadcrumb-item"><?= Yii::app()->params['categories'][$type] ?></a>
+                            <?php if (isset($_GET['subcategory'])):?>
+                                <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                <span class="breadcrumb-item active"><?= Yii::app()->params['subcategories'][$type][$_GET['subcategory']] ?></span>
+                            <?php endif; ?>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <span class="breadcrumb-item active"><?=$model->title?> арт. <?=$model->article?></span>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="table__column table__column_right">
-        <div class="table__cell table__cell_flat">
-            <div class="table__table">
-                <div class="table__row">
-                    <div class="model_header">
-                        <h1 class="model_header__title"><?= $model->title; ?></h1>
-                        <div class="model_header__title-article">Арт.&nbsp;<?= $model->article; ?></div>
-                        <?php if(!$model->is_available) :?>
-                            <div class="not_available">Нет в наличии</div>
-                        <?php endif; ?>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Product Details Area -->
+<section class="htc__product__details bg__white ptb--70">
+    <!-- Start Product Details Top -->
+    <div class="htc__product__details__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                    <div class="htc__product__details__tab__content">
+                        <!-- Start Product Big Images -->
+                        <div class="product__big__images">
+                            <div class="portfolio-full-image tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
+                                    <a href="<?= $model->getOriginalUrl(); ?>" class="MagicZoom" rel="zoom-height:475px; zoom-width:580px; hint: false;"><img src="<?= $model->getImageUrl(); ?>" alt="<?=$model->title; ?> арт. <?= $model->article; ?>"/></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Product Big Images -->
                     </div>
                 </div>
-                <?php if($model->is_available) :?>
-                    <div class="table__row">
-                        <div class="model_detail" >
-                            <div class="model__price" >
-                                <!-- For parser   -->
-                                <span class="price_model hide">
-                                    <div><?= $model->wholesale_price ?>&nbsp;руб.</div>
-                                </span>
-                                <!-- /For parser   -->
-                                <span class="price price_model">
-                                    <?php if(Cart::isWholesale()) :?>
-                                        <?= $model->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
+                <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
+                    <div class="ht__product__dtl">
+                        <h2><?= $model->title; ?></h2>
+                        <h6>Арт. <span><?= $model->article; ?></span></h6>
+                        <ul  class="pro__prize">
+                            <?php if(!$model->is_available) :?>
+                                <li class="not_available_small">Нет в наличии</li>
+                            <?php else :?>
+                                <?php if(Cart::isWholesale()) :?>
+                                    <li><?= $model->wholesale_price ?>₽ <span class="red">ОПТ</span></li>
+                                <?php else :?>
+                                    <?php if(!$model->is_sale) :?>
+                                        <li><?= $model->price ?>₽ <span>(РОЗНИЦА)</span></li>
                                     <?php else :?>
-                                        <?php if(!$model->is_sale) :?>
-                                            <?= $model->price ?>&nbsp;руб. <span>РОЗНИЦА</span>
-                                            </br></br>
-                                            <span class="red"><?= $model->wholesale_price ?>&nbsp;руб. ОПТ</span>
-                                        <?php else :?>
-                                            <span class="price__old"><?= $model->old_price ?>&nbsp;руб.</span>
-                                            <wbr>
-                                            <span class="price__new"><?= $model->price ?>&nbsp;руб.</span>
-                                            </br></br>
-                                            <span class="red"><?= $model->wholesale_price ?>&nbsp;руб. ОПТ</span>
-                                        <?php endif; ?>
+                                        <li class="old__prize"><?= $model->old_price ?>₽</li>
+                                        <li><?= $model->price ?>₽</li>
+                                        <li>(РОЗН)</li>
                                     <?php endif; ?>
-                                </span>
+                                    <div class="wholesale-price hide"><?= $model->wholesale_price ?>₽ </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </ul>
+                        <div class="ht__pro__desc">
+                            <p class="pro__info"><?= $model->description; ?></p>
+
+                            <div class="sin__desc product__share__link">
+                                <ul class="pro__share">
+                                    <?php $this->renderPartial('_social', ['model' => $model]); ?>
+                                </ul>
                             </div>
-                            <div class="size">
-                                <div class="size_error__title">Укажите размер</div>
+                            <div class="sin__desc align--left">
+                                <p><span>Категории</span></p>
+                                <ul class="pro__cat__list">
+                                    <?php foreach (explode(',',$model->subcategory) as $subcategory):?>
+                                        <li><a href="#"><?= Yii::app()->params['subcategories'][$type][$subcategory];?></a></li>
+                                    <?php endforeach;?>
+                                </ul>
+                            </div>
+                            <div class="sin__desc align--left">
+                                <p><span>Российский размер&nbsp;</span></p>
                                 <?php if(!$model->size) :?>
-                                    <span class="size__title">Универсальный размер (подходит на размеры <?= $model->size_at ?>-<?= $model->size_to ?>)</span>
+                                    <span class="size__title"> (подходит на размеры <?= $model->size_at ?>-<?= $model->size_to ?>)&nbsp;</span>
                                     <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                                 <?php else :?>
                                     <!-- For parser   -->
-                                    <div class="size__title hide">
-                                        <?php echo $model->sizes ?>
-                                    </div>
+                                    <select class="select__size">
+                                        <?php foreach ($model->sizesArr as $size): ?>
+                                            <option><?= $size ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <!-- /For parser   -->
                                     <div class="size__title">
-                                        Российский размер
                                         <a class="size__table-link" href="#" data-toggle="modal" data-target="#size_tab">Таблица размеров</a>
                                     </div>
-                                    <?php $this->renderPartial('_sizes', array('model'=>$model)); ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="buy-widget__buy">
-                                <span class="button button_big button_blue buy-button">
-                                    <span class="button__title buy-button_title">
-                                        Добавить в корзину
-                                    </span>
-                                    <span class="button__progress"></span>
-                                </span>
-                            </div>
+                            <?php if($model->is_available) :?>
+                                <form method="post" class="add_to_cart">
+                                    <input type="hidden" name="item_id" value="<?= $model->id ?>">
+                                    <input type="hidden" name="product_action" id="product_action">
+                                    <input type="hidden" name="size" id="product_size">
+                                    <ul class="shopping__btn">
+                                        <li><a class="add_to_cart_btn" id="cart">В корзину</a></li>
+                                        <li class="shp__checkout"><a class="add_to_cart_btn" id="buy">Оформить заказ</a></li>
+                                    </ul>
+                                </form>
+                            <?php endif;?>
                         </div>
-                    </div>
-                <?php endif; ?>
-                <div class="table__row">
-                    <div class="table__cell">
-                        <?= $model->description; ?>
-                    </div>
-                </div>
-                <div class="table__row">
-                    <div class="table__cell social">
-                        <?php $this->renderPartial('_social'); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- End Product Details Top -->
+</section>
+<!-- End Product Details Area -->
+<?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
 <?php $this->renderPartial('_size_tab'); ?>
-<div class="add_to_cart">
-    <?php $this->renderPartial('cart/_cart_popup', array('cartItem' => [])); ?>
-</div>
 
 <script>
-    $( document ).ready(function() {
-        if($(".sizes").length > 0 && $(".sizes").get(0).childElementCount == 1) {
-            $('.size_button').addClass("button_pressed");
-        }
-    });
-    $( '.model_detail' ).on( 'click', '.buy-button_title', function($e) {
-        $(this).parent('span').addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
-        is_uni_size = <?= !empty($model->size) ? 0 : 1 ?>;
-        if ($(".button_pressed").length==0 && !is_uni_size){
-            $('.size').addClass('size_error');
-        } else {
-            yaCounter37654655.reachGoal('add_to_cart');
-            ga('send', 'event', 'cart', 'add_to_cart');
-            $.ajax({
-                url: "/ajax/addToCart",
-                data: {
-                    item_id: <?= $model->id; ?>,
-                    size: $(".button_pressed").text()
-                },
-                type: "POST",
-                dataType : "html",
-                success: function( data ) {
-                    if (data) {
-                        $('.add_to_cart').html(data);
-                        $('#add_to_cart').modal('show');
-                        $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );
-                        updateCartCount();
-                    }
-                }
-            });
-        }
+    $( '.ht__product__dtl' ).on( 'click', '.add_to_cart_btn', function($e) {
+
+        var product_action = $(this).attr('id');
+        var size = $('.select__size').val();
+        $('#product_action').val(product_action);
+        $('#product_size').val(size);
+
+        yaCounter37654655.reachGoal('add_to_cart');
+        ga('send', 'event', 'cart', 'add_to_cart');
+        $('form.add_to_cart').submit();
     });
 </script>

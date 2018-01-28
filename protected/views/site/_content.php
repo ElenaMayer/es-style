@@ -1,58 +1,73 @@
 <?php foreach($model as $photo) :?>
-    <div class="catalog__item">
-        <div class="catalog__item__link">
-            <?php if($photo->is_available) :?>
-                <?php if($photo->is_sale && !Cart::isWholesale()) :?>
-                    <span class="item__label">-<?= $photo->sale ?>%</span>
-                <?php elseif($photo->is_new) :?>
-                    <span class="item__label item__label_new">NEW</span>
-                <?php elseif($photo->is_hit && !Cart::isWholesale()) :?>
-                    <span class="item__label item__label_hit"><i class="ico-hit"></i></span>
-                <?php endif; ?>
-            <?php endif; ?>
-            <a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
-                <img class="catalog__item__img lazy" data-original="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
-                <noscript>
-                    <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
-                </noscript>
-                <div class="catalog__item__article">Арт.&nbsp;<?= $photo->article ?></div>
-                <span class="price">
-                    <?php if(!$photo->is_available) :?>
-                        <span class="not_available_small">Нет в наличии</span>
-                    <?php else :?>
-                        <?php if(Cart::isWholesale()) :?>
-                            <?= $photo->wholesale_price ?>&nbsp;руб. <span class="red">ОПТ</span>
-                        <?php else :?>
-                            <?php if(!$photo->is_sale) :?>
-                                <?= $photo->price ?>&nbsp;руб. <span>(РОЗНИЦА)</span>
-                            <?php else :?>
-                                <span class="price__old"><?= $photo->old_price ?>&nbsp;руб.</span>
-                                <span class="price__new"><?= $photo->price ?>&nbsp;руб.</span>
-                                <span>(РОЗН)</span>
-                            <?php endif; ?>
-                            <div class="wholesale-price hide"><?= $photo->wholesale_price ?>&nbsp;руб. </div>
+    <!-- Start Single Product -->
+    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+        <div class="product">
+            <div class="product__thumb">
+                <a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
+                    <img class="catalog__item__img lazy" data-original="<?= $photo->getImageUrl(); ?>" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                    <noscript>
+                        <img class="catalog__item__img" src="<?= $photo->getPreviewUrl(); ?>" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                    </noscript>
+                </a>
+                <div class="product__offer">
+                    <?php if($photo->is_available) :?>
+                        <?php if($photo->is_sale && !Cart::isWholesale()) :?>
+                            <span>-<?= $photo->sale ?>%</span>
+                        <?php elseif($photo->is_new) :?>
+                            <span class="new">new</span>
+                        <?php elseif($photo->is_hit && !Cart::isWholesale()) :?>
+                            <span class="item__label item__label_hit"><i class="ico-hit"></i></span>
                         <?php endif; ?>
                     <?php endif; ?>
-                </span>
-            </a>
-            <?php if($photo->is_available) :?>
-                <?php if($photo->size) :?>
-                    <div class="size">
-                        <span class="size_error__title">Укажите размер</span>
-                        <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
+                </div>
+                <?php if($photo->is_available) :?>
+                    <div class="product__hover__info">
+                        <form id="product_<?= $photo->id ?>" method="post">
+                            <ul class="product__action">
+                                <li><a title="Купить" id="buy"><i class="icon-credit-card icons"></i></a></li>
+                                <li><a title="В корзину" id="cart"><i class="icon-handbag icons"></i></a></li>
+                            </ul>
+                            <input type="hidden" name="item_id" value="<?= $photo->id ?>">
+                            <input type="hidden" name="product_action" id="product_action">
+                            <input type="hidden" name="size" id="product_size">
+                            <?php if($photo->size) :?>
+                                <div class="sizes hide">
+                                    <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
+                                </div>
+                            <?php endif; ?>
+                        </form>
                     </div>
                 <?php endif; ?>
-                <span id="<?= $photo->id ?>" class="button button_big button_blue buy-button basket-button <?= $photo->size?'':'uni_size' ?>">
-                    <i class="button__icon"></i>
-                    <span class="button__progress"></span>
-                </span>
-            <?php endif; ?>
+            </div>
+            <div class="product__inner">
+                <div class="product__details">
+                    <h2><a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>"><?=$photo->title; ?></a></h2>
+                    <ul  class="pro__prize">
+                        <?php if(!$photo->is_available) :?>
+                            <li class="not_available_small">Нет в наличии</li>
+                        <?php else :?>
+                            <?php if(Cart::isWholesale()) :?>
+                                <li><?= $photo->wholesale_price ?>₽ <span class="red">ОПТ</span></li>
+                            <?php else :?>
+                                <?php if(!$photo->is_sale) :?>
+                                    <li><?= $photo->price ?>₽ <span>(РОЗНИЦА)</span></li>
+                                <?php else :?>
+                                    <li class="old__prize"><?= $photo->old_price ?>₽</li>
+                                    <li><?= $photo->price ?>₽</li>
+                                    <li>(РОЗН)</li>
+                                <?php endif; ?>
+                                <div class="wholesale-price hide"><?= $photo->wholesale_price ?>₽ </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- End Single Product -->
+
+
 <?php endforeach; ?>
-<div class="add_to_cart">
-    <?php $this->renderPartial('cart/_cart_popup', array('cartItem' => [])); ?>
-</div>
 
 <script>
     $(function() {
@@ -61,49 +76,29 @@
         });
     });
 
-    $( '.catalog__item' ).on( 'click', '.buy-button', function() {
-        $(".size.size_error").removeClass("size_error");
-        $(".catalog__item__link.selected").removeClass("selected");
-        if ($(this).parent('div').find(".button_pressed").length==0 && !$(this).hasClass("uni_size")){
-            if ($(this).parent('div').find(".size_button").length==1){
-                $(this).parent('div').find(".size_button").addClass("button_pressed");
-                addItemToCart($(this).attr('id'));
-            } else {
-                $(this).parent('.catalog__item__link').children('.size').addClass('size_error');
-                $(this).parent('.catalog__item__link').addClass('selected');
-            }
+    $( '.product__action' ).on( 'click', 'a', function() {
+        var product_action = $(this).attr('id');
+        var sizes = $(this).parents('.product__action').parent().children(".sizes");
+        $(this).parents('.product__action').parent().children('#product_action').val(product_action);
+        if(sizes.length > 0){
+            $(this).parents('.product__action').addClass("hide");
+            $(this).parents('.product__action').parent().children(".sizes").removeClass("hide");
         } else {
-            addItemToCart($(this).attr('id'));
+            metrika();
+            $(this).parents('form').submit();
         }
     });
 
-    $( '.catalog__item' ).on( 'click', '.size_button', function() {
-        $(".catalog__item__link.selected").removeClass("selected");
-        $(this).parents('.catalog__item__link').addClass('selected');
+    $( '.sizes' ).on( 'click', '.size_button', function() {
+        metrika();
+        var size = $(this).text();
+        $(this).parents('form').children('#product_size').val(size);
+        $(this).parents('form').submit();
     });
 
-    function addItemToCart(itemId) {
+    function metrika() {
         yaCounter37654655.reachGoal('add_to_cart');
         ga('send', 'event', 'cart', 'add_to_cart');
-        $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
-        $.ajax({
-                url: "/ajax/addToCart",
-                data: {
-                    item_id: itemId,
-                    size: $(".button_pressed").text()
-                },
-                type: "POST",
-                dataType : "html",
-                success: function( data ) {
-                    if (data) {
-                        $('.add_to_cart').html(data);
-                        $('#add_to_cart').modal('show');
-                        $('.button_in-progress').removeClass('button_in-progress').removeClass('button_disabled').prop( "disabled", false );
-                        $(".catalog__item__link.selected").removeClass("selected");
-                        $(".button.button_pressed").removeClass("button_pressed");
-                        updateCartCount();
-                    }
-                }
-            });
     }
+
 </script>

@@ -20,29 +20,18 @@ class AjaxController extends Controller
         }
     }
 
-    public function actionAddToCart(){
-        $cart = null;
-        if(Yii::app()->user->isGuest && !empty(Yii::app()->session['cartId']))
-            $cart = Cart::model()->findByPk(Yii::app()->session['cartId']);
-        elseif (!Yii::app()->user->isGuest)
-            $cart = Cart::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
-
-        if($cart) {
-            $cartItem = $cart->findAndAddCartItem($_POST);
-            if ($cartItem)
-                $this->renderPartial('/site/cart/_cart_popup', array('cartItem'=>$cartItem));
-            else false;
-            Yii::app()->end();
+    public function actionDeleteItemFromCartPopup(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        $res = [];
+        if($cartItem){
+            $cartItem->delete();
+            $res['subtotal'] = $cartItem->cart->subtotal;
+            $res['count'] = $cartItem->cart->count;
+            $res['total'] = $cartItem->cart->total;
+            $res['shipping'] = $cartItem->cart->shipping;
+            echo json_encode($res);
         } else {
-            $cart = new Cart;
-            if(!Yii::app()->user->isGuest)
-                $cart->user_id = Yii::app()->user->id;
-            if($cart->save()) {
-                if(Yii::app()->user->isGuest)
-                    Yii::app()->session['cartId'] = $cart->id;
-                $cartItem = $cart->addCartItem($_POST);
-                $this->renderPartial('/site/cart/_cart_popup', array('cartItem'=>$cartItem));
-            } else return false;
+            echo false;
             Yii::app()->end();
         }
     }

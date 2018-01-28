@@ -1,5 +1,7 @@
 <?php
 
+include(Yii::getPathOfAlias('root.protected/modules.blog.models').'/BlogPost.php');
+
 class SiteController extends Controller {
 
     public function init(){
@@ -115,7 +117,10 @@ class SiteController extends Controller {
     }
 
     public function actionIndex() {
-        $this->render('index');
+
+        $newPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_new'=>1], ['limit' => 10]);
+        $posts = BlogPost::model()->findAllByAttributes(['is_show' => 1], ['limit' => 2, 'order' => 'date_create DESC']);
+        $this->render('index', ['newPhotos' => $newPhotos, 'posts' => $posts]);
     }
 
     public function actionCatalog($type){
@@ -128,6 +133,13 @@ class SiteController extends Controller {
 
     public function catalog($type, $page = 1){
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
+
+        if(!empty($_POST)) {
+            $cartItem = $this->actionAddToCart();
+            if($_POST['product_action'] == 'buy' && $cartItem)
+                $this->redirect('/order/'.$cartItem->cart->id);
+        }
+
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
         if(isset($_GET['size']))
@@ -144,6 +156,7 @@ class SiteController extends Controller {
         if (isset($_GET['subcategory']))
             $params['subcategory'] = $_GET['subcategory'];
         $model = Photo::model()->getPhotos($params);
+        $modelHits = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_hit'=>1], ['limit' => 4]);
         $criteria = Photo::model()->getPhotosCriteria($params);
         $count = Photo::model()->count($criteria);
         $pagination = new CPagination($count);
@@ -158,21 +171,57 @@ class SiteController extends Controller {
                 'model'=>$model,
                 'type'=>$type,
                 'isFilter'=>$this->isFilter(),
-                'pagination' => $pagination
+                'pagination' => $pagination,
+                'modelHits' => $modelHits
             ));
         else
             $this->render('catalog',array(
                 'model'=>$model,
                 'type'=>$type,
                 'isFilter'=>$this->isFilter(),
-                'pagination' => $pagination
+                'pagination' => $pagination,
+                'modelHits' => $modelHits
             ));
     }
 
+    public function actionAddToCart(){
+        $cart = null;
+        if(Yii::app()->user->isGuest && !empty(Yii::app()->session['cartId']))
+            $cart = Cart::model()->findByPk(Yii::app()->session['cartId']);
+        elseif (!Yii::app()->user->isGuest)
+            $cart = Cart::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+        $cartItem = '';
+        if($cart) {
+            $cartItem = $cart->findAndAddCartItem($_POST);
+        } else {
+            $cart = new Cart;
+            if(!Yii::app()->user->isGuest)
+                $cart->user_id = Yii::app()->user->id;
+            if($cart->save()) {
+                if(Yii::app()->user->isGuest)
+                    Yii::app()->session['cartId'] = $cart->id;
+                $cartItem = $cart->addCartItem($_POST);
+            }
+        }
+        return $cartItem;
+    }
+
     public function actionModel($type, $id){
+
+        if(!empty($_POST)) {
+            $cartItem = $this->actionAddToCart();
+            if($_POST['product_action'] == 'buy' && $cartItem)
+                $this->redirect('/order/'.$cartItem->cart->id);
+        }
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
         $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
-        $this->render('model',array('model'=>$model, 'type'=>$type));
+
+        $newPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_new'=>1], ['limit' => 10]);
+        $this->render('model',array(
+            'model'=>$model,
+            'type'=>$type,
+            'newPhotos' => $newPhotos,
+        ));
     }
 
     public function actionError() {

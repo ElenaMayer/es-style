@@ -9,7 +9,8 @@
                     <div class="hint">Доставка до ТК бесплатно, услуги ТК оплачиваются при получении</div>
                 <?php else:?>
                     <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
-                <?php endif;?>            </span>
+                <?php endif;?>
+            </span>
         </span>
     <span class="cart-shipping-val">
         <?= $model->shipping ?> руб.

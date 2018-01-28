@@ -18,15 +18,15 @@
  * Maintenance
  * @author Maksim Naumov <fromyukki@gmail.com>
  * @version 2.1.0
- * 
+ *
  * Maintenance
  * @author Amr Bedair <amr.bedair@gmail.com>
  * @version 3.0.1
- * 
+ *
  * Bootstrap 3.1.1
  * @author Amr Bedair <amr.bedair@gmail.com>
  * @version 4.0.0
- * 
+ *
  */
 
 /**
@@ -40,7 +40,7 @@
  * @package booster.components
  */
 class Booster extends CApplicationComponent {
-	
+
 	/**
 	 * @var boolean Whether to use CDN server URLs for assets.
 	 * Note that not all assets will be served from CDN and we are using several public CDN servers,
@@ -67,7 +67,7 @@ class Booster extends CApplicationComponent {
 	 * Defaults to false.
 	 */
 	public $responsiveCss = true;
-	
+
 	/**
 	 * @var boolean whether to disable zooming capabilities on mobile devices
 	 * Defaults to false
@@ -141,9 +141,9 @@ class Booster extends CApplicationComponent {
 	 * @since YiiBooster 1.0.6
 	 */
 	public $forceCopyAssets = false;
-	
+
 	public $enablePopover = true;
-	
+
 	public $enableTooltip = true;
 
 	/**
@@ -200,7 +200,7 @@ class Booster extends CApplicationComponent {
 	 * Initializes the component.
 	 */
 	public function init() {
-		
+
 		// Prevents the extension from registering scripts and publishing assets when ran from the command line.
 		if ($this->isInConsoleMode() && !$this->isInTests())
 			return;
@@ -218,21 +218,21 @@ class Booster extends CApplicationComponent {
 
 	/** @return bool */
 	protected function isInConsoleMode() {
-		
+
 		return Yii::app() instanceof CConsoleApplication || PHP_SAPI == 'cli';
 	}
 
 	/** @return bool */
 	protected function isInTests() {
-		
+
 		return defined('IS_IN_TESTS') && IS_IN_TESTS;
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected function setRootAliasIfUndefined() {
-		
+
 		if (Yii::getPathOfAlias('booster') === false) {
 			Yii::setPathOfAlias('booster', realpath(dirname(__FILE__) . '/..'));
 		}
@@ -242,7 +242,7 @@ class Booster extends CApplicationComponent {
 	 *
 	 */
 	protected function includeAssets() {
-		
+
 		$this->appendUserSuppliedPackagesToOurs();
 
 		$this->addOurPackagesToYii();
@@ -256,7 +256,7 @@ class Booster extends CApplicationComponent {
 	 *
 	 */
 	protected function appendUserSuppliedPackagesToOurs() {
-		
+
 		$bootstrapPackages = require(Yii::getPathOfAlias('booster.components') . '/packages.php');
 		$bootstrapPackages += $this->createBootstrapCssPackage();
 		$bootstrapPackages += $this->createSelect2Package();
@@ -271,7 +271,7 @@ class Booster extends CApplicationComponent {
 	 *
 	 */
 	protected function addOurPackagesToYii() {
-		
+
 		foreach ($this->packages as $name => $definition) {
 			$this->cs->addPackage($name, $definition);
 		}
@@ -282,7 +282,7 @@ class Booster extends CApplicationComponent {
 	 * If we did not disabled registering CSS packages, register them.
 	 */
 	protected function registerCssPackagesIfEnabled() {
-		
+
 		if (!$this->coreCss)
 			return;
 
@@ -311,7 +311,7 @@ class Booster extends CApplicationComponent {
 	 * @since 0.9.11
 	 */
 	public function registerYiiCss() {
-		
+
 		$this->registerPackage('bootstrap-yii');
 	}
 
@@ -319,16 +319,16 @@ class Booster extends CApplicationComponent {
 	 * Register the compatibility layer for jQuery UI + Twitter Bootstrap 2.3 combo
 	 */
 	public function registerJQueryCss() {
-		
-		$this->registerPackage('jquery-css')->scriptMap['jquery-ui.css'] = $this->getAssetsUrl(
-		) . '/css/jquery-ui-bootstrap.css';
+
+//		$this->registerPackage('jquery-css')->scriptMap['jquery-ui.css'] = $this->getAssetsUrl(
+//		) . '/css/jquery-ui-bootstrap.css';
 	}
 
 	/**
 	 * If `enableJS` is not `false`, register our Javascript packages
 	 */
 	protected function registerJsPackagesIfEnabled() {
-		
+
 		if (!$this->enableJS)
 			return;
 
@@ -343,10 +343,10 @@ class Booster extends CApplicationComponent {
 
 		if ($this->enableNotifierJS)
 			$this->registerPackage('notify');
-		
+
 		if($this->enablePopover)
 			$this->registerPopoverJs();
-		
+
 		if($this->enableTooltip)
 			$this->registerTooltipJs();
 	}
@@ -357,7 +357,7 @@ class Booster extends CApplicationComponent {
 	 * @return string the version
 	 */
 	public function getVersion() {
-		
+
 		return '4.0.1';
 	}
 
@@ -371,7 +371,7 @@ class Booster extends CApplicationComponent {
 	 * @since 1.0.7
 	 */
 	public function registerPackage($name) {
-		
+
 		return $this->cs->registerPackage($name);
 	}
 
@@ -384,7 +384,7 @@ class Booster extends CApplicationComponent {
 	 * @see CClientScript::registerCssFile
 	 */
 	public function registerAssetCss($name, $media = '') {
-		
+
 		$this->cs->registerCssFile($this->getAssetsUrl() . "/css/{$name}", $media);
 	}
 
@@ -397,7 +397,7 @@ class Booster extends CApplicationComponent {
 	 * @see CClientScript::registerScriptFile
 	 */
 	public function registerAssetJs($name, $position = CClientScript::POS_END) {
-		
+
 		$this->cs->registerScriptFile($this->getAssetsUrl() . "/js/{$name}", $position);
 	}
 
@@ -406,7 +406,7 @@ class Booster extends CApplicationComponent {
 	 * @return string an absolute URL to the published asset
 	 */
 	public function getAssetsUrl() {
-		
+
 		if (isset($this->_assetsUrl)) {
 			return $this->_assetsUrl;
 		} else {
@@ -415,14 +415,14 @@ class Booster extends CApplicationComponent {
 	}
 
 	protected function setAssetsRegistryIfNotDefined() {
-		
+
 		if (!$this->cs) {
             $this->cs = Yii::app()->getClientScript();
         }
 	}
 
 	public function registerBootstrapCss() {
-		
+
 		$this->cs->registerPackage('bootstrap.css');
 	}
 
@@ -433,11 +433,12 @@ class Booster extends CApplicationComponent {
 	 * @return array
 	 */
 	protected function createBootstrapCssPackage() {
-		
-		return array('bootstrap.css' => array(
-			'baseUrl' => $this->enableCdn ? '//netdna.bootstrapcdn.com/bootstrap/3.1.1/' : $this->getAssetsUrl() . '/bootstrap/',
-			'css' => array( ($this->minify || $this->enableCdn) ? 'css/bootstrap.min.css' : 'css/bootstrap.css' ),
-		));
+
+//		return array('bootstrap.css' => array(
+//			'baseUrl' => $this->enableCdn ? '//netdna.bootstrapcdn.com/bootstrap/3.1.1/' : $this->getAssetsUrl() . '/bootstrap/',
+//			'css' => array( ($this->minify || $this->enableCdn) ? 'css/bootstrap.min.css' : 'css/bootstrap.css' ),
+//		));
+		return [];
 	}
 
 	/**
@@ -445,7 +446,7 @@ class Booster extends CApplicationComponent {
 	 * @return array
 	 */
 	protected function createSelect2Package() {
-		
+
 		$jsFiles = array($this->minify ? 'select2.min.js' : 'select2.js');
 
 		if (strpos(Yii::app()->language, 'en') !== 0) {
@@ -488,14 +489,14 @@ class Booster extends CApplicationComponent {
 	 * @since 1.0.6
 	 */
 	public function registerFontAwesomeCss() {
-		
+
         $this->registerPackage('font-awesome');
 	}
-	
+
 	public function registerPopoverJs() {
 		$this->cs->registerScript($this->getUniqueScriptId(), "jQuery('[data-toggle=popover]').popover();");
 	}
-	
+
 	public function registerTooltipJs() {
 		$this->cs->registerScript($this->getUniqueScriptId(), "jQuery('[data-toggle=tooltip]').tooltip();");
 	}
@@ -515,7 +516,7 @@ class Booster extends CApplicationComponent {
 	 * @return mixed
 	 */
 	protected function tryGetSelectorForPlugin($name) {
-		
+
 		return $this->tryGetInfoForPlugin($name, 'selector');
 	}
 
@@ -524,7 +525,7 @@ class Booster extends CApplicationComponent {
 	 * @return mixed
 	 */
 	protected function tryGetOptionsForPlugin($name) {
-		
+
 		return $this->tryGetInfoForPlugin($name, 'options');
 	}
 
@@ -533,7 +534,7 @@ class Booster extends CApplicationComponent {
      * @since 2.1.0
      */
     public static function setBooster($value) {
-    	
+
         if ($value instanceof Booster) {
             self::$_instance = $value;
         }
@@ -544,7 +545,7 @@ class Booster extends CApplicationComponent {
      * @since 2.1.0
      */
     public static function getBooster() {
-    	
+
         if (null === self::$_instance) {
             // Lets find inside current module
             $module = Yii::app()->getController()->getModule();

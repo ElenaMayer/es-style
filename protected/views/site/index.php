@@ -1,75 +1,109 @@
 <?php
 $this->pageTitle=Yii::app()->name;
 ?>
-<div class="banners">
-    <?php
-    $this->widget(
-        'booster.widgets.TbCarousel',
-        array(
-            'items' => array(
-                array(
-                    'image' => $this->bu('data/i/carousel_fourth.jpg'),
-                ),
-                array(
-                    'image' => $this->bu('data/i/carousel_first.jpg?4'),
-                ),
-                array(
-                    'image' => $this->bu('data/i/carousel_third.jpg?1'),
-                    'label' => 'Восточный стиль',
-                    'caption' => '<p>Одежда в восточном стиле - это прежде всего яркие цвета, натуральные материалы и необычные рисунки.</p>'
-                ),
-            ),
-        )
-    );
-    ?>
-</div>
 
-<div class="banners">
-    <div class="banners__item">
-        <a class="banner__link" href="dress">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_dress.jpg?1') ?>" alt="banner">
-            <div class="banner__title">Платья</div>
-            <span class="banner__description">Изысканные цвета и фасоны</span>
-        </a>
+<!-- Start Slider Area -->
+<div class="slider__container slider--one">
+    <div class="slide__container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="slider__activation__wrap slider-activation-one no__navigation owl-carousel">
+                    <!-- Start Single Slide -->
+                    <div class="col-md-4 col-lg-4 slider">
+                        <a href="/dress">
+                            <div class="slide">
+                                <img src="images/slider/fornt-img/1.jpg" alt="Платья">
+                                <div class="slider__inner">
+                                    <h1>Платья</h1>
+                                    <p>В восточном стиле, повседневные, вечерние</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="col-md-4 col-lg-4 slider">
+                        <a href="/blause">
+                            <div class="slide">
+                                <img src="images/slider/fornt-img/2.jpg" alt="Блузки">
+                                <div class="slider__inner">
+                                    <h1>Блузки</h1>
+                                    <p>Блузки, туники, джемперы, кардиганы</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="col-md-4 col-lg-4 slider">
+                        <a href="/kimono">
+                            <div class="slide">
+                                <img src="images/slider/fornt-img/3.jpg" alt="Кимоно">
+                                <div class="slider__inner">
+                                    <h1>Кимоно</h1>
+                                    <p>Домашние платья, платья для отпуска</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="col-md-4 col-lg-4 slider">
+                        <a href="/other">
+                            <div class="slide">
+                                <img src="images/slider/fornt-img/3.jpg" alt="Разное">
+                                <div class="slider__inner">
+                                    <h1>Разное</h1>
+                                    <p>Холаты, сорочки, домашние комплекты</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Single Slide -->
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="banners__item">
-        <a class="banner__link" href="blouse">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_blouse.jpg?1') ?>" alt="banner">
-            <div class="banner__title">Блузки</div>
-            <span class="banner__description">Качественные материалы и фурнитура</span>
-        </a>
-    </div>
-    <div class="banners__item">
-        <a class="banner__link" href="kimono">
-            <img class="banner__img" src="<?= $this->bu('data/i/main_kimono.jpg?2') ?>" alt="banner">
-            <div class="banner__title">Кимоно</div>
-            <span class="banner__description">Сочетание красоты и комфорта</span>
-        </a>
-    </div>
 </div>
+<!-- Start Slider Area -->
+<?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
 
-<div class="main-description">
-    <div class="main-title">О компании</div>
-    <p>Добро пожаловать в интернет-магазин одежды в восточном стиле!</p>
-    <p>У нас вы сможете не просто купить платье, а создать свой собственный образ и наполнить его особым смыслом.</p>
-    <p>Ассортимент нашего магазина постоянно обновляется и пополняется новыми моделями на любой вкус и цвет.</p>
-    <p>Зарегистрированные пользователи получают актуальную информацию об акциях и скидках на товары, а также персональные скидки.</p>
-    <p>В нашем магазине, Вы без труда выберете интересный подарок для Вашего любимого человека, подруги или члена Вашей семьи.</p>
-    <p>Ваша дочь, жена, подруга или коллега будут приятно удивлены получив такой подарок на какой-нибудь праздник или просто пусть это будет сюрприз, подаренный им или себе просто "от души".</p>
-</div>
-
-<script>
-    $(".carousel-inner div:first-child img").css('cursor', 'pointer');
-    $(".carousel-inner div:first-child img").click(function(){
-        window.location = "<?=Yii::app()->params['carouselUrl']['first']?>";
-    });
-    $(".carousel-inner div:nth-child(2) img").css('cursor', 'pointer');
-    $(".carousel-inner div:nth-child(2) img").click(function(){
-        window.location = "<?=Yii::app()->params['carouselUrl']['second']?>";
-    });
-    $(document).ready(function() {
-        if (<?= isset($_GET['login']) ? 1 : 0;?> == 1) {
-            jQuery('#auth_form').modal('show');
-    } });
-
-</script>
+<!-- Start Blog Area -->
+<section class="htc__blog__area bg__white pb--70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section__title text-center">
+                    <h2 class="title__line">Наш блог</h2>
+                    <p>#Новые статьи</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ht__blog__wrap clearfix">
+                <?php foreach($posts as $post) :?>
+                    <!-- Start Single Blog -->
+                    <div class="blog">
+                        <div class="blog__thumb">
+                            <a href="/blog/<?= $post->url ?>">
+                                <img src="<?php echo $post->getImageUrl()?>" alt="<?= $post->title ?>">
+                            </a>
+                        </div>
+                        <div class="blog__details">
+                            <div class="bl__date">
+                                <span><?= $this->dateFormat($post->date_create) ?></span>
+                            </div>
+                            <h2><a href="/blog/<?= $post->url ?>"><?= $post->title ?></a></h2>
+                            <p><?= $post->description ?></p>
+                            <div class="blog__btn">
+                                <a href="/blog/<?= $post->url ?>"><i class="zmdi zmdi-long-arrow-right"></i>Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Blog -->
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->

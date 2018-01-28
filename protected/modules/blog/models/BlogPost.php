@@ -144,15 +144,15 @@ class BlogPost extends CActiveRecord {
     }
 
     private function getOriginImagePath(){
-        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.origin');
+        return Yii::getPathOfAlias('data.blog.main.origin');
     }
 
     private function getMediumImagePath(){
-        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.medium');
+        return Yii::getPathOfAlias('data.blog.main.medium');
     }
 
     private function getSmallImagePath(){
-        return Yii::getPathOfAlias(Yii::app()->controller->module->dataPath . '.main.small');
+        return Yii::getPathOfAlias('data.blog.main.small');
     }
 
     public function deleteImage(){
