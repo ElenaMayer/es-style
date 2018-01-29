@@ -21,7 +21,6 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-<!--    <link rel="stylesheet" type="text/css" href="--><!--?php //echo Yii::app()->request->baseUrl; ?><!--/css/site.css?32" />-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
@@ -40,11 +39,12 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="/css/shortcode/shortcodes.css?5">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="/css/style.css?16">
+    <link rel="stylesheet" href="/css/style.css?17">
     <!-- Responsive css -->
     <link rel="stylesheet" href="/css/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="/css/custom.css">
+    <!--    <link rel="stylesheet" type="text/css" href="--><!--?php //echo Yii::app()->request->baseUrl; ?><!--/css/site.css?32" />-->
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
@@ -173,9 +173,6 @@
             )); ?><!-- breadcrumbs -->
         <?php endif;?>
         <div class="content">
-            <?php if(!Cart::isWholesale()):?>
-                <?php $this->renderPartial('application.views.site._horoscope_popup'); ?>
-            <?php endif;?>
             <?php echo $content; ?>
             <?php $this->renderPartial('application.views.site._parser'); ?>
         </div>

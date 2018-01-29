@@ -1,38 +1,75 @@
-<?php if(!empty($model->cartItems)) :?>
-    <div class="cart-list">
-        <div class="cart-list__head">
-            <div class="cart-item__cell cart-item__cell_description">Товар</div>
-            <div class="cart-item__cell cart-item__cell_price">Стоимость</div>
-            <div class="cart-item__cell cart-item__cell_quantity">Кол-во</div>
-            <div class="cart-item__cell cart-item__cell_total">Итого</div>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <span class="breadcrumb-item active">Корзина</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="cart-list__content">
-            <?php foreach($model->cartItems as $cartItem) :?>
-                <?php $this->renderPartial($path.'cart/_cart_item', array('cartItem'=>$cartItem, 'path'=>$path)); ?>
-            <?php endforeach; ?>
-        </ul>
-        <div class="cart-separator"></div>
-        <div class="cart-total cart-total_threshold">
-            <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
-        </div>
-        <?php if(!Cart::isWholesale()) :?>
-            <?php $this->renderPartial('/site/_coupon'); ?>
-        <?php endif;?>
-        <div class="cart-separator"></div>
-        <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
-            <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?> руб.</span>
-        <?php endif;?>
-        <div class="cart-navigation">
-            <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> class="button button_blue button_big <?php if(!$model->isReadyToOrder()):?>button_disabled <?php endif;?>cart-navigation__order">
-                <span class="button__title">Оформить заказ</span>
-                <span class="button__progress"></span>
-            </a>
-        </div>
-        <div class="cart-separator"></div>
     </div>
-<?php else :?>
-    <div class="cart_empty"><h2 class="h2">В корзину ничего не добавлено</h2></div>
-<?php endif; ?>
+</div>
+<!-- End Bradcaump area -->
+<!-- cart-main-area start -->
+<div class="cart-main-area ptb--120 bg__white">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="product-thumbnail">Товар</th>
+                                <th class="product-name">Название</th>
+                                <th class="product-size">Размер</th>
+                                <th class="product-price">Цена</th>
+                                <th class="product-quantity">Количество</th>
+                                <th class="product-subtotal">Сумма</th>
+                                <th class="product-remove">Удалить</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($model->cartItems as $cartItem) :?>
+                                <?php $this->renderPartial($path.'cart/_cart_item', array('cartItem'=>$cartItem, 'path'=>$path)); ?>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="buttons-cart--inner">
+                                <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
+                                    <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
+                                <?php endif;?>
+                                <div class="buttons-cart">
+                                    <a href="/dress">Продолжить покупки</a>
+                                </div>
+                                <div class="buttons-cart checkout--btn">
+                                    <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <?php if(!Cart::isWholesale()) :?>
+                            <?php $this->renderPartial('/site/_coupon'); ?>
+                        <?php endif;?>
+                        <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- cart-main-area end -->
 
 <script>
     $( "body" ).on("mouseover", ".i_help", function() {$(this).children('.hint').addClass('hint-show')});
@@ -80,13 +117,17 @@
                 type: "POST",
                 dataType: "html",
                 success: function (data) {
-                    e = $('#cart_item_' + item_id)
+                    e = $('#cart_item_' + item_id);
+                    e2 = $('#cart_main_item_' + item_id);
+
                     if (data) {
+                        console.log(e);
                         e.hide('slow');
+                        e2.hide('slow');
                         $('.cart-total').html(data);
                         updateCartCount();
                     } else {
-                        e.find('button.remove').removeClass('button_in-progress').removeClass('button_disabled');
+                        e2.find('button.remove').removeClass('button_in-progress').removeClass('button_disabled');
                     }
                 }
             });

@@ -1,7 +1,14 @@
-<div class="cart_coupon">
-    <input class="coupon_field form-control" type="text" placeholder="Купон на скидку">
-    <a class="coupon_use_link button button_big button_corner-left"><span class="button__title">Применить</span></a>
-    <div class="help-block error hide">Это поле необходимо заполнить.</div>
+<div class="cart_coupon col-md-6 col-sm-12 col-xs-12">
+    <div class="ht__coupon__code">
+        <span>Введите Ваш купон на скидку</span>
+        <div class="coupon__box">
+            <input class="coupon_field form-control" type="text" placeholder="">
+            <div class="ht__cp__btn">
+                <a  class="coupon_use_link button button_big button_corner-left">Применить</a>
+            </div>
+        </div>
+        <div class="help-block error hide">Это поле необходимо заполнить.</div>
+    </div>
 </div>
 
 <script>

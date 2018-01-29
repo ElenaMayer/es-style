@@ -1,34 +1,28 @@
-<div class="cart-total__price cart-total__price_subtotal">
-    <span class="cart-total__price-title">Подитог</span>
-    <span class="cart-subtotal-val"><?= $model->subtotal ?> руб.</span>
-</div>
-<div class="cart-total__price cart-total__price_amount">
-        <span class="cart-total__price-title">Доставка<?php if(Cart::isWholesale()):?> до ТК<?php endif; ?>
-            <span class="cart-total__price-hint i_help hint-wrap">
-                <?php if(!Yii::app()->user->isGuest && Yii::app()->user->is_wholesaler):?>
-                    <div class="hint">Доставка до ТК бесплатно, услуги ТК оплачиваются при получении</div>
-                <?php else:?>
-                    <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
-                <?php endif;?>
-            </span>
-        </span>
-    <span class="cart-shipping-val">
-        <?= $model->shipping ?> руб.
-    </span>
-</div>
-<?php if($model->sale > 0) :?>
-    <div class="cart-total__price cart-total__price_discount">
-        <span class="cart-total__price-title">Скидка</span>
-        <span class="cart-sale-val">- <?= $model->sale ?> руб.</span>
+<div class="col-md-6 col-sm-12 col-xs-12 smt-40 xmt-40">
+    <div class="htc__cart__total">
+        <h6>Итого</h6>
+        <div class="cart__desk__list">
+            <ul class="cart__desc">
+                <li>Подитог</li>
+                <?php if($model->sale > 0) :?><li>Скидка</li><?php endif; ?>
+                <?php if($model->coupon_id) :?><li>Купон</li><?php endif; ?>
+                <li>Доставка</li>
+            </ul>
+            <ul class="cart__price">
+                <li><?= $model->subtotal ?>₽</li>
+                <?php if($model->sale > 0) :?><li>- <?= $model->sale ?>₽</li><?php endif; ?>
+                <?php if($model->coupon_id) :?><li>- <?= $model->coupon_sale ? $model->coupon_sale : 0 ?>₽</li><?php endif; ?>
+                <li><?= $model->shipping ?>₽</li>
+            </ul>
+        </div>
+        <div class="cart__total">
+            <span>Итого</span>
+            <span><?= $model->total ?>₽</span>
+        </div>
+        <ul class="payment__btn">
+            <li class="active">
+                <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a></li>
+            <li><a href="/dress">Продолжить покупки</a></li>
+        </ul>
     </div>
-<?php endif; ?>
-<?php if($model->coupon_id) :?>
-    <div class="cart-total__price cart-total__price_discount">
-        <span class="cart-total__price-title">Скидка по купону</span>
-        <span class="cart-sale-val">- <?= $model->coupon_sale ? $model->coupon_sale : 0 ?> руб.</span>
-    </div>
-<?php endif; ?>
-<div class="cart-total__price cart-total__price_total">
-    <span class="cart-total__price-title">Итого</span>
-    <span class="cart-total-val"><?= $model->total ?> руб.</span>
 </div>
