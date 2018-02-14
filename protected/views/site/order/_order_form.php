@@ -1,115 +1,159 @@
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'order-form',
 )); ?>
-    <?php if (Yii::app()->user->isGuest):?>
-        <div class="order-auth-checkout__login">Уже зарегистрированы?
-            <a class="button button_blue button_big order-login" data-toggle="modal" data-target="#auth_form">
-                <span class="button__title">Войти</span>
-            </a>
-        </div>
-        <div class="cart-separator"></div>
-    <?php endif; ?>
-    <h4>Личные данные</h4>
-
-    <div class="row">
-        <div class="form-group fio_group">
-            <div class="fio">
-                <?php echo $form->textField($user, 'surname', array( 'class' => 'form-control', 'placeholder'=>'Фамилия')); ?>
-                <?php echo $form->textField($user, 'name', array( 'class' => 'form-control', 'placeholder'=>'Имя *')); ?>
-                <?php echo $form->textField($user, 'middlename', array( 'class' => 'form-control', 'placeholder'=>'Отчество')); ?>
+<div class="checkout__inner">
+    <div class="accordion-list">
+        <div class="accordion">
+            <div class="accordion__title">
+                Информация о заказе
             </div>
-            <?php echo $form->labelEx($user, 'fio'); ?>
-            <?php if (isset($user->getErrors()['name'])):?>
-                <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
-            <?php endif ?>
-        </div>
-    </div>
-    <div class="row">
-        <?php echo $form->textFieldGroup($user, 'phone', array('placeholder'=>'+7')); ?>
-    </div>
-    <div class="row">
-        <div class="form-group email_group">
-            <?php if (Yii::app()->user->isGuest):?>
-                <?php echo $form->textField($user, 'email', array( 'class' => 'form-control', 'placeholder'=>'example@mail.ru')); ?>
-            <?php else :?>
-                <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
-            <?php endif ?>
-            <?php echo $form->labelEx($user, 'email'); ?>
-            <?php if (isset($user->getErrors()['email'])):?>
-                <div class="help-block error"><?= array_shift($user->getErrors()['email']) ?></div>
-            <?php endif ?>
-        </div>
-    </div>
-    <?php if (Yii::app()->user->isGuest):?>
-        <div class="row">
-            <div class="form-group">
-                <div class="order-auth-checkout__register">
-                    <?php echo $form->checkBox($user, 'create_profile', ['value'=>'1']); ?>
-                    <?php echo $form->label($user, 'create_profile'); ?>
+            <div class="accordion__body">
+                <div class="accordion__body__form">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="checkout-method">
+                                <?php if (Yii::app()->user->isGuest):?>
+                                    <div class="checkout-method__single">
+                                        <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Оформить заказ как гость</h5>
+                                        <p class="checkout-method__subtitle">Зарегистрируйтесь и получитье доступ к истории заказов и упростите последующие заказы:</p>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'create_profile', ['value'=>'0', 'checked'=>"checked"]); ?>
+                                            <label for="User_create_profile">Оформить заказ как гость</label>
+                                        </div>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'create_profile', ['value'=>'1']); ?>
+                                            <label for="User_create_profile">Зарегистрироваться</label>
+                                        </div>
+                                    </div>
+                                    <div class="order-password hide">
+                                        <div class="row">
+                                            <?php echo $form->passwordFieldGroup($user, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+                                        </div>
+                                        <div class="row">
+                                            <?php echo $form->passwordFieldGroup($user, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                                <div class="checkout-method__single">
+                                    <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Способ доставки</h5>
+                                    <?php if(!Cart::isWholesale()) :?>
+                                        <?php foreach (Yii::app()->params['tcList'] as $tc => $tcTitle):?>
+                                            <div class="single-input">
+                                                <?php echo $form->radioButton($user, 'tc', ['value'=>$tc, 'checked' => ($tc == 'pec')?"checked":'']); ?>
+                                                <label for="User_tc"><?= $tcTitle ?></label>
+                                            </div>
+                                        <?php endforeach;?>
+                                    <?php else: ?>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'shipping_method', ['value'=>'russian_post', 'checked'=>"checked"]); ?>
+                                            <label for="User_shipping_method">Почта России</label>
+                                        </div>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'shipping_method', ['value'=>'store']); ?>
+                                            <label for="User_shipping_method">Получение в магазине (для Новосибирска)</label>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                                <div class="checkout-method__single">
+                                    <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Способ оплаты</h5>
+
+                                    <?php if(Cart::isWholesale()) :?>
+                                        <div class="single-input">
+                                            <input type="radio" checked="checked">
+                                            <label for="User_payment">На счет или карту Сбербанка</label>
+                                        </div>
+                                    <?php else:?>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'payment', ['value'=>'cod', 'checked'=>"checked"]); ?>
+                                            <label for="User_payment">При получении</label>
+                                        </div>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButton($user, 'payment', ['value'=>'online']); ?>
+                                            <label for="User_payment">Онлайн-оплата</label>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <?php if (Yii::app()->user->isGuest):?>
+                                <?php $this->renderPartial('application.views.site.auth._login', array('modelAuth'=>new User('registration'))); ?>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion__title">
+                Информация о доставке
+            </div>
+            <div class="accordion__body">
+                <div class="bilinfo">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'surname', array(  'placeholder'=>'Фамилия')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'name', array(  'placeholder'=>'Имя *')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'middlename', array( 'placeholder'=>'Отчество')); ?>
+                                </div>
+                            </div>
+                            <?php if (isset($user->getErrors()['name'])):?>
+                                <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
+                            <?php endif ?>
+                            <div class="col-md-6">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'phone', array('placeholder'=>'Телефон *')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input">
+                                    <?php if (Yii::app()->user->isGuest):?>
+                                        <?php echo $form->textField($user, 'email', array('placeholder'=>'Электронная почта')); ?>
+                                    <?php else :?>
+                                        <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+                                    <?php endif ?>
+                                    <?php if (isset($user->getErrors()['email'])):?>
+                                        <div class="help-block error"><?= array_shift($user->getErrors()['email']) ?></div>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'postcode', array('placeholder'=>'Почтовый индекс')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'address', array('placeholder'=>'Адрес')); ?>
+                                </div>
+                            </div>
+                            <?php if(Cart::isWholesale()) :?>
+                                <div class="col-md-12">
+                                    <div class="single-input">
+                                        <?php echo $form->textField($user, 'delivery_data', array('placeholder'=>'Дополнительная информация (город, паспортные данные, ФИО получателя)')); ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            <div class="col-md-12">
+                                <div class="single-input">
+                                    <?php echo $form->textArea($user, 'comment', array('placeholder'=>'Комментарий')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="order-password">
-            <div class="row">
-                <?php echo $form->passwordFieldGroup($user, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-            </div>
-            <div class="row">
-                <?php echo $form->passwordFieldGroup($user, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-            </div>
-        </div>
-    <?php endif ?>
-    <div class="before_shipping"></div>
-    <h4>Данные для доставки</h4>
-    <?php if(Cart::isWholesale()) :?>
-        <div class="row shipping_method">
-            <?php echo $form->dropDownList($user,'tc', Yii::app()->params['tcList'], array('class' => 'form-control')); ?>
-            <?php echo $form->labelEx($user,'tc'); ?>
-        </div>
-    <?php else: ?>
-        <div class="row shipping_method">
-            <?php echo $form->dropDownList($user,'shipping_method', ['russian_post'=>'Почта России', 'store'=>'Получение в магазине (для Новосибирска)'], array('class' => 'form-control')); ?>
-            <?php echo $form->labelEx($user,'shipping_method'); ?>
-        </div>
-    <?php endif ?>
-    <div class="shipping_data">
-        <div class="row">
-            <?php echo $form->textFieldGroup($user, 'postcode', array('placeholder'=>'630000')); ?>
-            <?php echo $form->hiddenField($user, 'postcode_error'); ?>
-            <?php echo $form->hiddenField($user, 'shipping', ['value'=> ($model->count < Yii::app()->params['shippingFreeCountString'] && $user->shipping_method != 'store') ? Yii::app()->params['defaultShippingTariff'] : 0]); ?>
-        </div>
-        <div class="row big-row">
-            <div class="form-group address">
-                <?php echo $form->labelEx($user,'address'); ?>
-                <?php echo $form->textFieldGroup($user, 'address', array('placeholder'=>'г.Новосибирск ул.Ленина д.1 кв.1', 'class' => 'form-control')); ?>
-            </div>
-        </div>
     </div>
-    <?php if(Cart::isWholesale()) :?>
-        <div class="wholesale_shipping_data">
-            <div class="row big-row">
-                <div class="form-group address">
-                    <?php echo $form->labelEx($user,'delivery_data'); ?>
-                    <?php echo $form->textFieldGroup($user, 'delivery_data', array('placeholder'=>'Город, паспортные данные, ФИО получателя, телефон (если отличается от данных заказчика)', 'class' => 'form-control')); ?>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
-    <div class="after_shipping"></div>
-    <div class="row payment">
-        <?php if(Cart::isWholesale()) :?>
-            <span>На карту или счет Сбербанк</span>
-        <?php else:?>
-            <?php echo $form->dropDownList($user,'payment', ['cod'=>'При получении', 'online'=>'Онлайн-оплата'], array('class' => 'form-control')); ?>
-        <?php endif ?>
-        <?php echo $form->labelEx($user,'payment'); ?>
-    </div>
-
-    <div class="row comment">
-        <div class="form-group">
-            <?php echo $form->labelEx($user,'comment'); ?>
-            <?php echo $form->textArea($user, 'comment', array('placeholder'=>'', 'class' => 'form-control')); ?>
-        </div>
-    </div>
+</div>
 <?php $this->endWidget(); ?>
 
 <script>

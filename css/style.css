@@ -373,18 +373,24 @@
     width: 100%;
 }
 .product__offer {
-    left: 30px;
+    left: 15px;
     position: absolute;
-    top: 20px;
+    top: 15px;
 }
 .product__offer span {
-    color: #ff6363;
+    color: #ff3d00;
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 18px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .product__offer span.new {
-    color: #ffa200;
+    color: #3AA73A;
+    font-size: 14px;
+}
+.product__offer span.hit {
+    font-size: 30px;
+    color: #f45057;
 }
 .product__offer span + span {
     padding-left: 10px;
@@ -463,7 +469,7 @@
     margin-top: 7px;
 }
 .product__details {
-    height: 40px;
+    height: 45px;
 }
 .product__details h2 {
     color: #777777;
@@ -480,6 +486,7 @@
     color: #888888;
     font-weight: 400;
     padding-right: 12px;
+    text-decoration: line-through;
 }
 .htc__product__area {
     padding-top: 60px;
@@ -645,6 +652,8 @@
     margin-top: 40px;
     position: relative;
     min-height: 1px;
+}
+.main__blog__area .blog {
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -1609,6 +1618,13 @@
 .ht__color__list li.pink a {
     background: #e967a7 none repeat scroll 0 0;
 }
+.ht__color__list li.active a,
+.ht__size__list li.active a {
+    border: 3px solid #8b8b8b;
+}
+.ht__color__list li.active.black a {
+    border: 3px solid #c82b2b;
+}
 .ht__size__list {
     display: flex;
     padding-bottom: 10px;
@@ -2290,7 +2306,8 @@ select.select__size {
     width: 40px;
 }
 .table-content table td.product-quantity button,
-.table-content table td.product-remove button {
+.table-content table td.product-remove button,
+.single-item__remove button {
     border: none;
 }
 .table-content table td.product-quantity i {
@@ -2370,6 +2387,13 @@ select.select__size {
 }
 .buttons-cart a + a {
     margin-left: 20px;
+}
+.checkout-wrap .buttons-cart {
+    padding-top: 10px;
+}
+.checkout-wrap .buttons-cart a {
+    width: 100%;
+    text-align: center;
 }
 .coupon {
     margin-bottom: 40px;
@@ -3160,12 +3184,8 @@ a.shipping-calculator-button:hover{
 
 
 
-.catalog .category__hit {
-    background: url(../data/i/main_sprite.png) -188px -34px no-repeat;
-}
 .catalog .category__hit a.link {
     color: #f45057;
-    padding-left: 15px;
 }
 .catalog .category__new a.link {
     color: #3AA73A;
@@ -3547,7 +3567,8 @@ ul.htc__instagram__posts.owl-carousel li img {
 .accordion__body .checkout-method__login .single-input{
     margin-bottom: 20px;
 }
-.accordion__body .checkout-method__login .single-input label{
+.accordion__body .checkout-method__login .single-input label,
+.accordion__body__form .single-input label{
     font-weight: 500;
     color: #000;
 }
@@ -3805,6 +3826,24 @@ ul.htc__instagram__posts.owl-carousel li img {
 .dark-btn a:hover{
     background: #ff6363;
 }
+.dark-btn input {
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #212121;
+    color: #ffffff;
+    font-family: "Poppins";
+    padding: 0 45px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.dark-btn input:hover {
+    background: #ff6363;
+}
 
 .slider__activation__wrap--5.slick-initialized.slick-slider {
     margin-left: -20px;
@@ -3828,9 +3867,89 @@ ul.htc__instagram__posts.owl-carousel li img {
 }
 .help-block.error {
     color: #ff6363;
-    height: 0;
+    /*height: 0;*/
+    margin-top: 0;
 }
-
-
-
-
+.size .cart-item__size {
+    display: inline;
+}
+.checkout-method__login {
+    font-size: 16px;
+}
+.login-form .dark-btn,
+.lost-form .dark-btn {
+    padding-top: 10px;
+    display: inline;
+}
+.register-form .dark-btn input {
+    width: 100%;
+}
+.register-form  .checkout-method__title {
+    text-align: center;
+    padding-top: 10px;
+}
+.checkout-method__login .login-form__lost {
+    display: block;
+    padding-bottom: 10px;
+}
+.login-form .checkout-method__title,
+.lost-form .checkout-method__title {
+    display: inline;
+    padding-left: 10px;
+}
+.checkout__inner .checkout-method__login .checkout-method__title {
+    display: none;
+}
+.register-form select.form-control {
+    display: inline;
+    width: auto;
+}
+.register-form label {
+    padding-right: 10px;
+}
+@media (min-width: 768px){
+    .auth_form .modal-dialog {
+        width: 500px;
+    }
+}
+.main #grably-parse-button {
+    width: 160px;
+    height: 37px;
+    top: 270px !important;
+}
+.getprice {
+    position: fixed;
+    width: 160px;
+    height: 37px;
+    border-radius: 8px;
+    z-index: 999998;
+    margin: auto;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 50px;
+    top: 440px;
+    right: 0;
+    -webkit-transform: rotate(90deg) translate(0%, -170%);
+    -ms-transform: rotate(90deg) translate(0%, -170%);
+    transform: rotate(90deg) translate(0%, -170%);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: rgb(121, 121, 121);
+}
+.getprice a {
+    bottom: 5px;
+    position: relative;
+    color: white;
+}
+.getprice a:hover {
+    color: white;
+}

@@ -50,7 +50,6 @@
     <td class="product-subtotal"><?php if($cartItem->photo->is_available) :?><?= $cartItem->getSum()?><?php else :?>0<?php endif; ?>₽</td>
     <td class="product-remove">
         <button class="button button_icon remove" data-item-id="<?= $cartItem->id; ?>">
-            <span class="button__progress"></span>
             <span class="button__title"><i class="icon-trash icons"></i></span>
         </button>
     </td>

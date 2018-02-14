@@ -28,7 +28,7 @@ return array(
         'blouse' => 'Блузки',
         'kimono' => 'Кимоно',
         'other' => 'Разное',
-        'hit' => 'Хит продаж',
+        'hit' => '<i class="icon-fire icons"></i>Хит продаж',
         'new' => 'Новинки',
         'sale' => 'Скидки',
     ],

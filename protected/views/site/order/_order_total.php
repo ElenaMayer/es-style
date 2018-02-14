@@ -1,36 +1,27 @@
-<div class="cart-total__price cart-total__price_subtotal">
-    <span class="cart-total__price-title">Подитог</span>
-    <span class="cart-subtotal-val"><?= $model->subtotal ?> руб.</span>
+
+<div class="order-details__count">
+    <div class="order-details__count__single">
+        <h5>Подитог</h5>
+        <span class="price"><?= $cart->subtotal ?>₽</span>
+    </div>
+    <?php if($cart->sale > 0) :?>
+        <div class="order-details__count__single">
+            <h5>Скидка</h5>
+            <span class="price">- <?= $cart->sale ?>₽</span>
+        </div>
+    <?php endif; ?>
+    <?php if($cart->coupon_id) :?>
+        <div class="order-details__count__single">
+            <h5>Купон</h5>
+            <span class="price">- <?= $cart->coupon_sale ? $cart->coupon_sale : 0 ?>₽</span>
+        </div>
+    <?php endif; ?>
+    <div class="order-details__count__single">
+        <h5>Доставка</h5>
+        <span class="price"><?= $cart->shipping ?>₽</span>
+    </div>
 </div>
-<div class="cart-total__price cart-total__price_amount">
-        <span class="cart-total__price-title">Доставка <?php if(Cart::isWholesale()):?>до ТК<?php endif; ?>
-            <span class="cart-total__price-hint i_help hint-wrap">
-                <?php if(Cart::isWholesale()):?>
-                    <div class="hint">Доставка до ТК бесплатно, услуги ТК оплачиваются при получении</div>
-                <?php else:?>
-                    <div class="hint">При заказе от <?= Yii::app()->params['shippingFreeCountString']?> позиций — доставка бесплатно</div>
-                <?php endif;?>
-            </span>
-        </span>
-    <span class="cart-shipping-val">
-        <?= $model->shipping ?> руб.
-    </span>
-</div>
-<?php if($model->sale > 0) :?>
-    <div class="cart-total__price cart-total__price_discount">
-        <span class="cart-total__price-title">Скидка</span>
-        <span class="cart-sale-val">- <?= $model->sale ?> руб.</span>
-    </div>
-<?php endif; ?>
-<?php if($model->coupon_id) :?>
-    <div class="cart-total__price cart-total__price_discount">
-        <span class="cart-total__price-title">Скидка по купону</span>
-        <span class="cart-sale-val">- <?= $model->coupon_sale ?> руб.</span>
-    </div>
-<?php endif; ?>
-<div class="cart-total__price cart-total__price_total">
-    <span class="cart-total__price-title">Итого</span>
-    <div class="cart-total-val">
-        <span><?= $model->total ?></span> руб.
-    </div>
+<div class="ordre-details__total">
+    <h5>Итого</h5>
+    <span class="price"><?= $cart->total ?>₽</span>
 </div>

@@ -191,6 +191,7 @@ a:active {
 }
 a {
     color: #333;
+    cursor: pointer;
 }
 a:hover,
 a:focus,
@@ -352,7 +353,7 @@ body {
 ----------------------------*/
 
  .bg--1 {
-  background: rgba(0, 0, 0, 0) url("../../images/bg/1.jpg") no-repeat fixed 0 0 / cover ;
+  background: rgba(0, 0, 0, 0) url("/data/images/bg/1.jpg") no-repeat fixed 0 0 / cover ;
 }
 
 
@@ -489,8 +490,8 @@ input:focus {
 }
 textarea {
     resize: none;
-    background: #ff6363;
-    border: 1px solid #ff6363;
+    /*background: #ff6363;*/
+    /*border: 1px solid #ff6363;*/
     padding: 10px;
     width: 100%;
     font-size: 14px;

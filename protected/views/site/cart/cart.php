@@ -1,5 +1,5 @@
 <!-- Start Bradcaump area -->
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/4.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -121,7 +121,6 @@
                     e2 = $('#cart_main_item_' + item_id);
 
                     if (data) {
-                        console.log(e);
                         e.hide('slow');
                         e2.hide('slow');
                         $('.cart-total').html(data);

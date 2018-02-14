@@ -1,7 +1,7 @@
 <div id="data" class="catalog">
 
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/<?php echo $type?>.jpg) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -10,7 +10,7 @@
                             <nav class="bradcaump-inner">
                                 <a class="breadcrumb-item" href="/">Главная</a>
                                 <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                <?php if (isset($_GET['subcategory'])):?>
+                                <?php if (isset($_GET['subcategory']) && isset(Yii::app()->params['subcategories'][$type][$_GET['subcategory']])):?>
                                     <a href="/<?= $type ?>" class="breadcrumb-item"><?= Yii::app()->params['categories'][$type] ?></a>
                                     <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                                     <span class="breadcrumb-item active"><?= Yii::app()->params['subcategories'][$type][$_GET['subcategory']] ?></span>
@@ -45,17 +45,18 @@
                                 unset($categories['hit']);
                             }
                             ?>
+                            <?php $params = $this->getParamFromCurrentUrl(); ?>
                             <ul class="ht__cat__list">
                                 <?php foreach ($categories as $categoryId => $categoryName): ?>
                                     <li class="catalog-navigation__item category__<?= $categoryId ?>">
-                                        <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>"><?= $categoryName ?></a>
+                                        <a class="catalog-navigation__link link <?php if($categoryId == $type):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId . $params ?>"><?= $categoryName ?></a>
                                         <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountByCategory($categoryId) ?></span>
                                         <?php if(isset(Yii::app()->params['subcategories'][$categoryId])):?>
                                             <ul class="catalog-navigation catalog-navigation_subtree<?php if($categoryId != $type):?> hidden<?php endif; ?>">
                                                 <?php foreach (Yii::app()->params['subcategories'][$categoryId] as $subcategoryId => $subcategoryName): ?>
                                                     <?php if (Photo::model()->itemCountBySubcategory($subcategoryId) > 0): ?>
                                                         <li class="catalog-navigation__item">
-                                                            <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="/<?= $categoryId ?>?subcategory=<?= $subcategoryId ?>"><?= $subcategoryName ?></a>
+                                                            <a class="catalog-navigation__link link<?php if(isset($_GET['subcategory']) && $_GET['subcategory'] == $subcategoryId):?> catalog-navigation__link_active<?php endif; ?>" href="<?php echo $this->addGetParamToCurrentUrl('subcategory',$subcategoryId)?>"><?= $subcategoryName ?></a>
                                                             <span class="catalog-navigation__cnt"><?= Photo::model()->itemCountBySubcategory($subcategoryId) ?></span>
                                                         </li>
                                                     <?php endif; ?>
@@ -72,15 +73,15 @@
                             <h4 class="title__line--4">По цене</h4>
                             <div class="content-shopby">
                                 <div class="price_filter s-filter clear">
-                                    <form action="#" method="GET">
+                                    <form method="GET">
                                         <div id="slider-range"></div>
                                         <div class="slider__range--output">
                                             <div class="price__output--wrap">
                                                 <div class="price--output">
-                                                    <span>Цена :</span><input type="text" id="amount" readonly>
+                                                    <span>Цена :</span><input type="text" id="amount" readonly name="price">
                                                 </div>
                                                 <div class="price--filter">
-                                                    <a href="#">Найти</a>
+                                                    <a class="price_search">Найти</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,20 +94,44 @@
                         <div class="ht__pro__color">
                             <h4 class="title__line--4">По цвету</h4>
                             <ul class="ht__color__list">
-                                <li class="all"><a href="#" title="все">все</a></li>
-                                <li class="black"><a href="#" title="черный">черный</a></li>
-                                <li class="white"><a href="#" title="белый">белый</a></li>
-                                <li class="red"><a href="#" title="красный">красный</a></li>
-                                <li class="grey"><a href="#" title="серый">серый</a></li>
-                                <li class="pink"><a href="#" title="розовый">розовый</a></li>
+                                <li class="all <?php if(isset($_GET['color']) && $_GET['color'] == 'все') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','все')?>" title="все">все</a>
+                                </li>
+                                <li class="black <?php if(isset($_GET['color']) && $_GET['color'] == 'черный') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','черный')?>" title="черный">черный</a>
+                                </li>
+                                <li class="white <?php if(isset($_GET['color']) && $_GET['color'] == 'белый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','белый')?>" title="белый">белый</a>
+                                </li>
+                                <li class="red <?php if(isset($_GET['color']) && $_GET['color'] == 'красный') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','красный')?>" title="красный">красный</a>
+                                </li>
+                                <li class="grey <?php if(isset($_GET['color']) && $_GET['color'] == 'серый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','серый')?>" title="серый">серый</a>
+                                </li>
+                                <li class="pink <?php if(isset($_GET['color']) && $_GET['color'] == 'розовый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','розовый')?>" title="розовый">розовый</a>
+                                </li>
                             </ul>
                             <ul class="ht__color__list">
-                                <li class="blue"><a href="#" title="синий">синий</a></li>
-                                <li class="green"><a href="#" title="зеленый">зеленый</a></li>
-                                <li class="lamon"><a href="#" title="бежевый">бежевый</a></li>
-                                <li class="yellow"><a href="#" title="желтый">желтый</a></li>
-                                <li class="broun"><a href="#" title="коричневый">коричневый</a></li>
-                                <li class="orange"><a href="#" title="оранжевый">оранжевый</a></li>
+                                <li class="blue <?php if(isset($_GET['color']) && $_GET['color'] == 'синий') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','синий')?>" title="синий">синий</a>
+                                </li>
+                                <li class="green <?php if(isset($_GET['color']) && $_GET['color'] == 'зеленый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','зеленый')?>" title="зеленый">зеленый</a>
+                                </li>
+                                <li class="lamon <?php if(isset($_GET['color']) && $_GET['color'] == 'бежевый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','бежевый')?>" title="бежевый">бежевый</a>
+                                </li>
+                                <li class="yellow <?php if(isset($_GET['color']) && $_GET['color'] == 'желтый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','желтый')?>" title="желтый">желтый</a>
+                                </li>
+                                <li class="broun <?php if(isset($_GET['color']) && $_GET['color'] == 'коричневый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','коричневый')?>" title="коричневый">коричневый</a>
+                                </li>
+                                <li class="orange <?php if(isset($_GET['color']) && $_GET['color'] == 'оранжевый') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('color','оранжевый')?>" title="оранжевый">оранжевый</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- End Pro Color -->
@@ -114,18 +139,38 @@
                         <div class="ht__pro__size">
                             <h4 class="title__line--4">По размеру</h4>
                             <ul class="ht__size__list">
-                                <li class="all"><a href="#" title="все">все</a></li>
-                                <li><a href="#" title="40">40</a></li>
-                                <li><a href="#" title="42">42</a></li>
-                                <li><a href="#" title="44">44</a></li>
-                                <li><a href="#" title="46">46</a></li>
+                                <li class="all <?php if(isset($_GET['size']) && $_GET['size'] == 'все') echo 'active'?>">
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','все')?>" title="все">все</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '40'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','40')?>" title="40">40</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '42'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','42')?>" title="42">42</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '44'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','44')?>" title="44">44</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '46'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','46')?>" title="46">46</a>
+                                </li>
                             </ul>
                             <ul class="ht__size__list">
-                                <li><a href="#" title="48">48</a></li>
-                                <li><a href="#" title="50">50</a></li>
-                                <li><a href="#" title="52">52</a></li>
-                                <li><a href="#" title="54">54</a></li>
-                                <li><a href="#" title="56">56</a></li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '48'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','48')?>" title="48">48</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '50'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','50')?>" title="50">50</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '52'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','52')?>" title="52">52</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '54'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','54')?>" title="54">54</a>
+                                </li>
+                                <li <?php if(isset($_GET['size']) && $_GET['size'] == '56'):?> class="active"<?php endif;?>>
+                                    <a href="<?php echo $this->addGetParamToCurrentUrl('size','56')?>" title="56">56</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- End Pro Size -->
@@ -170,7 +215,7 @@
                     <div class="htc__product__rightidebar">
                         <div class="htc__grid__top">
                             <div class="ht__pro__qun">
-                                <span>Товары <?= ($pagination->currentPage+1)*$pagination->pageSize-$pagination->pageSize+1 ?>-<?= ($pagination->currentPage+1)*$pagination->pageSize ?> из <?= $pagination->itemCount ?></span>
+                                <span>Товары <?= $pagination->itemCount?$pagination->currentPage*$pagination->pageSize+1:0 ?>-<?= (($count_to = ($pagination->currentPage+1)*$pagination->pageSize) > $pagination->itemCount)?$pagination->itemCount: $count_to?> из <?= $pagination->itemCount ?></span>
                             </div>
                             <span class="products-catalog__sort">
                                 Сортировать:
@@ -224,28 +269,17 @@
 <?php endif;?>
 <script>
     $( document ).ready(function() {
-//        $(".order_menu>ul.dropdown-menu>li").each(function( index ) {
-//            if ($(this).text().replace(/^\s+/, "") == '<?//=Yii::app()->session['catalog_order']?>//'.replace(/^\s+/, "")){
-//                $(this).addClass('active');
-//            }
-//        });
-//        $(".size_menu>ul.dropdown-menu>li").each(function( index ) {
-//            sizes = '<?//=Yii::app()->session['catalog_size']?>//';
-//            if (sizes.indexOf($(this).text().replace(/^\s+/, "")) >= 0){
-//                $(this).addClass('active');
-//            }
-//        });
-//        $(".color_menu>ul.dropdown-menu>li").each(function( index ) {
-//            color = '<?//=Yii::app()->session['catalog_color']?>//';
-//            if (color.indexOf($(this).text().replace(/^\s+/, "")) >= 0){
-//                $(this).addClass('active');
-//            }
-//        });
-//        if($('.subcategory').length > 0) {
-//            $(".yiiPager a").each(function( e ) {
-//                $(this).attr("href", $(this).attr("href") + '?subcategory=' + $('.subcategory').val());
-//            });
-//        }
+        var price_at = <?= (isset($_GET['price_at']))? $_GET['price_at'] : 0 ?>;
+        var price_to = <?= (isset($_GET['price_to']))? $_GET['price_to'] : 0 ?>;
+        var params = '<?= $params ?>';
+        if(price_at > 0) $("#slider-range").slider("values", 0, price_at);
+        if(price_to > 0) $("#slider-range").slider("values", 1, price_to);
+        if(price_at > 0 && price_to > 0) $("#amount").val(price_at + "₽ - " + price_to + "₽");
+        if(params) {
+            $.each($('.htc__pagenation a'), function () {
+                $(this).attr("href", $(this).attr("href") + params);
+            })
+        }
     });
     $( ".order_menu>ul.dropdown-menu>li>a" ).click(function() {
         order = $(this).text();
@@ -289,30 +323,16 @@
                 $('#data').html(data);
             }});
     });
-//    $( ".clear_filter" ).click(function() {
-//        $.ajax({
-//            url: '/<?//= $type?>//',
-//            data: {
-//                color: 'все',
-//                size: 'все'
-//            },
-//            type: "GET",
-//            dataType : "html",
-//            success: function( data ) {
-//                $('#data').html(data);
-//            }});
-//    });
-//    $(window).scroll(function() {
-//        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-//            $.ajax({
-//                url: '/ajax/bannerHasShowed',
-//                type: "GET",
-//                dataType : "html",
-//                success: function( data ) {
-//                    if(data == 1){
-//                        jQuery('#coupon_banner').modal('show');
-//                    }
-//                }});
-//        }
-//    });
+    $("#slider-range").on("slidestop", function(event, ui) {
+        $.ajax({
+            url: '/ajax/getUrlWithPrice',data: {
+                price: $('#amount').val(),
+                url: '<?= Yii::app()->request->requestUri?>'
+            },
+            type: "POST",
+            dataType : "html",
+            success: function( data ) {
+                $('.price_search').attr("href", data);
+            }});
+    });
 </script>

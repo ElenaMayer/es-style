@@ -1,23 +1,24 @@
-<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
+<div class="checkout-method__login accordion__body__form">
+    <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'login-form',
     'htmlOptions' => array('class' => 'login-form'),
 )); ?>
-    <div class="auth-popup__subtitle">Вход на сайт</div>
 
-    <div class="row">
+    <p class="checkout-method__subtitle">Вход на сайт:</p>
+    <div class="single-input">
         <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'htmlOptions'=>['class'=>'login_form'])); ?>
     </div>
-    <div class="row">
+    <div class="single-input">
         <?php echo $form->passwordFieldGroup($modelAuth, 'password', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-        <span class="login-form__lost link">Забыли?</span>
     </div>
-    <div class="form__controls">
-        <span class="button button_blue">
-            <?php echo CHtml::ajaxSubmitButton('Войти',
-                CHtml::normalizeUrl(array('/site/login')),
-                array(
-                    'type' => 'POST',
-                    'success' => 'js: function(data) {
+    <a class="login-form__lost link">Забыли пароль?</a>
+
+    <div class="dark-btn">
+        <?php echo CHtml::ajaxSubmitButton('Войти',
+            CHtml::normalizeUrl(array('/site/login')),
+            array(
+                'type' => 'POST',
+                'success' => 'js: function(data) {
                                 if (data == 1){
                                     if (window.location.pathname.indexOf("order") > 0)
                                         window.location = "/cart";
@@ -28,12 +29,12 @@
                                     $(".button_in-progress").removeClass("button_in-progress").removeClass("button_disabled").prop( "disabled", false );
                                 }
                             }',
-                ),
-                array(
-                    'class' => 'auth_button'
-                )); ?>
-            <span class="button__progress"></span>
-        </span>
-        <span class="login-form__register link">Зарегистрироваться</span>
+            ),
+            array(
+                'class' => 'auth_button'
+            )); ?>
     </div>
+
+    <div class="checkout-method__title"><a class="login-form__register link">Зарегистрироваться</a></div>
 <?php $this->endWidget(); ?>
+</div>

@@ -1,56 +1,51 @@
+<div class="checkout-method__login">
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'register-form',
     'enableAjaxValidation' => true,
     'enableClientValidation'=> true,
     'htmlOptions' => array('class' => 'register-form'),
 )); ?>
-<div class="auth-popup__subtitle">Зарегистрировать аккаунт</div>
-<div class="row">
-    <?php echo $form->textFieldGroup($modelAuth, 'name', array('placeholder'=>'')); ?>
-</div>
 
-<div class="row">
-    <div class="form-group subscribed">
+
+    <p class="checkout-method__subtitle">Зарегистрировать аккаунт:</p>
+    <div class="single-input">
+        <?php echo $form->textFieldGroup($modelAuth, 'name', array('placeholder'=>'')); ?>
+    </div>
+    <div class="single-input">
         <?php echo $form->checkBox($modelAuth,'is_wholesaler'); ?>
         <?php echo $form->labelEx($modelAuth,'is_wholesaler'); ?>
     </div>
-</div>
-<div class="row">
-    <?php echo $form->textFieldGroup($modelAuth, 'phone', array('placeholder'=>'+7')); ?>
-</div>
-<div class="row">
-    <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-</div>
-<div class="row">
-    <div class="form-group subscribed">
+    <div class="single-input">
+        <?php echo $form->textFieldGroup($modelAuth, 'phone', array('placeholder'=>'+7')); ?>
+    </div>
+    <div class="single-input">
+        <?php echo $form->textFieldGroup($modelAuth, 'email', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    </div>
+    <div class="single-input">
         <?php echo $form->checkBox($modelAuth,'is_subscribed'); ?>
         <?php echo $form->labelEx($modelAuth,'is_subscribed'); ?>
     </div>
-</div>
-<div class="row">
-    <div class="form-group few_field">
+    <div class="single-input">
         <?php echo $form->labelEx($modelAuth,'date_of_birth'); ?>
         <?php echo $form->dropDownList($modelAuth,'date', $modelAuth->getDatesArray(), array('class' => 'form-control left_field')); ?>
         <?php echo $form->dropDownList($modelAuth,'month', $modelAuth->getMonthsArray(), array('class' => 'form-control middle_field')); ?>
         <?php echo $form->dropDownList($modelAuth,'year', $modelAuth->getYearsArray(), array('class' => 'form-control')); ?>
     </div>
-</div>
-<div class="row sex">
-    <?php echo $form->dropDownListGroup($modelAuth, 'sex', array(
-        'widgetOptions' => array(
-            'data' => ['female'=>'Женский', 'male'=>'Мужской'],
-            'htmlOptions' => array('class' => 'form-control'),
-        ))); ?>
-</div>
+    <div class="single-input">
+        <?php echo $form->dropDownListGroup($modelAuth, 'sex', array(
+            'widgetOptions' => array(
+                'data' => ['female'=>'Женский', 'male'=>'Мужской'],
+                'htmlOptions' => array('class' => 'form-control'),
+            ))); ?>
+    </div>
+    <div class="single-input">
+        <?php echo $form->passwordFieldGroup($modelAuth, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    </div>
+    <div class="single-input">
+        <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+    </div>
 
-<div class="row">
-    <?php echo $form->passwordFieldGroup($modelAuth, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-</div>
-<div class="row">
-    <?php echo $form->passwordFieldGroup($modelAuth, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-</div>
-<div class="form__controls">
-    <span class="button button_blue">
+    <div class="dark-btn">
         <?php echo CHtml::ajaxSubmitButton('Зарегистрироваться',
             CHtml::normalizeUrl(array('/site/registration')),
             array(
@@ -67,9 +62,8 @@
             array(
                 'class' => 'auth_button'
         )); ?>
-        <span class="button__progress"></span>
-    </span>
-    <span class="register-form__login link">У меня есть аккаунт</span>
-</div>
+    </div>
 
+    <h5 class="checkout-method__title"><a class="register-form__login link">У меня есть аккаунт</a></h5>
 <?php $this->endWidget(); ?>
+</div>

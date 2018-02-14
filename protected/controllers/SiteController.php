@@ -139,22 +139,15 @@ class SiteController extends Controller {
             if($_POST['product_action'] == 'buy' && $cartItem)
                 $this->redirect('/order/'.$cartItem->cart->id);
         }
-
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
-        if(isset($_GET['size']))
-            $this->setSize($_GET['size']);
-        if(isset($_GET['color']))
-            $this->setColor($_GET['color']);
-        $params = [
-            'category' => $type,
-            'order' => $this->getOrder(),
-            'size' => $this->getSize(),
-            'color' => $this->getColor(),
-            'page' => $page,
-        ];
-        if (isset($_GET['subcategory']))
-            $params['subcategory'] = $_GET['subcategory'];
+        $params = $_GET;
+        $params['category'] = $type;
+        $params['order'] = $this->getOrder();
+        $params['page'] = $page;
+
+        if (isset($_GET['subcategory']) && !isset(Yii::app()->params['subcategories'][$type][$_GET['subcategory']]))
+            unset($params['subcategory']);
         $model = Photo::model()->getPhotos($params);
         $modelHits = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_hit'=>1], ['limit' => 4]);
         $criteria = Photo::model()->getPhotosCriteria($params);
@@ -166,11 +159,10 @@ class SiteController extends Controller {
         $pagination->route = "/$type";
         $pagination->params = array('page'=>$page);
 
-        if(isset($_GET['order']) || isset($_GET['size']) || isset($_GET['color']))
+        if(isset($_GET['order']))
             $this->renderPartial('catalog',array(
                 'model'=>$model,
                 'type'=>$type,
-                'isFilter'=>$this->isFilter(),
                 'pagination' => $pagination,
                 'modelHits' => $modelHits
             ));
@@ -178,7 +170,6 @@ class SiteController extends Controller {
             $this->render('catalog',array(
                 'model'=>$model,
                 'type'=>$type,
-                'isFilter'=>$this->isFilter(),
                 'pagination' => $pagination,
                 'modelHits' => $modelHits
             ));
@@ -245,32 +236,6 @@ class SiteController extends Controller {
 
     public function setOrder($order){
         Yii::app()->session['catalog_order'] = $order;
-    }
-
-    public function getSize(){
-        if(isset(Yii::app()->session['catalog_size']))
-            $size = Yii::app()->session['catalog_size'];
-        else {
-            $size = Yii::app()->session['catalog_size'] = 'все';
-        }
-        return $size;
-    }
-
-    public function getColor(){
-        if(isset(Yii::app()->session['catalog_color']))
-            $color = Yii::app()->session['catalog_color'];
-        else {
-            $color = Yii::app()->session['catalog_color'] = 'все';
-        }
-        return $color;
-    }
-
-    public function setSize($size){
-        $this->setSessionMultiParam('catalog_size', $size);
-    }
-
-    public function setColor($color){
-        $this->setSessionMultiParam('catalog_color', $color);
     }
 
     public function setSessionMultiParam($sessionName, $param){
@@ -518,13 +483,6 @@ class SiteController extends Controller {
         } else {
             throw new CHttpException(404,'К сожалению, страница не найдена.');
         }
-    }
-
-    public function isFilter(){
-        if ($this->getSize() == 'все' && $this->getColor() == 'все')
-            return false;
-        else
-            return true;
     }
 
     public function actionReviews(){

@@ -23,9 +23,9 @@
                                     <?php if($photo->is_sale && !Cart::isWholesale()) :?>
                                         <span>-<?= $photo->sale ?>%</span>
                                     <?php elseif($photo->is_new) :?>
-                                        <span class="new">new</span>
+                                        <span class="new">Новинка</span>
                                     <?php elseif($photo->is_hit && !Cart::isWholesale()) :?>
-                                        <span class="new">hit</span>
+                                        <span class="hit"><i class="icon-fire icons"></i></span>
                                     <?php endif; ?>
                                 </div>
                                 <div class="product__hover__info">

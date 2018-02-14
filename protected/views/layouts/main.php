@@ -21,7 +21,6 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/auth.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
     <?php if (strpos(Yii::app()->request->pathInfo, 'blog')!==false):?>
@@ -30,25 +29,25 @@
     <?php if (strpos(Yii::app()->request->pathInfo, 'horoscope')!==false):?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?6" />
     <?php endif;?>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
     <!-- Owl Carousel min css -->
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.theme.default.min.css">
     <!-- This core.css file contents all plugings css file. -->
-    <link rel="stylesheet" href="/css/core.css?3">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/core.css?4">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="/css/shortcode/shortcodes.css?5">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?5">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="/css/style.css?17">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?26">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css">
     <!--    <link rel="stylesheet" type="text/css" href="--><!--?php //echo Yii::app()->request->baseUrl; ?><!--/css/site.css?32" />-->
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter37654655 = new Ya.Metrika({ id:37654655, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/37654655" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
     <!-- GoogleAnalytics -->
@@ -76,21 +75,21 @@
         <div class="header__top__area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-12">
+                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <div class="ht__header__top__left">
                             <div class="htc__contact">
                                 <a href="/about/contact"><i class="icon-call-out icons"></i>Свяжитесь с нами: <?= Yii::app()->params['phone'] ?></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
+                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <div class="logo">
                             <a href="/">
-                                <img src="/data/i/logo.png" alt="<?= Yii::app()->params['domain'] ?>">
+                                <img src="/data/i/logo.png?1" alt="<?= Yii::app()->params['domain'] ?>">
                             </a>
                         </div>
                     </div>
-                    <div id='auth_buttons' class="col-md-5 col-lg-5 col-sm-5 col-xs-12">
+                    <div id='auth_buttons' class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <ul class="ht__header__right">
                             <li><a href="/blog">Блог</a></li>
                             <li><a href="/horoscope">Гороскоп</a></li>
@@ -489,7 +488,7 @@
 <!-- Waypoints.min.js. -->
 <?php Yii::app()->clientScript->registerScriptFile('/js/waypoints.min.js', CClientScript::POS_END) ?>
 <!-- Main js file that contents all jQuery plugins activation. -->
-<?php Yii::app()->clientScript->registerScriptFile('/js/main.js', CClientScript::POS_END) ?>
+<?php Yii::app()->clientScript->registerScriptFile('/js/main.js?2', CClientScript::POS_END) ?>
 
 <script>
     $( "#auth_buttons" ).on( "click", ".logout", function() {

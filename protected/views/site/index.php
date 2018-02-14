@@ -12,7 +12,7 @@ $this->pageTitle=Yii::app()->name;
                     <div class="col-md-4 col-lg-4 slider">
                         <a href="/dress">
                             <div class="slide">
-                                <img src="images/slider/fornt-img/1.jpg" alt="Платья">
+                                <img src="data/images/slider/m1.jpg" alt="Платья">
                                 <div class="slider__inner">
                                     <h1>Платья</h1>
                                     <p>В восточном стиле, повседневные, вечерние</p>
@@ -25,7 +25,7 @@ $this->pageTitle=Yii::app()->name;
                     <div class="col-md-4 col-lg-4 slider">
                         <a href="/blause">
                             <div class="slide">
-                                <img src="images/slider/fornt-img/2.jpg" alt="Блузки">
+                                <img src="data/images/slider/m2.jpg" alt="Блузки">
                                 <div class="slider__inner">
                                     <h1>Блузки</h1>
                                     <p>Блузки, туники, джемперы, кардиганы</p>
@@ -38,7 +38,7 @@ $this->pageTitle=Yii::app()->name;
                     <div class="col-md-4 col-lg-4 slider">
                         <a href="/kimono">
                             <div class="slide">
-                                <img src="images/slider/fornt-img/3.jpg" alt="Кимоно">
+                                <img src="data/images/slider/m3.jpg" alt="Кимоно">
                                 <div class="slider__inner">
                                     <h1>Кимоно</h1>
                                     <p>Домашние платья, платья для отпуска</p>
@@ -51,7 +51,7 @@ $this->pageTitle=Yii::app()->name;
                     <div class="col-md-4 col-lg-4 slider">
                         <a href="/other">
                             <div class="slide">
-                                <img src="images/slider/fornt-img/3.jpg" alt="Разное">
+                                <img src="data/images/slider/m4.jpg" alt="Разное">
                                 <div class="slider__inner">
                                     <h1>Разное</h1>
                                     <p>Холаты, сорочки, домашние комплекты</p>
@@ -69,7 +69,7 @@ $this->pageTitle=Yii::app()->name;
 <?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
 
 <!-- Start Blog Area -->
-<section class="htc__blog__area bg__white pb--70">
+<section class="htc__blog__area main__blog__area bg__white pb--70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

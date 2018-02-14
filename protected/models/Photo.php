@@ -313,29 +313,38 @@ class Photo extends CActiveRecord
         if (isset($params['subcategory']))
             $criteria->addSearchCondition('subcategory', $params['subcategory']);
 
-        if ($params['size'] != 'все') {
+        if (isset($params['size']) && $params['size'] != 'все') {
             $criteriaS = new CDbCriteria();
-            $sizesArr = explode(",", $params['size']);
-            foreach ($sizesArr as $size) {
-                $criteriaWS = new CDbCriteria();
-                $criteriaWUS = new CDbCriteria();
-                $criteriaWS->compare('size', 1);
-                $criteriaWS->addSearchCondition('sizes', $size);
-                $criteriaWUS->compare('size', 0);
-                $criteriaWUS->compare('size_at', '<='.$size);
-                $criteriaWUS->compare('size_to', '>='.$size);
-                $criteriaWS->mergeWith($criteriaWUS, 'OR');
-                $criteriaS->mergeWith($criteriaWS, 'OR');
-            }
+            $size = $params['size'];
+
+            $criteriaWS = new CDbCriteria();
+            $criteriaWUS = new CDbCriteria();
+            $criteriaWS->compare('size', 1);
+            $criteriaWS->addSearchCondition('sizes', $size);
+            $criteriaWUS->compare('size', 0);
+            $criteriaWUS->compare('size_at', '<='.$size);
+            $criteriaWUS->compare('size_to', '>='.$size);
+            $criteriaWS->mergeWith($criteriaWUS, 'OR');
+            $criteriaS->mergeWith($criteriaWS, 'OR');
+
             $criteria->mergeWith($criteriaS);
         }
-        if ($params['color'] != 'все') {
-            $criteria_colors = new CDbCriteria();
-            $colorsArr = explode(",", $params['color']);
-            foreach ($colorsArr as $color) {
-                $criteria_colors->addSearchCondition('color', $color, true, 'OR');
+        if (isset($params['color']) && $params['color'] != 'все') {
+            $criteria->addSearchCondition('color', $params['color']);
+        }
+        if (isset($params['price_at'])) {
+            if(Cart::isWholesale()){
+                $criteria->compare('wholesale_price', '>='.$params['price_at']);
+            } else {
+                $criteria->compare('price', '>='.$params['price_at']);
             }
-            $criteria->mergeWith($criteria_colors);
+        }
+        if (isset($params['price_to'])) {
+            if(Cart::isWholesale()){
+                $criteria->compare('wholesale_price', '<='.$params['price_to']);
+            } else {
+                $criteria->compare('price', '<='.$params['price_to']);
+            }
         }
         return $criteria;
     }

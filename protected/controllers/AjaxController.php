@@ -20,6 +20,17 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionDeleteItemFromOrder(){
+        $cartItem = CartItem::model()->findByPk($_POST['item_id']);
+        if($cartItem){
+            $cartItem->delete();
+            $this->renderPartial('/site/order/_order_total',array('cart'=>$cartItem->cart));
+        } else {
+            echo false;
+            Yii::app()->end();
+        }
+    }
+
     public function actionDeleteItemFromCartPopup(){
         $cartItem = CartItem::model()->findByPk($_POST['item_id']);
         $res = [];
@@ -253,6 +264,7 @@ class AjaxController extends Controller
             echo 1;
         }
     }
+
     public function actionSendCoupon(){
         $email = $_POST['email'];
         $subscription = new Subscription();
@@ -276,6 +288,7 @@ class AjaxController extends Controller
         echo true;
         Yii::app()->end();
     }
+
     public function actionHoroscopePopupHasShowed(){
         if(!empty(Yii::app()->session['horoscopePopupWithSale'])){
             echo 0;
@@ -283,5 +296,18 @@ class AjaxController extends Controller
             Yii::app()->session['horoscopePopupWithSale'] = 1;
             echo 1;
         }
+    }
+
+    public function actionGetUrlWithPrice(){
+        if(isset($_POST['price']) && isset($_POST['url'])){
+            $priceArr = explode("-", $_POST['price']);
+            foreach ($priceArr as $key => $price) {
+                $priceArr[$key] = trim(trim(trim($price), '₽'));
+            }
+            $url = $this->addGetParamToCurrentUrl('price_at', $priceArr[0], $_POST['url']);
+            $url = $this->addGetParamToCurrentUrl('price_to', $priceArr[1], $url);
+            echo $url;
+        } else
+            echo false;
     }
 }
