@@ -1,5 +1,5 @@
 <!-- Start Bradcaump area -->
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/order.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -37,13 +37,14 @@
                                 </div>
                                 <div class="single-item__content">
                                     <a href="/<?= $cartItem->photo->category ?>/<?= $cartItem->photo->article ?>"><?= $cartItem->photo->title ?></a>
-                                    <span class="size">Размер
+                                    <span class="size">Размер:
                                         <?php if($cartItem->size) :?>
                                             <div class="cart-item__size"><?= $cartItem->size?></div>
                                         <?php else :?>
                                             <div class="cart-item__size"><?= $cartItem->photo->size_at ?>-<?= $cartItem->photo->size_to ?></div>
                                         <?php endif; ?>
                                     </span>
+                                    <span class="quantity">Кол.: <?= $cartItem->count ?></span>
                                     <?php if(Cart::isWholesale()) :?>
                                         <span class="price"><?= $cartItem->photo->wholesale_price?>₽</span>
                                     <?php elseif($cartItem->cart->coupon_id && ($newPrice = $cartItem->cart->coupon->getSumWithSaleInRub($cartItem->photo->price, $cartItem->photo->category)) && $cartItem->photo->price!=$newPrice) :?>

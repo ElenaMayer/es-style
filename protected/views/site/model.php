@@ -1,5 +1,6 @@
+<div class="model">
 <!-- Start Bradcaump area -->
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(../images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/model.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -51,14 +52,13 @@
                                 <li class="not_available_small">Нет в наличии</li>
                             <?php else :?>
                                 <?php if(Cart::isWholesale()) :?>
-                                    <li><?= $model->wholesale_price ?>₽ <span class="red">ОПТ</span></li>
+                                    <li><span class="red"><?= $model->wholesale_price ?>₽ ОПТ</span></li>
                                 <?php else :?>
                                     <?php if(!$model->is_sale) :?>
                                         <li><?= $model->price ?>₽ <span>(РОЗНИЦА)</span></li>
                                     <?php else :?>
                                         <li class="old__prize"><?= $model->old_price ?>₽</li>
-                                        <li><?= $model->price ?>₽</li>
-                                        <li>(РОЗН)</li>
+                                        <li><?= $model->price ?>₽ <span>(РОЗНИЦА)</span></li>
                                     <?php endif; ?>
                                     <div class="wholesale-price hide"><?= $model->wholesale_price ?>₽ </div>
                                 <?php endif; ?>
@@ -66,20 +66,6 @@
                         </ul>
                         <div class="ht__pro__desc">
                             <p class="pro__info"><?= $model->description; ?></p>
-
-                            <div class="sin__desc product__share__link">
-                                <ul class="pro__share">
-                                    <?php $this->renderPartial('_social', ['model' => $model]); ?>
-                                </ul>
-                            </div>
-                            <div class="sin__desc align--left">
-                                <p><span>Категории</span></p>
-                                <ul class="pro__cat__list">
-                                    <?php foreach (explode(',',$model->subcategory) as $subcategory):?>
-                                        <li><a href="#"><?= Yii::app()->params['subcategories'][$type][$subcategory];?></a></li>
-                                    <?php endforeach;?>
-                                </ul>
-                            </div>
                             <div class="sin__desc align--left">
                                 <p><span>Российский размер&nbsp;</span></p>
                                 <?php if(!$model->size) :?>
@@ -98,6 +84,7 @@
                                     </div>
                                 <?php endif; ?>
                             </div>
+                        </div>
                             <?php if($model->is_available) :?>
                                 <form method="post" class="add_to_cart">
                                     <input type="hidden" name="item_id" value="<?= $model->id ?>">
@@ -109,6 +96,20 @@
                                     </ul>
                                 </form>
                             <?php endif;?>
+                        <div class="ht__pro__other">
+                            <div class="sin__desc product__share__link">
+                                <ul class="pro__share">
+                                    <?php $this->renderPartial('_social', ['model' => $model]); ?>
+                                </ul>
+                            </div>
+                            <div class="sin__desc align--left">
+                                <p><span>Категории</span></p>
+                                <ul class="pro__cat__list">
+                                    <?php foreach (explode(',',$model->subcategory) as $subcategory):?>
+                                        <li><a href="#"><?= Yii::app()->params['subcategories'][$type][$subcategory];?></a></li>
+                                    <?php endforeach;?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,6 +121,7 @@
 <!-- End Product Details Area -->
 <?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
 <?php $this->renderPartial('_size_tab'); ?>
+</div>
 
 <script>
     $( '.ht__product__dtl' ).on( 'click', '.add_to_cart_btn', function($e) {

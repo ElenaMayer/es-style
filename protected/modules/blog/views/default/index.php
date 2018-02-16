@@ -1,13 +1,32 @@
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="\">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <span class="breadcrumb-item active">Блог</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
 <!-- Start Blog Area -->
 <section class="htc__blog__area bg__white pb--70">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="ht__blog__wrap blog--page clearfix">
                 <!-- Start Single Blog -->
 
                 <?php if (isset($_GET['tag'])):?>
                     <div class="blog_header">
-                        <h1>Показаны статьи по тэгу <span><?=$_GET['tag']?></span></h1>
+                        <h2>Статьи по тэгу <span><?=$_GET['tag']?></span></h2>
                         <div class="blog_all_articles">
                             <a href="/blog/">Все статьи</a>
                         </div>

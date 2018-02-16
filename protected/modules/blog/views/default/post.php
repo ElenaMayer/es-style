@@ -1,53 +1,85 @@
-<div class="breadcrumbs blog_breadcrumbs">
-    <a href="/" class="breadcrumbs__item">Главная</a>
-    <a class="breadcrumbs__item" href="/blog">Статьи</a>
-    <?php if (isset($_GET['tag'])):?><a class="breadcrumbs__item" href="/blog?tag=<?= $_GET['tag'] ?>"><?= $_GET['tag'] ?></a><?php endif; ?>
-    <span class="breadcrumbs__item"><?=$post->title?></span>
-</div>
-<div class="blog post">
-    <div class="blog_article">
-        <div class="blog_date">
-            <?= $this->dateFormat($post->date_create) ?>
-        </div>
-        <h2 class="blog_title">
-            <?= $post->title ?>
-        </h2>
-        <?php if ($post->img):?>
-            <div class="blog_image">
-                <img src="<?php echo $post->getImageUrl()?>" >
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <a class="breadcrumb-item" href="/blog">Блог</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <?php if (isset($_GET['tag'])):?>
+                                <a class="breadcrumb-item" href="/blog?tag=<?= $_GET['tag'] ?>"><?= $_GET['tag'] ?></a>
+                                <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <?php endif; ?>
+                            <span class="breadcrumb-item active"><?=$post->title?></span>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        <?php endif; ?>
-        <div class="blog_description">
-            <p><?= $post->description ?></p>
         </div>
-        <div class="blog_content">
-            <p><?= $post->content ?></p>
-        </div>
-        <div class="blog_tags">
-            Тэги:&nbsp;
-            <?php foreach ($post->tagsArr as $key=>$tag): ?>
-                <a href="/blog?tag=<?= $tag ?>"><?= $tag ?></a>&nbsp;<?php if (isset($post->tagsArr[$key+1])):?>,<?php endif;?>
-            <?php endforeach; ?>
-        </div>
-        <?php if ($post->getNextPostUrl()):?>
-            <a class="blog_next_url blog_button_border" href="<?= $post->getNextPostUrl() ?>">Следующая статья</a>
-        <?php endif;?>
-        <?php if ($post->getPreviousPostUrl()):?>
-            <a class="blog_previous_url blog_button_border" href="<?= $post->getPreviousPostUrl() ?>">Предыдущия статья</a>
-        <?php endif;?>
-        <span class="blog_like">
-            Нравиться: <p><?= $post->likeCount ?></p>
-            <span id="<?= $post->id ?>" class="blog_like_icon"></span>
-        </span>
-    </div>
-    <div id="comment-data">
-        <?php $this->renderPartial('comments', [
-                'post' => $post,
-                'comments' => $comments,
-                'newComment' => $newComment
-            ]); ?>
     </div>
 </div>
+<!-- End Bradcaump area -->
+<!-- Start Blog Details Area -->
+<section class="htc__blog__details bg__white ptb--70">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="htc__blog__details__wrap">
+                    <h2><?= $post->title ?></h2>
+                    <ul class="ht__blog__meta">
+                        <li><i class="icon-clock icons"></i><?= $this->dateFormat($post->date_create) ?></li>
+                    </ul>
+                    <div class="ht__bl__thumb">
+                        <?php if ($post->img):?>
+                            <div class="blog_image">
+                                <img src="<?php echo $post->getImageUrl()?>" alt="<?=$post->title?>">
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="bl__dtl">
+                        <p class="description"><?= $post->description ?></p>
+                        <p><?= $post->content ?></p>
+                    </div>
+                    <?php foreach ($post->tagsArr as $key=>$tag): ?>
+                        <span class="ht__fashion__show">
+                            <a href="/blog?tag=<?= $tag ?>"><?= $tag ?></a>&nbsp;<?php if (isset($post->tagsArr[$key+1])):?> <?php endif;?>
+                        </span>
+                    <?php endforeach; ?>
+                    <!-- Start comment Form -->
+                    <div class="ht__comment__form">
+                        <h4 class="title__line--5">Оставить комментарий</h4>
+                        <div class="ht__comment__form__inner">
+                            <div class="comment__form">
+                                <input type="text" placeholder="Имя *">
+                            </div>
+                            <div class="comment__form message">
+                                <textarea name="message"  placeholder="Комментарий"></textarea>
+                            </div>
+                        </div>
+                        <div class="ht__comment__btn">
+                            <a href="#"><i class="icon-envelope icons"></i>Отправить</a>
+                        </div>
+                    </div>
+                    <!-- End comment Form -->
+                    <div class="blog post">
+                        <div id="comment-data">
+                            <?php $this->renderPartial('comments', [
+                                'post' => $post,
+                                'comments' => $comments,
+                                'newComment' => $newComment
+                            ]); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Details Area -->
 
 <script>
     $( ".blog_like_icon" ).on( "click", function() {

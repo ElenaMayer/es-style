@@ -36,7 +36,7 @@
                                 <?php endif;?>
                                 <div class="checkout-method__single">
                                     <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Способ доставки</h5>
-                                    <?php if(!Cart::isWholesale()) :?>
+                                    <?php if(Cart::isWholesale()) :?>
                                         <?php foreach (Yii::app()->params['tcList'] as $tc => $tcTitle):?>
                                             <div class="single-input">
                                                 <?php echo $form->radioButton($user, 'tc', ['value'=>$tc, 'checked' => ($tc == 'pec')?"checked":'']); ?>

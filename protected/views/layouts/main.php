@@ -23,9 +23,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
-    <?php if (strpos(Yii::app()->request->pathInfo, 'blog')!==false):?>
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css?4" />
-    <?php endif;?>
     <?php if (strpos(Yii::app()->request->pathInfo, 'horoscope')!==false):?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?6" />
     <?php endif;?>
@@ -38,7 +35,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?5">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?26">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?31">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->

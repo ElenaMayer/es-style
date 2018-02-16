@@ -23,7 +23,7 @@ $this->pageTitle=Yii::app()->name;
                     <!-- End Single Slide -->
                     <!-- Start Single Slide -->
                     <div class="col-md-4 col-lg-4 slider">
-                        <a href="/blause">
+                        <a href="/blouse">
                             <div class="slide">
                                 <img src="data/images/slider/m2.jpg" alt="Блузки">
                                 <div class="slider__inner">

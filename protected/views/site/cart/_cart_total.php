@@ -21,7 +21,8 @@
         </div>
         <ul class="payment__btn">
             <li class="active">
-                <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a></li>
+                <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
+            </li>
             <li><a href="/dress">Продолжить покупки</a></li>
         </ul>
     </div>

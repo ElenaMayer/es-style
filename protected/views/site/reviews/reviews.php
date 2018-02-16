@@ -1,60 +1,46 @@
-<div class="reviews">
-
-    <h1>Отзывы</h1>
-    <div class="comment_form">
-        <?php $this->renderPartial('reviews/_review_form', array('newReview'=>$newReview)); ?>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/reviews.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <a class="breadcrumb-item" href="/reviews">Отзывы</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="comments">
-        <span class="comment-counter"> Всего отзывов
-            <i class="cc-comments-count"><?= $pagination->itemCount ?></i>
-        </span>
-        <ul class="com-list-noava">
-            <?php if (!empty($reviews)): ?>
-                <?php foreach($reviews as $key => $review): ?>
-                    <li class="commentstd clearover">
-                        <p class="com-meta">
-                            <span class="user_name"><?= $review->name ?></span>
-                            <?php if ($review->city): ?>
-                                <span class="user_city">(<?= $review->city ?>)</span>
-                            <?php endif; ?>
-                            <span class="date"><em><?= $this->dateFormatWithTime($review->date_create) ?></em></span>
-                            <?php if($review->rating):?>
-                                <div class="rating">
-                                    <i class="review_rating_icon"></i>
-                                    <i class="review_rating_icon <?php if($review->rating < 2 ):?>disabled<?php endif; ?>"></i>
-                                    <i class="review_rating_icon <?php if($review->rating < 3 ):?>disabled<?php endif; ?>"></i>
-                                    <i class="review_rating_icon <?php if($review->rating < 4 ):?>disabled<?php endif; ?>"></i>
-                                    <i class="review_rating_icon <?php if($review->rating < 5 ):?>disabled<?php endif; ?>"></i>
-                                </div>
-                            <?php endif; ?>
-                        </p>
-                        <p class="commententry">
-                            <?= $review->comment ?>
-                        </p>
-                        <?php if ($review->img): ?>
-                            <p class="commentimg">
-                                <img src="<?= $review->getImageUrl(); ?>">
-                            </p>
-                        <?php endif; ?>
-                        <?php if ($review->answer): ?>
-                            <div class="comment_ansver">
-                                <p class="com-meta_admin">
-                                    <span class="admin_name">Восточный стиль</span>
-                                    <span class="date"><em><?= $this->dateFormatWithTime($review->answer->date_create) ?></em></span>
-                                </p>
-                                <p class="commententry_admin">
-                                    <?= $review->answer->comment ?>
-                                </p>
-                            </div>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            </li>
-        </ul>
-
-        <div class="site_pager">
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Blog Details Area -->
+<section class="htc__blog__details bg__white ptb--70 reviews">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="htc__blog__details__wrap">
+                    <div class="comment_form">
+                        <?php $this->renderPartial('reviews/_review_form', array('newReview'=>$newReview)); ?>
+                    </div>
+                    <div class="blog post">
+                        <div id="comment-data">
+                            <?php $this->renderPartial('reviews/_comments', [
+                                'reviews' => $reviews,
+                                'pagination' => $pagination
+                            ]); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Pagenation -->
+    <div class="row">
+        <div class="col-xs-12">
             <?php $this->widget('CLinkPager', array(
                 'pages' => $pagination,
                 'header' => '',
@@ -62,12 +48,15 @@
                 'prevPageLabel' => '<',
                 'firstPageLabel' => '<<',
                 'lastPageLabel' => '>>',
-                'maxButtonCount' => Yii::app()->params['maxPagerButtonCount']
+                'selectedPageCssClass' => 'active',
+                'maxButtonCount' => Yii::app()->params['maxPagerButtonCount'],
+                'htmlOptions' => array('class' => 'htc__pagenation'),
             )); ?>
         </div>
     </div>
-</div>
-
+    <!-- End Pagenation -->
+</section>
+<!-- End Blog Details Area -->
 <script>
     $( document ).ready(function() {
         var postcode_to = <?= $userPostcode ?>;

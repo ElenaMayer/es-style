@@ -1,7 +1,7 @@
 <div id="data" class="catalog">
 
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/<?php echo $type?>.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/<?php echo $type?>.jpg?1) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -196,8 +196,7 @@
                                                         <li><?= $hit->price ?>₽ <span>(РОЗНИЦА)</span></li>
                                                     <?php else :?>
                                                         <li class="old__prize"><?= $hit->old_price ?>₽</li>
-                                                        <li><?= $hit->price ?>₽</li>
-                                                        <li>(РОЗН)</li>
+                                                        <li><?= $hit->price ?>₽ <span>(РОЗН)</span></li>
                                                     <?php endif; ?>
                                                     <div class="wholesale-price hide"><?= $hit->wholesale_price ?>₽ </div>
                                                 <?php endif; ?>

@@ -2499,8 +2499,8 @@ h3.news {
     background: url('../data/i/star.png') 0 0 no-repeat;
 }
 .reviews .review_rating_icon.inactive {
-    background-position: 0 -23px;
-}
+     background-position: 0 -23px;
+ }
 .reviews .review_rating_icon.disabled {
     background-position: 0 -23px;
     cursor: default;
