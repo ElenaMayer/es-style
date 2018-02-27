@@ -6,12 +6,12 @@
             // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
             var mapOptions = {
                 // How zoomed in you want the map to start at (always required)
-                zoom: 12,
+                zoom: 16,
 
                 scrollwheel: false,
 
                 // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(23.7286, 90.3854), // New York
+                center: new google.maps.LatLng(55.042067, 82.924163),
 
                 // How you would like to style the map. 
                 // This is where you would paste any style found on Snazzy Maps.
@@ -182,22 +182,22 @@
         ]
     }
 ]
-            };
+    };
 
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('googleMap2');
+    // Get the HTML DOM element that will contain your map
+    // We are using a div with id="map" seen below in the <body>
+    var mapElement = document.getElementById('googleMap2');
 
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
+    // Create the Google Map using our element and options defined above
+    var map = new google.maps.Map(mapElement, mapOptions);
 
-            // Let's also add a marker while we're at it
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(23.7286, 90.3854),
-                map: map,
-                title: 'Ramble!',
-                icon: 'images/icons/map.png',
-                animation:google.maps.Animation.BOUNCE
+    // Let's also add a marker while we're at it
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(55.042067, 82.924163),
+        map: map,
+        title: 'Наш магазин',
+        icon: '/data/i/map.png',
+        animation:google.maps.Animation.BOUNCE
 
-            });
-        }
+    });
+}

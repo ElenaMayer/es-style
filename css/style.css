@@ -1555,6 +1555,13 @@
     padding-bottom: 15px;
     text-transform: uppercase;
 }
+.title__line--4-2 {
+    color: #212121;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
 .ht__cat__list li a {
     color: #666666;
     font-size: 16px;
@@ -2956,8 +2963,7 @@ a.shipping-calculator-button:hover{
 .bradcaump--2 .ht__bradcaump__wrap {
     height: auto;
     position: absolute;
-    left: 320px;
-    top: 113px;
+    top: 165px;
 }
 .bradcaump--2 #googleMap {
     height: 670px;
@@ -3009,14 +3015,34 @@ a.shipping-calculator-button:hover{
     font-weight: 600;
     margin-bottom: 60px;
 }
-
 .contact-box input {
     background: #f5f5f5 none repeat scroll 0 0;
     border: 0 none;
-    color: #666666;
+    color: black;
     font-size: 16px;
     height: 62px;
     padding: 0 47px;
+}
+.contact-box select {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 0 none;
+    color: black;
+    font-size: 16px;
+    height: 62px;
+}
+.contact-box.is_subscribed input {
+    height: auto;
+}
+.contact-box.is_subscribed label {
+    padding-left: 5px;
+}
+.contact-box.date_of_birth {
+    display: flex;
+}
+.contact-box.date_of_birth select {
+    margin-right: 20px;
+    width: 50%;
+    border-radius: 0;
 }
 .single-contact-form + .single-contact-form {
     margin-top: 30px;
@@ -3030,8 +3056,18 @@ a.shipping-calculator-button:hover{
     min-height: 220px;
     padding: 18px 47px;
 }
+.single-contact-form label {
+    font-size: 16px;
+    font-weight: 400;
+}
 .contact-btn {
     margin-top: 32px;
+}
+.lc .contact-btn {
+    margin-bottom: 50px;
+}
+.lc h2.red {
+    color: #c82b2a;
 }
 .fv-btn {
     background: #ff6363 none repeat scroll 0 0;

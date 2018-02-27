@@ -1,23 +1,30 @@
-<h2 class="account-header__title">Сменить пароль</h2>
+<h2 class="title__line--3">Сменить пароль</h2>
 <?php $this->renderPartial('_alert'); ?>
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
     'id'=>'customer_password_data',
     'htmlOptions' => array('class' => 'user-form'),
 )); ?>
 <?php echo CHtml::hiddenField('data_type', 'customer_password_data'); ?>
-<div class="row">
-    <?php echo $form->passwordFieldGroup($model, 'password_old', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+<div class="single-contact-form">
+    <div class="contact-box subject">
+        <?php echo $form->passwordField($model, 'password_old', array('placeholder'=>'Текущий пароль', 'autocomplete' => 'off')); ?>
+    </div>
 </div>
-<div class="row">
-    <?php echo $form->passwordFieldGroup($model, 'password_new', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+<div class="single-contact-form">
+    <div class="contact-box subject">
+        <?php echo $form->passwordField($model, 'password_new', array('placeholder'=>'Новый пароль', 'autocomplete' => 'off')); ?>
+    </div>
 </div>
-<div class="row">
-    <?php echo $form->passwordFieldGroup($model, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
+<div class="single-contact-form">
+    <div class="contact-box subject">
+        <?php echo $form->passwordField($model, 'password2', array('placeholder'=>'Повторите пароль', 'autocomplete' => 'off')); ?>
+    </div>
 </div>
-<div class="row buttons">
-    <span class="button button_blue button_big" id="submit-button">
-        <span class="button__title">Сохранить</span>
-        <span class="button__progress"></span>
-    </span>
+
+<div class="contact-btn" id="submit-button">
+    <button type="submit" class="fv-btn">Сохранить</button>
+</div>
+<div class="form-output">
+    <p class="form-messege"></p>
 </div>
 <?php $this->endWidget(); ?>

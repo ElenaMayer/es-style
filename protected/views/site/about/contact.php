@@ -1,34 +1,75 @@
-<div class="about">
-    <h1>Контакты</h1>
-
-    <h2>Как с нами связаться</h2>
-    <p>Задать вопрос и уточнить интересующую Вас информацию можно несколькими способами:</p>
-    <ul class="list list_shopping">
-        <li class="list__item">Связаться по телефону <b><?= Yii::app()->params['phone'] ?></b>.</li>
-        <li class="list__item">Написать нам в социальных сетях.</li>
-        <li class="list__item">Написать нам по электронной почте <b><?= Yii::app()->params['email'] ?></b>.</li>
-    </ul>
-
-    <h2>Точка розничной продажи в Новосибирске</h2>
-    <div class="contacts">
-        Адрес: Мичурина 12 - Ряд №6 Место №184
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bradcaump--2">
+    <div class="google__map">
+        <div class="map-contacts">
+            <div id="googleMap2"></div>
+        </div>
     </div>
-    <div class="contacts">
-        Время работы: 10:00 - 19:00 Без выходных
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <span class="breadcrumb-item active">Контакты</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="map_rinok" class="gis_map"></div>
 </div>
+<!-- End Bradcaump area -->
+<!-- Start Contact Area -->
+<section class="htc__contact__area ptb--70 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="title__line--6">Контакты</h2>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Start Single Address -->
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                <div class="address">
+                    <div class="address__icon">
+                        <i class="icon-location-pin icons"></i>
+                    </div>
+                    <div class="address__details">
+                        <h2 class="ct__title">Точка розничной продажи</h2>
+                        <p>Новосибирск, Мичурина 12 - Ряд №6 Место №184</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Address -->
+            <!-- Start Single Address -->
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 xmt-40">
+                <div class="address--2">
+                    <p><a href="#"><i class="icon-call-end icons"></i><?= Yii::app()->params['phone'] ?></a></p>
+                    <p><a href="#"><i class="icon-envelope icons"></i><?= Yii::app()->params['email'] ?></a></p>
+                </div>
+            </div>
+            <!-- End Single Address -->
+            <!-- Start Single Address -->
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 smt-40 xmt-40">
+                <div class="address">
+                    <div class="address__icon">
+                        <i class="icon-clock icons"></i>
+                    </div>
+                    <div class="address__details">
+                        <h2 class="ct__title">Часы работы</h2>
+                        <p>10:00 - 19:00 Без выходных</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Address -->
+        </div>
+    </div>
+</section>
+<!-- End Contact Area -->
 
-<script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
-<script type="text/javascript">
-    var map_rinok;
-    DG.then(function () {
-        map_rinok = DG.map('map_rinok', {
-            "center": [55.042049, 82.924407],
-            "zoom": 16
-        });
-        DG.marker([55.027069, 82.921052]).addTo(map_rinok);
-        DG.marker([55.042049, 82.924407]).addTo(map_rinok);
-        DG.marker([54.982592, 82.891341]).addTo(map_rinok);
-    });
-</script>
+<!-- Google Map js -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBzF-LWrGJIo9GgIu9QVisHPWAvWwlo_8"></script>
+<script src="/js/contact-map.js?1"></script>

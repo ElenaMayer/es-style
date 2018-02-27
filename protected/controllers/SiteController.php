@@ -282,14 +282,10 @@ class SiteController extends Controller {
             if($model->validate() && $model->save()) {
                 Yii::app()->user->setFlash( 'success', "Данные сохранены.");
             }
-            if (isset($_POST["data_type"])) {
-                $this->renderPartial('user/_'.$_POST["data_type"], array('model' => $model));
-            }
-        } else {
-            $this->render('user/customer', array(
-                'model' => $model,
-            ));
         }
+        $this->render('user/customer', array(
+            'model' => $model,
+        ));
     }
 
     public function actionCart(){
