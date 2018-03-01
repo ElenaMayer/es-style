@@ -332,6 +332,8 @@ class SiteController extends Controller {
                     $this->renderPartial('order/_order_form', array('user' => $user, 'model' => Yii::app()->cart->currentCart));
                     Yii::app()->end();
                 }
+            } else {
+                $user->tc = 'pec';
             }
             $this->render('order/order', array(
                 'user' => $user,

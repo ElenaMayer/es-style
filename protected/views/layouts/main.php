@@ -7,7 +7,7 @@
     <meta name="description" content="Интернет-магазин женской одежды в восточном стиле. Платья, блузки, кимоно и домашняя одежда. Индивидуальный восточный гороскоп."/>
     <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon"/>
 
-    <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?2', CClientScript::POS_HEAD) ?>
+    <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?3', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/magiczoom.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/social-likes.min.js', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/jquery_lazyload-1.9.3/jquery.lazyload.js', CClientScript::POS_HEAD) ?>
@@ -31,11 +31,11 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.theme.default.min.css">
     <!-- This core.css file contents all plugings css file. -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/core.css?4">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/core.css?5">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?5">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?35">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?36">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->

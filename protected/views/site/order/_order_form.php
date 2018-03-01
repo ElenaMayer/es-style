@@ -37,20 +37,12 @@
                                 <div class="checkout-method__single">
                                     <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Способ доставки</h5>
                                     <?php if(Cart::isWholesale()) :?>
-                                        <?php foreach (Yii::app()->params['tcList'] as $tc => $tcTitle):?>
-                                            <div class="single-input">
-                                                <?php echo $form->radioButton($user, 'tc', ['value'=>$tc, 'checked' => ($tc == 'pec')?"checked":'']); ?>
-                                                <label for="User_tc"><?= $tcTitle ?></label>
-                                            </div>
-                                        <?php endforeach;?>
+                                        <div class="single-input">
+                                            <?php echo $form->radioButtonList($user, 'tc', Yii::app()->params['tcList']); ?>
+                                        </div>
                                     <?php else: ?>
                                         <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'shipping_method', ['value'=>'russian_post', 'checked'=>"checked"]); ?>
-                                            <label for="User_shipping_method">Почта России</label>
-                                        </div>
-                                        <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'shipping_method', ['value'=>'store']); ?>
-                                            <label for="User_shipping_method">Получение в магазине (для Новосибирска)</label>
+                                            <?php echo $form->radioButtonList($user, 'shipping_method', ['russian_post'=>'Почта России', 'store'=>'Получение в магазине (для Новосибирска)']); ?>
                                         </div>
                                     <?php endif ?>
                                 </div>
@@ -64,12 +56,7 @@
                                         </div>
                                     <?php else:?>
                                         <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'payment', ['value'=>'cod', 'checked'=>"checked"]); ?>
-                                            <label for="User_payment">При получении</label>
-                                        </div>
-                                        <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'payment', ['value'=>'online']); ?>
-                                            <label for="User_payment">Онлайн-оплата</label>
+                                            <?php echo $form->radioButtonList($user, 'payment', Yii::app()->params['paymentMethod']); ?>
                                         </div>
                                     <?php endif ?>
                                 </div>

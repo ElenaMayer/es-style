@@ -27,7 +27,7 @@
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="contact-form-wrap">
                     <div class="col-xs-12">
-                        <?php if(!Yii::app()->user->is_wholesaler): ?>
+                        <?php if(Yii::app()->user->is_wholesaler): ?>
                             <h2 class="title__line--6 red">Оптовый аккаунт</h2>
                             <h2 class="title__line--3">Данные заказчика</h2>
                         <?php else: ?>

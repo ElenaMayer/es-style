@@ -190,7 +190,7 @@ a:active {
     outline: none;
 }
 a {
-    color: #333;
+    color: #ff6363;
     cursor: pointer;
 }
 a:hover,
@@ -747,7 +747,9 @@ textarea:-ms-input-placeholder { / IE 10+ /
   opacity: 1;
 }
 
-
+.red {
+    color: #cb2027;
+}
 
 
 

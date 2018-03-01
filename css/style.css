@@ -154,7 +154,7 @@
     font-size: 40px;
     padding: 0 33px;
     position: relative;
-    text-transform: capitalize;
+    
 }
 .section__title--2 p {
     color: #7d7d7d;
@@ -201,13 +201,13 @@
 .section__title h2 {
     color: #313131;
     font-size: 40px;
-    text-transform: capitalize;
+    
 }
 .section__title p {
     color: #7d7d7d;
     font-size: 18px;
     margin-top: 4px;
-    text-transform: capitalize;
+    
 }
 .section__title.text-center::before {
     left: 41%;
@@ -474,7 +474,7 @@
 .product__details h2 {
     color: #777777;
     font-size: 17px;
-    text-transform: capitalize;
+    
 }
 .pro__prize li {
     color: #313131;
@@ -514,7 +514,7 @@
     margin-top: 56px;
     padding-bottom: 10px;
     position: relative;
-    text-transform: capitalize;
+    
     transition: all 0.4s ease 0s;
 }
 .ht__show__more__btn a::before {
@@ -559,7 +559,7 @@
 .testimonial__details h4 {
     color: #333333;
     font-size: 16px;
-    text-transform: capitalize;
+    
 }
 .testimonial__details p {
     margin-top: 9px;
@@ -1000,7 +1000,7 @@
     font-size: 26px;
     font-weight: 500;
     margin-bottom: 20px;
-    text-transform: capitalize;
+    
 }
 .ht__promo__inner h2 {
     color: #343434;
@@ -1065,10 +1065,6 @@
     right: 90px;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.about {
-    padding: 120px 0;
 }
 .ht__about__inner h2 {
     color: #ff6363;
@@ -1420,7 +1416,7 @@
     height: 50px;
     line-height: 50px;
     padding: 0 26px;
-    text-transform: capitalize;
+    
     transition: all 0.3s ease 0s;
 }
 .ht__fson__btn a i {
@@ -1447,7 +1443,7 @@
 .breadcrumb-item {
     color: #3f3f3f;
     font-size: 14px;
-    text-transform: capitalize;
+    
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
@@ -1565,7 +1561,7 @@
 .ht__cat__list li a {
     color: #666666;
     font-size: 16px;
-    text-transform: capitalize;
+    
 }
 .ht__cat__list li a.catalog-navigation__link_active {
     color: #222;
@@ -1684,7 +1680,7 @@
     line-height: 30px;
     margin: 0 5px 10px;
     padding: 0 8px;
-    text-transform: capitalize;
+    
     transition: all 0.4s ease 0s;
 }
 .ht__tag__list li a:hover {
@@ -2023,14 +2019,14 @@ select.ht__select {
     font-family: 'Old Standard TT', serif;
     font-size: 16px;
     font-weight: 400;
-    text-transform: capitalize;
+    
     margin: 0;
 }
 .sin__desc p span {
     color: #100d13;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    text-transform: capitalize;
+    
 }
 
 .model_desc table th {
@@ -2183,7 +2179,7 @@ select.ht__select {
     font-weight: 500;
     margin-bottom: 17px;
     margin-top: 30px;
-    text-transform: capitalize;
+    
 }
 .pro__tab__content__inner p + p {
     margin-top: 32px;
@@ -2310,7 +2306,7 @@ select.select__size {
 .table-content table td.product-name a {
     color: #777777;
     font-size: 17px;
-    text-transform: capitalize;
+    
 }
 .table-content table td.product-name{
     width: 270px;
@@ -2934,7 +2930,7 @@ a.shipping-calculator-button:hover{
     height: 30px;
     line-height: 28px;
     padding: 0 20px;
-    text-transform: capitalize;
+    
     transition: all 0.3s ease 0s;
 }
 .reply__btn a:hover {
@@ -4185,4 +4181,91 @@ ul.htc__instagram__posts.owl-carousel li img {
 .ht__color__list li.all a {
     background-image: url(/data/i/color-all.png);
     background-color: initial;
+}
+.order_modal .static-page-info {
+    padding: 10px 0;
+}
+.order_modal a {
+    color: #ff6363;
+}
+.history_item_total {
+    float: right;
+}
+.about h1 {
+    padding-bottom: 20px;
+}
+.about h2 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.about i {
+    padding: 0 5px;
+}
+.payment .payment_method {
+    display: inline-block;
+    width: 250px;
+    height: 30px;
+    margin: -23px 0 0 330px;
+    vertical-align: top;
+    background: url(../data/i/payment_method.png?3) 0 0 no-repeat;
+}
+.payment .payment_method.payment_method_visa_mc {
+    margin: -7px 0 0 20px;
+    width: 95px;
+}
+.payment .payment_method.payment_method_visa_ym {
+    margin: -7px 0 0 30px;
+    width: 75px;
+    background-position: -176px 0;
+}
+.payment .payment_method.payment_method_visa_qw {
+    margin: -5px 0 0 35px;
+    width: 75px;
+    background-position: -95px 0;
+}
+.payment .payment_method.payment_method_visa_e {
+    margin: -7px 0 0 50px;
+    width: 100px;
+    background-position: -255px 0;
+}
+.payment .payment_method.payment_method_visa_s {
+    margin: -7px 0 0 70px;
+    width: 80px;
+    background-position: -360px 0;
+}
+.about h3 {
+    font-size: 16px;
+    line-height: 3;
+}
+.about table thead th {
+    color: #fff;
+    background-color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    border: 1px #999 solid;
+}
+.about th, .about td {
+    vertical-align: middle;
+    border: 1px solid #999;
+    color: #474747;
+    padding: 10px;
+    font-size: 12px;
+}
+.about tr.size-tab__select th,
+.about tr.size-tab__select td,
+.about td.size-tab__select {
+    background-color: #f5f5f5;
+    font-weight: 700;
+}
+.about table {
+    width: 80%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.about .size-howto__text {
+    width: 70%;
+    float: left;
+    padding-top: 40px;
 }

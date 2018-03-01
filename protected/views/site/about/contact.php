@@ -24,12 +24,7 @@
 <!-- End Bradcaump area -->
 <!-- Start Contact Area -->
 <section class="htc__contact__area ptb--70 bg__white">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="title__line--6">Контакты</h2>
-            </div>
-        </div>
+    <div class="container-fluid">
         <div class="row">
             <!-- Start Single Address -->
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">

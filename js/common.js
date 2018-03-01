@@ -3,9 +3,9 @@ function updateCartCount() {
         url: "/ajax/getCartCount",
         success: function( data ) {
             if (data == 0) {
-                $('.basket-button-title').html("");
+                $('.htc__qua').hide();
             } else {
-                $('.basket-button-title').html("("+data+")");
+                $('.htc__qua').html(data);
             }
         }
     });

@@ -84,8 +84,8 @@ return array(
         'canceled' => 'Отменен'
     ],
     'paymentMethod' => [
-        'online'  => 'Онлайн-оплата',
         'cod' => 'При получении',
+        'online'  => 'Онлайн-оплата',
     ],
     'shippingMethod' => [
         'russian_post' => 'Почта России',

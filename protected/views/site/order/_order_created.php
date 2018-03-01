@@ -11,9 +11,9 @@
                 <a href="/history/<?= $orderId ?>"> <?= $orderId ?></a>
             <?php endif ?>!
         </h2>
-        <p>Мы свяжемся с Вами в ближайшее время!</p>
+        <p class="static-page-info">Мы свяжемся с Вами в ближайшее время!</p>
         <?php if(!Yii::app()->user->isGuest) :?>
-            Следите за статусом заказа в <a href="/history">"Истории заказов"</a>
+            <p class="static-page-info">Следите за статусом заказа в <a href="/history">"Истории заказов"</a></p>
         <?php endif ?>
     </div>
     <?php $this->endWidget(); ?>

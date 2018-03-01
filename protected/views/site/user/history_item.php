@@ -1,97 +1,71 @@
-<div class="lc">
-    <?php $this->renderPartial('user/_user_menu'); ?>
-    <div class="history table__column table__column_right">
-        <div class="table__cell">
-            <header class="account-header">
-                <h1 class="account-header__title">
-                    <a href="/history/">Мои заказы</a>
-                </h1>
-                <h3 class="account-header__subtitle">№ <?= $order->id ?> от <?= date("d.m.Y", strtotime($order->date_create)); ?></h3>
-            </header>
-            <dl class="order-data">
-                <dt class="order-data__label">Статус</dt>
-                <dd class="order-data__value"><?=Yii::app()->params['orderStatuses'][$order->status]?>&nbsp;</dd>
-                <dt class="order-data__label">Сумма</dt>
-                <dd class="order-data__value">
-                    <table class="order-data__table">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/history.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner">
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/">Главная</a><span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <a href="/history" class="breadcrumb-item">Мои заказы</a>
+                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                            <span class="breadcrumb-item active">Заказ № <?= $order->id ?></span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<div class="cart-main-area ptb--120 bg__white lc">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table-content table-responsive">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail">Товар</th>
+                            <th class="product-name">Название</th>
+                            <th class="product-size">Размер</th>
+                            <th class="product-price">Цена</th>
+                            <th class="product-quantity">Количество</th>
+                            <th class="product-subtotal">Сумма</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Подитог</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->subtotal ?>&nbsp;руб.</td>
-                        </tr>
-                        <?php if($order->sale > 0) :?>
-                            <tr class="order-data__table-row">
-                                <td class="order-data__table-cell">Скидка</td>
-                                <td class="order-data__table-cell order-data__table-cell_right"><?= $order->sale ?>&nbsp;руб.</td>
-                            </tr>
-                        <?php endif ?>
-                        <?php if($order->coupon_sale > 0) :?>
-                            <tr class="order-data__table-row">
-                                <td class="order-data__table-cell">Скидка по купону</td>
-                                <td class="order-data__table-cell order-data__table-cell_right"><?= $order->coupon_sale ?>&nbsp;руб.</td>
-                            </tr>
-                        <?php endif ?>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Доставка<?php if(Cart::isWholesale()) :?> до ТК<?php endif?></td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->shipping ?>&nbsp;руб.</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr class="order-data__table-row order-data__table-row_amount">
-                            <td class="order-data__table-cell">Итого</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->total ?>&nbsp;руб.</td>
-                        </tr>
-                        </tfoot>
-                    </table>&nbsp;
-                </dd>
-                <?php if(!Cart::isWholesale()) :?>
-                    <dt class="order-data__label">Способ оплаты</dt>
-                    <dd class="order-data__value"><?= Yii::app()->params['paymentMethod'][$order->payment_method];?>&nbsp;</dd>
-                <?php endif?>
-                <dt class="order-data__label">Доставка</dt>
-                <dd class="order-data__value">
-                    <?php if(!Cart::isWholesale()) :?>
-                        <div class="order-data__value-row"><?= Yii::app()->params['shippingMethod'][$order->shipping_method];?></div>
-                    <?php endif?>
-                    <table class="order-data__table order-data__table_top-margin">
-                        <tbody>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Получатель</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->addressee ?></td>
-                        </tr>
-                        </tbody>
-                    </table>&nbsp;
-                    <table class="order-data__table order-data__table_top-margin">
-                        <tbody>
-                        <?php if(Cart::isWholesale()) :?>
-                            <tr class="order-data__table-row">
-                                <td class="order-data__table-cell">Способ доставки</td>
-                                <td class="order-data__table-cell order-data__table-cell_right"><?= Yii::app()->params['tcList'][$order->user->tc]?></td>
-                            </tr>
-                        <?php endif?>
-                        <?php if(Cart::isWholesale() && $order->user->tc != 'pr') :?>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Данные для доставки</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->user->delivery_data?></td>
-                        </tr>
-                        <?php endif?>
-                        <?php if(!Cart::isWholesale() || $order->user->tc == 'pr') :?>
-                        <tr class="order-data__table-row">
-                            <td class="order-data__table-cell">Адрес</td>
-                            <td class="order-data__table-cell order-data__table-cell_right"><?= $order->postcode;?>,</br><?= $order->address;?></td>
-                        </tr>
-                        <?php endif?>
+                        <?php foreach($order->cartItems as $cartItem) :?>
+                            <?php $this->renderPartial('user/_history_item_base', array('cartItem'=>$cartItem)); ?>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
-                </dd>
-            </dl>
-            <ul class="cart-list__content">
-                <?php foreach($order->cartItems as $cartItem) :?>
-                    <li class="cart-item">
-                        <?php $this->renderPartial('user/_history_item_base', array('cartItem'=>$cartItem)); ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 smt-40 xmt-40 history_item_total">
+                        <div class="htc__cart__total">
+                            <h6>Итого</h6>
+                            <div class="cart__desk__list">
+                                <ul class="cart__desc">
+                                    <li>Подитог</li>
+                                    <?php if($order->sale > 0) :?><li>Скидка</li><?php endif; ?>
+                                    <?php if($order->coupon_id) :?><li>Купон</li><?php endif; ?>
+                                    <li>Доставка</li>
+                                </ul>
+                                <ul class="cart__price">
+                                    <li><?= $order->subtotal ?>₽</li>
+                                    <?php if($order->sale > 0) :?><li>- <?= $order->sale ?>₽</li><?php endif; ?>
+                                    <?php if($order->coupon_id) :?><li>- <?= $order->coupon_sale ? $order->coupon_sale : 0 ?>₽</li><?php endif; ?>
+                                    <li><?= $order->shipping ?>₽</li>
+                                </ul>
+                            </div>
+                            <div class="cart__total">
+                                <span>Итого</span>
+                                <span><?= $order->total ?>₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

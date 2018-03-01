@@ -101,7 +101,7 @@
 .header--two .htc__shop__now__btn a {
     font-size: 18px;
     font-weight: 700;
-    text-transform: capitalize;
+    
     color: #222222;
     transition: 0.4s;
 }
@@ -344,7 +344,7 @@
 nav.off__canvars--menu ul li a {
     color: #fff;
     font-size: 20px;
-    text-transform: capitalize;
+    
 }
 nav.off__canvars--menu ul li {
     text-align: center;
@@ -578,7 +578,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     margin-bottom: 20px;
     padding: 0 0 10px;
     position: relative;
-    text-transform: capitalize;
+    
 }
 .dropdown.mega_dropdown li a.mega__title::before {
     background: #000 none repeat scroll 0 0;
@@ -676,7 +676,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 }
 .ht__header__right li a {
     color: #333333;
-    text-transform: capitalize;
+    
     transition: 0.4s;
 }
 .ht__header__right li a:hover{
@@ -952,12 +952,12 @@ h4.offset__title {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 15px;
-    text-transform: capitalize;
+    
 }
 .offset__single ul li a {
     color: #303030;
     font-size: 14px;
-    text-transform: capitalize;
+    
     transition: all 0.4s ease 0s;
 }
 .offset__single ul li + li {
@@ -1078,7 +1078,7 @@ h4.offset__title {
     color: #000;
     font-size: 20px;
     font-weight: 400;
-    text-transform: capitalize;
+    
 }
 .shp__pro__details .shp__price {
     color: #ff6363;

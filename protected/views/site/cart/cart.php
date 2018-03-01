@@ -22,49 +22,47 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <form action="#">
-                    <div class="table-content table-responsive">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="product-thumbnail">Товар</th>
-                                <th class="product-name">Название</th>
-                                <th class="product-size">Размер</th>
-                                <th class="product-price">Цена</th>
-                                <th class="product-quantity">Количество</th>
-                                <th class="product-subtotal">Сумма</th>
-                                <th class="product-remove">Удалить</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach($model->cartItems as $cartItem) :?>
-                                <?php $this->renderPartial($path.'cart/_cart_item', array('cartItem'=>$cartItem, 'path'=>$path)); ?>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="buttons-cart--inner">
-                                <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
-                                    <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
-                                <?php endif;?>
-                                <div class="buttons-cart">
-                                    <a href="/dress">Продолжить покупки</a>
-                                </div>
-                                <div class="buttons-cart checkout--btn">
-                                    <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
-                                </div>
+                <div class="table-content table-responsive">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail">Товар</th>
+                            <th class="product-name">Название</th>
+                            <th class="product-size">Размер</th>
+                            <th class="product-price">Цена</th>
+                            <th class="product-quantity">Количество</th>
+                            <th class="product-subtotal">Сумма</th>
+                            <th class="product-remove">Удалить</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($model->cartItems as $cartItem) :?>
+                            <?php $this->renderPartial($path.'cart/_cart_item', array('cartItem'=>$cartItem, 'path'=>$path)); ?>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="buttons-cart--inner">
+                            <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
+                                <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
+                            <?php endif;?>
+                            <div class="buttons-cart">
+                                <a href="/dress">Продолжить покупки</a>
+                            </div>
+                            <div class="buttons-cart checkout--btn">
+                                <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <?php if(!Cart::isWholesale()) :?>
-                            <?php $this->renderPartial('/site/_coupon'); ?>
-                        <?php endif;?>
-                        <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
-                    </div>
-                </form>
+                </div>
+                <div class="row">
+                    <?php if(!Cart::isWholesale()) :?>
+                        <?php $this->renderPartial('/site/_coupon'); ?>
+                    <?php endif;?>
+                    <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
+                </div>
             </div>
         </div>
     </div>
@@ -86,6 +84,7 @@
                     action_name = "decrease";
                 $(this).parent().children('.change-quantity_decrease').addClass('button_in-progress').addClass('button_disabled').prop("disabled", true);
                 i = 1;
+
                 $.ajax({
                     url: "/ajax/changeCount",
                     data: {

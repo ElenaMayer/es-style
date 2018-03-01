@@ -54,13 +54,13 @@
 .slider--one .slider__inner h1 {
     color: #ff6363;
     font-size: 36px;
-    text-transform: capitalize;
+    
 }
 .slider--one .slider__inner p {
     color: #ffffff;
     font-size: 20px;
     margin-top: 6px;
-    text-transform: capitalize;
+    
 }
 .slider--one .slider__inner::before {
     background: #ff6363 none repeat scroll 0 0;
@@ -276,7 +276,7 @@
   font-size: 72px;
   font-weight: 700;
   text-align: center;
-  text-transform: capitalize;
+  
 }
 .slider--5 .slider__inner h1 span {
   display: inline-block;

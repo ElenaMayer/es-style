@@ -35,8 +35,8 @@ class User extends CActiveRecord
     public $password_new;
     public $is_subscribed = true;
     private $_identity;
-    public $payment;
-    public $shipping_method;
+    public $payment = 'cod';
+    public $shipping_method = 'russian_post';
     public $create_profile;
     public $postcode_error;
     public $shipping;
