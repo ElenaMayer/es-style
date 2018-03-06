@@ -55,6 +55,7 @@ return array(
                 '<type:(dress|blouse|kimono|other|new|sale|hit)>/page/<page:\d+>'=>'site/catalogWithPage',
                 '<type:(dress|blouse|kimono|other)>/<id:\d+>'=>'site/model',
                 'unsubscribe'=>'site/unsubscribe',
+                'order'=>'site/order',
                 'customer'=>'site/customer',
                 'history'=>'site/history',
                 'cart'=>'site/cart',

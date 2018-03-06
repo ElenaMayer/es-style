@@ -17,21 +17,11 @@
                                         <h5 class="checkout-method__title"><i class="zmdi zmdi-caret-right"></i>Оформить заказ как гость</h5>
                                         <p class="checkout-method__subtitle">Зарегистрируйтесь и получитье доступ к истории заказов и упростите последующие заказы:</p>
                                         <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'create_profile', ['value'=>'0', 'checked'=>"checked"]); ?>
-                                            <label for="User_create_profile">Оформить заказ как гость</label>
+                                            <?php echo $form->radioButtonList($user, 'create_profile', ['0'=>'Оформить заказ как гость', '1'=>'Зарегистрироваться']); ?>
                                         </div>
-                                        <div class="single-input">
-                                            <?php echo $form->radioButton($user, 'create_profile', ['value'=>'1']); ?>
-                                            <label for="User_create_profile">Зарегистрироваться</label>
-                                        </div>
-                                    </div>
-                                    <div class="order-password hide">
-                                        <div class="row">
-                                            <?php echo $form->passwordFieldGroup($user, 'password1', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-                                        </div>
-                                        <div class="row">
-                                            <?php echo $form->passwordFieldGroup($user, 'password2', array('placeholder'=>'', 'autocomplete' => 'off')); ?>
-                                        </div>
+                                        <a class="button button_big button_icon button_right order_auth_btn" data-toggle="modal" data-target="#auth_form">
+                                            <span class="button__title">Уже зарегистрированы? Войти</span>
+                                        </a>
                                     </div>
                                 <?php endif;?>
                                 <div class="checkout-method__single">
@@ -62,11 +52,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <?php if (Yii::app()->user->isGuest):?>
-                                <?php $this->renderPartial('application.views.site.auth._login', array('modelAuth'=>new User('registration'))); ?>
-                            <?php endif;?>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -75,67 +60,78 @@
             </div>
             <div class="accordion__body">
                 <div class="bilinfo">
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="single-input">
-                                    <?php echo $form->textField($user, 'surname', array(  'placeholder'=>'Фамилия')); ?>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'surname', array(  'placeholder'=>'Фамилия')); ?>
                             </div>
-                            <div class="col-md-4">
-                                <div class="single-input">
-                                    <?php echo $form->textField($user, 'name', array(  'placeholder'=>'Имя *')); ?>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'name', array(  'placeholder'=>'Имя *')); ?>
                             </div>
-                            <div class="col-md-4">
-                                <div class="single-input">
-                                    <?php echo $form->textField($user, 'middlename', array( 'placeholder'=>'Отчество')); ?>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'middlename', array( 'placeholder'=>'Отчество')); ?>
                             </div>
-                            <?php if (isset($user->getErrors()['name'])):?>
-                                <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
-                            <?php endif ?>
+                        </div>
+                        <?php if (isset($user->getErrors()['name'])):?>
+                            <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
+                        <?php endif ?>
+                        <div class="col-md-6">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'phone', array('placeholder'=>'Телефон *')); ?>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-input">
+                                <?php if (Yii::app()->user->isGuest):?>
+                                    <?php echo $form->textField($user, 'email', array('placeholder'=>'Электронная почта')); ?>
+                                <?php else :?>
+                                    <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
+                                <?php endif ?>
+                                <?php if (isset($user->getErrors()['email'])):?>
+                                    <div class="help-block error"><?= array_shift($user->getErrors()['email']) ?></div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+
+                        <div class="order-password" style="display: none">
                             <div class="col-md-6">
                                 <div class="single-input">
-                                    <?php echo $form->textField($user, 'phone', array('placeholder'=>'Телефон *')); ?>
+                                    <?php echo $form->passwordField($user, 'password1', array('placeholder'=>'Пароль')); ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="single-input">
-                                    <?php if (Yii::app()->user->isGuest):?>
-                                        <?php echo $form->textField($user, 'email', array('placeholder'=>'Электронная почта')); ?>
-                                    <?php else :?>
-                                        <?php echo $form->textField($user, 'email', array('disabled'=>"disabled", 'class' => 'form-control')); ?>
-                                    <?php endif ?>
-                                    <?php if (isset($user->getErrors()['email'])):?>
-                                        <div class="help-block error"><?= array_shift($user->getErrors()['email']) ?></div>
-                                    <?php endif ?>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="single-input">
-                                    <?php echo $form->textField($user, 'postcode', array('placeholder'=>'Почтовый индекс')); ?>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-input">
-                                    <?php echo $form->textField($user, 'address', array('placeholder'=>'Адрес')); ?>
-                                </div>
-                            </div>
-                            <?php if(Cart::isWholesale()) :?>
-                                <div class="col-md-12">
-                                    <div class="single-input">
-                                        <?php echo $form->textField($user, 'delivery_data', array('placeholder'=>'Дополнительная информация (город, паспортные данные, ФИО получателя)')); ?>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-                            <div class="col-md-12">
-                                <div class="single-input">
-                                    <?php echo $form->textArea($user, 'comment', array('placeholder'=>'Комментарий')); ?>
+                                    <?php echo $form->passwordField($user, 'password2', array('placeholder'=>'Повторите пароль')); ?>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-md-6">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'postcode', array('placeholder'=>'Почтовый индекс')); ?>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-input">
+                                <?php echo $form->textField($user, 'address', array('placeholder'=>'Адрес')); ?>
+                            </div>
+                        </div>
+                        <?php if(Cart::isWholesale()) :?>
+                            <div class="col-md-12">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'delivery_data', array('placeholder'=>'Дополнительная информация (город, паспортные данные, ФИО получателя)')); ?>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                        <div class="col-md-12">
+                            <div class="single-input">
+                                <?php echo $form->textArea($user, 'comment', array('placeholder'=>'Комментарий')); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,10 +141,6 @@
 
 <script>
     $(document).ready(function() {
-        if ($('#User_create_profile').prop('checked'))
-            $('.order-password').show();
-        else
-            $('.email_group>label>span').hide();
         if ($('#User_shipping_method_1').prop('checked'))
             shipping_to_store();
 
@@ -160,14 +152,13 @@
             }
         }
     });
-    $( 'body' ).on( 'change', '#User_create_profile', function() {
-        if($(this).prop('checked')) {
-            $('.order-password').show();
-            $('.email_group>label>span').show();
-        } else {
-            $('.order-password').hide();
-            $('.email_group>label>span').hide();
-        }
+    $( 'body' ).on( 'change', '#User_create_profile_0', function() {
+        $('.order-password').hide();
+        $('.email_group>label>span').hide();
+    });
+    $( 'body' ).on( 'change', '#User_create_profile_1', function() {
+        $('.order-password').show();
+        $('.email_group>label>span').show();
     });
     $( 'body' ).on( 'change', '#User_shipping_method', function() {
         if($(this).find(":selected").val() == 'russian_post') {

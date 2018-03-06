@@ -17,8 +17,7 @@
     </td>
     <td class="product-price">
         <?php if($cartItem->order->is_wholesale) :?>
-        <!--@todo-->
-            <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->photo->wholesale_price?>₽
+            <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->wholesale_price?>₽
         <?php elseif($cartItem->order->coupon_id && ($newPrice = $cartItem->order->coupon->getSumWithSaleInRub($cartItem->photo->price, $cartItem->photo->category)) && $cartItem->photo->price!=$newPrice) :?>
             <div class="cart-item__cell cart-item__cell_price"><?= $newPrice ?>₽
         <?php if($cartItem->photo->is_sale) :?>

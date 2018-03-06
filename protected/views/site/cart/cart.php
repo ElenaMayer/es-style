@@ -44,23 +44,25 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
+                        <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
+                            <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
+                        <?php endif;?>
                         <div class="buttons-cart--inner">
-                            <?php if(Cart::isWholesale() && !$model->isReadyToOrder()) :?>
-                                <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
-                            <?php endif;?>
                             <div class="buttons-cart">
                                 <a href="/dress">Продолжить покупки</a>
                             </div>
                             <div class="buttons-cart checkout--btn">
-                                <a <?php if($model->isReadyToOrder()):?>href="/order/<?= $model->id?>"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
+                                <a <?php if($model->isReadyToOrder()):?>href="/order"<?php endif;?> <?php if(!$model->isReadyToOrder()):?>class="button_disabled" <?php endif;?>>Оформить заказ</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="cart_coupon col-md-6 col-sm-12 col-xs-12">
                     <?php if(!Cart::isWholesale()) :?>
                         <?php $this->renderPartial('/site/_coupon'); ?>
                     <?php endif;?>
+                    </div>
                     <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
                 </div>
             </div>

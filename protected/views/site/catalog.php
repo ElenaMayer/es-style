@@ -193,10 +193,10 @@
                                                     <li><?= $hit->wholesale_price ?>₽ <span class="red">ОПТ</span></li>
                                                 <?php else :?>
                                                     <?php if(!$hit->is_sale) :?>
-                                                        <li><?= $hit->price ?>₽ <span>(РОЗНИЦА)</span></li>
+                                                        <li><?= $hit->price ?>₽</li>
                                                     <?php else :?>
                                                         <li class="old__prize"><?= $hit->old_price ?>₽</li>
-                                                        <li><?= $hit->price ?>₽ <span>(РОЗН)</span></li>
+                                                        <li><?= $hit->price ?>₽</li>
                                                     <?php endif; ?>
                                                     <div class="wholesale-price hide"><?= $hit->wholesale_price ?>₽ </div>
                                                 <?php endif; ?>

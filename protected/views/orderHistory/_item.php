@@ -10,7 +10,9 @@
             <div class="cart-item__size">Универсальный размер: <?= $cartItem->photo->size_at ?>-<?= $cartItem->photo->size_to ?></div>
         <?php endif; ?>
     </div>
-    <?php if($cartItem->new_price) :?>
+    <?php if ($cartItem->order->is_wholesale): ?>
+        <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->wholesale_price?>&nbsp;руб.
+    <?php elseif($cartItem->new_price) :?>
     <div class="cart-item__cell cart-item__cell_price"><?= $cartItem->new_price?>&nbsp;руб.
         <div class="cart-item__old-price"><?= $cartItem->price?>&nbsp;руб.</div>
     <?php else :?>

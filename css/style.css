@@ -41,6 +41,9 @@
 
 -----------------------------------------------------------------------------------*/
 
+.content .container-fluid {
+    padding-right: 40px;
+}
 
 /*----------------------------------------*/
 /*  1. Google fonts
@@ -469,7 +472,7 @@
     margin-top: 7px;
 }
 .product__details {
-    height: 45px;
+    height: 72px;
 }
 .product__details h2 {
     color: #777777;
@@ -652,7 +655,7 @@
 
 
 .htc__blog__area {
-    padding-top: 63px;
+    padding-top: 45px;
 }
 .blog {
     align-items: center;
@@ -2630,7 +2633,7 @@ a.shipping-calculator-button:hover{
     background: #212121 none repeat scroll 0 0;
     color: #fff;
 }
-.payment__btn li.active a:hover{
+.payment__btn li.active a:not(.button_disabled):hover{
     background: #ebebeb;
     color: #3f3f3f;
 }
@@ -3635,11 +3638,6 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-weight: 500;
     color: #000;
 }
-.accordion__body .checkout-method__login .single-input label:before{
-    content: "*";
-    padding-right: 15px;
-    color: #c2a476;
-}
 .accordion__body .checkout-method__login .single-input input{
     height: 32px;
     line-height: 32px;
@@ -3887,7 +3885,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     background: #212121;
     color: #ffffff;
     font-family: "Poppins";
-    padding: 0 45px;
+    padding: 0;
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 16px;
@@ -3896,7 +3894,8 @@ ul.htc__instagram__posts.owl-carousel li img {
 .dark-btn a:hover{
     background: #ff6363;
 }
-.dark-btn input {
+.dark-btn input,
+.dark-btn span {
     display: inline-block;
     height: 45px;
     line-height: 45px;
@@ -3910,8 +3909,11 @@ ul.htc__instagram__posts.owl-carousel li img {
     letter-spacing: 1px;
     font-size: 16px;
     transition: all 0.3s ease-in-out 0s;
+    width: 100%;
 }
-.dark-btn input:hover {
+
+.dark-btn a:not(.button_disabled) input:hover,
+.dark-btn a:not(.button_disabled) span:hover {
     background: #ff6363;
 }
 
@@ -3919,8 +3921,6 @@ ul.htc__instagram__posts.owl-carousel li img {
     margin-left: -20px;
     margin-right: -20px;
 }
-
-
 
 .change-quantity.button_disabled {
     opacity: .6;
@@ -3961,6 +3961,7 @@ ul.htc__instagram__posts.owl-carousel li img {
 .checkout-method__login .login-form__lost {
     display: block;
     padding-bottom: 10px;
+    color: #212121;
 }
 .login-form .checkout-method__title,
 .lost-form .checkout-method__title {
@@ -3985,7 +3986,11 @@ ul.htc__instagram__posts.owl-carousel li img {
 .main #grably-parse-button {
     width: 160px;
     height: 37px;
-    top: 270px !important;
+    top: 30% !important;
+}
+.main #grably-parse-button .grably-parser-logo,
+.main #grably-parse-button .grably-parser-text {
+    height: 42px;
 }
 .getprice {
     position: fixed;
@@ -4006,7 +4011,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-size: 12px;
     font-weight: 600;
     line-height: 50px;
-    top: 440px;
+    top: 60%;
     right: 0;
     -webkit-transform: rotate(90deg) translate(0%, -170%);
     -ms-transform: rotate(90deg) translate(0%, -170%);
@@ -4077,8 +4082,8 @@ ul.htc__instagram__posts.owl-carousel li img {
     background: #212121 none repeat scroll 0 0;
     color: #fff;
 }
-.checkout--btn a:hover,
-.payment__btn li.active a:hover {
+.checkout--btn a:not(.button_disabled):hover,
+.payment__btn li.active a:not(.button_disabled):hover {
     background: #ff6363 none repeat scroll 0 0;
     color: #fff;
 }
@@ -4268,4 +4273,29 @@ ul.htc__instagram__posts.owl-carousel li img {
     width: 70%;
     float: left;
     padding-top: 40px;
+}
+
+.checkout-method__login a {
+    color: #474747;
+}
+.order_auth_btn {
+    letter-spacing: 1px;
+    padding-top: 10px;
+    display: block;
+    font-size: 16px;
+}
+.cart_min-wholesale-sum {
+    right: 0;
+    top: -40px;
+    padding-top: 5px;
+    padding-right: 25px;
+    color: #ca0500;
+    position: absolute;
+    font-weight: 800;
+}
+.cart_min-wholesale-sum {
+    top: inherit;
+    bottom: 50px;
+    left: 50px;
+    right: inherit;
 }

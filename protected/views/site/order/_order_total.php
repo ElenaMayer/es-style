@@ -25,3 +25,12 @@
     <h5>Итого</h5>
     <span class="price"><?= $cart->total ?>₽</span>
 </div>
+
+<?php if(Cart::isWholesale() && !$cart->isReadyToOrder()) :?>
+    <span class="cart_min-wholesale-sum">Минимальная оптовая партия <?=Yii::app()->params['minWholesaleSum']?>₽</span>
+<?php endif;?>
+<div class="buttons-cart checkout--btn dark-btn">
+    <a class="button button_blue button_big order_submit <?php if(!$cart->isReadyToOrder()):?>button_disabled<?php endif;?>">
+        <span class="button__title">Отправить заказ</span>
+    </a>
+</div>

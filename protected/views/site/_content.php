@@ -50,10 +50,10 @@
                                 <li><?= $photo->wholesale_price ?>₽ <span class="red">ОПТ</span></li>
                             <?php else :?>
                                 <?php if(!$photo->is_sale) :?>
-                                    <li><?= $photo->price ?>₽ <span>(РОЗНИЦА)</span></li>
+                                    <li><?= $photo->price ?>₽</li>
                                 <?php else :?>
                                     <li class="old__prize"><?= $photo->old_price ?>₽</li>
-                                    <li><?= $photo->price ?>₽ <span>(РОЗН)</span></li>
+                                    <li><?= $photo->price ?>₽</li>
                                 <?php endif; ?>
                                 <div class="wholesale-price hide"><?= $photo->wholesale_price ?>₽ </div>
                             <?php endif; ?>

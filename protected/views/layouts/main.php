@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/magiczoom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/social-likes_flat.css" />
     <?php if (strpos(Yii::app()->request->pathInfo, 'horoscope')!==false):?>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?6" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/horoscope.css?7" />
     <?php endif;?>
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
     <!-- Owl Carousel min css -->
@@ -35,7 +35,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?36">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?40">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->
@@ -94,9 +94,10 @@
                                 <li><a href="/customer">Аккаунт</a></li>
                             <?php endif;?>
                             <?php if (Yii::app()->user->isGuest):?>
-                            <li><a class="button button_big button_icon button_right" href="#" data-toggle="modal" data-target="#auth_form">
+                            <li><a class="button button_big button_icon button_right" data-toggle="modal" data-target="#auth_form">
                                     <span class="button__title">Вход</span>
-                            </li></a>
+                                </a>
+                            </li>
                             <?php else: ?>
                             <li><a class="button button_big button_icon button_right">
                                     <span class="button__title logout">Выход</span>

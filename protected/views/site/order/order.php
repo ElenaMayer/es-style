@@ -65,11 +65,6 @@
                         <?php $this->renderPartial('order/_order_total', array('cart'=>$cart)); ?>
                     </div>
                 </div>
-                <div class="buttons-cart checkout--btn dark-btn">
-                    <a class="button button_blue button_big order_submit">
-                        <span class="button__title">Отправить заказ</span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -121,7 +116,7 @@
         ga('send', 'event', 'order', 'create_order');
         $(this).addClass('button_in-progress').addClass('button_disabled').prop( "disabled", true );
         $.ajax({
-            url: "/order/" + cart_id,
+            url: "/order",
             data: $( "#order-form" ).serialize(),
             type: "POST",
             dataType: "html",
@@ -160,5 +155,4 @@
             }
         })
     }
-
 </script>

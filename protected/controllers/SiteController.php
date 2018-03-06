@@ -137,7 +137,7 @@ class SiteController extends Controller {
         if(!empty($_POST)) {
             $cartItem = $this->actionAddToCart();
             if($_POST['product_action'] == 'buy' && $cartItem)
-                $this->redirect('/order/'.$cartItem->cart->id);
+                $this->redirect('/order');
         }
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);
@@ -202,7 +202,7 @@ class SiteController extends Controller {
         if(!empty($_POST)) {
             $cartItem = $this->actionAddToCart();
             if($_POST['product_action'] == 'buy' && $cartItem)
-                $this->redirect('/order/'.$cartItem->cart->id);
+                $this->redirect('/order');
         }
         $model = Photo::model()->findByAttributes(array('category'=>$type, 'article'=>$id));
         $this->pageTitle=$model->title.' арт. '.$model->article.' - '.Yii::app()->name;
@@ -289,16 +289,20 @@ class SiteController extends Controller {
     }
 
     public function actionCart(){
-        $this->pageTitle = Yii::app()->name.' - '.'Корзина';
-        $this->render('cart/cart',array(
-            'model'=>Yii::app()->cart->currentCart,
-            'path'=>''
-        ));
+        if(!empty(Yii::app()->cart->currentCart->cartItems)) {
+            $this->pageTitle = Yii::app()->name . ' - ' . 'Корзина';
+            $this->render('cart/cart', array(
+                'model' => Yii::app()->cart->currentCart,
+                'path' => ''
+            ));
+        } else {
+            $this->redirect("/");
+        }
     }
 
-    public function actionOrder($id){
+    public function actionOrder(){
         $this->pageTitle = Yii::app()->name.' - '.'Заказ';
-        if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->id == $id && Yii::app()->cart->currentCart->isReadyToOrder()) {
+        if(!empty(Yii::app()->cart->currentCart->cartItems) && Yii::app()->cart->currentCart->isReadyToOrder()) {
             if(Yii::app()->params['debugMode']){
                 Yii::log('Переход к оформлению заказа, IP:', 'warning');
                 Yii::log($_SERVER['REMOTE_ADDR'], 'warning');
@@ -340,7 +344,7 @@ class SiteController extends Controller {
                 'cart' => Yii::app()->cart->currentCart
             ));
         }  else
-            $this->redirect(array('cart'));
+            $this->redirect('/cart');
     }
 
     public function processingOrder($orderData){
@@ -427,9 +431,8 @@ class SiteController extends Controller {
             foreach ($cart->cartItems as $item) {
                 $item->order_id = $order->id;
                 $item->cart_id = null;
-                if(Cart::isWholesale()) {
-                    $item->price = $item->photo->wholesale_price;
-                }elseif($item->photo->is_sale) {
+                $item->wholesale_price = $item->photo->wholesale_price;
+                if($item->photo->is_sale) {
                     $item->new_price = $item->photo->price;
                     $item->price = $item->photo->old_price;
                 } elseif($order->coupon_id) {

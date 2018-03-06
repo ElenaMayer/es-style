@@ -49,10 +49,6 @@
                     Цвета: <?= HoroscopeColorBySign::getColorsStringBySigns([$signByDate, $signByYear]);?></b>
                 </div>
             </div>
-            <p class="social_title">Поделиться с друзьями</p>
-            <div>
-                <?php $this->renderPartial('application.views.site._social'); ?>
-            </div>
             <div class="horoscope_by_year">
                 <h2>Характеристика <b class="red"><?= HoroscopeSignByYear::getSignStringRP($signByYear);?></b></h2>
                 <img src="/data/horoscope/<?= $signByYear?>.jpg">
@@ -64,12 +60,7 @@
             </div>
             <?php if($sex == 'female'):?>
                 <div class="horoscope_model">
-                    <h2>Подходящие модели</h2>
-                    <?php foreach ($models as $model):?>
-                        <a href="/<?= $model->model->category ?>/<?= $model->model->article ?>">
-                            <img class="catalog__item__img" src="<?= $model->model->getPreviewUrl(); ?>" width="223" height="298" alt="<?=$model->model->title; ?> арт. <?= $model->model->article; ?>">
-                        </a>
-                    <?php endforeach;?>
+                    <?php $this->renderPartial('_models', ['models' => $models]); ?>
                 </div>
             <?php endif;?>
             <div class="horoscope_by_sex">
@@ -101,7 +92,9 @@
                         <input id="subscription-email" name="email" value="" type="text">
                         <div class="popup-email-error error"></div>
                     </div>
-                    <span class="btn btn-simple btn-default get-coupon-button">Получить мой подарок!</span>
+                    <div class="blog__btn">
+                        <a class="get-coupon-button"><i class="zmdi zmdi-long-arrow-right"></i>Получить мой подарок</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -110,11 +103,11 @@
 <script>
     $( document ).ready(function() {
         if($('.horoscope_result').length > 0) {
-            $('meta[name=description]').attr('content', '<?= $description ?>');
+            $('meta[name=description]').attr('content', '<?= isset($description)? $description: '' ?>');
             Ya.share2('ya-share2', {
                 content: {
                     title: 'Мой восточный гороскоп от <?= Yii::app()->params["domain"]; ?>',
-                    description: '<?= $description ?>',
+                    description: '<?= isset($description)? $description: '' ?>',
                     image: 'http://<?= isset($model->model)?$model->model->getFullPreviewUrl():''; ?>'
                 }
             });

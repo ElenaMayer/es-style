@@ -73,12 +73,7 @@
             <div class="label"><?php echo $form->labelEx($model,'tc'); ?></div>
             <div><?php echo CHtml::encode(Yii::app()->params['tcList'][$model->user->tc]); ?></div>
         </div>
-        <?php if ($model->user->tc == 'pr'): ?>
-            <div class="row">
-                <div class="label"><?php echo $form->labelEx($model,'delivery_data'); ?></div>
-                <div><?php echo CHtml::encode($model->user->delivery_data); ?></div>
-            </div>
-        <?php else: ?>
+        <?php if ($model->user->tc != 'pr' && $model->user->delivery_data): ?>
             <div class="row">
                 <div class="label"><?php echo $form->labelEx($model,'delivery_data'); ?></div>
                 <div><?php echo CHtml::encode($model->user->delivery_data); ?></div>

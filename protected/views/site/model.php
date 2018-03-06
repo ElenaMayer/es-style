@@ -55,10 +55,10 @@
                                     <li><span class="red"><?= $model->wholesale_price ?>₽ ОПТ</span></li>
                                 <?php else :?>
                                     <?php if(!$model->is_sale) :?>
-                                        <li><?= $model->price ?>₽ <span>(РОЗНИЦА)</span></li>
+                                        <li><?= $model->price ?>₽</li>
                                     <?php else :?>
                                         <li class="old__prize"><?= $model->old_price ?>₽</li>
-                                        <li><?= $model->price ?>₽ <span>(РОЗНИЦА)</span></li>
+                                        <li><?= $model->price ?>₽</li>
                                     <?php endif; ?>
                                     <div class="wholesale-price hide"><?= $model->wholesale_price ?>₽ </div>
                                 <?php endif; ?>

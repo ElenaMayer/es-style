@@ -20,10 +20,7 @@
                 'type' => 'POST',
                 'success' => 'js: function(data) {
                                 if (data == 1){
-                                    if (window.location.pathname.indexOf("order") > 0)
-                                        window.location = "/cart";
-                                    else
-                                        window.location = window.location.pathname;
+                                    window.location = window.location.pathname;
                                 } else {
                                     $("#login-form").html(data);
                                     $(".button_in-progress").removeClass("button_in-progress").removeClass("button_disabled").prop( "disabled", false );

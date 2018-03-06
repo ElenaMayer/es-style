@@ -40,7 +40,7 @@
             </ul>
             <ul class="shopping__btn">
                 <li><a href="/cart">В корзину</a></li>
-                <li class="shp__checkout"><a href="/order/<?= $cartItem->cart->id ?>">Оформить заказ</a></li>
+                <li class="shp__checkout"><a href="/order">Оформить заказ</a></li>
             </ul>
         </div>
     </div>

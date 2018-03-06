@@ -51,8 +51,8 @@
 .horoscope .btn-default.submit:not(.button_disabled):focus,
 .horoscope .btn-default.submit:not(.button_disabled):active,
 .horoscope .btn-default.submit:not(.button_disabled).active {
-    background-color: #ff3d00;
-    border-color: #ff3d00;
+    background-color: #fe6263;
+    border-color: #fe6263;
 }
 
 .horoscope_result_table {
@@ -70,7 +70,7 @@
     color: #ca0600;
 }
 .horoscope b.orange {
-    color: #ff3d00;
+    color: #fe6263;
 }
 .horoscope b.purple {
     color: #9e3c5d;
@@ -109,4 +109,46 @@
     float: left;
     font-size: 17px;
     padding-right: 10px;
+}
+.horoscope .title__border::before {
+    content: none;
+}
+.horoscope .htc__product__area {
+    padding-top: 30px;
+}
+.horoscope .product__wrap {
+    margin-top: 0;
+}
+.horoscope .product__details h2 {
+    font: inherit;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #777777;
+    font-size: 17px;
+}
+.horoscope .subscription-fast-title span {
+    color: #fe6263;
+    font-weight: bold;
+    font-size: 18px;
+}
+.horoscope .subscription-fast-pop {
+    text-align: center;
+}
+.subscription-fast-pop label {
+    font-weight: normal;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.subscription-fast-form input[type=text] {
+    box-sizing: border-box;
+    padding: 7px 13px;
+    margin: 10px;
+    width: 40%;
+    font-size: 18px;
+}
+.subscription-fast-pop .error {
+    padding: 0;
+    color: #ca0600;
+    text-align: center;
 }

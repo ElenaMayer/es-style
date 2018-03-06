@@ -11,6 +11,7 @@
  * @property integer $count
  * @property integer $price
  * @property integer $new_price
+ * @property integer $wholesale_price
  * @property string $order_id
  * @property string $date_create
  *
@@ -36,7 +37,7 @@ class CartItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, item_id, count, price, new_price', 'numerical', 'integerOnly'=>true),
+			array('cart_id, item_id, count, price, new_price, wholesale_price', 'numerical', 'integerOnly'=>true),
 			array('size', 'length', 'max'=>255),
 			array('order_id', 'length', 'max'=>225),
 			array('date_create', 'safe'),
@@ -74,6 +75,7 @@ class CartItem extends CActiveRecord
 			'count' => 'Count',
 			'price' => 'Price',
 			'new_price' => 'New Price',
+			'wholesale_price' => 'Wholesale Price',
 			'order_id' => 'Order',
 			'date_create' => 'Date Create',
 		);
@@ -124,16 +126,18 @@ class CartItem extends CActiveRecord
 	}
 
 	public function getSum(){
-        if(Cart::isWholesale()) {
-            return $this->photo->wholesale_price*$this->count;
-        } elseif (!empty($this->new_price))
-			return $this->new_price*$this->count;
+	    $sum = 0;
+        if(($this->order_id && $this->order->is_wholesale) || Cart::isWholesale())
+            $sum = $this->wholesale_price;
+        elseif (!empty($this->new_price))
+            $sum = $this->new_price;
 		elseif(!empty($this->price))
-			return $this->price*$this->count;
+            $sum = $this->price;
         elseif(!empty($this->cart->coupon_id))
-            return $this->cart->coupon->getSumWithSaleInRub($this->photo->price, $this->photo->category)*$this->count;
+            $sum = $this->cart->coupon->getSumWithSaleInRub($this->photo->price, $this->photo->category);
 		else
-			return $this->photo->price*$this->count;
+            $sum = $this->photo->price;
+		return $sum * $this->count;
 
 	}
 

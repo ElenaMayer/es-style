@@ -281,10 +281,16 @@ class Photo extends CActiveRecord
                 $criteria->order = 'is_available DESC, is_new  DESC';
                 break;
             case 'по возрастанию цены':
-                $criteria->order = 'is_available DESC, price';
+                if(Cart::isWholesale())
+                    $criteria->order = 'is_available DESC, wholesale_price';
+                else
+                    $criteria->order = 'is_available DESC, price';
                 break;
             case 'по убыванию цены':
-                $criteria->order = 'is_available DESC, price DESC';
+                if(Cart::isWholesale())
+                    $criteria->order = 'is_available DESC, wholesale_price DESC';
+                else
+                    $criteria->order = 'is_available DESC, price DESC';
                 break;
             case 'по скидкам':
                 $criteria->order = 'is_available DESC, is_sale DESC, sale DESC';

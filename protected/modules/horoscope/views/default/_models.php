@@ -4,14 +4,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="section__title text--left">
-                    <h2 class="title__line title__border">Новинки</h2>
+                    <h2 class="title__line title__border">Подходящие модели</h2>
                     <p>#Тренды сезона</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="product__wrap activation__style--1 owl-carousel owl-theme clearfix">
-                <?php foreach($photos as $photo) :?>
+                <?php foreach($models as $model) :?>
+                    <?php $photo = $model->model?>
                     <!-- Start Single Product -->
                     <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
                         <div class="product">
