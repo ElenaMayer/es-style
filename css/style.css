@@ -2822,7 +2822,7 @@ a.shipping-calculator-button:hover{
     line-height: 26px;
 }
 .bl__dtl {
-    padding-top: 46px;
+    padding: 46px 0;
 }
 .title__line--5 {
     color: #333333;
@@ -4305,7 +4305,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     position: absolute;
     font-weight: 800;
 }
-.cart_min-wholesale-sum {
+.order-details .cart_min-wholesale-sum {
     top: inherit;
     bottom: 50px;
     left: 50px;

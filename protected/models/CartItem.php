@@ -127,9 +127,12 @@ class CartItem extends CActiveRecord
 
 	public function getSum(){
 	    $sum = 0;
-        if(($this->order_id && $this->order->is_wholesale) || Cart::isWholesale())
-            $sum = $this->wholesale_price;
-        elseif (!empty($this->new_price))
+        if(($this->order_id && $this->order->is_wholesale) || Cart::isWholesale()){
+            if(!empty($this->wholesale_price))
+                $sum = $this->wholesale_price;
+                    else
+                $sum = $this->photo->wholesale_price;
+        } elseif (!empty($this->new_price))
             $sum = $this->new_price;
 		elseif(!empty($this->price))
             $sum = $this->price;

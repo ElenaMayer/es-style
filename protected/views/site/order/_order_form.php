@@ -118,14 +118,16 @@
                                 <?php endif ?>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="single-input">
-                                <?php echo $form->textField($user, 'postcode', array('placeholder'=>'Почтовый индекс')); ?>
+                        <div class="shipping_data">
+                            <div class="col-md-6">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'postcode', array('placeholder'=>'Почтовый индекс')); ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-input">
-                                <?php echo $form->textField($user, 'address', array('placeholder'=>'Адрес')); ?>
+                            <div class="col-md-12">
+                                <div class="single-input">
+                                    <?php echo $form->textField($user, 'address', array('placeholder'=>'Адрес')); ?>
+                                </div>
                             </div>
                         </div>
                         <?php if(Cart::isWholesale()) :?>
@@ -173,8 +175,8 @@
         $('.order-password').show();
         $('.email_group>label>span').show();
     });
-    $( 'body' ).on( 'change', '#User_shipping_method', function() {
-        if($(this).find(":selected").val() == 'russian_post') {
+    $( 'body' ).on( 'change', '#User_tc_3', function() {
+        if ($('#User_tc_3').prop('checked')){
             shipping_by_post();
         } else {
             shipping_to_store();

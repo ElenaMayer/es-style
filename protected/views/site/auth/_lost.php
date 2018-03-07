@@ -28,7 +28,6 @@
                     array(
                         'class' => 'auth_button'
                     )); ?>
-                    <span class="button__progress"></span>
                 </span>
 
             </div>

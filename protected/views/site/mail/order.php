@@ -262,7 +262,7 @@
                                                 <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Кол-во</b></font>
                                             </td>
                                             <td width="105">
-                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Со скидкой</b></font>
+                                                <font size="2" color="#333333" face="Arial, Helvetica, sans-serif" style="font-size: 16px;"><b>Цена</b></font>
                                             </td>
                                         </tr>
                                         <?php foreach($order->cartItems as $cartItem) :?>
