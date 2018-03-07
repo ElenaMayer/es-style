@@ -35,7 +35,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?40">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?41">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->
@@ -82,7 +82,7 @@
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <div class="logo">
                             <a href="/">
-                                <img src="/data/i/logo.png?1" alt="<?= Yii::app()->params['domain'] ?>">
+                                <img src="/data/i/logo.png?3" alt="<?= Yii::app()->params['domain'] ?>">
                             </a>
                         </div>
                     </div>

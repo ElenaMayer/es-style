@@ -70,19 +70,22 @@
                             <div class="single-input">
                                 <?php echo $form->textField($user, 'name', array(  'placeholder'=>'Имя *')); ?>
                             </div>
+                            <?php if (isset($user->getErrors()['name'])):?>
+                                <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
+                            <?php endif ?>
                         </div>
                         <div class="col-md-4">
                             <div class="single-input">
                                 <?php echo $form->textField($user, 'middlename', array( 'placeholder'=>'Отчество')); ?>
                             </div>
                         </div>
-                        <?php if (isset($user->getErrors()['name'])):?>
-                            <div class="help-block error"><?= array_shift($user->getErrors()['name']) ?></div>
-                        <?php endif ?>
                         <div class="col-md-6">
                             <div class="single-input">
                                 <?php echo $form->textField($user, 'phone', array('placeholder'=>'Телефон *')); ?>
                             </div>
+                            <?php if (isset($user->getErrors()['phone'])):?>
+                                <div class="help-block error"><?= array_shift($user->getErrors()['phone']) ?></div>
+                            <?php endif ?>
                         </div>
                         <div class="col-md-6">
                             <div class="single-input">
@@ -102,11 +105,17 @@
                                 <div class="single-input">
                                     <?php echo $form->passwordField($user, 'password1', array('placeholder'=>'Пароль')); ?>
                                 </div>
+                                <?php if (isset($user->getErrors()['password1'])):?>
+                                    <div class="help-block error"><?= array_shift($user->getErrors()['password1']) ?></div>
+                                <?php endif ?>
                             </div>
                             <div class="col-md-6">
                                 <div class="single-input">
                                     <?php echo $form->passwordField($user, 'password2', array('placeholder'=>'Повторите пароль')); ?>
                                 </div>
+                                <?php if (isset($user->getErrors()['password2'])):?>
+                                    <div class="help-block error"><?= array_shift($user->getErrors()['password2']) ?></div>
+                                <?php endif ?>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -141,6 +150,10 @@
 
 <script>
     $(document).ready(function() {
+        if ($('#User_create_profile_1').prop('checked'))
+            $('.order-password').show();
+        else
+            $('.email_group>label>span').hide();
         if ($('#User_shipping_method_1').prop('checked'))
             shipping_to_store();
 

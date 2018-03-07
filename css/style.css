@@ -3687,7 +3687,8 @@ ul.htc__instagram__posts.owl-carousel li img {
 .paymentinfo-credit-content .single-input select:focus,
 .bilinfo .single-input select:active,
 .paymentinfo-credit-content .single-input select:active,
-.shipinfo .single-input select:active{
+.shipinfo .single-input select:active,
+.single-input input.error {
     outline: none;
     border: 1px solid #ff6363;
 }
@@ -3981,6 +3982,17 @@ ul.htc__instagram__posts.owl-carousel li img {
 @media (min-width: 768px){
     .auth_form .modal-dialog {
         width: 500px;
+    }
+}
+@media (min-width: 1300px){
+    .htc__contact a {
+        font-size: 16px;
+    }
+    .ht__header__right li a {
+        font-size: 16px;
+    }
+    .main__menu > li > a {
+        font-size: 16px;
     }
 }
 .main #grably-parse-button {

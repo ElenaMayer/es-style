@@ -18,7 +18,7 @@
                         <div class="product">
                             <div class="product__thumb">
                                 <a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>">
-                                    <img src="<?= $photo->getPreviewUrl(); ?>" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
+                                    <img src="<?= $photo->getImageUrl(); ?>" alt="<?=$photo->title; ?> арт. <?= $photo->article; ?>">
                                 </a>
                                 <div class="product__offer">
                                     <?php if($photo->is_sale && !Cart::isWholesale()) :?>
