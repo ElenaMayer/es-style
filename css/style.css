@@ -2193,16 +2193,9 @@ select.ht__select {
 select.select__size {
     border: 1px solid #afafaf;
     margin: 0 15px;
-    width: 50px;
+    width: 100px;
     padding: 0 15px;
     height: 30px;
-}
-
-select.select__size {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
     background: rgba(0, 0, 0, 0) url("images/icons/select-option.png") no-repeat scroll 87% 7px / 10px 5px;
 }
 

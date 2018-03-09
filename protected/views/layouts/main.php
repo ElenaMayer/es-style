@@ -5,7 +5,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="ru" />
     <meta name="description" content="Интернет-магазин женской одежды в восточном стиле. Платья, блузки, кимоно и домашняя одежда. Индивидуальный восточный гороскоп."/>
-    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/data/i/favicon-16x16.png" type="image/png" sizes ='16x16'/>
+    <link rel="icon" href="/data/i/favicon-32x32.png" type="image/png" sizes ='32x32'/>
+    <link rel="icon" href="/data/i/favicon-86x86.png" type="image/png" sizes ='86x86'/>
 
     <?php Yii::app()->clientScript->registerScriptFile('/js/common.js?3', CClientScript::POS_HEAD) ?>
     <?php Yii::app()->clientScript->registerScriptFile('/js/magiczoom.js', CClientScript::POS_HEAD) ?>
@@ -35,7 +37,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?41">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?42">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
     <!-- User style -->
