@@ -477,7 +477,13 @@ nav.off__canvars--menu ul li ul li a:hover {
 .header--3 .scroll-header .menumenu__container {
   background: transparent;
 }
-
+.sticky__header .logo {
+    height: 68px;
+    display: none;
+}
+.sticky__header.scroll-header .logo {
+    display: flex;
+}
 
 .fluid-container.mobile-menu-container {
   position: relative;
