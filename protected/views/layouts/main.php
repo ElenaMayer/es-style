@@ -35,7 +35,7 @@
     <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/core.css?5">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?7">
     <!-- Theme main style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?43">
     <!-- Responsive css -->
@@ -115,7 +115,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="menumenu__container clearfix">
-                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3"></div>
+                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
+                            <div class="logo">
+                                <a href="/">
+                                    <img src="/data/i/logo.png?3" alt="<?= Yii::app()->params['domain'] ?>">
+                                </a>
+                            </div>
+                        </div>
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-5">
                             <nav class="main__menu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
