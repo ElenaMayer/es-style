@@ -25,13 +25,13 @@
         <?php echo $form->checkBox($modelAuth,'is_subscribed'); ?>
         <?php echo $form->labelEx($modelAuth,'is_subscribed'); ?>
     </div>
-    <div class="single-input">
+    <div class="single-input date_of_birth">
         <?php echo $form->labelEx($modelAuth,'date_of_birth'); ?>
         <?php echo $form->dropDownList($modelAuth,'date', $modelAuth->getDatesArray(), array('class' => 'form-control left_field')); ?>
         <?php echo $form->dropDownList($modelAuth,'month', $modelAuth->getMonthsArray(), array('class' => 'form-control middle_field')); ?>
         <?php echo $form->dropDownList($modelAuth,'year', $modelAuth->getYearsArray(), array('class' => 'form-control')); ?>
     </div>
-    <div class="single-input">
+    <div class="single-input sex">
         <?php echo $form->dropDownListGroup($modelAuth, 'sex', array(
             'widgetOptions' => array(
                 'data' => ['female'=>'Женский', 'male'=>'Мужской'],

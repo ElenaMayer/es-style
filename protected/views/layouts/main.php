@@ -115,7 +115,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="menumenu__container clearfix">
-                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
+                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-7">
                             <div class="logo">
                                 <a href="/">
                                     <img src="/data/i/logo.png?3" alt="<?= Yii::app()->params['domain'] ?>">
