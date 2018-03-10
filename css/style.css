@@ -1462,6 +1462,8 @@
     height: 45px;
     line-height: 45px;
     padding: 0 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .brd-separetor i {
     font-size: 14px;

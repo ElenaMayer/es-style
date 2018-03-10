@@ -37,9 +37,9 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?6">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?42">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?43">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css?2">
     <!-- User style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css">
     <!--    <link rel="stylesheet" type="text/css" href="--><!--?php //echo Yii::app()->request->baseUrl; ?><!--/css/site.css?32" />-->
@@ -77,7 +77,7 @@
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <div class="ht__header__top__left">
                             <div class="htc__contact">
-                                <a href="/about/contact"><i class="icon-call-out icons"></i>Свяжитесь с нами: <?= Yii::app()->params['phone'] ?></a>
+                                <a href="/about/contact"><i class="icon-call-out icons"></i>Позвоните нам: <?= Yii::app()->params['phone'] ?></a>
                             </div>
                         </div>
                     </div>
