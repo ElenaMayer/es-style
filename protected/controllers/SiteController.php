@@ -119,8 +119,15 @@ class SiteController extends Controller {
     public function actionIndex() {
 
         $newPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_new'=>1], ['limit' => 10]);
+        $hitPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_hit'=>1], ['limit' => 10]);
+        $salePhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_sale'=>1], ['limit' => 10]);
         $posts = BlogPost::model()->findAllByAttributes(['is_show' => 1], ['limit' => 2, 'order' => 'date_create DESC']);
-        $this->render('index', ['newPhotos' => $newPhotos, 'posts' => $posts]);
+        $this->render('index', [
+            'newPhotos' => $newPhotos,
+            'hitPhotos' => $hitPhotos,
+            'salePhotos' => $salePhotos,
+            'posts' => $posts
+        ]);
     }
 
     public function actionCatalog($type){
@@ -135,9 +142,7 @@ class SiteController extends Controller {
         $this->pageTitle=Yii::app()->name .' - '. Yii::app()->params["categories"][$type];
 
         if(!empty($_POST)) {
-            $cartItem = $this->actionAddToCart();
-            if($_POST['product_action'] == 'buy' && $cartItem)
-                $this->redirect('/order');
+            $this->actionAddToCart();
         }
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);

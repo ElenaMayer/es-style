@@ -272,10 +272,14 @@ class OrderHistory extends CActiveRecord
         $subtotal = 0;
         $sale = 0;
         foreach($this->cartItems as $item){
-            if(isset($item->new_price)){
-                $sale += ($item->price - $item->new_price) * $item->count;
+            if($this->is_wholesale)
+                $subtotal += $item->wholesale_price * $item->count;
+            else {
+                if(isset($item->new_price)){
+                    $sale += ($item->price - $item->new_price) * $item->count;
+                }
+                $subtotal += $item->price * $item->count;
             }
-            $subtotal += $item->price * $item->count;
         }
         $this->subtotal = $subtotal;
         $this->sale = $sale;

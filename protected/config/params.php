@@ -22,7 +22,7 @@ return array(
     'minWholesaleSum'=>5000,
     'bannerUrl' => '/about/wholesale',
     'developer'=> 'Mayer Elena',
-    'developerSite' => '#',
+    'developerSite' => 'http://e-mayer.ru',
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',

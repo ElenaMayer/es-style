@@ -23,15 +23,11 @@
                 <?php if($photo->is_available) :?>
                     <div class="product__hover__info">
                         <form id="product_<?= $photo->id ?>" method="post">
-                            <ul class="product__action">
-                                <li><a title="Купить" id="buy"><i class="icon-credit-card icons"></i></a></li>
-                                <li><a title="В корзину" id="cart"><i class="icon-handbag icons"></i></a></li>
-                            </ul>
                             <input type="hidden" name="item_id" value="<?= $photo->id ?>">
                             <input type="hidden" name="product_action" id="product_action">
                             <input type="hidden" name="size" id="product_size">
                             <?php if($photo->size) :?>
-                                <div class="sizes hide">
+                                <div class="sizes">
                                     <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
                                 </div>
                             <?php endif; ?>
@@ -41,7 +37,7 @@
             </div>
             <div class="product__inner">
                 <div class="product__details">
-                    <h2><a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>"><?=$photo->title; ?></a></h2>
+                    <h2><a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>"><?=$photo->title; ?> арт.<?=$photo->article?></a></h2>
                     <ul  class="pro__prize">
                         <?php if(!$photo->is_available) :?>
                             <li class="not_available_small">Нет в наличии</li>
@@ -73,19 +69,6 @@
         $("img.lazy").show().lazyload({
             effect : "fadeIn"
         });
-    });
-
-    $( '.product__action' ).on( 'click', 'a', function() {
-        var product_action = $(this).attr('id');
-        var sizes = $(this).parents('.product__action').parent().children(".sizes");
-        $(this).parents('.product__action').parent().children('#product_action').val(product_action);
-        if(sizes.length > 0){
-            $(this).parents('.product__action').addClass("hide");
-            $(this).parents('.product__action').parent().children(".sizes").removeClass("hide");
-        } else {
-            metrika();
-            $(this).parents('form').submit();
-        }
     });
 
     $( '.sizes' ).on( 'click', '.size_button', function() {
