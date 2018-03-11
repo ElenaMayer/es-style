@@ -8,7 +8,7 @@
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="/">Главная</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active">Корзина</span>
+                            <span class="breadcrumb-item active">Определение размера</span>
                         </nav>
                     </div>
                 </div>
@@ -22,6 +22,7 @@
     <div class="container-fluid">
         <div class="about">
             <h1>Определение размера</h1>
+            <div class="table-responsive">
             <table>
                 <thead>
                 <tr>
@@ -96,6 +97,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
             <div class="product-content__sheet  size-howto__wrapper">
                 <div class="size-howto__text">
                     <p><i class="zmdi zmdi-check-circle"></i>Вам понадобится провести измерения с помощью сантиметровой ленты. Для определения подходящего размера необходимо соотнести полученные измерения с размерами в таблице.</p>

@@ -6,6 +6,7 @@
     <div class="modal-body">
         <a class="close" data-dismiss="modal">&times;</a>
         <h2 class="h2">Таблица соответствия размеров</h2>
+        <div class="table-responsive">
         <table>
             <thead>
             <tr>
@@ -80,6 +81,7 @@
             </tr>
             </tbody>
         </table>
+        </div>
     </div>
 
 <?php $this->endWidget(); ?>
