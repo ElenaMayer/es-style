@@ -19,7 +19,7 @@ return array(
             'connectionString' => 'mysql:host=localhost;dbname=es-style',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => '1q2w3e',
+            'password' => '',
             'charset' => 'utf8',
         ),
 		'log'=>array(

@@ -21,8 +21,8 @@ return array(
     'horoscope_coupon'=>'HOROSCOPE_GIFT',
     'minWholesaleSum'=>5000,
     'bannerUrl' => '/about/wholesale',
-    'developer'=> 'Mayer Elena',
-    'developerSite' => '#',
+    'developer'=> 'Elena Mayer',
+    'developerSite' => 'http://e-mayer.ru',
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',
