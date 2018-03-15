@@ -3964,13 +3964,13 @@ ul.htc__instagram__posts.owl-carousel li img {
 .main #grably-parse-button {
     width: 160px;
     height: 37px;
-    top: 30% !important;
+    top: 50% !important;
 }
 .main #grably-parse-button .grably-parser-logo,
 .main #grably-parse-button .grably-parser-text {
     height: 42px;
 }
-.getprice {
+.right-hint {
     position: fixed;
     width: 160px;
     height: 37px;
@@ -3989,21 +3989,29 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-size: 12px;
     font-weight: 600;
     line-height: 50px;
-    top: 60%;
     right: 0;
     -webkit-transform: rotate(90deg) translate(0%, -170%);
     -ms-transform: rotate(90deg) translate(0%, -170%);
     transform: rotate(90deg) translate(0%, -170%);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.getprice {
+    top: 80%;
     background-color: rgb(121, 121, 121);
 }
-.getprice a {
+.to_wholesale {
+    top: 20%;
+    background-color: rgb(9, 121, 6);
+}
+.getprice a,
+.to_wholesale a {
     bottom: 5px;
     position: relative;
     color: white;
 }
-.getprice a:hover {
+.getprice a:hover,
+.to_wholesale a:hover {
     color: white;
 }
 #size_tab .modal-dialog {

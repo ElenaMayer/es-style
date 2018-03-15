@@ -37,7 +37,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?7">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?43">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?45">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css?2">
     <!-- User style -->
@@ -160,6 +160,10 @@
         <?php $this->renderPartial('application.views.site.cart._cart_main_popup'); ?>
     </div>
     <!-- End Offset Wrapper -->
+
+    <div class="to_wholesale right-hint">
+        <a href="/site/price">Как заказать оптом</a>
+    </div>
     <div class="page">
         <?php if(isset($this->breadcrumbs)):?>
             <?php $this->widget('zii.widgets.CBreadcrumbs', array(
@@ -171,7 +175,7 @@
             <?php $this->renderPartial('application.views.site._parser'); ?>
         </div>
     </div><!-- page -->
-    <div class="getprice">
+    <div class="getprice right-hint">
         <a href="/site/price">Скачать опт. прайс</a>
     </div>
 

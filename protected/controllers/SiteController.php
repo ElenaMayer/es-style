@@ -143,6 +143,9 @@ class SiteController extends Controller {
 
         if(!empty($_POST)) {
             $this->actionAddToCart();
+
+            if(isset($_POST['page']))
+                $this->redirect($_POST['page']);
         }
         if(isset($_GET['order']))
             $this->setOrder($_GET['order']);

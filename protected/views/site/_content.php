@@ -72,7 +72,8 @@
     });
 
     $( '.sizes' ).on( 'click', '.size_button', function() {
-        metrika();
+        if(!<?=(Yii::app()->params['debugMode'])? 1 : 0 ?>)
+            metrika();
         var size = $(this).text();
         $(this).parents('form').children('#product_size').val(size);
         $(this).parents('form').submit();

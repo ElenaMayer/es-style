@@ -9,6 +9,7 @@
                 </div>
             </div>
         </div>
+        <?php $currentUrl = Yii::app()->request->requestUri?>
         <div class="row">
             <div class="product__wrap activation__style--1 owl-carousel owl-theme clearfix">
                 <?php foreach($models as $model) :?>
@@ -29,12 +30,21 @@
                                         <span class="hit"><i class="icon-fire icons"></i></span>
                                     <?php endif; ?>
                                 </div>
-                                <div class="product__hover__info">
-                                    <ul class="product__action">
-                                        <li><a href="/chackout"><i class="icon-credit-card icons"></i></a></li>
-                                        <li><a href="/cart"><i class="icon-handbag icons"></i></a></li>
-                                    </ul>
-                                </div>
+                                <?php if($photo->is_available) :?>
+                                    <div class="product__hover__info">
+                                        <form id="product_<?= $photo->id ?>" method="post" action="/other">
+                                            <input type="hidden" name="item_id" value="<?= $photo->id ?>">
+                                            <input type="hidden" name="product_action" id="product_action">
+                                            <input type="hidden" name="page" value="<?= $currentUrl ?>">
+                                            <input type="hidden" name="size" id="product_size">
+                                            <?php if($photo->size) :?>
+                                                <div class="sizes">
+                                                    <?php $this->renderPartial('_sizes', array('model'=>$photo)); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="product__inner">
                                 <div class="product__details">
@@ -67,3 +77,18 @@
     </div>
 </section>
 <!-- End Product Area -->
+
+<script>
+    $( '.sizes' ).on( 'click', '.size_button', function() {
+        if(!<?=(Yii::app()->params['debugMode'])? 1 : 0 ?>)
+            metrika();
+        var size = $(this).text();
+        $(this).parents('form').children('#product_size').val(size);
+        $(this).parents('form').submit();
+    });
+
+    function metrika() {
+        yaCounter37654655.reachGoal('add_to_cart');
+        ga('send', 'event', 'cart', 'add_to_cart');
+    }
+</script>

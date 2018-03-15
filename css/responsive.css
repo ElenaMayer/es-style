@@ -1032,7 +1032,8 @@
         margin: 0;
     }
     #grably-parse-button,
-    .getprice {
+    .getprice,
+    .to_wholesale {
         display: none;
     }
     #scrollUp {
