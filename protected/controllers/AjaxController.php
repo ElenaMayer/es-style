@@ -143,6 +143,7 @@ class AjaxController extends Controller
                 } else {
                     $newItem->price = $newItem->photo->price;
                 }
+                $newItem->wholesale_price = $newItem->photo->wholesale_price;
                 if ($newItem->save()){
                     if ($order->recountOrderSum())
                         $this->renderPartial('/orderHistory/_form',array(

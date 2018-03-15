@@ -65,8 +65,51 @@ $this->pageTitle=Yii::app()->name;
         </div>
     </div>
 </div>
-<!-- Start Slider Area -->
-<?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
+<!-- Start Product Area -->
+<section class="htc__product__area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section__title text--left">
+                    <h2 class="title__line title__border">Новинки</h2>
+                    <p>#Тренды сезона</p>
+                </div>
+            </div>
+        </div>
+        <?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
+    </div>
+</section>
+<!-- End Product Area -->
+<!-- Start Product Area -->
+<section class="htc__product__area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section__title text--left">
+                    <h2 class="title__line title__border">Популярное</h2>
+                    <p>#Хит продаж</p>
+                </div>
+            </div>
+        </div>
+        <?php $this->renderPartial('_popular', ['photos' => $hitPhotos]); ?>
+    </div>
+</section>
+<!-- End Product Area -->
+<!-- Start Product Area -->
+<section class="htc__product__area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section__title text--left">
+                    <h2 class="title__line title__border">Распродажа</h2>
+                    <p>#Максимальная выгода</p>
+                </div>
+            </div>
+        </div>
+        <?php $this->renderPartial('_popular', ['photos' => $salePhotos]); ?>
+    </div>
+</section>
+<!-- End Product Area -->
 
 <!-- Start Blog Area -->
 <section class="htc__blog__area main__blog__area bg__white pb--70">

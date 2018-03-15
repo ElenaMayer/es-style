@@ -117,9 +117,21 @@
         </div>
     </div>
     <!-- End Product Details Top -->
-</section>
-<!-- End Product Details Area -->
-<?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
+    <!-- Start Product Area -->
+    <section class="htc__product__area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section__title text--left">
+                        <h2 class="title__line title__border">Новинки</h2>
+                        <p>#Тренды сезона</p>
+                    </div>
+                </div>
+            </div>
+            <?php $this->renderPartial('_popular', ['photos' => $newPhotos]); ?>
+        </div>
+    </section>
+    <!-- End Product Area -->
 <?php $this->renderPartial('_size_tab'); ?>
 </div>
 
