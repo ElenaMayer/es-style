@@ -269,7 +269,8 @@ body.main.modal-open {
     margin-bottom: 20px;
 }
 
-.getprice {
+.getprice,
+.to_wholesale {
     position: fixed;
     right: -81px;
     top: 275px;
@@ -281,7 +282,8 @@ body.main.modal-open {
     transform: rotate(-90deg);
 }
 
-.getprice a {
+.getprice a,
+to_wholesale a {
     padding: 15px 20px;
     display: block;
     background-color: #ff0000;
@@ -291,7 +293,9 @@ body.main.modal-open {
     font-family: arial;
 }
 .getprice a:hover,
-.getprice a:focus {
+.getprice a:focus,
+.to_wholesale a:hover,
+.to_wholesale a:focus{
     color: #fff;
     text-decoration: none;
 }

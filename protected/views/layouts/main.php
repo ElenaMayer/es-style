@@ -162,7 +162,7 @@
     <!-- End Offset Wrapper -->
 
     <div class="to_wholesale right-hint">
-        <a href="/site/price">Как заказать оптом</a>
+        <a href="/about/wholesale">Как заказать оптом</a>
     </div>
     <div class="page">
         <?php if(isset($this->breadcrumbs)):?>
