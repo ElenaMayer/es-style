@@ -37,7 +37,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?7">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?45">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?46">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css?2">
     <!-- User style -->

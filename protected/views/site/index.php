@@ -101,7 +101,7 @@ $this->pageTitle=Yii::app()->name;
         <div class="row">
             <div class="col-xs-12">
                 <div class="section__title text--left">
-                    <h2 class="title__line title__border">Распродажа</h2>
+                    <h2 class="title__line title__border">Скидки</h2>
                     <p>#Максимальная выгода</p>
                 </div>
             </div>

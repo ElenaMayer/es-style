@@ -51,17 +51,13 @@
                             <?php if(!$model->is_available) :?>
                                 <li class="not_available_small">Нет в наличии</li>
                             <?php else :?>
-                                <?php if(Cart::isWholesale()) :?>
-                                    <li><span class="red"><?= $model->wholesale_price ?>₽ ОПТ</span></li>
+                                <?php if(!$model->is_sale) :?>
+                                    <li><?= $model->price ?>₽ розница</li>
                                 <?php else :?>
-                                    <?php if(!$model->is_sale) :?>
-                                        <li><?= $model->price ?>₽</li>
-                                    <?php else :?>
-                                        <li class="old__prize"><?= $model->old_price ?>₽</li>
-                                        <li><?= $model->price ?>₽</li>
-                                    <?php endif; ?>
-                                    <div class="wholesale-price hide"><?= $model->wholesale_price ?>₽ </div>
+                                    <li class="old__prize"><?= $model->old_price ?>₽</li>
+                                    <li><?= $model->price ?>₽</li>
                                 <?php endif; ?>
+                                <li><div class="wholesale-price red"><?= $model->wholesale_price ?>₽ опт</div></li>
                             <?php endif; ?>
                         </ul>
                         <div class="ht__pro__desc">

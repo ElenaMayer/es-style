@@ -26,7 +26,7 @@ class Comment extends CActiveRecord
      * blog_post - Коментарии к статье
      */
 
-    public $is_show = 0;
+    public $is_show = 1;
     public $image;
     public $imageHeight = 300;
     public $imageWidth = 600;

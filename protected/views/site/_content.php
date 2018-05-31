@@ -38,7 +38,8 @@
             <div class="product__inner">
                 <div class="product__details">
                     <h2><a href="/<?= $photo->category ?>/<?= $photo->article . (isset($_GET['subcategory']) ? '?subcategory=' . $_GET['subcategory'] : '') ?>"><?=$photo->title; ?> арт.<?=$photo->article?></a></h2>
-                    <ul  class="pro__prize">
+                    <ul class="price pro__prize">
+                        <div class="wholesale-price hide"><?= $photo->wholesale_price ?>₽ </div>
                         <?php if(!$photo->is_available) :?>
                             <li class="not_available_small">Нет в наличии</li>
                         <?php else :?>
@@ -51,7 +52,6 @@
                                     <li class="old__prize"><?= $photo->old_price ?>₽</li>
                                     <li><?= $photo->price ?>₽</li>
                                 <?php endif; ?>
-                                <div class="wholesale-price hide"><?= $photo->wholesale_price ?>₽ </div>
                             <?php endif; ?>
                         <?php endif; ?>
                     </ul>

@@ -55,7 +55,7 @@
                     </div>
                     <div class="address__details">
                         <h2 class="ct__title">Часы работы</h2>
-                        <p>10:00 - 19:00 Без выходных</p>
+                        <p>10:00 - 18:00 Без выходных</p>
                     </div>
                 </div>
             </div>

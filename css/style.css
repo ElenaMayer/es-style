@@ -502,6 +502,10 @@
 .model .htc__product__area {
     padding-top: 0;
 }
+
+.model .wholesale-price {
+    padding-left: 30px;
+}
 /*----------------------------------
   Show More Button
 -------------------------------------*/

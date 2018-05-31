@@ -121,7 +121,7 @@ class SiteController extends Controller {
         $newPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_new'=>1], ['limit' => 10]);
         $hitPhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_hit'=>1], ['limit' => 10]);
         $salePhotos = Photo::model()->findAllByAttributes(['is_available'=>1, 'is_show' => 1, 'is_sale'=>1], ['limit' => 10]);
-        $posts = BlogPost::model()->findAllByAttributes(['is_show' => 1], ['limit' => 2, 'order' => 'date_create DESC']);
+        $posts = BlogPost::model()->findAllByAttributes(['is_show' => 1], ['limit' => 1, 'order' => 'date_create DESC']);
         $this->render('index', [
             'newPhotos' => $newPhotos,
             'hitPhotos' => $hitPhotos,
