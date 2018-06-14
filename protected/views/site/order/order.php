@@ -20,6 +20,7 @@
 <!-- cart-main-area start -->
 <div class="checkout-wrap ptb--70">
     <div class="container-fluid">
+        <div class="vacation">Заказы, полученые с 15 по 29 июня будут обработаны 30 июня. Спасибо за понимание!</div>
         <div class="row">
             <div class="col-md-8">
                 <div class="order-form">

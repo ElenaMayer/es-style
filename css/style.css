@@ -3844,6 +3844,12 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-family: "Poppins";
     letter-spacing: 1px;
 }
+.vacation {
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: red;
+    font-weight: 600;
+}
 
 
 /*Buttons*/
