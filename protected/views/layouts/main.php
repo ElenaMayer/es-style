@@ -172,7 +172,7 @@
         <?php endif;?>
         <div class="content">
             <?php echo $content; ?>
-            <?php $this->renderPartial('application.views.site._parser'); ?>
+            <?php //$this->renderPartial('application.views.site._parser'); ?>
         </div>
     </div><!-- page -->
     <div class="getprice right-hint">

@@ -28,7 +28,7 @@
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Мы работаем с физическими лицами и организаторами совместных покупок.</li>
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Теперь минималка всего <b><?= Yii::app()->params['minWholesaleSum'] ?> руб.</b> Без рядов.</li>
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Новый функционал для работы с оптовыми заказчиками. Заказ можно делать прямо на сайте.</li>
-                <li class="list__item"><i class="zmdi zmdi-star"></i>Бесплатная выгрузка каталогов в группы ВК и ОК и xls/csv.</li>
+                <!--li class="list__item"><i class="zmdi zmdi-star"></i>Бесплатная выгрузка каталогов в группы ВК и ОК и xls/csv.</li-->
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Особые подарки для организаторов СП (см. раздел "Скидки").</li>
             </ul>
 
@@ -57,7 +57,7 @@
                 <li class="list__item"><i class="zmdi zmdi-star"></i>При заказе от 75 000 рублей - скидка 10%.</li>
             </ul>
 
-            <h2>Как выгрузить каталог в группы ВК/ОК и xls/csv</h2>
+            <!--h2>Как выгрузить каталог в группы ВК/ОК и xls/csv</h2>
             <ul class="list">
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Зайдите на нужную страницу каталога товаров и нажмите кнопку "Выгрузка" в правой части экрана.</li>
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Зарегистрируйтесь, войдите в аккаунт и нажмите кнопку "Выгрузить".</li>
@@ -66,7 +66,7 @@
                 <li class="list__item"><i class="zmdi zmdi-star"></i>При выгрузке в соц.сети выберите или создайте альбом.</li>
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Нажмите кнопку "Выгрузить".</li>
                 <li class="list__item"><i class="zmdi zmdi-star"></i>Товары будут выгружены с оптовыми ценами.</li>
-            </ul>
+            </ul-->
 
             <h2>Доставка</h2>
             <span>Информацию о способе доставки вы указываете при оформлении заказа. Способы доставки:</span>
