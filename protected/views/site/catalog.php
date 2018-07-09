@@ -1,7 +1,9 @@
 <div id="data" class="catalog">
 
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/<?= 0 ? $type : 'banner' ?>.jpg?2) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/data/images/bg/<?= $type?>.jpg?2) no-repeat scroll center center / cover ;">
+        <img src="/data/images/bg/banner.jpg">
+        <?php /*
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -24,6 +26,7 @@
             </div>
         </div>
     </div>
+ */?>
     <!-- End Bradcaump area -->
     <!-- Start Product Grid -->
     <section class="htc__product__grid bg__white ptb--70">
