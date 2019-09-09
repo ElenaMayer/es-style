@@ -324,6 +324,7 @@ class SiteController extends Controller {
                 $user = new User();
                 $user->scenario = 'orderWithRegistration';
             }
+            $user->payment = 'cart';
             if (isset($_POST['User'])) {
                 if(Yii::app()->params['debugMode']){
                     Yii::log('Отправить заказ, IP:', 'warning');
@@ -428,7 +429,7 @@ class SiteController extends Controller {
         $order->postcode = $user->postcode;
         $order->address = $user->address;
         $order->comment = $user->comment;
-        if(!Cart::isWholesale()) {
+        /*if(!Cart::isWholesale()) {
             if ($_POST['User']['payment'] == 'cod')
                 $order->status = 'in_progress';
             elseif ($_POST['User']['payment'] == 'online') {
@@ -436,10 +437,10 @@ class SiteController extends Controller {
                 $rk = new Robokassa();
                 $order->total_with_commission = $rk->getSumWithCommission($order->total);
             }
-        } else {
-            $order->is_wholesale = 1;
+        } else {*/
+            //$order->is_wholesale = 1;
             $order->status = 'in_progress';
-        }
+        //}
         if ($order->save()){
             if($order->coupon_id && !$order->coupon->is_reusable)
                 $order->coupon->isUsed();
