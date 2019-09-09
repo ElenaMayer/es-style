@@ -1,5 +1,5 @@
 <?php
-//Yii::app()->params['']
+//Yii::app()->params['wh_sale']
 return array(
     'carouselUrl' => [
         'first' => '/dress',
@@ -23,6 +23,8 @@ return array(
     'bannerUrl' => '/about/wholesale',
     'developer'=> 'Elena Mayer',
     'developerSite' => 'http://e-mayer.ru',
+    'wh_sum' => 30000,
+    'wh_sale' => 70,
     'categories' => [
         'dress' => 'Платья',
         'blouse' => 'Блузки',
@@ -84,13 +86,13 @@ return array(
         'canceled' => 'Отменен'
     ],
     'paymentMethod' => [
-        'cod' => 'При получении',
-        'online'  => 'Онлайн-оплата',
+        'cart'  => 'Оплата картой',
     ],
     'shippingMethod' => [
         'russian_post' => 'Почта России',
         'ems' => 'EMS Почта России',
         'store' => 'Получение в магазине',
+        'tk' => 'Транспортная компания',
     ],
     'colors' => [
         'черный' => 'черный',

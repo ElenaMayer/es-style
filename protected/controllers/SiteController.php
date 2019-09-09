@@ -412,10 +412,18 @@ class SiteController extends Controller {
 
         $order->shipping = ($order->shipping_method == 'russian_post') ? $cart->shipping : 0;
         $order->subtotal = $cart->subtotal;
-        $order->sale = $cart->sale;
+        if($cart->subtotal < Yii::app()->params['wh_sum']) {
+            $order->sale = $cart->sale;
+        } else {
+            $order->sale = $cart->subtotal*(Yii::app()->params['wh_sale'])/100;
+        }
         $order->coupon_id = $cart->coupon_id;
         $order->coupon_sale = $cart->coupon_sale;
-        $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $order->shipping;
+        if($cart->subtotal < Yii::app()->params['wh_sum']) {
+            $order->total = $cart->subtotal - $cart->sale - $cart->coupon_sale + $order->shipping;
+        } else {
+            $order->total = $cart->subtotal*(100-Yii::app()->params['wh_sale'])/100;
+        }
         $order->addressee = trim($user->surname) . " " .trim($user->name) . " " . trim($user->middlename) ;
         $order->postcode = $user->postcode;
         $order->address = $user->address;

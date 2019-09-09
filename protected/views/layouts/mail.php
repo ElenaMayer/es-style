@@ -48,7 +48,7 @@
                                                                                         <span style="color:#242424;font-family:Arial,tahoma,sans-serif;line-height:13px;font-size:13px;text-decoration:none">
                                                                                             <span>
                                                                                                 <span>
-                                                                                                    <span class="js-phone-number highlight-phone" title="Позвонить через Веб-Агент"><?php echo Yii::app()->params['phone']; ?></span>
+                                                                                                    <span class="js-phone-number highlight-phone" title="Позвонить через Веб-Агент"><a href="tel:<?= Yii::app()->params['phone'] ?>"><?= Yii::app()->params['phone'] ?></a></span>
                                                                                                 </span>
                                                                                             </span>
                                                                                         </span>
@@ -113,9 +113,6 @@
                                                     <td width="160" style="vertical-align: top;padding-top: 5px;">
                                                         <a target="_blank" style="text-decoration: none;padding-right: 20px;" href="<?php echo Yii::app()->params['vkontakteLink']; ?>" border="0">
                                                             <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: 1px -25px;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">
-                                                        </a>
-                                                        <a target="_blank" style="text-decoration: none;padding-right: 20px;" href="<?php echo Yii::app()->params['instagramLink']; ?>" border="0">
-                                                            <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -51px -25px;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">
                                                         </a>
                                                         <a target="_blank" style="text-decoration: none;" href="<?php echo Yii::app()->params['odnoklassnikiLink']; ?>" border="0">
                                                             <img style="background: url('http://<?php echo Yii::app()->params['domain']; ?>/data/i/socials.png?2') 0 0 no-repeat; background-position: -25px -25px;;" height="26" width="26" align="baseline" border="0" hspace="0" vspace="0">

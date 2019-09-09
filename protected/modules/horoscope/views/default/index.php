@@ -80,23 +80,6 @@
                 <h2>Год <b class="red"><?= HoroscopeSignByYear::getSignStringRP($signByYear);?></b> и <b class="orange"><?= HoroscopeSignByMonth::getSignString($signByDate);?></b></h2>
                 <p><?= $horoscopeByYearAndMonth['desc'];?></p>
             </div>
-            <div class="subscription-fast-pop">
-                <h2 class="h2">У нас есть специальный подарок для вас!</h2>
-                <p class="subscription-fast-title">
-                    <span>Скидка <?= Yii::app()->params['horoscope_sale']?> рублей</span> на любое платье!
-                    Введите e-mail и купон на скидку будет выслан сразу же!
-                </p>
-                <form class="subscription-fast-form" method="post">
-                    <div class="subscription-fast-form-input">
-                        <label for="subscription-id">Ваш E-mail</label>
-                        <input id="subscription-email" name="email" value="" type="text">
-                        <div class="popup-email-error error"></div>
-                    </div>
-                    <div class="blog__btn">
-                        <a class="get-coupon-button"><i class="zmdi zmdi-long-arrow-right"></i>Получить мой подарок</a>
-                    </div>
-                </form>
-            </div>
         </div>
     <?php endif;?>
 </div>

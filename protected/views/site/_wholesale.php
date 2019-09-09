@@ -4,7 +4,7 @@
 <ul class="list list_shopping">
     <li class="list__item">Мы работаем с физическими лицами и организаторами совместных покупок.</li>
     <li class="list__item">Минимальная оптовая партия - <b>7 000 руб.</b></li>
-    <li class="list__item">Заказ можно сделать через приведенную ниже форму, </br>по телефону <b><?=Yii::app()->params['phone']?></b> или по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
+    <li class="list__item">Заказ можно сделать через приведенную ниже форму, </br>по телефону <b><a href="tel:<?= Yii::app()->params['phone'] ?>"><?= Yii::app()->params['phone'] ?></a></b> или по электронной почте <b><a class="link" id="email">показать адрес</a></b>.</li>
 </ul>
 
 <a class="hint hint-link" href="site/price">

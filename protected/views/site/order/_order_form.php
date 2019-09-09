@@ -32,7 +32,7 @@
                                         </div>
                                     <?php else: ?>
                                         <div class="single-input">
-                                            <?php echo $form->radioButtonList($user, 'shipping_method', ['russian_post'=>'Почта России', 'store'=>'Получение в магазине (для Новосибирска)']); ?>
+                                            <?php echo $form->radioButtonList($user, 'shipping_method', ['russian_post'=>'Почта России', 'tk' => 'Транспортная компания']); ?>
                                         </div>
                                     <?php endif ?>
                                 </div>

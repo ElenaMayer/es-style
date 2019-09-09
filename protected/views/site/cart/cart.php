@@ -59,9 +59,6 @@
                 </div>
                 <div class="row">
                     <div class="cart_coupon col-md-6 col-sm-12 col-xs-12">
-                    <?php if(!Cart::isWholesale()) :?>
-                        <?php $this->renderPartial('/site/_coupon'); ?>
-                    <?php endif;?>
                     </div>
                     <?php $this->renderPartial($path.'cart/_cart_total', array('model'=>$model)); ?>
                 </div>

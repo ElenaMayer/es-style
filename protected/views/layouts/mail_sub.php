@@ -48,7 +48,7 @@
                                                                                         <span style="color:#242424;font-family:Arial,tahoma,sans-serif;line-height:13px;font-size:13px;text-decoration:none">
                                                                                             <span>
                                                                                                 <span>
-                                                                                                    <span class="js-phone-number highlight-phone" title="Позвонить через Веб-Агент"><?php echo Yii::app()->params['phone']; ?></span>
+                                                                                                    <span class="js-phone-number highlight-phone" title="Позвонить через Веб-Агент"><a href="tel:<?= Yii::app()->params['phone'] ?>"><?= Yii::app()->params['phone'] ?></a></span>
                                                                                                 </span>
                                                                                             </span>
                                                                                         </span>

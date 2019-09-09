@@ -4012,7 +4012,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     background-color: rgb(121, 121, 121);
 }
 .to_wholesale {
-    top: 20%;
+    top: 50%;
     background-color: rgb(9, 121, 6);
 }
 .getprice a,
@@ -4295,4 +4295,8 @@ ul.htc__instagram__posts.owl-carousel li img {
     bottom: 50px;
     left: 50px;
     right: inherit;
+}
+.banner {
+    background-color: #8c6caf;
+    text-align: center;
 }

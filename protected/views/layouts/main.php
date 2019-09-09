@@ -37,7 +37,7 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/shortcode/shortcodes.css?7">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?48">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?50">
     <!-- Responsive css -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css?2">
     <!-- User style -->
@@ -66,7 +66,7 @@
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                         <div class="ht__header__top__left">
                             <div class="htc__contact">
-                                <a href="/about/contact"><i class="icon-call-out icons"></i>Позвоните нам: <?= Yii::app()->params['phone'] ?></a>
+                                <i class="icon-call-out icons"></i> Позвоните нам: <a href="tel:<?= Yii::app()->params['phone'] ?>"><?= Yii::app()->params['phone'] ?></a>
                             </div>
                         </div>
                     </div>
@@ -165,6 +165,11 @@
         <a href="/about/wholesale">Как заказать оптом</a>
     </div>
     <div class="page">
+        <div class="banner">
+            <a href="/about/wholesale">
+                <img src="/data/i/banner_sale.jpg" alt="Распродажа">
+            </a>
+        </div>
         <?php if(isset($this->breadcrumbs)):?>
             <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                 'links'=>$this->breadcrumbs,
@@ -175,9 +180,6 @@
             <?php //$this->renderPartial('application.views.site._parser'); ?>
         </div>
     </div><!-- page -->
-    <div class="getprice right-hint">
-        <a href="/site/price">Скачать опт. прайс</a>
-    </div>
 
     <!-- Start Footer Area -->
     <footer id="htc__footer">
@@ -236,9 +238,6 @@
                                 <div class="ft__social__link">
                                     <ul class="social__link">
                                         <li><a href="<?=Yii::app()->params['vkontakteLink']?>" target="_blank"><i class="zmdi zmdi-vk"></i></a></li>
-
-                                        <li><a href="<?=Yii::app()->params['instagramLink']?>" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
-
                                         <li><a href="<?=Yii::app()->params['odnoklassnikiLink']?>" target="_blank"><i class="zmdi zmdi-odnoklassniki"></i></a></li>
                                     </ul>
                                 </div>

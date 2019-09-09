@@ -96,19 +96,21 @@ $this->pageTitle=Yii::app()->name;
 </section>
 <!-- End Product Area -->
 <!-- Start Product Area -->
-<section class="htc__product__area">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="section__title text--left">
-                    <h2 class="title__line title__border">Скидки</h2>
-                    <p>#Максимальная выгода</p>
+<?php if($salePhotos):?>
+    <section class="htc__product__area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section__title text--left">
+                        <h2 class="title__line title__border">Скидки</h2>
+                        <p>#Максимальная выгода</p>
+                    </div>
                 </div>
             </div>
+            <?php $this->renderPartial('_popular', ['photos' => $salePhotos]); ?>
         </div>
-        <?php $this->renderPartial('_popular', ['photos' => $salePhotos]); ?>
-    </div>
-</section>
+    </section>
+<?php endif;?>
 <!-- End Product Area -->
 
 <!-- Start Blog Area -->

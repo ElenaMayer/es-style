@@ -42,8 +42,8 @@
             <!-- Start Single Address -->
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 xmt-40">
                 <div class="address--2">
-                    <p><a href="#"><i class="icon-call-end icons"></i><?= Yii::app()->params['phone'] ?></a></p>
-                    <p><a href="#"><i class="icon-envelope icons"></i><?= Yii::app()->params['email'] ?></a></p>
+                    <p><a href="tel:<?= Yii::app()->params['phone'] ?>"><i class="icon-call-end icons"></i><?= Yii::app()->params['phone'] ?></a></p>
+                    <p><a href="mailto:<?= Yii::app()->params['email'] ?>"><i class="icon-envelope icons"></i><?= Yii::app()->params['email'] ?></a></p>
                 </div>
             </div>
             <!-- End Single Address -->

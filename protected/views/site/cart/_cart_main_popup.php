@@ -30,14 +30,44 @@
                     </div>
                 <?php endforeach;?>
             </div>
-            <ul class="shoping__shipping">
-                <li class="subtotal">Доставка:</li>
-                <li class="total__shipping"><?=Yii::app()->cart->currentCart->shipping?>₽</li>
-            </ul>
-            <ul class="shoping__total">
-                <li class="subtotal">Итого:</li>
-                <li class="total__price"><?=Yii::app()->cart->currentCart->total?>₽</li>
-            </ul>
+
+            <?php if(Yii::app()->cart->currentCart->subtotal >= Yii::app()->params['wh_sum']):?>
+                <ul class="shoping__shipping">
+                    <li class="subtotal">Подитог:</li>
+                    <li class="total__shipping"><?=Yii::app()->cart->currentCart->subtotal?>₽</li>
+                </ul>
+            <?php endif; ?>
+
+            <?php if(Yii::app()->cart->currentCart->sale > 0) :?>
+                <ul class="shoping__shipping">
+                    <li class="subtotal">Скидка:</li>
+                    <li class="total__shipping">- <?= Yii::app()->cart->currentCart->sale ?>₽</li>
+                </ul>
+            <?php elseif (Yii::app()->cart->currentCart->subtotal >= Yii::app()->params['wh_sum']):?>
+                <ul class="shoping__shipping">
+                    <li class="subtotal">Скидка:</li>
+                    <li class="total__shipping">- <?= Yii::app()->cart->currentCart->subtotal*(Yii::app()->params['wh_sale'])/100 ?>₽</li>
+                </ul>
+            <?php endif; ?>
+
+            <?php if(Yii::app()->cart->currentCart->subtotal < Yii::app()->params['wh_sum']):?>
+                <ul class="shoping__shipping">
+                    <li class="subtotal">Доставка:</li>
+                    <li class="total__shipping"><?=Yii::app()->cart->currentCart->shipping?>₽</li>
+                </ul>
+            <?php endif; ?>
+
+            <?php if(Yii::app()->cart->currentCart->subtotal < Yii::app()->params['wh_sum']):?>
+                <ul class="shoping__total">
+                    <li class="subtotal">Итого:</li>
+                    <li class="total__price"><?=Yii::app()->cart->currentCart->total?>₽</li>
+                </ul>
+            <?php else:?>
+                <ul class="shoping__total">
+                    <li class="subtotal">Итого:</li>
+                    <li class="total__price"><?=Yii::app()->cart->currentCart->subtotal*(100-Yii::app()->params['wh_sale'])/100?>₽</li>
+                </ul>
+            <?php endif; ?>
             <ul class="shopping__btn">
                 <li><a href="/cart">В корзину</a></li>
                 <li class="shp__checkout"><a href="/order">Оформить заказ</a></li>

@@ -23,32 +23,11 @@
         <div class="about">
             <h1>Способы оплаты</h1>
             <div class="payment">
-                <h2>Безналичный расчет</h2>
-                <h3>Банковские карты</h3>
-                <ul class="list list_shopping">
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>Visa, MasterCard <i class="payment_method payment_method_visa_mc"></i></li>
-                </ul>
-                <h3>Электронные платежи</h3>
-                <ul class="list list_shopping">
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>Яндекс.Деньги<i class="payment_method payment_method_visa_ym"></i></li>
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>QIWI Кошелек<i class="payment_method payment_method_visa_qw"></i></li>
-                </ul>
-                <h3>Другие способы</h3>
-                <ul class="list list_shopping">
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>Евросеть<i class="payment_method payment_method_visa_e"></i></li>
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>Связной<i class="payment_method payment_method_visa_s"></i></li>
-                </ul>
+                <h3>1. <i class="zmdi zmdi-card"></i>Перевод на карты Сбербанк</h3>
+                Оплата принимается на карту Сбербанка после выставления счета.
             </div>
             <div>
-                <h2>Оплата при получении на Почте</h2>
-                <ul class="list list_shopping">
-                    <li class="list__item"><i class="zmdi zmdi-card"></i>В этом случае доставка осуществляем наложенным платежом.</li>
-                    <li class="list__item"><i class="zmdi zmdi-card"></i><b>Оплата</b> производится на почте <b>в момент получения</b> посылки.</li>
-                    <li class="list__item"><i class="zmdi zmdi-card"></i><b>Комиссия</b> за наложенный платеж состовляет <b>1% - 5%</b> и оплачивается при получении.</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Наличный платеж при получении в магазине (Только для Новосибирска)</h2>
+                <h3>2. <i class="zmdi zmdi-money"></i>Наличный платеж при получении в магазине (Только для Новосибирска)</h3>
                 Вы можете оплатить заказ наличными в розничном магазине.
             </div>
         </div>

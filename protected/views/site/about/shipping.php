@@ -32,6 +32,17 @@
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Срок доставки зависит от удаленности региона и составляет, как правило, от 5 дней.</li>
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Срок доставки может быть увеличен в случаях, предусмотренных правилами работы Почты России.</li>
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Почтовые отправления хранятся в отделении почтовой связи в течение 30 дней.</li>
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Отправка осуществляется после 100% предоплаты заказа.</li>
+                    </ul>
+                </div>
+                <div class="shipping_method">
+                    <h2>Транспортная компания</h2>
+                    <ul class="list list_shopping">
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Доставка посылки осуществляется ТК СДЭК, ТК ПЭК, ТК Энергия или ТК Деловые линии.</li>
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Стоимость доставки расчитывается в зависимости от веса заказа и города получателя.</li>
+                        <li class="list__item red"><i class="zmdi zmdi-local-shipping"></i>Доставка до терминала ТК в городе Новосибирске осуществляется бесплатно.</li>
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Отправка осуществляется после 100% предоплаты заказа.</li>
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Доставка оплачивается при получении.</li>
                     </ul>
                 </div>
                 <div class="shipping_method">
@@ -39,7 +50,7 @@
                     <ul class="list">
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Вы можете получить заказ в розничном магазине.</li>
                         <li class="list__item red"><i class="zmdi zmdi-local-shipping"></i><b>Доставка до розничного магазина осуществляется бесплатно.</b></li>
-                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Если по какой-либо причине Вы не в состоянии получить заказ, свяжитесь с нами по телефону <?= Yii::app()->params['phone'] ?></strong>.</li>
+                        <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Если по какой-либо причине Вы не в состоянии получить заказ, свяжитесь с нами по телефону <a href="tel:<?= Yii::app()->params['phone'] ?>"><?= Yii::app()->params['phone'] ?></a></strong>.</li>
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Срок хранения заказов в магазине - <b>4 календарных дня</b>.</li>
                         <li class="list__item"><i class="zmdi zmdi-local-shipping"></i>Адреса магазинов можно посмотреть в разделе <b><a href="/about/contact" title="Контакты">Контакты</a></b>.</li>
                     </ul>
